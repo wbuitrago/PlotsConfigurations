@@ -77,7 +77,7 @@ getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
 
 
 samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-                      'weight' :  '1.',#'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)'   ,
+                      'weight' :  '1.',#'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)'  
 		      'FilesPerJob' : 3,
 		 }
 
@@ -91,7 +91,7 @@ samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu'
                                 +       getSampleFiles(directory_MC, 'WWTo2L2Nu', True) \
                                 +       getSampleFiles(directory_MC, 'WZTo2L2Q', True) \
                                 +       getSampleFiles(directory_MC, 'ZZTo2L2Q', True) ,
-                                'weight' : '1.', #'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+                                'weight' : '1.', #'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' 
                         'FilesPerJob' : 3,
                          }
 
