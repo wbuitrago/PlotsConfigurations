@@ -109,7 +109,8 @@ samples['ttbar'] = 	{ 	'name'  :getSampleFiles(chargeFlipDir,'TTTo2L2Nu',True)
 ###########################################
 #########  Prompt Substraction  ###########
 ###########################################
-#The FakeW=FakeR/1-FakeR is calculated from DATA in a region enhanced in non-Prompt and fake leptons. Using Simulations is possible to substract the fake contributions (done using two regions: Tight-Loose and Loose-Loose) leaving only the non-prompt background (TL-LL)DATA-(TL-LL)Sim*FakeW=N_non-prompt
+#The FakeW=FakeR/1-FakeR is calculated from DATA in a region enhanced in non-Prompt and fake leptons. Using Simulations is possible to substract the prompt contribution (done using two regions: Tight-Loose and Loose-Loose) leaving only the non-prompt background (TL-LL)DATA-(TL-LL)Sim*FakeW=N_non-prompt
+#Samples here represent the prompt leptons
 samples['DY_promptSubtr']  = { 	'name' 	:getSampleFiles(PromptSubtr,'DYJetsToLL_M-10to50',True)
 										+getSampleFiles(PromptSubtr,'DYJetsToLL_M-50',True)    
 										,
@@ -147,7 +148,7 @@ samples['Vg_promptSubtr'] =	{ 	'name':getSampleFiles(PromptSubtr,'WGJJ',True)
 									   +getSampleFiles(PromptSubtr,'Zg',True) 
 					 	#+getSampleFiles(PromptSubtr,'Wg_MADGRAPHMLM',True)
 										,    
-                                'weight' : '-1.*fakeW2l*'+XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+SameSign,    
+                                'weight' : '-1.*fakeW2l*'+XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+SameSign,#i want to substract gamma->ll so i don't apply the PromptW    
 							}
 
 
@@ -175,8 +176,6 @@ samples['VVV_promptSubtr']= {	'name':getSampleFiles(PromptSubtr,'WZZ',True)
 									  +getSampleFiles(PromptSubtr,'ZZZ',True)
 									  +getSampleFiles(PromptSubtr,'WWW',True) 
 									  +getSampleFiles(PromptSubtr,'WWZ',True) 
-									  +getSampleFiles(PromptSubtr,'TTZToQQ',True) 
-									  +getSampleFiles(PromptSubtr,'TTWJetsToQQ',True) 
 									  +getSampleFiles(PromptSubtr,'TTWJetsToLNu',True) 
 									  +getSampleFiles(PromptSubtr,'TTZToLLNuNu_M-10',True)
 									  ,								  
@@ -223,7 +222,6 @@ for DataSet in MyWeights.keys():
 
 samples['Vg']  =  {     'name'  :getSampleFiles(MCDir,'Zg',True)
 				+getSampleFiles(MCDir,'WGJJ',True)
-				#+getSampleFiles(MCDir,'Wg_MADGRAPHMLM',True)
                                 ,
                         'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC +'*'+SameSign,
                   }
@@ -310,7 +308,7 @@ samples['WpWp_EWK'] = {  	'name'  :getSampleFiles(MCDir,'WpWpJJ_EWK',True)
 samples['WmWm_EWK'] = {  	'name'  :getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
 								#+getSampleFiles(directory,'WpWpJJ_EWK_aQGC')
 								,
-						'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466' ,    
+						'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466' , #K factor   
 						'FilesPerJob' : 1 ,
 					}					
 
@@ -319,7 +317,7 @@ samples['WmWm_EWK'] = {  	'name'  :getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True
 ###########################################
 
 samples['Fake_lep']={'name': [ ] ,
-                       'weight' : 'fakeW2l'+'*'+METFilter_DATA+'*'+SameSign,              #   weight/cut 
+                       'weight' : 'fakeW2l'+'*'+METFilter_DATA+'*'+SameSign,           
                        'weights' : [ ] ,
                        'isData': ['all'],
                        'FilesPerJob' : 6 ,
