@@ -1,12 +1,16 @@
 #cuts
-cuts = {}
-supercut= 'abs(std_vector_jet_eta[1])<5 && abs(std_vector_jet_eta[0])<5 \
-&& metPfType1 > 30 \
-&& std_vector_jet_pt[0]>30 && std_vector_jet_pt[1]>30 \
-&& (abs((std_vector_lepton_eta[0] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5) \
-&& (abs((std_vector_lepton_eta[1] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5) \
-&& (std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) > 0 \
-&& veto_EMTFBug'
+#cuts = {}
+
+#supercut= 'abs(std_vector_jet_eta[1])<5 && abs(std_vector_jet_eta[0])<5 
+#&& metPfType1 > 30 
+#&& std_vector_jet_pt[0]>30 && std_vector_jet_pt[1]>30 
+#&& (abs((std_vector_lepton_eta[0] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5) 
+#&& (abs((std_vector_lepton_eta[1] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5) 
+#&& (std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) > 0 
+#&& veto_EMTFBug'
+
+
+supercut = '1'
 
 #sc1 = '(abs(std_vector_jet_eta[1])<5 && abs(std_vector_jet_eta[0])<5)'
 #sc2 = '(metPfType1 > 30)'
@@ -47,7 +51,7 @@ DynamicCentralJetVeto35mjj = '\
 
 #cuts['JV'] = JetVeto
 #cuts['CJV'] = CentralJetVeto
-cuts['DJV_35mjj'] = DynamicJetVeto35mjj
+#cuts['DJV_35mjj'] = DynamicJetVeto35mjj
 
 # 11 = e
 # 13 = mu

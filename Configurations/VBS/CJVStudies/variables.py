@@ -40,35 +40,52 @@ variables['djv_mjj']  = {   'name': '(std_vector_jet_pt[2]>20)*(std_vector_jet_p
    #                    'fold' : 3
     #                   } #usually jet_pt > 20 (if not verified, use 0 instead of jet_pt)
 
-variables['mjj']  = {  'name': 'mjj',
-                      'range': (18,500,2000), #(18,500,2000)(40,0,2000)
-                      'xaxis': 'm_{jj} [GeV]',
-                      'fold': 3
-                      }
+#variables['mjj']  = {  'name': 'mjj',
+ #                     'range': (18,500,2000), #(18,500,2000)(40,0,2000)
+  #                    'xaxis': 'm_{jj} [GeV]',
+   #                   'fold': 3
+    #                  }
 
-variables['detajj']  = { 'name': 'detajj',
-                         'range': (18,2,9),#(18,2,9)(30,0,9)
-			 'xaxis': '#Delta#eta_{jj}',
-                         'fold': 3
-                       }
+#variables['detajj']  = { 'name': 'detajj',
+ #                        'range': (18,2,9),#(18,2,9)(30,0,9)
+#			 'xaxis': '#Delta#eta_{jj}',
+ #                        'fold': 3
+  #                     }
 
 #variables['ptj3'] = { 'name': 'std_vector_jet_pt[2]',
-		      #'range': (10, 0., 100.),
-		      #'xaxis': 'p_{t}^{jet 3} [GeV]',
-		      #'fold': 3
-		      #}
+#		      'range': (10, 0., 100.),
+#		      'xaxis': 'p_{t}^{jet 3} [GeV]',
+#		      'fold': 3
+#		      }
+
+
+#variables['eta1'] = { 'name': 'std_vector_jet_eta[0]',
+#		      'range': (10, 0., 5.),
+#		      'xaxis': '#eta^{jet 1}',
+#		      'fold': 3
+#		      }
+
+
+#variables['eta2'] = { 'name': 'std_vector_jet_eta[1]',
+#		      'range': (10, 0., 5.),
+#		      'xaxis': '#eta^{jet 2}',
+#		      'fold': 3
+#		      }
+
 
 #variables['jv'] = { 'name': '(std_vector_jet_pt[2]<30)',
-		      #'range': (4, -1.5, 2.5),
-		      #'xaxis': 'jv',
-		      #'fold': 3
-		      #}
+#		      'range': (4, -1.5, 2.5),
+#		      'xaxis': 'jv',
+#		      'fold': 3
+#		      }
+
 
 #variables['cjv'] = { 'name': '(std_vector_jet_pt[2]<=30 || (std_vector_jet_pt[2]>30 && std_vector_jet_eta[2] < ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[0]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[1]) && std_vector_jet_eta[2] > ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[1]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[0])))',
-		      #'range': (4, -1.5, 2.5),
-		      #'xaxis': 'cjv',
-		      #'fold': 3
-		      #}
+#		      'range': (4, -1.5, 2.5),
+#		      'xaxis': 'cjv',
+#		      'fold': 3
+#		      }
+
 
 #variables['etacond']  = {  'name': 'std_vector_jet_eta[2] < ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[0]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[1]) && std_vector_jet_eta[2] > ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[1]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[0]) ',
                       #'range': (4,-1.5,2.5), 
@@ -76,7 +93,14 @@ variables['detajj']  = { 'name': 'detajj',
                       #'fold': 3
                       #}
 
+variables['Zlep1'] = { 'name': '(std_vector_lepton_eta[0] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj',
+		      'range': (10, -5., 5.),
+		      'xaxis': 'z^{lep 1}',
+		      'fold': 3
+		      }
 
-
-
-
+variables['Zlep2'] = { 'name': '(std_vector_lepton_eta[1] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj',
+		      'range': (10, -5., 5.),
+		      'xaxis': 'z^{lep 2}',
+		      'fold': 3
+		      }
