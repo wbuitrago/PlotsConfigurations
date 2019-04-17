@@ -7,8 +7,8 @@ from LatinoAnalysis.Tools.commonTools import *
 ###### Tree Directory according to site ######
 ##############################################
 
-directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagTight__LepTrgFix__dorochester/'
-directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagTight__LepTrgFix__dorochester/'
+directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain/'
+directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain/'
 #directory_data = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016B_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
 treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 
@@ -39,7 +39,7 @@ treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 #samples = {}
 
 samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
-			'weight' :'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)',
+			'weight' :'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)',#effTrigW1l*
 		}
 
 samples['Wjets'] = { 	'name' :   
@@ -70,14 +70,14 @@ getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
-				'weight': 'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+				'weight': 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
 				'FilesPerJob' : 3,
 		   }
 
 
 
 samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' , 
+                      'weight' :  'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' , 
 		      'FilesPerJob' : 3,
 		 }
 
@@ -91,7 +91,7 @@ samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu'
                                 +       getSampleFiles(directory_MC, 'WWTo2L2Nu', True) \
                                 +       getSampleFiles(directory_MC, 'WZTo2L2Q', True) \
                                 +       getSampleFiles(directory_MC, 'ZZTo2L2Q', True) ,
-                                'weight' : 'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+                                'weight' : 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
                         'FilesPerJob' : 3,
                          }
 
