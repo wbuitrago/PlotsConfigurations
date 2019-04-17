@@ -39,7 +39,7 @@ structure['DPS']  = {
 structure['VVV']  = { 
                   'isSignal' : 0,
                   'isData'   : 0,
-                  'removeFromCuts' : ['hww2l2v_13TeV_dytt_of2j_vbf'],
+                  #'removeFromCuts' : ['hww2l2v_13TeV_dytt_of2j_vbf'],
                   } 
 ##Irreducible Bkg
 
@@ -50,7 +50,12 @@ structure['WW_strong']  = {
 
 ##Signal
 
-structure['WW_EWK']  = {
+structure['WpWp_EWK']  = {
+                      'isSignal' : 1,
+                      'isData'   : 0
+                      }
+
+structure['WmWm_EWK']  = {
                       'isSignal' : 1,
                       'isData'   : 0
                       }
@@ -104,6 +109,11 @@ structure['ZZ_promptSubtr']  = {
 structure['WpWpJJ_promptSubtr']  = {  
                   'isSignal' : 0,
                   'isData'   : 0 
+              }
+
+structure['WmWmJJ_promptSubtr']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0
               }
 
 structure['WpWpJJ_QCD_promptSubtr']  = {  
