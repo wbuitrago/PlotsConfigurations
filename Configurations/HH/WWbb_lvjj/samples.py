@@ -7,8 +7,8 @@ from LatinoAnalysis.Tools.commonTools import *
 ###### Tree Directory according to site ######
 ##############################################
 
-directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__LepTrgFix__dorochester__formulasMC/'
-directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC/'
+directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagTight__LepTrgFix__dorochester/'
+directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagTight__LepTrgFix__dorochester/'
 #directory_data = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016B_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
 treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 
@@ -25,7 +25,7 @@ treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 #METFilter_MCver  =  '(std_vector_trigger_special[8]==-2.)'
 #METFilter_MCOld  =  '(std_vector_trigger_special[6]*std_vector_trigger_special[7])'
 #METFilter_MCNew  =  '(std_vector_trigger_special[8]*std_vector_trigger_special[9])'
-#METFilter_MC2     =  METFilter_Common + '*' + '(('+METFilter_MCver+'*'+METFilter_MCOld+') or ((not '+METFilter_MCver+')*'+METFilter_MCNew+'))' 
+#METFilter_MC     =  METFilter_Common + '*' + '(('+METFilter_MCver+'*'+METFilter_MCOld+') or ((not '+METFilter_MCver+')*'+METFilter_MCNew+'))' 
 
 #METFilter_DATA   =  METFilter_Common + '*' + '(std_vector_trigger_special[4]*\
 #                                              std_vector_trigger_special[8]*\
@@ -39,7 +39,7 @@ treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 #samples = {}
 
 samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
-			'weight' : '1.',#'XSWeight*SFweight1l*METFilter_MC',
+			'weight' :'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)',
 		}
 
 samples['Wjets'] = { 	'name' :   
@@ -70,14 +70,14 @@ getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
-				'weight': '1.',#'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+				'weight': 'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
 				'FilesPerJob' : 3,
 		   }
 
 
 
 samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-                      'weight' :  '1.',#'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)'  
+                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' , 
 		      'FilesPerJob' : 3,
 		 }
 
@@ -91,7 +91,7 @@ samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu'
                                 +       getSampleFiles(directory_MC, 'WWTo2L2Nu', True) \
                                 +       getSampleFiles(directory_MC, 'WZTo2L2Q', True) \
                                 +       getSampleFiles(directory_MC, 'ZZTo2L2Q', True) ,
-                                'weight' : '1.', #'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' 
+                                'weight' : 'puW*std_vector_lepton_recoW[0]*effTrigW1l*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
                         'FilesPerJob' : 3,
                          }
 
@@ -166,17 +166,17 @@ DataTrig = {
             'SingleElectron' : '!trig_SnglMu && trig_SnglEle' ,
 	   }
 
-#samples['DATA']  = {    'name'   : [],
-#				   'weight' : '1.', 
-#				   'weights' : [],
-#				   'isData': ['all'],
-#                      		   'FilesPerJob' : 2,
-#		   }		
+samples['DATA']  = {    'name'   : [],
+				   'weight' : '1.', 
+				   'weights' : [],
+				   'isData': ['all'],
+                      		   'FilesPerJob' : 2,
+		   }		
 
-#for Run in DataRun :
-#	directory = treeBaseDir+'Apr2017_Run2016'+Run[0]+'_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
-#	for DataSet in DataSets :
-# 		FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True)
-#		for iFile in FileTarget:
-#			samples['DATA']['name'].append(iFile)
-#			samples['DATA']['weights'].append(DataTrig[DataSet]) 
+for Run in DataRun :
+	directory = treeBaseDir+'Apr2017_Run2016'+Run[0]+'_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
+	for DataSet in DataSets :
+ 		FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True)
+		for iFile in FileTarget:
+			samples['DATA']['name'].append(iFile)
+			samples['DATA']['weights'].append(DataTrig[DataSet]) 
