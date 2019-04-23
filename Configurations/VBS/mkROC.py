@@ -80,7 +80,7 @@ def mk_RS (sig, bkg, bname):
             curve.signif_cut.Draw('APL')
         except:
             curve.signif_cut.Draw('AP')
-        canva.SaveAs('Signif_{}_{}.png'.format(bname,variables.variables.keys()[curve.nvar]))
+        canva.SaveAs('RS_curves/Signif_{}_{}.png'.format(bname,variables.variables.keys()[curve.nvar]))
     canvaRoc = create_canva('ROC_{}'.format(bname))
     canvaRoc.cd()
     try:
@@ -88,7 +88,7 @@ def mk_RS (sig, bkg, bname):
         mymulticurves2.roc.Draw('APL')
     except:
         mymulticurves2.roc.Draw('AP')
-    canvaRoc.SaveAs('ROC_{}.png'.format(bname))
+    canvaRoc.SaveAs('RS_curves/ROC_{}.png'.format(bname))
     canvaSignif = create_canva('Signif_{}'.format(bname))
     canvaSignif.cd()
     try:
@@ -96,7 +96,7 @@ def mk_RS (sig, bkg, bname):
         mymulticurves2.signif.Draw('APL')
     except:
         mymulticurves2.signif.Draw('AP')
-    canvaSignif.SaveAs('Signif_{}.png'.format(bname))
+    canvaSignif.SaveAs('RS_curves/Signif_{}.png'.format(bname))
         
 
 #signal and background list of histograms creator
@@ -109,7 +109,7 @@ def create_histo_list_RS(rootfile, signame, bkgnames):
         hsig.append(ROOT.gDirectory.Get('{}_{}'.format(signame, vn)))
 
     if os.path.exists('RS_curves') == False:
-        os.makedir('RS_curves/')    
+        os.makedirs('RS_curves/')    
     i = 0
     hbkg = []
     for bn in bkgnames:
