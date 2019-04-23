@@ -103,7 +103,9 @@ def create_histo_list_RS(rootfile, signame, bkgnames):
     hsig = []
     for vn in variables.variables.keys():
         hsig.append(ROOT.gDirectory.Get('{}_{}'.format(signame, vn)))
-        
+
+    if os.path.exists('RS_curves') == False:
+        os.makedir('RS_curves/')    
     i = 0
     hbkg = []
     for bn in bkgnames:
