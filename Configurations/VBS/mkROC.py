@@ -11,7 +11,7 @@ import plot
 
 #structures
 curves = namedtuple('curves', ['nvar', 'roc', 'signif', 'signif_cut'], verbose=True)
-multicurves2 = namedtuple('multicurves2', ['roc', 'signif'], verbose=True)
+multicurves = namedtuple('multicurves', ['roc', 'signif'], verbose=True)
 
 #structure creation
 def create_graphs (number):
@@ -32,7 +32,7 @@ def mk_RS (sig, bkg, bname):
         for c in range(0, len(sig)-len(colours)):
             colours.append(880-20*c)
     
-    mymulticurves2 = multicurves2(ROOT.TMultiGraph(), ROOT.TMultiGraph())
+    mymulticurves = multicurves(ROOT.TMultiGraph(), ROOT.TMultiGraph())
     mycurves = []
     for i in range(0, len(sig)):
         mycurves.append(create_graphs(i))
@@ -65,14 +65,10 @@ def mk_RS (sig, bkg, bname):
         curve.signif.SetMarkerColor(colours[curve.nvar])
         curve.signif_cut.SetMarkerColor(colours[curve.nvar])
         curve.roc.SetMarkerStyle(20)
-        curve.roc.GetXaxis().SetTitle('#varepsilon_{bkg}')
-        curve.roc.GetYaxis().SetTitle('#varepsilon_{sig}')
-        curve.roc.GetXaxis().SetTitleSize(0.06)
-        curve.roc.GetXaxis().SetTitleSize(0.06)
         curve.signif.SetMarkerStyle(20)
         curve.signif_cut.SetMarkerStyle(20)
-        mymulticurves2.roc.Add(curve.roc)
-        mymulticurves2.signif.Add(curve.signif)
+        mymulticurves.roc.Add(curve.roc)
+        mymulticurves.signif.Add(curve.signif)
         canva = create_canva('Signif_{}_{}'.format(bname,variables.variables.keys()[curve.nvar]))
         canva.cd()
         try:
@@ -80,23 +76,27 @@ def mk_RS (sig, bkg, bname):
             curve.signif_cut.Draw('APL')
         except:
             curve.signif_cut.Draw('AP')
-        canva.SaveAs('RS_curves/Signif_{}_{}.png'.format(bname,variables.variables.keys()[curve.nvar]))
+        canva.SaveAs('Signif_{}_{}.png'.format(bname,variables.variables.keys()[curve.nvar]))
+    #mymulticurves.roc.GetXaxis().SetTitle('#varepsilon_{bkg}')
+    #mymulticurves.roc.GetYaxis().SetTitle('#varepsilon_{sig}')
+    #mymulticurves.roc.GetXaxis().SetTitleSize(0.06)
+    #mymulticurves.roc.GetYaxis().SetTitleSize(0.06)
     canvaRoc = create_canva('ROC_{}'.format(bname))
     canvaRoc.cd()
     try:
         ind = sys.argv.index('--line')
-        mymulticurves2.roc.Draw('APL')
+        mymulticurves.roc.Draw('APL')
     except:
-        mymulticurves2.roc.Draw('AP')
-    canvaRoc.SaveAs('RS_curves/ROC_{}.png'.format(bname))
+        mymulticurves.roc.Draw('AP')
+    canvaRoc.SaveAs('ROC_{}.png'.format(bname))
     canvaSignif = create_canva('Signif_{}'.format(bname))
     canvaSignif.cd()
     try:
         ind = sys.argv.index('--line')
-        mymulticurves2.signif.Draw('APL')
+        mymulticurves.signif.Draw('APL')
     except:
-        mymulticurves2.signif.Draw('AP')
-    canvaSignif.SaveAs('RS_curves/Signif_{}.png'.format(bname))
+        mymulticurves.signif.Draw('AP')
+    canvaSignif.SaveAs('Signif_{}.png'.format(bname))
         
 
 #signal and background list of histograms creator
@@ -108,8 +108,8 @@ def create_histo_list_RS(rootfile, signame, bkgnames):
     for vn in variables.variables.keys():
         hsig.append(ROOT.gDirectory.Get('{}_{}'.format(signame, vn)))
 
-    if os.path.exists('RS_curves') == False:
-        os.makedirs('RS_curves/')    
+    #if os.path.exists('RS_curves') == False:
+        #os.makedirs('RS_curves/')    
     i = 0
     hbkg = []
     for bn in bkgnames:
