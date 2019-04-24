@@ -1,48 +1,18 @@
 #!/usr/bin/env python
 
 import sys
+argv = sys.argv
+sys.argv = argv[:1]
 import os
+import os.path
+import optparse
+import logging
+from array import array
 from math import *
 from collections import namedtuple
+from collections import OrderedDict
 import ROOT
-
-variables = {}
-print opt.variablesFile
-if os.path.exists(opt.variablesFile) :
-    handle = open(opt.variablesFile,'r')
-    exec(handle)
-    handle.close()
-    #in case some variables need a compiled function
-    for variableName, variable in variables.iteritems():
-        if variable.has_key('linesToAdd'):
-            linesToAdd = variable['linesToAdd']
-            for line in linesToAdd:
-                ROOT.gROOT.ProcessLineSync(line)
-samples = {}
-if os.path.exists(opt.samplesFile) :
-    handle = open(opt.samplesFile,'r')
-    exec(handle)
-    handle.close()
-    #in case some samples need a compiled function
-    for sampleName, sample in samples.iteritems():
-        if sample.has_key('linesToAdd'):
-            linesToAdd = sample['linesToAdd']
-            for line in linesToAdd:
-                ROOT.gROOT.ProcessLineSync(line)
-
-cuts = {}
-if os.path.exists(opt.cutsFile) :
-    handle = open(opt.cutsFile,'r')
-    exec(handle)
-    handle.close()
-
-groupPlot = OrderedDict()
-plot = {}
-legend = {}
-if os.path.exists(opt.plotFile) :
-    handle = open(opt.plotFile,'r')
-    exec(handle)
-    handle.close()
+import LatinoAnalysis.Gardener.hwwtools as hwwtools
 
 #structures
 curves = namedtuple('curves', ['nvar', 'roc', 'signif', 'signif_cut'], verbose=True)
@@ -92,10 +62,9 @@ def mk_RS (sig, bkg, bname):
             eff_s = float(s)/sTot
             eff_b = float(b)/bTot
             try: #in order to avoid ZeroDivisionError
-                try:
-                    ind == sys.argv.index('--expanded')
+                if opt.expanded == 1:
                     Z = sqrt(2*((s+b)*log(1+float(s)/b)-s))
-                except:
+                else:
                     Z = float(s)/sqrt(b)
                 curve.roc.SetPoint(bi-1,eff_b,eff_s)
                 curve.signif.SetPoint(bi-1,eff_s,Z)
@@ -109,28 +78,24 @@ def mk_RS (sig, bkg, bname):
         curve.signif.SetMarkerStyle(20)
         curve.signif_cut.SetMarkerStyle(20)
         mymulticurves.roc.Add(curve.roc)
-        mymulticurves.roc_leg.AddEntry(curve.roc, variables.variables.keys()[curve.nvar], 'LP')
+        mymulticurves.roc_leg.AddEntry(curve.roc, variables.keys()[curve.nvar], 'LP')
         mymulticurves.signif.Add(curve.signif)
-        mymulticurves.signif_leg.AddEntry(curve.signif, variables.variables.keys()[curve.nvar], 'LP')
-        curve.signif_cut.GetXaxis().SetTitle(variables.variables.keys()[curve.nvar])
+        mymulticurves.signif_leg.AddEntry(curve.signif, variables.keys()[curve.nvar], 'LP')
+        curve.signif_cut.GetXaxis().SetTitle(variables.keys()[curve.nvar])
         curve.signif_cut.GetXaxis().SetTitleSize(0.05)
         curve.signif_cut.GetXaxis().SetTitleOffset(0.85)
         curve.signif_cut.GetYaxis().SetTitle('Z_{0}')
         curve.signif_cut.GetYaxis().SetTitleSize(0.05)
         curve.signif_cut.GetYaxis().SetTitleOffset(0.9)
-        canva = create_canva('Signif_{}_{}'.format(bname,variables.variables[variables.variables.keys()[curve.nvar]]['xaxis']))
+        canva = create_canva('Signif_{}_{}'.format(bname,variables[variables.keys()[curve.nvar]]['xaxis']))
         canva.cd()
-        try:
-            ind = sys.argv.index('--line')
+        if opt.line == 1:
             curve.signif_cut.Draw('APL')
-        except:
+        else:
             curve.signif_cut.Draw('AP')
-        try:
-            ind = sys.argv.index('--grid')
+        if opt.grid == 1:
             canva.SetGrid()
-        except Exception:
-            pass
-        canva.SaveAs('RS_curves/Signif_{}_{}.png'.format(bname,variables.variables.keys()[curve.nvar]))
+        canva.SaveAs('RS_curves/Signif_{}_{}.png'.format(bname,variables.keys()[curve.nvar]))
     canvaRoc = create_canva('ROC_{}'.format(bname))
     bisector = ROOT.TLine(0,0,1,1)
     bisector.SetLineColor(ROOT.kBlack)
@@ -143,10 +108,9 @@ def mk_RS (sig, bkg, bname):
     mymulticurves.roc.Add(p1)
     mymulticurves.roc.Add(p2)
     canvaRoc.cd()
-    try:
-        ind = sys.argv.index('--line')
+    if opt.line == 1:
         mymulticurves.roc.Draw('APL')
-    except:
+    else:
         mymulticurves.roc.Draw('AP')
     mymulticurves.roc_leg.SetNColumns(2)
     mymulticurves.roc_leg.SetLineColorAlpha(0,0)
@@ -160,20 +124,16 @@ def mk_RS (sig, bkg, bname):
     mymulticurves.roc.GetYaxis().SetLabelSize(0.045)
     mymulticurves.roc.GetYaxis().SetTitleSize(0.055)
     mymulticurves.roc.GetYaxis().SetTitleOffset(0.8)
-    try:
-        ind = sys.argv.index('--grid')
+    if opt.grid == 1:
         canvaRoc.SetGrid()
-    except Exception:
-        pass
     canvaRoc.Modified()
     canvaRoc.Update()
     canvaRoc.SaveAs('RS_curves/ROC_{}.png'.format(bname))
     canvaSignif = create_canva('Signif_{}'.format(bname))
     canvaSignif.cd()
-    try:
-        ind = sys.argv.index('--line')
+    if opt.line == 1:
         mymulticurves.signif.Draw('APL')
-    except:
+    else:
         mymulticurves.signif.Draw('AP')
     mymulticurves.signif_leg.SetNColumns(2)
     mymulticurves.signif_leg.SetLineColorAlpha(0,0)
@@ -186,21 +146,18 @@ def mk_RS (sig, bkg, bname):
     mymulticurves.signif.GetYaxis().SetLabelSize(0.045)
     mymulticurves.signif.GetYaxis().SetTitleSize(0.055)
     mymulticurves.signif.GetYaxis().SetTitleOffset(0.8)
-    try:
-        ind = sys.argv.index('--grid')
+    if opt.grid == 1:
         canvaSignif.SetGrid()
-    except Exception:
-        pass
     canvaSignif.Modified()
     canvaSignif.Update()
     canvaSignif.SaveAs('RS_curves/Signif_{}.png'.format(bname))
-        
-isInput = False
-for arg in sys.argv:
-    if arg[:12] == '--inputFile=' and arg[(len(arg)-5):] == '.root':
-        inputFile = arg[12:]
-        isInput = True
-if isInput == True:
+
+
+
+if __name__ == '__main__':
+    
+    sys.argv = argv
+    
     print '''
 -------------------------------------------------------------------------------
      __       ______   _____
@@ -210,65 +167,108 @@ if isInput == True:
    _|   \_\  _______|  _____|     _|  _| \__,_| _|\_\ \___| _| 
 
 -------------------------------------------------------------------------------
-    '''    
-    print ' --> Histograms used to generate curves are in', inputFile
-    try:
-        ind = sys.argv.index('--expanded')
-        print '''
-        * Significance calculated by means of expanded formula:
-                ____________________________________
-               |                                    |
-               |  Z0 = sqrt{2*[(s+b)*ln(1+s/b)-s]}  |
-               |____________________________________|
-        '''
-    except:
-        print '''
-        * Significance calculated by means of approximate formula:
-                        ___________________
-                       |                   |
-                       |   Z0 = s/sqrt(b)  |
-                       |___________________|
-             
-         - Use the option --expanded if you want Z0 calculated
-           by means of expanded formula
-        '''
-    try:
-        ind = sys.argv.index('--grid')
-        print '''
-        * Grid is drawn on canvas
-        '''
-    except Exception:
-        pass
-                        
-    try:
-        ind_line = sys.argv.index('--line')
-        print '''
-        * Points are connected with a line
-        '''
-    except Exception:
-        pass
+    ''' 
+
+    usage = 'usage: %prog [options]'
+    parser = optparse.OptionParser(usage)
+
+    parser.add_option('--inputFile' , dest='inputFile'  , help='input file with histograms'                             , default='input.root')
+    parser.add_option('--line'      , dest='line'       , help='connects points with a line'                            , default=0 , type=float)
+    parser.add_option('--grid'      , dest='grid'       , help='draws grid on canva'                                    , default=0 , type=float)
+    parser.add_option('--expanded'  , dest='expanded'   , help='significance calculated by means of expanded formula'   , default=0 , type=float)
+
+    hwwtools.addOptions(parser)
+    hwwtools.loadOptDefaults(parser)
+    (opt, args) = parser.parse_args()
     
+    ROOT.gROOT.SetBatch()
+    
+    
+    print '          configuration file =', opt.pycfg
+    print '                  input file =', opt.inputFile
+    if opt.expanded == 1:
+        print '''
+            Significance calculated by means of expanded formula:
+                 ____________________________________
+                |                                    |
+                |  Z0 = sqrt{2*[(s+b)*ln(1+s/b)-s]}  |
+                |____________________________________|
+            '''
+    else:
+        print '''
+            Significance calculated by means of approximate formula:
+                         ___________________
+                        |                   |
+                        |   Z0 = s/sqrt(b)  |
+                        |___________________|
+        '''
+    if opt.grid == 1:
+        print '''
+    - grid is drawn on canvas'''
+    if opt.line == 1:
+        print '''
+    - points are connected with a line'''
+
+    if opt.inputFile[(len(opt.inputFile)-5):] != '.root':
+        print '''
+    *************************************************************************
+    *************************************************************************
+        
+        ERROR: insert the path where rootFile produced by
+                mkShapes is saved (as an option of mkROC.py)
+            
+    *************************************************************************    
+    *************************************************************************
+        '''
+
+    samples = OrderedDict()
+    if os.path.exists(opt.samplesFile):
+        handle = open(opt.samplesFile,'r')
+        exec(handle)
+        handle.close()
+   
+    cuts = {}
+    if os.path.exists(opt.cutsFile):
+        handle = open(opt.cutsFile,'r')
+        exec(handle)
+        handle.close()
+
+    variables = {}
+    if os.path.exists(opt.variablesFile):
+        handle = open(opt.variablesFile,'r')
+        exec(handle)
+        handle.close()
+        
+    groupPlot = OrderedDict()
+    plot = {}
+    legend = {}
+    if os.path.exists(opt.plotFile):
+        handle = open(opt.plotFile,'r')
+        exec(handle)
+        handle.close()
+
+        
     samples_sig_keys = []
     samples_bkg_keys = []
     bkg_names = []
-    for gk in plot.groupPlot.keys():
-        if plot.groupPlot[gk]['isSignal'] == 0:
-            samples_bkg_keys.append(plot.groupPlot[gk]['samples'])
+    for gk in groupPlot.keys():
+        if groupPlot[gk]['isSignal'] == 0:
+            samples_bkg_keys.append(groupPlot[gk]['samples'])
             bkg_names.append(gk)
-        elif plot.groupPlot[gk]['isSignal'] == 1:
+        elif groupPlot[gk]['isSignal'] == 1:
             sig_name = gk
-            for j in plot.groupPlot[gk]['samples']:
+            for j in groupPlot[gk]['samples']:
                 samples_sig_keys.append(j)
-    
+        
     histos_sig = []
-    histo_file = ROOT.TFile(inputFile)
-    cut = cuts.cuts.keys()[0] #default
-    for ck in cuts.cuts.keys():
-        if cuts.cuts[ck] == '1': #only supercut
+    histo_file = ROOT.TFile(opt.inputFile)
+    cut = cuts.keys()[0] #default
+    for ck in cuts.keys():
+        if cuts[ck] == '1': #only supercut
             cut = ck
     ROOT.gDirectory.cd(cut)
     nv = 0
-    for vk in variables.variables.keys():
+    for vk in variables.keys():
         if nv == 0:
             ROOT.gDirectory.cd(vk)
         else:
@@ -284,7 +284,7 @@ if isInput == True:
     histos_bkg = []
     for nbkg in range(0,len(samples_bkg_keys)):
         nv = 0
-        for vk in variables.variables.keys():
+        for vk in variables.keys():
             if nv == 0:
                 ROOT.gDirectory.cd(vk)
             else:
@@ -302,19 +302,6 @@ if isInput == True:
     histo_file.Close()
     if os.path.exists('RS_curves') == False:
         os.makedirs('RS_curves/')
-
-else:
-    print '''
-  *************************************************************************
-  *************************************************************************
     
-      ERROR: insert the path where rootFile produced by
-               mkShapes is saved (as an option of mkROC.py)
-               
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    print '... and now closing ...'
         
-      Example: mkROC.py --inputFile=rootFile_test/plots_VBS_SS_test.root
-        
-  *************************************************************************    
-  *************************************************************************
-    '''
