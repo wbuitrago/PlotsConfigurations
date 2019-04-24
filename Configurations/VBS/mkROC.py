@@ -96,6 +96,7 @@ def mk_RS (sig, bkg, bname):
         if opt.grid == 1:
             canva.SetGrid()
         canva.SaveAs('RS_curves/Signif_{}_{}.png'.format(bname,variables.keys()[curve.nvar]))
+        canva.SaveAs('RS_curves/Signif_{}_{}.root'.format(bname,variables.keys()[curve.nvar]))
     canvaRoc = create_canva('ROC_{}'.format(bname))
     bisector = ROOT.TLine(0,0,1,1)
     bisector.SetLineColor(ROOT.kBlack)
@@ -129,6 +130,7 @@ def mk_RS (sig, bkg, bname):
     canvaRoc.Modified()
     canvaRoc.Update()
     canvaRoc.SaveAs('RS_curves/ROC_{}.png'.format(bname))
+    canvaRoc.SaveAs('RS_curves/ROC_{}.root'.format(bname))
     canvaSignif = create_canva('Signif_{}'.format(bname))
     canvaSignif.cd()
     if opt.line == 1:
@@ -151,6 +153,7 @@ def mk_RS (sig, bkg, bname):
     canvaSignif.Modified()
     canvaSignif.Update()
     canvaSignif.SaveAs('RS_curves/Signif_{}.png'.format(bname))
+    canvaSignif.SaveAs('RS_curves/Signif_{}.root'.format(bname))
 
 
 
@@ -208,6 +211,9 @@ if __name__ == '__main__':
     if opt.line == 1:
         print '''
     - points are connected with a line'''
+    
+    print '''
+    '''
 
     if opt.inputFile[(len(opt.inputFile)-5):] != '.root':
         print '''
