@@ -1,17 +1,52 @@
 #!/usr/bin/env python
 
 import sys
+import os
 from math import *
 from collections import namedtuple
 import ROOT
-import cuts
-import variables
-import samples
-import plot
+
+variables = {}
+print opt.variablesFile
+if os.path.exists(opt.variablesFile) :
+    handle = open(opt.variablesFile,'r')
+    exec(handle)
+    handle.close()
+    #in case some variables need a compiled function
+    for variableName, variable in variables.iteritems():
+        if variable.has_key('linesToAdd'):
+            linesToAdd = variable['linesToAdd']
+            for line in linesToAdd:
+                ROOT.gROOT.ProcessLineSync(line)
+samples = {}
+if os.path.exists(opt.samplesFile) :
+    handle = open(opt.samplesFile,'r')
+    exec(handle)
+    handle.close()
+    #in case some samples need a compiled function
+    for sampleName, sample in samples.iteritems():
+        if sample.has_key('linesToAdd'):
+            linesToAdd = sample['linesToAdd']
+            for line in linesToAdd:
+                ROOT.gROOT.ProcessLineSync(line)
+
+cuts = {}
+if os.path.exists(opt.cutsFile) :
+    handle = open(opt.cutsFile,'r')
+    exec(handle)
+    handle.close()
+
+groupPlot = OrderedDict()
+plot = {}
+legend = {}
+if os.path.exists(opt.plotFile) :
+    handle = open(opt.plotFile,'r')
+    exec(handle)
+    handle.close()
 
 #structures
 curves = namedtuple('curves', ['nvar', 'roc', 'signif', 'signif_cut'], verbose=True)
-multicurves = namedtuple('multicurves', ['roc', 'signif'], verbose=True)
+multicurves = namedtuple('multicurves', ['roc', 'signif', 'roc_leg', 'signif_leg'], verbose=True)
 
 #structure creation
 def create_graphs (number):
@@ -21,7 +56,7 @@ def create_graphs (number):
 def create_canva (name):
     return ROOT.TCanvas('{}'.format(name), "", 100, 200, 700, 500)
 
-#ROC and Significance curves builder
+#ROC and Significance curves creator
 #it creates one ROC, one Signif and Signif_cut as many as len(sig) i.e. number of variables
 def mk_RS (sig, bkg, bname):
     #colour series
@@ -32,7 +67,10 @@ def mk_RS (sig, bkg, bname):
         for c in range(0, len(sig)-len(colours)):
             colours.append(880-20*c)
     
-    mymulticurves = multicurves(ROOT.TMultiGraph(), ROOT.TMultiGraph())
+    mymulticurves = multicurves(ROOT.TMultiGraph(), ROOT.TMultiGraph(), \
+        ROOT.TLegend(0.1,0.5,0.4,0.9), ROOT.TLegend(0.1,0.5,0.4,0.9))
+    mymulticurves.roc.SetTitle(' ; #varepsilon_{bkg}; #varepsilon_{sig}')
+    mymulticurves.signif.SetTitle(' ; #varepsilon_{sig}; Z_{0}')
     mycurves = []
     for i in range(0, len(sig)):
         mycurves.append(create_graphs(i))
@@ -42,9 +80,12 @@ def mk_RS (sig, bkg, bname):
         bTot = bkg[curve.nvar].Integral()
         for bi in range(1, Nbin+1): #1 = 1st bin index, Nbin = last bin index
             try:
-                ind = sys.argv.index('--right')
-                s = sig[curve.nvar].Integral(1,bi)
-                b = bkg[curve.nvar].Integral(1,bi)
+                if variables.variables[variables.variables.keys()[curve.nvar]]['SignalOnRight'] == 1:
+                    s = sig[curve.nvar].Integral(bi,Nbin)
+                    b = bkg[curve.nvar].Integral(bi,Nbin)
+                else:
+                    s = sig[curve.nvar].Integral(1,bi)
+                    b = bkg[curve.nvar].Integral(1,bi)
             except:
                 s = sig[curve.nvar].Integral(bi,Nbin)
                 b = bkg[curve.nvar].Integral(bi,Nbin)
@@ -68,27 +109,65 @@ def mk_RS (sig, bkg, bname):
         curve.signif.SetMarkerStyle(20)
         curve.signif_cut.SetMarkerStyle(20)
         mymulticurves.roc.Add(curve.roc)
+        mymulticurves.roc_leg.AddEntry(curve.roc, variables.variables.keys()[curve.nvar], 'LP')
         mymulticurves.signif.Add(curve.signif)
-        canva = create_canva('Signif_{}_{}'.format(bname,variables.variables.keys()[curve.nvar]))
+        mymulticurves.signif_leg.AddEntry(curve.signif, variables.variables.keys()[curve.nvar], 'LP')
+        curve.signif_cut.GetXaxis().SetTitle(variables.variables.keys()[curve.nvar])
+        curve.signif_cut.GetXaxis().SetTitleSize(0.05)
+        curve.signif_cut.GetXaxis().SetTitleOffset(0.85)
+        curve.signif_cut.GetYaxis().SetTitle('Z_{0}')
+        curve.signif_cut.GetYaxis().SetTitleSize(0.05)
+        curve.signif_cut.GetYaxis().SetTitleOffset(0.9)
+        canva = create_canva('Signif_{}_{}'.format(bname,variables.variables[variables.variables.keys()[curve.nvar]]['xaxis']))
         canva.cd()
         try:
             ind = sys.argv.index('--line')
             curve.signif_cut.Draw('APL')
         except:
             curve.signif_cut.Draw('AP')
-        canva.SaveAs('Signif_{}_{}.png'.format(bname,variables.variables.keys()[curve.nvar]))
-    #mymulticurves.roc.GetXaxis().SetTitle('#varepsilon_{bkg}')
-    #mymulticurves.roc.GetYaxis().SetTitle('#varepsilon_{sig}')
-    #mymulticurves.roc.GetXaxis().SetTitleSize(0.06)
-    #mymulticurves.roc.GetYaxis().SetTitleSize(0.06)
+        try:
+            ind = sys.argv.index('--grid')
+            canva.SetGrid()
+        except Exception:
+            pass
+        canva.SaveAs('RS_curves/Signif_{}_{}.png'.format(bname,variables.variables.keys()[curve.nvar]))
     canvaRoc = create_canva('ROC_{}'.format(bname))
+    bisector = ROOT.TLine(0,0,1,1)
+    bisector.SetLineColor(ROOT.kBlack)
+    bisector.SetLineStyle(7)
+    #bisector.SetLineWidth(2)
+    p1 = ROOT.TGraph()
+    p1.SetPoint(0,0,0)
+    p2 = ROOT.TGraph()
+    p2.SetPoint(0,1,1)
+    mymulticurves.roc.Add(p1)
+    mymulticurves.roc.Add(p2)
     canvaRoc.cd()
     try:
         ind = sys.argv.index('--line')
         mymulticurves.roc.Draw('APL')
     except:
         mymulticurves.roc.Draw('AP')
-    canvaRoc.SaveAs('ROC_{}.png'.format(bname))
+    mymulticurves.roc_leg.SetNColumns(2)
+    mymulticurves.roc_leg.SetLineColorAlpha(0,0)
+    mymulticurves.roc_leg.SetFillColorAlpha(0,0)
+    mymulticurves.roc_leg.SetTextSize(0.06)
+    mymulticurves.roc_leg.Draw('SAME')
+    bisector.Draw('L SAME')
+    mymulticurves.roc.GetXaxis().SetLabelSize(0.045)
+    mymulticurves.roc.GetXaxis().SetTitleSize(0.055)
+    mymulticurves.roc.GetXaxis().SetTitleOffset(0.8)
+    mymulticurves.roc.GetYaxis().SetLabelSize(0.045)
+    mymulticurves.roc.GetYaxis().SetTitleSize(0.055)
+    mymulticurves.roc.GetYaxis().SetTitleOffset(0.8)
+    try:
+        ind = sys.argv.index('--grid')
+        canvaRoc.SetGrid()
+    except Exception:
+        pass
+    canvaRoc.Modified()
+    canvaRoc.Update()
+    canvaRoc.SaveAs('RS_curves/ROC_{}.png'.format(bname))
     canvaSignif = create_canva('Signif_{}'.format(bname))
     canvaSignif.cd()
     try:
@@ -96,216 +175,146 @@ def mk_RS (sig, bkg, bname):
         mymulticurves.signif.Draw('APL')
     except:
         mymulticurves.signif.Draw('AP')
-    canvaSignif.SaveAs('Signif_{}.png'.format(bname))
-        
-
-#signal and background list of histograms creator
-def create_histo_list_RS(rootfile, signame, bkgnames):
-    
-    file_in = ROOT.TFile(rootfile)
-    ROOT.gDirectory.cd('signals')
-    hsig = []
-    for vn in variables.variables.keys():
-        hsig.append(ROOT.gDirectory.Get('{}_{}'.format(signame, vn)))
-
-    #if os.path.exists('RS_curves') == False:
-        #os.makedirs('RS_curves/')    
-    i = 0
-    hbkg = []
-    for bn in bkgnames:
-        if i == 0:
-            ROOT.gDirectory.cd('../backgrounds/'+bn)
-        else:
-            ROOT.gDirectory.cd('../'+bn)
-        for vn in variables.variables.keys():
-            hbkg.append(ROOT.gDirectory.Get('{}_{}'.format(bn, vn)))
-        mk_RS(hsig, hbkg, bkgnames[i]) #creation of ROC and Significance curves
-        del hbkg[:]
-        i += 1
-
-samples_sig_keys = []
-samples_bkg_keys = []
-bkg_names = []
-
-for gk in plot.groupPlot.keys():
-    if plot.groupPlot[gk]['isSignal'] == 0:
-        samples_bkg_keys.append(plot.groupPlot[gk]['samples'])
-        bkg_names.append(plot.groupPlot[gk]['nameHR'])
-    elif plot.groupPlot[gk]['isSignal'] == 1:
-        sig_name = plot.groupPlot[gk]['nameHR']
-        for j in plot.groupPlot[gk]['samples']:
-            samples_sig_keys.append(j)
-
-output_name = 'signals_backgrounds.root' #default name
-for argument in sys.argv:
+    mymulticurves.signif_leg.SetNColumns(2)
+    mymulticurves.signif_leg.SetLineColorAlpha(0,0)
+    mymulticurves.signif_leg.SetFillColorAlpha(0,0)
+    mymulticurves.signif_leg.SetTextSize(0.06)
+    mymulticurves.signif_leg.Draw('SAME')
+    mymulticurves.signif.GetXaxis().SetLabelSize(0.045)
+    mymulticurves.signif.GetXaxis().SetTitleSize(0.055)
+    mymulticurves.signif.GetXaxis().SetTitleOffset(0.8)
+    mymulticurves.signif.GetYaxis().SetLabelSize(0.045)
+    mymulticurves.signif.GetYaxis().SetTitleSize(0.055)
+    mymulticurves.signif.GetYaxis().SetTitleOffset(0.8)
     try:
-        if argument[:13] == '--outputFile=' and argument[(len(argument)-5):] == '.root':
-            output_name = argument[13:]
+        ind = sys.argv.index('--grid')
+        canvaSignif.SetGrid()
     except Exception:
         pass
-
-try:
-    ind = sys.argv.index('--mode=buildTFile')
+    canvaSignif.Modified()
+    canvaSignif.Update()
+    canvaSignif.SaveAs('RS_curves/Signif_{}.png'.format(bname))
+        
+isInput = False
+for arg in sys.argv:
+    if arg[:12] == '--inputFile=' and arg[(len(arg)-5):] == '.root':
+        inputFile = arg[12:]
+        isInput = True
+if isInput == True:
     print '''
-   ----------------------------------------------------------------------------
-           __       ______   _____
-           __ \       _   |     _ |       \  |         |
-          |__\ |    |   | |   |          |\/ |   _` |  |  /   _ \   __|
-           ___ \    | _ | |   | _        |   |  (   |    <    __/  |
-         _|   \_\  _______|  _____|     _|  _| \__,_| _|\_\ \___| _| 
+-------------------------------------------------------------------------------
+     __       ______   _____
+     __ \       _   |     _ |       \  |         |
+    |__\ |    |   | |   |          |\/ |   _` |  |  /   _ \   __|
+     ___ \    | _ | |   | _        |   |  (   |    <    __/  |
+   _|   \_\  _______|  _____|     _|  _| \__,_| _|\_\ \___| _| 
 
-   ----------------------------------------------------------------------------
-    '''
-
-    sig_chain = ROOT.TChain('latino')
-    for s in samples_sig_keys:
-        name = samples.samples[s]['name']
-        for n in name:
-            sig_chain.Add(n[3:])
-
-    bkg_chain = []        
-    for i in range(0, len(samples_bkg_keys)):
-        bkg_chain.append(ROOT.TChain('latino'))
-        for b in samples_bkg_keys[i]:
-            name = samples.samples[b]['name']
-            for n in name:
-                bkg_chain[i].Add(n[3:])
-    
-    F = ROOT.TFile (output_name, 'RECREATE')
-    F.mkdir('signals')
-    F.mkdir('backgrounds')
-    ROOT.gDirectory.cd('signals')
-
-    var_names = variables.variables.keys()
-    
-    count = 0
-    for vk in var_names:
-        var_name = var_names[count]
-        sig_chain.Draw(variables.variables[vk]['name']+'>>{}_{}'.format(sig_name,var_name), cuts.supercut)
-        if count+1 == 1:
-            ap = 'st'
-        elif count+1 == 2:
-            ap = 'nd'
-        elif count+1 == 3:
-            ap = 'rd'
-        else:
-            ap = 'th'
-        h_sig = ROOT.gDirectory.Get('{}_{}'.format(sig_name,var_name))
-        h_sig.Write()
-        print count+1, ap+' signal histogram saved in TFile'
-        count += 1
-
-    ROOT.gDirectory.cd('../backgrounds')
-
-    n_count = 0
-    for c in bkg_chain: #it could be slow if the number of background entries is large
-        count = 0
-        if n_count == 0:
-            ROOT.gDirectory.mkdir(bkg_names[n_count])
-            ROOT.gDirectory.cd(bkg_names[n_count])
-        else:
-            ROOT.gDirectory.cd("..")
-            ROOT.gDirectory.mkdir(bkg_names[n_count])
-            ROOT.gDirectory.cd(bkg_names[n_count])
-        for vk in var_names:
-            var_name = var_names[count]
-            c.Draw(variables.variables[vk]['name']+'>>{}_{}'.format(bkg_names[n_count],var_name), cuts.supercut)
-            number = len(var_names)*n_count+count+1
-            if number == 1:
-                ap = 'st'
-            elif number == 2:
-                ap = 'nd'
-            elif number == 3:
-                ap = 'rd'
-            else:
-                ap = 'th'
-            h_bkg = ROOT.gDirectory.Get('{}_{}'.format(bkg_names[n_count],var_name))
-            h_bkg.Write()
-            print number, ap+' background histogram saved in TFile'
-            count += 1
-        n_count += 1
-
-    F.Close()
-except:
+-------------------------------------------------------------------------------
+    '''    
+    print ' --> Histograms used to generate curves are in', inputFile
     try:
-        ind = sys.argv.index('--mode=drawCurves')
+        ind = sys.argv.index('--expanded')
         print '''
-   ----------------------------------------------------------------------------
-           __       ______   _____
-           __ \       _   |     _ |       \  |         |
-          |__\ |    |   | |   |          |\/ |   _` |  |  /   _ \   __|
-           ___ \    | _ | |   | _        |   |  (   |    <    __/  |
-         _|   \_\  _______|  _____|     _|  _| \__,_| _|\_\ \___| _| 
-
-   ----------------------------------------------------------------------------
+        * Significance calculated by means of expanded formula:
+                ____________________________________
+               |                                    |
+               |  Z0 = sqrt{2*[(s+b)*ln(1+s/b)-s]}  |
+               |____________________________________|
         '''
-
-        create_histo_list_RS(output_name, sig_name, bkg_names) 
-
     except:
         print '''
-    *************************************************************************
-    *************************************************************************
-
-    ERROR: choose an option beetween --mode=buildTFile and --mode=drawCurves
-
-    *************************************************************************
-    *************************************************************************
+        * Significance calculated by means of approximate formula:
+                        ___________________
+                       |                   |
+                       |   Z0 = s/sqrt(b)  |
+                       |___________________|
+             
+         - Use the option --expanded if you want Z0 calculated
+           by means of expanded formula
         '''
-
-try:
-    ind = sys.argv.index('--mode=buildTFile')
-    print '''
-
-    *************************************************************************
-    *************************************************************************
-    
-    Signals and backgrounds histograms are saved in {}
-    
-    *************************************************************************
-    *************************************************************************
-    '''.format(output_name)
-except:
     try:
-        ind = sys.argv.index('--mode=drawCurves')
+        ind = sys.argv.index('--grid')
         print '''
-        
-    *************************************************************************
-    *************************************************************************
-    
+        * Grid is drawn on canvas
         '''
-
-        try:
-            ind = sys.argv.index('--expanded')
-            print '''
-            Significance calculated by means of expanded formula:
-                Z0 = sqrt{2*[(s+b)*ln(1+s/b)-s]}
-            '''
-        except:
-            print '''
-            Significance calculated by means of approximate formula:
-                Z0 = s/sqrt(b)
-            '''
-            
-        try:
-            ind = sys.argv.index('--right')
-            print '''
-            Values to the RIGHT of the cut are REJECTED
-            '''
-        except:
-            print '''
-            Values to the LEFT of the cut are REJECTED
-            '''
-            
-        try:
-            ind_line = sys.argv.index('--line')
-            print '''
-            Points are connected with a line
-            '''
-        except Exception:
-            pass
-
+    except Exception:
+        pass
+                        
+    try:
+        ind_line = sys.argv.index('--line')
+        print '''
+        * Points are connected with a line
+        '''
     except Exception:
         pass
     
+    samples_sig_keys = []
+    samples_bkg_keys = []
+    bkg_names = []
+    for gk in plot.groupPlot.keys():
+        if plot.groupPlot[gk]['isSignal'] == 0:
+            samples_bkg_keys.append(plot.groupPlot[gk]['samples'])
+            bkg_names.append(gk)
+        elif plot.groupPlot[gk]['isSignal'] == 1:
+            sig_name = gk
+            for j in plot.groupPlot[gk]['samples']:
+                samples_sig_keys.append(j)
+    
+    histos_sig = []
+    histo_file = ROOT.TFile(inputFile)
+    cut = cuts.cuts.keys()[0] #default
+    for ck in cuts.cuts.keys():
+        if cuts.cuts[ck] == '1': #only supercut
+            cut = ck
+    ROOT.gDirectory.cd(cut)
+    nv = 0
+    for vk in variables.variables.keys():
+        if nv == 0:
+            ROOT.gDirectory.cd(vk)
+        else:
+            ROOT.gDirectory.cd('../'+vk)
+        hs = ROOT.gDirectory.Get('histo_'+samples_sig_keys[0])
+        for sn in range(1, len(samples_sig_keys)):
+            hs.Add(ROOT.gDirectory.Get('histo_'+samples_sig_keys[sn]))
+        hs.SetName(sig_name+'_'+vk)
+        hs.SetTitle(sig_name+'_'+vk)
+        histos_sig.append(hs)
+        nv += 1
+    ROOT.gDirectory.cd('..')
+    histos_bkg = []
+    for nbkg in range(0,len(samples_bkg_keys)):
+        nv = 0
+        for vk in variables.variables.keys():
+            if nv == 0:
+                ROOT.gDirectory.cd(vk)
+            else:
+                ROOT.gDirectory.cd('../'+vk)
+            hb = ROOT.gDirectory.Get('histo_'+samples_bkg_keys[nbkg][0])
+            for bn in range(1, len(samples_bkg_keys[nbkg])):
+                hb.Add(ROOT.gDirectory.Get('histo_'+samples_bkg_keys[nbkg][bn]))
+            hb.SetName(bkg_names[nbkg]+'_'+vk)
+            hb.SetTitle(bkg_names[nbkg]+'_'+vk)
+            histos_bkg.append(hb)
+            nv += 1
+        mk_RS(histos_sig, histos_bkg, bkg_names[nbkg]) #creation of ROC and Significance curves
+        del histos_bkg[:]
+        ROOT.gDirectory.cd('..')
+    histo_file.Close()
+    if os.path.exists('RS_curves') == False:
+        os.makedirs('RS_curves/')
+
+else:
+    print '''
+  *************************************************************************
+  *************************************************************************
+    
+      ERROR: insert the path where rootFile produced by
+               mkShapes is saved (as an option of mkROC.py)
+               
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         
+      Example: mkROC.py --inputFile=rootFile_test/plots_VBS_SS_test.root
+        
+  *************************************************************************    
+  *************************************************************************
+    '''
