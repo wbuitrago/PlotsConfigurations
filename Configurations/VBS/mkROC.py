@@ -50,7 +50,7 @@ def mk_RS (sig, bkg, bname):
         bTot = bkg[curve.nvar].Integral()
         for bi in range(1, Nbin+1): #1 = 1st bin index, Nbin = last bin index
             try:
-                if variables.variables[variables.variables.keys()[curve.nvar]]['SignalOnRight'] == 1:
+                if variables[variables.keys()[curve.nvar]]['SignalOnRight'] == 1:
                     s = sig[curve.nvar].Integral(bi,Nbin)
                     b = bkg[curve.nvar].Integral(bi,Nbin)
                 else:
