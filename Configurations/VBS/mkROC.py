@@ -42,14 +42,15 @@ def mk_RS (sig, bkg, bname):
     mymulticurves.roc.SetTitle(' ; #varepsilon_{bkg}; #varepsilon_{sig}')
     mymulticurves.signif.SetTitle(' ; #varepsilon_{sig}; Z_{0}')
     mycurves = []
-    for i in range(0, len(sig)):
+    Zmax = 0
+    for i in range(0, len(sig)): #len(sig) == number of variables
         mycurves.append(create_graphs(i))
     for curve in mycurves:
         Nbin = sig[curve.nvar].GetNbinsX() #sig histo bin = bkg histo bin
         sTot = sig[curve.nvar].Integral()
         bTot = bkg[curve.nvar].Integral()
         for bi in range(1, Nbin+1): #1 = 1st bin index, Nbin = last bin index
-            try:
+            try: #in order to avoid errors due to SignalOnRight not present in the dictionary
                 if variables[variables.keys()[curve.nvar]]['SignalOnRight'] == 1:
                     s = sig[curve.nvar].Integral(bi,Nbin)
                     b = bkg[curve.nvar].Integral(bi,Nbin)
@@ -69,6 +70,9 @@ def mk_RS (sig, bkg, bname):
                 curve.roc.SetPoint(bi-1,eff_b,eff_s)
                 curve.signif.SetPoint(bi-1,eff_s,Z)
                 curve.signif_cut.SetPoint(bi-1,sig[curve.nvar].GetBinCenter(bi),Z)
+                if Z > Zmax:
+                    Zmax = Z
+                    eff_s_Zmax = eff_s
             except Exception:
                 pass
         curve.roc.SetMarkerColor(colours[curve.nvar])
@@ -105,6 +109,18 @@ def mk_RS (sig, bkg, bname):
     bisector.SetLineColor(ROOT.kBlack)
     bisector.SetLineStyle(7)
     #bisector.SetLineWidth(2)
+    line_y = ROOT.TLine(eff_s_Zmax,0,eff_s_Zmax,Zmax)
+    line_y.SetLineColor(ROOT.kViolet)
+    line_y.SetLineStyle(7)
+    line_y.SetLineWidth(2)
+    line_x = ROOT.TLine(0,eff_s_Zmax,1,eff_s_Zmax)
+    line_x.SetLineColor(ROOT.kViolet)
+    line_x.SetLineStyle(7)
+    line_x.SetLineWidth(2)
+    line_threshold = ROOT.TLine(0,opt.thresholdEff,1,opt.thresholdEff)
+    line_threshold.SetLineColor(ROOT.kRed)
+    #line_threshold.SetLineStyle(7)
+    line_threshold.SetLineWidth(2) 
     p1 = ROOT.TGraph()
     p1.SetPoint(0,0,0)
     p2 = ROOT.TGraph()
@@ -122,6 +138,10 @@ def mk_RS (sig, bkg, bname):
     mymulticurves.roc_leg.SetTextSize(0.06)
     mymulticurves.roc_leg.Draw('SAME')
     bisector.Draw('L SAME')
+    if opt.ZmaxLine == 1:
+        line_x.Draw('L SAME')
+    if opt.thresholdEff > 0:
+        line_threshold.Draw('L SAME')
     mymulticurves.roc.GetXaxis().SetLabelSize(0.045)
     mymulticurves.roc.GetXaxis().SetTitleSize(0.055)
     mymulticurves.roc.GetXaxis().SetTitleOffset(0.8)
@@ -145,6 +165,8 @@ def mk_RS (sig, bkg, bname):
     mymulticurves.signif_leg.SetFillColorAlpha(0,0)
     mymulticurves.signif_leg.SetTextSize(0.06)
     mymulticurves.signif_leg.Draw('SAME')
+    if opt.ZmaxLine == 1:
+        line_y.Draw('SAME')
     mymulticurves.signif.GetXaxis().SetLabelSize(0.045)
     mymulticurves.signif.GetXaxis().SetTitleSize(0.055)
     mymulticurves.signif.GetXaxis().SetTitleOffset(0.8)
@@ -178,11 +200,13 @@ if __name__ == '__main__':
     usage = 'usage: %prog [options]'
     parser = optparse.OptionParser(usage)
 
-    parser.add_option('--inputFile' , dest='inputFile'  , help='input file with histograms'                             , default='input.root')
-    parser.add_option('--line'      , dest='line'       , help='connects points with a line'                            , default=0 , type=float)
-    parser.add_option('--grid'      , dest='grid'       , help='draws grid on canva'                                    , default=0 , type=float)
-    parser.add_option('--expanded'  , dest='expanded'   , help='significance calculated by means of expanded formula'   , default=0 , type=float)
-    parser.add_option('--markerSize', dest='markerSize' , help='set marker size'                                        , default=1., type=float)
+    parser.add_option('--inputFile'     , dest='inputFile'      , help='input file with histograms'                             , default='input.root')
+    parser.add_option('--line'          , dest='line'           , help='connect points with a line'                             , default=0 , type=float)
+    parser.add_option('--grid'          , dest='grid'           , help='draw grid on canva'                                     , default=0 , type=float)
+    parser.add_option('--expanded'      , dest='expanded'       , help='significance calculated by means of expanded formula'   , default=0 , type=float)
+    parser.add_option('--markerSize'    , dest='markerSize'     , help='set marker size'                                        , default=1., type=float)
+    parser.add_option('--thresholdEff'  , dest='thresholdEff'   , help='draw threshold signal efficiency (in ROC canva)'        , default=-99., type=float)
+    parser.add_option('--ZmaxLine'      , dest='ZmaxLine'       , help='draw vertical line corresponding to significance max'   , default=0 ,type=float)
 
     hwwtools.addOptions(parser)
     hwwtools.loadOptDefaults(parser)
