@@ -16,7 +16,7 @@ It builds:
 
 Running _mkROC.py_ a directory called `RS_curves` is created: here canvas are saved both as _.png_ and as _.root_ 
 
-## 2. What data are rejected
+## 2. Which data are rejected
 
 Data rejected are on the left of the variable value (default). If rejecting data on the right is needed, you have to add `'SignalOnRight': -1` item to variables dictionaries.
 
