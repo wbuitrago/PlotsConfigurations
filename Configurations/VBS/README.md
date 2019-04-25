@@ -1,8 +1,8 @@
 # mkROC script
 
-----
-
 Brief tutorial that shows how to use [mkROC](https://github.com/UniMiBAnalyses/PlotsConfigurations/blob/master/Configurations/VBS/mkROC.py) script.
+
+----
 
 ## 1. What mkROC does
 
@@ -16,7 +16,11 @@ It builds:
 
 Running _mkROC.py_ a directory called `RS_curves` is created: here canvas are saved both as _.png_ and as _.root_ 
 
-## 2. Compulsory options
+## 2. What data are rejected
+
+Data rejected are on the left of the variable value (default). If rejecting data on the right is needed, you have to add `'SignalOnRight': -1` item to variables dictionaries.
+
+## 3. Compulsory options
 ```
 --inputFile=<pathtorootFile.root>
 ```
@@ -26,7 +30,7 @@ in order to let mkROC find the correct input file
 ```
 in order to let mkROC find the correct configuration file
 
-## 3. Other options
+## 4. Other options
 ```
 --line=1
 ```
