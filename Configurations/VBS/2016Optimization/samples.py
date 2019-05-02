@@ -5,7 +5,7 @@ from LatinoAnalysis.Tools.commonTools import *
 
 # samples
 
-#samples = {}
+samples = {}
 
 directory = '/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables' 
 chargeFlipDir = directory + '__l2tightVBS__chMisId__tightVbsSel/'
