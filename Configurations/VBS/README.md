@@ -8,7 +8,7 @@ Brief tutorial that shows how to use [mkROC](https://github.com/UniMiBAnalyses/P
 
 This script takes the rootFile (that contains histograms) produced by mkShapes with the option `--doHadd=True` as an input.
 
-mkROC searches for a cut equal to '1' (i.e. only supercut is adopted). If it happens that this cut is not present, default cut adopted is the first one in _cuts.py_ ( 
+mkROC searches for a cut equal to '1' (i.e. only supercut is adopted). If it happens that this cut is not present, default cut adopted is the first one in _cuts.py_ 
 
 It builds:
 
