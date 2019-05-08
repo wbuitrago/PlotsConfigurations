@@ -60,7 +60,7 @@ variables['ptj3'] = { 'name': 'std_vector_jet_pt[2]',
 		      'fold': 3
 		      }
 
-variables['ptj3_between12'] = { 'name': '(abs((std_vector_jet_pt[2]-(std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5)*std_vector_jet_pt[2]',
+variables['ptj3_between12'] = { 'name': '(abs((std_vector_jet_eta[2]-(std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5)*std_vector_jet_pt[2]',
                                 'range': (10,0.,20.),
                                 'xaxis': 'p_{t} jet 3 [GeV]',
                                 'fold': 3
@@ -114,3 +114,8 @@ variables['Zlep2'] = { 'name': '(std_vector_lepton_eta[1] - (std_vector_jet_eta[
 		      'fold': 3
 		      }
 '''
+variables['Zjet3'] = { 'name': 'abs((std_vector_jet_eta[2] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj)',
+		      'range': (1000, -5., 5.),
+		      'xaxis': 'z^{lep 1}',
+		      'fold': 3
+		      }
