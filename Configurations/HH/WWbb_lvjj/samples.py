@@ -7,7 +7,7 @@ from LatinoAnalysis.Tools.commonTools import *
 ###### Tree Directory according to site ######
 ##############################################
 
-directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain/'
+directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC__HHPairingGenAndVars/'
 directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain/'
 #directory_data = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016B_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
 treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
@@ -42,7 +42,7 @@ samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
 			'weight' :'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)',#effTrigW1l*
 		}
 
-samples['Wjets'] = { 	'name' :   
+#samples['Wjets'] = { 	'name' :   
 #getSampleFiles(directory_MC, 'WJetsToLNu__part0', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part1', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part2', True)\
@@ -63,37 +63,37 @@ samples['Wjets'] = { 	'name' :
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part18', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part19', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part20', True),
-getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT200_400', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT400_600', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT600_800', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
-				'weight': 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
-				'FilesPerJob' : 3,
-		   }
+#getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT200_400', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT400_600', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT600_800', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
+#				'weight': 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+#				'FilesPerJob' : 3,
+#		   }
 
 
 
-samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-                      'weight' :  'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' , 
-		      'FilesPerJob' : 3,
-		 }
+#samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
+#                      'weight' :  'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' , 
+#		      'FilesPerJob' : 3,
+#		 }
 
 #others minor backgrounds all inside Others
-samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu', True) \
-                                +       getSampleFiles(directory_MC, 'WZTo1L1Nu2Q', True) \
-                                +       getSampleFiles(directory_MC, 'WZTo1L3Nu', True) \
-                                +       getSampleFiles(directory_MC, 'WWW', True) \
-                                +       getSampleFiles(directory_MC, 'WWZ', True) \
-                                +       getSampleFiles(directory_MC, 'DYJetsToLL_M-10to50-LO', True) \
-                                +       getSampleFiles(directory_MC, 'WWTo2L2Nu', True) \
-                                +       getSampleFiles(directory_MC, 'WZTo2L2Q', True) \
-                                +       getSampleFiles(directory_MC, 'ZZTo2L2Q', True) ,
-                                'weight' : 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
-                        'FilesPerJob' : 3,
-                         }
+#samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu', True) \
+#                                +       getSampleFiles(directory_MC, 'WZTo1L1Nu2Q', True) \
+#                                +       getSampleFiles(directory_MC, 'WZTo1L3Nu', True) \
+#                                +       getSampleFiles(directory_MC, 'WWW', True) \
+#                                +       getSampleFiles(directory_MC, 'WWZ', True) \
+#                                +       getSampleFiles(directory_MC, 'DYJetsToLL_M-10to50-LO', True) \
+#                                +       getSampleFiles(directory_MC, 'WWTo2L2Nu', True) \
+#                                +       getSampleFiles(directory_MC, 'WZTo2L2Q', True) \
+#                                +       getSampleFiles(directory_MC, 'ZZTo2L2Q', True) ,
+#                                'weight' : 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+#                        'FilesPerJob' : 3,
+#                         }
 
 #other minor backgrounds in separated samples
 #samples['TTW']  = {    'name'   : getSampleFiles(directory, 'TTWJetsToLNu') ,
@@ -166,17 +166,17 @@ DataTrig = {
             'SingleElectron' : '!trig_SnglMu && trig_SnglEle' ,
 	   }
 
-samples['DATA']  = {    'name'   : [],
-				   'weight' : '1.', 
-				   'weights' : [],
-				   'isData': ['all'],
-                      		   'FilesPerJob' : 2,
-		   }		
-
-for Run in DataRun :
-	directory = treeBaseDir+'Apr2017_Run2016'+Run[0]+'_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
-	for DataSet in DataSets :
- 		FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True)
-		for iFile in FileTarget:
-			samples['DATA']['name'].append(iFile)
-			samples['DATA']['weights'].append(DataTrig[DataSet]) 
+#samples['DATA']  = {    'name'   : [],
+#				   'weight' : '1.', 
+#				   'weights' : [],
+#				   'isData': ['all'],
+#                      		   'FilesPerJob' : 2,
+#		   }		
+#
+#for Run in DataRun :
+#	directory = treeBaseDir+'Apr2017_Run2016'+Run[0]+'_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
+#	for DataSet in DataSets :
+# 		FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True)
+#		for iFile in FileTarget:
+#			samples['DATA']['name'].append(iFile)
+#			samples['DATA']['weights'].append(DataTrig[DataSet]) 
