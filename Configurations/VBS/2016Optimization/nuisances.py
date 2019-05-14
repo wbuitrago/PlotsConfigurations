@@ -15,7 +15,6 @@ nuisances['lumi2016']  = {
                    'ChMisId'  : '1.025',
                    'Vg'   : '1.025',
 	           'ttbar'   : '1.025',
-#                  'WZ'   : '1.058',
                    'ZZ'   : '1.025',
                    'VVV'  : '1.025',
                    'DPS'   : '1.025',
@@ -27,22 +26,7 @@ nuisances['lumi2016']  = {
               }
 
 # luminosity uncertainty is 2.5%
-
-
-# nuisances handled by means of a weight in the tree
-
-#nuisances['pileup']  = {
-                #'name'  : 'pileup', 
-                #'kind'  : 'weight',
-                #'type'  : 'shape',
-                #'samples'  : {
-                   ##'ttbar' : ['puWup/puW', 'puWdown/puW'],
-                   ##'DY'    : ['puWup/puW', 'puWdown/puW']
-                   #'ttbar' : ['3./puW', '0.3/puW'],
-                   #'DY'    : ['3./puW', '0.3/puW']
-                #}
-#}
-################################# THEORY UNCERTAINTIES  #################################
+################################ THEORY UNCERTAINTIES  #################################
 nuisances['QCDscale']  = {
     'name'  : 'QCDscale', 
     'type'  : 'lnN', 
@@ -102,43 +86,7 @@ nuisances['pdf']  = {
     }, 
 } 
 
-#nuisances['pdf_gg']  = {
-#               'name'  : 'pdf_gg', 
-#               'samples'  : {
-#                   'DY' : '1.XX',
-#                   'WpWp_EWK': '1.XX',                   
-#                   },
-#               'type'  : 'lnN',
-#              }
-#
-#
-#nuisances['pdf_qqbar']  = {
-#               'name'  : 'pdf_qqbar', 
-#               'type'  : 'lnN',
-#               'samples'  : {
-#                   'lep_TT' : '1.XX',
-#                   'Vg': '1.XX' ,
-#                   },
-#              }
-#
-#nuisances['pdf_gg_accept']  = {
-#               'name'  : 'pdf_gg_accept', 
-#               'samples'  : {
-#                   'DY' : '1.XX',
-#                   'WpWp_EWK': '1.XX',                   
-#                   },
-#               'type'  : 'lnN',
-#              }
-#
-#
-#nuisances['pdf_qqbar_accept']  = {
-#               'name'  : 'pdf_qqbar_accept', 
-#               'type'  : 'lnN',
-#               'samples'  : {
-#                   'lep_TT' : '1.XX',
-#                   'Vg': '1.XX' ,
-#                   },
-#              }
+
 ################################ BKG ESTIMATION UNCERTAINTIES  #################################
 
 nuisances['WZ_norm']  = {
@@ -296,28 +244,28 @@ nuisances['jes']  = {
 
 }
 
-#nuisances['electronpt']  = {
-#                'name'  : 'scale_e', 
-#                'kind'  : 'tree',
-#                'type'  : 'shape',
-#                'samples'  : {
-#                   'ChMisId' :['1', '1'],
-#				   'ttbar' :['1', '1'],
-#                   'Vg' :  ['1', '1'],
-#                   'WZ' : ['1', '1'],
-#                   'ZZ' : ['1', '1'],
-#                   'VVV' : ['1', '1'],
-#                   'DPS' : ['1', '1'],
-#                   'WpWp_EWK' :  ['1', '1'],
-#				   'WmWm_EWK' :  ['1', '1'],
-#                   'WW_strong' :  ['1', '1'],
-#                },
-#                                
-#                'folderUp'   :directory+'__l2tightVBS__LepElepTCutdo__tightVbsSel/',#same samples up/down-->should be checked
-#                'folderDown' :directory+'__l2tightVBS__LepElepTCutdo__tightVbsSel/' 
-#
-#}                               
-   
+nuisances['electronpt']  = {
+                'name'  : 'scale_e', 
+                'kind'  : 'tree',
+                'type'  : 'shape',
+                'samples'  : {
+                   'ChMisId' :['1', '1'],
+				   'ttbar' :['1', '1'],
+                   'Vg' :  ['1', '1'],
+                   'WZ' : ['1', '1'],
+                   'ZZ' : ['1', '1'],
+                   'VVV' : ['1', '1'],
+                   'DPS' : ['1', '1'],
+                   'WpWp_EWK' :  ['1', '1'],
+				   'WmWm_EWK' :  ['1', '1'],
+                   'WW_strong' :  ['1', '1'],
+                },
+                                
+                'folderUp'   :directory+'__l2tightVBS__LepElepTCutup__tightVbsSel/',
+                'folderDown' :directory+'__l2tightVBS__LepElepTCutdo__tightVbsSel/' 
+
+}                               
+  
 nuisances['muonpt']  = {
                 'name'  : 'scale_m', 
                 'kind'  : 'tree',
@@ -368,107 +316,6 @@ nuisances['met']  = {
 # statistical fluctuation
 # on MC/data
 # "stat" is a special word to identify this nuisance
-#nuisances['stat']  = {
-#                #apply to the following samples: name of samples here must match keys in samples.py
-#               'samples'  : {
-#                   
-#                   'ChMisId': {
-#                         'typeStat' : 'bbb',
-#                         #'keepNormalization' : '1'  # default = 0 -> 0=don't keep normalization
-#                         },
-#					'ttbar': {
-#                         'typeStat' : 'bbb',
-#                         },
-#                    
-#                   'Vg': {
-#                         'typeStat' : 'bbb',
-#                         },
-#                    
-#                   'WZ': {
-#                         'typeStat' : 'bbb',
-#                         },
-#
-#                   'ZZ': {
-#                         'typeStat' : 'bbb',
-#                         },
-#                   'VVV': {
-#                         'typeStat' : 'bbb',
-#                         },
-#
-#                   'DPS': {
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'WpWp_EWK': {
-#                         'typeStat' : 'bbb',
-#                         },
-#					'WmWm_EWK': {
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'WW_strong': {
-#                         'typeStat' : 'bbb',
-#                         },
-#
-#                   'Fake_lep': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'DY_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'lep_TT_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'singleTop_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'singleAntiTop_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'ggWWTo2L2Nu_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'WWTo2L2Nu_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'ZZ_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'WpWp_EWK_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#					'WmWm_EWK_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'WW_strong_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'VVV_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'DPS_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#                   
-#                   'WZ_promptSubtr': {  # needed?
-#                         'typeStat' : 'bbb',
-#                         },
-#
-#                 },
-#               'type'  : 'shape'
-#              }
-#              
 # Use the following if you want to apply the automatic combine MC stat nuisances->Faster than bin-by-bin
 nuisances['stat']  = {
               'type'  : 'auto',
