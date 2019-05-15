@@ -8,7 +8,63 @@ variables['events']  = {   'name': '1',
                         'xaxis' : 'events', 
                         'fold' : 3
                         }
+
+variables['deltaeta_b'] = { 'name': ' abs( std_vector_jet_eta[H_jets[0]] - std_vector_jet_eta[H_jets[1]] )',
+                      'range': (14,0,7),
+                      'xaxis': '#delta #eta_{bb}',
+                      'fold': 3
+                    }
    
+variables['deltaphi_b'] = { 'name': ' abs( std_vector_jet_phi[H_jets[0]] - std_vector_jet_phi[H_jets[1]] )',
+                      'range': (10,0,7),
+                      'xaxis': '#delta #phi_{bb}',
+                      'fold': 3
+                    }
+
+variables['deltaeta_w'] = { 'name': ' abs( std_vector_jet_eta[W_jets[0]] - std_vector_jet_eta[W_jets[1]] )',
+                      'range': (10,0,7),
+                      'xaxis': '#delta #eta_{w}',
+                      'fold': 3
+                    }
+variables['deltaphi_w'] = { 'name': ' abs( std_vector_jet_phi[W_jets[0]] - std_vector_jet_phi[W_jets[1]] )',
+                      'range': (10,0,7),
+                      'xaxis': '#delta #eta_{w}',
+                      'fold': 3
+                    }
+
+variables['mjj_b']  = {   
+                          'name': 'mjj(std_vector_jet_eta[H_jets[0]],std_vector_jet_eta[H_jets[1]], std_vector_jet_pt[H_jets[0]], std_vector_jet_pt[H_jets[1]], std_vector_jet_phi[H_jets[0]], std_vector_jet_phi[H_jets[1]])',            #   variable name    
+                           'range' : (30,0,1200),    #   variable range
+                           'xaxis' : 'max m_{bb}',  #   x axis name
+                           'fold' : 3,
+                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/mjj.C+']
+                        }
+
+variables['mjj_w']  = {
+                          'name': 'mjj(std_vector_jet_eta[W_jets[0]],std_vector_jet_eta[W_jets[1]], std_vector_jet_pt[W_jets[0]], std_vector_jet_pt[W_jets[1]], std_vector_jet_phi[W_jets[0]], std_vector_jet_phi[W_jets[1]])',            #   variable name    
+                           'range' : (30,0,1200),    #   variable range
+                           'xaxis' : 'max m_{w}',  #   x axis name
+                           'fold' : 3,
+                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/mjj.C+']
+                        }
+
+variables['deltaR_bb']  = {
+                          'name': 'deltaR(std_vector_jet_eta[H_jets[0]],std_vector_jet_eta[H_jets[1]], std_vector_jet_phi[H_jets[0]], std_vector_jet_phi[H_jets[1]])',            #   variable name    
+                           'range' : (30,0,10),    #   variable range
+                           'xaxis' : '#delta R_{bb}',  #   x axis name
+                           'fold' : 3,
+                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/deltaR.C+']
+                        }
+
+variables['deltaR_w']  = {
+                          'name': 'deltaR(std_vector_jet_eta[W_jets[0]],std_vector_jet_eta[W_jets[1]], std_vector_jet_phi[W_jets[0]], std_vector_jet_phi[W_jets[1]])',            #   variable name    
+                           'range' : (30,0,10),    #   variable range
+                           'xaxis' : '#delta R_{w}',  #   x axis name
+                           'fold' : 3,
+                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/deltaR.C+']
+                        }
+
+
 #variables['nvtx']  = {  'name': 'nvtx',      
 #                        'range' : (30,0,40),  
 #                        'xaxis' : 'nvtx', 
@@ -22,7 +78,7 @@ variables['events']  = {   'name': '1',
 #                        'xaxis' : 'p_{T} 1st lep',
 #                        'fold'  : 3                         
 #                        }
-##
+#
 #variables['pt2']  = {   'name': 'std_vector_lepton_pt[1]',     
 #                        'range' : (40,0,200),   
 #                        'xaxis' : 'p_{T} 2nd lep',
@@ -317,6 +373,20 @@ variables['events']  = {   'name': '1',
 #                        }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+#########################################################################################
 #variables['mtw1']  = {  'name': 'mtw1',
                         #'range' : (40,0,200),
                         #'xaxis' : 'm_{T}^{W_{1}} [GeV]',
@@ -352,4 +422,46 @@ variables['events']  = {   'name': '1',
                         #'xaxis' : 'DY MVA',
                         #'fold' : 3
                         #}
+#variables['mll']  = {   'name': 'mll',            #   variable name    
+#                        'range' : (40, 0,200),    #   variable range
+#                        'xaxis' : 'm_{ll} [GeV]',  #   x axis name
+#                         'fold' : 0
+#                        }
+
+#variables['mllpeak'] = {   'name': 'mll',            #   variable name
+                           #'range' : (100,80,100),    #   variable range
+                           #'xaxis' : 'm_{ll} [GeV]',  #   x axis name
+                           #'fold' : 0
+                        #}
+
+#variables['mth']  = {   'name': 'mth',            #   variable name    
+                        #'range' : (40,0,200),    #   variable range
+                        #'xaxis' : 'm_{T}^{H} [GeV]',  #   x axis name
+                         #'fold' : 0
+                        #}
+
+#variables['dphill']  = {   'name': 'abs(dphill)',     
+                        #'range' : (20,0,3.14),   
+                        #'xaxis' : '#Delta#phi_{ll}',
+                        #'fold' : 3
+                        #}
+
+#variables['ptll']  = {   'name': 'ptll',     
+                        #'range' : (40, 0,200),   
+                        #'xaxis' : 'p_{T}^{ll} [GeV]',
+                        #'fold' : 3
+                        #}
+
+
+#variables['eta1large']  = {  'name': 'std_vector_lepton_eta[0]',
+                       #'range' : ([-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4,],),
+                       #'xaxis' : '#eta 1st lep',
+                       #'fold'  : 3
+                       #}
+
+#variables['eta2large']  = {  'name': 'std_vector_lepton_eta[1]',
+                       #'range' : ([-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4,],),
+                       #'xaxis' : '#eta 2nd lep',
+                       #'fold'  : 3
+                       #}
 
