@@ -128,8 +128,6 @@ groupPlot['HH']  = {
 #                    
 
 #BKG
-
-
 plot['Others']  = {
                   'color': 617,
                   'isSignal' : 0,

@@ -4,13 +4,13 @@
 
 # keys here must match keys in samples.py    
 
-#                
+#signal                
 structure['HH'] = {
                 'isSignal': 1,
                 'isData': 0
                 }
 
-    
+#bkg    
 structure['Wjets'] = {
 		'isSignal': 0,
 		'isData': 0

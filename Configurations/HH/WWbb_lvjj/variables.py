@@ -71,7 +71,11 @@ variables['deltaR_w']  = {
 #                       'fold' : 3
 #                      }
 #
-##lepton
+
+
+################################
+############ LEPTON ############
+################################
 #
 #variables['pt1']  = {   'name': 'std_vector_lepton_pt[0]',     
 #                        'range' : (40,0,500),   
@@ -112,7 +116,10 @@ variables['deltaR_w']  = {
 #                       }
 #
 
-##jets
+##############################
+############ JETS ############
+##############################
+
 #variables['njets'] =  {
 #               'name': 'njet',
 #               'range': (10,0,10),
@@ -272,92 +279,6 @@ variables['deltaR_w']  = {
 #                        }
 
 
-#variables['mll']  = {   'name': 'mll',            #   variable name    
-#                        'range' : (40, 0,200),    #   variable range
-#                        'xaxis' : 'm_{ll} [GeV]',  #   x axis name
-#                         'fold' : 0
-#                        }
-
-#variables['mllpeak'] = {   'name': 'mll',            #   variable name
-                           #'range' : (100,80,100),    #   variable range
-                           #'xaxis' : 'm_{ll} [GeV]',  #   x axis name
-                           #'fold' : 0
-                        #}
-
-#variables['mth']  = {   'name': 'mth',            #   variable name    
-                        #'range' : (40,0,200),    #   variable range
-                        #'xaxis' : 'm_{T}^{H} [GeV]',  #   x axis name
-                         #'fold' : 0
-                        #}
-
-#variables['dphill']  = {   'name': 'abs(dphill)',     
-                        #'range' : (20,0,3.14),   
-                        #'xaxis' : '#Delta#phi_{ll}',
-                        #'fold' : 3
-                        #}
-
-#variables['ptll']  = {   'name': 'ptll',     
-                        #'range' : (40, 0,200),   
-                        #'xaxis' : 'p_{T}^{ll} [GeV]',
-                        #'fold' : 3
-                        #}
-
-        
-#variables['eta1large']  = {  'name': 'std_vector_lepton_eta[0]',
-                       #'range' : ([-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4,],),
-                       #'xaxis' : '#eta 1st lep',
-                       #'fold'  : 3
-                       #}
-
-#variables['eta2large']  = {  'name': 'std_vector_lepton_eta[1]',
-                       #'range' : ([-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4,],),
-                       #'xaxis' : '#eta 2nd lep',
-                       #'fold'  : 3
-                       #}
-
-#variables['taupt1']  = {'name': 'std_vector_tau_pt[0]',     
-                        #'range' : (100,0,200),   
-                        #'xaxis' : 'p_{T} 1st tau',
-                        #'fold'  : 3                         
-                        #}
-
-
-
-
-#variables['cmva_1']  = { 
-#                        'name': 'std_vector_jet_cmvav2[0]',     
-#                        'range' : (10,-1,1),   
-#                        'xaxis' : 'cmva jet 1st',
-#                        'fold'  : 3                         
-#                        }
-
-
-
-#variables['cmva_2']  = { 
-#                        'name': 'std_vector_jet_cmvav2[1]',     
-#                        'range' : (10,-1,1),   
-#                        'xaxis' : 'cmva  jet 2nd',
-#                        'fold'  : 3                         
-#                        }
-
-
-#variables['cmva_3']  = { 
-#                        'name': 'std_vector_jet_cmvav2[2]',     
-#                        'range' : (10,-1,1),   
-#                        'xaxis' : 'cmva jet 3rd',
-#                        'fold'  : 3                         
-#                        }
-
-
-
-#variables['cmva_4']  = { 
-#                        'name': 'std_vector_jet_cmvav2[3]',     
-#                        'range' : (10,-1,1),   
-#                        'xaxis' : 'cmva  jet 4th',
-#                        'fold'  : 3                         
-#                        }
-
-
 
 
 #variables['jeteta1']  = {  'name': 'std_vector_jet_eta[0]',
@@ -386,7 +307,10 @@ variables['deltaR_w']  = {
 
 
 
-#########################################################################################
+#############################################
+#################### NOT USED ###############
+#############################################
+
 #variables['mtw1']  = {  'name': 'mtw1',
                         #'range' : (40,0,200),
                         #'xaxis' : 'm_{T}^{W_{1}} [GeV]',
@@ -465,3 +389,8 @@ variables['deltaR_w']  = {
                        #'fold'  : 3
                        #}
 
+#variables['taupt1']  = {'name': 'std_vector_tau_pt[0]',     
+                        #'range' : (100,0,200),   
+                        #'xaxis' : 'p_{T} 1st tau',
+                        #'fold'  : 3                         
+                        #}

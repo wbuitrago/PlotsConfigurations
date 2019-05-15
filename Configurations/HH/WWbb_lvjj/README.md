@@ -5,7 +5,7 @@ Transfer data:
 
     single lepton MC
     
-    /gwteraz/users/amassiro/latino/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC/ 
+    /gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC/ 
 
     voms-proxy-init -voms cms
 
