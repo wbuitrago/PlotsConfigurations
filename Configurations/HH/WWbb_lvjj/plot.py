@@ -13,21 +13,14 @@
 
 #BKG
 
-groupPlot['Others']  = {
-                        'nameHR' : 'Others',
-                        'isSignal' : 0,
-                        'color': 617,
-                        'samples'  : ['Others']
-                        }
+#groupPlot['Others']  = {
+#                        'nameHR' : 'Others',
+#                        'isSignal' : 0,
+#                        'color': 617,
+#                        'samples'  : ['Others']
+#                        }
 
 
-
-groupPlot['Wjets']  = {
-                        'nameHR' : 'W+Jets',
-                        'isSignal' : 0,
-                        'color': 418,  
-                        'samples'  : ['Wjets']
-                     }
 
 groupPlot['TTToSemilepton']  = {    
 				  'nameHR' : 'ttbar',
@@ -36,7 +29,12 @@ groupPlot['TTToSemilepton']  = {
 			  	  'samples' : ['TT']
 			       }	
 
-
+groupPlot['Wjets']  = {
+                        'nameHR' : 'W+Jets',
+                        'isSignal' : 0,
+                        'color': 418,
+                        'samples'  : ['Wjets']
+                     }
 
 
 #groupPlot['TTWJetsToLNu'] = {
@@ -106,7 +104,7 @@ groupPlot['TTToSemilepton']  = {
 groupPlot['HH']  = {
                         'nameHR' : 'HH',
                         'isSignal' : 1,
-                        'color': 1,
+                        'color': 632,
                         'samples'  : ['HH']
                    }
 
@@ -128,21 +126,13 @@ groupPlot['HH']  = {
 #                    
 
 #BKG
-plot['Others']  = {
-                  'color': 617,
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-              }
+#plot['Others']  = {
+#                  'color': 617,
+#                  'isSignal' : 0,
+#                  'isData'   : 0,
+#                  'scale'    : 1.   ,
+#              }
 
-
-
-plot['Wjets']  = {
-                  'color': 418,
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-	          }
 
 
 plot['TT']  = {
@@ -152,7 +142,12 @@ plot['TT']  = {
                   'scale'    : 1.   ,
               }
 
-
+plot['Wjets']  = {
+                  'color': 418,
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.   ,
+                  }
 
 
 #plot['TTW']  = {
@@ -220,7 +215,7 @@ plot['TT']  = {
 
 #SIGNAL
 plot['HH']  = {
-                  'color': 1,
+                  'color': 632,
                   'isSignal' : 1,
                   'isData'   : 0,
                   'scale'    : 1e2  ,

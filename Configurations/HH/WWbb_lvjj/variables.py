@@ -9,59 +9,147 @@ variables['events']  = {   'name': '1',
                         'fold' : 3
                         }
 
-variables['deltaeta_b'] = { 'name': ' abs( std_vector_jet_eta[H_jets[0]] - std_vector_jet_eta[H_jets[1]] )',
-                      'range': (14,0,7),
-                      'xaxis': '#delta #eta_{bb}',
-                      'fold': 3
-                    }
-   
-variables['deltaphi_b'] = { 'name': ' abs( std_vector_jet_phi[H_jets[0]] - std_vector_jet_phi[H_jets[1]] )',
-                      'range': (10,0,7),
-                      'xaxis': '#delta #phi_{bb}',
-                      'fold': 3
-                    }
+################################
+########## KINEMATICS ##########
+################################
 
-variables['deltaeta_w'] = { 'name': ' abs( std_vector_jet_eta[W_jets[0]] - std_vector_jet_eta[W_jets[1]] )',
-                      'range': (10,0,7),
-                      'xaxis': '#delta #eta_{w}',
-                      'fold': 3
-                    }
-variables['deltaphi_w'] = { 'name': ' abs( std_vector_jet_phi[W_jets[0]] - std_vector_jet_phi[W_jets[1]] )',
-                      'range': (10,0,7),
-                      'xaxis': '#delta #eta_{w}',
-                      'fold': 3
-                    }
-
-variables['mjj_b']  = {   
-                          'name': 'mjj(std_vector_jet_eta[H_jets[0]],std_vector_jet_eta[H_jets[1]], std_vector_jet_pt[H_jets[0]], std_vector_jet_pt[H_jets[1]], std_vector_jet_phi[H_jets[0]], std_vector_jet_phi[H_jets[1]])',            #   variable name    
-                           'range' : (30,0,1200),    #   variable range
-                           'xaxis' : 'max m_{bb}',  #   x axis name
-                           'fold' : 3,
-                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/mjj.C+']
+variables['mjj_b']  = {
+                          'name': 'mjj_b',#'mjj(std_vector_jet_eta[H_jets[0]],std_vector_jet_eta[H_jets[1]], std_vector_jet_pt[H_jets[0]], std_vector_jet_pt[H_jets[1]], std_vector_jet_phi[H_jets[0]], std_vector_jet_phi[H_jets[1]])',            #   variable name    
+                           'range' : (30,0,600),    #   variable range
+                           'xaxis' : 'm_{bb}',  #   x axis name
+                           'fold' : 3#,
+                        #'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/mjj.C+']
                         }
 
 variables['mjj_w']  = {
-                          'name': 'mjj(std_vector_jet_eta[W_jets[0]],std_vector_jet_eta[W_jets[1]], std_vector_jet_pt[W_jets[0]], std_vector_jet_pt[W_jets[1]], std_vector_jet_phi[W_jets[0]], std_vector_jet_phi[W_jets[1]])',            #   variable name    
-                           'range' : (30,0,1200),    #   variable range
-                           'xaxis' : 'max m_{w}',  #   x axis name
-                           'fold' : 3,
-                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/mjj.C+']
+                          'name': 'mjj_wjet',#'mjj(std_vector_jet_eta[W_jets[0]],std_vector_jet_eta[W_jets[1]], std_vector_jet_pt[W_jets[0]], std_vector_jet_pt[W_jets[1]], std_vector_jet_phi[W_jets[0]], std_vector_jet_phi[W_jets[1]])',            #   variable name    
+                           'range' : (30,0,600),    #   variable range
+                           'xaxis' : 'm_{w}',  #   x axis name
+                           'fold' : 3#,
+                        #'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/mjj.C+']
                         }
 
+variables['b_pt_high'] = { 'name': 'b_pt_high',
+                      'range': (40,0,1000),
+                      'xaxis': 'p_{T} (b high)',
+                      'fold': 3
+                    }
+
+variables['b_pt_low'] = { 'name': 'b_pt_low',
+                      'range': (40,0,1000),
+                      'xaxis': 'p_{T} (b low)',
+                      'fold': 3
+                    }
+variables['w_pt_high'] = { 'name': 'wjet_pt_high',
+                      'range': (40,0,1000),
+                      'xaxis': 'p_{T} (wjet high)',
+                      'fold': 3
+                    }
+
+variables['w_pt_low'] = { 'name': 'wjet_pt_low',
+                      'range': (40,0,1000),
+                      'xaxis': 'p_{T} (wjet low)',
+                      'fold': 3
+                    }
+
+variables['b_eta_high'] = { 'name': 'b_eta_high',
+                      'range': (10,-5.0,5.0),
+                      'xaxis': '#eta(b high)',
+                      'fold': 3
+                    }
+
+variables['b_eta_low'] = { 'name': 'b_eta_low',
+                      'range': (10,-5.0,5.0),
+                      'xaxis': '#eta (b low)',
+                      'fold': 3
+                    }
+variables['w_eta_high'] = { 'name': 'wjet_eta_high',
+                      'range': (10,-5.0,5.0),
+                      'xaxis': '#eta (wjet high)',
+                      'fold': 3
+                    }
+
+variables['w_eta_low'] = { 'name': 'wjet_eta_low',
+                      'range': (10,-5.0,5.0),
+                      'xaxis': '#eta (wjet low)',
+                      'fold': 3
+                    }
+
+
+variables['deltaeta_b'] = { 'name': 'deltaeta_b',#' abs( std_vector_jet_eta[H_jets[0]] - std_vector_jet_eta[H_jets[1]] )',
+                      'range': (14,0,7),
+                      'xaxis': '#Delta #eta_{bb}',
+                      'fold': 3
+                    }
+   
+variables['deltaphi_b'] = { 'name': 'deltaphi_b',#' abs( std_vector_jet_phi[H_jets[0]] - std_vector_jet_phi[H_jets[1]] )',
+                      'range': (10,0,7),
+                      'xaxis': '#Delta #phi_{bb}',
+                      'fold': 3
+                    }
+
+variables['deltaeta_w'] = { 'name': 'deltaeta_wjet',#' abs( std_vector_jet_eta[W_jets[0]] - std_vector_jet_eta[W_jets[1]] )',
+                      'range': (10,0,7),
+                      'xaxis': '#Delta #eta_{w}',
+                      'fold': 3
+                    }
+variables['deltaphi_w'] = { 'name': 'deltaphi_wjet',#' abs( std_vector_jet_phi[W_jets[0]] - std_vector_jet_phi[W_jets[1]] )',
+                      'range': (10,0,7),
+                      'xaxis': '#Delta #phi_{w}',
+                      'fold': 3
+                    }
+
+
+variables['deltaphi_lep_b1'] = { 'name': 'deltaphi_lep_b_high',
+                      'range': (10,0,7),
+                      'xaxis': '#Delta #phi (lep-b high)',
+                      'fold': 3
+                    }
+
+variables['deltaphi_lep_b2'] = { 'name': 'deltaphi_lep_b_loe',
+                      'range': (10,0,7),
+                      'xaxis': '#Delta #phi (lep-b low)',
+                      'fold': 3
+                    }
+variables['deltaeta_lep_b1'] = { 'name': 'deltaphi_eta_b_high',
+                      'range': (10,0,7),
+                      'xaxis': '#Delta #eta (lep-b high)',
+                      'fold': 3
+                    }
+
+variables['deltaeta_lep_b2'] = { 'name': 'deltaeta_lep_b_low',
+                      'range': (10,0,7),
+                      'xaxis': '#Delta #eta (lep-b low)',
+                      'fold': 3
+                    }
+variables['deltaR_lep_b']  = {
+                          'name': 'deltaR_lep_b',    
+                           'range' : (30,0,10),  
+                           'xaxis' : '#Delta R (lep - b)', 
+                           'fold' : 3
+                        }
+variables['deltaR_lep_w']  = {
+                          'name': 'deltaR_lep_wjet',                    
+                           'range' : (30,0,10),  
+                           'xaxis' : '#Delta R (lep - wjets)',
+                           'fold' : 3
+                        }
+
+
 variables['deltaR_bb']  = {
-                          'name': 'deltaR(std_vector_jet_eta[H_jets[0]],std_vector_jet_eta[H_jets[1]], std_vector_jet_phi[H_jets[0]], std_vector_jet_phi[H_jets[1]])',            #   variable name    
-                           'range' : (30,0,10),    #   variable range
-                           'xaxis' : '#delta R_{bb}',  #   x axis name
+                          'name': 'deltaR_b',#'deltaR(std_vector_jet_eta[H_jets[0]],std_vector_jet_eta[H_jets[1]], std_vector_jet_phi[H_jets[0]], std_vector_jet_phi[H_jets[1]])',    
+                           'range' : (30,0,10),  
+                           'xaxis' : '#Delta R_{bb}', 
                            'fold' : 3,
-                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/deltaR.C+']
+                        #'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/deltaR.C+']
                         }
 
 variables['deltaR_w']  = {
-                          'name': 'deltaR(std_vector_jet_eta[W_jets[0]],std_vector_jet_eta[W_jets[1]], std_vector_jet_phi[W_jets[0]], std_vector_jet_phi[W_jets[1]])',            #   variable name    
+                          'name': 'deltaR_wjet',#'deltaR(std_vector_jet_eta[W_jets[0]],std_vector_jet_eta[W_jets[1]], std_vector_jet_phi[W_jets[0]], std_vector_jet_phi[W_jets[1]])',            #   variable name    
                            'range' : (30,0,10),    #   variable range
-                           'xaxis' : '#delta R_{w}',  #   x axis name
+                           'xaxis' : '#Delta R_{w}',  #   x axis name
                            'fold' : 3,
-                        'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/deltaR.C+']
+                        #'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/deltaR.C+']
                         }
 
 
