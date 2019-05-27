@@ -97,7 +97,7 @@ def mk_RS (sig, bkg, bname):
         canva = create_canva('Signif_{}_{}'.format(bname,variables[variables.keys()[curve.nvar]]['xaxis']))
         canva.cd()
         if opt.line == 1:
-            curve.signif_cut.Draw('APL')
+            curve.signif_cut.Draw('APC')
         else:
             curve.signif_cut.Draw('AP')
         if opt.grid == 1:
@@ -129,7 +129,7 @@ def mk_RS (sig, bkg, bname):
     mymulticurves.roc.Add(p2)
     canvaRoc.cd()
     if opt.line == 1:
-        mymulticurves.roc.Draw('APL')
+        mymulticurves.roc.Draw('APC')
     else:
         mymulticurves.roc.Draw('AP')
     mymulticurves.roc_leg.SetNColumns(2)
@@ -157,7 +157,7 @@ def mk_RS (sig, bkg, bname):
     canvaSignif = create_canva('Signif_{}'.format(bname))
     canvaSignif.cd()
     if opt.line == 1:
-        mymulticurves.signif.Draw('APL')
+        mymulticurves.signif.Draw('APC')
     else:
         mymulticurves.signif.Draw('AP')
     mymulticurves.signif_leg.SetNColumns(2)
@@ -316,6 +316,8 @@ if __name__ == '__main__':
         nv += 1
     ROOT.gDirectory.cd('..')
     histos_bkg = []
+    if os.path.exists('RS_curves') == False:
+        os.makedirs('RS_curves/')
     for nbkg in range(0,len(samples_bkg_keys)):
         nv = 0
         for vk in variables.keys():
@@ -334,8 +336,6 @@ if __name__ == '__main__':
         del histos_bkg[:]
         ROOT.gDirectory.cd('..')
     histo_file.Close()
-    if os.path.exists('RS_curves') == False:
-        os.makedirs('RS_curves/')
     
     print '... and now closing ...'
         
