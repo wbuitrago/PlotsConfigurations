@@ -59,7 +59,7 @@ softMuVeto='\
 
 
 bJetVeto = BVeto +'&&'+ softMuVeto
-bJetTag  = '!(' + bJetVeto + ')'  
+bJetTag  = '(!(' + bJetVeto + '))>=1'  
 
 zveto ='(abs(std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) != 11*11 ||(mll>20 && abs(mll - 91) > 15))'
 
@@ -83,7 +83,7 @@ zvetoTest ='((abs(std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) !
 #cuts['Met_Z_bJet_MuV']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto
 #cuts['Met_Z_bJet_MuV_TauV']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto
 #cuts['Met_Z_bJet_MuV_TauV_Zv']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zvetoTest
-cuts['Met_Z_bJet_MuV_TauV_Zv_mll']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zveto
+cuts['Met_Z_bJet_MuV_TauV_Zv_mee_All']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zveto
 
 
 
@@ -156,19 +156,20 @@ softMuVetoAll='\
 && ( std_vector_softMuPt[8] < 3 || ((abs(std_vector_lepton_flavour[0]) == 13. && sqrt( pow(std_vector_softMuEta[8] - std_vector_lepton_eta[0], 2) + pow(abs(abs(std_vector_softMuPhi[8] - std_vector_lepton_phi[0])-pi)-pi, 2) ) < 0.3) || (abs(std_vector_lepton_flavour[1]) == 13. && sqrt( pow(std_vector_softMuEta[8] - std_vector_lepton_eta[1], 2) + pow(abs(abs(std_vector_softMuPhi[8] - std_vector_lepton_phi[1])-pi)-pi, 2) ) < 0.3 ) ) ) \
 && ( std_vector_softMuPt[9] < 3 || ((abs(std_vector_lepton_flavour[0]) == 13. && sqrt( pow(std_vector_softMuEta[9] - std_vector_lepton_eta[0], 2) + pow(abs(abs(std_vector_softMuPhi[9] - std_vector_lepton_phi[0])-pi)-pi, 2) ) < 0.3) || (abs(std_vector_lepton_flavour[1]) == 13. && sqrt( pow(std_vector_softMuEta[9] - std_vector_lepton_eta[1], 2) + pow(abs(abs(std_vector_softMuPhi[9] - std_vector_lepton_phi[1])-pi)-pi, 2) ) < 0.3 ) ) ) \
 '
-
-cuts['MuonVetoAll']=met + '&&' +zlep+'&&'+softMuVetoAll+'&&'+zveto
-cuts['MuonVeto5']=met + '&&' +zlep+'&&'+softMuVeto+'&&'+zveto
+#
+#cuts['MuonVetoAll']=met + '&&' +zlep+'&&'+softMuVetoAll+'&&'+zveto
+#cuts['MuonVeto5']=met + '&&' +zlep+'&&'+softMuVeto+'&&'+zveto
 #cuts['tauVetoAll']=met+'&&' +zlep+'&&'+tauVetoAll+'&&'+zveto
-cuts['bVeto_TauV']=met + '&&' +zlep+'&&' +BVetoAll+'&&'+zveto+'&&'+tauVetoAll
-cuts['bVeto_TauV5']=met + '&&' +zlep+'&&' +BVeto+'&&'+zveto+'&&'+tauVeto
-cuts['bVetoAll']=met + '&&' +zlep+'&&' +BVetoAll+'&&'+zveto
-cuts['TauVAll']=met + '&&' +zlep+'&&'+zveto+'&&'+tauVetoAll
-cuts['bVeto5']=met + '&&' +zlep+'&&' +BVeto+'&&'+zveto
-cuts['TauV5']=met + '&&' +zlep+'&&'+zveto+'&&'+tauVeto
+#cuts['bVeto_TauV']=met + '&&' +zlep+'&&' +BVetoAll+'&&'+zveto+'&&'+tauVetoAll
+#cuts['bVeto_TauV5']=met + '&&' +zlep+'&&' +BVeto+'&&'+zveto+'&&'+tauVeto
+#cuts['bVetoAll']=met + '&&' +zlep+'&&' +BVetoAll+'&&'+zveto
+#cuts['TauVAll']=met + '&&' +zlep+'&&'+zveto+'&&'+tauVetoAll
+#cuts['bVeto5']=met + '&&' +zlep+'&&' +BVeto+'&&'+zveto
+#cuts['TauV5']=met + '&&' +zlep+'&&'+zveto+'&&'+tauVeto
 #cuts['All']=BVetoAll+'&&'+tauVetoAll+'&&'+softMuVetoAll
-#cuts['5']=BVeto+'&&'+tauVeto+'&&'+softMuVeto
-cuts['bTag']=met + '&&' +zlep+'&&' +BTag5+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zveto
+#.cuts['5']=BVeto+'&&'+tauVeto+'&&'+softMuVeto
+
+#cuts['bJetTag']=met + '&&' +zlep+'&&' +bJetTag+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zveto
 #cuts['Met_Z_bJet_NoMV_TauV_Zv_mll']=met + '&&' +zlep+'&&' +BVetoAll+'&&'+tauVetoAll+'&&'+zvetoTest+'&& mll>20'
 
 
