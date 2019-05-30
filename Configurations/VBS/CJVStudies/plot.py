@@ -18,28 +18,28 @@
 groupPlot['ChargeMisId']  = {  
                   'nameHR' : "ChMisId",
                   'isSignal' : 0,
-                  'color': 418,    #kGreen+2
+                  'color': 875,    #kViolet-5
                   'samples'  : ['ChMisId' , 'ttbar']
               }
 
 groupPlot['WW_strong']  = {  
                   'nameHR' : "WW QCD",
                   'isSignal' : 0,
-                  'color'    : 633,   #kRed + 1
+                  'color'    : 861,   #kAzure+1
                   'samples'  : ['WW_strong']
               }
               
 groupPlot['VVV']  = {  
                   'nameHR' : 'VVV',
                   'isSignal' : 0,
-                  'color': 617, #kMagenta + 1  
+                  'color': 801, #kOrange+1  
                   'samples'  : ['VVV']
               }
 
 groupPlot['Vg']  = {  
                   'nameHR' : "V#gamma",
                   'isSignal' : 0,
-                  'color'    : 814,   #kSpring-6
+                  'color'    : 633, #kRed+1
                   'samples'  : ['Vg']
               }
 
@@ -47,14 +47,14 @@ groupPlot['Vg']  = {
 groupPlot['VV']  = {  
                   'nameHR' : "VV",
                   'isSignal' : 0,
-                  'color'    : 807,  #kOrange+7   
+                  'color'    : 418,  #kGreen+2   
                   'samples'  : ['ZZ' , 'WZ' , 'DPS']
               }      
         
 groupPlot['non-prompt']  = {  
                   'nameHR' : 'non-Prompt',
                   'isSignal' : 0,
-                  'color': 857,    #kAzure-3
+                  'color': 616,  #kMagenta
                   'samples'  : ['Fake_lep','DY_promptSubtr','lep_TT_promptSubtr','singleTop_promptSubtr','singleAntiTop_promptSubtr','ggWWTo2L2Nu_promptSubtr','WWTo2L2Nu_promptSubtr','Vg_promptSubtr','ZZ_promptSubtr','WpWpJJ_promptSubtr','WpWpJJ_promptSubtr','WpWpJJ_QCD_promptSubtr','VVV_promptSubtr','DPS_promptSubtr','WZ_promptSubtr']
               }
 
@@ -62,7 +62,7 @@ groupPlot['non-prompt']  = {
 groupPlot['WW_EWK']  = {  
                   'nameHR' : "WW EWK",
                   'isSignal' : 1,
-                  'color'    : 602,   # kViolet + 1  
+                  'color'    : 600,  #kBlue  
                   'samples'  : ['WpWp_EWK' , 'WmWm_EWK']
               }
 # *******************************************************************************
@@ -265,7 +265,7 @@ plot['DATA']  = {
 
 
 # additional options
-legend['lumi'] = '35.9 fb^{-1}'
+legend['lumi'] = 'L = 35.9 fb^{-1}'
 legend['sqrt'] = '13 TeV'
 
 
