@@ -3,19 +3,14 @@ import subprocess
 import string
 from LatinoAnalysis.Tools.commonTools import *
 
-#samples
+# samples
 
 samples = {}
 
-directory = '/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables'
-
+directory = '/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables' 
 chargeFlipDir = directory + '__l2tightVBS__chMisId__tightVbsSel/'
 PromptSubtr = directory + '__tightVbsSel__bkgWeights/'
 MCDir = directory + '__l2tightVBS__tightVbsSel/'
-
-#chargeFlipDir = directory + '__l2tightVBS__chMisId/' #without preselections
-#PromptSubtr = directory + '/' #without preselections
-#MCDir = directory + '__l2tightVBS/' #without preselections
 
 ################################################
 ############ BASIC MC WEIGHTS ##################
@@ -92,7 +87,7 @@ samples['ChMisId']=	{  	'name'	:getSampleFiles(chargeFlipDir,'DYJetsToLL_M-10to5
 								+getSampleFiles(chargeFlipDir,'GluGluWWTo2L2Nu_MCFM',True) 
 								+getSampleFiles(chargeFlipDir,'WWTo2L2Nu',True)             							
 				                ,
-						'weight' : XSWeight+'*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*chargeFlipW*'+ChargMisSign,
+						'weight' : XSWeight+'*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*chargeFlipW',
 						'FilesPerJob' : 2 ,
 					}
 addSampleWeight(samples,'ChMisId','DYJetsToLL_M-10to50'	,DY_W)
@@ -105,7 +100,7 @@ samples['ttbar'] = 	{ 	'name'  :getSampleFiles(chargeFlipDir,'TTTo2L2Nu',True)
 					+getSampleFiles(chargeFlipDir,'ST_tW_top_noHad',True)
 					+getSampleFiles(chargeFlipDir,'ST_tW_antitop_noHad',True) 
                                 ,
-						'weight' : XSWeight+'*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*chargeFlipW*'+ChargMisSign,
+						'weight' : XSWeight+'*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*chargeFlipW',
 						'FilesPerJob' : 6 ,
 					}
 
@@ -114,7 +109,8 @@ samples['ttbar'] = 	{ 	'name'  :getSampleFiles(chargeFlipDir,'TTTo2L2Nu',True)
 ###########################################
 #########  Prompt Substraction  ###########
 ###########################################
-#The FakeW=FakeR/1-FakeR is calculated from DATA in a region enhanced in non-Prompt and fake leptons. Using Simulations is possible to substract the fake contributions (done using two regions: Tight-Loose and Loose-Loose) leaving only the non-prompt background (TL-LL)DATA-(TL-LL)Sim*FakeW=N_non-prompt
+#The FakeW=FakeR/1-FakeR is calculated from DATA in a region enhanced in non-Prompt and fake leptons. Using Simulations is possible to substract the prompt contribution (done using two regions: Tight-Loose and Loose-Loose) leaving only the non-prompt background (TL-LL)DATA-(TL-LL)Sim*FakeW=N_non-prompt
+#Samples here represent the prompt leptons
 samples['DY_promptSubtr']  = { 	'name' 	:getSampleFiles(PromptSubtr,'DYJetsToLL_M-10to50',True)
 										+getSampleFiles(PromptSubtr,'DYJetsToLL_M-50',True)    
 										,
@@ -152,7 +148,7 @@ samples['Vg_promptSubtr'] =	{ 	'name':getSampleFiles(PromptSubtr,'WGJJ',True)
 									   +getSampleFiles(PromptSubtr,'Zg',True) 
 					 	#+getSampleFiles(PromptSubtr,'Wg_MADGRAPHMLM',True)
 										,    
-                                'weight' : '-1.*fakeW2l*'+XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+SameSign,    
+                                'weight' : '-1.*fakeW2l*'+XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+SameSign,#i want to substract gamma->ll so i don't apply the PromptW    
 							}
 
 
@@ -180,8 +176,6 @@ samples['VVV_promptSubtr']= {	'name':getSampleFiles(PromptSubtr,'WZZ',True)
 									  +getSampleFiles(PromptSubtr,'ZZZ',True)
 									  +getSampleFiles(PromptSubtr,'WWW',True) 
 									  +getSampleFiles(PromptSubtr,'WWZ',True) 
-									  +getSampleFiles(PromptSubtr,'TTZToQQ',True) 
-									  +getSampleFiles(PromptSubtr,'TTWJetsToQQ',True) 
 									  +getSampleFiles(PromptSubtr,'TTWJetsToLNu',True) 
 									  +getSampleFiles(PromptSubtr,'TTZToLLNuNu_M-10',True)
 									  ,								  
@@ -190,7 +184,7 @@ samples['VVV_promptSubtr']= {	'name':getSampleFiles(PromptSubtr,'WZZ',True)
 
 samples['DPS_promptSubtr']= {  	'name': getSampleFiles(PromptSubtr,'WWTo2L2Nu_DoubleScattering',True)
 										, 
-								'weight' : '-1.*fakeW2l*'+XSWeight+'*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign, 
+								'weight' : '-1.*fakeW2l*baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign, 
 							}       
         
 samples['WZ_promptSubtr'] =	{	'name': [ ], 
@@ -228,7 +222,6 @@ for DataSet in MyWeights.keys():
 
 samples['Vg']  =  {     'name'  :getSampleFiles(MCDir,'Zg',True)
 				+getSampleFiles(MCDir,'WGJJ',True)
-				#+getSampleFiles(MCDir,'Wg_MADGRAPHMLM',True)
                                 ,
                         'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC +'*'+SameSign,
                   }
@@ -304,37 +297,75 @@ samples['WW_strong'] = {   	'name'   :getSampleFiles(MCDir,'WpWpJJ_QCD',True)
 ###########################################
 #############   SIGNALS  ##################
 ###########################################
+### Gen Invariant Mass
+mjj="sqrt(2*std_vector_jetGen_pt[0]*std_vector_jetGen_pt[1]*(cosh(std_vector_jetGen_eta[0]-std_vector_jetGen_eta[1])-cos(std_vector_jetGen_phi[0]-std_vector_jetGen_phi[1])))"
+mll="sqrt(2*std_vector_leptonGen_pt[0]*std_vector_leptonGen_pt[1]*(cosh(std_vector_leptonGen_eta[0]-std_vector_leptonGen_eta[1])-cos(std_vector_leptonGen_phi[0]-std_vector_leptonGen_phi[1])))"
 
-samples['WpWp_EWK'] = {  	'name'  :getSampleFiles(MCDir,'WpWpJJ_EWK',True)
-								#+getSampleFiles(directory,'WpWpJJ_EWK_aQGC')
-								,
-						'weight' : XSWeight+'*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466' ,    
-						'FilesPerJob' : 1 ,
-					}
-					
-samples['WmWm_EWK'] = {  	'name'  :getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
-								#+getSampleFiles(directory,'WpWpJJ_EWK_aQGC')
-								,
-						'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466' ,    
-						'FilesPerJob' : 1 ,
-					}					
+#mjj
+#wwjj_bin0="("+mjj+"<1000)"
+#wwjj_bin1="("+mjj+">=1000 && "+mjj+"<1500)"
+#wwjj_bin2="("+mjj+">=1500)"
+
+# mll
+
+wwjj_bin0="("+mll+"<300)"
+wwjj_bin1="("+mll+">=300 && "+mjj+"<600)"
+wwjj_bin2="("+mll+">=600)"
+#
+#Dressed lepton pt 1
+#wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[0]<60)"
+#wwjj_bin1 = "(std_vector_dressedLeptonGen_pt[0]>=60 && std_vector_dressedLeptonGen_pt[0]<120)"
+#wwjj_bin2 ="(std_vector_dressedLeptonGen_pt[0]>=120)"
+
+#dressed lepton pt2 2
+#wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[1]<50)"
+#wwjj_bin1 = "(std_vector_dressedLeptonGen_pt[1]>=50 && std_vector_DressedLeptonGen_pt[1]<100)"
+#wwjj_bin2 ="(std_vector_dressedLeptonGen_pt[1]>=100)"
+#wwjj_bin3 ="(std_vector_dressedLeptonGen_pt[0]>=150)"
+#A dressed lepton is a system formed of a charged lepton and nearby photons-> should be dressedLeptonGen used insted of the normal lepGen?
+
+
+samples['Signal_bin0']={'name':getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
+			+getSampleFiles(MCDir,'WpWpJJ_EWK',True),
+			'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466'+'*'+wwjj_bin0, #K factor
+			'FilesPerJob' : 1 ,
+			}
+
+addSampleWeight(samples,'Signal_bin0','WpWpJJ_EWK','GEN_weight_SM/abs(GEN_weight_SM)')
+
+samples['Signal_bin1']={'name':getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
+			+getSampleFiles(MCDir,'WpWpJJ_EWK',True),
+			'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466'+'*'+wwjj_bin1, #K factor
+			'FilesPerJob' : 1 ,
+			}
+
+addSampleWeight(samples,'Signal_bin1','WpWpJJ_EWK','GEN_weight_SM/abs(GEN_weight_SM)')
+
+samples['Signal_bin2']={'name':getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
+			+getSampleFiles(MCDir,'WpWpJJ_EWK',True),
+			'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466'+'*'+wwjj_bin2, #K factor
+			'FilesPerJob' : 1 ,
+			}
+
+addSampleWeight(samples,'Signal_bin2','WpWpJJ_EWK','GEN_weight_SM/abs(GEN_weight_SM)')
+
 
 ###########################################
 ################## FAKE ###################
 ###########################################
 
 samples['Fake_lep']={'name': [ ] ,
-                       'weight' : 'fakeW2l'+'*'+METFilter_DATA+'*'+SameSign,              #   weight/cut 
+                       'weight' : 'fakeW2l'+'*'+METFilter_DATA+'*'+SameSign,           
                        'weights' : [ ] ,
                        'isData': ['all'],
                        'FilesPerJob' : 6 ,
 					}
 
 
-for Run in DataRun :
-  directory = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016'+Run[0]+'_RemAOD/lep2SelVBS__hadd__EpTCorr__TrigMakerData__tightVbsSel__bkgWeights/'
+for Run in DataRun: 
+  FakeDir = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016'+Run[0]+'_RemAOD/lep2SelVBS__hadd__EpTCorr__TrigMakerData__tightVbsSel__bkgWeights/'
   for DataSet in DataSets :
-    FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True)
+    FileTarget = getSampleFiles(FakeDir,DataSet+'_'+Run[1],True)
     for iFile in FileTarget:
       samples['Fake_lep']['name'].append(iFile)
       samples['Fake_lep']['weights'].append(DataTrig[DataSet])
@@ -351,9 +382,9 @@ samples['DATA']  = 	{   'name': [ ] ,
 					}
 
 for Run in DataRun :
-  directory = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016'+Run[0]+'_RemAOD/lep2SelVBS__hadd__EpTCorr__TrigMakerData__l2tightVBS__tightVbsSel/'
+  DataDir = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016'+Run[0]+'_RemAOD/lep2SelVBS__hadd__EpTCorr__TrigMakerData__l2tightVBS__tightVbsSel/'
   for DataSet in DataSets :
-    FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True)
+    FileTarget = getSampleFiles(DataDir,DataSet+'_'+Run[1],True)
     for iFile in FileTarget:
       samples['DATA']['name'].append(iFile)
       samples['DATA']['weights'].append(DataTrig[DataSet]) 

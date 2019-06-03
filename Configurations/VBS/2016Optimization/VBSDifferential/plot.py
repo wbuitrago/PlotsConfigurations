@@ -1,71 +1,67 @@
+
 # plot configuration
 
 
 
-#groupPlot = {}
+# groupPlot = {}
 # 
 # Groups of samples to improve the plots (merge different sample during plot).
 # If not defined, normal plots is used
 #
-
-#groupPlot['Background']  = {  
-                  #'nameHR' : "Background",
-                  #'isSignal' : 0,
-                  #'color': 418,    # kGreen+2
-                  #'samples'  : ['ChMisId' , 'ttbar','VVV','ZZ' , 'WZ' , 'DPS','Vg', 'WW_strong', 'Fake_lep','DY_promptSubtr','lep_TT_promptSubtr','singleTop_promptSubtr','singleAntiTop_promptSubtr','ggWWTo2L2Nu_promptSubtr','WWTo2L2Nu_promptSubtr','Vg_promptSubtr','ZZ_promptSubtr','WpWpJJ_promptSubtr','WpWpJJ_promptSubtr','WpWpJJ_QCD_promptSubtr','VVV_promptSubtr','DPS_promptSubtr','WZ_promptSubtr',]
-              #}
-
+Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
+signal=0; blind=1
 groupPlot['ChargeMisId']  = {  
                   'nameHR' : "ChMisId",
                   'isSignal' : 0,
-                  'color': 875,    #kViolet-5
+                  'color': Red,    # kRed
                   'samples'  : ['ChMisId' , 'ttbar']
               }
-
-groupPlot['WW_strong']  = {  
-                  'nameHR' : "WW QCD",
-                  'isSignal' : 0,
-                  'color'    : 861,   #kAzure+1
-                  'samples'  : ['WW_strong']
-              }
-              
-groupPlot['VVV']  = {  
-                  'nameHR' : 'VVV',
-                  'isSignal' : 0,
-                  'color': 801, #kOrange+1  
-                  'samples'  : ['VVV']
-              }
-
-groupPlot['Vg']  = {  
-                  'nameHR' : "V#gamma",
-                  'isSignal' : 0,
-                  'color'    : 633, #kRed+1
-                  'samples'  : ['Vg']
-              }
-
 
 groupPlot['VV']  = {  
                   'nameHR' : "VV",
                   'isSignal' : 0,
-                  'color'    : 418,  #kGreen+2   
+                  'color'    : Violet+6, # kViolet+10  
                   'samples'  : ['ZZ' , 'WZ' , 'DPS']
-              }      
+              }
+            
+groupPlot['VVV']  = {  
+                  'nameHR' : 'VVV',
+                  'isSignal' : 0,
+                  'color': Green, # kGreen 
+                  'samples'  : ['VVV']
+              }
+
+
+
+
+groupPlot['Vg']  = {  
+                  'nameHR' : "V#gamma",
+                  'isSignal' : 0,
+                  'color'    : Orange-3,   # kOrange + 10
+                  'samples'  : ['Vg']
+              }
+             
+groupPlot['WW_strong']  = {  
+                  'nameHR' : "WW QCD",
+                  'isSignal' : 0,
+                  'color'    : Violet, # kViolet
+                  'samples'  : ['WW_strong']
+              }                
+              
+              
         
 groupPlot['non-prompt']  = {  
                   'nameHR' : 'non-Prompt',
                   'isSignal' : 0,
-                  'color': 616,  #kMagenta
-                  'samples'  : ['Fake_lep','DY_promptSubtr','lep_TT_promptSubtr','singleTop_promptSubtr','singleAntiTop_promptSubtr','ggWWTo2L2Nu_promptSubtr','WWTo2L2Nu_promptSubtr','Vg_promptSubtr','ZZ_promptSubtr','WpWpJJ_promptSubtr','WpWpJJ_promptSubtr','WpWpJJ_QCD_promptSubtr','VVV_promptSubtr','DPS_promptSubtr','WZ_promptSubtr']
+                  'color': Yellow,    # kYellow
+                  'samples'  : ['Fake_lep','DY_promptSubtr','lep_TT_promptSubtr','singleTop_promptSubtr','singleAntiTop_promptSubtr','ggWWTo2L2Nu_promptSubtr','WWTo2L2Nu_promptSubtr','Vg_promptSubtr','ZZ_promptSubtr','WpWpJJ_promptSubtr','WmWmJJ_promptSubtr','WpWpJJ_QCD_promptSubtr','VVV_promptSubtr','DPS_promptSubtr','WZ_promptSubtr']
               }
 
 
-groupPlot['WW_EWK']  = {  
-                  'nameHR' : "WW EWK",
-                  'isSignal' : 1,
-                  'color'    : 600,  #kBlue  
-                  'samples'  : ['WpWp_EWK' , 'WmWm_EWK']
-              }
-# *******************************************************************************
+
+
+
+
 #plot = {}
 
 # keys here must match keys in samples.py    
@@ -73,14 +69,14 @@ groupPlot['WW_EWK']  = {
 
 ##Charge Misidentification               
 plot['ChMisId']  = {  
-                  'color': 418,    # kGreen+2
+                  'color': Red,    # kRed
                   'isSignal' : 0,
                   'isData'   : 0, 
                   'scale'    : 1.0
               }
 plot['ttbar'] = {   
                   'nameHR' : 't#bar{t}',
-                  'color': 418,   # kYellow
+                  'color': Red,   # kRed
                   'isSignal' : 0,
                   'isData'   : 0, 
                   'scale'    : 1.0
@@ -88,7 +84,7 @@ plot['ttbar'] = {
 
 ##Fake and prompt substraction
 plot['Fake_lep']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
@@ -96,157 +92,144 @@ plot['Fake_lep']  = {
 
 
 plot['DY_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['lep_TT_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['singleTop_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
-             }
+              }
 
 plot['singleAntiTop_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['ggWWTo2L2Nu_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['WWTo2L2Nu_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['Vg_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['ZZ_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['WpWpJJ_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
              
 plot['WmWmJJ_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['WpWpJJ_QCD_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['VVV_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['DPS_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
 plot['WZ_promptSubtr']  = {  
-                  'color': 400,    # kYellow
+                  'color': Yellow,    # kYellow
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
 
-##Signal
-plot['WpWp_EWK']  = {
-                  'color': 602, # kAzure -9 
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.0   
-                  }
-        
-plot['WmWm_EWK']  = {
-                  'color': 602, # kAzure -9 
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.0   
-                  }
+
 ##Irreducible Background
 plot['WW_strong']  = {
-                  'color': 633, # kAzure -9 
+                  'color': Violet, # kViolet
                   'isSignal' : 0,
                   'isData'   : 0,
-                 'scale'    : 1.0   
+                  'scale'    : 1.0   
                   }
 
 
 plot['Vg']  = { 
-                  'color': 810, # kAzure -1  
+                  'color': Orange+10, # kOrange+10  
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0
-                 }
+                  }
 ##Reducible Background
 ##VV plot
 plot['ZZ']  = { 
-                  'color': 617, # kAzure -2  
+                  'color': Violet+10, # kViolet+10 
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0
                   }
 
 plot['WZ']  = { 
-                  'color': 617, # kAzure -2  
+                  'color': Violet+10, # kViolet+10  
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0
                   }
 
 plot['DPS']  = { 
-                  'color': 617, # kAzure -2  
+                  'color': Violet+10, # kViolet+10   
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0
                   }
 ##VVV
 plot['VVV']  = { 
-                  'color': 857, # kAzure -3  
+                  'color': Green, # kGreen 
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0
@@ -259,14 +242,53 @@ plot['DATA']  = {
                   'color': 1 ,  
                   'isSignal' : 0,
                   'isData'   : 1 ,
-                  'isBlind'  : 1 ,
+                  'isBlind'  : blind ,
 		  'scale'    : 1.0
               }
 
 
+
+groupPlot['WW_EWK_bin0']  = {'nameHR' : "Signal bin 0",
+	'isSignal' : signal,
+	'color'    : Azure-9, # kAzure+4
+	'samples'  : ['Signal_bin0']
+	}
+groupPlot['WW_EWK_bin1']  = {'nameHR' : "Signal bin 1",
+			'isSignal' : signal,
+			'color'    : Azure-4, # kAzure+4
+			'samples'  : ['Signal_bin1']
+			}
+groupPlot['WW_EWK_bin2']  = {'nameHR' : "Signal bin 2",
+			'isSignal' : signal,
+			'color'    : Azure+4, # kAzure+4
+			'samples'  : ['Signal_bin2']
+			}
+
+
+plot['Signal_bin0']  = {
+		'color': Azure+5, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
+plot['Signal_bin1']  = {
+		'color': Azure+6, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
+plot['Signal_bin2']  = {
+		'color': Azure+7, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
+
+
 # additional options
-legend['lumi'] = 'L = 35.9 fb^{-1}'
-legend['sqrt'] = '13 TeV'
+legend['lumi'] = 'L = 35.9/fb'
+
+legend['sqrt'] = '#sqrt{s} = 13 TeV'
 
 
 

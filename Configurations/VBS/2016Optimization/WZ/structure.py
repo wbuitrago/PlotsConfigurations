@@ -26,8 +26,12 @@ structure['ZZ']  = {
                   'isData'   : 0 
                   }
 
-structure['WZ']  = { 
+structure['WZ_strong']  = { 
                   'isSignal' : 0,
+                  'isData'   : 0 
+                  }
+structure['WZ_EWK']  = { 
+                  'isSignal' : 1,
                   'isData'   : 0 
                   }
 
