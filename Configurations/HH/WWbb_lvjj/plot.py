@@ -13,21 +13,12 @@
 
 #BKG
 
-#groupPlot['Others']  = {
-#                        'nameHR' : 'Others',
-#                        'isSignal' : 0,
-#                        'color': 617,
-#                        'samples'  : ['Others']
-#                        }
-
-
-
-groupPlot['TTToSemilepton']  = {    
-				  'nameHR' : 'ttbar',
-				  'isSignal' : 0,
-				  'color' : 860,
-			  	  'samples' : ['TT']
-			       }	
+#groupPlot['TTToSemilepton']  = {    
+#				  'nameHR' : 'ttbar',
+#				  'isSignal' : 0,
+#				  'color' : 860,
+#			  	  'samples' : ['TT']
+#			       }	
 
 groupPlot['Wjets']  = {
                         'nameHR' : 'W+Jets',
@@ -35,6 +26,14 @@ groupPlot['Wjets']  = {
                         'color': 418,
                         'samples'  : ['Wjets']
                      }
+
+#groupPlot['Others']  = {
+#                        'nameHR' : 'Others',
+#                        'isSignal' : 0,
+#                        'color': 617,
+#                        'samples'  : ['Others']
+#                        }
+
 
 
 #groupPlot['TTWJetsToLNu'] = {
@@ -126,21 +125,13 @@ groupPlot['HH']  = {
 #                    
 
 #BKG
-#plot['Others']  = {
-#                  'color': 617,
+
+#plot['TT']  = {
+#                  'color': 860,    
 #                  'isSignal' : 0,
 #                  'isData'   : 0,
 #                  'scale'    : 1.   ,
 #              }
-
-
-
-plot['TT']  = {
-                  'color': 860,    
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-              }
 
 plot['Wjets']  = {
                   'color': 418,
@@ -149,6 +140,13 @@ plot['Wjets']  = {
                   'scale'    : 1.   ,
                   }
 
+
+#plot['Others']  = {
+#                  'color': 617,
+#                  'isSignal' : 0,
+#                  'isData'   : 0,
+#                  'scale'    : 1.   ,
+#              }
 
 #plot['TTW']  = {
 #                  'color': 617,
@@ -218,7 +216,7 @@ plot['HH']  = {
                   'color': 632,
                   'isSignal' : 1,
                   'isData'   : 0,
-                  'scale'    : 1e2  ,
+                  'scale'    : 1  ,
               }
 
 

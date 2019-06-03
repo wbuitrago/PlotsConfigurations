@@ -39,7 +39,7 @@ treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 #samples = {}
 
 samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
-			'weight' :'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)',#effTrigW1l*
+			'weight' :'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight',
 		}
 
 samples['Wjets'] = { 	'name' :   
@@ -70,16 +70,16 @@ samples['Wjets'] = { 	'name' :
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
 				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
-				'weight': 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+				'weight': 'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
 				'FilesPerJob' : 3,
 		   }
 
 
 
-samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-                      'weight' :  'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' , 
-		      'FilesPerJob' : 3,
-		 }
+#samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
+#                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' , 
+#		      'FilesPerJob' : 3,
+#		 }
 
 #others minor backgrounds all inside Others
 #samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu', True) \
@@ -91,7 +91,7 @@ samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', 
 #                                +       getSampleFiles(directory_MC, 'WWTo2L2Nu', True) \
 #                                +       getSampleFiles(directory_MC, 'WZTo2L2Q', True) \
 #                                +       getSampleFiles(directory_MC, 'ZZTo2L2Q', True) ,
-#                                'weight' : 'puW*std_vector_lepton_recoW[0]*baseW*GEN_weight_SM/abs(GEN_weight_SM)' ,
+#                                'weight' : 'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
 #                        'FilesPerJob' : 3,
 #                         }
 
