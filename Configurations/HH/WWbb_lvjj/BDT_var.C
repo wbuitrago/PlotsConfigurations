@@ -26,7 +26,7 @@ void initReader()
     TString direction = "";
     direction = "/gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/weights/TMVAClassification_BDT.weights.xml";
 
-    reader_BDTweights->BookMVA("BDT_1",direction);
+    reader_BDTweights->BookMVA("BDT",direction);
 
 }
 
@@ -54,7 +54,7 @@ float BDT_var(float mjj_b,
     dphi_b_var = deltaphi_b;
 
 
-    return reader_BDTweights->EvaluateMVA("BDT_1");
+    return reader_BDTweights->EvaluateMVA("BDT");
 
 
 
