@@ -42,7 +42,7 @@ samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
 			'weight' :'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight',
 		}
 
-samples['Wjets'] = { 	'name' :   
+#samples['Wjets'] = { 	'name' :   
 #getSampleFiles(directory_MC, 'WJetsToLNu__part0', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part1', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part2', True)\
@@ -63,23 +63,23 @@ samples['Wjets'] = { 	'name' :
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part18', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part19', True)\
 #+ getSampleFiles(directory_MC, 'WJetsToLNu__part20', True),
-                                  getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT200_400', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT400_600', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT600_800', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
-				'weight': 'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
-				'FilesPerJob' : 3,
-		   }
+#                                  getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT200_400', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT400_600', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT600_800', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
+#				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
+#				'weight': 'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
+#				'FilesPerJob' : 3,
+#		   }
 
 
 
-#samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-#                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' , 
-#		      'FilesPerJob' : 3,
-#		 }
+samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
+                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' , 
+		      'FilesPerJob' : 3,
+		 }
 
 #others minor backgrounds all inside Others
 #samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu', True) \
