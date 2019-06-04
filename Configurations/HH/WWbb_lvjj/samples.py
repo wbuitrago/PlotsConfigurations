@@ -76,10 +76,10 @@ samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
 
 
 
-samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' , 
-		      'FilesPerJob' : 3,
-		 }
+#samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
+#                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' , 
+#		      'FilesPerJob' : 3,
+#		 }
 
 #others minor backgrounds all inside Others
 #samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu', True) \

@@ -2,20 +2,19 @@
 
 #variables = {}
     
-   
-variables['events']  = {   'name': '1',      
-                        'range' : (1000,0,1000),  
-                        'xaxis' : 'events', 
-                        'fold' : 3
-                        }
+#variables['events']  = {   'name': '1',      
+#                        'range' : (1000,0,1000),  
+#                        'xaxis' : 'events', 
+#                        'fold' : 3
+#                        }
 
 ####### BDT VAR #######
 variables['BDT_classifier'] = {
-                                 'name': 'BDT_var(mjj_b,deltaphi_lep_b_high,deltaeta_lep_b_low,deltaeta_lep_wjet_high,deltaphi_met_wjet_high,deltaR_lep_b,deltaR_lep_wjet,deltaR_b,deltaphi_lep_wjet_high,deltaphi_b)',
-                                 'range' : ([-0.9999,-0.5277,-0.4781,-0.3065,-0.1439,0.2921,0.5215,0.7047,1],),
+                                 'name': 'BDT_var(mjj_b,deltaphi_lep_b_high,deltaeta_lep_b_low,deltaeta_lep_wjet_high,deltaphi_met_wjet_high,deltaR_lep_b,deltaR_lep_wjet,deltaR_b,deltaphi_lep_wjet_high)',
+                                 'range' : (100, -1.,1.),
                                  'xaxis' : 'MVA discriminant',
                                  'fold' : 3,
-                                 'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/BDT_var.C+', 'initReader()']
+                                 'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/BDT_var.C', 'initReader()']
                               }
 
 
@@ -250,7 +249,6 @@ variables['BDT_classifier'] = {
 #                       'fold' : 3
 #                      }
 
-
 ################################
 ############ LEPTON ############
 ################################
@@ -471,104 +469,3 @@ variables['BDT_classifier'] = {
 #                        'fold'  : 0
 #                        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#############################################
-#################### NOT USED ###############
-#############################################
-
-#variables['mtw1']  = {  'name': 'mtw1',
-                        #'range' : (40,0,200),
-                        #'xaxis' : 'm_{T}^{W_{1}} [GeV]',
-                         #'fold' : 3
-                        #}
-
-#variables['mtw2']  = {  'name': 'mtw2',
-                        #'range' : (40,0,200),
-                        #'xaxis' : 'm_{T}^{W_{2}} [GeV]',
-                         #'fold' : 3
-                        #}
-
-#variables['trkMet']  = {   'name': 'metTtrk',
-                        #'range' : (40,0,200),
-                        #'xaxis' : 'trk met [GeV]',
-                         #'fold' : 3
-                        #}
-
-#variables['mpmet']  = { 'name': 'mpmet',
-                        #'range' : (40,0,200),
-                        #'xaxis' : 'min proj met [GeV]',
-                        #'fold' : 3
-                        #}
-
-#variables['dymvaggh']  = { 'name': 'dymvaggh',
-                        #'range' : (40,-1,1),
-                        #'xaxis' : 'DY MVA',
-                        #'fold' : 3
-                        #}
-
-#variables['dymvavbf']  = { 'name': 'dymvavbf',
-                        #'range' : (40,-1,1),
-                        #'xaxis' : 'DY MVA',
-                        #'fold' : 3
-                        #}
-#variables['mll']  = {   'name': 'mll',            #   variable name    
-#                        'range' : (40, 0,200),    #   variable range
-#                        'xaxis' : 'm_{ll} [GeV]',  #   x axis name
-#                         'fold' : 0
-#                        }
-
-#variables['mllpeak'] = {   'name': 'mll',            #   variable name
-                           #'range' : (100,80,100),    #   variable range
-                           #'xaxis' : 'm_{ll} [GeV]',  #   x axis name
-                           #'fold' : 0
-                        #}
-
-#variables['mth']  = {   'name': 'mth',            #   variable name    
-                        #'range' : (40,0,200),    #   variable range
-                        #'xaxis' : 'm_{T}^{H} [GeV]',  #   x axis name
-                         #'fold' : 0
-                        #}
-
-#variables['dphill']  = {   'name': 'abs(dphill)',     
-                        #'range' : (20,0,3.14),   
-                        #'xaxis' : '#Delta#phi_{ll}',
-                        #'fold' : 3
-                        #}
-
-#variables['ptll']  = {   'name': 'ptll',     
-                        #'range' : (40, 0,200),   
-                        #'xaxis' : 'p_{T}^{ll} [GeV]',
-                        #'fold' : 3
-                        #}
-
-
-#variables['eta1large']  = {  'name': 'std_vector_lepton_eta[0]',
-                       #'range' : ([-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4,],),
-                       #'xaxis' : '#eta 1st lep',
-                       #'fold'  : 3
-                       #}
-
-#variables['eta2large']  = {  'name': 'std_vector_lepton_eta[1]',
-                       #'range' : ([-2.4, -2.1, -1.6, -1.2, -0.8, -0.3, -0.2, 0.2, 0.3, 0.8, 1.2, 1.6, 2.1, 2.4,],),
-                       #'xaxis' : '#eta 2nd lep',
-                       #'fold'  : 3
-                       #}
-
-#variables['taupt1']  = {'name': 'std_vector_tau_pt[0]',     
-                        #'range' : (100,0,200),   
-                        #'xaxis' : 'p_{T} 1st tau',
-                        #'fold'  : 3                         
-                        #}
