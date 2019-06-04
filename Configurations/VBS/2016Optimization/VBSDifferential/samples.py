@@ -308,9 +308,9 @@ mll="sqrt(2*std_vector_leptonGen_pt[0]*std_vector_leptonGen_pt[1]*(cosh(std_vect
 
 # mll
 
-wwjj_bin0="("+mll+"<300)"
-wwjj_bin1="("+mll+">=300 && "+mjj+"<600)"
-wwjj_bin2="("+mll+">=600)"
+wwjj_bin0="("+mll+"<95)"
+wwjj_bin1="("+mll+">=95 && "+mll+"<190)"
+wwjj_bin2="("+mll+">=190)"
 #
 #Dressed lepton pt 1
 #wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[0]<60)"
