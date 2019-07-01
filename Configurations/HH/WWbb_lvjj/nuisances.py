@@ -12,25 +12,26 @@
 nuisances['lumi']  = {
                'name'  : 'lumi_13TeV',
                'samples'  : {
-                   'DY'       : '1.023',    
-                   'top'      : '1.023',    
-                   'WW'       : '1.023',    
-                   'ggWW'     : '1.023',
-                   'Vg'       : '1.023',
-                   'VgS'      : '1.023',
-                   'VZ'       : '1.023',
-                   'VVV'      : '1.023',
-                   'ggH_hww'  : '1.023',
-                   'qqH_hww'  : '1.023',
-                   'ZH_hww'   : '1.023',
-                   'ggZH_hww' : '1.023',
-                   'WH_hww'   : '1.023',
-                   'bbH_hww'  : '1.023',
-                   'H_htt'    : '1.023',
+                   'HH'        : '1.023',
+                   'Wjets'     : '1.023',
+                   'TT'        : '1.023',
+                   'Others'    : '1.023',
                    },
                'type'  : 'lnN',
               }
 
+
+
+# statistical fluctuation
+# on MC/data
+# "stat" is a special word to identify this nuisance
+# Use the following if you want to apply the automatic combine MC stat nuisances->Faster than bin-by-bin
+nuisances['stat']  = {
+              'type'  : 'auto',
+              'maxPoiss'  : '10',
+              'includeSignal'  : '1',
+              'samples' : {}
+             }
 
 
 ##### B-tagger

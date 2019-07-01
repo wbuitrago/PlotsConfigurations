@@ -13,12 +13,12 @@
 
 #BKG
 
-#groupPlot['TTToSemilepton']  = {    
-#				  'nameHR' : 'ttbar',
-#				  'isSignal' : 0,
-#				  'color' : 860,
-#			  	  'samples' : ['TT']
-#			       }	
+groupPlot['TTToSemilepton']  = {    
+				  'nameHR' : 'ttbar',
+				  'isSignal' : 0,
+				  'color' : 860,
+			  	  'samples' : ['TT']
+			       }	
 
 groupPlot['Wjets']  = {
                         'nameHR' : 'W+Jets',
@@ -27,12 +27,12 @@ groupPlot['Wjets']  = {
                         'samples'  : ['Wjets']
                      }
 
-#groupPlot['Others']  = {
-#                        'nameHR' : 'Others',
-#                        'isSignal' : 0,
-#                        'color': 617,
-#                        'samples'  : ['Others']
-#                        }
+groupPlot['Others']  = {
+                        'nameHR' : 'Others',
+                        'isSignal' : 0,
+                        'color': 617,
+                        'samples'  : ['Others']
+                        }
 
 
 
@@ -126,12 +126,12 @@ groupPlot['HH']  = {
 
 #BKG
 
-#plot['TT']  = {
-#                  'color': 860,    
-#                  'isSignal' : 0,
-#                  'isData'   : 0,
-#                  'scale'    : 1.   ,
-#              }
+plot['TT']  = {
+                  'color': 860,    
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.   ,
+              }
 
 plot['Wjets']  = {
                   'color': 418,
@@ -141,12 +141,12 @@ plot['Wjets']  = {
                   }
 
 
-#plot['Others']  = {
-#                  'color': 617,
-#                  'isSignal' : 0,
-#                  'isData'   : 0,
-#                  'scale'    : 1.   ,
-#              }
+plot['Others']  = {
+                  'color': 617,
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.   ,
+              }
 
 #plot['TTW']  = {
 #                  'color': 617,
