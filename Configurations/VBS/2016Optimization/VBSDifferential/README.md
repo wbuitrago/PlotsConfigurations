@@ -86,6 +86,8 @@ First create the workspace for MultiParamateres Fit:
 --PO 'map=.*/Signal_bin2:r3[1,0.8,1.2]' \
 pt1.combined.txt -o workspace.pt1.combined.txt.root
 
-
+Likelihood scan:
 	combine -M MultiDimFit -t -1 --setParameters r1=1,r2=1,r3=1 --algo=grid --points=1000 workspace.pt1.root > result.MultiDimFit.workspace.pt1.root.grid.txt
 
+Uncertainty evaluation:
+	combine -M MultiDimFit -t -1 --setParameters r1=1,r2=1,r3=1 --algo=singles --cl=0.68 workspace.pt1.root > result.MultiDimFit.workspace.pt1.root.singles.txt

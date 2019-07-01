@@ -249,19 +249,29 @@ plot['DATA']  = {
 
 
 groupPlot['WW_EWK_bin0']  = {'nameHR' : "Signal bin 0",
-	'isSignal' : signal,
-	'color'    : Azure-9, # kAzure+4
-	'samples'  : ['Signal_bin0']
-	}
+			'isSignal' : signal,
+			'color'    : Azure+0-9, # kAzure+4
+			'samples'  : ['Signal_bin0']
+			}
 groupPlot['WW_EWK_bin1']  = {'nameHR' : "Signal bin 1",
 			'isSignal' : signal,
-			'color'    : Azure-4, # kAzure+4
+			'color'    : Azure+0-4, # kAzure+4
 			'samples'  : ['Signal_bin1']
 			}
 groupPlot['WW_EWK_bin2']  = {'nameHR' : "Signal bin 2",
 			'isSignal' : signal,
-			'color'    : Azure+4, # kAzure+4
+			'color'    : Azure+1, # kAzure+4
 			'samples'  : ['Signal_bin2']
+			}
+groupPlot['WW_EWK_bin3']  = {'nameHR' : "Signal bin 3",
+			'isSignal' : signal,
+			'color'    : Azure+6, # kAzure+4
+			'samples'  : ['Signal_bin3']
+			}
+groupPlot['WW_EWK_bin4']  = {'nameHR' : "Signal bin 4",
+			'isSignal' : signal,
+			'color'    : Azure+11, # kAzure+4
+			'samples'  : ['Signal_bin4']
 			}
 
 
@@ -279,6 +289,18 @@ plot['Signal_bin1']  = {
 		}
 plot['Signal_bin2']  = {
 		'color': Azure+7, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
+plot['Signal_bin3']  = {
+		'color': Azure+8, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
+plot['Signal_bin4']  = {
+		'color': Azure+9, # kAzure+..
 		'isSignal' : signal,
 		'isData'   : 0,
 		'scale'    : 1.0
