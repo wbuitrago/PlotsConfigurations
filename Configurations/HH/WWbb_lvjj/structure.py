@@ -25,59 +25,59 @@ structure['Others'] = {
                         'isSignal' : 0,
                         'isData'   : 0
                   }
-
-structure['TTWJetsToLNu'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-
-structure['WZTo1L1Nu2Q'] = {
-		'isSignal' : 0,
-		'isData' : 0
-		}
-
-structure['WZTo1L3Nu'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-
-structure['WWW'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-
-structure['WWZ'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-
-structure['DY'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-
-structure['WWTo2L2Nu'] = {
-                 	 'isSignal' : 0,
-                  	'isData'   : 0
-			}
-
-structure['WZTo2L2Q'] = {
-                  	'isSignal' : 0,
-                  	'isData'   : 0
-                  	}
-
-structure['ZZTo2L2Q'] = {
-                  	'isSignal' : 0,
-                  	'isData'   : 0
-                  	}
+#
+#structure['TTWJetsToLNu'] = {
+#                  'isSignal' : 0,
+#                  'isData'   : 0
+#                  }
+#
+#structure['WZTo1L1Nu2Q'] = {
+#		'isSignal' : 0,
+#		'isData' : 0
+#		}
+#
+#structure['WZTo1L3Nu'] = {
+#                  'isSignal' : 0,
+#                  'isData'   : 0
+#                  }
+#
+#structure['WWW'] = {
+#                  'isSignal' : 0,
+#                  'isData'   : 0
+#                  }
+#
+#structure['WWZ'] = {
+#                  'isSignal' : 0,
+#                  'isData'   : 0
+#                  }
+#
+#structure['DY'] = {
+#                  'isSignal' : 0,
+#                  'isData'   : 0
+#                  }
+#
+#structure['WWTo2L2Nu'] = {
+#                 	 'isSignal' : 0,
+#                  	'isData'   : 0
+#			}
+#
+#structure['WZTo2L2Q'] = {
+#                  	'isSignal' : 0,
+#                  	'isData'   : 0
+#                  	}
+#
+#structure['ZZTo2L2Q'] = {
+#                  	'isSignal' : 0,
+#                  	'isData'   : 0
+#                  	}
 
 
 # data
-structure['DATA'] = {
-                       	'isSignal' : 0,
-                       	'isData'   : 1
-		    }
-
+#structure['DATA'] = {
+#                       	'isSignal' : 0,
+#                       	'isData'   : 1
+#		    }
+#
 
 
 

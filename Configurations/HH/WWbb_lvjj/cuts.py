@@ -2,7 +2,7 @@
 
 #cuts = {}
   
-supercut = 'H_jets[0] >= 0 && W_jets[0] >= 0'
+supercut = 'std_vector_jet_pt[3]>30 && (H_jets[0]>=0 && W_jets[0]>=0)'
 
  
 #cuts['wwlvjj_13TeV_e']  = 'abs(std_vector_lepton_flavour[0]) == 11'
@@ -12,8 +12,8 @@ supercut = 'H_jets[0] >= 0 && W_jets[0] >= 0'
 #cuts['wwlvjj_13TeV_m']  = 'abs(std_vector_lepton_flavour[0]) == 13 && std_vector_fatjet_pt[0]>0 && std_vector_lepton_pt[1] <=0'
 
 
-cuts['nocut_1']  = '1. '
-#cuts['deltaR_lep_w_cut']  = '(mjj_b >= 50. && mjj_b <= 150.) && (deltaR_lep_wjet<1.2)'
+#cuts['nocut']  = '1. '
+cuts['BDT_cut']  = 'BDT_var >= 0.48'
 
 
 #cuts['lepton_pt_20']  = 'std_vector_lepton_pt[0]>20'
