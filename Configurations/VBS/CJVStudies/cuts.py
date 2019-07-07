@@ -1,6 +1,8 @@
 #cuts
 #cuts = {}
 
+#supercut = '1'
+
 supercut= 'abs(std_vector_jet_eta[1])<5 && abs(std_vector_jet_eta[0])<5 \
 && metPfType1 > 30 \
 && std_vector_jet_pt[0]>30 && std_vector_jet_pt[1]>30 \
@@ -9,22 +11,22 @@ supercut= 'abs(std_vector_jet_eta[1])<5 && abs(std_vector_jet_eta[0])<5 \
 && (std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) > 0 \
 && veto_EMTFBug'
 
-JetVeto = '(std_vector_jet_pt[2]<30)'
+JetVeto = '(std_vector_jet_pt[2]<27.75)'
 
 CentralJetVeto = '\
-(std_vector_jet_pt[2]<=30 \
-|| (std_vector_jet_pt[2]>30 \
+(std_vector_jet_pt[2]<27 \
+|| (std_vector_jet_pt[2]>=27 \
 && std_vector_jet_eta[2] <  \
 ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[0]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[1]) \
 || std_vector_jet_eta[2] > \
 ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[1]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[0]) )) \
 '
 
-DynamicJetVeto35mjj = '(std_vector_jet_pt[2] < 0.035 * mjj)'
+DynamicJetVeto = '(std_vector_jet_pt[2] < 0.0326 * mjj)'
 
-DynamicCentralJetVeto35mjj = '\
-(std_vector_jet_pt[2]<=0.035 * mjj \
-|| (std_vector_jet_pt[2]>0.035 * mjj \
+DynamicCentralJetVeto = '\
+(std_vector_jet_pt[2]<0.038 * mjj \
+|| (std_vector_jet_pt[2]>=0.038 * mjj \
 && std_vector_jet_eta[2] <  \
 ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[0]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[1]) \
 || std_vector_jet_eta[2] > \
@@ -34,8 +36,8 @@ DynamicCentralJetVeto35mjj = '\
 cuts['VBS_13TeV_BaseCut']='1'
 cuts['JV'] = JetVeto
 cuts['CJV'] = CentralJetVeto
-cuts['DJV_35mjj'] = DynamicJetVeto35mjj
-cuts['DCJV_35mjj'] = DynamicCentralJetVeto35mjj
+cuts['DJV'] = DynamicJetVeto
+cuts['DCJV'] = DynamicCentralJetVeto
 
 # 11 = e
 # 13 = mu
