@@ -11,7 +11,7 @@ supercut= 'abs(std_vector_jet_eta[1])<5 && abs(std_vector_jet_eta[0])<5 \
 && (std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) > 0 \
 && veto_EMTFBug'
 
-JetVeto = '(std_vector_jet_pt[2]<27.75)'
+JetVeto = '(std_vector_jet_pt[2]<27.6)'
 
 CentralJetVeto = '\
 (std_vector_jet_pt[2]<27 \
@@ -22,7 +22,7 @@ CentralJetVeto = '\
 ((std_vector_jet_eta[0]<std_vector_jet_eta[1])*std_vector_jet_eta[1]+(std_vector_jet_eta[0]>=std_vector_jet_eta[1])*std_vector_jet_eta[0]) )) \
 '
 
-DynamicJetVeto = '(std_vector_jet_pt[2] < 0.0326 * mjj)'
+DynamicJetVeto = '(std_vector_jet_pt[2] < 0.0342 * mjj)'
 
 DynamicCentralJetVeto = '\
 (std_vector_jet_pt[2]<0.038 * mjj \
