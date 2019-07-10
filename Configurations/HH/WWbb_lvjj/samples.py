@@ -96,54 +96,54 @@ samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', 
 #                         }
 
 #####Drell-Yan#### (dovresti usare quello senza LO)
-samples['DY']  = {    'name'   : getSampleFiles(directory, 'DYJetsToLL_M-10to50-LO',True),
+samples['DY']  = {    'name'   : getSampleFiles(directory_MC, 'DYJetsToLL_M-10to50-LO',True),
                        'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                        'FilesPerJob' : 3,
                   }
 
 ####Single Top####
-samples['SingleTop']  = {    'name'   : getSampleFiles(directory, 'ST_s-channel',True)\
-                                       +getSampleFies(directory, 'ST_t-channel_antitop',True)\
-                                       +getSampleFiles(directory, 'ST_t-channel_top', True)\
-                                       +getSampleFiles(directory, 'ST_tW_antitop', True)\
-                                       +getSampleFiles(directory, 'ST_tW_top',True),
+samples['SingleTop']  = {    'name'   : getSampleFiles(directory_MC, 'ST_s-channel',True)\
+                                       +getSampleFiles(directory_MC, 'ST_t-channel_antitop',True)\
+                                       +getSampleFiles(directory_MC, 'ST_t-channel_top', True)\
+                                       +getSampleFiles(directory_MC, 'ST_tW_antitop', True)\
+                                       +getSampleFiles(directory_MC, 'ST_tW_top',True),
                              'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                              'FilesPerJob' : 3,
                         }
 
 ####TT leptonic####
-samples['TT_leptonic']  = {    'name'   : getSampleFiles(directory, 'TTTo2L2Nu',True),
+samples['TT_leptonic']  = {    'name'   : getSampleFiles(directory_MC, 'TTTo2L2Nu',True),
                                'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                                'FilesPerJob' : 3,
                           }
 
 #### WW #### (manca il semileptonico?)
-samples['WW']  = {    'name'   : getSampleFiles(directory, 'WWTo2L2Nu',True),
+samples['WW']  = {    'name'   : getSampleFiles(directory_MC, 'WWTo2L2Nu',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
                  }
 
 #### WWW ####
-samples['WWW']  = {    'name'   : getSampleFiles(directory, 'WWW',True),
+samples['WWW']  = {    'name'   : getSampleFiles(directory_MC, 'WWW',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
                  }
 
-samples['WWZ']  = {   'name'   : getSampleFiles(directory, 'WWW',True),
+samples['WWZ']  = {   'name'   : getSampleFiles(directory_MC, 'WWZ',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
                  }
 
 #### WZ #### (mancano altri?)
-samples['WZTo1L1Nu2Q']  = {    'name'   : getSampleFiles(directory, 'WZTo1L1Nu2Q',True)\
-                                         +getSampleFiles(directory, 'WZTo1L3Nu',True) \
-                                         +getSampleFiles(directory, 'WZTo2L2Q',True),
+samples['WZ']  = {    'name'   : getSampleFiles(directory_MC, 'WZTo1L1Nu2Q',True)\
+                                         +getSampleFiles(directory_MC, 'WZTo1L3Nu',True) \
+                                         +getSampleFiles(directory_MC, 'WZTo2L2Q',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
                  }
 
 #### ZZ #### (mancano altri?)
-samples['ZZ']  = {   'name'   : getSampleFiles(directory, 'ZZTo2L2Q',True),
+samples['ZZ']  = {   'name'   : getSampleFiles(directory_MC, 'ZZTo2L2Q',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
                  }
