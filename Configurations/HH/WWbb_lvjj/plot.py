@@ -182,7 +182,7 @@ plot['HH']  = {
                   'color': 632,
                   'isSignal' : 1,
                   'isData'   : 0,
-                  'scale'    : 1.  ,
+                  'scale'    : 10000.  ,
               }
 
 

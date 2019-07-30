@@ -26,7 +26,7 @@ void initReader()
 
 
     TString direction = "";
-    direction = "/gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/weights/TMVAClassification_BDT.weights.xml";
+    direction = "/gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/weights_true/TMVAClassification_BDT.weights.xml";
 
     reader_BDTweights->BookMVA("BDT",direction);
 

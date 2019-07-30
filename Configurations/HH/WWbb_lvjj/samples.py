@@ -7,8 +7,8 @@ from LatinoAnalysis.Tools.commonTools import *
 ###### Tree Directory according to site ######
 ##############################################
 
-directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC__HHPairingGen__HHjjlnu_kin__HH_MVAvar/'
-directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC__gr4JetsSkim__HHPairingAndVars__HH_MVAvar/'
+directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC__JetPairingHH__HHjjlnu_kin/'#__HH_MVAvar/'
+directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC__gr4JetsSkim__HHPairingAndVars/'#__HH_MVAvar/'
 #directory_data = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016B_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
 treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 
@@ -39,7 +39,7 @@ treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
 #samples = {}
 
 samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
-			'weight' :'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight',
+			'weight' :'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight*0.001152',
 		}
 
 samples['Wjets'] = { 	'name' :   
@@ -95,13 +95,13 @@ samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', 
 #                        'FilesPerJob' : 3,
 #                         }
 
-#####Drell-Yan#### (dovresti usare quello senza LO)
+######Drell-Yan#### (dovresti usare quello senza LO)
 samples['DY']  = {    'name'   : getSampleFiles(directory_MC, 'DYJetsToLL_M-10to50-LO',True),
                        'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                        'FilesPerJob' : 3,
                   }
 
-####Single Top####
+#####Single Top####
 samples['SingleTop']  = {    'name'   : getSampleFiles(directory_MC, 'ST_s-channel',True)\
                                        +getSampleFiles(directory_MC, 'ST_t-channel_antitop',True)\
                                        +getSampleFiles(directory_MC, 'ST_t-channel_top', True)\
@@ -110,20 +110,18 @@ samples['SingleTop']  = {    'name'   : getSampleFiles(directory_MC, 'ST_s-chann
                              'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                              'FilesPerJob' : 3,
                         }
-
 ####TT leptonic####
 samples['TT_leptonic']  = {    'name'   : getSampleFiles(directory_MC, 'TTTo2L2Nu',True),
                                'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                                'FilesPerJob' : 3,
                           }
-
-#### WW #### (manca il semileptonico?)
+##### WW #### (manca il semileptonico?)
 samples['WW']  = {    'name'   : getSampleFiles(directory_MC, 'WWTo2L2Nu',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
                  }
 
-#### WWW ####
+### WWW ####
 samples['WWW']  = {    'name'   : getSampleFiles(directory_MC, 'WWW',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
@@ -134,7 +132,7 @@ samples['WWZ']  = {   'name'   : getSampleFiles(directory_MC, 'WWZ',True),
                       'FilesPerJob' : 3,
                  }
 
-#### WZ #### (mancano altri?)
+## WZ #### (mancano altri?)
 samples['WZ']  = {    'name'   : getSampleFiles(directory_MC, 'WZTo1L1Nu2Q',True)\
                                          +getSampleFiles(directory_MC, 'WZTo1L3Nu',True) \
                                          +getSampleFiles(directory_MC, 'WZTo2L2Q',True),
@@ -142,58 +140,12 @@ samples['WZ']  = {    'name'   : getSampleFiles(directory_MC, 'WZTo1L1Nu2Q',True
                       'FilesPerJob' : 3,
                  }
 
-#### ZZ #### (mancano altri?)
+### ZZ #### (mancano altri?)
 samples['ZZ']  = {   'name'   : getSampleFiles(directory_MC, 'ZZTo2L2Q',True),
                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
                       'FilesPerJob' : 3,
                  }
 
-
-#other minor backgrounds in separated samples
-#samples['TTW']  = {    'name'   : getSampleFiles(directory, 'TTWJetsToLNu') ,
-#                                                'weight' :   '1.' ,
-#	                 }
-
-#samples['WZTo1L1Nu2Q']  = {    'name'   : getSampleFiles(directory, 'WZTo1L1Nu2Q') ,
-#                                                'weight' :   '1.' ,
-#                 }
-
-
-
-#samples['WZTo1L3Nu']  = {    'name'   : ['latino_WZTo1L3Nu__part0.root',
-#					'latino_WZTo1L3Nu__part1.root'] ,
-#                                                'weight' :   '1.' ,
-#                 }
-
-
-
-#samples['WWW']  = {    'name'   : ['latino_WWW__part0.root'] ,
-#                                                'weight' :   '1.' ,
-#                 }
-
-#samples['WWZ']  = {    'name'   : ['latino_WWZ__part0.root'] ,
-#                                                'weight' :   '1.' ,
-#                 }
-
-#samples['DY']  = {    'name'   : getSampleFiles(directory, 'DYJetsToLL_M-10to50-LO'),
-#			'weight' :   '1.' ,
-#			'FilesPerJob' : 3,
-#                  }
-
-#samples['WWTo2L2Nu']  = {    'name'   : getSampleFiles(directory, 'WWTo2L2Nu') ,
-#                                'weight' :   '1.' ,
-#				'FilesPerJob' : 3,
-#                         }
-
-#samples['WZTo2L2Q']  = {    'name'   : getSampleFiles(directory, 'WZTo2L2Q') ,
-#                                'weight' :   '1.' ,
-#				'FilesPerJob' : 3,
-#                  }
-
-#samples['ZZTo2L2Q']  = {    'name'   : getSampleFiles(directory, 'ZZTo2L2Q') ,
-#                                'weight' :   '1.' ,
-#				'FilesPerJob' : 3,
-#                  }
 
 
 
