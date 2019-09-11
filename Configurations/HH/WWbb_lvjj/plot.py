@@ -13,11 +13,11 @@
 
 #BKG
 
-groupPlot['TTToSemilepton']  = {    
-				  'nameHR' : 'tt_semileptonic',
+groupPlot['TT_semilep']  = {    
+				  'nameHR' : 'tt_semilep',
 				  'isSignal' : 0,
 				  'color' : 860,
-			  	  'samples' : ['TT']
+			  	  'samples' : ['TT_semilep']
 			       }	
 
 groupPlot['Wjets']  = {
@@ -27,11 +27,11 @@ groupPlot['Wjets']  = {
                         'samples'  : ['Wjets']
                      }
 
-groupPlot['TT_leptonic']  = {
-                        'nameHR' : 'tt_leptonic',
+groupPlot['TT_lep']  = {
+                        'nameHR' : 'tt_lep',
                         'isSignal' : 0,
                         'color': 797,
-                        'samples'  : ['TT_leptonic']
+                        'samples'  : ['TT_lep']
                      }
 
 
@@ -109,7 +109,7 @@ groupPlot['HH']  = {
 
 #BKG
 
-plot['TT']  = {
+plot['TT_semilep']  = {
                   'color': 860,    
                   'isSignal' : 0,
                   'isData'   : 0,
@@ -123,7 +123,7 @@ plot['Wjets']  = {
                   'scale'    : 1.   ,
                   }
 
-plot['TT_leptonic']  = {
+plot['TT_lep']  = {
                   'color': 797,
                   'isSignal' : 0,
                   'isData'   : 0,
@@ -202,7 +202,7 @@ plot['HH']  = {
 
 
 #legend['lumi'] = 'L = 6.3/fb'
-legend['lumi'] = 'L = 35.9/fb'
+legend['lumi'] = 'L = 41.5/fb'
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
 
 

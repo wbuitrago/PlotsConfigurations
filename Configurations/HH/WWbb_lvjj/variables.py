@@ -1,34 +1,82 @@
-variables['BDT_classifier'] = {
-                                 'name': 'BDT_var(mjj_b, deltaR_lep_wjet, deltaR_b, deltaphi_lep_wjet_high, deltaR_lep_b, deltaeta_lep_wjet_high, deltaphi_lep_b_high, deltaphi_met_wjet_high, deltaphi_lep_b_low)',
-                                 'range' : (100, 0.3,0.8),
-                                 'xaxis' : 'MVA discriminant',
-                                 'fold' : 3,
-                                 'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/BDT_var.C', 'initReader()']
-                              }
+# variables
 
-variables['mjj_b']  = {
-                          'name': 'mjj_b',#'mjj(std_vector_jet_eta[H_jets[0]],std_vector_jet_eta[H_jets[1]], std_vector_jet_pt[H_jets[0]], std_vector_jet_pt[H_jets[1]], std_vector_jet_phi[H_jets[0]], std_vector_jet_phi[H_jets[1]])',            #   variable name    
-                           'range' : (30,20,500),    #   variable range
-                           'xaxis' : 'm_{bb}',  #   x axis name
-                           'fold' : 3#,
-                        #'linesToAdd' : ['.L /gwpool/users/achiapparini/CMSSW_8_0_26_patch1/src/PlotsConfigurations/Configurations/HH/WWbb_lvjj/mjj.C+']
+#variables = {}
+    
+   
+variables['events']  = {   'name': '1',      
+                        'range' : (1,0,2),  
+                        'xaxis' : 'events', 
+                        'fold' : 3
                         }
-variables['b_pt_high'] = { 'name': 'b_pt_high',
-                      'range': (40,30,400),
-                      'xaxis': 'p_{T} (b high)',
-                      'fold': 3
-                    }
+    
+################
+#### LEPTON ####
+################
 
-variables['b_pt_low'] = { 'name': 'b_pt_low',
-                      'range': (0,30,140),
-                      'xaxis': 'p_{T} (b low)',
-                      'fold': 3
-                    }
-variables['deltaR_lep_w']  = {
-                           'name': 'deltaR_lep_wjet',
-                           'range' : (30,0.4,4),
-                           'xaxis' : '#Delta R (lep - wjets)',
-                           'fold' : 3,
-                           #'SignalOnRight': 1
+variables['lepton_pt']  = {   'name': 'Lepton_pt[0]',     
+                        'range' : (50,0,300),   
+                        'xaxis' : 'lepton pt (GeV)',
+                        'fold'  : 3                         
                         }
 
+#variables['lepton_eta'] = {   'name': 'abs(Lepton_eta[0])',      
+#                        'range' : (50,0,2.5),  
+#                        'xaxis' : 'Lepton #eta', 
+#                        'fold' : 3
+#                        }
+
+###########
+### JET ###
+###########
+
+#variables['nJets'] = {   'name': 'Sum$(CleanJet_pt[CleanJet] >= 30)',      
+#                        'range' : (10,0,10),  
+#                        'xaxis' : 'nJets >= 30 GeV', 
+#                        'fold' : 3
+#                        }
+
+#variables['Jet1_pt'] = {   'name': 'abs(CleanJet_pt[CleanJet[0]])',      
+#                        'range' : (60,0,500),  
+#                        'xaxis' : 'Jet 1st pt', 
+#                        'fold' : 3
+#                        }
+
+#variables['Jet2_pt'] = {   'name': 'abs(CleanJet_pt[CleanJet[1]])',      
+#                        'range' : (60,0,500),  
+#                        'xaxis' : 'Jet 2nd pt', 
+#                        'fold' : 3
+#                        }
+
+#variables['Jet3_pt'] = {   'name': 'abs(CleanJet_pt[CleanJet[2]])',      
+#                        'range' : (60,0,500),  
+#                        'xaxis' : 'Jet 3rd pt', 
+#                        'fold' : 3
+#                        }
+#variables['Jet4_pt'] = {   'name': 'abs(CleanJet_pt[CleanJet[3]])',      
+#                        'range' : (60,0,500),  
+#                        'xaxis' : 'Jet 4th pt', 
+#                        'fold' : 3
+#                        }
+
+###########
+### MET ###
+###########
+
+#variables['PuppiMET'] = {   'name': 'PuppiMET_pt',      
+#                        'range' : (60,0,500),  
+#                        'xaxis' : 'PuppiMET_pt', 
+#                        'fold' : 3
+#                        }
+
+#variables['MET_pt'] = {   'name': 'MET_pt',      
+#                        'range' : (60,0,500),  
+#                        'xaxis' : 'MET_pt', 
+#                        'fold' : 3
+#                        }
+
+#variables['nbjet_medium']  = {
+#                        'name': '1*(Jet_btagDeepB>0.6324)+1*(Jet_btagDeepB>0.6324)+1*(Jet_btagDeepB>0.6324)+1*(Jet_btagDeepB>0.6324)+1*(Jet_btagDeepB>0.6324)+1*(Jet_btagDeepB>0.6324)',
+#                        'range' : (10,0,10),
+#                        'xaxis' : 'nbjet_loose',
+#                        'fold'  : 3
+#                        }

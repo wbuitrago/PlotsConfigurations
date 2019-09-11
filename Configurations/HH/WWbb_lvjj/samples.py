@@ -7,182 +7,174 @@ from LatinoAnalysis.Tools.commonTools import *
 ###### Tree Directory according to site ######
 ##############################################
 
-directory_sig = '/gwteray/users/govoni/OneLeptonSkims/HHWWbb_semileptonic_signal_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC__JetPairingHH__HHjjlnu_kin/'#__HH_MVAvar/'
-directory_MC = '/gwteray/users/govoni/OneLeptonSkims/Apr2017_summer16_SingleLepton_hercules/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l1tightChain__btagMedium__LepTrgFix__dorochester__formulasMC__gr4JetsSkim__HHPairingAndVars/'#__HH_MVAvar/'
-#directory_data = '/gwteras/cms/store/group/OneLepton/Apr2017_Run2016B_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
-treeBaseDir = '/gwteras/cms/store/group/OneLepton/'
+samples={}
+
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/'
+directory_MC = treeBaseDir + 'Fall2017_102X_nAODv4_Full2017v5/MCl1loose2017v5__MCCorr2017v5'
+directory_data = treeBaseDir + 'Run2017_102X_nAODv4_Full2017v5'
 
 #############################################
 ########### Definition of weights ###########
 #############################################
+eleWP = 'mvaFall17V2Iso_WP90'
+muWP  = 'cut_Tight_HWWW'
 
-#METFilter_Common = '(std_vector_trigger_special[0]*\
-#                     std_vector_trigger_special[1]*\
-#                     std_vector_trigger_special[2]*\
-#                     std_vector_trigger_special[3]*\
-#                     std_vector_trigger_special[5] )'
+LepWPCut_1l    =  '(Lepton_isTightElectron_'+eleWP+'[0]>0.5 || Lepton_isTightMuon_'+muWP+'[0]>0.5)'
+LepWPWeight_1l =  'Lepton_tightElectron_'+eleWP+'_IdIsoSF'+'[0]*\
+                  Lepton_tightMuon_'+muWP+'_IdIsoSF'+'[0]'
 
-#METFilter_MCver  =  '(std_vector_trigger_special[8]==-2.)'
-#METFilter_MCOld  =  '(std_vector_trigger_special[6]*std_vector_trigger_special[7])'
-#METFilter_MCNew  =  '(std_vector_trigger_special[8]*std_vector_trigger_special[9])'
-#METFilter_MC     =  METFilter_Common + '*' + '(('+METFilter_MCver+'*'+METFilter_MCOld+') or ((not '+METFilter_MCver+')*'+METFilter_MCNew+'))' 
+LepWPCut = LepWPCut_1l
+LepWPWeight = LepWPWeight_1l
 
-#METFilter_DATA   =  METFilter_Common + '*' + '(std_vector_trigger_special[4]*\
-#                                              std_vector_trigger_special[8]*\
-#                                              std_vector_trigger_special[9])'
+XSWeight   =   'XSWeight'
+SFweight1l =   'puWeight*\
+                TriggerEffWeight_1l*\
+                Lepton_RecoSF[0]*\
+                EMTFbug_veto'
+
+SFweight      = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l+'*PrefireWeight'
+
+METFilter_MC   = 'METFilter_MC'
+METFilter_DATA = 'METFilter_DATA'
 
 
+#############################################
+################# SAMPLES ###################
+#############################################
 
-
-# samples
-
-#samples = {}
-
-samples['HH'] = {	'name' : getSampleFiles(directory_sig, 'HH_bblnjj', True),
-			'weight' :'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight*0.001152',
-		}
-
-samples['Wjets'] = { 	'name' :   
-#getSampleFiles(directory_MC, 'WJetsToLNu__part0', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part1', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part2', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part3', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part4', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part5', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part6', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part7', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part8', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part9', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part10', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part11', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part12', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part13', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part14', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part15', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part16', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part18', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part19', True)\
-#+ getSampleFiles(directory_MC, 'WJetsToLNu__part20', True),
-                                  getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT200_400', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT400_600', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT600_800', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200_ext1', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True)\
-				+ getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True),
-				'weight': 'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
-				'FilesPerJob' : 3,
+samples['HH'] = {       'name' : getSampleFiles(directory_MC, 'GluGluToHHTo2B2WToLNu2J', True, 'nanoLatino_'),
+                        'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC ,
+                        'FilesPerJob' : 3,
+                }
+ """                                                                                                                                                                                                1,1           Top
+samples['Wjets'] = { 'name' :   
+          getSampleFiles(directory, 'WJetsToLNu-LO', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu-LO_ext1', True, 'nanoLatino_')
+          + getSampleFiles(directory, 'WJetsToLNu_HT100_200', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT100_200_ext1', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT100_200_ext2', True, 'nanoLatino_')
+          + getSampleFiles(directory, 'WJetsToLNu_HT200_400', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT200_400_ext1', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT200_400_ext2', True, 'nanoLatino_')
+          + getSampleFiles(directory, 'WJetsToLNu_HT400_600', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT400_600_ext1', True, 'nanoLatino_')
+          + getSampleFiles(directory, 'WJetsToLNu_HT600_800', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT600_800_ext1', True, 'nanoLatino_')
+          + getSampleFiles(directory, 'WJetsToLNu_HT800_1200', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT800_1200_ext1', True, 'nanoLatino_')
+          + getSampleFiles(directory, 'WJetsToLNu_HT1200_2500', True, 'nanoLatino_')
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT1200_2500_ext1', True, 'nanoLatino_')
+          + getSampleFiles(directory, 'WJetsToLNu_HT2500_inf', True, 'nanoLatino_'),
+          #+ getSampleFiles(directory, 'WJetsToLNu_HT2500_inf_ext1', True, 'nanoLatino_'),
+				'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC ,
+				'FilesPerJob' : 2,
 		   }
 
 
 
-samples['TT']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLepton', True) ,
-                      'weight' :  'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' , 
-		      'FilesPerJob' : 3,
-		 }
-
-#others minor backgrounds all inside Others
-#samples['Others']  = {    'name'   : getSampleFiles(directory_MC, 'TTWJetsToLNu', True) \
-#                                +       getSampleFiles(directory_MC, 'WZTo1L1Nu2Q', True) \
-#                                +       getSampleFiles(directory_MC, 'WZTo1L3Nu', True) \
-#                                +       getSampleFiles(directory_MC, 'WWW', True) \
-#                                +       getSampleFiles(directory_MC, 'WWZ', True) \
-#                                +       getSampleFiles(directory_MC, 'DYJetsToLL_M-10to50-LO', True) \
-#                                +       getSampleFiles(directory_MC, 'WWTo2L2Nu', True) \
-#                                +       getSampleFiles(directory_MC, 'WZTo2L2Q', True) \
-#                                +       getSampleFiles(directory_MC, 'ZZTo2L2Q', True) ,
-#                                'weight' : 'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
-#                        'FilesPerJob' : 3,
-#                         }
-
-######Drell-Yan#### (dovresti usare quello senza LO)
-samples['DY']  = {    'name'   : getSampleFiles(directory_MC, 'DYJetsToLL_M-10to50-LO',True),
-                       'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
-                       'FilesPerJob' : 3,
-                  }
-
-#####Single Top####
-samples['SingleTop']  = {    'name'   : getSampleFiles(directory_MC, 'ST_s-channel',True)\
-                                       +getSampleFiles(directory_MC, 'ST_t-channel_antitop',True)\
-                                       +getSampleFiles(directory_MC, 'ST_t-channel_top', True)\
-                                       +getSampleFiles(directory_MC, 'ST_tW_antitop', True)\
-                                       +getSampleFiles(directory_MC, 'ST_tW_top',True),
-                             'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
-                             'FilesPerJob' : 3,
-                        }
-####TT leptonic####
-samples['TT_leptonic']  = {    'name'   : getSampleFiles(directory_MC, 'TTTo2L2Nu',True),
-                               'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
-                               'FilesPerJob' : 3,
-                          }
-##### WW #### (manca il semileptonico?)
-samples['WW']  = {    'name'   : getSampleFiles(directory_MC, 'WWTo2L2Nu',True),
-                      'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
+samples['TT_semilep']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLeptonic', True) ,
+                      'weight' :  XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
-### WWW ####
+###### Drell-Yan #### 
+samples['DY'] = {    'name'   :   getSampleFiles(directory,'DYJetsToLL_M-5to50-LO',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-100to200',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-200to400',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-400to600',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-600toInf',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-100to200',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-200to400',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-400to600_ext1',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-600to800',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-800to1200',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-1200to2500',False,'nanoLatino_')
+                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-2500toInf',False,'nanoLatino_')
+                                ,
+                      'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC ,
+                      'FilesPerJob' : 6,
+                  }
+
+##### Single Top ####
+samples['singleTop'] = {    
+            'name'   :  getSampleFiles(directory,'ST_s-channel',False,'nanoLatino_') 
+                      + getSampleFiles(directory,'ST_t-channel_antitop',False,'nanoLatino_') 
+                      + getSampleFiles(directory,'ST_t-channel_top',False,'nanoLatino_') 
+                      + getSampleFiles(directory,'ST_tW_antitop',False,'nanoLatino_') 
+                      + getSampleFiles(directory,'ST_tW_top',False,'nanoLatino_') ,
+            'weight' :  XSWeight+'*'+SFweight+'*'+METFilter_MC ,
+            'FilesPerJob' : 3,
+                 }
+
+#### TT leptonic ####
+samples['TT_leptonic']  = {    'name'   : getSampleFiles(directory_MC, 'TTTo2L2Nu',True),
+                               'weight' :   XSWeight+'*'+SFweight+'*'+METFilter_MC ,
+                               'FilesPerJob' : 3,
+                          }
+##### WW #####
+samples['WW']  = {    'name'   : getSampleFiles(directory_MC, 'WWTo2L2Nu',True),
+                      'weight' :   XSWeight+'*'+SFweight+'*'+METFilter_MC ,
+                      'FilesPerJob' : 3,
+                 }
+
+#### WWW ####
 samples['WWW']  = {    'name'   : getSampleFiles(directory_MC, 'WWW',True),
-                      'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
+                      'weight' :    XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
 samples['WWZ']  = {   'name'   : getSampleFiles(directory_MC, 'WWZ',True),
-                      'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
+                      'weight' :    XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
-## WZ #### (mancano altri?)
+#### WZ #### 
 samples['WZ']  = {    'name'   : getSampleFiles(directory_MC, 'WZTo1L1Nu2Q',True)\
                                          +getSampleFiles(directory_MC, 'WZTo1L3Nu',True) \
                                          +getSampleFiles(directory_MC, 'WZTo2L2Q',True),
-                      'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
+                      'weight' :   XSWeight+'*'+SFweight+'*'+METFilter_MC ,
+                      'FilesPerJob' : 3,
+                 }
+                                                                                                                                                                                                 141,1         67%
+#### ZZ #### 
+samples['ZZ']  = {   'name'   : getSampleFiles(directory_MC, 'ZZTo2L2Q',True)\
+                               +getSampleFiles(directory_MC, 'ZZTo2L2Nu',True),
+                      'weight' :  XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
-### ZZ #### (mancano altri?)
-samples['ZZ']  = {   'name'   : getSampleFiles(directory_MC, 'ZZTo2L2Q',True),
-                      'weight' :   'puW*std_vector_lepton_recoW[0]*effTrigW1l*XSWeight' ,
-                      'FilesPerJob' : 3,
-                 }
-
-
-
-
-
-###########################################
-################## DATA ###################
-###########################################
-
-DataRun = [ 
-            ['B','Run2016B-03Feb2017_ver2-v2'] , 
-            ['C','Run2016C-03Feb2017-v1'] , 
-            ['D','Run2016D-03Feb2017-v1'] , 
-            ['E','Run2016E-03Feb2017-v1'] ,
-            ['F','Run2016F-03Feb2017-v1'] , 
-            ['G','Run2016G-03Feb2017-v1'] , 
-            ['H','Run2016H-03Feb2017_ver2-v1'] ,
-	    ['H','Run2016H-03Feb2017_ver3-v1'] ,
-          ] 
+####################
+###### DATA ########
+####################
+DataRun = [
+            ['B','Run2017B-Nano14Dec2018-v1'] ,
+            ['C','Run2017C-Nano14Dec2018-v1'] ,
+            ['D','Run2017D-Nano14Dec2018-v1'] ,
+            ['E','Run2017E-Nano14Dec2018-v1'] ,
+            ['F','Run2017F-Nano14Dec2018-v1']
+          ]
 
 DataSets = ['SingleMuon','SingleElectron']
 
 DataTrig = {
-            'SingleMuon'     : 'trig_SnglMu' ,
-            'SingleElectron' : '!trig_SnglMu && trig_SnglEle' ,
-	   }
+            'SingleMuon'     : 'Trigger_sngMu' ,
+            'SingleElectron' : '!Trigger_sngMu && Trigger_sngEl' 
+}
 
-#samples['DATA']  = {    'name'   : [],
-#				   'weight' : '1.', 
-#				   'weights' : [],
-#				   'isData': ['all'],
-#                      		   'FilesPerJob' : 2,
-#		   }		
-#
-#for Run in DataRun :
-#	directory = treeBaseDir+'Apr2017_Run2016'+Run[0]+'_RemAOD/lepSel__EpTCorr__TrigMakerData__cleanTauData__hadd/'
-#	for DataSet in DataSets :
-# 		FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True)
-#		for iFile in FileTarget:
-#			samples['DATA']['name'].append(iFile)
-#			samples['DATA']['weights'].append(DataTrig[DataSet]) 
+samples['DATA']  = {   'name': [ ] ,
+                       'weight' : METFilter_DATA+'*'+LepWPCut,
+                       'weights' : [ ],
+                       'isData': ['all'],
+                       'FilesPerJob' : 20,
+                  }
+
+for Run in DataRun :
+        directory = treeBaseDir+'Run2017_102X_nAODv4_Full2017v5/DATAl1loose2017v5/DATAl1loose2017v5' #???????
+        for DataSet in DataSets :
+                FileTarget = getSampleFiles(directory,DataSet+'_'+Run[1],True,'nanoLatino_')
+                for iFile in FileTarget:
+                        print(iFile)
+                        samples['DATA']['name'].append(iFile)
+                        samples['DATA']['weights'].append(DataTrig[DataSet])
+"""

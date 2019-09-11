@@ -16,7 +16,7 @@ structure['Wjets'] = {
 		'isData': 0
 		}
 
-structure['TT'] = {
+structure['TT_semilep'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
@@ -30,7 +30,7 @@ structure['SingleTop'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['TT_leptonic'] = {
+structure['TT_lep'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
