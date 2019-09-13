@@ -16,7 +16,7 @@ directory_data = treeBaseDir + 'Run2017_102X_nAODv4_Full2017v5'
 #############################################
 ########### Definition of weights ###########
 #############################################
-eleWP = 'mvaFall17V2Iso_WP90'
+eleWP = 'mvaFall17V1Iso_WP90'
 muWP  = 'cut_Tight_HWWW'
 
 LepWPCut_1l    =  '(Lepton_isTightElectron_'+eleWP+'[0]>0.5 || Lepton_isTightMuon_'+muWP+'[0]>0.5)'
@@ -45,31 +45,31 @@ METFilter_DATA = 'METFilter_DATA'
 samples['HH'] = {       'name' : getSampleFiles(directory_MC, 'GluGluToHHTo2B2WToLNu2J', True, 'nanoLatino_'),
                         'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                         'FilesPerJob' : 3,
+                        'EventsPerJob': 100000,
                 }
- """                                                                                                                                                                                                1,1           Top
+'''
 samples['Wjets'] = { 'name' :   
-          getSampleFiles(directory, 'WJetsToLNu-LO', True, 'nanoLatino_')
+          getSampleFiles(directory_MC, 'WJetsToLNu-LO', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu-LO_ext1', True, 'nanoLatino_')
-          + getSampleFiles(directory, 'WJetsToLNu_HT100_200', True, 'nanoLatino_')
+          + getSampleFiles(directory_MC, 'WJetsToLNu_HT100_200', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT100_200_ext1', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT100_200_ext2', True, 'nanoLatino_')
-          + getSampleFiles(directory, 'WJetsToLNu_HT200_400', True, 'nanoLatino_')
+          + getSampleFiles(directory_MC, 'WJetsToLNu_HT200_400', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT200_400_ext1', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT200_400_ext2', True, 'nanoLatino_')
-          + getSampleFiles(directory, 'WJetsToLNu_HT400_600', True, 'nanoLatino_')
+          + getSampleFiles(directory_MC, 'WJetsToLNu_HT400_600', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT400_600_ext1', True, 'nanoLatino_')
-          + getSampleFiles(directory, 'WJetsToLNu_HT600_800', True, 'nanoLatino_')
+          + getSampleFiles(directory_MC, 'WJetsToLNu_HT600_800', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT600_800_ext1', True, 'nanoLatino_')
-          + getSampleFiles(directory, 'WJetsToLNu_HT800_1200', True, 'nanoLatino_')
+          + getSampleFiles(directory_MC, 'WJetsToLNu_HT800_1200', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT800_1200_ext1', True, 'nanoLatino_')
-          + getSampleFiles(directory, 'WJetsToLNu_HT1200_2500', True, 'nanoLatino_')
+          + getSampleFiles(directory_MC, 'WJetsToLNu_HT1200_2500', True, 'nanoLatino_')
           #+ getSampleFiles(directory, 'WJetsToLNu_HT1200_2500_ext1', True, 'nanoLatino_')
-          + getSampleFiles(directory, 'WJetsToLNu_HT2500_inf', True, 'nanoLatino_'),
+          + getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True, 'nanoLatino_'),
           #+ getSampleFiles(directory, 'WJetsToLNu_HT2500_inf_ext1', True, 'nanoLatino_'),
 				'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC ,
 				'FilesPerJob' : 2,
 		   }
-
 
 
 samples['TT_semilep']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLeptonic', True) ,
@@ -177,4 +177,4 @@ for Run in DataRun :
                         print(iFile)
                         samples['DATA']['name'].append(iFile)
                         samples['DATA']['weights'].append(DataTrig[DataSet])
-"""
+'''
