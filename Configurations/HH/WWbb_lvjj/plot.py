@@ -2,7 +2,7 @@
 
 
 
-# groupPlot = {}
+groupPlot = {}
 # 
 # Groups of samples to improve the plots.
 # If not defined, normal plots is used
@@ -31,15 +31,15 @@ groupPlot['TT_lep']  = {
                         'nameHR' : 'tt_lep',
                         'isSignal' : 0,
                         'color': 797,
-                        'samples'  : ['TT_lep']
+                        'samples'  : ['TT_leptonic']
                      }
 
 
-groupPlot['SingleTop']  = {
+groupPlot['singleTop']  = {
                         'nameHR' : 'SingleTop',
                         'isSignal' : 0,
                         'color': 617,
-                        'samples'  : ['SingleTop']
+                        'samples'  : ['singleTop']
                      }
 
 groupPlot['WZ_WW_WWZ_WWW_DY_ZZ']  = {
@@ -102,13 +102,12 @@ groupPlot['HH']  = {
 
 
 
-#plot = {}
+plot = {}
 
 # keys here must match keys in samples.py    
 #                    
 
 #BKG
-
 plot['TT_semilep']  = {
                   'color': 860,    
                   'isSignal' : 0,
@@ -123,7 +122,7 @@ plot['Wjets']  = {
                   'scale'    : 1.   ,
                   }
 
-plot['TT_lep']  = {
+plot['TT_leptonic']  = {
                   'color': 797,
                   'isSignal' : 0,
                   'isData'   : 0,
@@ -131,7 +130,7 @@ plot['TT_lep']  = {
                   }
 
 
-plot['SingleTop']  = {
+plot['singleTop']  = {
                   'color': 617,
                   'isSignal' : 0,
                   'isData'   : 0,
@@ -176,11 +175,10 @@ plot['ZZ']  = {
                   'scale'    : 1.   ,
                   }
 
-
 #SIGNAL
 plot['HH']  = {
                   'color': 632,
-                  'isSignal' : 1,
+                  'isSignal' : 2,
                   'isData'   : 0,
                   'scale'    : 10000.  ,
               }

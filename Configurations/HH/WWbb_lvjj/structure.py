@@ -26,11 +26,11 @@ structure['DY'] = {
                   'isData'   : 0
                   }
 
-structure['SingleTop'] = {
+structure['singleTop'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['TT_lep'] = {
+structure['TT_leptonic'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }

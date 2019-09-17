@@ -44,8 +44,7 @@ METFilter_DATA = 'METFilter_DATA'
 
 samples['HH'] = {       'name' : getSampleFiles(directory_MC, 'GluGluToHHTo2B2WToLNu2J', True, 'nanoLatino_'),
                         'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC ,
-                        'FilesPerJob' : 3,
-                        'EventsPerJob': 100000,
+                        'FilesPerJob' : 2,
                 }
 '''
 samples['Wjets'] = { 'name' :   
@@ -68,29 +67,29 @@ samples['Wjets'] = { 'name' :
           + getSampleFiles(directory_MC, 'WJetsToLNu_HT2500_inf', True, 'nanoLatino_'),
           #+ getSampleFiles(directory, 'WJetsToLNu_HT2500_inf_ext1', True, 'nanoLatino_'),
 				'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC ,
-				'FilesPerJob' : 2,
+				'FilesPerJob' : 3,
 		   }
 
 
-samples['TT_semilep']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLeptonic', True) ,
+samples['TT_semilep']  = {    'name'   : getSampleFiles(directory_MC, 'TTToSemiLeptonic', True, 'nanoLatino_') ,
                       'weight' :  XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
 ###### Drell-Yan #### 
-samples['DY'] = {    'name'   :   getSampleFiles(directory,'DYJetsToLL_M-5to50-LO',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-100to200',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-200to400',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-400to600',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-4to50_HT-600toInf',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-100to200',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-200to400',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-400to600_ext1',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-600to800',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-800to1200',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-1200to2500',False,'nanoLatino_')
-                                + getSampleFiles(directory,'DYJetsToLL_M-50_HT-2500toInf',False,'nanoLatino_')
+samples['DY'] = {    'name'   :   getSampleFiles(directory_MC,'DYJetsToLL_M-5to50-LO',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-4to50_HT-100to200',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-4to50_HT-200to400',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-4to50_HT-400to600',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-4to50_HT-600toInf',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50_HT-100to200',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50_HT-200to400',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50_HT-400to600_ext1',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50_HT-600to800',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50_HT-800to1200',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50_HT-1200to2500',True,'nanoLatino_')
+                                + getSampleFiles(directory_MC,'DYJetsToLL_M-50_HT-2500toInf',True,'nanoLatino_')
                                 ,
                       'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 6,
@@ -98,52 +97,54 @@ samples['DY'] = {    'name'   :   getSampleFiles(directory,'DYJetsToLL_M-5to50-L
 
 ##### Single Top ####
 samples['singleTop'] = {    
-            'name'   :  getSampleFiles(directory,'ST_s-channel',False,'nanoLatino_') 
-                      + getSampleFiles(directory,'ST_t-channel_antitop',False,'nanoLatino_') 
-                      + getSampleFiles(directory,'ST_t-channel_top',False,'nanoLatino_') 
-                      + getSampleFiles(directory,'ST_tW_antitop',False,'nanoLatino_') 
-                      + getSampleFiles(directory,'ST_tW_top',False,'nanoLatino_') ,
+            'name'   :  getSampleFiles(directory_MC,'ST_s-channel',True,'nanoLatino_') 
+                      + getSampleFiles(directory_MC,'ST_t-channel_antitop',True,'nanoLatino_') 
+                      + getSampleFiles(directory_MC,'ST_t-channel_top',True,'nanoLatino_') 
+                      + getSampleFiles(directory_MC,'ST_tW_antitop',True,'nanoLatino_') 
+                      + getSampleFiles(directory_MC,'ST_tW_top',True,'nanoLatino_') ,
             'weight' :  XSWeight+'*'+SFweight+'*'+METFilter_MC ,
             'FilesPerJob' : 3,
                  }
 
 #### TT leptonic ####
-samples['TT_leptonic']  = {    'name'   : getSampleFiles(directory_MC, 'TTTo2L2Nu',True),
+samples['TT_leptonic']  = {    'name'   : getSampleFiles(directory_MC, 'TTTo2L2Nu',True, 'nanoLatino_'),
                                'weight' :   XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                                'FilesPerJob' : 3,
                           }
+
 ##### WW #####
-samples['WW']  = {    'name'   : getSampleFiles(directory_MC, 'WWTo2L2Nu',True),
+samples['WW']  = {    'name'   : getSampleFiles(directory_MC, 'WWTo2L2Nu',True, 'nanoLatino_'),
                       'weight' :   XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
 #### WWW ####
-samples['WWW']  = {    'name'   : getSampleFiles(directory_MC, 'WWW',True),
+samples['WWW']  = {    'name'   : getSampleFiles(directory_MC, 'WWW',True, 'nanoLatino_'),
                       'weight' :    XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
-samples['WWZ']  = {   'name'   : getSampleFiles(directory_MC, 'WWZ',True),
+samples['WWZ']  = {   'name'   : getSampleFiles(directory_MC, 'WWZ',True, 'nanoLatino_'),
                       'weight' :    XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
 
 #### WZ #### 
-samples['WZ']  = {    'name'   : getSampleFiles(directory_MC, 'WZTo1L1Nu2Q',True)\
-                                         +getSampleFiles(directory_MC, 'WZTo1L3Nu',True) \
-                                         +getSampleFiles(directory_MC, 'WZTo2L2Q',True),
+samples['WZ']  = {    'name'   : getSampleFiles(directory_MC, 'WZTo2L2Q',True, 'nanoLatino_'),
+                                 #+getSampleFiles(directory_MC, 'WZTo1L3Nu',True, 'nanoLatino_') \
+                                 #+getSampleFiles(directory_MC, 'WZTo1L1Nu2Q',True, 'nanoLatino_'),
                       'weight' :   XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
-                                                                                                                                                                                                 141,1         67%
+                 
 #### ZZ #### 
-samples['ZZ']  = {   'name'   : getSampleFiles(directory_MC, 'ZZTo2L2Q',True)\
-                               +getSampleFiles(directory_MC, 'ZZTo2L2Nu',True),
+samples['ZZ']  = {   'name'   : getSampleFiles(directory_MC, 'ZZTo2L2Q',True,'nanoLatino_')\
+                               +getSampleFiles(directory_MC, 'ZZTo2L2Nu',True,'nanoLatino_'),
                       'weight' :  XSWeight+'*'+SFweight+'*'+METFilter_MC ,
                       'FilesPerJob' : 3,
                  }
-
+'''
+'''
 ####################
 ###### DATA ########
 ####################
