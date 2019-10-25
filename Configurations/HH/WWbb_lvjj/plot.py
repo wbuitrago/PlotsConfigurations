@@ -3,16 +3,12 @@
 
 
 groupPlot = {}
-# 
-# Groups of samples to improve the plots.
-# If not defined, normal plots is used
-#
 
 
 
-
-#BKG
-
+#####################
+#### BACKGROUNDS ####
+#####################
 groupPlot['TT_semilep']  = {    
 				  'nameHR' : 'tt_semilep',
 				  'isSignal' : 0,
@@ -27,11 +23,11 @@ groupPlot['Wjets']  = {
                         'samples'  : ['Wjets']
                      }
 
-groupPlot['TT_lep']  = {
-                        'nameHR' : 'tt_lep',
+groupPlot['ttbar']  = {
+                        'nameHR' : 'ttbar',
                         'isSignal' : 0,
                         'color': 797,
-                        'samples'  : ['TT_leptonic']
+                        'samples'  : ['ttbar']
                      }
 
 
@@ -42,47 +38,24 @@ groupPlot['singleTop']  = {
                         'samples'  : ['singleTop']
                      }
 
-groupPlot['WZ_WW_WWZ_WWW_DY_ZZ']  = {
-                        'nameHR' : 'DY, WZ, WW, WWW, WWZ, ZZ',
+groupPlot['DY_VV_VVV']  = {
+                        'nameHR' : 'DY, VV, VVV',
+                        'isSignal' : 0,
+                        'color': 1,
+                        'samples'  : ['DY','VV', 'VVV']
+                     }
+
+'''
+groupPlot['DY']  = {
+                        'nameHR' : 'Drell-Yan',
                         'isSignal' : 0,
                         'color': 432,
-                        'samples'  : ['WZ','DY','WW', 'WWW', 'WWZ','ZZ']
+                        'samples'  : ['DY']
                      }
-#groupPlot['WWW']  = {
-#                        'nameHR' : 'WWW',
-#                        'isSignal' : 0,
-#                        'color': 880,
-#                        'samples'  : ['WWW']
-#                     }
-
-#groupPlot['WWZ']  = {
-#                        'nameHR' : 'WWZ',
-#                        'isSignal' : 0,
-#                        'color': 617,
-#                        'samples'  : ['WWZ']
-#                     }
-#groupPlot['WZ']  = {
-#                        'nameHR' : 'WZ',
-#                        'isSignal' : 0,
-#                        'color': 921,
-#                        'samples'  : ['WZ']
-#                     }
-
-#groupPlot['ZZ']  = {
-#                        'nameHR' : 'ZZ',
-#                        'isSignal' : 0,
-#                        'color': 815,
-#                        'samples'  : ['ZZ']
-#                     }
-#groupPlot['DY_ZZ']  = {
-#                        'nameHR' : 'DY and ZZ',
-#                        'isSignal' : 0,
-#                        'color': 432,
-#                        'samples'  : ['DY', 'ZZ']
-#                     }
-
-
-#SIGNAL
+'''
+###############
+### SIGNAL ####
+###############
 groupPlot['HH']  = {
                         'nameHR' : 'HH',
                         'isSignal' : 1,
@@ -92,22 +65,11 @@ groupPlot['HH']  = {
 
 
 
-#DATA
-#groupPlot['DATA']  = {
-#			'nameHR' : 'DATA',
-#			'isSignal' : 0,
-#                	'color': 1,
-#                        'samples'  : ['DATA']
-#		     }	
-
-
-
 plot = {}
 
-# keys here must match keys in samples.py    
-#                    
-
-#BKG
+#####################
+#### BACKGROUNDS ####
+#####################
 plot['TT_semilep']  = {
                   'color': 860,    
                   'isSignal' : 0,
@@ -122,7 +84,7 @@ plot['Wjets']  = {
                   'scale'    : 1.   ,
                   }
 
-plot['TT_leptonic']  = {
+plot['ttbar']  = {
                   'color': 797,
                   'isSignal' : 0,
                   'isData'   : 0,
@@ -137,63 +99,49 @@ plot['singleTop']  = {
                   'scale'    : 1.   ,
                   }
 
-plot['WW']  = {
-                  'color': 432,
+plot['VV']  = {
+                  'color': 1,
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.   ,
                   }
-plot['WWW']  = {
-                  'color': 432,
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-                  }
-plot['WWZ']  = {
-                  'color': 432,
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-                  }
-plot['WZ']  = {
-                  'color': 432,
+plot['VVV']  = {
+                  'color': 1,
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.   ,
                   }
 plot['DY']  = {
-                  'color': 432,
+                  'color': 1,#432,
                   'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.   ,
                   }
 
-plot['ZZ']  = {
-                  'color': 432,
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-                  }
-
-#SIGNAL
+###############
+### SIGNAL ####
+###############
 plot['HH']  = {
                   'color': 632,
-                  'isSignal' : 2,
+                  'isSignal' : 1,
                   'isData'   : 0,
-                  'scale'    : 10000.  ,
+                  'scale'    : 1.  ,
               }
 
 
-#DATA
-#plot['DATA']  = { 
-#                  'nameHR' : 'Data',
-#                  'color': 1 ,  
-#                  'isSignal' : 0,
-#                  'isData'   : 1 ,
-#                  'isBlind'  : 0,
-#		  'scale' : 1.
-#                }
-
+##############
+#### DATA ####
+##############
+'''
+plot['DATA']  = { 
+                  'nameHR' : 'Data',
+                  'color': 1 ,  
+                  'isSignal' : 0,
+                  'isData'   : 1 ,
+                  'isBlind'  : 0,
+		            'scale' : 1.
+                }
+'''
 
 
 
