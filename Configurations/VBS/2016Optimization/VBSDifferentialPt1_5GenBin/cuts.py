@@ -83,7 +83,7 @@ zvetoTest ='((abs(std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) !
 #cuts['Met_Z_bJet_MuV']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto
 #cuts['Met_Z_bJet_MuV_TauV']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto
 #cuts['Met_Z_bJet_MuV_TauV_Zv']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zvetoTest
-cuts['Diff_Met_Z_bJet_MuV_TauV_Zv_mee_mllgen_v15']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zveto
+cuts['Test_Algo_5Gen_v7']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zveto
 
 
 

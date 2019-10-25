@@ -312,13 +312,12 @@ zlep1="(std_vector_leptonGen_eta[0] - (std_vector_jetGen_eta[0]+std_vector_jetGe
 #wwjj_bin1="("+mll+">=300 && "+mjj+"<600)"
 #wwjj_bin2="("+mll+">=600)"
 #
-# mll
+#Dressed lepton pt 1
+wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[0]<85)"
+wwjj_bin1 = "(std_vector_dressedLeptonGen_pt[0]>=85 && std_vector_dressedLeptonGen_pt[0]<125)"
+wwjj_bin2 = "(std_vector_dressedLeptonGen_pt[0]>=125)"
+#wwjj_bin3 ="(std_vector_dressedLeptonGen_pt[0]>=150)"
 
-wwjj_bin0="("+mll+"<75)"
-wwjj_bin1="("+mll+">=75 && "+mll+"<130)"
-wwjj_bin2="("+mll+">=130 && "+mll+"<175)"
-wwjj_bin3="("+mll+">=175 && "+mll+"<240)"
-wwjj_bin4="("+mll+">=240)"
 #dressed lepton pt2 2
 #wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[1]<50)"
 #wwjj_bin1 = "(std_vector_dressedLeptonGen_pt[1]>=50 && std_vector_dressedLeptonGen_pt[1]<100)"
@@ -350,21 +349,6 @@ samples['Signal_bin2']={'name':getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
 
 addSampleWeight(samples,'Signal_bin2','WpWpJJ_EWK','GEN_weight_SM/abs(GEN_weight_SM)')
 
-samples['Signal_bin3']={'name':getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
-			+getSampleFiles(MCDir,'WpWpJJ_EWK',True),
-			'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466'+'*'+wwjj_bin3, #K factor
-			'FilesPerJob' : 1 ,
-			}
-
-addSampleWeight(samples,'Signal_bin3','WpWpJJ_EWK','GEN_weight_SM/abs(GEN_weight_SM)')
-
-samples['Signal_bin4']={'name':getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
-			+getSampleFiles(MCDir,'WpWpJJ_EWK',True),
-			'weight' : 'baseW*'+SFweight+'*'+PromptGenLepMatch2l+'*'+METFilter_MC+'*'+SameSign+'*1.067466'+'*'+wwjj_bin4, #K factor
-			'FilesPerJob' : 1 ,
-			}
-
-addSampleWeight(samples,'Signal_bin4','WpWpJJ_EWK','GEN_weight_SM/abs(GEN_weight_SM)')
 
 ###########################################
 ################## FAKE ###################
