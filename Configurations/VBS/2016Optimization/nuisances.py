@@ -31,40 +31,47 @@ nuisances['QCDscale']  = {
     'name'  : 'QCDscale', 
     'type'  : 'lnN', 
     'samples'  : { 
-        'ChMisId'  : '1.10',
-	'ttbar'   : '1.10',
-        'WZ'   : '1.10',
-        'ZZ'   : '1.10',
-        'VVV'  : '1.10',
-        'DPS'   : '1.10',
-        'Vg'    : '1.10' ,
-        'WpWp_EWK': '1.10' ,
-	'WmWm_EWK': '1.10' ,
-        'WW_strong': '1.10' ,
+        'ChMisId'  : '1.20',
+	'ttbar'   : '1.20',
+        'WZ'   : '1.20',
+        'ZZ'   : '1.20',
+        'VVV'  : '1.20',
+        'DPS'   : '1.20',
+        'Vg'    : '1.20' ,
+        'WpWp_EWK': '1.12' ,
+	'WmWm_EWK': '1.12' ,
+        'WW_strong': '1.20' ,
     }, 
 } 
 
-
-
-nuisances['QCDscale_gg_accept']  = { 
-    'name'  : 'QCDscale_gg_accept', 
-    'type'  : 'lnN', 
-    'samples'  : { 
-         'DY': '0.976/1.012' ,
-         'WpWp_EWK': '0.994/0.981' ,
-    }, 
- } 
-
-
-nuisances['QCDscale_qqbar_accept']  = { 
-    'name'  : 'QCDscale_qqbar_accept', 
-    'type'  : 'lnN', 
-    'samples'  : { 
-         'lep_TT': '0.974/1.005' ,
-         'Vg': '0.949/1.008' ,
-    }, 
- } 
-
+nuisances['Interference']  = {
+    'name'  : 'Interference',
+    'type'  : 'lnN',
+    'samples'  : {
+        'WpWp_EWK': '1.045' ,
+        'WmWm_EWK': '1.045' ,
+	}
+}
+#
+#nuisances['QCDscale_gg_accept']  = { 
+#    'name'  : 'QCDscale_gg_accept', 
+#    'type'  : 'lnN', 
+#    'samples'  : { 
+#         'DY': '0.976/1.012' ,
+#         'WpWp_EWK': '0.994/0.981' ,
+#    }, 
+# } 
+#
+#
+#nuisances['QCDscale_qqbar_accept']  = { 
+#    'name'  : 'QCDscale_qqbar_accept', 
+#    'type'  : 'lnN', 
+#    'samples'  : { 
+#         'lep_TT': '0.974/1.005' ,
+#         'Vg': '0.949/1.008' ,
+#    }, 
+# } 
+#
 
 
 # pdf uncertainty
@@ -73,16 +80,16 @@ nuisances['pdf']  = {
     'name'  : 'pdf',
     'type'  : 'lnN',
     'samples'  : {
-        'ChMisId'  : '1.01',
-	'ttbar'   : '1.01',
-        'WZ'   : '1.01',
-        'ZZ'   : '1.01',
-        'VVV'  : '1.01',
-        'DPS'   : '1.01',
-        'Vg'    : '1.01' ,
-        'WpWp_EWK': '1.01' ,
-	'WmWm_EWK': '1.01' ,
-        'WW_strong': '1.01' ,
+        'ChMisId'  : '1.05',
+	'ttbar'   : '1.05',
+        'WZ'   : '1.05',
+        'ZZ'   : '1.05',
+        'VVV'  : '1.05',
+        'DPS'   : '1.05',
+        'Vg'    : '1.05' ,
+        'WpWp_EWK': '1.05' ,
+	'WmWm_EWK': '1.05' ,
+        'WW_strong': '1.05' ,
     }, 
 } 
 

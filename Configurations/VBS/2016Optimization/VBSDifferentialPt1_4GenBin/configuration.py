@@ -11,7 +11,7 @@ outputDir = 'rootFile'+date
 
 
 # file with list of variables
-variablesFile = 'variables.py'
+variablesFile ='variables.py'
 
 # file with list of cuts
 cutsFile = 'cuts.py' 
@@ -26,7 +26,7 @@ plotFile = 'plot.py'
 # options of the plots
 plotNormalizedDistributions = True   # default is False
 
-showRelativeRatio = True
+
 
 # luminosity to normalize to (in 1/fb)
 lumi = 35.867

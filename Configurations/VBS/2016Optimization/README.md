@@ -26,14 +26,12 @@ This step reads the post-processed latino trees and produces histograms for seve
 
     cd $CONFIGURATION_DIRECTORY
 
-    mkShapes.py --pycfg=configuration.py \
-                --batchSplit=AsMuchAsPossible \
-                --doBatch=True
+    mkShapes.py --pycfg=configuration.py --batchSplit=AsMuchAsPossible --doBatch=True
 
 The jobs can take a while, thus it is natural to check their status.
 
     mkBatch.py --status
-To see all the jobs running on the batch system:
+To see all the jobs running on the batch system (hercules):
 
     qstat  
 
@@ -53,9 +51,8 @@ To resubmit one job use
 
 Once the previous jobs have finished we _hadd_ the outputs.
 
-    mkShapes.py --pycfg=configuration.py \
-                --batchSplit=AsMuchAsPossible \
-                --doHadd=True
+    mkShapes.py --pycfg=configuration.py --batchSplit=AsMuchAsPossible -doHadd=True
+
 *NB*: If the --batchSplit=AsMuchAsPossible option is used, do not _hadd_ the outputs by hand but use the command above instead. Otherwise the MC statistical uncertainties are not treated in the correct way.
 
 
@@ -67,14 +64,53 @@ At this stage one can either produce plots or datacards.
 
 Now we are ready to make data/MC comparison plots.
 
-	mkPlot.py --inputFile=rootFile_test/plots_VBS_SS_test.root \ 
-		  --scaleToPlot=1.9 \
-  		  --showIntegralLegend=1
+	mkPlot.py --inputFile=rootFile_test/plots_VBS_SS_test.root --scaleToPlot=1.9 --showIntegralLegend=1
 
 
 ### Produce datacards
 
-    mkDatacards.py --pycfg=configuration.py \
-                   --inputFile=rootFile_test/plots_VBS_SS_test.root
+    mkDatacards.py --pycfg=configuration.py --inputFile=rootFile_test/plots_VBS_SS_test.root
+
+# 5. Combine Tools
+Tool used to perform statistical analysis. The methods used for the inclusive measurement are:
+
+Fit to extract the expected parameter
+
+    combine -d path_to_datacard.txt -M FitDiagnostics -t -1 -m 125 -n VBS 
+
+Expected significance
+
+    combine -d path_to_datacard.txt -M Significance -t -1 -m 125 -n VBS 
+
+All the measurements are performed using the blind option (-t -1)
+# WZ
+
+This is the configuration with the WZ EWK considered as signal as well. It can be used to define the WZ region and perform measurements about WZ scattering.
 
 
+# Differential Configuration
+
+They are the configurations used to perform the differential measurements.
+
+Definition used:
+* Gen-Parameters: the number of gen bins and the relative width defined to perform the study;
+* Reco-Parameters: the bins and range used to define the fitted distribution
+
+The procedure used to obtain the configurations can be summarized in three phases:
+
+* Look for the variable that has the smaller variation between Gen and Reco-level distribution. This is done using both the response matrix and GenVsReco plots;
+* The best variables (the leptonic ones) are compared using different configuration (changing both Gen and Reco level parameters) to find the most precise one;
+* Further tests are performed on the best variable chosen looking for the best set of Gen-Bins and Reco-Parameters to use;
+
+## Combine 
+In this part of the analysis a multidimensional fit is employed:
+
+Create the workspace: 
+
+    text2workspace.py -P HiggsAnalysis.CombinedLimit.PhysicsModel:multiSignalModel -m 125 --PO verbose --PO 'map=.*/Signal_bin0:r1[1,0,2]' --PO 'map=.*/Signal_bin1:r2[1,0,2]' --PO 'map=.*/Signal_bin2:r3[1,0,2]' path_to_datacard.txt -o workspace_name.root
+
+Perform the multidimensional fit:
+
+    combine -M MultiDimFit -m 125 --setParameters r1=1,r2=1,r3=1 --algo=singles -t -1 -S 1 --cl=0.68 workspace_name.root -n VBS_Diff_singles 
+
+The blind option is used one again (-t -1)
