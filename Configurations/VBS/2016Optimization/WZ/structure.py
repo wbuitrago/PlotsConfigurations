@@ -30,10 +30,6 @@ structure['WZ_strong']  = {
                   'isSignal' : 0,
                   'isData'   : 0 
                   }
-structure['WZ_EWK']  = { 
-                  'isSignal' : 1,
-                  'isData'   : 0 
-                  }
 
 structure['DPS']  = { 
                   'isSignal' : 0,
@@ -63,6 +59,11 @@ structure['WmWm_EWK']  = {
                       'isSignal' : 1,
                       'isData'   : 0
                       }
+                      
+structure['WZ_EWK']  = { 
+                  'isSignal' : 1,
+                  'isData'   : 0 
+                  }
 
 #Fake
 structure['Fake_lep']  = {  
