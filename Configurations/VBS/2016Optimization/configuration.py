@@ -26,7 +26,7 @@ plotFile = 'plot.py'
 # options of the plots
 plotNormalizedDistributions = True   # default is False
 
-
+showRelativeRatio = True
 
 # luminosity to normalize to (in 1/fb)
 lumi = 35.867

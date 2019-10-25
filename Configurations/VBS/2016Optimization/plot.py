@@ -8,7 +8,7 @@
 # If not defined, normal plots is used
 #
 Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
-
+blind=0
 groupPlot['ChargeMisId']  = {  
                   'nameHR' : "ChMisId",
                   'isSignal' : 0,
@@ -261,7 +261,7 @@ plot['DATA']  = {
                   'color': 1 ,  
                   'isSignal' : 0,
                   'isData'   : 1 ,
-                  'isBlind'  : 1 ,
+                  'isBlind'  : blind ,
 		  'scale'    : 1.0
               }
 
