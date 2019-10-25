@@ -297,33 +297,36 @@ samples['WW_strong'] = {   	'name'   :getSampleFiles(MCDir,'WpWpJJ_QCD',True)
 ###########################################
 #############   SIGNALS  ##################
 ###########################################
-### Gen Invariant Mass
+### Gen Variables
 mjj="sqrt(2*std_vector_jetGen_pt[0]*std_vector_jetGen_pt[1]*(cosh(std_vector_jetGen_eta[0]-std_vector_jetGen_eta[1])-cos(std_vector_jetGen_phi[0]-std_vector_jetGen_phi[1])))"
 mll="sqrt(2*std_vector_leptonGen_pt[0]*std_vector_leptonGen_pt[1]*(cosh(std_vector_leptonGen_eta[0]-std_vector_leptonGen_eta[1])-cos(std_vector_leptonGen_phi[0]-std_vector_leptonGen_phi[1])))"
 zlep1="(std_vector_leptonGen_eta[0] - (std_vector_jetGen_eta[0]+std_vector_jetGen_eta[1])/2)/(std_vector_jetGen_eta[1]-std_vector_jetGen_eta[0])"
-#mjj
+
+## mjj tests
+
 #wwjj_bin0="("+mjj+"<1000)"
 #wwjj_bin1="("+mjj+">=1000 && "+mjj+"<1500)"
 #wwjj_bin2="("+mjj+">=1500)"
 
-# mll
+## mll tests
 
 #wwjj_bin0="("+mll+"<300)"
 #wwjj_bin1="("+mll+">=300 && "+mjj+"<600)"
 #wwjj_bin2="("+mll+">=600)"
-#
-#Dressed lepton pt 1
+
+## Dressed lepton pt 1
 wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[0]<85)"
 wwjj_bin1 = "(std_vector_dressedLeptonGen_pt[0]>=85 && std_vector_dressedLeptonGen_pt[0]<125)"
 wwjj_bin2 = "(std_vector_dressedLeptonGen_pt[0]>=125)"
-#wwjj_bin3 ="(std_vector_dressedLeptonGen_pt[0]>=150)"
 
-#dressed lepton pt2 2
+## Dressed lepton pt2 
+
 #wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[1]<50)"
 #wwjj_bin1 = "(std_vector_dressedLeptonGen_pt[1]>=50 && std_vector_dressedLeptonGen_pt[1]<100)"
 #wwjj_bin2 ="(std_vector_dressedLeptonGen_pt[1]>=100)"
 #wwjj_bin3 ="(std_vector_dressedLeptonGen_pt[0]>=150)"
-#A dressed lepton is a system formed of a charged lepton and nearby photons-> should be dressedLeptonGen used insted of the normal lepGen?
+
+## A dressed lepton is a system formed of a charged lepton and nearby photons-> should be dressedLeptonGen used insted of the normal lepGen?
 
 samples['Signal_bin0']={'name':getSampleFiles(MCDir,'WmWmJJ_EWK_powheg',True)
 			+getSampleFiles(MCDir,'WpWpJJ_EWK',True),
