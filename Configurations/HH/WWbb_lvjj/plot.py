@@ -81,6 +81,12 @@ groupPlot['WZ_WW_WWZ_WWW_DY_ZZ']  = {
 #                        'samples'  : ['DY', 'ZZ']
 #                     }
 
+#groupPlot['ZZTo2L2Q']  = {
+#                        'nameHR' : 'ZZTo2L2Q',
+#                        'isSignal' : 0,
+#                        'color': 629,
+#                        'samples'  : ['ZZTo2L2Q']
+#                        }
 
 #SIGNAL
 groupPlot['HH']  = {
@@ -114,6 +120,8 @@ plot['TT_semilep']  = {
                   'isData'   : 0,
                   'scale'    : 1.   ,
               }
+
+
 
 plot['Wjets']  = {
                   'color': 418,

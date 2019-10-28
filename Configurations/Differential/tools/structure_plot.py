@@ -8,6 +8,7 @@
 
 import collections
 import re
+import copy
 
 PLOT_DATA_BLINDED = True
 
@@ -35,6 +36,8 @@ variables = {} # redefine variables too
 
 signals = set()
 crs = []
+recoBins = set()
+shapeVariations = set()
 
 # open the input file and pick up all sample, cut, and variable names
 source = ROOT.TFile.Open(opt.inputFile)
@@ -42,19 +45,31 @@ source = ROOT.TFile.Open(opt.inputFile)
 for ckey in source.GetListOfKeys():
   cname = ckey.GetName()
 
+  if doStructure and '_WW_' in cname:
+    continue
+
   cuts.append(cname)
-  if '_CR_' in cname:
-    crs.append(cname)
 
   cutdir = ckey.ReadObj()
-  for vkey in cutdir.GetListOfKeys():
-    vname = vkey.GetName()
+
+  if doStructure:
+    if '_CR_' in cname:
+      crs.append(cname)
+      vnames = ['events']
+    elif 'pt2ge20' in cname:
+      vnames = ['mllVSmth_8x9']
+    else:
+      vnames = ['mllVSmth_6x6']
+  else:
+    vnames = [k.GetName() for k in cutdir.GetListOfKeys()]
+
+  for vname in vnames:
     if vname not in variables:
       # first encounter
 
       variables[vname] = {'cuts': [], 'samples': []}
 
-      vardir = vkey.ReadObj()
+      vardir = cutdir.GetDirectory(vname)
       for hkey in vardir.GetListOfKeys():
         hname = hkey.GetName()
       
@@ -82,15 +97,31 @@ for ckey in source.GetListOfKeys():
     if sname in signals or sname in samples:
       continue
 
-    if sname.startswith('smH_hww') or sname.startswith('ggH_hww') or sname.startswith('xH_hww'):
+    if '_hww' in sname:
       signals.add(matches.group(1))
     else:
       # signal procs added after sorting
       samples.add(matches.group(1))
 
+  for hkey in eventsdir.GetListOfKeys():
+    hname = hkey.GetName()
+  
+    if not hname.endswith('Up'):
+      continue
+
+    for sname in (samples | signals):
+      if hname.startswith('histo_%s' % sname):
+        nuis = hname.replace('histo_%s_' % sname, '')[:-2]
+        shapeVariations.add(nuis)
+
+  # extract reco bin name
+  matches = re.match('.*((?:PTH|NJ)_(?:GE|GT|)[0-9]+(?:_[0-9]+|))_.+', cname)
+  if matches:
+    recoBins.add(matches.group(1))
+
 source.Close()
 
-signals = sorted(signals, key = lambda sname: int(re.match('(?:sm|gg|x)H_hww_[^_]+_(?:GE|GT|)([0-9]+)', sname).group(1)))
+signals = sorted(signals, key = lambda sname: int(re.match('.+H_hww_[^_]+_(?:GE|GT|)([0-9]+)', sname).group(1)))
 samples = sorted(samples)
 samples.extend(signals)
 cuts.sort()
@@ -109,9 +140,9 @@ if doPlot:
       ('WW', 'WW', ['WW.*', 'ggWW'], 0, ROOT.kAzure - 9),
       ('Fake', 'Non-prompt', ['Fake.*'], 0, ROOT.kGray + 1),
       ('DY', 'DY', ['DY.*'], 0, ROOT.kGreen + 2),
-      ('VZ', 'VZ', ['VZ', 'WZ', 'ZZ', 'WZgS_H'], 0, ROOT.kViolet + 1),
+      ('VZ', 'VZ', ['VZ', 'ZZ', 'VgS_H'], 0, ROOT.kViolet + 1),
       ('Vg', 'V#gamma', ['Vg', 'Wg'], 0, ROOT.kOrange + 10),
-      ('VgS', 'V#gamma*', ['VgS','WZgS_L'], 0, ROOT.kGreen - 9),
+      ('VgS', 'V#gamma*', ['VgS','VgS_L'], 0, ROOT.kGreen - 9),
       ('VVV', 'VVV', ['VVV'], 0, ROOT.kAzure - 3),
       ('htt', 'H#tau#tau', ['.*H_htt.*'], 0, ROOT.kRed + 2),
       ('hww', 'HWW', ['.*H_hww.*'], 1, ROOT.kRed)
@@ -151,11 +182,10 @@ if doStructure:
         'isData'   : 1
       }
   
-    elif sname.startswith('smH_hww') or sname.startswith('ggH_hww') or sname.startswith('xH_hww'):
+    elif '_hww' in sname:
       structure[sname] = {
         'isSignal' : 1,
         'isData'   : 0,
-        #'removeFromCuts': crs
       }
   
     else:
@@ -164,18 +194,41 @@ if doStructure:
         'isData'   : 0
       }
   
-  #structure['htt']['removeFromCuts'] = crs
+  structure['Fake_em']['removeFromCuts'] = [cname for cname in cuts if '20me' in cname]
+  structure['Fake_me']['removeFromCuts'] = [cname for cname in cuts if '20em' in cname]
 
 # restructure nuisances
 
-sampleMapping = {
-  'Fake_em': 'Fake',
-  'Fake_me': 'Fake',
-  'ggH_htt': 'htt',
-  'qqH_htt': 'htt',
-  'ZH_htt': 'htt',
-  'WH_htt': 'htt'
-}
+def sampleMapping(sname):
+  # map sample found in the file to samples in the nuisance
+  if sname == 'Fake_em':
+    return ['Fake']
+  elif sname == 'Fake_me':
+    return ['Fake']
+  elif sname == 'htt':
+    return ['ggH_htt', 'qqH_htt', 'ZH_htt', 'WH_htt']
+  elif sname == 'minor':
+    return ['ggWW', 'WWewk', 'Vg', 'VgS', 'VgS_H', 'VgS_L', 'VZ', 'VVV']
+  elif sname in ['VgS_L', 'VgS_H']:
+    return ['VgS']
+  elif sname == 'nonfid':
+    return signals
+  elif sname.startswith('ggH_hww'):
+    return ['ggH_hww']
+  elif sname.startswith('ggH_htt'):
+    return ['ggH_htt']
+  elif sname.startswith('xH_hww'):
+    return ['qqH_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'bbH_hww', 'ttH_hww']
+  elif sname.startswith('smH_hww'):
+    return ['ggH_hww', 'qqH_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'bbH_hww', 'ttH_hww']
+  elif sname.startswith('ggH'):
+    return ['ggH_hww', 'ggH_htt']
+  elif sname.startswith('xH'):
+    return ['qqH_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'bbH_hww', 'ttH_hww', 'qqH_htt', 'ZH_htt', 'ggZH_htt', 'WH_htt', 'bbH_htt', 'ttH_htt']
+  elif sname.startswith('smH'):
+    return ['ggH_hww', 'qqH_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'bbH_hww', 'ttH_hww', 'ggH_htt', 'qqH_htt', 'ZH_htt', 'ggZH_htt', 'WH_htt', 'bbH_htt', 'ttH_htt']
+  else:
+    return [sname]
 
 signal_ggH_separate = False
 for sname in signals:
@@ -183,89 +236,35 @@ for sname in signals:
     signal_ggH_separate = True
     break
 
-if signal_ggH_separate:
-  ggH = [sname for sname in signals if sname.startswith('ggH')]
-  xH = [sname for sname in signals if not sname.startswith('ggH')]
+for nkey, nuisance in nuisances.items():
+  if 'perRecoBin' in nuisance and nuisance['perRecoBin']:
+    for bin in recoBins:
+      nuisances[nkey + '_' + bin] = copy.copy(nuisance)
+      nuisances[nkey + '_' + bin]['name'] += '_' + bin
+      nuisances[nkey + '_' + bin]['cuts'] = [cut for cut in cuts if bin in cut]
 
-  sampleMapping.update([
-    ('ggH_hww', ggH),
-    ('qqH_hww', xH),
-    ('ZH_hww', xH),
-    ('ggZH_hww', xH),
-    ('WH_hww', xH),
-    ('bbH_hww', xH),
-    ('ttH_hww', xH)
-  ])
-
-else:
-  sampleMapping.update([
-    ('ggH_hww', signals),
-    ('qqH_hww', signals),
-    ('ZH_hww', signals),
-    ('ggZH_hww', signals),
-    ('WH_hww', signals),
-    ('bbH_hww', signals),
-    ('ttH_hww', signals)
-  ])
-
-if 'minor' in samples:
-  #background_minor_merge
-
-  sampleMapping.update([
-    ('ggWW', 'minor'),
-    ('Vg', 'minor'),
-    ('WZgS_L', 'minor'),
-    ('WZgS_H', 'minor'),
-    ('WZgS', 'minor'),
-    ('VZ', 'minor'),
-    ('VVV', 'minor')
-  ])
-
-njs = ['0j', '1j', '2j', '3j', 'ge4j']
-if 'WW' not in samples:
-  sampleMapping['WW'] = ['WW_%s' % nj for nj in njs]
-if 'top' not in samples:
-  sampleMapping['top'] = ['top_%s' % nj for nj in njs]
-if 'DY' not in samples:
-  sampleMapping['DY'] = ['DY_%s' % nj for nj in njs]
-
-reverseSampleMapping = {}
-for sname, value in sampleMapping.iteritems():
-  if type(value) is list:
-    key = tuple(value)
-  else:
-    key = value
-
-  try:
-    reverseSampleMapping[key].append(sname)
-  except KeyError:
-    reverseSampleMapping[key] = [sname]
+    nuisances.pop(nkey)
 
 for nuisance in nuisances.itervalues():
   if 'samples' not in nuisance:
     continue
 
-  toShape = False
-  for sname, value in nuisance['samples'].items():
-    if sname not in sampleMapping:
-      continue
+  if 'samplespost' in nuisance:
+    nuisance['samples'] = nuisance['samplespost'](nuisance, samples)
 
-    if nuisance['type'] == 'lnN':
-      # has this nuisance been turned into shape?
-      if type(sampleMapping[sname]) is list:
-        key = tuple(sampleMapping[sname])
-      else:
-        key = sampleMapping[sname]
+  if 'cutspost' in nuisance:
+    nuisance['cuts'] = nuisance['cutspost'](nuisance, cuts)
 
-      mergedSnames = reverseSampleMapping[key]
-      if len(set(mergedSnames) - set(nuisance['samples'])) != 0:
-        toShape = True
-
-    if type(sampleMapping[sname]) is list:
-      for mapped in sampleMapping[sname]:
-        nuisance['samples'][mapped] = value
-    else:
-      nuisance['samples'][sampleMapping[sname]] = value
-
-  if toShape:
+  # If a variation histogram is found in the input file, it's a shape variation
+  if 'name' in nuisance and nuisance['name'] in shapeVariations:
     nuisance['type'] = 'shape'
+
+  for sname in samples:
+    for cardname in sampleMapping(sname):
+      if cardname in nuisance['samples']:
+        nuisance['samples'][sname] = nuisance['samples'][cardname]
+        break
+
+  # AsLnN nuisances are all converted to shape (nominal scaled to variation normalization) in restructure
+  if 'AsLnN' in nuisance:
+    nuisance.pop('AsLnN')

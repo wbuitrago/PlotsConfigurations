@@ -2,23 +2,68 @@
 
 # imported from cuts.py
 # cuts
+# imported from samples.py
+# samples signals
 
 try:
     variables
 except NameError:
     import collections
     variables = collections.OrderedDict()
-    cuts = []
-
-sr = [ckey for ckey in cuts if '_CR' not in ckey]
-
-#'fold' : # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
 
 variables['events'] = {
     'name': '0.5',
     'range': (1,0,1),
     'xaxis': 'events'
 }
+
+variables['mll'] = {
+    'name': 'mll',
+    'range': (31,0.,310.)
+}
+
+variables['mth'] = {
+    'name': 'mth',
+    'range': (30,0.,300.),
+}
+
+variables['met'] = {
+    'name': 'PuppiMET_pt',
+    'range': (50, 20., 220.),
+    'xaxis': 'E_{T}^{miss} [GeV]',
+}
+
+variables['metphi'] = {
+    'name': 'PuppiMET_phi',
+    'range': (50, -3.1416, 3.1416),
+    'xaxis': '#phi'
+}
+
+variables['ptll'] = {
+    'name': 'ptll',
+    'range': (20,0,200),
+    'xaxis': 'pt_{ll} [GeV]',
+}
+
+variables['dphill'] = {
+    'name': 'abs(dphill)',     
+    'range': (20,0,3.14),   
+    'xaxis': ' #Delta #phi_{ll}',
+}
+
+variables['jet1eta'] = {
+    'name': 'Alt$(CleanJet_eta[0], -10.)',
+    'range': (50, -5., 5.),
+    'xaxis': '#eta'
+}
+
+variables['jet2eta'] = {
+    'name': 'Alt$(CleanJet_eta[1], -10.)',
+    'range': (50, -5., 5.),
+    'xaxis': '#eta'
+}
+
+# make the unrolled mth:mll distributions by hand
 
 mthbinning = [60,80,90,100,110,120,130,150,200]
 mllbinning = [10,25,35,40,45,50,55,70,90,210]
@@ -38,8 +83,6 @@ variables['mllVSmth_8x9'] = {
     'name': name,
     'range': (72, 0., 72.),
     'xaxis': 'm^{ll}:m_{T}^{H}', #   x axis name
-    'doWeight': 1, # do weighted plot too
-    'cuts': sr
 }
 
 mthbinning = [60,80,90,110,130,150,200]
@@ -60,6 +103,4 @@ variables['mllVSmth_6x6'] = {
     'name': name,
     'range': (36, 0., 36.),
     'xaxis': 'm^{ll}:m_{T}^{H}', #   x axis name
-    'doWeight': 1, # do weighted plot too
-    'cuts': sr
 }

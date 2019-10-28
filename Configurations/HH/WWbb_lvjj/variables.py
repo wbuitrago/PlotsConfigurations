@@ -4,7 +4,7 @@
     
 
 variables['events']  = {   'name': '1',      
-                        'range' : (1,0,2),  
+                        'range' : (1000,0,1000),  
                         'xaxis' : 'events', 
                         'fold' : 3
                         }

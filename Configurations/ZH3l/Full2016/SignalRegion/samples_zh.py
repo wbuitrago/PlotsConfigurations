@@ -30,13 +30,13 @@ if    'iihe' in SITE :
   treeBaseDir = '/pnfs/iihe/cms/store/user/xjanssen/HWW2015/'
 elif  'cern' in SITE :
   #treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/Full2016_Apr17/'
-  treeBaseDir = '/afs/cern.ch/user/c/cmills/public/Zh_root_files/'
+  treeBaseDir = '/afs/cern.ch/work/c/cmills/public/Zh3l_ntuples_1j/'
 
 #directory = treeBaseDir+'Apr2017_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l2loose__hadd__l2tightOR__formulasMC'+skim+'/'
 #directory = treeBaseDir+'Apr2017_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l2loose__hadd__l2tightOR__LepTrgFix__formulasMC'+skim+'/'
 #directory = treeBaseDir+'Apr2017_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l2loose__hadd__l2tightOR__LepTrgFix__dorochester__formulasMC'+skim+'/'
 
-directory = treeBaseDir+'/backgrounds/'
+directory = treeBaseDir+'/nominals/'
 
 ################################################
 ############ NUMBER OF LEPTONS #################
@@ -52,8 +52,9 @@ Nlep='3'
 ################################################
 
 XSWeight      = 'XSWeight'
-wzSF = '1.108'
 zgSF = '1.34'
+wz1jSF = '1.16'
+wz2jSF = '1.09'
 #SFweight      = 'SFweight3l'
 #if Nlep == '2' :
 #  SFweight = 'puW * effTrigW * electron_etaW_'+Nlep+'l * electron_ptW_'+Nlep+'l * veto_EMTFBug '
@@ -203,10 +204,9 @@ samples['ZZ']  = {    'name': getSampleFiles(directory,'ZZTo4L'),
 #                       'suppressNegativeNuisances' :['all'],
 #                  }
 
-samples['WZ']  = {    'name': getSampleFiles(directory,'WZTo3LNu'),
-                      'weight' : XSWeight+'*'+SFweight+'*'+GenLepMatch3L+'*'+METFilter_MC ,
-                   #   'weight' : wzSF+'*'+XSWeight+'*'+SFweight+'*'+GenLepMatch3L+'*'+METFilter_MC,
-                       'suppressNegativeNuisances' :['all'],
+samples['WZ']  = {    'name': getSampleFiles(directory,'WZTo3LNu_mllmin01_ext1'),
+                      'weight' : '(( std_vector_jet_pt[1] < 30 )*'+wz1jSF+'+( std_vector_jet_pt[1] >= 30 )*'+wz2jSF+')*'+XSWeight+'*'+SFweight+'*'+GenLepMatch3L+'*'+METFilter_MC ,
+                      'suppressNegativeNuisances' :['all'],
                   }
 
 samples['VVV'] = {    'name': getSampleFiles(directory,'WZZ')
@@ -220,13 +220,13 @@ samples['VVV'] = {    'name': getSampleFiles(directory,'WZZ')
 samples['Vg']  = {    'name':  getSampleFiles(directory,'Zg')
                               +getSampleFiles(directory,'WgStarLNuEE')
                               +getSampleFiles(directory,'WgStarLNuMuMu'),      
-                       'weight' : XSWeight+'*'+SFweight+'*'+GenLepMatch3L+'*'+METFilter_MC ,      
-                   #    'weight' : zgSF+'*'+XSWeight+'*'+SFweight+'*'+GenLepMatch3L+'*'+METFilter_MC ,
+                       'weight' : zgSF+'*'+XSWeight+'*'+SFweight+'*'+GenLepMatch3L+'*'+METFilter_MC ,
                        'suppressNegativeNuisances' :['all'],
                  }
 
 samples['ttZ']  = {    'name': getSampleFiles(directory,'TTZToLLNuNu_M-10'),
                        'weight' : XSWeight+'*'+SFweight+'*'+GenLepMatch3L+'*'+METFilter_MC,
+                       'suppressNegativeNuisances' :['all'],
                   }
 
 ####################################
@@ -262,7 +262,7 @@ samples['WH_hww']  = { 'name': getSampleFiles(directory,'HWminusJ_HToWW_M125')
 ###########################################
 
 samples['Fake']  = {   'name': [ ] ,
-                       'weight' : fakeW+'*veto_EMTFBug'+'*'+METFilter_DATA,              #   weight/cut 
+                       'weight' : fakeW+'*veto_EMTFBug'+'*'+METFilter_DATA+'*'+((fakeW_muStatUp - 1) > 0.001),              #   weight/cut 
                        'weights' : [ ] ,
                        'isData': ['all'],
                        'FilesPerJob' : 5 ,
