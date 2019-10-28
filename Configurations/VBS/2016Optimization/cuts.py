@@ -40,7 +40,7 @@ softMuVeto='\
 
 
 bJetVeto = BVeto +'&&'+ softMuVeto
-bJetTag  = '(!(' + bJetVeto + '))>=1'  
+bJetTag  = '(!(' + BVeto + '))'  
 
 zveto ='(abs(std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1]) != 11*11 ||(mll>20 && abs(mll - 91) > 15))'
 
@@ -54,9 +54,9 @@ zlep='\
 (abs((std_vector_lepton_eta[0] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5) \
 &&(abs((std_vector_lepton_eta[1] - (std_vector_jet_eta[0]+std_vector_jet_eta[1])/2)/detajj) < 0.5) '
 
-#cuts['NoCut']='1' # supercut only
-cuts['Met_Z_bJet_MuV_TauV_Zv_mee_All']=met + '&&' +zlep+'&&' +BVeto+'&&'+softMuVeto+'&&'+tauVeto+'&&'+zveto
-
+cuts['NoCut_final']='1' # supercut only
+cuts['Met_Z_bJetV_MuV_TauV_Zv_mee_final']=met + '&&' +zlep+'&&' + bJetVeto + '&&'+tauVeto+'&&'+zveto
+#cuts['Met_Z_bJetV_MuV_TauV_Zv_mee_results']=bJetTag+'&&'+zveto
 
 # 11 = e
 # 13 = mu

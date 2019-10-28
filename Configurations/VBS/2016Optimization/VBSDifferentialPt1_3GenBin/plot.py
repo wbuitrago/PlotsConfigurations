@@ -1,3 +1,4 @@
+
 # plot configuration
 
 
@@ -8,7 +9,7 @@
 # If not defined, normal plots is used
 #
 Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
-blind=0
+signal=0; blind=1
 groupPlot['ChargeMisId']  = {  
                   'nameHR' : "ChMisId",
                   'isSignal' : 0,
@@ -19,7 +20,7 @@ groupPlot['ChargeMisId']  = {
 groupPlot['VV']  = {  
                   'nameHR' : "VV",
                   'isSignal' : 0,
-                  'color'    : Violet+10, # kViolet+10  
+                  'color'    : Violet+6, # kViolet+10  
                   'samples'  : ['ZZ' , 'WZ' , 'DPS']
               }
             
@@ -36,7 +37,7 @@ groupPlot['VVV']  = {
 groupPlot['Vg']  = {  
                   'nameHR' : "V#gamma",
                   'isSignal' : 0,
-                  'color'    : Orange+10,   # kOrange + 10
+                  'color'    : Orange-3,   # kOrange + 10
                   'samples'  : ['Vg']
               }
              
@@ -56,13 +57,6 @@ groupPlot['non-prompt']  = {
                   'samples'  : ['Fake_lep','DY_promptSubtr','lep_TT_promptSubtr','singleTop_promptSubtr','singleAntiTop_promptSubtr','ggWWTo2L2Nu_promptSubtr','WWTo2L2Nu_promptSubtr','Vg_promptSubtr','ZZ_promptSubtr','WpWpJJ_promptSubtr','WmWmJJ_promptSubtr','WpWpJJ_QCD_promptSubtr','VVV_promptSubtr','DPS_promptSubtr','WZ_promptSubtr']
               }
 
-
-groupPlot['WW_EWK']  = {  
-                  'nameHR' : "WW EWK",
-                  'isSignal' : 0,
-                  'color'    : Azure+4, # kAzure+4  
-                  'samples'  : ['WpWp_EWK' , 'WmWm_EWK']
-              }
 
 
 
@@ -195,20 +189,7 @@ plot['WZ_promptSubtr']  = {
                   'scale'    : 1.0                  
               }
 
-##Signal
-plot['WpWp_EWK']  = {
-                  'color': Azure+4, # kAzure+4
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.0   
-                  }
-        
-plot['WmWm_EWK']  = {
-                  'color': Azure+4, # kAzure+4 
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1.0   
-                  }
+
 ##Irreducible Background
 plot['WW_strong']  = {
                   'color': Violet, # kViolet
@@ -265,6 +246,44 @@ plot['DATA']  = {
 		  'scale'    : 1.0
               }
 
+
+
+
+groupPlot['WW_EWK_bin0']  = {'nameHR' : "Signal bin 0",
+			'isSignal' : signal,
+			'color'    : Azure+0-9, # kAzure+4
+			'samples'  : ['Signal_bin0']
+			}
+groupPlot['WW_EWK_bin1']  = {'nameHR' : "Signal bin 1",
+			'isSignal' : signal,
+			'color'    : Azure+0-5, # kAzure+4
+			'samples'  : ['Signal_bin1']
+			}
+groupPlot['WW_EWK_bin2']  = {'nameHR' : "Signal bin 2",
+			'isSignal' : signal,
+			'color'    : Azure+0-1, # kAzure+4
+			'samples'  : ['Signal_bin2']
+			}
+
+
+plot['Signal_bin0']  = {
+		'color': Azure+5, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
+plot['Signal_bin1']  = {
+		'color': Azure+6, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
+plot['Signal_bin2']  = {
+		'color': Azure+7, # kAzure+..
+		'isSignal' : signal,
+		'isData'   : 0,
+		'scale'    : 1.0
+		}
 
 # additional options
 legend['lumi'] = 'L = 35.9/fb'

@@ -1,16 +1,18 @@
 # structure configuration for datacard
 
-#structure = {}
+structure = {}
 
-# keys here must match keys in samples.py    
-
-#signal                
+###############
+### SIGNAL ####
+###############               
 structure['HH'] = {
                 'isSignal': 1,
                 'isData': 0
                 }
 
-#bkg    
+#####################
+#### BACKGROUNDS ####
+#####################  
 structure['Wjets'] = {
 		'isSignal': 0,
 		'isData': 0
@@ -30,37 +32,27 @@ structure['singleTop'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['TT_leptonic'] = {
+structure['ttbar'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['WW'] = {
+structure['VV'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['WWW'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-structure['WWZ'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-structure['WZ'] = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-structure['ZZ'] = {
+structure['VVV'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
 
-# data
-#structure['DATA'] = {
-#                       	'isSignal' : 0,
-#                       	'isData'   : 1
-#		    }
-#
+##############
+#### DATA ####
+##############
+structure['DATA'] = {
+                       	'isSignal' : 0,
+                       	'isData'   : 1
+		    }
+
 
 
 

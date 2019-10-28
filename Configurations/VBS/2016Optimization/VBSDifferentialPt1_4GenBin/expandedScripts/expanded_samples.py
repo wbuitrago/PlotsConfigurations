@@ -8,14 +8,6 @@ samples['DPS'] = {
      'weight'  :   'baseW*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)' ,
 }  
    
- samples['WpWp_EWK'] = { 
-     'name'  :  [ 
-            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WpWpJJ_EWK.root',
-     ],  
-     'weight'  :   'baseW*GEN_weight_SM/abs(GEN_weight_SM)*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)*1.067466' ,
-     'FilesPerJob'  :   1 ,
-}  
-   
  samples['lep_TT_promptSubtr'] = { 
      'name'  :  [ 
             '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__tightVbsSel__bkgWeights//latino_TTTo2L2Nu__part0.root',
@@ -138,6 +130,45 @@ samples['DPS'] = {
      ],  
      'weight'  :   'baseW*GEN_weight_SM/abs(GEN_weight_SM)*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)' ,
      'FilesPerJob'  :   6 ,
+}  
+   
+ samples['Signal_bin1'] = { 
+     'name'  :  [ 
+            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WmWmJJ_EWK_powheg.root',
+            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WpWpJJ_EWK.root',
+     ],  
+     'weights'  :  [ 
+            '(1.)',
+            '(1.)*(GEN_weight_SM/abs(GEN_weight_SM))',
+     ],  
+     'weight'  :   'baseW*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)*1.067466*(sqrt(2*std_vector_jetGen_pt[0]*std_vector_jetGen_pt[1]*(cosh(std_vector_jetGen_eta[0]-std_vector_jetGen_eta[1])-cos(std_vector_jetGen_phi[0]-std_vector_jetGen_phi[1])))>=1000 && sqrt(2*std_vector_jetGen_pt[0]*std_vector_jetGen_pt[1]*(cosh(std_vector_jetGen_eta[0]-std_vector_jetGen_eta[1])-cos(std_vector_jetGen_phi[0]-std_vector_jetGen_phi[1])))<1500)' ,
+     'FilesPerJob'  :   1 ,
+}  
+   
+ samples['Signal_bin0'] = { 
+     'name'  :  [ 
+            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WmWmJJ_EWK_powheg.root',
+            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WpWpJJ_EWK.root',
+     ],  
+     'weights'  :  [ 
+            '(1.)',
+            '(1.)*(GEN_weight_SM/abs(GEN_weight_SM))',
+     ],  
+     'weight'  :   'baseW*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)*1.067466*(sqrt(2*std_vector_jetGen_pt[0]*std_vector_jetGen_pt[1]*(cosh(std_vector_jetGen_eta[0]-std_vector_jetGen_eta[1])-cos(std_vector_jetGen_phi[0]-std_vector_jetGen_phi[1])))<1000)' ,
+     'FilesPerJob'  :   1 ,
+}  
+   
+ samples['Signal_bin2'] = { 
+     'name'  :  [ 
+            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WmWmJJ_EWK_powheg.root',
+            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WpWpJJ_EWK.root',
+     ],  
+     'weights'  :  [ 
+            '(1.)',
+            '(1.)*(GEN_weight_SM/abs(GEN_weight_SM))',
+     ],  
+     'weight'  :   'baseW*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)*1.067466*(sqrt(2*std_vector_jetGen_pt[0]*std_vector_jetGen_pt[1]*(cosh(std_vector_jetGen_eta[0]-std_vector_jetGen_eta[1])-cos(std_vector_jetGen_phi[0]-std_vector_jetGen_phi[1])))>=1500)' ,
+     'FilesPerJob'  :   1 ,
 }  
    
  samples['Fake_lep'] = { 
@@ -623,14 +654,6 @@ samples['DPS'] = {
             '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WpWpJJ_QCD.root',
      ],  
      'weight'  :   'baseW*GEN_weight_SM/abs(GEN_weight_SM)*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)*1.057' ,
-     'FilesPerJob'  :   1 ,
-}  
-   
- samples['WmWm_EWK'] = { 
-     'name'  :  [ 
-            '###/gwteras/cms/store/group/OneLepton/Apr2017_summer16/lep2SelVBS__MCWeights__hadd__bSFL2pTEffCut__genMatchVariables__l2tightVBS__tightVbsSel//latino_WmWmJJ_EWK_powheg.root',
-     ],  
-     'weight'  :   'baseW*puW*effTrigW*bPogSF_CSVM*std_vector_lepton_recoW[0]*std_vector_lepton_recoW[1]*std_vector_lepton_idisoWcut_WP_Tight80X[0]*std_vector_lepton_idisoWcut_WP_Tight80X[1]*std_vector_lepton_promptgenmatched[0]*std_vector_lepton_promptgenmatched[1]*(std_vector_trigger_special[0]*                     std_vector_trigger_special[1]*                     std_vector_trigger_special[2]*                     std_vector_trigger_special[3]*                     std_vector_trigger_special[5]                   )*(((std_vector_trigger_special[8]==-2.)*(std_vector_trigger_special[6]*std_vector_trigger_special[7])) || ((! (std_vector_trigger_special[8]==-2.))*(std_vector_trigger_special[8]*std_vector_trigger_special[9])))*((std_vector_lepton_flavour[0] * std_vector_lepton_flavour[1])>0)*1.067466' ,
      'FilesPerJob'  :   1 ,
 }  
    

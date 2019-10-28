@@ -26,7 +26,7 @@ structure['ZZ']  = {
                   'isData'   : 0 
                   }
 
-structure['WZ_strong']  = { 
+structure['WZ']  = { 
                   'isSignal' : 0,
                   'isData'   : 0 
                   }
@@ -49,21 +49,23 @@ structure['WW_strong']  = {
                       }
 
 ##Signal
+structure['Signal_bin0']={
+			'isSignal' : 1,
+			'isData'   : 0
+			}
+structure['Signal_bin1']={
+			'isSignal' : 1,
+			'isData'   : 0
+			}
+structure['Signal_bin2']={
+			'isSignal' : 1,
+			'isData'   : 0
+			}
+structure['Signal_bin3']={
+			'isSignal' : 1,
+			'isData'   : 0
+			}
 
-structure['WpWp_EWK']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-
-structure['WmWm_EWK']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-                      
-structure['WZ_EWK']  = { 
-                  'isSignal' : 1,
-                  'isData'   : 0 
-                  }
 
 #Fake
 structure['Fake_lep']  = {  
@@ -147,6 +149,7 @@ structure['DATA']  = {
                   'isSignal' : 0,
                   'isData'   : 1 
               }
+
 
 
 
