@@ -71,7 +71,7 @@ groupPlot['Vg']  = {
 }
 
 groupPlot['WW_strong']  = {
-    'nameHR' : "W^{pm}W^{pm} QCD",
+    'nameHR' : "W^{#pm}W^{#pm} QCD",
     'isSignal' : 0,
     'color'    : ROOT.kViolet-4, # kViolet
     'samples'  : ['WW_strong']
@@ -86,7 +86,7 @@ groupPlot['non-prompt']  = {
                   'samples'  : ['Fake_lep']
               }
 groupPlot['WpWp_EWK']  = {
-                  'nameHR' : "W^{pm}W^{pm} EWK",
+                  'nameHR' : "W^{#pm}W^{#pm} EWK",
                   'isSignal' : 0,
                   'color'    : ROOT.kBlue-7, # kAzure+4
                   'samples'  : ['WpWp_EWK']
