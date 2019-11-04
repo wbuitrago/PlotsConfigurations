@@ -39,38 +39,51 @@ cuts['lowmjj_me'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'jetpt30 && leppt30 && mjj < 500 && bVeto && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*13 && softmuon_veto',
+        'region' : 'jetpt30 && leppt30 && mjj < 500 && bVeto && abs(Lepton_pdgId[0])==13 && abs(Lepton_pdgId[1])==11 && softmuon_veto',
+    }
+}
+cuts['lowmjj_em'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'jetpt30 && leppt30 && mjj < 500 && bVeto && abs(Lepton_pdgId[0])==11 && abs(Lepton_pdgId[1])==13 && softmuon_veto',
     }
 }
 cuts['top'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto || !softmuon_veto)',
+        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto||!softmuon_veto)',
     }
 }
 cuts['top_ee'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto || !softmuon_veto) && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*11',
+        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto||!softmuon_veto) && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*11',
     }
 }
 cuts['top_mm'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto || !softmuon_veto) && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==13*13',
+        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto||!softmuon_veto) && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==13*13',
     }
 }
 cuts['top_me'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto || !softmuon_veto)&& abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*13',
+        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto||!softmuon_veto)&& abs(Lepton_pdgId[0])==13 && abs(Lepton_pdgId[1])==11',
     }
 }
-
+cuts['top_em'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto||!softmuon_veto)&& abs(Lepton_pdgId[0])==11 && abs(Lepton_pdgId[1])==13',
+    }
+}
 cuts['ssww'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
@@ -96,7 +109,14 @@ cuts['ssww_me'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*13 && softmuon_veto',
+        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && abs(Lepton_pdgId[0])==13 && abs(Lepton_pdgId[1])==11 && softmuon_veto',
+    }
+}
+cuts['ssww_em'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && abs(Lepton_pdgId[0])==11 && abs(Lepton_pdgId[1])==13 && softmuon_veto',
     }
 }
 '''
