@@ -15,7 +15,7 @@ def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and skey !='Fake_lep' and skey !='WZ_EWK' and skey !='Wg' and skey !='DPS']
+    mc = [skey for skey in samples if skey != 'DATA' and skey != 'Fake_lep' and skey !='WZ_EWK' and skey !='Vg' and skey !='DPS']
 except NameError:
     mc = []
     cuts = {}
@@ -25,18 +25,6 @@ except NameError:
 mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv4_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5__'
 from LatinoAnalysis.Tools.HiggsXSection import HiggsXSection
 HiggsXS = HiggsXSection()
-
-
-cuts0j = []
-cuts1j = []
-cuts2j = []
-
-for k in cuts:
-  for cat in cuts[k]['categories']:
-    if '0j' in cat: cuts0j.append(k+'_'+cat)
-    elif '1j' in cat: cuts1j.append(k+'_'+cat)
-    elif '2j' in cat: cuts2j.append(k+'_'+cat)
-    else: print 'WARNING: name of category does not contain on either 0j,1j,2j'
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
 
@@ -59,7 +47,7 @@ nuisances['lumi_XYFact'] = {
     'type': 'lnN',
     'samples': dict((skey, '1.009') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
-
+'''
 nuisances['lumi_BBDefl'] = {
     'name': 'lumi_13TeV_BBDefl',
     'type': 'lnN',
@@ -77,7 +65,7 @@ nuisances['lumi_Ghosts'] = {
     'type': 'lnN',
     'samples': dict((skey, '1.004') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
-
+'''
 #### FAKES
 
 ## FIXME: check the 30% lnN
@@ -151,18 +139,6 @@ nuisances['trigg'] = {
     'type': 'shape',
     'samples': dict((skey, trig_syst) for skey in mc)
 }
-
-prefire_syst = ['PrefireWeight_Up/PrefireWeight', 'PrefireWeight_Down/PrefireWeight']
-
-nuisances['prefire'] = {
-    'name': 'CMS_eff_prefiring',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': dict((skey, prefire_syst) for skey in mc)
-}
-
-##### Electron Efficiency and energy scale
-
 nuisances['eff_e'] = {
     'name': 'CMS_eff_e',
     'kind': 'weight',
@@ -177,7 +153,7 @@ nuisances['electronpt'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': mcDirectory+'ElepTup'+'/',
     'folderDown': mcDirectory+'ElepTdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### Muon Efficiency and energy scale
@@ -194,9 +170,9 @@ nuisances['muonpt'] = {
     'kind': 'tree',
     'type': 'shape',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': mcDirectory+'MupTup'+'/', 
+    'folderUp': mcDirectory+'MupTup'+'/',
     'folderDown': mcDirectory+'MupTdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### Jet energy scale
@@ -208,7 +184,7 @@ nuisances['jes'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': mcDirectory+'JESup'+'/',
     'folderDown': mcDirectory+'JESdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### MET energy scale
@@ -220,7 +196,7 @@ nuisances['met'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': mcDirectory+'METup'+'/',
     'folderDown': mcDirectory+'METdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### Pileup
@@ -230,52 +206,60 @@ nuisances['PU'] = {
     'kind': 'weight',
     'type': 'shape',
     'samples': dict((skey, ['puWeightUp/puWeight', 'puWeightDown/puWeight']) for skey in mc),
-    'AsLnN': '1',
+    #'AsLnN': '1',
 }
 
-###### pdf uncertainties
-
-valuesggh = HiggsXS.GetHiggsProdXSNP('YR4','13TeV','ggH','125.09','pdf','sm')
-valuesggzh = HiggsXS.GetHiggsProdXSNP('YR4','13TeV','ggZH','125.09','pdf','sm')
-valuesbbh = HiggsXS.GetHiggsProdXSNP('YR4','13TeV','bbH','125.09','pdf','sm')
-
-valuesqqh = HiggsXS.GetHiggsProdXSNP('YR4','13TeV','vbfH','125.09','pdf','sm')
-valueswh = HiggsXS.GetHiggsProdXSNP('YR4','13TeV','WH','125.09','pdf','sm')
-valueszh = HiggsXS.GetHiggsProdXSNP('YR4','13TeV','ZH','125.09','pdf','sm')
 ##### Renormalization & factorization scales
 
 ## Shape nuisance due to QCD scale variations for DY
 # LHE scale variation weights (w_var / w_nominal)
 # [0] is muR=0.50000E+00 muF=0.50000E+00
+# [1] is muR=0.50000E+00 muF=0.10000E+01
+# [2] is muR=0.50000E+00 muF=0.20000E+01
+# [3] is muR=0.10000E+01 muF=0.50000E+00
+# [4] is muR=0.10000E+01 muF=0.10000E+01
+# [5] is muR=0.10000E+01 muF=0.20000E+01
+# [6] is muR=0.20000E+01 muF=0.50000E+00
+# [7] is muR=0.20000E+01 muF=0.10000E+01
 # [8] is muR=0.20000E+01 muF=0.20000E+01
-nuisances['QCDscale_V'] = {
-    'name': 'QCDscale_V',
-    'skipCMS': 1,
-    'kind': 'weight',
+
+variations = ['LHEScaleWeight[%d]' % i for i in [0, 1, 3, 5, 7, 8]]
+
+
+nuisances['QCDscale'] = {
+    'name': 'QCDscale',
+    'kind': 'weight_envelope',
     'type': 'shape',
-    'samples': dict((skey, ['LHEScaleWeight[8]', 'LHEScaleWeight[0]']) for skey in mc),
-    'AsLnN': '1'
+    'samples': {
+        'WpWp_EWK': variations,
+        'WpWp_EWK_lep1pt_bin0': variations,
+        'WpWp_EWK_lep1pt_bin1': variations,
+        'WpWp_EWK_lep1pt_bin2': variations,
+        'WpWp_EWK_lep1pt_out': variations,
+        'WpWp_EWK_lep2pt_bin0': variations,
+        'WpWp_EWK_lep2pt_bin1': variations,
+        'WpWp_EWK_lep2pt_bin2': variations,
+        'WpWp_EWK_lep2pt_out': variations,
+        'WpWp_EWK_jet1pt_bin0': variations,
+        'WpWp_EWK_jet1pt_bin1': variations,
+        'WpWp_EWK_jet1pt_bin2': variations,
+        'WpWp_EWK_jet1pt_out': variations,
+        'WpWp_EWK_jet2pt_bin0': variations,
+        'WpWp_EWK_jet2pt_bin1': variations,
+        'WpWp_EWK_jet2pt_bin2': variations,
+        'WpWp_EWK_jet2pt_out': variations,
+        'WpWp_EWK_mll_bin0': variations,
+        'WpWp_EWK_mll_bin1': variations,
+        'WpWp_EWK_mll_bin2': variations,
+        'WpWp_EWK_mll_bin3': variations,
+        'WpWp_EWK_mll_out': variations,
+        'WpWp_EWK_mjj_bin0': variations,
+        'WpWp_EWK_mjj_bin1': variations,
+        'WpWp_EWK_mjj_bin2': variations,
+        'WpWp_EWK_mjj_bin3': variations,
+        'WpWp_EWK_mjj_out': variations,
+        'WpWp_QCD': variations,
+    }
 }
-## FIXME: check the 30% lnN
-nuisances['PDFscale'] = {
-    'name': 'PDFscale',
-    'type': 'lnN',
-    'samples': dict((skey, '1.10') for skey in mc),
-    #'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
-    #'perRecoBin': True
-}
-## Use the following if you want to apply the automatic combine MC stat nuisances.
-nuisances['stat'] = {
-    'type': 'auto',
-    'maxPoiss': '10',
-    'includeSignal': '0',
-    #  nuisance ['maxPoiss'] =  Number of threshold events for Poisson modelling
-    #  nuisance ['includeSignal'] =  Include MC stat nuisances on signal processes (1=True, 0=False)
-    'samples': {}
-}
-
-
-for n in nuisances.values():
-    n['skipCMS'] = 1
 
 print ' '.join(nuis['name'] for nname, nuis in nuisances.iteritems() if nname not in ('lumi', 'stat'))

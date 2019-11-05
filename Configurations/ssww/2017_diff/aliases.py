@@ -10,9 +10,30 @@ bAlgo = 'DeepB'
 bWP = '0.4941'
 
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
+# gen variables
+aliases['genmjj'] = {
+    'expr': 'sqrt(2*Alt$(GenJet_pt[0],-9999.)*Alt$(GenJet_pt[1],-9999.)*(cosh(Alt$(GenJet_eta[0],-9999.)-Alt$(GenJet_eta[1],-9999.))-cos(Alt$(GenJet_phi[0],-9999.)-Alt$(GenJet_phi[1],-9999.))))',
+    'samples': mc
+}
+aliases['gendressedmll'] = {
+    'expr': 'sqrt(2*Alt$(GenDressedLepton_pt[0],-9999.)*Alt$(GenDressedLepton_pt[1],-9999.)*(cosh(Alt$(GenDressedLepton_eta[0],-9999.)-Alt$(GenDressedLepton_eta[1],-9999.))-cos(Alt$(GenDressedLepton_phi[0],-9999.)-Alt$(GenDressedLepton_phi[1],-9999.))))',
+    'samples': mc
+}
+aliases['genmll'] = {
+    'expr': 'sqrt(2*Alt$(LeptonGen_pt[0],-9999.)*Alt$(LeptonGen_pt[1],-9999.)*(cosh(Alt$(LeptonGen_eta[0],-9999.)-Alt$(LeptonGen_eta[1],-9999.))-cos(Alt$(LeptonGen_phi[0],-9999.)-Alt$(LeptonGen_phi[1],-9999.))))',
+    'samples': mc
+}
+aliases['fiducial_dressed'] = {
+    'expr': 'nGenDressedLepton>1 && nGenJet>1 && genmjj>500 && Alt$(GenDressedLepton_pt[0],-9999.)>20 && Alt$(GenDressedLepton_pt[1],-9999.)>20 && abs(Alt$(GenDressedLepton_eta[0],-9999.))<2.5 && abs(Alt$(GenDressedLepton_eta[1],-9999.))<2.5  && Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)>30 && abs(Alt$(GenJet_eta[0],-9999.))<4.7 && abs(Alt$(GenJet_eta[1],-9999.))<4.7',
+    'samples': mc
+}
+aliases['fiducial'] = {
+    'expr': 'nLeptonGen>1 && nGenJet>1 && genmjj>500 && Alt$(LeptonGen_pt[0],-9999.)>20 && Alt$(LeptonGen_pt[1],-9999.)>20 && abs(Alt$(LeptonGen_eta[0],-9999.))<2.5 && abs(Alt$(LeptonGen_eta[1],-9999.))<2.5  && Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)>30 && abs(Alt$(GenJet_eta[0],-9999.))<4.7 && abs(Alt$(GenJet_eta[1],-9999.))<4.7 && abs(Alt$(LeptonGen_MotherPID[0],-9999))==24 && abs(Alt$(LeptonGen_MotherPID[1],-9999))==24',
+    'samples': mc
+}
 # tau veto
 aliases['tauVeto_ww'] = {
-    'expr': '(Sum$(Tau_pt > 18 && Tau_rawIso >=1 && sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.3 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.3) == 0)'
+    'expr': '(Sum$(Tau_pt > 18 && Tau_rawIso < 5 && abs(Tau_eta)<2.3 && Tau_idDecayMode && Tau_idDecayModeNewDMs &&sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4) == 0)'
 }
 aliases['tauVeto_wz'] = {
     'expr': '(Sum$(Tau_pt > 18 && Tau_rawIso >=1 && sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.3 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.3 && sqrt( pow(Tau_eta - Lepton_eta[2], 2) + pow(abs(abs(Tau_phi - Lepton_phi[2])-pi)-pi, 2) ) >= 0.3) == 0)'
@@ -20,8 +41,11 @@ aliases['tauVeto_wz'] = {
 aliases['tauVeto_zz'] = {
     'expr': '(Sum$(Tau_pt > 18 && Tau_rawIso >=1 && sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.3 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.3 && sqrt( pow(Tau_eta - Lepton_eta[2], 2) + pow(abs(abs(Tau_phi - Lepton_phi[2])-pi)-pi, 2) ) >= 0.3 && sqrt( pow(Tau_eta - Lepton_eta[3], 2) + pow(abs(abs(Tau_phi - Lepton_phi[3])-pi)-pi, 2) ) >= 0.3) == 0)'
 }
+aliases['softmuon_veto']={
+    'expr':'(Sum$(abs(Muon_dxy)<0.02 && abs(Muon_dz)<0.1 && Muon_softId && Muon_pt>5 && abs(Muon_eta)<2.4 && sqrt( pow(Muon_eta - Lepton_eta[0], 2) + pow(abs(abs(Muon_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Muon_eta - Lepton_eta[1], 2) + pow(abs(abs(Muon_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4)==0)'
+}
 # lepton sf
-eleWP = 'mvaFall17V2Iso_WP90_SS'
+eleWP = 'mvaFall17V1Iso_WP90_SS'
 #eleWP = 'mvaFall17Iso_WP90_SS'
 
 muWP = 'cut_Tight_HWWW'
@@ -85,24 +109,41 @@ aliases['zeroJet'] = {
     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
 }
 
+# ==1 jet with pt > 30 GeV
 aliases['oneJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
+    'expr': 'Alt$(CleanJet_pt[0], 0) >= 30. && Alt$(CleanJet_pt[1], 0) < 30.'
 }
 
-aliases['multiJet'] = {
-    'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
+# ==2 jets with pt > 30 GeV
+aliases['twoJet'] = {
+    'expr': 'Alt$(CleanJet_pt[0], 0) >= 30. && Alt$(CleanJet_pt[1], 0) >= 30. && Alt$(CleanJet_pt[2], 0) < 30.'
 }
 
-# B tagging
+# >=2 jets with pt > 30 GeV
+aliases['twoJetOrMore'] = {
+    'expr': 'Alt$(CleanJet_pt[0], 0) >= 30. && Alt$(CleanJet_pt[1], 0) >= 30.'
+}
+
 
 aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.4 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4941) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4941) == 0'
 }
 
 aliases['bReq'] = {
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.4 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4941) >= 1'
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4941) >= 1'
 }
 
+aliases['btag0'] = {
+    'expr': 'zeroJet && !bVeto'
+}
+
+aliases['btag1'] = {
+    'expr': 'oneJet && bReq'
+}
+
+aliases['btag2'] = {
+    'expr': 'twoJet && bReq'
+}
 
 # lepton eta range
 aliases['lep0eta']={
@@ -138,16 +179,15 @@ aliases['zveto_ww']={
     'expr': '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) != 11*11 || abs(mll - 91.1876) > 15)'
 }
 aliases['ssww_region']={
-    'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep
+    'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep mjj detajj
     #'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep
-    #'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && zveto_ww && lep0eta && lep1eta'  # pt zlep
 }
 # wz region
 aliases['ztag_wz']={
     'expr': '((Alt$(Lepton_pdgId[0],-9999) + Alt$(Lepton_pdgId[1],-9999)==0 && abs(mll-91.1876)<15)||(Alt$(Lepton_pdgId[0],-9999) + Alt$(Lepton_pdgId[2],-9999)==0 && abs(mllOneThree-91.1876)<15)||(Alt$(Lepton_pdgId[1],-9999) + Alt$(Lepton_pdgId[2],-9999)==0 && abs(mllTwoThree-91.1876)<15))'  # bjet pt zlep
 }
 aliases['pid_wz']={
-    'expr': '(abs(Alt$(Lepton_pdgId[0],-9999) + Alt$(Lepton_pdgId[1],-9999)+Alt$(Lepton_pdgId[2],-9999)) == 11||abs(Alt$(Lepton_pdgId[0],-9999) + Alt$(Lepton_pdgId[1],-9999)+Alt$(Lepton_pdgId[2],-9999)) == 13)'
+    'expr': 'abs(Alt$(Lepton_pdgId[0],-9999) + Alt$(Lepton_pdgId[1],-9999)+Alt$(Lepton_pdgId[2],-9999)) < 33'
 }
 aliases['zlep_wz']={
     'expr': 'abs((Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 0.5 && abs((Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 0.5'# && abs((Alt$(Lepton_eta[2],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) <0.5'
@@ -181,26 +221,30 @@ aliases['Jet_btagSF_shapeFix'] = {
     'args': (btagSFSource,),
     'samples': mc
 }
-
 aliases['bVetoSF'] = {
+    #'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
     'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shapeFix[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
     'samples': mc
 }
 
-aliases['bReqSF'] = {
-    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shapeFix[CleanJet_jetIdx]+1*(CleanJet_pt<30 || abs(CleanJet_eta)>2.5))))',
+aliases['btag0SF'] = {
+    #'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && CleanJet_pt<30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || CleanJet_pt>30 || abs(CleanJet_eta)>2.5))))',
+    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && CleanJet_pt<30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shapeFix[CleanJet_jetIdx]+1*(CleanJet_pt<20 || CleanJet_pt>30 || abs(CleanJet_eta)>2.5))))',
     'samples': mc
 }
-aliases['topcr']={
-    'expr':'ssww_region && zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && ((zeroJet && !bVeto) || bReq)'
+
+aliases['btagnSF'] = {
+    #'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx] + (CleanJet_pt<30 || abs(CleanJet_eta)>2.5))))',
+    'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>30 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shapeFix[CleanJet_jetIdx] + (CleanJet_pt<30 || abs(CleanJet_eta)>2.5))))',
+    'samples': mc
 }
+
 aliases['btagSF'] = {
-    'expr': '(bVeto || (topcr && zeroJet))*bVetoSF + (topcr && !zeroJet)*bReqSF',
-    #'expr': '(bVeto || (wz_region && zeroJet))*bVetoSF + (wz_region && !zeroJet)*bReqSF',
-    #'expr': '(bVeto || (zz_region && zeroJet))*bVetoSF + (zz_region && !zeroJet)*bReqSF',
+    'expr': 'bVetoSF*bVeto + btag0SF*btag0 + btagnSF*(btag1 + btag2) + (!bVeto && !btag0 && !btag1 && !btag2)',
     'samples': mc
 }
-for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2', 'cferr1', 'cferr2']:
+
+for shift in ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr1','cferr2']:
     aliases['Jet_btagSF_shapeFix_up_%s' % shift] = {
         'class': 'BtagSF',
         'args': (btagSFSource, 'up_' + shift),
@@ -212,26 +256,28 @@ for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2',
         'samples': mc
     }
 
-    for targ in ['bVeto', 'bReq']:
+    for targ in ['bVeto', 'btag0', 'btagn']:
         alias = aliases['%sSF%sup' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+        #alias['expr'] = alias['expr'].replace('btagSF_shape', 'btagSF_shape_up_%s' % shift)
         alias['expr'] = alias['expr'].replace('btagSF_shapeFix', 'btagSF_shapeFix_up_%s' % shift)
 
         alias = aliases['%sSF%sdown' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+        #alias['expr'] = alias['expr'].replace('btagSF_shape', 'btagSF_shape_down_%s' % shift)
         alias['expr'] = alias['expr'].replace('btagSF_shapeFix', 'btagSF_shapeFix_down_%s' % shift)
 
     aliases['btagSF%sup' % shift] = {
-        'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'up'),
+        'expr': 'bVetoSF{shift}up*bVeto + btag0SF{shift}up*btag0 + btagnSF{shift}up*(btag1 + btag2) + (!bVeto && !btag0 && !btag1 && !btag2)'.format(shift = shift),
         'samples': mc
     }
 
     aliases['btagSF%sdown' % shift] = {
-        'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'down'),
+        'expr': 'bVetoSF{shift}down*bVeto + btag0SF{shift}down*btag0 + btagnSF{shift}down*(btag1 + btag2) + (!bVeto && !btag0 && !btag1 && !btag2)'.format(shift = shift),
         'samples': mc
     }
 
 # data/MC scale factors
 aliases['SFweight'] = {
-    'expr': ' * '.join(['SFweight2l','XSWeight', 'METFilter_MC','LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut', 'PrefireWeight','PromptGenLepMatch2l','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
+    'expr': ' * '.join(['SFweight2l','LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','PrefireWeight','XSWeight','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
     #'expr': 'LepWPCut',
     'samples': mc
 }

@@ -94,7 +94,6 @@ DataTrig_2016 = {
     'DoubleEG'       : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && Trigger_dblEl' ,
     'SingleElectron' : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && !Trigger_dblEl && Trigger_sngEl' ,
 }
-
 DataRun_2017 = [
     ['B','Run2017B-Nano14Dec2018-v1'] ,
     ['C','Run2017C-Nano14Dec2018-v1'] ,
@@ -173,7 +172,6 @@ samples['ttbar'] = 	{ 	'name'  :getSampleFiles(chargeFlipDir,'TTTo2L2Nu',False,'
 addSampleWeight(samples,'ttbar','TTTo2L2Nu',Top_pTrw)
 '''
 ######## Vgamma ########
-
 files = nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
         nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM')
 
@@ -195,7 +193,6 @@ samples['VgS'] = {
 }
 addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
 addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
-
 ######### VV #########
 files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext1') + \
         nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
@@ -210,8 +207,6 @@ samples['ZZ'] = {
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
-        #nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
-        #nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_ext1')
 samples['WZTo2L2Q'] = {
     'name': files,
     'weight': mcCommonWeight,

@@ -14,12 +14,27 @@ supercut='\
 mjj > 150'
 
 ## Signal regions
+cuts['lowmjj'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'jetpt30 && leppt30 && mjj < 500 && bVeto && softmuon_veto',
+    }
+}
+
+cuts['top'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'zlep_ww && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && (!bVeto||!softmuon_veto)',
+    }
+}
 
 cuts['ssww'] = {
     'expr': 'ssww_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5',
+        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto',
     }
 }
 '''

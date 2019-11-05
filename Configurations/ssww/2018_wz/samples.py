@@ -94,7 +94,6 @@ DataTrig_2016 = {
     'DoubleEG'       : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && Trigger_dblEl' ,
     'SingleElectron' : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && !Trigger_dblEl && Trigger_sngEl' ,
 }
-
 DataRun_2017 = [
     ['B','Run2017B-Nano14Dec2018-v1'] ,
     ['C','Run2017C-Nano14Dec2018-v1'] ,
@@ -102,9 +101,7 @@ DataRun_2017 = [
     ['E','Run2017E-Nano14Dec2018-v1'] ,
     ['F','Run2017F-Nano14Dec2018-v1'] ,
 ]
-
 DataSets_2017 = ['MuonEG','DoubleMuon','SingleMuon','DoubleEG','SingleElectron']
-
 
 DataTrig_2017 = {
     'MuonEG'         : 'Trigger_ElMu' ,
@@ -208,10 +205,7 @@ samples['ZZ'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
-
 files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
-        #nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
-        #nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_ext1')
 samples['WZTo2L2Q'] = {
     'name': files,
     'weight': mcCommonWeight,

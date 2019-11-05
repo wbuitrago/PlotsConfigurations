@@ -26,13 +26,25 @@ print cuts
 # Groups of samples to improve the plots (merge different sample during plot).
 # If not defined, normal plots is used
 #
-Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860; signal=0
-groupPlot['VV']  = {
-                  'nameHR' : "VV",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kMagenta-10, # kViolet+10
-                  'samples'  : ['WZ','ZZ','WZ_EWK']
-              }
+Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
+groupPlot['ZZ']  = {
+    'nameHR' : "ZZ",
+    'isSignal' : 0,
+    'color'    : ROOT.kMagenta-10, # kViolet+10
+    'samples'  : ['ZZ']
+}
+groupPlot['WZ_QCD']  = {
+    'nameHR' : "WLLJJ_QCD",
+    'isSignal' : 0,
+    'color'    : ROOT.kRed, # kViolet+10
+    'samples'  : ['WZ']
+}
+groupPlot['WZ_EWK']  = {
+    'nameHR' : "WLLJJ_EWK",
+    'isSignal' : 0,
+    'color'    : ROOT.kMagenta, # kViolet+10
+    'samples'  : ['WZ_EWK']
+}
 groupPlot['VVV']  = {
     'nameHR' : 'VVV',
     'isSignal' : 0,
@@ -52,27 +64,27 @@ groupPlot['DPS']  = {
     'samples'  : ['DPS']
 }
 groupPlot['Vg']  = {
-                  'nameHR' : "V#gamma",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kCyan-7,   # kOrange + 10
-                  'samples'  : ['Vg']
-              }
+    'nameHR' : "V#gamma",
+    'isSignal' : 0,
+    'color'    : ROOT.kCyan-7,   # kOrange + 10
+    'samples'  : ['Vg','VgS']
+}
 
 groupPlot['WW_strong']  = {
-                  'nameHR' : "WW QCD",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kViolet-4, # kViolet
-                  'samples'  : ['WW_strong']
-              }
+    'nameHR' : "W^{#pm}W^{#pm} QCD",
+    'isSignal' : 0,
+    'color'    : ROOT.kViolet-4, # kViolet
+    'samples'  : ['WW_strong']
+}
 
 
 
 groupPlot['non-prompt']  = {
-                  'nameHR' : 'non-Prompt',
-                  'isSignal' : 0,
-                  'color': ROOT.kYellow-4,    # kYellow
-                  'samples'  : ['Fake_lep']
-              }
+    'nameHR' : 'non-Prompt',
+    'isSignal' : 0,
+    'color': ROOT.kYellow-4,    # kYellow
+    'samples'  : ['Fake_lep']
+}
 '''
 groupPlot['TL_TT']  = {
                   'nameHR' : "SSWW TTTL",
@@ -87,69 +99,12 @@ groupPlot['LL']  = {
                   'samples'  : ['LL']
               }
 '''
-'''
 groupPlot['WpWp_EWK']  = {
-                  'nameHR' : "WW EWK",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue-7, # kAzure+4
-                  'samples'  : ['WW_EWK']
-              }
-'''
-groupPlot['WW_EWK_bin0']  = {'nameHR' : "Signal bin 0",
-                             'isSignal' : signal,
-                             'color'    : ROOT.kAzure-9, # kAzure+4
-                             'samples'  : ['Signal_bin0']
-                             }
-plot['Signal_bin0']  = {
-    'color': ROOT.kAzure-9,
-    'isSignal': 0,
-    'isData': 0,
-    'scale': 1.
-    }
-groupPlot['WW_EWK_bin1']  = {'nameHR' : "Signal bin 1",
-                             'isSignal' : signal,
-                             'color'    : ROOT.kAzure-4, # kAzure+4
-                             'samples'  : ['Signal_bin1']
-                             }
-plot['Signal_bin1']  = {
-    'color': ROOT.kAzure-4,
-    'isSignal': 0,
-    'isData': 0,
-    'scale': 1.
-    }
-groupPlot['WW_EWK_bin2']  = {'nameHR' : "Signal bin 2",
-                             'isSignal' : signal,
-                             'color'    : ROOT.kAzure, # kAzure+4
-                             'samples'  : ['Signal_bin2']
-                             }
-plot['Signal_bin2']  = {
-    'color': ROOT.kAzure-2,
-    'isSignal': 0,
-    'isData': 0,
-    'scale': 1.
-    }
-groupPlot['WW_EWK_bin3']  = {'nameHR' : "Signal bin 3",
-                             'isSignal' : signal,
-                             'color'    : ROOT.kAzure+4, # kAzure+4
-                             'samples'  : ['Signal_bin3']
-                             }
-plot['Signal_bin3']  = {
-    'color': ROOT.kAzure+4,
-    'isSignal': 0,
-    'isData': 0,
-    'scale': 1.
-    }
-groupPlot['WW_EWK_bin4']  = {'nameHR' : "Signal bin 4",
-                             'isSignal' : signal,
-                             'color'    : ROOT.kAzure+8, # kAzure+4
-                             'samples'  : ['Signal_bin4']
-                             }
-plot['Signal_bin4']  = {
-    'color': ROOT.kAzure+8,
-    'isSignal': 0,
-    'isData': 0,
-    'scale': 1.
-    }
+    'nameHR' : "W^{#pm}W^{#pm} EWK",
+    'isSignal' : 0,
+    'color'    : ROOT.kBlue-7, # kAzure+4
+    'samples'  : ['WW_EWK']
+}
 #plot = {}
 
 # keys here must match keys in samples.py
@@ -163,13 +118,13 @@ plot['Fake_lep']  = {
 }
 
 ##Signal
-'''
 plot['WW_EWK']  = {
     'color': Azure+4, # kAzure+4
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0
 }
+'''
 plot['LL']  = {
     'color': Azure+4, # kAzure+4
     'isSignal' : 0,
@@ -196,6 +151,12 @@ plot['Vg']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
+plot['VgS']  = {
+    'color': Orange+10, # kOrange+10
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 ##Reducible Background
 ##VV plot
 plot['ZZ']  = {
@@ -205,6 +166,12 @@ plot['ZZ']  = {
     'scale'    : 1.0
 }
 plot['WZ']  = {
+    'color': Violet+10, # kViolet+10
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['WZ_EWK']  = {
     'color': Violet+10, # kViolet+10
     'isSignal' : 0,
     'isData'   : 0,
@@ -235,11 +202,11 @@ plot['DATA']  = {
     'color': 1 ,
     'isSignal' : 0,
     'isData'   : 1 ,
-    'isBlind'  : 1 ,
+    'isBlind'  : 0 ,
     'scale'    : 1.0
 }
 
 # additional options
-legend['lumi'] = 'L = 35.867/fb'
+legend['lumi'] = 'L = 35.92/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'

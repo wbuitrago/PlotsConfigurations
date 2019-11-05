@@ -52,9 +52,8 @@ fakeW_2016 = 'fakeW2l_ele_'+eleWP+'_mu_'+muWP
 ################################################
 ############ BASIC MC WEIGHTS ##################
 ################################################
-mcCommonWeightNoMatch = 'XSWeight*SFweight*METFilter_MC*41.53'
-#mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC*41.53'
-mcCommonWeight = 'SFweight*41.53'
+mcCommonWeightNoMatch = 'SFweight'
+mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
 ################################################
 ############### B-Tag  WP ######################
 ################################################
@@ -186,9 +185,21 @@ files = nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
 
 samples['Vg'] = {
     'name': files,
-    'weight': mcCommonWeight, #mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)',
+    'weight': mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0)',
     'FilesPerJob': 4
 }
+######## VgS ########
+
+files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
+        nanoGetSampleFiles(mcDirectory, 'ZGToLLG')
+
+samples['VgS'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4,
+}
+addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
+addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
 #addSampleWeight(samples, 'Vg', 'Zg', '(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
 ######### VV #########
 files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
@@ -200,10 +211,61 @@ samples['ZZ'] = {
     'FilesPerJob': 4
 }
 #WZTo3LNu_mllmin01
+'''
 files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q') + \
-        nanoGetSampleFiles(mcDirectory, 'WZTo3LNu') + \
-        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_1Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_2Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_3Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_0Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
 samples['WZ'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
+samples['WZTo2L2Q'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu')
+samples['WZ_mg5'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
+samples['WZ_powheg'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+'''
+files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_1Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_2Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_3Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_0Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
+        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
+samples['WZ_QCD'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*1.2',
+    'FilesPerJob': 4
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')# + \
+#nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
+samples['WZ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
@@ -226,7 +288,8 @@ samples['VVV'] = {
 ########## TTV #########
 
 files = nanoGetSampleFiles(mcDirectory, 'TTWjets_ext1') + \
-        nanoGetSampleFiles(mcDirectory, 'TTZToLLNuNu_M-10')
+        nanoGetSampleFiles(mcDirectory, 'TTZToLLNuNu_M-10') + \
+        nanoGetSampleFiles(mcDirectory, 'tZq_ll')
 #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
 samples['TTV'] = {
@@ -250,7 +313,7 @@ samples['DPS'] = {
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_QCD')
 #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
-samples['WW_strong'] = {
+samples['WpWp_QCD'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
@@ -258,82 +321,179 @@ samples['WW_strong'] = {
 ###########################################
 #############   SIGNALS  ##################
 ###########################################
-'''
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
-samples['WW_EWK'] = {
+samples['WpWp_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
-'''
-mjj="sqrt(2*Alt$(GenJet_pt[0],-9999.)*Alt$(GenJet_pt[1],-9999.)*(cosh(Alt$(GenJet_eta[0],-9999.)-Alt$(GenJet_eta[1],-9999.))-cos(Alt$(GenJet_phi[0],-9999.)-Alt$(GenJet_phi[1],-9999.))))"
-mll="sqrt(2*Alt$(LeptonGen_pt[0],-9999.)*Alt$(LeptonGen_pt[1],-9999.)*(cosh(Alt$(LeptonGen_eta[0],-9999.)-Alt$(LeptonGen_eta[1],-9999.))-cos(Alt$(LeptonGen_phi[0],-9999.)-Alt$(LeptonGen_phi[1],-9999.))))"
-
-#mjj
-#wwjj_bin0="("+mjj+"<1000)"
-#wwjj_bin1="("+mjj+">=1000 && "+mjj+"<1500)"
-#wwjj_bin2="("+mjj+">=1500)"
-
-# mll
-
-#wwjj_bin0="("+mll+"<95)"
-#wwjj_bin1="("+mll+">=95 && "+mll+"<190)"
-#wwjj_bin2="("+mll+">=190)"
-#
-#Dressed lepton pt 1 [30, 55, 90, 130, 180, 240, 320]
-wwjj_bin0 = "(GenDressedLepton_pt[0]<55 && GenDressedLepton_pt[0]>=30)"
-wwjj_bin1 = "(GenDressedLepton_pt[0]>=55 && GenDressedLepton_pt[0]<90)"
-wwjj_bin2 = "(GenDressedLepton_pt[0]>=90 && GenDressedLepton_pt[0]<130)"
-wwjj_bin3 = "(GenDressedLepton_pt[0]>=130 && GenDressedLepton_pt[0]<180)"
-wwjj_bin4 = "(GenDressedLepton_pt[0]>=180)"
-
-#dressed lepton pt2 2
-#wwjj_bin0  = "(std_vector_dressedLeptonGen_pt[1]<50)"
-#wwjj_bin1 = "(std_vector_dressedLeptonGen_pt[1]>=50 && std_vector_DressedLeptonGen_pt[1]<100)"
-#wwjj_bin2 ="(std_vector_dressedLeptonGen_pt[1]>=100)"
-#wwjj_bin3 ="(std_vector_dressedLeptonGen_pt[0]>=150)"
-#A dressed lepton is a system formed of a charged lepton and nearby photons-> should be dressedLeptonGen used insted of the normal lepGen?
-
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-
-samples['Signal_bin0'] = {
+#+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
+# gen pt lep1 bin
+lep1pt_bin0='Alt$(GenDressedLepton_pt[0],-9999.)>30 && Alt$(GenDressedLepton_pt[0],-9999.)<=85'
+lep1pt_bin1='Alt$(GenDressedLepton_pt[0],-9999.)>85 && Alt$(GenDressedLepton_pt[0],-9999.)<=130'
+lep1pt_bin2='Alt$(GenDressedLepton_pt[0],-9999.)>130'
+lep1pt_out='Alt$(GenDressedLepton_pt[0],-9999.)<=30'
+samples['WpWp_EWK_lep1pt_bin0'] = {
     'name': files,
-    'weight':mcCommonWeight+'*'+wwjj_bin0,
-    'FilesPerJob' : 6,
+    'weight': mcCommonWeight+'*('+lep1pt_bin0+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_lep1pt_bin1'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+lep1pt_bin1+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_lep1pt_bin2'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+lep1pt_bin2+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_lep1pt_out'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+lep1pt_out+')',
+    'FilesPerJob': 4
 }
 
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-
-samples['Signal_bin1'] = {
+# gen pt lep2 bin
+lep2pt_bin0='Alt$(GenDressedLepton_pt[1],-9999.)>30 && Alt$(GenDressedLepton_pt[1],-9999.)<=85'
+lep2pt_bin1='Alt$(GenDressedLepton_pt[1],-9999.)>85 && Alt$(GenDressedLepton_pt[1],-9999.)<=130'
+lep2pt_bin2='Alt$(GenDressedLepton_pt[1],-9999.)>130'
+lep2pt_out='Alt$(GenDressedLepton_pt[1],-9999.)<=30'
+samples['WpWp_EWK_lep2pt_bin0'] = {
     'name': files,
-    'weight':mcCommonWeight+'*'+wwjj_bin1,
-    'FilesPerJob' : 6,
+    'weight': mcCommonWeight+'*('+lep2pt_bin0+')',
+    'FilesPerJob': 4
 }
-
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-
-samples['Signal_bin2'] = {
+samples['WpWp_EWK_lep2pt_bin1'] = {
     'name': files,
-    'weight':mcCommonWeight+'*'+wwjj_bin2,
-    'FilesPerJob' : 6,
+    'weight': mcCommonWeight+'*('+lep2pt_bin1+')',
+    'FilesPerJob': 4
 }
-
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-
-samples['Signal_bin3'] = {
+samples['WpWp_EWK_lep2pt_bin2'] = {
     'name': files,
-    'weight':mcCommonWeight+'*'+wwjj_bin3,
-    'FilesPerJob' : 6,
+    'weight': mcCommonWeight+'*('+lep2pt_bin2+')',
+    'FilesPerJob': 4
 }
-
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-
-samples['Signal_bin4'] = {
+samples['WpWp_EWK_lep2pt_out'] = {
     'name': files,
-    'weight':mcCommonWeight+'*'+wwjj_bin4,
-    'FilesPerJob' : 6,
+    'weight': mcCommonWeight+'*('+lep2pt_out+')',
+    'FilesPerJob': 4
+}
+# gen pt jet1 bin
+jet1pt_bin0='Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[0],-9999.)<80'
+jet1pt_bin1='Alt$(GenJet_pt[0],-9999.)>=80 && Alt$(GenJet_pt[0],-9999.)<150'
+jet1pt_bin2='Alt$(GenJet_pt[0],-9999.)>=150'
+jet1pt_out='Alt$(GenJet_pt[0],-9999.)<=30'
+samples['WpWp_EWK_jet1pt_bin0'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet1pt_bin0+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_jet1pt_bin1'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet1pt_bin1+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_jet1pt_bin2'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet1pt_bin2+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_jet1pt_out'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet1pt_out+')',
+    'FilesPerJob': 4
+}
+# gen pt jet2 bin
+jet2pt_bin0='Alt$(GenJet_pt[1],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)<80'
+jet2pt_bin1='Alt$(GenJet_pt[1],-9999.)>=80 && Alt$(GenJet_pt[1],-9999.)<150'
+jet2pt_bin2='Alt$(GenJet_pt[1],-9999.)>=150'
+jet2pt_out='Alt$(GenJet_pt[1],-9999.)<=30'
+samples['WpWp_EWK_jet2pt_bin0'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet2pt_bin0+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_jet2pt_bin1'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet2pt_bin1+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_jet2pt_bin2'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet2pt_bin2+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_jet2pt_out'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+jet2pt_out+')',
+    'FilesPerJob': 4
+}
+# gen mll bin
+mll_bin0='gendressedmll>20 && gendressedmll<=100'
+mll_bin1='gendressedmll>100 && gendressedmll<=200'
+mll_bin2='gendressedmll>200 && gendressedmll<=300'
+mll_bin3='gendressedmll>300'
+mll_out='gendressedmll<=20'
+
+samples['WpWp_EWK_mll_bin0'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mll_bin0+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mll_bin1'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mll_bin1+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mll_bin2'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mll_bin2+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mll_bin3'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mll_bin3+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mll_out'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mll_out+')',
+    'FilesPerJob': 4
+}
+# gen mjj bin
+#500,800,1100,1500,2000
+mjj_bin0='genmjj>500 && genmjj<=800'
+mjj_bin1='genmjj>800 && genmjj<=1100'
+mjj_bin2='genmjj>1100 && genmjj<=1500'
+mjj_bin3='genmjj>1500'
+mjj_out='genmjj<=500'
+samples['WpWp_EWK_mjj_bin0'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mjj_bin0+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mjj_bin1'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mjj_bin1+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mjj_bin2'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mjj_bin2+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mjj_bin3'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mjj_bin3+')',
+    'FilesPerJob': 4
+}
+samples['WpWp_EWK_mjj_out'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+mjj_out+')',
+    'FilesPerJob': 4
 }
 ###########################################
 ################## FAKE ###################
@@ -341,7 +501,7 @@ samples['Signal_bin4'] = {
 #1389 files
 samples['Fake_lep'] = {
     'name': [],
-    'weight': 'METFilter_FAKE*fakeW',
+    'weight': 'METFilter_DATA*fakeW',
     'weights': [],
     'isData': ['all'],
     'FilesPerJob': 19
@@ -357,7 +517,7 @@ for _, sd in DataRun_2017:
 ################## DATA ###################
 samples['DATA'] = {
     'name': [],
-    'weight': 'LepWPCut',
+    'weight': 'METFilter_DATA*LepWPCut',
     'weights': [],
     'isData': ['all'],
     'FilesPerJob': 19

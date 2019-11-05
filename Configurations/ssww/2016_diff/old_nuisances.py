@@ -17,7 +17,7 @@ nuisances['lumi']  = {
         #'top'      : '1.023',    | These 3 backgrounds are data driven, no need to include the luminosity uncertainty
         #'WW'       : '1.023',    |
         'Vg'       : '1.023',
-        #'VgS'      : '1.023',
+        'VgS'      : '1.023',
         #'WZgS'     : '1.023',
         #'WZgS_L'   : '1.023',
         #'WZgS_H'   : '1.023',
