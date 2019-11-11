@@ -40,7 +40,7 @@ aliases['fiducial_dressed'] = {
     'samples': mc
 }
 aliases['fiducial'] = {
-    'expr': 'nLeptonGen>1 && nGenJet>1 && genmjj>500 && genlep_cut && genmll>20 && genjet_cut && gendetajj>2.5 && Alt$(LeptonGen_pdgId[0],-9999)*Alt$(LeptonGen_pdgId[1],9999)>0',
+    'expr': 'nLeptonGen>1 && nGenJet>1 && genmjj>500 && genlep_cut && genmll>20 && genjet_cut && gendetajj>2.5 && Alt$(LeptonGen_pdgId[0],-9999)*Alt$(LeptonGen_pdgId[1],9999)>0 && GenMET_pt>30',
     'samples': mc
 }
 # tau veto
