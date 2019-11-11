@@ -150,7 +150,7 @@ nuisances['electronpt'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': mcDirectory+'ElepTup'+'/',
     'folderDown': mcDirectory+'ElepTdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### Muon Efficiency and energy scale
@@ -169,7 +169,7 @@ nuisances['muonpt'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': mcDirectory+'MupTup'+'/',
     'folderDown': mcDirectory+'MupTdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### Jet energy scale
@@ -181,7 +181,7 @@ nuisances['jes'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': mcDirectory+'JESup'+'/',
     'folderDown': mcDirectory+'JESdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### MET energy scale
@@ -193,7 +193,7 @@ nuisances['met'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc),
     'folderUp': mcDirectory+'METup'+'/',
     'folderDown': mcDirectory+'METdo'+'/',
-    'AsLnN': '1'
+    #'AsLnN': '1'
 }
 
 ##### Pileup

@@ -27,12 +27,30 @@ print cuts
 # If not defined, normal plots is used
 #
 Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
-groupPlot['VV']  = {
-                  'nameHR' : "VV",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kMagenta-10, # kViolet+10
-                  'samples'  : ['WZ','ZZ']
-              }
+groupPlot['Vg']  = {
+    'nameHR' : "V#gamma",
+    'isSignal' : 0,
+    'color'    : ROOT.kCyan-7,   # kOrange + 10
+    'samples'  : ['Vg','VgS']
+}
+groupPlot['ZZ']  = {
+    'nameHR' : "ZZ",
+    'isSignal' : 0,
+    'color'    : ROOT.kMagenta, # kViolet+10
+    'samples'  : ['ZZ']
+}
+groupPlot['WZ_QCD']  = {
+    'nameHR' : "WZ_QCD",
+    'isSignal' : 0,
+    'color'    : ROOT.kRed, # kViolet+10
+    'samples'  : ['WZ_QCD']
+}
+groupPlot['WZ_EWK']  = {
+    'nameHR' : "WZ_EWK",
+    'isSignal' : 0,
+    'color'    : ROOT.kMagenta-10, # kViolet+10
+    'samples'  : ['WZ_EWK']
+}
 groupPlot['VVV']  = {
     'nameHR' : 'VVV',
     'isSignal' : 0,
@@ -51,48 +69,356 @@ groupPlot['DPS']  = {
     'color': ROOT.kGray+5, # kGreen
     'samples'  : ['DPS']
 }
-groupPlot['Vg']  = {
-                  'nameHR' : "V#gamma",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kCyan-7,   # kOrange + 10
-                  'samples'  : ['Vg']
-              }
-
-groupPlot['WW_strong']  = {
-                  'nameHR' : "WW QCD",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kViolet-4, # kViolet
-                  'samples'  : ['WW_strong']
-              }
+groupPlot['WpWp_QCD']  = {
+    'nameHR' : "W^{\pm}W^{\pm} QCD",
+    'isSignal' : 0,
+    'color'    : ROOT.kViolet-4, # kViolet
+    'samples'  : ['WpWp_QCD']
+}
 
 
 
 groupPlot['non-prompt']  = {
-                  'nameHR' : 'non-Prompt',
-                  'isSignal' : 0,
-                  'color': ROOT.kYellow-4,    # kYellow
-                  'samples'  : ['Fake_lep']
-              }
+    'nameHR' : 'non-Prompt',
+    'isSignal' : 0,
+    'color': ROOT.kYellow-4,    # kYellow
+    'samples'  : ['Fake_lep']
+}
 '''
-groupPlot['TL_TT']  = {
-                  'nameHR' : "SSWW TTTL",
-                  'isSignal' : 0,
-                  'color'    : Azure+8, # kAzure+4
-                  'samples'  : ['TL_TT']
-              }
-groupPlot['LL']  = {
-                  'nameHR' : "SSWW LL",
-                  'isSignal' : 0,
-                  'color'    : Azure+4, # kAzure+4
-                  'samples'  : ['LL']
-              }
-'''
-groupPlot['WpWp_EWK']  = {
-                  'nameHR' : "WW EWK",
+groupPlot['WpWp_EWK_fid']  = {
+                  'nameHR' : "WpWpEWK_fid",
                   'isSignal' : 0,
                   'color'    : ROOT.kBlue-7, # kAzure+4
-                  'samples'  : ['WpWp_EWK']
+                  'samples'  : ['WpWp_EWK_fid']
               }
+groupPlot['WpWp_EWK_out']  = {
+                  'nameHR' : "WpWpEWK_out",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_out']
+              }
+'''
+'''
+# lep1 pt
+groupPlot['WpWp_EWK_lep1pt_bin0']  = {
+                  'nameHR' : "WpWp EWK bin0",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-7, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep1pt_bin0']
+              }
+plot['WpWp_EWK_lep1pt_bin0']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_lep1pt_bin1']  = {
+                  'nameHR' : "WpWp EWK bin1",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep1pt_bin1']
+              }
+plot['WpWp_EWK_lep1pt_bin1']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_lep1pt_bin2']  = {
+                  'nameHR' : "WpWp EWK bin2",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep1pt_bin2']
+              }
+plot['WpWp_EWK_lep1pt_bin2']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_lep1pt_out']  = {
+                  'nameHR' : "WpWp EWK out",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue+3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep1pt_out']
+              }
+plot['WpWp_EWK_lep1pt_out']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+# lep2 pt
+groupPlot['WpWp_EWK_lep2pt_bin0']  = {
+                  'nameHR' : "WpWp EWK bin0",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-7, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep2pt_bin0']
+              }
+plot['WpWp_EWK_lep2pt_bin0']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_lep2pt_bin1']  = {
+                  'nameHR' : "WpWp EWK bin1",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep2pt_bin1']
+              }
+plot['WpWp_EWK_lep2pt_bin1']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_lep2pt_bin2']  = {
+                  'nameHR' : "WpWp EWK bin2",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep2pt_bin2']
+              }
+plot['WpWp_EWK_lep2pt_bin2']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_lep2pt_out']  = {
+                  'nameHR' : "WpWp EWK out",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue+3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_lep2pt_out']
+              }
+plot['WpWp_EWK_lep2pt_out']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+# jet1 pt
+groupPlot['WpWp_EWK_jet1pt_bin0']  = {
+                  'nameHR' : "WpWp EWK bin0",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-7, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet1pt_bin0']
+              }
+plot['WpWp_EWK_jet1pt_bin0']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_jet1pt_bin1']  = {
+                  'nameHR' : "WpWp EWK bin1",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet1pt_bin1']
+              }
+plot['WpWp_EWK_jet1pt_bin1']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_jet1pt_bin2']  = {
+                  'nameHR' : "WpWp EWK bin2",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet1pt_bin2']
+              }
+plot['WpWp_EWK_jet1pt_bin2']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_jet1pt_out']  = {
+                  'nameHR' : "WpWp EWK out",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue+3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet1pt_out']
+              }
+plot['WpWp_EWK_jet1pt_out']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+# jet2pt
+groupPlot['WpWp_EWK_jet2pt_bin0']  = {
+                  'nameHR' : "WpWp EWK bin0",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-7, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet2pt_bin0']
+              }
+plot['WpWp_EWK_jet2pt_bin0']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_jet2pt_bin1']  = {
+                  'nameHR' : "WpWp EWK bin1",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet2pt_bin1']
+              }
+plot['WpWp_EWK_jet2pt_bin1']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_jet2pt_bin2']  = {
+                  'nameHR' : "WpWp EWK bin2",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet2pt_bin2']
+              }
+plot['WpWp_EWK_jet2pt_bin2']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_jet2pt_out']  = {
+                  'nameHR' : "WpWp EWK out",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue+3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_jet2pt_out']
+              }
+plot['WpWp_EWK_jet2pt_out']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+# mll
+groupPlot['WpWp_EWK_mll_bin0']  = {
+                  'nameHR' : "WpWp EWK bin0",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-7, # kAzure+4
+                  'samples'  : ['WpWp_EWK_mll_bin0']
+              }
+plot['WpWp_EWK_mll_bin0']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mll_bin1']  = {
+                  'nameHR' : "WpWp EWK bin1",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue-3, # kAzure+4
+                  'samples'  : ['WpWp_EWK_mll_bin1']
+              }
+plot['WpWp_EWK_mll_bin1']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mll_bin2']  = {
+                  'nameHR' : "WpWp EWK bin2",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_mll_bin2']
+              }
+plot['WpWp_EWK_mll_bin2']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mll_bin3']  = {
+                  'nameHR' : "WpWp EWK bin3",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_mll_bin3']
+              }
+plot['WpWp_EWK_mll_bin3']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mll_out']  = {
+                  'nameHR' : "WpWp EWK out",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, # kAzure+4
+                  'samples'  : ['WpWp_EWK_mll_out']
+              }
+plot['WpWp_EWK_mll_out']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+'''
+# mjj
+groupPlot['WpWp_EWK_mjj_bin0']  = {
+    'nameHR' : "WpWp EWK bin0",
+    'isSignal' : 0,
+    'color'    : ROOT.kBlue-7, # kAzure+4
+    'samples'  : ['WpWp_EWK_mjj_bin0']
+}
+plot['WpWp_EWK_mjj_bin0']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mjj_bin1']  = {
+    'nameHR' : "WpWp EWK bin1",
+    'isSignal' : 0,
+    'color'    : ROOT.kBlue-3, # kAzure+4
+    'samples'  : ['WpWp_EWK_mjj_bin1']
+}
+plot['WpWp_EWK_mjj_bin1']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mjj_bin2']  = {
+    'nameHR' : "WpWp EWK bin2",
+    'isSignal' : 0,
+    'color'    : ROOT.kBlue, # kAzure+4
+    'samples'  : ['WpWp_EWK_mjj_bin2']
+}
+plot['WpWp_EWK_mjj_bin2']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mjj_bin3']  = {
+    'nameHR' : "WpWp EWK bin3",
+    'isSignal' : 0,
+    'color'    : ROOT.kBlue+3, # kAzure+4
+    'samples'  : ['WpWp_EWK_mjj_bin3']
+}
+plot['WpWp_EWK_mjj_bin3']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WpWp_EWK_mjj_out']  = {
+    'nameHR' : "WpWp EWK out",
+    'isSignal' : 0,
+    'color'    : ROOT.kBlue+3, # kAzure+4
+    'samples'  : ['WpWp_EWK_mjj_out']
+}
+plot['WpWp_EWK_mjj_out']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 #plot = {}
 
 # keys here must match keys in samples.py
@@ -105,28 +431,7 @@ plot['Fake_lep']  = {
     'scale'    : 1.0
 }
 
-##Signal
-plot['WpWp_EWK']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-'''
-plot['LL']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['TL_TT']  = {
-    'color': Azure+8, # kAzure+4
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-'''
-plot['WW_strong']  = {
+plot['WpWp_QCD']  = {
     'color': Violet, # kViolet
     'isSignal' : 0,
     'isData'   : 0,
@@ -134,6 +439,12 @@ plot['WW_strong']  = {
 }
 
 plot['Vg']  = {
+    'color': Orange+10, # kOrange+10
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['VgS']  = {
     'color': Orange+10, # kOrange+10
     'isSignal' : 0,
     'isData'   : 0,
@@ -147,7 +458,13 @@ plot['ZZ']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-plot['WZ']  = {
+plot['WZ_QCD']  = {
+    'color': Violet+10, # kViolet+10
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['WZ_EWK']  = {
     'color': Violet+10, # kViolet+10
     'isSignal' : 0,
     'isData'   : 0,
@@ -178,11 +495,10 @@ plot['DATA']  = {
     'color': 1 ,
     'isSignal' : 0,
     'isData'   : 1 ,
-    'isBlind'  : 0 ,
+    'isBlind'  : 1 ,
     'scale'    : 1.0
 }
-
 # additional options
-#legend['lumi'] = 'L = 59.74/fb'
-legend['lumi'] = 'L = 137.19/fb'
+legend['lumi'] = 'L = 59.74/fb'
+#legend['lumi'] = 'L = 137.19/fb'
 legend['sqrt'] = '#sqrt{s} = 13 TeV'

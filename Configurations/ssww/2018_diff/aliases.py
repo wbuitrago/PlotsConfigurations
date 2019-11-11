@@ -23,12 +23,24 @@ aliases['genmll'] = {
     'expr': 'sqrt(2*Alt$(LeptonGen_pt[0],-9999.)*Alt$(LeptonGen_pt[1],-9999.)*(cosh(Alt$(LeptonGen_eta[0],-9999.)-Alt$(LeptonGen_eta[1],-9999.))-cos(Alt$(LeptonGen_phi[0],-9999.)-Alt$(LeptonGen_phi[1],-9999.))))',
     'samples': mc
 }
+aliases['genlep_cut'] = {
+    'expr': 'Alt$(LeptonGen_pt[0],-9999.)>30 && Alt$(LeptonGen_pt[1],-9999.)>30 && Alt$(LeptonGen_pt[2],-9999.)<10 && abs(Alt$(LeptonGen_eta[0],-9999.))<2.5 && abs(Alt$(LeptonGen_eta[1],-9999.))<2.5',
+    'samples': mc
+}
+aliases['genjet_cut'] = {
+    'expr': 'Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)>30 && abs(Alt$(GenJet_eta[0],-9999.))<4.7 && abs(Alt$(GenJet_eta[1],-9999.))<4.7',
+    'samples': mc
+}
+aliases['gendetajj'] = {
+    'expr': 'abs(Alt$(GenJet_eta[0],-9999.)-Alt$(GenJet_eta[1],-9999.))',
+    'samples': mc
+}
 aliases['fiducial_dressed'] = {
     'expr': 'nGenDressedLepton>1 && nGenJet>1 && genmjj>500 && Alt$(GenDressedLepton_pt[0],-9999.)>20 && Alt$(GenDressedLepton_pt[1],-9999.)>20 && abs(Alt$(GenDressedLepton_eta[0],-9999.))<2.5 && abs(Alt$(GenDressedLepton_eta[1],-9999.))<2.5  && Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)>30 && abs(Alt$(GenJet_eta[0],-9999.))<4.7 && abs(Alt$(GenJet_eta[1],-9999.))<4.7',
     'samples': mc
 }
 aliases['fiducial'] = {
-    'expr': 'nLeptonGen>1 && nGenJet>1 && genmjj>500 && Alt$(LeptonGen_pt[0],-9999.)>20 && Alt$(LeptonGen_pt[1],-9999.)>20 && abs(Alt$(LeptonGen_eta[0],-9999.))<2.5 && abs(Alt$(LeptonGen_eta[1],-9999.))<2.5  && Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)>30 && abs(Alt$(GenJet_eta[0],-9999.))<4.7 && abs(Alt$(GenJet_eta[1],-9999.))<4.7 && abs(Alt$(LeptonGen_MotherPID[0],-9999))==24 && abs(Alt$(LeptonGen_MotherPID[1],-9999))==24',
+    'expr': 'nLeptonGen>1 && nGenJet>1 && genmjj>500 && genlep_cut && genmll>20 && genjet_cut && gendetajj>2.5 && Alt$(LeptonGen_pdgId[0],-9999)*Alt$(LeptonGen_pdgId[1],9999)>0',
     'samples': mc
 }
 # tau veto
