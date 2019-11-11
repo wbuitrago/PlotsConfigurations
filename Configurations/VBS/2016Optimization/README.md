@@ -92,7 +92,7 @@ This is the configuration with the WZ EWK considered as signal as well. It can b
 
 They are the configurations used to perform the differential measurements.
 
-Definition used:
+Definitions used:
 * Gen-Parameters: the number of gen bins and the relative width defined to perform the study;
 * Reco-Parameters: the bins and range used to define the fitted distribution
 
@@ -113,4 +113,4 @@ Perform the multidimensional fit:
 
     combine -M MultiDimFit -m 125 --setParameters r1=1,r2=1,r3=1 --algo=singles -t -1 -S 1 --cl=0.68 workspace_name.root -n VBS_Diff_singles 
 
-The blind option is used one again (-t -1)
+The blind option is used once again (-t -1)
