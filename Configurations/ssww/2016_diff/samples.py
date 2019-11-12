@@ -297,15 +297,28 @@ samples['TL_TT'] = {
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
+out_fid='!(fiducial)'
+
 samples['WpWp_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
-lep1pt_bin0='Alt$(GenDressedLepton_pt[0],-9999.)>30 && Alt$(GenDressedLepton_pt[0],-9999.)<=85'
-lep1pt_bin1='Alt$(GenDressedLepton_pt[0],-9999.)>85 && Alt$(GenDressedLepton_pt[0],-9999.)<=130'
-lep1pt_bin2='Alt$(GenDressedLepton_pt[0],-9999.)>130'
-lep1pt_out='Alt$(GenDressedLepton_pt[0],-9999.)<=30'
+samples['WpWp_EWK_fid'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*(fiducial)',
+    'FilesPerJob': 4
+}
+
+samples['WpWp_EWK_out'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*('+out_fid+')',
+    'FilesPerJob': 4
+}
+lep1pt_bin0='fiducial && Alt$(GenDressedLepton_pt[0],-9999.)>30 && Alt$(GenDressedLepton_pt[0],-9999.)<=120'
+lep1pt_bin1='fiducial && Alt$(GenDressedLepton_pt[0],-9999.)>120 && Alt$(GenDressedLepton_pt[0],-9999.)<=250'
+lep1pt_bin2='fiducial && Alt$(GenDressedLepton_pt[0],-9999.)>250'
+
 samples['WpWp_EWK_lep1pt_bin0'] = {
     'name': files,
     'weight': mcCommonWeight+'*('+lep1pt_bin0+')',
@@ -321,17 +334,11 @@ samples['WpWp_EWK_lep1pt_bin2'] = {
     'weight': mcCommonWeight+'*('+lep1pt_bin2+')',
     'FilesPerJob': 4
 }
-samples['WpWp_EWK_lep1pt_out'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+lep1pt_out+')',
-    'FilesPerJob': 4
-}
 
 # gen pt lep2 bin
-lep2pt_bin0='Alt$(GenDressedLepton_pt[1],-9999.)>30 && Alt$(GenDressedLepton_pt[1],-9999.)<=85'
-lep2pt_bin1='Alt$(GenDressedLepton_pt[1],-9999.)>85 && Alt$(GenDressedLepton_pt[1],-9999.)<=130'
-lep2pt_bin2='Alt$(GenDressedLepton_pt[1],-9999.)>130'
-lep2pt_out='Alt$(GenDressedLepton_pt[1],-9999.)<=30'
+lep2pt_bin0='fiducial && Alt$(GenDressedLepton_pt[1],-9999.)>30 && Alt$(GenDressedLepton_pt[1],-9999.)<=120'
+lep2pt_bin1='fiducial && Alt$(GenDressedLepton_pt[1],-9999.)>120 && Alt$(GenDressedLepton_pt[1],-9999.)<=250'
+lep2pt_bin2='fiducial && Alt$(GenDressedLepton_pt[1],-9999.)>250'
 samples['WpWp_EWK_lep2pt_bin0'] = {
     'name': files,
     'weight': mcCommonWeight+'*('+lep2pt_bin0+')',
@@ -347,16 +354,11 @@ samples['WpWp_EWK_lep2pt_bin2'] = {
     'weight': mcCommonWeight+'*('+lep2pt_bin2+')',
     'FilesPerJob': 4
 }
-samples['WpWp_EWK_lep2pt_out'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+lep2pt_out+')',
-    'FilesPerJob': 4
-}
+
 # gen pt jet1 bin
-jet1pt_bin0='Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[0],-9999.)<80'
-jet1pt_bin1='Alt$(GenJet_pt[0],-9999.)>=80 && Alt$(GenJet_pt[0],-9999.)<150'
-jet1pt_bin2='Alt$(GenJet_pt[0],-9999.)>=150'
-jet1pt_out='Alt$(GenJet_pt[0],-9999.)<=30'
+jet1pt_bin0='fiducial && Alt$(GenJet_pt[0],-9999.)>30 && Alt$(GenJet_pt[0],-9999.)<=120'
+jet1pt_bin1='fiducial && Alt$(GenJet_pt[0],-9999.)>120 && Alt$(GenJet_pt[0],-9999.)<=250'
+jet1pt_bin2='fiducial && Alt$(GenJet_pt[0],-9999.)>250'
 samples['WpWp_EWK_jet1pt_bin0'] = {
     'name': files,
     'weight': mcCommonWeight+'*('+jet1pt_bin0+')',
@@ -372,16 +374,11 @@ samples['WpWp_EWK_jet1pt_bin2'] = {
     'weight': mcCommonWeight+'*('+jet1pt_bin2+')',
     'FilesPerJob': 4
 }
-samples['WpWp_EWK_jet1pt_out'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+jet1pt_out+')',
-    'FilesPerJob': 4
-}
+
 # gen pt jet2 bin
-jet2pt_bin0='Alt$(GenJet_pt[1],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)<80'
-jet2pt_bin1='Alt$(GenJet_pt[1],-9999.)>=80 && Alt$(GenJet_pt[1],-9999.)<150'
-jet2pt_bin2='Alt$(GenJet_pt[1],-9999.)>=150'
-jet2pt_out='Alt$(GenJet_pt[1],-9999.)<=30'
+jet2pt_bin0='fiducial && Alt$(GenJet_pt[1],-9999.)>30 && Alt$(GenJet_pt[1],-9999.)<=120'
+jet2pt_bin1='fiducial && Alt$(GenJet_pt[1],-9999.)>120 && Alt$(GenJet_pt[1],-9999.)<=250'
+jet2pt_bin2='fiducial && Alt$(GenJet_pt[1],-9999.)>250'
 samples['WpWp_EWK_jet2pt_bin0'] = {
     'name': files,
     'weight': mcCommonWeight+'*('+jet2pt_bin0+')',
@@ -397,17 +394,11 @@ samples['WpWp_EWK_jet2pt_bin2'] = {
     'weight': mcCommonWeight+'*('+jet2pt_bin2+')',
     'FilesPerJob': 4
 }
-samples['WpWp_EWK_jet2pt_out'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+jet2pt_out+')',
-    'FilesPerJob': 4
-}
+
 # gen mll bin
-mll_bin0='gendressedmll>20 && gendressedmll<=100'
-mll_bin1='gendressedmll>100 && gendressedmll<=200'
-mll_bin2='gendressedmll>200 && gendressedmll<=300'
-mll_bin3='gendressedmll>300'
-mll_out='gendressedmll<=20'
+mll_bin0='fiducial && gendressedmll>20 && gendressedmll<=120'
+mll_bin1='fiducial && gendressedmll>120 && gendressedmll<=250'
+mll_bin2='fiducial && gendressedmll>250'
 
 samples['WpWp_EWK_mll_bin0'] = {
     'name': files,
@@ -424,23 +415,12 @@ samples['WpWp_EWK_mll_bin2'] = {
     'weight': mcCommonWeight+'*('+mll_bin2+')',
     'FilesPerJob': 4
 }
-samples['WpWp_EWK_mll_bin3'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+mll_bin3+')',
-    'FilesPerJob': 4
-}
-samples['WpWp_EWK_mll_out'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+mll_out+')',
-    'FilesPerJob': 4
-}
+
 # gen mjj bin
 #500,800,1100,1500,2000
-mjj_bin0='genmjj>500 && genmjj<=800'
-mjj_bin1='genmjj>800 && genmjj<=1100'
-mjj_bin2='genmjj>1100 && genmjj<=1500'
-mjj_bin3='genmjj>1500'
-mjj_out='genmjj<=500'
+mjj_bin0='fiducial && genmjj>500 && genmjj<=1000'
+mjj_bin1='fiducial && genmjj>1000 && genmjj<=1500'
+mjj_bin2='fiducial && genmjj>1500'
 samples['WpWp_EWK_mjj_bin0'] = {
     'name': files,
     'weight': mcCommonWeight+'*('+mjj_bin0+')',
@@ -456,16 +436,7 @@ samples['WpWp_EWK_mjj_bin2'] = {
     'weight': mcCommonWeight+'*('+mjj_bin2+')',
     'FilesPerJob': 4
 }
-samples['WpWp_EWK_mjj_bin3'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+mjj_bin3+')',
-    'FilesPerJob': 4
-}
-samples['WpWp_EWK_mjj_out'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*('+mjj_out+')',
-    'FilesPerJob': 4
-}
+
 ###########################################
 ################## FAKE ###################
 ###########################################
