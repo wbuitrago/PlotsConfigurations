@@ -51,16 +51,26 @@ variables['mjj_v3']  = {  'name': 'mjj',
                           }
 
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (10,0.,100),
+                        'range' : (10,30.,350),
                         'xaxis' : 'p_{T} 1st lep',
                         'fold'  : 3
                         }
+variables['pt1_v2']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
+                           'range' : (16,30.,350),
+                           'xaxis' : 'p_{T} 1st lep',
+                           'fold'  : 3
+                           }
 
-variables['pt2']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (10,0.,150),
+variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
+                        'range' : (10,30.,350),
                         'xaxis' : 'p_{T} 2nd lep',
                         'fold'  : 3
                         }
+variables['pt2_v2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
+                           'range' : (16,30.,350),
+                           'xaxis' : 'p_{T} 2nd lep',
+                           'fold'  : 3
+                           }
 
 variables['jetpt1']  = {   'name': 'Alt$(Jet_pt[0],-9999.)',
                            'range' : (10,0.,350),
