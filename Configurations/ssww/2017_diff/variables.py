@@ -27,23 +27,23 @@ variables['mjj_v2']  = {  'name': 'mjj',
                           }
 
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (10,30.,350),
+                        'range' : (10,30.,300),
                         'xaxis' : 'p_{T} 1st lep',
                         'fold'  : 3
                         }
 variables['pt1_v2']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                           'range' : (16,30.,350),
+                           'range' : (12,30.,300),
                            'xaxis' : 'p_{T} 1st lep',
                            'fold'  : 3
                            }
 
 variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (10,30.,350),
+                        'range' : (10,30.,180),
                         'xaxis' : 'p_{T} 2nd lep',
                         'fold'  : 3
                         }
 variables['pt2_v2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                           'range' : (16,30.,350),
+                           'range' : (10,30.,150),
                            'xaxis' : 'p_{T} 2nd lep',
                            'fold'  : 3
                            }

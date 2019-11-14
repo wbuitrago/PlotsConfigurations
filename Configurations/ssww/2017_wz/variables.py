@@ -55,39 +55,38 @@ variables['mjj_v3']  = {  'name': 'mjj',
                           'fold': 3
                           }
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (10,30.,350),
+                        'range' : (10,30.,300),
                         'xaxis' : 'p_{T} 1st lep',
                         'fold'  : 3
                         }
 variables['pt1_v2']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                           'range' : (16,30.,350),
+                           'range' : (12,30.,300),
                            'xaxis' : 'p_{T} 1st lep',
                            'fold'  : 3
                            }
 
 variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (10,30.,350),
+                        'range' : (10,30.,180),
                         'xaxis' : 'p_{T} 2nd lep',
                         'fold'  : 3
                         }
 variables['pt2_v2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                           'range' : (16,30.,350),
+                           'range' : (10,30.,150),
                            'xaxis' : 'p_{T} 2nd lep',
                            'fold'  : 3
                            }
 
 variables['jetpt1']  = {   'name': 'Alt$(Jet_pt[0],-9999.)',
-                           'range' : (10,0.,350),
+                           'range' : (10,30.,350),
                            'xaxis' : 'p_{T} 1st jet',
                            'fold'  : 3
                            }
 
 variables['jetpt2']  = {   'name': 'Alt$(Jet_pt[1],-9999.)',
-                           'range' : (10,0.,350),
+                           'range' : (10,30.,350),
                            'xaxis' : 'p_{T} 2nd jet',
                            'fold'  : 3
                            }
-
 
 variables['met']  = {   'name': 'MET_pt',            #   variable name
                         'range' : (10,0,200),    #   variable range
