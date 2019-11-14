@@ -66,11 +66,12 @@ structure['WpWp_EWK_fid']  = {
                       'isSignal' : 1,
                       'isData'   : 0
                       }
-structure['WpWp_EWK_out']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
 '''
+structure['WpWp_EWK_out']  = {
+    'isSignal' : 0,
+    'isData'   : 0
+}
+
 '''
 # lep1 pt
 structure['WpWp_EWK_lep1pt_bin0']  = {
@@ -83,10 +84,6 @@ structure['WpWp_EWK_lep1pt_bin1']  = {
                       }
 structure['WpWp_EWK_lep1pt_bin2']  = {
                       'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['WpWp_EWK_lep1pt_out']  = {
-                      'isSignal' : 0,
                       'isData'   : 0
                       }
 # lep2 pt
@@ -102,10 +99,6 @@ structure['WpWp_EWK_lep2pt_bin2']  = {
                       'isSignal' : 1,
                       'isData'   : 0
                       }
-structure['WpWp_EWK_lep2pt_out']  = {
-                      'isSignal' : 0,
-                      'isData'   : 0
-                      }
 # jet1 pt
 structure['WpWp_EWK_jet1pt_bin0']  = {
                       'isSignal' : 1,
@@ -117,10 +110,6 @@ structure['WpWp_EWK_jet1pt_bin1']  = {
                       }
 structure['WpWp_EWK_jet1pt_bin2']  = {
                       'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['WpWp_EWK_jet1pt_out']  = {
-                      'isSignal' : 0,
                       'isData'   : 0
                       }
 # jet2 pt
@@ -136,10 +125,6 @@ structure['WpWp_EWK_jet2pt_bin2']  = {
                       'isSignal' : 1,
                       'isData'   : 0
                       }
-structure['WpWp_EWK_jet2pt_out']  = {
-                      'isSignal' : 0,
-                      'isData'   : 0
-                      }
 # mll
 structure['WpWp_EWK_mll_bin0']  = {
                       'isSignal' : 1,
@@ -151,14 +136,6 @@ structure['WpWp_EWK_mll_bin1']  = {
                       }
 structure['WpWp_EWK_mll_bin2']  = {
                       'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['WpWp_EWK_mll_bin3']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['WpWp_EWK_mll_out']  = {
-                      'isSignal' : 0,
                       'isData'   : 0
                       }
                       
@@ -176,14 +153,7 @@ structure['WpWp_EWK_mjj_bin2']  = {
     'isSignal' : 1,
     'isData'   : 0
 }
-structure['WpWp_EWK_mjj_bin3']  = {
-    'isSignal' : 1,
-    'isData'   : 0
-}
-structure['WpWp_EWK_mjj_out']  = {
-    'isSignal' : 0,
-    'isData'   : 0
-}
+
 #Fake
 structure['Fake_lep']  = {
     'isSignal' : 0,

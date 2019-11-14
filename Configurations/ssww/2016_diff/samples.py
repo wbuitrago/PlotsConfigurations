@@ -299,6 +299,8 @@ files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 
 out_fid='!(fiducial)'
 
+
+'''
 samples['WpWp_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
@@ -309,7 +311,7 @@ samples['WpWp_EWK_fid'] = {
     'weight': mcCommonWeight+'*(fiducial)',
     'FilesPerJob': 4
 }
-
+'''
 samples['WpWp_EWK_out'] = {
     'name': files,
     'weight': mcCommonWeight+'*('+out_fid+')',

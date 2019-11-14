@@ -91,13 +91,13 @@ groupPlot['WpWp_EWK_fid']  = {
                   'color'    : ROOT.kBlue-7, # kAzure+4
                   'samples'  : ['WpWp_EWK_fid']
               }
+'''
 groupPlot['WpWp_EWK_out']  = {
                   'nameHR' : "WpWpEWK_out",
                   'isSignal' : 0,
                   'color'    : ROOT.kBlue, # kAzure+4
                   'samples'  : ['WpWp_EWK_out']
               }
-'''
 '''
 # lep1 pt
 groupPlot['WpWp_EWK_lep1pt_bin0']  = {
@@ -136,19 +136,6 @@ plot['WpWp_EWK_lep1pt_bin2']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-groupPlot['WpWp_EWK_lep1pt_out']  = {
-                  'nameHR' : "WpWp EWK out",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue+3, # kAzure+4
-                  'samples'  : ['WpWp_EWK_lep1pt_out']
-              }
-plot['WpWp_EWK_lep1pt_out']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-
 # lep2 pt
 groupPlot['WpWp_EWK_lep2pt_bin0']  = {
                   'nameHR' : "WpWp EWK bin0",
@@ -181,18 +168,6 @@ groupPlot['WpWp_EWK_lep2pt_bin2']  = {
                   'samples'  : ['WpWp_EWK_lep2pt_bin2']
               }
 plot['WpWp_EWK_lep2pt_bin2']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-groupPlot['WpWp_EWK_lep2pt_out']  = {
-                  'nameHR' : "WpWp EWK out",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue+3, # kAzure+4
-                  'samples'  : ['WpWp_EWK_lep2pt_out']
-              }
-plot['WpWp_EWK_lep2pt_out']  = {
     'color': Yellow,    # kYellow
     'isSignal' : 0,
     'isData'   : 0,
@@ -235,18 +210,6 @@ plot['WpWp_EWK_jet1pt_bin2']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-groupPlot['WpWp_EWK_jet1pt_out']  = {
-                  'nameHR' : "WpWp EWK out",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue+3, # kAzure+4
-                  'samples'  : ['WpWp_EWK_jet1pt_out']
-              }
-plot['WpWp_EWK_jet1pt_out']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
 # jet2pt
 groupPlot['WpWp_EWK_jet2pt_bin0']  = {
                   'nameHR' : "WpWp EWK bin0",
@@ -284,18 +247,6 @@ plot['WpWp_EWK_jet2pt_bin2']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-groupPlot['WpWp_EWK_jet2pt_out']  = {
-                  'nameHR' : "WpWp EWK out",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue+3, # kAzure+4
-                  'samples'  : ['WpWp_EWK_jet2pt_out']
-              }
-plot['WpWp_EWK_jet2pt_out']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
 # mll
 groupPlot['WpWp_EWK_mll_bin0']  = {
                   'nameHR' : "WpWp EWK bin0",
@@ -328,30 +279,6 @@ groupPlot['WpWp_EWK_mll_bin2']  = {
                   'samples'  : ['WpWp_EWK_mll_bin2']
               }
 plot['WpWp_EWK_mll_bin2']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-groupPlot['WpWp_EWK_mll_bin3']  = {
-                  'nameHR' : "WpWp EWK bin3",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue, # kAzure+4
-                  'samples'  : ['WpWp_EWK_mll_bin3']
-              }
-plot['WpWp_EWK_mll_bin3']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-groupPlot['WpWp_EWK_mll_out']  = {
-                  'nameHR' : "WpWp EWK out",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue, # kAzure+4
-                  'samples'  : ['WpWp_EWK_mll_out']
-              }
-plot['WpWp_EWK_mll_out']  = {
     'color': Yellow,    # kYellow
     'isSignal' : 0,
     'isData'   : 0,
@@ -395,30 +322,7 @@ plot['WpWp_EWK_mjj_bin2']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-groupPlot['WpWp_EWK_mjj_bin3']  = {
-    'nameHR' : "WpWp EWK bin3",
-    'isSignal' : 0,
-    'color'    : ROOT.kBlue+3, # kAzure+4
-    'samples'  : ['WpWp_EWK_mjj_bin3']
-}
-plot['WpWp_EWK_mjj_bin3']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-groupPlot['WpWp_EWK_mjj_out']  = {
-    'nameHR' : "WpWp EWK out",
-    'isSignal' : 0,
-    'color'    : ROOT.kBlue+3, # kAzure+4
-    'samples'  : ['WpWp_EWK_mjj_out']
-}
-plot['WpWp_EWK_mjj_out']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+
 #plot = {}
 
 # keys here must match keys in samples.py
