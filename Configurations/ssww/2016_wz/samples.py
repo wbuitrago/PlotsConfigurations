@@ -26,7 +26,7 @@ except NameError:
     samples = collections.OrderedDict()
 
 mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv4_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5/'
-private_mcDirectory='/eos/user/j/jixiao/HWWnano3/Summer16_102X_nAODv5_SigOnly_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5/'
+private_mcDirectory='/eos/user/j/jixiao/HWWnano3/Summer16_102X_nAODv4_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5/'
 #mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_nAOD_v1_Full2017v2LP19/MCl1loose2017__MCCorr2017LP19__l2loose__l2tightOR2017/'
 ################################################
 ############ NUMBER OF LEPTONS #################
@@ -197,6 +197,13 @@ samples['VgS'] = {
     'weight': mcCommonWeight,# + '*!(Gen_ZGstar_mass > 0)',
     'FilesPerJob': 4
 }
+files = nanoGetSampleFiles(mcDirectory, 'Zg') + \
+        nanoGetSampleFiles(mcDirectory, 'WGJJ')
+samples['VG'] = {
+    'name': files,
+    'weight': mcCommonWeightNoMatch,# + '*!(Gen_ZGstar_mass > 0)',
+    'FilesPerJob': 4
+}
 addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
 addSampleWeight(samples, 'VgS', 'Zg', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
 ######### VV #########
@@ -208,21 +215,34 @@ samples['ZZ'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
-files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q') + \
-        nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
-samples['WZ'] = {
+files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
+
+samples['WZTo2L2Q'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 7
 }
-#addSampleWeight(samples,'WZ','WZTo3LNu_mllmin01', '(Gen_ZGstar_mass>=0.1)')
+files = nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-4To50_QCD_0Jet') + \
+        nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
+        nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
+        nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet') + \
+        nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
+        nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-50_QCD_1Jet') + \
+        nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-50_QCD_2Jet') + \
+        nanoGetSampleFiles(private_mcDirectory, 'WLLJJToLNu_M-50_QCD_3Jet')
 
+samples['WZ_QCD'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*1.2',
+    'FilesPerJob': 7
+}
 files = nanoGetSampleFiles(private_mcDirectory, 'WLLJJ_WToLNu_EWK')
 samples['WZ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 7
 }
+
 #addSampleWeight(samples,'WZ_EWK','WLLJJ_WToLNu_EWK', '(Gen_ZGstar_mass>=0.1)')
 ########## VVV #########
 
