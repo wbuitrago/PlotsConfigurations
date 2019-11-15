@@ -1,5 +1,7 @@
 # variables
 
+#'fold' : # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+
 #variables = {}
     
 
@@ -10,25 +12,38 @@ variables['events']  = {   'name': '1',
                         'fold' : 3
                         }
 
-variables['mllVSmth_pt2ge20'] = {   'name': 'mll:mth',            #   variable name    
-                             'range' : ([60,80,90,100,110,120,130,150,200],[12,25,35,40,45,50,55,70,90,210],),            #   variable range
-                             'xaxis' : 'm_{ll} : m_{T}^{H}',      #   x axis name
-                             'fold' : 3 ,
-                             # do weighted plot too
-                             'doWeight' : 1,
-                             'binX'     : 8,
-                             'binY'     : 9
-                             #
-                             }
 
-variables['mllVSmth_pt2lt20'] = {   'name': 'mll:mth',            #   variable name    
-                             'range' : ([60,80,90,110,130,150,200],[12,25,40,50,70,90,210],),            #   variable range
-                             'xaxis' : 'm_{ll} : m_{T}^{H}',      #   x axis name
-                             'fold' : 3 ,
-                             # do weighted plot too
-                             'doWeight' : 1,
-                             'binX'     : 6,
-                             'binY'     : 6
-                             #
-                             }
+# define some interesting variables, for example mll (invariant mass of the two leptons)
+# lepton pt etc. etc.
+# see on thesis to choose other good variables..
+
+variables['mll']  = {   'name': 'mll',            #   variable name
+                        'range' : (50, 0. ,500),    #   variable range
+                        'xaxis' : 'mll [GeV]',  #   x axis name
+                        'fold' : 3
+                        }  
+
+variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
+                        'range' : (20,0.,200),
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold'  : 3
+                        }
+
+variables['pt2']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
+                        'range' : (15,0.,150),
+                        'xaxis' : 'p_{T} 2nd lep',
+                        'fold'  : 3
+                        }    
+                        
+                                                                                
+
+# lepton charge product -> defined to see how many events are SS or OS
+# leptons Id:   e-/+  -> +/-11
+#               mu-/+ -> +/-13
+
+variables['lep_charge_prod'] = {  'name'  : '(Lepton_pdgId[0]*Lepton_pdgId[1])/abs(Lepton_pdgId[0]*Lepton_pdgId[1])',    #   variable name
+                                        'range' : (2,-1.1,1.1),                                 #   variable range
+                                        'xaxis' : 'Lepton Charge Product',                      #   x axis name
+                                      }
+
 
