@@ -27,16 +27,17 @@ from LatinoAnalysis.Tools.HiggsXSection import HiggsXSection
 HiggsXS = HiggsXSection()
 
 
-cuts0j = []
-cuts1j = []
-cuts2j = []
+# categories have been removed
+# cuts0j = [] # ---> substituted everywhere by cuts (without categories)
+# cuts1j = []
+# cuts2j = []
 
-for k in cuts:
-  for cat in cuts[k]['categories']:
-    if '0j' in cat: cuts0j.append(k+'_'+cat)
-    elif '1j' in cat: cuts1j.append(k+'_'+cat)
-    elif '2j' in cat: cuts2j.append(k+'_'+cat)
-    else: print 'WARNING: name of category does not contain on either 0j,1j,2j'
+# for k in cuts:
+#   for cat in cuts[k]['categories']:
+#     if '0j' in cat: cuts0j.append(k+'_'+cat)
+#     elif '1j' in cat: cuts1j.append(k+'_'+cat)
+#     elif '2j' in cat: cuts2j.append(k+'_'+cat)
+#     else: print 'WARNING: name of category does not contain on either 0j,1j,2j'
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
 
@@ -690,7 +691,7 @@ nuisances['DYttnorm0j']  = {
                    'DY' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts0j 
+               'cuts'  : cuts 
               }
 
 nuisances['DYttnorm1j']  = {
@@ -699,7 +700,7 @@ nuisances['DYttnorm1j']  = {
                    'DY' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts1j
+               'cuts'  : cuts
               }
 
 nuisances['DYttnorm2j']  = {
@@ -708,7 +709,7 @@ nuisances['DYttnorm2j']  = {
                      'DY' : '1.00',
                      },
                  'type'  : 'rateParam',
-                 'cuts'  : cuts2j
+                 'cuts'  : cuts
                 }
 
 
@@ -718,7 +719,7 @@ nuisances['WWnorm0j']  = {
                    'WW' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts0j
+               'cuts'  : cuts
               }
 
 nuisances['ggWWnorm0j']  = {
@@ -727,7 +728,7 @@ nuisances['ggWWnorm0j']  = {
                    'ggWW' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts0j
+               'cuts'  : cuts
               }
 
 nuisances['WWnorm1j']  = {
@@ -736,7 +737,7 @@ nuisances['WWnorm1j']  = {
                    'WW' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts1j
+               'cuts'  : cuts
               }
 
 nuisances['ggWWnorm1j']  = {
@@ -745,7 +746,7 @@ nuisances['ggWWnorm1j']  = {
                    'ggWW' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts1j
+               'cuts'  : cuts
               }
 
 nuisances['WWnorm2j']  = {
@@ -754,7 +755,7 @@ nuisances['WWnorm2j']  = {
                    'WW' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts2j
+               'cuts'  : cuts
               }
 
 nuisances['ggWWnorm2j']  = {
@@ -763,7 +764,7 @@ nuisances['ggWWnorm2j']  = {
                    'ggWW' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts2j
+               'cuts'  : cuts
               }
 
 nuisances['Topnorm0j']  = {
@@ -772,7 +773,7 @@ nuisances['Topnorm0j']  = {
                    'top' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts0j
+               'cuts'  : cuts
               }
 
 nuisances['Topnorm1j']  = {
@@ -781,7 +782,7 @@ nuisances['Topnorm1j']  = {
                    'top' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts1j
+               'cuts'  : cuts
               }
 
 nuisances['Topnorm2j']  = {
@@ -790,7 +791,7 @@ nuisances['Topnorm2j']  = {
                    'top' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : cuts2j
+               'cuts'  : cuts
               }
 
 

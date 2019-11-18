@@ -1,10 +1,15 @@
 import os
 import inspect
 
+
+# FIX THIS in dependence of where this file is stored, in order to correctly locate the macros in Differential and Patches folder
+# check also in aliases.py
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # ggH2016
-configurations = os.path.dirname(configurations) # Differential
-configurations = os.path.dirname(configurations) # Configurations
+configurations = os.path.dirname(configurations) # Full2017
+configurations = os.path.dirname(configurations) # EFT
+configurations = os.path.dirname(configurations) # VBS, Differential & Patches level
+configurations = os.path.dirname(configurations) # Configurations level
+
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
 
