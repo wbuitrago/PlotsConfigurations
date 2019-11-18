@@ -17,8 +17,8 @@ aliasesFile = 'aliases.py'
 variablesFile = 'variables.py'
 
 # file with list of cuts
-#cutsFile = 'cuts.py'
-cutsFile = 'tmp_cuts.py'
+cutsFile = 'cuts.py'
+#cutsFile = 'tmp_cuts.py'
 
 # file with list of samples
 samplesFile = 'samples.py'

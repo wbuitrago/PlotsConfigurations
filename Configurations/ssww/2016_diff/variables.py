@@ -38,7 +38,7 @@ variables['pt1_v2']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
                            }
 
 variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (10,30.,180),
+                        'range' : (10,30.,120),
                         'xaxis' : 'p_{T} 2nd lep',
                         'fold'  : 3
                         }
