@@ -61,7 +61,7 @@ def makeMCDirectory(var=''):
         return '/afs/cern.ch/user/y/yiiyama/public/hwwvirtual/Fall17/l2tightOR__{var}'.format(var=var)
     else:
         #return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
-        return '/afs/cern.ch/user/y/yiiyama/public/hwwvirtual/Fall17/l2tightOR'
+        return '/afs/cern.ch/user/y/yiiyama/public/hwwvirtual/Fall17/l2tightOR' 
 
 mcDirectory = makeMCDirectory()
 fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)
