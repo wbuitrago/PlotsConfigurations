@@ -27,23 +27,83 @@ print cuts
 # If not defined, normal plots is used
 #
 Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
+groupPlot['DY']  = {
+    'nameHR' : "DY",
+    'isSignal' : 0,
+    'color'    : ROOT.kGreen, # kViolet+10
+    'samples'  : ['DY']
+}
+plot['DY']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['top']  = {
+    'nameHR' : "top",
+    'isSignal' : 0,
+    'color'    : ROOT.kOrange, # kViolet+10
+    'samples'  : ['top']
+}
+plot['top']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+groupPlot['WW']  = {
+    'nameHR' : "W^{#pm}W^{#mp}",
+    'isSignal' : 0,
+    'color'    : ROOT.kBlue, # kViolet+10
+    'samples'  : ['WW','WWewk','ggWW']
+}
+plot['WW']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['WWewk']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['ggWW']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 groupPlot['ZZ']  = {
     'nameHR' : "ZZ",
     'isSignal' : 0,
     'color'    : ROOT.kMagenta-10, # kViolet+10
     'samples'  : ['ZZ']
 }
-groupPlot['WZ_QCD']  = {
-    'nameHR' : "WLLJJ_QCD",
+groupPlot['WZ']  = {
+    'nameHR' : "WZ",
     'isSignal' : 0,
     'color'    : ROOT.kRed, # kViolet+10
-    'samples'  : ['WZ']
+    'samples'  : ['WZ_QCD','WZTo2L2Q','WZ_EWK']
 }
-groupPlot['WZ_EWK']  = {
-    'nameHR' : "WLLJJ_EWK",
+plot['WZ_QCD']  = {
+    'color': Yellow,    # kYellow
     'isSignal' : 0,
-    'color'    : ROOT.kMagenta, # kViolet+10
-    'samples'  : ['WZ_EWK']
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['WZTo2L2Q']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['WZ_EWK']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
 }
 groupPlot['VVV']  = {
     'nameHR' : 'VVV',
@@ -160,18 +220,6 @@ plot['VgS']  = {
 ##Reducible Background
 ##VV plot
 plot['ZZ']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['WZ']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['WZ_EWK']  = {
     'color': Violet+10, # kViolet+10
     'isSignal' : 0,
     'isData'   : 0,

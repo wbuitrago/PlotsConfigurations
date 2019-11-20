@@ -48,13 +48,13 @@ variables['pt2_v2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
                            'fold'  : 3
                            }
 
-variables['jetpt1']  = {   'name': 'Alt$(Jet_pt[0],-9999.)',
+variables['jetpt1']  = {   'name': 'Alt$(CleanJet_pt[0],-9999.)',
                            'range' : (10,30.,350),
                            'xaxis' : 'p_{T} 1st jet',
                            'fold'  : 3
                            }
 
-variables['jetpt2']  = {   'name': 'Alt$(Jet_pt[1],-9999.)',
+variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
                            'range' : (10,30.,350),
                            'xaxis' : 'p_{T} 2nd jet',
                            'fold'  : 3
