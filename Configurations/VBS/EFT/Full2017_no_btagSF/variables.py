@@ -21,7 +21,7 @@ variables['lep_charge_prod'] = {  'name'  : '(Lepton_pdgId[0]*Lepton_pdgId[1])/a
 
 # kinematic variables
 variables['detajj'] = { 'name': 'detajj',
-                        'range': (10,0,10),
+                        'range': (50,0,10),
                         'xaxis': '#Delta #eta_{jj}',
                         'fold': 3
                         }
@@ -41,7 +41,7 @@ variables['mjj'] = {  'name': 'mjj',
 
 # jets pt
 variables['jet_pt1'] = {  'name': 'Jet_pt[0]',
-                          'range': (50,0,500),
+                          'range': (100,0,300),
                           'xaxis': 'p_{T} 1st jet [GeV]',
                           'fold': 3
                           }
@@ -49,6 +49,19 @@ variables['jet_pt1'] = {  'name': 'Jet_pt[0]',
 variables['jet_pt2'] = {  'name': 'Jet_pt[1]',
                           'range': (50,0,500),
                           'xaxis': 'p_{T} 2nd jet [GeV]',
+                          'fold': 3
+                          }
+
+# jets eta
+variables['jet_eta1'] = {  'name': 'Jet_eta[0]',
+                          'range': (50,-5,5),
+                          'xaxis': '#eta 1st jet ',
+                          'fold': 3
+                          }
+
+variables['jet_eta2'] = {  'name': 'Jet_eta[1]',
+                          'range': (50,-5,5),
+                          'xaxis': '#eta 2nd jet ',
                           'fold': 3
                           }
 
@@ -64,6 +77,14 @@ variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
                         'xaxis' : 'p_{T} 2nd lep [GeV]',
                         'fold'  : 3
                         }    
+
+# mth
+variables['mth']  = {   'name': 'mth',
+                        'range' : (40,0,200),
+                        'xaxis' : 'mth [GeV]',
+                        'fold'  : 3
+                        }    
+                        
                         
 
 

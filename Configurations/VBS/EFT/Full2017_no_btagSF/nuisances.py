@@ -674,15 +674,15 @@ nuisances['lumi_Ghosts'] = {
 #     'type': 'lnN',
 # }
 
-# ## Use the following if you want to apply the automatic combine MC stat nuisances.
-# nuisances['stat'] = {
-#     'type': 'auto',
-#     'maxPoiss': '10',
-#     'includeSignal': '0',
-#     #  nuisance ['maxPoiss'] =  Number of threshold events for Poisson modelling
-#     #  nuisance ['includeSignal'] =  Include MC stat nuisances on signal processes (1=True, 0=False)
-#     'samples': {}
-# }
+## Use the following if you want to apply the automatic combine MC stat nuisances.
+nuisances['stat'] = {
+    'type': 'auto',
+    'maxPoiss': '10',
+    'includeSignal': '0',
+    #  nuisance ['maxPoiss'] =  Number of threshold events for Poisson modelling
+    #  nuisance ['includeSignal'] =  Include MC stat nuisances on signal processes (1=True, 0=False)
+    'samples': {}
+}
 
 # ## rate parameters
 # nuisances['DYttnorm0j']  = {
@@ -795,7 +795,7 @@ nuisances['lumi_Ghosts'] = {
 #               }
 
 
- for n in nuisances.values():
-     n['skipCMS'] = 1
+for n in nuisances.values():
+    n['skipCMS'] = 1
 
 print ' '.join(nuis['name'] for nname, nuis in nuisances.iteritems() if nname not in ('lumi', 'stat'))

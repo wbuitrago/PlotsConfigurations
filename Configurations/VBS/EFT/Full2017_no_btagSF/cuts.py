@@ -16,6 +16,19 @@ cuts['top']  = {
 }
 
 
+# cut to check wwsel
+cuts['wwsel']  = { 
+      'expr' : '( mll>12 && ptll>30 \
+                  && (MET_pt > 20 || PuppiMET_pt>20)\
+                  && Alt$(Lepton_pt[0],0.)>20\
+                  && Alt$(Lepton_pt[1],0.)>10 \
+                  && Alt$(Lepton_pt[2],0.)<10\
+                  && Alt$(Lepton_pdgId[0]*Lepton_pdgId[1],0)==-11*13)'
+}
+
+                  
+
+
 
 # kept as example of categories but not needed anymore.. future removal?
 

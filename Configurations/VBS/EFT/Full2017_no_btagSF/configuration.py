@@ -2,7 +2,7 @@
 
 treeName = 'Events'
 
-tag = 'topcr_18Nov'
+tag = 'wwsel_sample_test_21Nov'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile' + '_' + tag
