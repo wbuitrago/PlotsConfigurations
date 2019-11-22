@@ -5,6 +5,7 @@ import inspect
 # FIX THIS in dependence of where this file is stored, in order to correctly locate the macros in Differential and Patches folder
 # check also in aliases.py
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
+configurations = os.path.dirname(configurations) # init_config
 configurations = os.path.dirname(configurations) # Full2017
 configurations = os.path.dirname(configurations) # EFT
 configurations = os.path.dirname(configurations) # VBS, Differential & Patches level
