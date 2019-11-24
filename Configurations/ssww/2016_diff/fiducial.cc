@@ -99,7 +99,9 @@ FiducialRegion::evaluate(unsigned)
   if (pll.M() <= 20.)
     return 0.;
 
-
+  if (!(abs(pll.M()-91.1876)>15 || abs(GenDressedLepton_pdgId->At(iPromptL[0])*GenDressedLepton_pdgId->At(iPromptL[1]))!=121)){
+    return 0.;
+  }
   // more gen jet selections
   std::vector<unsigned> iCleanJ{};
   iCleanJ.reserve(nJ);
@@ -164,6 +166,13 @@ FiducialRegion::evaluate(unsigned)
   double genMet{*GenMET_pt->Get()};
   if (genMet<=30)
     return 0.;
+
+  // gen zepp
+  double zepp1=abs((GenDressedLepton_eta->At(iPromptL[0])-(GenJet_eta->At(iCleanJ[0])+GenJet_eta->At(iCleanJ[1]))/2.)/(GenJet_eta->At(iCleanJ[0])-GenJet_eta->At(iCleanJ[1])));
+  double zepp2=abs((GenDressedLepton_eta->At(iPromptL[1])-(GenJet_eta->At(iCleanJ[0])+GenJet_eta->At(iCleanJ[1]))/2.)/(GenJet_eta->At(iCleanJ[0])-GenJet_eta->At(iCleanJ[1])));
+  if (zepp1>=0.75 || zepp2>=0.75){
+    return 0.;
+  }
   return 1.;
 }
 

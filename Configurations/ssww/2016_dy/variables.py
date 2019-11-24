@@ -81,13 +81,13 @@ variables['detajj']  = {  'name': 'detajj',
                           'fold': 3
                           }
 
-variables['Zlep1']  = {  'name': '(Alt$(Lepton_eta[0],-9999.) - (Alt$(Jet_eta[0],-9999.)+Alt$(Jet_eta[1],-9999.))/2)/detajj',
+variables['Zlep1']  = {  'name': '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
                          'range': (30,-1.5,1.5),
                          'xaxis': 'Z^{lep}_{1}',
                          'fold': 3
                          }
 
-variables['Zlep2']  = {  'name': '(Alt$(Lepton_eta[1],-9999.) - (Alt$(Jet_eta[0],-9999.)+Alt$(Jet_eta[1],-9999.))/2)/detajj',
+variables['Zlep2']  = {  'name': '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
                          'range': (30,-1.5,1.5),
                          'xaxis': 'Z^{lep}_{2}',
                          'fold': 3

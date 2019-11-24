@@ -37,6 +37,27 @@ cuts['ssww'] = {
         'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto',
     }
 }
+cuts['ssww_mm'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==13*13',
+    }
+}
+cuts['ssww_me'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*13',
+    }
+}
+cuts['ssww_ee'] = {
+    'expr': 'ssww_region',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'zlep_ww && bVeto && jetpt30 && leppt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*11',
+    }
+}
 '''
 cuts['all'] = {
     'expr': 'wz_region',
