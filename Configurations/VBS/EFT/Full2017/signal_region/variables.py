@@ -1,91 +1,93 @@
 # variables
 
-# 'fold' : # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+#variables = {}
 
-# variables = {}
-    
-variables['events']  = {  'name': '1',      
-                          'range' : (1,0,2),  
-                          'xaxis' : 'events', 
-                          'fold' : 3
-                          }
+#'fold' : # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
 
-# lepton charge product -> defined to see how many events are SS or OS
-# leptons Id:   e-/+  -> +/-11
-#               mu-/+ -> +/-13
-variables['lep_charge_prod'] = {  'name'  : '(Lepton_pdgId[0]*Lepton_pdgId[1])/abs(Lepton_pdgId[0]*Lepton_pdgId[1])',    #   variable name
-                                  'range' : (2,-1.1,1.1),                                 #   variable range
-                                  'xaxis' : 'Lepton Charge Product',                      #   x axis name
-                                  }
+# variables['events']  = {   'name': '1',
+# 'range' : (1,0,2),
+# 'xaxis' : 'events',
+# 'fold' : 3
+# }
+variables['nJet']  = {   'name': 'Sum$(CleanJet_pt>30)',
+                            'range' : (4,0,4),
+                            'xaxis' : '# jets',
+                            'fold' : 3
+                            }
+
+variables['nLepton'] =  {
+    'name': 'nLepton',
+    'range': (5,0,5),
+    'xaxis': '# leptons',
+    'fold': 3
+}
+variables['mll']  = {   'name': 'mll',            #   variable name
+                        'range' : (50, 0. ,500),    #   variable range
+                        'xaxis' : 'mll [GeV]',  #   x axis name
+                        'fold' : 3
+                        }
 
 
-# kinematic variables
-variables['detajj'] = { 'name': 'detajj',
-                        'range': (50,0,10),
-                        'xaxis': '#Delta #eta_{jj}',
+variables['mjj']  = {  'name': 'mjj',
+                       'range': (100,0.,1000.),
+                       'xaxis': 'mjj [GeV]',
+                       'fold': 3
+                       }
+
+variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
+                        'range' : (30,0.,300.),
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold'  : 3
+                        }
+
+
+variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
+                        'range' : (30,0.,300.),
+                        'xaxis' : 'p_{T} 2nd lep',
+                        'fold'  : 3
+                        }
+
+
+variables['jetpt1']  = {   'name': 'Alt$(Jet_pt[0],-9999.)',
+                           'range' : (35,0.,350),
+                           'xaxis' : 'p_{T} 1st jet',
+                           'fold'  : 3
+                           }
+
+variables['jetpt2']  = {   'name': 'Alt$(Jet_pt[1],-9999.)',
+                           'range' : (35,0.,350),
+                           'xaxis' : 'p_{T} 2nd jet',
+                           'fold'  : 3
+                           }
+
+variables['met']  = {   'name': 'MET_pt',            #   variable name
+                        'range' : (20,0,200),    #   variable range
+                        'xaxis' : 'pfmet [GeV]',  #   x axis name
+                        'fold' : 3
+                        }
+
+variables['etaj1'] = {  'name': 'Alt$(Jet_eta[0],-9999.)',
+                        'range': (20,-5,5),
+                        'xaxis': 'etaj1',
                         'fold': 3
                         }
 
-variables['mll']  = {   'name': 'mll',            #   variable name
-                        'range' : (50,0,500),  #   variable range
-                        'xaxis' : 'mll [GeV]',    #   x axis name
-                        'fold' : 3
-                        }  
+variables['etaj2'] = {         'name': 'Alt$(Jet_eta[1],-9999.)',
+                               'range': (20,-5,5),
+                               'xaxis': 'etaj2',
+                               'fold': 3
+                               }
 
-
-variables['mjj'] = {  'name': 'mjj',
-                      'range': (25,0,2500),
-                      'xaxis': 'm_jj [GeV]',
-                      'fold': 3
-                      }
-
-# jets pt
-variables['jet_pt1'] = {  'name': 'Jet_pt[0]',
-                          'range': (100,0,300),
-                          'xaxis': 'p_{T} 1st jet [GeV]',
+variables['detajj']  = {  'name': 'detajj',
+                          'range': (20,0.0,10.0),
+                          'xaxis': 'detajj',
                           'fold': 3
                           }
 
-variables['jet_pt2'] = {  'name': 'Jet_pt[1]',
-                          'range': (50,0,500),
-                          'xaxis': 'p_{T} 2nd jet [GeV]',
+
+# add dphijj difference between phi of jets
+variables['dphijj']  = {  'name': 'abs(Jet_phi[0]-Jet_phi[1])',
+                          'range': (20,0.0,6.3),
+                          'xaxis': 'dphijj',
                           'fold': 3
                           }
-
-# jets eta
-variables['jet_eta1'] = {  'name': 'Jet_eta[0]',
-                          'range': (50,-5,5),
-                          'xaxis': '#eta 1st jet ',
-                          'fold': 3
-                          }
-
-variables['jet_eta2'] = {  'name': 'Jet_eta[1]',
-                          'range': (50,-5,5),
-                          'xaxis': '#eta 2nd jet ',
-                          'fold': 3
-                          }
-
-# leptons pt
-variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (30,0,300),
-                        'xaxis' : 'p_{T} 1st lep [GeV]',
-                        'fold'  : 3
-                        }
-
-variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (30,0,300),
-                        'xaxis' : 'p_{T} 2nd lep [GeV]',
-                        'fold'  : 3
-                        }    
-
-# mth
-variables['mth']  = {   'name': 'mth',
-                        'range' : (40,0,200),
-                        'xaxis' : 'mth [GeV]',
-                        'fold'  : 3
-                        }    
-                        
-                        
-
-
-

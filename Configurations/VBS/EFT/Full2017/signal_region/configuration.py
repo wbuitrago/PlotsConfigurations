@@ -1,11 +1,13 @@
-# Configuration file to produce initial root files -- has both merged and binned ggH samples
+# example of configuration file
+treeName= 'Events'
 
-treeName = 'Events'
+date = 'nov28'
 
-tag = 'test_cuts_top_wwsel_22Nov'
+tag = 'VBS_SS' + '_' + date
+
 
 # used by mkShape to define output directory for root files
-outputDir = 'rootFile' + '_' + tag
+outputDir = 'rootFile'+ '_' + tag
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'
@@ -14,29 +16,30 @@ aliasesFile = 'aliases.py'
 variablesFile = 'variables.py'
 
 # file with list of cuts
-cutsFile = 'cuts.py' 
+cutsFile = 'cuts.py'
+#cutsFile = 'cuts_forPlots.py'
 
 # file with list of samples
-samplesFile = 'samples.py' 
+samplesFile = 'samples.py'
 
 # file with list of samples
-plotFile = 'plot.py' 
+plotFile = 'plot.py'
 
 # luminosity to normalize to (in 1/fb)
-lumi = 41.53
+lumi = 41.53 
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'plots' + '_' + tag
+outputDirPlots = 'plotVBS'+ '_' + tag
+
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards' + '_' + tag
+outputDirDatacard = 'datacards'+ '_' + tag
+
 
 # structure file for datacard
 structureFile = 'structure.py'
 
+
 # nuisances file for mkDatacards and for mkShape
 nuisancesFile = 'nuisances.py'
-
-# input files
-# /eos/cms/store/group/phys_higgs/cmshww/amassiro/Full2016_Apr17/Apr2017_summer16/lepSel__MCWeights__bSFLpTEffMulti__cleanTauMC__l2loose__hadd__l2tightOR__LepTrgFix__dorochester__formulasMC__wwSel
