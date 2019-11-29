@@ -48,13 +48,13 @@ variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
                         }
 
 
-variables['jetpt1']  = {   'name': 'Alt$(Jet_pt[0],-9999.)',
+variables['jetpt1']  = {   'name': 'Alt$(CleanJet_pt[0],-9999.)',
                            'range' : (35,0.,350),
                            'xaxis' : 'p_{T} 1st jet',
                            'fold'  : 3
                            }
 
-variables['jetpt2']  = {   'name': 'Alt$(Jet_pt[1],-9999.)',
+variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
                            'range' : (35,0.,350),
                            'xaxis' : 'p_{T} 2nd jet',
                            'fold'  : 3
@@ -66,13 +66,13 @@ variables['met']  = {   'name': 'MET_pt',            #   variable name
                         'fold' : 3
                         }
 
-variables['etaj1'] = {  'name': 'Alt$(Jet_eta[0],-9999.)',
+variables['etaj1'] = {  'name': 'Alt$(CleanJet_eta[0],-9999.)',
                         'range': (20,-5,5),
                         'xaxis': 'etaj1',
                         'fold': 3
                         }
 
-variables['etaj2'] = {         'name': 'Alt$(Jet_eta[1],-9999.)',
+variables['etaj2'] = {         'name': 'Alt$(CleanJet_eta[1],-9999.)',
                                'range': (20,-5,5),
                                'xaxis': 'etaj2',
                                'fold': 3
@@ -86,7 +86,7 @@ variables['detajj']  = {  'name': 'detajj',
 
 
 # add dphijj difference between phi of jets
-variables['dphijj']  = {  'name': 'abs(Jet_phi[0]-Jet_phi[1])',
+variables['dphijj']  = {  'name': 'abs(CleanJet_phi[0]-CleanJet_phi[1])',
                           'range': (20,0.0,6.3),
                           'xaxis': 'dphijj',
                           'fold': 3

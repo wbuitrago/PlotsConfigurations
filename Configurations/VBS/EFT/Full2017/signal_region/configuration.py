@@ -1,7 +1,7 @@
 # example of configuration file
 treeName= 'Events'
 
-date = 'nov28'
+date = 'nov28_cj'
 
 tag = 'VBS_SS' + '_' + date
 

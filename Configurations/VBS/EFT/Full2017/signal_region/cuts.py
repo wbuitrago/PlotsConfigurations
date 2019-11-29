@@ -18,10 +18,10 @@ lepton_sel =   '\
                '
 
 # jet inclusive region
-jet_inclusive = ' njet >= 0 '
+jet_inclusive = ' nCleanJet >= 0 '
 
 # jet selections
-jet_selection = ' njet >= 2 '
+jet_selection = ' nCleanJet >= 2 '
 
 ## Signal Region
 cuts['ssww']  = { 
