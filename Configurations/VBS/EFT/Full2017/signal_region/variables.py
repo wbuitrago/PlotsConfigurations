@@ -1,26 +1,21 @@
 # variables
 
-#variables = {}
+# variables = {}
 
 #'fold' : # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
 
-# variables['events']  = {   'name': '1',
-# 'range' : (1,0,2),
-# 'xaxis' : 'events',
-# 'fold' : 3
-# }
-variables['nJet']  = {   'name': 'Sum$(CleanJet_pt>30)',
-                            'range' : (4,0,4),
-                            'xaxis' : '# jets',
+variables['nJet']  = {      'name': 'nCleanJet',
+                            'range' : (7,0,7),
+                            'xaxis' : 'nCleanJet',
                             'fold' : 3
                             }
 
-variables['nLepton'] =  {
-    'name': 'nLepton',
-    'range': (5,0,5),
-    'xaxis': '# leptons',
-    'fold': 3
+variables['nLepton'] =  {   'name': 'nLepton',
+                            'range': (7,0,7),
+                            'xaxis': '# leptons',
+                            'fold': 3
 }
+
 variables['mll']  = {   'name': 'mll',            #   variable name
                         'range' : (50, 0. ,500),    #   variable range
                         'xaxis' : 'mll [GeV]',  #   x axis name
@@ -29,7 +24,7 @@ variables['mll']  = {   'name': 'mll',            #   variable name
 
 
 variables['mjj']  = {  'name': 'mjj',
-                       'range': (100,0.,1000.),
+                       'range': (50,0.,500.),
                        'xaxis': 'mjj [GeV]',
                        'fold': 3
                        }
@@ -61,8 +56,8 @@ variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
                            }
 
 variables['met']  = {   'name': 'MET_pt',            #   variable name
-                        'range' : (20,0,200),    #   variable range
-                        'xaxis' : 'pfmet [GeV]',  #   x axis name
+                        'range' : (20,0,200),        #   variable range
+                        'xaxis' : 'pfmet [GeV]',     #   x axis name
                         'fold' : 3
                         }
 
@@ -85,9 +80,8 @@ variables['detajj']  = {  'name': 'detajj',
                           }
 
 
-# add dphijj difference between phi of jets
-variables['dphijj']  = {  'name': 'abs(CleanJet_phi[0]-CleanJet_phi[1])',
-                          'range': (20,0.0,6.3),
+variables['dphijj']  = {  'name': 'abs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))',
+                          'range': (20,0.0,6.2832),
                           'xaxis': 'dphijj',
                           'fold': 3
                           }
