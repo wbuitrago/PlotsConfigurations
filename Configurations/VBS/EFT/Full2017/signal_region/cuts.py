@@ -7,53 +7,112 @@
 
 
 # Lepton Selection Cut for Signal region
-# for the moment i didn't add tauVeto_ww zveto_ww requests
-leptonSel =   '\
-               nLepton >= 2 \
-               && Lepton_pdgId[0]*Lepton_pdgId[1] > 0 \
-               && mll > 20 \
-               && Alt$(Lepton_pt[2],0.)<10 \
-               && lep0eta \
-               && lep1eta \
-               '
+# leptonSel =   '\
+#                nLepton >= 2 \
+#                && Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) > 0 \
+#                && mll > 20 \
+#                && Alt$(Lepton_pt[2],0.)<10 \
+#                && tauVeto_ww \
+#                && zveto_ww \
+#                && lep0eta \
+#                && lep1eta '
 
-## JET selections
+# ## JET selections
+
+# # inclusive region
+# inclusive = 'nCleanJet >= 0'
+
+# # njets >= 2 selection
+# jetSel   = 'nCleanJet >= 2'
+
+# ## Signal Region
+
+# cuts['ssww_incl']  = { 
+#    'expr' : leptonSel + '&&' + inclusive,
+#    # Define the sub-categorization of ssww
+#    'categories' : {
+#          'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
+#          'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
+#          'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
+#    }
+# }
+
+# cuts['ssww_jetSel']  = { 
+#    'expr' : leptonSel + '&&' + jetSel,
+#    # Define the sub-categorization of ssww
+#    'categories' : {
+#          'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
+#          'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
+#          'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
+#    }
+# }
+
+
+
+### this is working! ###
+# # these are my test cuts for leptons
+# # removing jet cuts from ssww_region (see aliases or cut above)
+# cuts['ssww_leptons']={
+#     'expr': 'nLepton>1 \
+#             && Alt$(Lepton_pdgId[0],0) * Alt$(Lepton_pdgId[1],0) > 0 \
+#             && Alt$(Lepton_pt[2],0.)<10 \
+#             && MET_pt>30 \
+#             && mll > 20 \
+#             && tauVeto_ww \
+#             && zveto_ww \
+#             && lep0eta \
+#             && lep1eta \
+#             \
+#             && bVeto \
+#             && leppt30 \
+#             && softmuon_veto',
+# }
+
+## Lepton Selection
+lepSel =    'nLepton>1 \
+            && Alt$(Lepton_pdgId[0],0) * Alt$(Lepton_pdgId[1],0) > 0 \
+            && Alt$(Lepton_pt[2],0.)<10 \
+            && MET_pt>30 \
+            && mll > 20 \
+            && tauVeto_ww \
+            && zveto_ww \
+            && lep0eta \
+            && lep1eta \
+            \
+            && bVeto \
+            && leppt30 \
+            && softmuon_veto'
 
 # inclusive region
 inclusive = 'nCleanJet >= 0'
 
-# njets >= 2 selection
+## JET Selections
 jetSel   = 'nCleanJet >= 2'
 
+#############################
+##### Signal Region Cut #####
+#############################
 
-
-## Signal Region
-
+# inclusive cut without jet selections
 cuts['ssww_incl']  = { 
-   'expr' : leptonSel + '&&' + inclusive
+   'expr' : lepSel + '&&' + inclusive,
+   # Define the sub-categorization for
+   'categories' : {
+         'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
+         'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
+         'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
+   }
 }
 
+# with jet selections
 cuts['ssww_jetSel']  = { 
-   'expr' : leptonSel + '&&' + jetSel
+   'expr' : lepSel + '&&' + jetSel,
+   # Define the sub-categorization (ee, emu, mumu)
+   'categories' : {
+         'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
+         'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
+         'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
+   }
 }
 
-
-
-# # trying a different way to get the same result
-# jet_selection = '  Alt$(CleanJet_pt[0],-1) > 0 \
-#                 && Alt$(CleanJet_pt[1],-1) > 0 \
-#                 '
-
-
-# cannot use categories.. they are mutually exclusives
-# ## Signal Region
-# cuts['ssww']  = { 
-#    'expr' : lepton_sel,
-#     # Define the sub-categorization of ssww
-#    'categories' : {
-#          'incl'    : inclusive,
-#          '2j'      : jet2sel,
-#          'jetSel'  : jet_selection,
-#          }
-# }
 

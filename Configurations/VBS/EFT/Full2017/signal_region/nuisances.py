@@ -30,9 +30,8 @@ nuisances['lumi']  = {
     },
     'type'  : 'lnN',
 }
-
-#### FAKES
 '''
+#### FAKES
 if Nlep == '2' :
     # already divided by central values in formulas !
     fakeW_EleUp       = fakeW+'_EleUp'
@@ -54,6 +53,7 @@ else:
     fakeW_statMuUp    = '( fakeW_ele_'+eleWP+'_mu_'+muWP+'_'+Nlep+'lstatMuUp   / fakeW_ele_'+eleWP+'_mu_'+muWP+'_'+Nlep+'l )'
     fakeW_statMuDown  = '( fakeW_ele_'+eleWP+'_mu_'+muWP+'_'+Nlep+'lstatMuDown / fakeW_ele_'+eleWP+'_mu_'+muWP+'_'+Nlep+'l )'
 
+
 ## FIXME: check the 30% lnN
 nuisances['fake_syst']  = {
     'name'  : 'CMS_fake_syst',
@@ -71,6 +71,7 @@ nuisances['fake_ele']  = {
         'Fake_lep'     : [ fakeW_EleUp , fakeW_EleDown ],
     },
 }
+
 nuisances['fake_ele_stat']  = {
     'name'  : 'fake_ele_stat',
     'kind'  : 'weight',
@@ -100,7 +101,7 @@ nuisances['fake_mu_stat']  = {
 }
 
 
-
+'''
 ################################ THEORY UNCERTAINTIES  #################################
 nuisances['QCDscale']  = {
     'name'  : 'QCDscale',
@@ -177,7 +178,6 @@ nuisances['charge_flip']  = {
                'type'  : 'lnN',
               }
 
-
 # statistical fluctuation
 # on MC/data
 # "stat" is a special word to identify this nuisance
@@ -188,7 +188,7 @@ nuisances['stat']  = {
               'includeSignal'  : '1',
               'samples' : {}
              }
-'''
+
 
 
 

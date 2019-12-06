@@ -67,11 +67,11 @@ variables['etaj1'] = {  'name': 'Alt$(CleanJet_eta[0],-9999.)',
                         'fold': 3
                         }
 
-variables['etaj2'] = {         'name': 'Alt$(CleanJet_eta[1],-9999.)',
-                               'range': (20,-5,5),
-                               'xaxis': 'etaj2',
-                               'fold': 3
-                               }
+variables['etaj2'] = {  'name': 'Alt$(CleanJet_eta[1],-9999.)',
+                        'range': (20,-5,5),
+                        'xaxis': 'etaj2',
+                        'fold': 3
+                        }
 
 variables['detajj']  = {  'name': 'detajj',
                           'range': (20,0.0,10.0),
