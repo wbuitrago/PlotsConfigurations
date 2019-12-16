@@ -143,6 +143,9 @@ aliases['jetpt30']={
 aliases['jetpt50']={
     'expr': 'Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50'
 }
+aliases['jeteta_exclude']={
+    'expr': '(abs(Alt$(CleanJet_eta[0],-9999.)) < 2.7 || abs(Alt$(CleanJet_eta[0],-9999.))>3.0) && (abs(Alt$(CleanJet_eta[1],-9999.)) < 2.7 ||  abs(Alt$(CleanJet_eta[1],-9999.))>3.0)'
+}
 aliases['leppt0']={
     'expr': 'Alt$(Lepton_pt[0],-9999.) >25 && Alt$(Lepton_pt[1],-9999.) >20'
 }
@@ -162,7 +165,7 @@ aliases['ssww_region']={
     #'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep
 }
 aliases['dy_region']={
-    'expr': 'mll>60 && Lepton_pt[0]>20 && Lepton_pt[1]>10 && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) && abs(Lepton_eta[0])<2.5 && abs(Lepton_eta[1])<2.5'  # pt zlep mjj detajj
+    'expr': 'mll>60 && Lepton_pt[0]>20 && Lepton_pt[1]>10 && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) && lep0eta && lep1eta'  # pt zlep mjj detajj
     #'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep
 }
 # wz region
