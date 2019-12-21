@@ -198,13 +198,18 @@ aliases['pid_wz']={
 aliases['zlep_wz']={
     'expr': 'abs((Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 0.75 && abs((Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 0.75'# && abs((Alt$(Lepton_eta[2],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) <0.5'
 }
+'''
 aliases['EleWPTight'] = {
     'expr' : '(abs(Lepton_pdgId[0])==13 || Electron_cutBased[Lepton_electronIdx[0]]>=4) \
            && (abs(Lepton_pdgId[1])==13 || Electron_cutBased[Lepton_electronIdx[1]]>=4) \
            && (abs(Lepton_pdgId[2])==13 || Electron_cutBased[Lepton_electronIdx[2]]>=4)',
 }
+'''
+aliases['jet_cuts']={
+    'expr': 'nCleanJet >1 && abs(detajj) > 2.5 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7'
+}
 aliases['wz_region']={
-    'expr': 'nLepton>2 && nCleanJet >1 && MET_pt>40 && abs(detajj) > 2.5 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && lep0eta && lep1eta && lep2eta && ztag_wz && pid_wz && softmuon_veto && EleWPTight'  # bjet pt
+    'expr': 'nLepton>2 && MET_pt>40 && lep0eta && lep1eta && lep2eta && ztag_wz && pid_wz && softmuon_veto'  # bjet pt
 }
 '''
 aliases['wz_region']={

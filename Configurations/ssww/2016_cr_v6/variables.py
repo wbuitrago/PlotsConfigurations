@@ -38,6 +38,12 @@ variables['mjj']  = {  'name': 'mjj',
                        'xaxis': 'mjj [GeV]',
                        'fold': 3
                        }
+variables['mjj_v4']  = {  'name': 'mjj',
+                       'range': (5,0,5000),  #for 500 < mjj < 1000
+                       'xaxis': 'mjj [GeV]',
+                       'fold': 3
+                       }
+
 variables['mjj_v2']  = {  'name': 'mjj',
                           'range': (10,150,500),  #for 500 < mjj < 1000
                           'xaxis': 'mjj [GeV]',
@@ -52,6 +58,11 @@ variables['mjj_v3']  = {  'name': 'mjj',
 
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
                         'range' : (10,30.,300),
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold'  : 3
+                        }
+variables['pt1_v3']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
+                        'range' : (10,0.,500),
                         'xaxis' : 'p_{T} 1st lep',
                         'fold'  : 3
                         }
@@ -74,6 +85,12 @@ variables['pt2_v2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
 
 variables['jetpt1']  = {   'name': 'Alt$(CleanJet_pt[0],-9999.)',
                            'range' : (10,30.,350),
+                           'xaxis' : 'p_{T} 1st jet',
+                           'fold'  : 3
+                           }
+
+variables['jetpt1_v2']  = {   'name': 'Alt$(CleanJet_pt[0],-9999.)',
+                           'range' : (10,0.,600),
                            'xaxis' : 'p_{T} 1st jet',
                            'fold'  : 3
                            }

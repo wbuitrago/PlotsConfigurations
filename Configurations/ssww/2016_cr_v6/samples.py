@@ -84,15 +84,6 @@ DataRun_2016 = [
     ['G','Run2016G-Nano1June2019-v1'] ,
     ['H','Run2016H-Nano1June2019-v1'] ,
 ]
-DataRun_2016_fake = [
-    ['B','Run2016B-Nano14Dec2018_ver2-v1'] ,
-    ['C','Run2016C-Nano14Dec2018-v1'] ,
-    ['D','Run2016D-Nano14Dec2018-v1'] ,
-    ['E','Run2016E-Nano14Dec2018-v1'] ,
-    ['F','Run2016F-Nano14Dec2018-v1'] ,
-    ['G','Run2016G-Nano14Dec2018-v1'] ,
-    ['H','Run2016H-Nano14Dec2018-v1'] ,
-]
 
 DataSets_2016 = ['MuonEG','DoubleMuon','SingleMuon','DoubleEG','SingleElectron']
 
@@ -335,9 +326,12 @@ samples['Fake_lep'] = {
     'FilesPerJob': 47
 }
 
-for _, sd in DataRun_2016_fake:
+for _, sd in DataRun_2016:
     for pd in DataSets_2016:
-        files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv4_Full2016v5/DATAl1loose2016v5__l2loose__fakeW/', pd + '_' + sd)
+        if not (pd=='MuonEG' and _=='E'):
+            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_' + sd)
+        else:
+            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_Run2016E-Nano1June2019-v3')
         samples['Fake_lep']['name'].extend(files)
         samples['Fake_lep']['weights'].extend([DataTrig_2016[pd]] * len(files))
 ###########################################
