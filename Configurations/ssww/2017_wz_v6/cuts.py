@@ -11,7 +11,7 @@
 # && fabs(Alt$(Lepton_eta[0],-9999.))<2.5 && fabs(Alt$(Lepton_eta[1],-9999.))<2.5 && Alt$(CleanJet_pt[0],-9999.) >30 && Alt$(CleanJet_pt[1],-9999.) >30'
 
 supercut='\
-mjj > 100'
+mjj > 0'
 '''
 ## Signal regions
 cuts['lowmjj'] = {
