@@ -25,8 +25,8 @@ except NameError:
     import collections
     samples = collections.OrderedDict()
 
-mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv5_Full2016v6/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6/'
-private_mcDirectory='/eos/user/j/jixiao/HWWnano3/Summer16_102X_nAODv4_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5/'
+mcDirectory = 'root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv5_Full2016v6/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6/'
+private_mcDirectory='root://eoscms.cern.ch//eos/user/j/jixiao/HWWnano3/Summer16_102X_nAODv4_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5/'
 #mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_nAOD_v1_Full2017v2LP19/MCl1loose2017__MCCorr2017LP19__l2loose__l2tightOR2017/'
 ################################################
 ############ NUMBER OF LEPTONS #################
@@ -340,9 +340,9 @@ samples['Fake_lep'] = {
 for _, sd in DataRun_2016:
     for pd in DataSets_2016:
         if not (pd=='MuonEG' and _=='E'):
-            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_' + sd)
+            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_' + sd)
         else:
-            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_Run2016E-Nano1June2019-v3')
+            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_Run2016E-Nano1June2019-v3')
         samples['Fake_lep']['name'].extend(files)
         samples['Fake_lep']['weights'].extend([DataTrig_2016[pd]] * len(files))
 
@@ -359,8 +359,8 @@ samples['DATA'] = {
 for _, sd in DataRun_2016:
     for pd in DataSets_2016:
         if not (pd=='MuonEG' and _=='E'):
-            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_' + sd)
+            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_' + sd)
         else:
-            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_Run2016E-Nano1June2019-v3')
+            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_Run2016E-Nano1June2019-v3')
         samples['DATA']['name'].extend(files)
         samples['DATA']['weights'].extend([DataTrig_2016[pd]] * len(files))

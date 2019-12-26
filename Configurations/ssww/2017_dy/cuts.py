@@ -137,14 +137,14 @@ cuts['dy_met_mm'] = {
     'expr': 'dy_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13 && Alt$(Lepton_pt[2],0.)<10 && nCleanJet >1 && jetpt30 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && mjj > 500 && abs(detajj)>2.5 && MET_pt>30 && jeteta_exclude',
+        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13 && Alt$(Lepton_pt[2],0.)<10 && nCleanJet >1 && jetpt30 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && mjj > 500 && abs(detajj)>2.5 && METFixEE2017_pt >30 && jeteta_exclude',
     }
 }
 cuts['dy_met_ee'] = {
     'expr': 'dy_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11 && Alt$(Lepton_pt[2],0.)<10 && nCleanJet >1 && jetpt30 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && mjj > 500 && abs(detajj)>2.5 && MET_pt>30 && jeteta_exclude',
+        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11 && Alt$(Lepton_pt[2],0.)<10 && nCleanJet >1 && jetpt30 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && mjj > 500 && abs(detajj)>2.5 && METFixEE2017_pt >30 && jeteta_exclude',
     }
 }
 
@@ -152,13 +152,13 @@ cuts['dy_vbs_mm'] = {
     'expr': 'dy_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13 && nCleanJet >1 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && mll<120 && zlep_ww && bVeto && jetpt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto && jeteta_exclude',
+        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13 && nCleanJet >1 && Alt$(Lepton_pt[2],0.)<10 && METFixEE2017_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && mll<120 && zlep_ww && bVeto && jetpt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto && jeteta_exclude',
     }
 }
 cuts['dy_vbs_ee'] = {
     'expr': 'dy_region',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11 && nCleanJet >1 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && mll<120 && zlep_ww && bVeto && jetpt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto && jeteta_exclude',
+        'region' : 'nLepton>1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11 && nCleanJet >1 && Alt$(Lepton_pt[2],0.)<10 && METFixEE2017_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && mll<120 && zlep_ww && bVeto && jetpt30 && mjj > 500 && abs(detajj)>2.5 && softmuon_veto && jeteta_exclude',
     }
 }

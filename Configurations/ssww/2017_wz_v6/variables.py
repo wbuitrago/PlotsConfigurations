@@ -53,7 +53,7 @@ variables['mjj_v3']  = {  'name': 'mjj',
                           'fold': 3
                           }
 variables['mjj_v4']  = {  'name': 'mjj',
-                          'range': (30,100,2000),  #for 500 < mjj < 1000
+                          'range': (40,0,2000),  #for 500 < mjj < 1000
                           'xaxis': 'mjj [GeV]',
                           'fold': 3
                           }
@@ -96,9 +96,9 @@ variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
                            'fold'  : 3
                            }
 
-variables['met']  = {   'name': 'MET_pt',            #   variable name
+variables['met']  = {   'name': 'METFixEE2017_pt',            #   variable name
                         'range' : (10,0,200),    #   variable range
-                        'xaxis' : 'pfmet [GeV]',  #   x axis name
+                        'xaxis' : 'METFixEE2017_pt [GeV]',  #   x axis name
                         'fold' : 3
                         }
 

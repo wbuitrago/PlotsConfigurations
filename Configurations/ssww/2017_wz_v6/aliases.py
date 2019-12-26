@@ -154,9 +154,6 @@ aliases['lep3eta']={
 aliases['jetpt30']={
     'expr': 'Alt$(CleanJet_pt[0],-9999.) >30 && Alt$(CleanJet_pt[1],-9999.) >30'
 }
-aliases['jeteta_exclude']={
-    'expr': '(abs(Alt$(CleanJet_eta[0],-9999.)) < 2.5 || abs(Alt$(CleanJet_eta[0],-9999.))>3.0) && (abs(Alt$(CleanJet_eta[1],-9999.)) < 2.5 ||  abs(Alt$(CleanJet_eta[1],-9999.))>3.0)'
-}
 aliases['jetpt50']={
     'expr': 'Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50'
 }
@@ -209,7 +206,7 @@ aliases['jet_cuts']={
     'expr': 'nCleanJet >1 && abs(detajj) > 2.5 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7'
 }
 aliases['wz_region']={
-    'expr': 'nLepton>2 && MET_pt>40 && lep0eta && lep1eta && lep2eta && ztag_wz && pid_wz && softmuon_veto'  # bjet pt
+    'expr': 'nLepton>2 && METFixEE2017_pt>40 && lep0eta && lep1eta && lep2eta && ztag_wz && pid_wz && softmuon_veto'  # bjet pt
 }
 '''
 aliases['wz_region']={

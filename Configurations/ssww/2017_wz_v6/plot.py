@@ -5,7 +5,7 @@
 # Groups of samples to improve the plots.
 # If not defined, normal plots is used
 #
-
+'''
 import copy
 
 origcuts=copy.deepcopy(cuts)
@@ -18,7 +18,7 @@ for cut in origcuts:
     print cut
     for cat in origcuts[cut]['categories']:
         cuts.append(cut+"_"+cat)
-
+'''
 print cuts
 
 # groupPlot = {}

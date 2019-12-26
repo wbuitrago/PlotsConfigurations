@@ -220,11 +220,24 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_3Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
-        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
 samples['WLLJJ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight+'*1.2',
+    'FilesPerJob': 4
+}
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu')
+
+samples['WLLJJ_QCD_mad'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
+
+samples['WLLJJ_QCD_powheg'] = {
+    'name': files,
+    'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
 files = nanoGetSampleFiles(mcDirectory, 'WLLJJ_WToLNu_EWK')# + \
