@@ -9,8 +9,16 @@ configurations = os.path.dirname(configurations) # Configurations
 bAlgo = 'DeepB'
 bWP = '0.4184'
 
+aliases['wzinc'] = {
+    'linesToAdd': ['.L %s/ssww/2018_wz/wzinc.cc+' % configurations],
+    'class': 'Wzinc',
+}
+aliases['zz'] = {
+    'linesToAdd': ['.L %s/ssww/2018_wz/zz.cc+' % configurations],
+    'class': 'Zz',
+}
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
-# tau veto
+# tau vetoz
 aliases['tauVeto_ww'] = {
     'expr': '(Sum$(Tau_pt > 18 && Tau_rawIso < 1 && sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.3 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.3) == 0)'
 }
@@ -204,8 +212,11 @@ aliases['pid_wz']={
 aliases['zlep_wz']={
     'expr': 'abs((Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 0.75 && abs((Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 0.75'# && abs((Alt$(Lepton_eta[2],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) <0.5'
 }
+aliases['jet_cuts']={
+    'expr': 'nCleanJet >1 && abs(detajj) > 2.5 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7'
+}
 aliases['wz_region']={
-    'expr': 'nLepton>2 && nCleanJet >1 && MET_pt>40 && mjj > 500 && abs(detajj) > 2.5 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && lep0eta && lep1eta && lep2eta && ztag_wz && pid_wz && softmuon_veto'  # bjet pt
+    'expr': 'nLepton>2 && MET_pt>40 && lep0eta && lep1eta && lep2eta && ztag_wz && pid_wz && softmuon_veto'  # bjet pt
 }
 '''
 aliases['wz_region']={

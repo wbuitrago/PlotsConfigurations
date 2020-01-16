@@ -25,8 +25,8 @@ except NameError:
     import collections
     samples = collections.OrderedDict()
 
-mcDirectory = 'root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv5_Full2016v6/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6/'
-private_mcDirectory='root://eoscms.cern.ch//eos/user/j/jixiao/HWWnano3/Summer16_102X_nAODv4_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5/'
+mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv5_Full2016v6/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6/'
+private_mcDirectory='/eos/user/j/jixiao/HWWnano3/Summer16_102X_nAODv4_Full2016v5/MCl1loose2016v5__MCCorr2016v5__l2loose__l2tightOR2016v5/'
 #mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_nAOD_v1_Full2017v2LP19/MCl1loose2017__MCCorr2017LP19__l2loose__l2tightOR2017/'
 ################################################
 ############ NUMBER OF LEPTONS #################
@@ -196,18 +196,59 @@ files = nanoGetSampleFiles(mcDirectory, 'Zg') + \
         nanoGetSampleFiles(mcDirectory, 'WGJJ')
 samples['Vg'] = {
     'name': files,
-    'weight': mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0)',
+    'weight': mcCommonWeightNoMatch + '*(!(Gen_ZGstar_mass > 0))',
     'FilesPerJob': 4
 }
-files = nanoGetSampleFiles(mcDirectory, 'Zg') + \
-        nanoGetSampleFiles(mcDirectory, 'WGJJ')
+addSampleWeight(samples, 'Vg', 'Zg', '(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
+
+######## VgS ########
+files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
+        nanoGetSampleFiles(mcDirectory, 'Zg') + \
+        nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
+
 samples['VgS'] = {
     'name': files,
-    'weight': mcCommonWeight,# + '*!(Gen_ZGstar_mass > 0)',
-    'FilesPerJob': 4
+    'weight': mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
+    'FilesPerJob': 4,
+    'subsamples': {
+        'L': 'gstarLow',
+        'H': 'gstarHigh'
+    }
 }
-addSampleWeight(samples, 'VgS', 'WGJJ', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
+addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
 addSampleWeight(samples, 'VgS', 'Zg', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
+addSampleWeight(samples, 'VgS', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
+
+files = nanoGetSampleFiles(mcDirectory, 'Zg') + \
+        nanoGetSampleFiles(mcDirectory, 'WGJJ') + \
+        nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
+samples['VgS1'] = {
+    'name': files,
+    'weight': mcCommonWeight,# + '*!(Gen_ZGstar_mass > 0)',
+    'FilesPerJob': 4,
+    'subsamples': {
+        'L': 'gstarLow',
+        'H': 'gstarHigh'
+    }
+}
+addSampleWeight(samples, 'VgS1', 'WGJJ', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
+addSampleWeight(samples, 'VgS1', 'Zg', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
+addSampleWeight(samples, 'VgS1', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
+
+files = nanoGetSampleFiles(mcDirectory, 'Zg') + \
+        nanoGetSampleFiles(mcDirectory, 'WGJJ')
+samples['VgS2'] = {
+    'name': files,
+    'weight': mcCommonWeight,# + '*!(Gen_ZGstar_mass > 0)',
+    'FilesPerJob': 4,
+    'subsamples': {
+        'L': 'gstarLow',
+        'H': 'gstarHigh'
+    }
+}
+addSampleWeight(samples, 'VgS2', 'WGJJ', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
+addSampleWeight(samples, 'VgS2', 'Zg', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
+
 ######### VV #########
 files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_EWK') + \
         nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q_AMCNLOFXFX') + \
@@ -238,6 +279,20 @@ samples['WZ_QCD'] = {
     'weight': mcCommonWeight+'*1.2',
     'FilesPerJob': 7
 }
+
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_ext1')
+samples['WZ_QCD_powheg'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 7
+}
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_AMCNLO')
+samples['WZ_QCD_AMCNLO'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 7
+}
+
 files = nanoGetSampleFiles(mcDirectory, 'WLLJJ_WToLNu_EWK')
 samples['WZ_EWK'] = {
     'name': files,
@@ -340,9 +395,9 @@ samples['Fake_lep'] = {
 for _, sd in DataRun_2016:
     for pd in DataSets_2016:
         if not (pd=='MuonEG' and _=='E'):
-            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_' + sd)
+            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_' + sd)
         else:
-            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_Run2016E-Nano1June2019-v3')
+            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__fakeW/', pd + '_Run2016E-Nano1June2019-v3')
         samples['Fake_lep']['name'].extend(files)
         samples['Fake_lep']['weights'].extend([DataTrig_2016[pd]] * len(files))
 
@@ -359,8 +414,8 @@ samples['DATA'] = {
 for _, sd in DataRun_2016:
     for pd in DataSets_2016:
         if not (pd=='MuonEG' and _=='E'):
-            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_' + sd)
+            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_' + sd)
         else:
-            files = nanoGetSampleFiles('root://eoscms.cern.ch//eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_Run2016E-Nano1June2019-v3')
+            files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2016_102X_nAODv5_Full2016v6/DATAl1loose2016v6__l2loose__l2tightOR2016v6/', pd + '_Run2016E-Nano1June2019-v3')
         samples['DATA']['name'].extend(files)
         samples['DATA']['weights'].extend([DataTrig_2016[pd]] * len(files))

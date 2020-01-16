@@ -112,6 +112,13 @@ variables['detajj']  = {  'name': 'detajj',
                           'fold': 3
                           }
 
+variables['detajj_v2']  = {  'name': 'detajj',
+                          'range': (14,-7,7.0),
+
+                          'xaxis': 'detajj',
+                          'fold': 3
+                          }
+
 variables['Zlep1']  = {  'name': '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
                          'range': (10,-1.,1.),
                          'xaxis': 'Z^{lep}_{1}',

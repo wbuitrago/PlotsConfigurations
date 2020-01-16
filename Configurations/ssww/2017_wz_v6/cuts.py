@@ -80,6 +80,7 @@ cuts['wz_twoJetOrMore_mjj500'] = {
         #'btag_jetpt30_leppt1_lowmjj' : ' bReq && jetpt30 && leppt30 && mjj < 500',
     }
 }
+
 cuts['wz_pt30_twoJetOrMore_mjj100_jeteta_exclude'] = {
     'expr': 'wz_region',
     # Define the sub-categorization of sr
@@ -124,6 +125,7 @@ cuts['wz_twoJetOrMore_mjj500_jeteta_exclude'] = {
         #'btag_jetpt30_leppt1_lowmjj' : ' bReq && jetpt30 && leppt30 && mjj < 500',
     }
 }
+
 cuts['wz_zeroJet'] = {
     'expr': 'wz_region',
     # Define the sub-categorization of sr
@@ -191,25 +193,66 @@ cuts['mmm'] = {
     }
 }
 cuts['wz_inc'] = {
-    'expr': 'wz_region',
+    'expr': 'wzinc',
     # Define the sub-categorization of sr
     'categories' : {
-        'region' : 'bVeto && leppt25_wz',
+        'region' : 'bVeto',
         #'bveto_jetpt30_leppt1_ee' : ' bVeto && jetpt30 && leppt30 && mjj > 500 && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*11',
         #'btag_jetpt30_leppt1_mumu' : ' bReq && jetpt30 && leppt30 && mjj > 500 && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==13*13',
         #'bveto_jetpt30_leppt1_lowmjj' : ' bVeto && jetpt30 && leppt30 && mjj < 500',
         #'btag_jetpt30_leppt1_lowmjj' : ' bReq && jetpt30 && leppt30 && mjj < 500',
     }
 }
-
-'''
-cuts['zz'] = {
-    'expr': 'zz_region',
+cuts['wz_vbs'] = {
+    'expr': 'wzinc',
     # Define the sub-categorization of sr
     'categories' : {
-        'jetpt50_leppt0' : 'jetpt50 && leppt0',
-        'jetpt30_leppt0' : 'jetpt30 && leppt0',
-        'jetpt30_leppt1' : 'jetpt30 && leppt30',
+        'region' : 'bVeto && twoJetOrMore && mjj>500 && abs(detajj)>2.5',
+        #'bveto_jetpt30_leppt1_ee' : ' bVeto && jetpt30 && leppt30 && mjj > 500 && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*11',
+        #'btag_jetpt30_leppt1_mumu' : ' bReq && jetpt30 && leppt30 && mjj > 500 && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==13*13',
+        #'bveto_jetpt30_leppt1_lowmjj' : ' bVeto && jetpt30 && leppt30 && mjj < 500',
+        #'btag_jetpt30_leppt1_lowmjj' : ' bReq && jetpt30 && leppt30 && mjj < 500',
     }
 }
-'''
+cuts['wz_vbs_jeteta_exclude'] = {
+    'expr': 'wzinc',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'bVeto && twoJetOrMore && mjj>500 && abs(detajj)>2.5 && jeteta_exclude',
+        #'bveto_jetpt30_leppt1_ee' : ' bVeto && jetpt30 && leppt30 && mjj > 500 && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==11*11',
+        #'btag_jetpt30_leppt1_mumu' : ' bReq && jetpt30 && leppt30 && mjj > 500 && abs(Lepton_pdgId[0]*Lepton_pdgId[1])==13*13',
+        #'bveto_jetpt30_leppt1_lowmjj' : ' bVeto && jetpt30 && leppt30 && mjj < 500',
+        #'btag_jetpt30_leppt1_lowmjj' : ' bReq && jetpt30 && leppt30 && mjj < 500',
+    }
+}
+cuts['ZZ'] = {
+    'expr': 'zz',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'bVeto',
+    }
+}
+
+cuts['ZZ_vbs'] = {
+    'expr': 'zz',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'bVeto && twoJetOrMore && mjj>500 && abs(detajj)>2.5',
+    }
+}
+
+cuts['ZZ_jeteta_exclude'] = {
+    'expr': 'zz',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'bVeto',
+    }
+}
+
+cuts['ZZ_vbs_jeteta_exclude'] = {
+    'expr': 'zz',
+    # Define the sub-categorization of sr
+    'categories' : {
+        'region' : 'bVeto && twoJetOrMore && mjj>500 && abs(detajj)>2.5 && jeteta_exclude',
+    }
+}

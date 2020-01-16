@@ -12,7 +12,7 @@ bWP = '0.4941'
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 # gen variables
 aliases['fiducial'] = {
-    'linesToAdd': ['.L %s/ssww/2016_diff/fiducial.cc+' % configurations],
+    'linesToAdd': ['.L %s/ssww/2016_diff/wzinc.cc+' % configurations],
     'class': 'FiducialRegion',
     'samples': mc,
 }

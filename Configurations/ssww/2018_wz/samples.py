@@ -170,33 +170,27 @@ samples['ttbar'] = 	{ 	'name'  :getSampleFiles(chargeFlipDir,'TTTo2L2Nu',False,'
 addSampleWeight(samples,'ttbar','TTTo2L2Nu',Top_pTrw)
 '''
 ######## Vgamma ########
-
 files = nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
-        nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM')
-
+        nanoGetSampleFiles(mcDirectory, 'WGJJ')
 samples['Vg'] = {
     'name': files,
     'weight': mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0)',
     'FilesPerJob': 4
 }
-#addSampleWeight(samples, 'Vg', 'Zg', '(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
-######## VgS ########
-
-files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
-    nanoGetSampleFiles(mcDirectory, 'ZGToLLG')
-
+files = nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
+        nanoGetSampleFiles(mcDirectory, 'WGJJ')
 samples['VgS'] = {
     'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4,
+    'weight': mcCommonWeight,# + '*!(Gen_ZGstar_mass > 0)',
+    'FilesPerJob': 4
 }
-addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
+addSampleWeight(samples, 'VgS', 'WGJJ', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
 addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
 
 ######### VV #########
-files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext1') + \
+files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
-        nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext1')
+        nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext2')
         #nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext2') + \
         #nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext2')
 
@@ -219,12 +213,34 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
+
 samples['WLLJJ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight+'*1.2',
     'FilesPerJob': 4
 }
-files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')# + \
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_powheg')# + \
+#nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
+samples['WLLJJ_QCD_powheg'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_ext1')# + \
+#nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
+samples['WLLJJ_QCD_mad'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')# + \
+#nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
+samples['WLLJJ_QCD_mllmin01'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+files = nanoGetSampleFiles(mcDirectory, 'WLLJJ_WToLNu_EWK')# + \
         #nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
 samples['WLLJJ_EWK'] = {
     'name': files,

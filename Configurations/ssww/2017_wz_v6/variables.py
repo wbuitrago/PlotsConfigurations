@@ -47,13 +47,9 @@ variables['mjj_v2']  = {  'name': 'mjj',
                           'xaxis': 'mjj [GeV]',
                           'fold': 3
                           }
+
 variables['mjj_v3']  = {  'name': 'mjj',
                           'range': (15, 500. ,2000),  #for 500 < mjj < 1000
-                          'xaxis': 'mjj [GeV]',
-                          'fold': 3
-                          }
-variables['mjj_v4']  = {  'name': 'mjj',
-                          'range': (40,0,2000),  #for 500 < mjj < 1000
                           'xaxis': 'mjj [GeV]',
                           'fold': 3
                           }
@@ -90,18 +86,18 @@ variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
                            'xaxis' : 'p_{T} 2nd jet',
                            'fold'  : 3
                            }
-variables['jetpt2']  = {   'name': 'Alt$(CleanJet_pt[1],-9999.)',
-                           'range' : (10,0.,180),
-                           'xaxis' : 'p_{T} 2nd jet',
-                           'fold'  : 3
-                           }
 
-variables['met']  = {   'name': 'METFixEE2017_pt',            #   variable name
+variables['met']  = {   'name': 'MET_pt',            #   variable name
+                        'range' : (10,0,200),    #   variable range
+                        'xaxis' : 'pfmet [GeV]',  #   x axis name
+                        'fold' : 3
+                        }
+
+variables['METFixEE2017_pt']  = {   'name': 'METFixEE2017_pt',            #   variable name
                         'range' : (10,0,200),    #   variable range
                         'xaxis' : 'METFixEE2017_pt [GeV]',  #   x axis name
                         'fold' : 3
                         }
-
 variables['etaj1'] = {  'name': 'Alt$(CleanJet_eta[0],-9999.)',
                         'range': (10,-5,5),
                         'xaxis': 'etaj1',
@@ -120,6 +116,13 @@ variables['detajj']  = {  'name': 'detajj',
                           'xaxis': 'detajj',
                           'fold': 3
                           }
+
+variables['detajj_v2']  = {  'name': 'detajj',
+                             'range': (14,-7,7.0),
+
+                             'xaxis': 'detajj',
+                             'fold': 3
+                             }
 
 variables['Zlep1']  = {  'name': '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj',
                          'range': (10,-1.,1.),
