@@ -1,6 +1,6 @@
 # cuts
 
-# TEMPLATE CUT (leave commented)
+# TEMPLATE CUT (TO BE LEFT COMMENTED)
 
 '''
 cuts['ssww_incl']  = { 
@@ -34,37 +34,52 @@ os_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'  # doubl
 #############################################
 
 cuts['DY_cr']  = { 
-   'expr' : osLep
+   'expr' : osLep,
+   # sub categorization
+   'categories' : {
+         'ee'    : os_ee,
+         'emu'   : os_emu,
+         'mumu'  : os_mumu,
+   }
 }
 
 #############################################
 ########## top control phase space ##########
 #############################################
 
-## Top control regions
-# 2 or more jets
-# OS e+- & mu-+ (different flavour)
-
-# ricomincia da qui
 top =       '\
             nCleanJet >= 2 \
             && detajj > 1.\
             && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) \
-            && Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13 \
             && Lepton_pt[0]>50 \
             && Lepton_pt[1]>40 \
             && CleanJet_pt[0] > 40 \
             && CleanJet_pt[1] > 30 \
             '
 
-cuts['topcr'] = top  
+cuts['topcr'] = {
+   'expr' : top,
+   # sub categorization
+   'categories' : {
+         'ee'    : os_ee,
+         'emu'   : os_emu,
+         'mumu'  : os_mumu,
+   }
+}
+  
 
 #############################################
 ########## DPS control phase space ##########
 #############################################
 
 cuts['DPS_cr']  = { 
-   'expr' : ssLep
+   'expr' : 'nLepton > 1',
+   # sub categorization
+   'categories' : {
+         'ee'    : ss_ee,
+         'emu'   : ss_emu,
+         'mumu'  : ss_mumu,
+   }
 }
 
 

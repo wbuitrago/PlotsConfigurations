@@ -127,11 +127,27 @@ groupPlot['WW_EWK']  = {
 
 # BEGIN DB EDIT
 # adding missing samples DY and top
+
 plot['DY']  = {
     'color': Yellow,    # kYellow
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0
+}
+
+plot['DYtt']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+groupPlot['DY']  = {
+    'nameHR' : "DY",
+    'isSignal' : 0,
+    'color'    : ROOT.kGreen, # kViolet+10
+    'samples'  : ['DY','DYtt'],
+    #'samples'  : ['DY']
 }
 
 plot['top']  = {
@@ -141,29 +157,15 @@ plot['top']  = {
     'scale'    : 1.0
 }
 
-# plot['DYtt']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
-
-
 groupPlot['top']  = {
     'nameHR' : "top",
     'isSignal' : 0,
     'color'    : ROOT.kOrange, # kViolet+10
-    # 'samples'  : ['top','DYtt'],
-    'samples'  : ['top']
+    'samples'  : ['top'],
 } 
 
 
-groupPlot['DY']  = {
-    'nameHR' : "DY",
-    'isSignal' : 0,
-    'color'    : ROOT.kGreen, # kViolet+10
-    'samples'  : ['DY']
-}
+
 
 # END DB EDIT
 

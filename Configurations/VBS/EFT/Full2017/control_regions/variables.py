@@ -20,6 +20,13 @@ variables['mll']  = {   'name': 'mll',            #   variable name
                         'fold' : 3
                         }
 
+# zoom around Z0
+variables['mll_v2']  = {    'name': 'mll',              #   variable name
+                            'range' : (100, 50 ,150),    #   variable range
+                            'xaxis' : 'mll [GeV]',      #   x axis name
+                            'fold' : 3
+                            }                        
+
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
                         'range' : (30,0.,300.),
                         'xaxis' : 'p_{T} 1st lep',
@@ -120,6 +127,12 @@ variables['detajj']  = {  'name': 'detajj',
                           'xaxis': 'detajj',
                           'fold': 3
                           }
+
+variables['Clean_detajj']  = {  'name': 'Alt$(abs(CleanJet_eta[0]-CleanJet_eta[1]),-9990.)',
+                                'range': (20,0.0,10.0),
+                                'xaxis': 'detajj',
+                                'fold': 3
+                                }                          
 
 # phi jets
        
