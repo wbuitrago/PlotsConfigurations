@@ -17,7 +17,7 @@ supercut_vector = [     'nLepton>1',
                         'Alt$(fabs(CleanJet_eta[1]),-9999.) < 5',
                   ]
 
- # supercut definition
+# supercut definition
 supercut = separator.join(supercut_vector)     
 
 ## 2 lepton categorization
