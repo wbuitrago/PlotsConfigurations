@@ -1,18 +1,24 @@
 # cuts
 
-# TEMPLATE CUT (TO BE LEFT COMMENTED)
+# SUPERCUT #
 
-'''
-cuts['ssww_incl']  = { 
-   'expr' : lepSel + '&&' + inclusive,
-   # Define the sub-categorization for
-   'categories' : {
-         'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
-         'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
-         'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
-   }
-}
-'''
+separator = ' && '
+
+# if there is a clean jet, it must have pt > 30
+# if there is not a clean jet, no problem (selections on jets applied next...)
+supercut_vector = [     'nLepton>1',
+                        'Lepton_pt[0] > 30',
+                        'Lepton_pt[1] > 30',    
+                        'fabs(Lepton_eta[0]) < 2.5',
+                        'fabs(Lepton_eta[1]) < 2.5'                    
+                        'Alt$(CleanJet_pt[0],9999.) > 30', 
+                        'Alt$(CleanJet_pt[1],9999.) > 30', 
+                        'Alt$(fabs(CleanJet_eta[0]),-9999.) < 5',
+                        'Alt$(fabs(CleanJet_eta[1]),-9999.) < 5',
+                  ]
+
+ # supercut definition
+supercut = separator.join(supercut_vector)     
 
 ## 2 lepton categorization
 
@@ -69,11 +75,11 @@ cuts['topcr'] = {
   
 
 #############################################
-########## DPS control phase space ##########
+########## SS control phase space ##########
 #############################################
 
-cuts['DPS_cr']  = { 
-   'expr' : 'nLepton > 1',
+cuts['SS_cr']  = { 
+   'expr' : ssLep,
    # sub categorization
    'categories' : {
          'ee'    : ss_ee,
@@ -81,6 +87,7 @@ cuts['DPS_cr']  = {
          'mumu'  : ss_mumu,
    }
 }
+
 
 
 

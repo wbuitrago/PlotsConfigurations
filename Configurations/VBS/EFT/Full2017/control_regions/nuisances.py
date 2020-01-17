@@ -1,4 +1,4 @@
-'''
+
 # nuisances
 
 #nuisances = {}
@@ -136,7 +136,7 @@ nuisances['pdf']  = {
     'type'  : 'lnN',
     'samples'  : {
         'ChMisId'  : '1.005',
-	'ttbar'   : '1.01',
+	    'ttbar'   : '1.01',
         'WZ'   : '1.04',
         'ZZ'   : '1.04',
         'VVV'  : '1.01',
@@ -190,7 +190,7 @@ nuisances['stat']  = {
              }
 
 
-'''
+
 
 # Differnt type of uncentainties: type->ln N: (modify only event yeld) use a lognorm distributions with sigma = uncertainty. For normalization rateParam
                                         # can be used--> use a uniform distribution;
