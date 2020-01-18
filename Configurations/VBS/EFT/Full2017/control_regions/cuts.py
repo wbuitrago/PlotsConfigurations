@@ -10,7 +10,7 @@ supercut_vector = [     'nLepton>1',
                         'Lepton_pt[0] > 30',
                         'Lepton_pt[1] > 30',    
                         'fabs(Lepton_eta[0]) < 2.5',
-                        'fabs(Lepton_eta[1]) < 2.5'                    
+                        'fabs(Lepton_eta[1]) < 2.5',                    
                         'Alt$(CleanJet_pt[0],9999.) > 30', 
                         'Alt$(CleanJet_pt[1],9999.) > 30', 
                         'Alt$(fabs(CleanJet_eta[0]),-9999.) < 5',

@@ -31,6 +31,7 @@ nuisances['lumi']  = {
     'type'  : 'lnN',
 }
 
+'''
 #### FAKES
 if Nlep == '2' :
     # already divided by central values in formulas !
@@ -100,7 +101,7 @@ nuisances['fake_mu_stat']  = {
     },
 }
 
-
+'''
 
 ################################ THEORY UNCERTAINTIES  #################################
 nuisances['QCDscale']  = {
@@ -177,6 +178,9 @@ nuisances['charge_flip']  = {
                    },
                'type'  : 'lnN',
               }
+
+
+
 
 # statistical fluctuation
 # on MC/data
