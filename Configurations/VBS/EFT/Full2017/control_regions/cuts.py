@@ -83,6 +83,9 @@ cuts['SS_cr']  = {
    # sub categorization
    'categories' : {
          'ee'    : ss_ee,
+         #'ee'    : ss_ee + ' && ' + zveto,  proposta per zveto, che va ancora definito però.
+         # magari prova zveto_5 zveto_10 zveto_15
+         # guarda def in alias..
          'emu'   : ss_emu,
          'mumu'  : ss_mumu,
    }
