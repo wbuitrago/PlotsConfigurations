@@ -1,6 +1,8 @@
 # cuts
 
-# SUPERCUT #
+#############################################
+################# SUPERCUT ##################
+#############################################
 
 separator = ' && '
 
@@ -28,12 +30,11 @@ ss_ee   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11'  # double
 ss_emu  = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13'  # muon & electron
 ss_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'  # double muon
 
-# opposite sign
-osLep   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'       # SS generic leptons
-os_ee   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*11'  # double electron
-os_emu  = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*13'  # muon & electron
-os_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'  # double muon
-
+# # opposite sign
+# osLep   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'        # SS generic leptons
+# os_ee   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*11'  # double electron
+# os_emu  = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*13'  # muon & electron
+# os_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'  # double muon
 
 #############################################
 ########## DY control phase space ###########
@@ -73,24 +74,52 @@ os_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'  # doubl
 #    }
 # }
   
-
 #############################################
 ########### SS control phase space ##########
 #############################################
 
-# excludes z->ll events
-zVeto_5 = '(abs(mll - 91.1876) > 5 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
+# excludes Z -> ll events (with variable mll cuts)
+zVeto5  = '(abs(mll - 91.1876) >  5 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
+zVeto10 = '(abs(mll - 91.1876) > 10 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
+zVeto15 = '(abs(mll - 91.1876) > 15 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
+zVeto20 = '(abs(mll - 91.1876) > 20 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
 
-cuts['SS_cr']  = { 
-   'expr' : zVeto_5,
+cuts['SS_cr_zveto5']  = { 
+   'expr' : zVeto5,
    # sub categorization
    'categories' : {
-         'ee'    : ss_ee
+         'ee'    : ss_ee,
          'emu'   : ss_emu,
          'mumu'  : ss_mumu,
    }
 }
 
+cuts['SS_cr_zveto10']  = { 
+   'expr' : zVeto10,
+   # sub categorization
+   'categories' : {
+         'ee'    : ss_ee,
+         'emu'   : ss_emu,
+         'mumu'  : ss_mumu,
+   }
+}
 
+cuts['SS_cr_zveto15']  = { 
+   'expr' : zVeto15,
+   # sub categorization
+   'categories' : {
+         'ee'    : ss_ee,
+         'emu'   : ss_emu,
+         'mumu'  : ss_mumu,
+   }
+}
 
-
+cuts['SS_cr_zveto20']  = { 
+   'expr' : zVeto20,
+   # sub categorization
+   'categories' : {
+         'ee'    : ss_ee,
+         'emu'   : ss_emu,
+         'mumu'  : ss_mumu,
+   }
+}

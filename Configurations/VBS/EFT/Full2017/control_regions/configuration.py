@@ -2,9 +2,9 @@
 
 treeName= 'Events'
 
-date = '_gen17'
+date = '_gen20'
 
-version = '_v0'
+version = '_zVetoTest_v2'
 
 tag = 'VBS_SS'  + date + version
 
