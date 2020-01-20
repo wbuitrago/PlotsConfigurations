@@ -39,53 +39,53 @@ os_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'  # doubl
 ########## DY control phase space ###########
 #############################################
 
-cuts['DY_cr']  = { 
-   'expr' : osLep,
-   # sub categorization
-   'categories' : {
-         'ee'    : os_ee,
-         'emu'   : os_emu,
-         'mumu'  : os_mumu,
-   }
-}
+# cuts['DY_cr']  = { 
+#    'expr' : osLep,
+#    # sub categorization
+#    'categories' : {
+#          'ee'    : os_ee,
+#          'emu'   : os_emu,
+#          'mumu'  : os_mumu,
+#    }
+# }
 
 #############################################
 ########## top control phase space ##########
 #############################################
 
-top =       '\
-            nCleanJet >= 2 \
-            && detajj > 1.\
-            && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) \
-            && Lepton_pt[0]>50 \
-            && Lepton_pt[1]>40 \
-            && CleanJet_pt[0] > 40 \
-            && CleanJet_pt[1] > 30 \
-            '
+# top =       '\
+#             nCleanJet >= 2 \
+#             && detajj > 1.\
+#             && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) \
+#             && Lepton_pt[0]>50 \
+#             && Lepton_pt[1]>40 \
+#             && CleanJet_pt[0] > 40 \
+#             && CleanJet_pt[1] > 30 \
+#             '
 
-cuts['topcr'] = {
-   'expr' : top,
-   # sub categorization
-   'categories' : {
-         'ee'    : os_ee,
-         'emu'   : os_emu,
-         'mumu'  : os_mumu,
-   }
-}
+# cuts['topcr'] = {
+#    'expr' : top,
+#    # sub categorization
+#    'categories' : {
+#          'ee'    : os_ee,
+#          'emu'   : os_emu,
+#          'mumu'  : os_mumu,
+#    }
+# }
   
 
 #############################################
 ########### SS control phase space ##########
 #############################################
 
+# excludes z->ll events
+zVeto_5 = '(abs(mll - 91.1876) > 5 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
+
 cuts['SS_cr']  = { 
-   'expr' : ssLep,
+   'expr' : zVeto_5,
    # sub categorization
    'categories' : {
-         'ee'    : ss_ee,
-         #'ee'    : ss_ee + ' && ' + zveto,  proposta per zveto, che va ancora definito però.
-         # magari prova zveto_5 zveto_10 zveto_15
-         # guarda def in alias..
+         'ee'    : ss_ee
          'emu'   : ss_emu,
          'mumu'  : ss_mumu,
    }
