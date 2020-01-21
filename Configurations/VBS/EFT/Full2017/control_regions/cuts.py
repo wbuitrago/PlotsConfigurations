@@ -13,8 +13,8 @@ supercut_vector = [     'nLepton>1',
                         'Lepton_pt[1] > 30',    
                         'fabs(Lepton_eta[0]) < 2.5',
                         'fabs(Lepton_eta[1]) < 2.5',                    
-                        'Alt$(CleanJet_pt[0],9999.) > 30', 
-                        'Alt$(CleanJet_pt[1],9999.) > 30', 
+                        'Alt$(CleanJet_pt[0],-9999.) > 30', 
+                        'Alt$(CleanJet_pt[1],-9999.) > 30', 
                         'Alt$(fabs(CleanJet_eta[0]),-9999.) < 5',
                         'Alt$(fabs(CleanJet_eta[1]),-9999.) < 5',
                   ]
@@ -78,44 +78,21 @@ ss_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'  # double
 ########### SS control phase space ##########
 #############################################
 
-# excludes Z -> ll events (with variable mll cuts)
-zVeto5  = '(abs(mll - 91.1876) >  5 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
-zVeto10 = '(abs(mll - 91.1876) > 10 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
-zVeto15 = '(abs(mll - 91.1876) > 15 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
-zVeto20 = '(abs(mll - 91.1876) > 20 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
+# # excludes Z -> ll events (with variable mll cuts)
+# zVeto5  = '(abs(mll - 91.1876) >  5 || abs(Lepton_pdgId[0]) != abs(Lepton_pdgId[1]))'
 
-cuts['SS_cr_zveto5']  = { 
-   'expr' : zVeto5,
-   # sub categorization
-   'categories' : {
-         'ee'    : ss_ee,
-         'emu'   : ss_emu,
-         'mumu'  : ss_mumu,
-   }
-}
+# cuts['SS_cr_zveto5']  = { 
+#    'expr' : zVeto5,
+#    # sub categorization
+#    'categories' : {
+#          'ee'    : ss_ee,
+#          'emu'   : ss_emu,
+#          'mumu'  : ss_mumu,
+#    }
+# }
 
-cuts['SS_cr_zveto10']  = { 
-   'expr' : zVeto10,
-   # sub categorization
-   'categories' : {
-         'ee'    : ss_ee,
-         'emu'   : ss_emu,
-         'mumu'  : ss_mumu,
-   }
-}
-
-cuts['SS_cr_zveto15']  = { 
-   'expr' : zVeto15,
-   # sub categorization
-   'categories' : {
-         'ee'    : ss_ee,
-         'emu'   : ss_emu,
-         'mumu'  : ss_mumu,
-   }
-}
-
-cuts['SS_cr_zveto20']  = { 
-   'expr' : zVeto20,
+cuts['SS_cr']  = { 
+   'expr' : ssLep,
    # sub categorization
    'categories' : {
          'ee'    : ss_ee,
