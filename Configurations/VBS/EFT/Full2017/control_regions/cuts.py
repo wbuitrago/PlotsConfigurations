@@ -4,7 +4,7 @@
 ################# SUPERCUT ##################
 #############################################
 
-separator = ' && '
+and_separator = ' && '
 
 # if there is a clean jet, it must have pt > 30
 # if there is not a clean jet, no problem (selections on jets applied next...)
@@ -20,7 +20,7 @@ supercut_vector = [     'nLepton>1',
                   ]
 
 # supercut definition
-supercut = separator.join(supercut_vector)     
+supercut = and_separator.join(supercut_vector)     
 
 ## 2 lepton categorization
 
