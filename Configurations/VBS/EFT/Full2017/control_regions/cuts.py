@@ -6,8 +6,8 @@
 
 and_separator = ' && '
 
-# if there is a clean jet, it must have pt > 30
-# if there is not a clean jet, no problem (selections on jets applied next...)
+# 2 jets and 2 leptons with p_t > 30 GeV
+
 supercut_vector = [     'nLepton>1',
                         'Lepton_pt[0] > 30',
                         'Lepton_pt[1] > 30',    
