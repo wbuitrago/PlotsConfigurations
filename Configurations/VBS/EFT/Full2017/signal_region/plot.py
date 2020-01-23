@@ -135,13 +135,6 @@ plot['DY']  = {
     'scale'    : 1.0
 }
 
-plot['top']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-
 plot['DYtt']  = {
     'color': Yellow,    # kYellow
     'isSignal' : 0,
@@ -149,21 +142,30 @@ plot['DYtt']  = {
     'scale'    : 1.0
 }
 
+groupPlot['DY']  = {
+    'nameHR' : "DY",
+    'isSignal' : 0,
+    'color'    : ROOT.kGreen, # kViolet+10
+    'samples'  : ['DY','DYtt'],
+    #'samples'  : ['DY']
+}
+
+plot['top']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 
 groupPlot['top']  = {
     'nameHR' : "top",
     'isSignal' : 0,
     'color'    : ROOT.kOrange, # kViolet+10
-    'samples'  : ['top','DYtt']
+    'samples'  : ['top'],
 } 
 
 
-groupPlot['DY']  = {
-    'nameHR' : "DY",
-    'isSignal' : 0,
-    'color'    : ROOT.kGreen, # kViolet+10
-    'samples'  : ['DY']
-}
+
 
 # END DB EDIT
 

@@ -29,8 +29,15 @@ except NameError:
     import collections
     samples = collections.OrderedDict()
 
+################################################
+########## DATA and MC folders #################
+################################################
+
 mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_102X_nAODv4_Full2017v5/MCl1loose2017v5__MCCorr2017v5__l2loose__l2tightOR2017v5/'
+DataDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2017_102X_nAODv4_Full2017v5/DATAl1loose2017v5__l2loose__l2tightOR2017v5/'
+FakeDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2017_102X_nAODv4_Full2017v5/DATAl1loose2017v5__l2loose__fakeW/'
 # chargeFlipDir = '/eos/cms/store/cmst3/group/hww/HWWNano/Fall2017_nAOD_v1_Full2017v2/MCl1loose2017v2__MCCorr2017__btagPerEvent__l2loose__l2tightOR2017__ChargeFlip/'
+
 ################################################
 ############ NUMBER OF LEPTONS #################
 ################################################
@@ -56,16 +63,17 @@ fakeW_2016 = 'fakeW2l_ele_'+eleWP+'_mu_'+muWP
 ################################################
 ############ BASIC MC WEIGHTS ##################
 ################################################
+
 XSWeight      = 'XSWeight'
 mcCommonWeightNoMatch = 'SFweight'
 mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
+
 ################################################
 ############### B-Tag  WP ######################
 ################################################
 
 # Definitions in aliases.py
-
-#SFweight += '*btagSF'
+# SFweight += '*btagSF'
 
 ################################################
 ############   MET  FILTERS  ###################
@@ -146,16 +154,12 @@ DataTrig_2018 = {
 ###########################################
 
 # charge flip
+# this should be replaced by data driven samples...
 
-
-##########################################################################################################
-########### portion of code added as a test  (dbrambilla13)       ########################################
-##########################################################################################################
-
-# charge flip
 ptllDYW_NLO = '(((0.623108 + 0.0722934*gen_ptll - 0.00364918*gen_ptll*gen_ptll + 6.97227e-05*gen_ptll*gen_ptll*gen_ptll - 4.52903e-07*gen_ptll*gen_ptll*gen_ptll*gen_ptll)*(gen_ptll<45)*(gen_ptll>0) + 1*(gen_ptll>=45))*(abs(gen_mll-90)<3) + (abs(gen_mll-90)>3))'
 ptllDYW_LO = '((0.632927+0.0456956*gen_ptll-0.00154485*gen_ptll*gen_ptll+2.64397e-05*gen_ptll*gen_ptll*gen_ptll-2.19374e-07*gen_ptll*gen_ptll*gen_ptll*gen_ptll+6.99751e-10*gen_ptll*gen_ptll*gen_ptll*gen_ptll*gen_ptll)*(gen_ptll>0)*(gen_ptll<100)+(1.41713-0.00165342*gen_ptll)*(gen_ptll>=100)*(gen_ptll<300)+1*(gen_ptll>=300))'
 
+# DY
 files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO')
 
@@ -167,6 +171,7 @@ samples['DY'] = {
 addSampleWeight(samples,'DY','DYJetsToLL_M-50',ptllDYW_NLO)
 addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO',ptllDYW_LO)
 
+# DYtt
 files = nanoGetSampleFiles(mcDirectory, 'DYJetsToTT_MuEle_M-50_fix') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO')
 
@@ -178,6 +183,7 @@ samples['DYtt'] = {
 addSampleWeight(samples,'DY','DYJetsToTT_MuEle_M-50_fix',ptllDYW_NLO)
 addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO',ptllDYW_LO)
 
+# top
 files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
         nanoGetSampleFiles(mcDirectory, 'ST_s-channel') + \
         nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
@@ -192,12 +198,8 @@ samples['top'] = {
 }
 addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 
-##########################################################################################################
-########### END OF portion of code added as a test  (dbrambilla13)       #################################
-##########################################################################################################
-
-
 ######## Vgamma ########
+
 files = nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
         nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM')
 
@@ -206,6 +208,7 @@ samples['Vg'] = {
     'weight': mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0)',
     'FilesPerJob': 4
 }
+
 ######## VgS ########
 
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
@@ -218,7 +221,9 @@ samples['VgS'] = {
 }
 addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
 addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
+
 ######### VV #########
+
 files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu') + \
         nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
         nanoGetSampleFiles(mcDirectory, 'ZZTo4L')
@@ -242,6 +247,7 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
+
 samples['WLLJJ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight+'*1.2',
@@ -249,11 +255,13 @@ samples['WLLJJ_QCD'] = {
 }
 files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')# + \
         #nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
+
 samples['WLLJJ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
+
 ########## VVV #########
 
 files = nanoGetSampleFiles(mcDirectory, 'ZZZ') + \
@@ -281,7 +289,9 @@ samples['TTV'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
+
 ########## DPS #########
+
 files = nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu_DoubleScattering')
 #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
@@ -326,7 +336,7 @@ samples['Fake_lep'] = {
 
 for _, sd in DataRun_2017:
     for pd in DataSets_2017:
-        files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2017_102X_nAODv4_Full2017v5/DATAl1loose2017v5__l2loose__fakeW/', pd + '_' + sd)
+        files = nanoGetSampleFiles(FakeDir, pd + '_' + sd)
         samples['Fake_lep']['name'].extend(files)
         samples['Fake_lep']['weights'].extend([DataTrig_2017[pd]] * len(files))
 
@@ -342,6 +352,6 @@ samples['DATA'] = {
 
 for _, sd in DataRun_2017:
     for pd in DataSets_2017:
-        files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2017_102X_nAODv4_Full2017v5/DATAl1loose2017v5__l2loose__l2tightOR2017v5/', pd + '_' + sd)
+        files = nanoGetSampleFiles(DataDir, pd + '_' + sd)
         samples['DATA']['name'].extend(files)
         samples['DATA']['weights'].extend([DataTrig_2017[pd]] * len(files))

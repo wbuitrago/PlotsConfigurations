@@ -2,9 +2,9 @@
 
 treeName= 'Events'
 
-date = '_dec05'
+date = '_gen22'
 
-version = '_v1'
+version = '_new_scut_v1'
 
 tag = 'VBS_SS'  + date + version
 
@@ -33,7 +33,6 @@ lumi = 41.53
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
 outputDirPlots = 'plots' + '_' + tag
-
 
 # used by mkDatacards to define output directory for datacards
 outputDirDatacard = 'datacards' + '_' + tag

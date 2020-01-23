@@ -1,118 +1,93 @@
 # cuts
 
+#############################################
+################# SUPERCUT ##################
+#############################################
 
-##############################################################
-##################### SIGNAL REGION ##########################
-##############################################################
+and_separator = ' && '
 
+# 2 jets and 2 leptons with p_t > 30 GeV
 
-# Lepton Selection Cut for Signal region
-# leptonSel =   '\
-#                nLepton >= 2 \
-#                && Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) > 0 \
-#                && mll > 20 \
-#                && Alt$(Lepton_pt[2],0.)<10 \
-#                && tauVeto_ww \
-#                && zveto_ww \
-#                && lep0eta \
-#                && lep1eta '
+supercut_vector = [     'nLepton>1',
+                        'Lepton_pt[0] > 30',
+                        'Lepton_pt[1] > 30',    
+                        'fabs(Lepton_eta[0]) < 2.5',
+                        'fabs(Lepton_eta[1]) < 2.5',                    
+                        'Alt$(CleanJet_pt[0],-9999.) > 30', 
+                        'Alt$(CleanJet_pt[1],-9999.) > 30', 
+                        'Alt$(fabs(CleanJet_eta[0]),-9999.) < 5',
+                        'Alt$(fabs(CleanJet_eta[1]),-9999.) < 5',
+                  ]
 
-# ## JET selections
+# supercut definition
+supercut = and_separator.join(supercut_vector)     
 
-# # inclusive region
-# inclusive = 'nCleanJet >= 0'
+## 2 lepton categorization
 
-# # njets >= 2 selection
-# jetSel   = 'nCleanJet >= 2'
+# same sign
+ssLep   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) > 0'       # SS generic leptons
+ss_ee   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11'  # double electron
+ss_emu  = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13'  # muon & electron
+ss_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'  # double muon
 
-# ## Signal Region
+# # opposite sign
+# osLep   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'        # SS generic leptons
+# os_ee   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*11'  # double electron
+# os_emu  = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*13'  # muon & electron
+# os_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'  # double muon
 
-# cuts['ssww_incl']  = { 
-#    'expr' : leptonSel + '&&' + inclusive,
-#    # Define the sub-categorization of ssww
+#############################################
+########## DY control phase space ###########
+#############################################
+
+# cuts['DY_cr']  = { 
+#    'expr' : osLep,
+#    # sub categorization
 #    'categories' : {
-#          'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
-#          'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
-#          'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
+#          'ee'    : os_ee,
+#          'emu'   : os_emu,
+#          'mumu'  : os_mumu,
 #    }
 # }
 
-# cuts['ssww_jetSel']  = { 
-#    'expr' : leptonSel + '&&' + jetSel,
-#    # Define the sub-categorization of ssww
+#############################################
+########## top control phase space ##########
+#############################################
+
+# top =       '\
+#             nCleanJet >= 2 \
+#             && detajj > 1.\
+#             && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) \
+#             && Lepton_pt[0]>50 \
+#             && Lepton_pt[1]>40 \
+#             && CleanJet_pt[0] > 40 \
+#             && CleanJet_pt[1] > 30 \
+#             '
+
+# cuts['topcr'] = {
+#    'expr' : top,
+#    # sub categorization
 #    'categories' : {
-#          'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
-#          'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
-#          'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
+#          'ee'    : os_ee,
+#          'emu'   : os_emu,
+#          'mumu'  : os_mumu,
 #    }
 # }
+  
+#############################################
+########### SS control phase space ##########
+#############################################
 
+# excluding Z -> ee events with mll in region Z_mass +/- 15 GeV
+zveto = '(abs(Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.)) != 11*11) || abs(mll - 91.1876) > 15'
 
-
-### this is working! ###
-# # these are my test cuts for leptons
-# # removing jet cuts from ssww_region (see aliases or cut above)
-# cuts['ssww_leptons']={
-#     'expr': 'nLepton>1 \
-#             && Alt$(Lepton_pdgId[0],0) * Alt$(Lepton_pdgId[1],0) > 0 \
-#             && Alt$(Lepton_pt[2],0.)<10 \
-#             && MET_pt>30 \
-#             && mll > 20 \
-#             && tauVeto_ww \
-#             && zveto_ww \
-#             && lep0eta \
-#             && lep1eta \
-#             \
-#             && bVeto \
-#             && leppt30 \
-#             && softmuon_veto',
-# }
-
-## Lepton Selection
-lepSel =    'nLepton>1 \
-            && Alt$(Lepton_pdgId[0],0) * Alt$(Lepton_pdgId[1],0) > 0 \
-            && Alt$(Lepton_pt[2],0.)<10 \
-            && MET_pt>30 \
-            && mll > 20 \
-            && tauVeto_ww \
-            && zveto_ww \
-            && lep0eta \
-            && lep1eta \
-            \
-            && bVeto \
-            && leppt30 \
-            && softmuon_veto'
-
-# inclusive region
-inclusive = 'nCleanJet >= 0'
-
-## JET Selections
-jetSel   = 'nCleanJet >= 2'
-
-#############################
-##### Signal Region Cut #####
-#############################
-
-# inclusive cut without jet selections
-cuts['ssww_incl']  = { 
-   'expr' : lepSel + '&&' + inclusive,
-   # Define the sub-categorization for
+cuts['SS_cr']  = { 
+   'expr' : ssLep + ' && ' + zveto,
+   # sub categorization
    'categories' : {
-         'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
-         'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
-         'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
+         'ee'    : ss_ee,
+         'emu'   : ss_emu,
+         'mumu'  : ss_mumu,
    }
 }
-
-# with jet selections
-cuts['ssww_jetSel']  = { 
-   'expr' : lepSel + '&&' + jetSel,
-   # Define the sub-categorization (ee, emu, mumu)
-   'categories' : {
-         'ee'    : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11', # double electron
-         'emu'   : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13', # muon & electron
-         'mumu'  : 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13', # double muon
-   }
-}
-
 

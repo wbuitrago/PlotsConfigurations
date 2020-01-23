@@ -30,6 +30,7 @@ nuisances['lumi']  = {
     },
     'type'  : 'lnN',
 }
+
 '''
 #### FAKES
 if Nlep == '2' :
@@ -100,8 +101,8 @@ nuisances['fake_mu_stat']  = {
     },
 }
 
-
 '''
+
 ################################ THEORY UNCERTAINTIES  #################################
 nuisances['QCDscale']  = {
     'name'  : 'QCDscale',
@@ -136,7 +137,7 @@ nuisances['pdf']  = {
     'type'  : 'lnN',
     'samples'  : {
         'ChMisId'  : '1.005',
-	'ttbar'   : '1.01',
+	    'ttbar'   : '1.01',
         'WZ'   : '1.04',
         'ZZ'   : '1.04',
         'VVV'  : '1.01',
@@ -177,6 +178,9 @@ nuisances['charge_flip']  = {
                    },
                'type'  : 'lnN',
               }
+
+
+
 
 # statistical fluctuation
 # on MC/data
