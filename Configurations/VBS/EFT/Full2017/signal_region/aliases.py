@@ -305,3 +305,16 @@ aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Do',
     'samples': mc
 }
+
+
+
+#####################
+## my aliases (DB) ##
+#####################
+
+# excluding Z -> ee events with mll in region Z_mass +/- 15 GeV
+aliases['zVeto'] = {
+    'expr': '(abs(Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.)) != 11*11) || abs(mll - 91.1876) > 15'
+}
+
+

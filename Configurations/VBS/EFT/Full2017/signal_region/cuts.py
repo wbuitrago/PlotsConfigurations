@@ -77,14 +77,11 @@ ss_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'  # double
 # }
   
 #############################################
-########### SS control phase space ##########
+########### VBS_SS signal region ############
 #############################################
 
-# excluding Z -> ee events with mll in region Z_mass +/- 15 GeV
-zveto = '(abs(Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.)) != 11*11) || abs(mll - 91.1876) > 15'
-
-cuts['SS_cr']  = { 
-   'expr' : ssLep + ' && ' + zveto,
+cuts['SS_signal_region']  = { 
+   'expr' : ssLep + ' && zVeto && bVeto',
    # sub categorization
    'categories' : {
          'ee'    : ss_ee,
