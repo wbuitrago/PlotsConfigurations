@@ -317,4 +317,17 @@ aliases['zVeto'] = {
     'expr': '(abs(Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.)) != 11*11) || abs(mll - 91.1876) > 15'
 }
 
+## 2 lepton categorization
+
+# SS Leptons
+aliases['ssLep']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) > 0'}      # SS generic leptons
+aliases['ss_ee']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11'} # double electron 
+aliases['ss_emu']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13'} # muon & electron   
+aliases['ss_mumu'] = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'} # double muon
+
+# OS Leptons
+aliases['osLep']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'}       # SS generic leptons 
+aliases['os_ee']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*11'} # double electron      
+aliases['os_emu']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*13'} # muon & electron
+aliases['os_mumu'] = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'} # double muon
 
