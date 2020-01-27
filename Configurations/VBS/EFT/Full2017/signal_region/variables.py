@@ -62,19 +62,19 @@ variables['detall']  = {  'name' : 'Alt$(abs(Lepton_eta[0]-Lepton_eta[1]),-9999.
 # phi leptons
        
 variables['phi_lep1'] = {   'name' : 'Alt$(Lepton_phi[0],-9999.)',
-                            'range': (20,0,2*3.14159),
+                            'range': (20,-3,141592,3,141592),
                             'xaxis': 'phi_lep1',
                             'fold' : 3
 }
 
 variables['phi_lep2'] = {   'name' : 'Alt$(Lepton_phi[1],-9999.)',
-                            'range': (20,0,2*3.14159),
+                            'range': (20,-3,141592,3,141592),
                             'xaxis': 'phi_lep2',
                             'fold' : 3  
                             }               
 
 variables['dphill'] = {     'name' : 'Alt$(dphill,-9999.)',
-                            'range': (10,0,3.14159),
+                            'range': (10,0,3,141592),
                             'xaxis': 'dphill',
                             'fold' : 3    
                             }                               
@@ -137,23 +137,23 @@ variables['Clean_detajj']  = {  'name' : 'Alt$(abs(CleanJet_eta[0]-CleanJet_eta[
 # phi jets
        
 variables['phi_j1'] = {     'name' : 'Alt$(CleanJet_phi[0],-9999.)',
-                            'range': (20,0,2*3.14159),
+                            'range': (20,-3,141592,3,141592),
                             'xaxis': 'phi_j1',
                             'fold' : 3
                     }
 
 variables['phi_j2'] = { 'name' : 'Alt$(CleanJet_phi[1],-9999.)',
-                        'range': (20,0,2*3.14159),
+                        'range': (20,-3,141592,3,141592),
                         'xaxis': 'phi_j2',
                         'fold' : 3  
                         }                             
 
-variables['dphijj']  = {    'name' : 'Alt$(abs(abs(abs(CleanJet_phi[0]-CleanJet_phi[1])-pi)-pi),-9999.)',
-                            'range': (10,0.0,3.14159),
+variables['dphijj']  = {    'name' : '(fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) <= 3,141592) * fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) + (fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) > 3,141592) * (2*3,141592 - (fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.))))' ,
+                            'range': (10,0.0,3,141592),
                             'xaxis': 'dphijj',
                             'fold' : 3
-                        }                                                                 
-
+                        }                                                                                     
+                                                                                  
 
 ###########################
 ##### MET    VARS #########
@@ -182,7 +182,7 @@ variables['Jet_btagDeepB_1']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[1]]
                                 }
 
 # one only for the first two jets. It gives the btag variable for the most central of the first two CleanJets
-variables['my_btag_var']  = {   'name'  : '(fabs(CleanJet_eta[0]) <= fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(CleanJet_eta[0]) > fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[1]]'   
+variables['my_btag_var']  = {   'name'  : '(fabs(CleanJet_eta[0]) <= fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(CleanJet_eta[0]) > fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
                                 'range' : (20,0,1),        
                                 'xaxis' : 'my_btag_var',     
                                 'fold'  : 3
