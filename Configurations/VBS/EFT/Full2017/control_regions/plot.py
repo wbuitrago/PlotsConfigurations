@@ -6,26 +6,6 @@
 # If not defined, normal plots is used
 #
 
-#######################################################
-## this part gave me some errors with cuts and categories.. now, without it, it works normally
-
-# import copy
-
-# origcuts=copy.deepcopy(cuts)
-
-# print origcuts
-# cuts = []
-
-
-# for cut in origcuts:
-#     print cut
-#     for cat in origcuts[cut]['categories']:
-#         cuts.append(cut+"_"+cat)
-
-# print cuts
-#####################################################
-
-
 # groupPlot = {}
 #
 # Groups of samples to improve the plots (merge different sample during plot).
@@ -128,19 +108,15 @@ groupPlot['WW_EWK']  = {
 # BEGIN DB EDIT
 # adding missing samples DY and top
 
-plot['DY']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
 
-plot['DYtt']  = {
-    'color': Yellow,    # kYellow
+
+
+groupPlot['top']  = {
+    'nameHR' : "top",
     'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+    'color'    : ROOT.kOrange, # kViolet+10
+    'samples'  : ['top'],
+} 
 
 groupPlot['DY']  = {
     'nameHR' : "DY",
@@ -157,14 +133,19 @@ plot['top']  = {
     'scale'    : 1.0
 }
 
-groupPlot['top']  = {
-    'nameHR' : "top",
+plot['DY']  = {
+    'color': Yellow,    # kYellow
     'isSignal' : 0,
-    'color'    : ROOT.kOrange, # kViolet+10
-    'samples'  : ['top'],
-} 
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 
-
+plot['DYtt']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 
 
 # END DB EDIT
