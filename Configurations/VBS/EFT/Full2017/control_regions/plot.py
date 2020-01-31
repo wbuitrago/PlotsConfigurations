@@ -92,7 +92,7 @@ groupPlot['non-prompt']  = {
 
 groupPlot['WW_EWK']  = {
                   'nameHR' : "W^{#pm}W^{#pm} EWK",
-                  'isSignal' : 0,
+                  'isSignal' : 1,
                   'color'    : ROOT.kBlue-7, # kAzure+4
                   'samples'  : ['WpWp_EWK']
               }
@@ -105,50 +105,44 @@ groupPlot['WW_EWK']  = {
 # keys here must match keys in samples.py
 #
 
-# BEGIN DB EDIT
-# adding missing samples DY and top
+# # DY and top
 
+# groupPlot['top']  = {
+#     'nameHR' : "top",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kOrange, # kViolet+10
+#     'samples'  : ['top'],
+# } 
 
+# groupPlot['DY']  = {
+#     'nameHR' : "DY",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kGreen, # kViolet+10
+#     'samples'  : ['DY','DYtt'],
+#     #'samples'  : ['DY']
+# }
 
+# plot['top']  = {
+#     'color': Yellow,    # kYellow
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-groupPlot['top']  = {
-    'nameHR' : "top",
-    'isSignal' : 0,
-    'color'    : ROOT.kOrange, # kViolet+10
-    'samples'  : ['top'],
-} 
+# plot['DY']  = {
+#     'color': Yellow,    # kYellow
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-groupPlot['DY']  = {
-    'nameHR' : "DY",
-    'isSignal' : 0,
-    'color'    : ROOT.kGreen, # kViolet+10
-    'samples'  : ['DY','DYtt'],
-    #'samples'  : ['DY']
-}
+# plot['DYtt']  = {
+#     'color': Yellow,    # kYellow
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-plot['top']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-
-plot['DY']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-
-plot['DYtt']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-
-
-# END DB EDIT
 
 ##Fake and prompt substraction
 plot['Fake_lep']  = {
@@ -161,7 +155,7 @@ plot['Fake_lep']  = {
 ##Signal
 plot['WpWp_EWK']  = {
     'color': Azure+4, # kAzure+4
-    'isSignal' : 0,
+    'isSignal' : 1,
     'isData'   : 0,
     'scale'    : 1.0
 }

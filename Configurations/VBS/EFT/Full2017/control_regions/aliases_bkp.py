@@ -305,33 +305,3 @@ aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Do',
     'samples': mc
 }
-
-
-
-#####################
-## my aliases (DB) ##
-#####################
-
-# excluding Z -> ee events with mll in region Z_mass +/- 15 GeV
-aliases['zVeto'] = {
-    'expr': '(abs(Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.)) != 11*11) || abs(mll - 91.1876) > 15'
-}
-
-## 2 lepton categorization
-
-# SS Leptons
-aliases['ssLep']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) > 0'}      # SS generic leptons
-aliases['ss_ee']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11'} # double electron 
-aliases['ss_emu']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13'} # muon & electron   
-aliases['ss_mumu'] = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'} # double muon
-aliases['ss_all']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11 || \
-                                Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13 || \
-                                Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'} # SS ee emu mumu 
-
-
-# OS Leptons
-aliases['osLep']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'}       # SS generic leptons 
-aliases['os_ee']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*11'} # double electron      
-aliases['os_emu']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*13'} # muon & electron
-aliases['os_mumu'] = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'} # double muon
-

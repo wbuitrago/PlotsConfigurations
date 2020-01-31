@@ -24,20 +24,6 @@ supercut_vector = [     'nLepton>1',
 # supercut definition
 supercut = and_separator.join(supercut_vector)     
 
-## 2 lepton categorization
-
-# same sign
-ssLep   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) > 0'       # SS generic leptons
-ss_ee   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11'  # double electron
-ss_emu  = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13'  # muon & electron
-ss_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'  # double muon
-
-# # opposite sign
-# osLep   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'        # SS generic leptons
-# os_ee   = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*11'  # double electron
-# os_emu  = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*13'  # muon & electron
-# os_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'  # double muon
-
 #############################################
 ########## DY control phase space ###########
 #############################################
@@ -77,19 +63,22 @@ ss_mumu = 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'  # double
 # }
   
 #############################################
-########### SS control phase space ##########
+########### SS inclusive phase space ##########
 #############################################
 
-# excluding Z -> ee events with mll in region Z_mass +/- 15 GeV
-zveto = '(abs(Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.)) != 11*11) || abs(mll - 91.1876) > 15'
-
 cuts['SS_inclusive']  = { 
-   'expr' : ssLep + ' && ' + zveto,
+   'expr' : 'zVeto',
    # sub categorization
    'categories' : {
-         'ee'    : ss_ee,
-         'emu'   : ss_emu,
-         'mumu'  : ss_mumu,
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
    }
 }
+
+cuts['SS_inclusive_all']  = { 
+   'expr' : 'ss_all && zVeto'
+}
+
+
 
