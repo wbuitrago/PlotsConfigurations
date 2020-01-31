@@ -36,25 +36,24 @@
 
 
 Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
-
-groupPlot['ZZ']  = {
-    'nameHR' : "ZZ",
-    'isSignal' : 0,
-    'color'    : ROOT.kMagenta-10, # kViolet+10
-    'samples'  : ['ZZ']
-}
+# groupPlot['ZZ']  = {
+#     'nameHR' : "ZZ",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kMagenta-10, # kViolet+10
+#     'samples'  : ['ZZ']
+# }
 groupPlot['WLLJJ_QCD']  = {
     'nameHR' : "WZ QCD",
     'isSignal' : 0,
     'color'    : ROOT.kRed, # kViolet+10
     'samples'  : ['WLLJJ_QCD','WZTo2L2Q']
 }
-groupPlot['WLLJJ_EWK']  = {
-    'nameHR' : "WZ EWK",
-    'isSignal' : 0,
-    'color'    : ROOT.kMagenta, # kViolet+10
-    'samples'  : ['WLLJJ_EWK']
-}
+# groupPlot['WLLJJ_EWK']  = {
+#     'nameHR' : "WZ EWK",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kMagenta, # kViolet+10
+#     'samples'  : ['WLLJJ_EWK']
+# }
 plot['WLLJJ_QCD']  = {
     'color': Violet+10, # kViolet+10
     'isSignal' : 0,
@@ -73,24 +72,24 @@ plot['WLLJJ_EWK']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-groupPlot['VVV']  = {
-    'nameHR' : 'VVV',
-    'isSignal' : 0,
-    'color': ROOT.kSpring-9, # kGreen
-    'samples'  : ['VVV']
-}
+# groupPlot['VVV']  = {
+#     'nameHR' : 'VVV',
+#     'isSignal' : 0,
+#     'color': ROOT.kSpring-9, # kGreen
+#     'samples'  : ['VVV']
+# }
 groupPlot['TTV']  = {
     'nameHR' : 'TTV',
     'isSignal' : 0,
     'color': ROOT.kGray, # kGreen
     'samples'  : ['TTV']
 }
-groupPlot['DPS']  = {
-    'nameHR' : 'DPS',
-    'isSignal' : 0,
-    'color': ROOT.kGray, # kGreen
-    'samples'  : ['DPS']
-}
+# groupPlot['DPS']  = {
+#     'nameHR' : 'DPS',
+#     'isSignal' : 0,
+#     'color': ROOT.kGray, # kGreen
+#     'samples'  : ['DPS']
+# }
 groupPlot['Vg']  = {
                   'nameHR' : "V#gamma",
                   'isSignal' : 0,
@@ -98,12 +97,12 @@ groupPlot['Vg']  = {
                   'samples'  : ['Vg','VgS']
               }
 
-groupPlot['WW_strong']  = {
-                  'nameHR' : "W^{#pm}W^{#pm} QCD",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kViolet-4, # kViolet
-                  'samples'  : ['WW_strong']
-              }
+# groupPlot['WW_strong']  = {
+#                   'nameHR' : "W^{#pm}W^{#pm} QCD",
+#                   'isSignal' : 0,
+#                   'color'    : ROOT.kViolet-4, # kViolet
+#                   'samples'  : ['WW_strong']
+#               }
 
 
 
@@ -123,6 +122,15 @@ groupPlot['WW_EWK']  = {
               }
 
 
+groupPlot['Other']  = {
+    'nameHR' : "Other",
+    'isSignal' : 0,
+    'color'    : ROOT.kGreen, # kViolet+10
+    'samples'  : ['DY','DYtt','ZZ','WLLJJ_EWK','VVV','WW_strong','DPS'],
+    #'samples'  : ['DY']
+}
+
+
 
 
 #plot = {}
@@ -130,22 +138,8 @@ groupPlot['WW_EWK']  = {
 # keys here must match keys in samples.py
 #
 
-
-# # adding missing samples DY and top
-
-# plot['DY']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
-
-# plot['DYtt']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
+# BEGIN DB EDIT
+# adding missing samples DY and top
 
 # groupPlot['DY']  = {
 #     'nameHR' : "DY",
@@ -153,13 +147,6 @@ groupPlot['WW_EWK']  = {
 #     'color'    : ROOT.kGreen, # kViolet+10
 #     'samples'  : ['DY','DYtt'],
 #     #'samples'  : ['DY']
-# }
-
-# plot['top']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
 # }
 
 # groupPlot['top']  = {
@@ -170,6 +157,34 @@ groupPlot['WW_EWK']  = {
 # } 
 
 
+plot['DY']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+plot['DYtt']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+
+
+plot['top']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+
+
+
+
+# END DB EDIT
 
 ##Fake and prompt substraction
 plot['Fake_lep']  = {
@@ -238,7 +253,7 @@ plot['DATA']  = {
     'color': 1 ,
     'isSignal' : 0,
     'isData'   : 1 ,
-    'isBlind'  : 1 ,
+    'isBlind'  : 0 ,
     'scale'    : 1.0
 }
 

@@ -41,19 +41,19 @@ variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
                         }      
 
 ## eta leptons
-variables['eta_lep1'] = {   'name' : 'Alt$(Lepton_eta[0],-9999.)',
-                            'range': (20,-2.5,2.5),
-                            'xaxis': 'eta lep1',
-                            'fold' : 3
-                            }
+# variables['eta_lep1'] = {   'name' : 'Alt$(Lepton_eta[0],-9999.)',
+#                             'range': (20,-2.5,2.5),
+#                             'xaxis': 'eta lep1',
+#                             'fold' : 3
+#                             }
 
-variables['eta_lep2'] = {   'name' : 'Alt$(Lepton_eta[1],-9999.)',
-                            'range': (20,-2.5,2.5),
-                            'xaxis': 'eta lep2',
-                            'fold' : 3
-                            }
+# variables['eta_lep2'] = {   'name' : 'Alt$(Lepton_eta[1],-9999.)',
+#                             'range': (20,-2.5,2.5),
+#                             'xaxis': 'eta lep2',
+#                             'fold' : 3
+#                             }
 
-variables['detall']  = {  'name' : 'abs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],9999.))',
+variables['detall']  = {  'name' : 'fabs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],9999.))',
                           'range': (20,0.0,5.0),
                           'xaxis': 'deta ll',
                           'fold' : 3
@@ -91,11 +91,10 @@ variables['nJet']  = {      'name'  : 'nCleanJet',
                             }
 
 variables['mjj']  = {  'name' : 'mjj',
-                       'range': (50,0.,500.),
+                       'range': (50,0.,1000.),
                        'xaxis': 'mjj [GeV]',
                        'fold' : 3
-                       }
-
+                       }               
 
 variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
                            'range' : (35,0.,350),
@@ -110,17 +109,17 @@ variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
                            }     
 
 # eta
-variables['etaj1'] = {  'name' : 'Alt$(CleanJet_eta[0],-9999.)',
-                        'range': (20,-5,5),
-                        'xaxis': 'eta j1',
-                        'fold' : 3
-                        }
+# variables['etaj1'] = {  'name' : 'Alt$(CleanJet_eta[0],-9999.)',
+#                         'range': (20,-5,5),
+#                         'xaxis': 'eta j1',
+#                         'fold' : 3
+#                         }
 
-variables['etaj2'] = {  'name' : 'Alt$(CleanJet_eta[1],-9999.)',
-                        'range': (20,-5,5),
-                        'xaxis': 'eta j2',
-                        'fold' : 3
-                        }      
+# variables['etaj2'] = {  'name' : 'Alt$(CleanJet_eta[1],-9999.)',
+#                         'range': (20,-5,5),
+#                         'xaxis': 'eta j2',
+#                         'fold' : 3
+#                         }      
 
 variables['detajj']  = {  'name' : 'detajj',
                           'range': (20,0.0,10.0),
@@ -181,7 +180,31 @@ variables['my_btag_var']  = {   'name'  : '(fabs(CleanJet_eta[0]) <= fabs(CleanJ
                                 'xaxis' : 'central_jet_btag_var',     
                                 'fold'  : 3
                             }
-                        
 
 
+#############################
+#### Zeppenfeld Variable ####
+#############################                     
                         
+variables['Zlep1']  = {  'name': 'zlep1',
+                         'range': (30,-1.5,1.5),
+                         'xaxis': 'Z^{lep}_{1}',
+                         'fold': 3
+                         }
+
+variables['Zlep2']  = {  'name': 'zlep2',
+                         'range': (30,-1.5,1.5),
+                         'xaxis': 'Z^{lep}_{2}',
+                         'fold': 3
+                         }
+
+###############################
+### control var for pt veto ###
+###############################
+
+# variables['pt3']  = {   'name'  : 'Alt$(Lepton_pt[2],-9999.)',
+#                         'range' : (25,0.,100.),
+#                         'xaxis' : 'p_{T} 3rd lep [GeV]',
+#                         'fold'  : 3
+#                         }  
+

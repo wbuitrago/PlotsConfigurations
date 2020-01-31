@@ -173,6 +173,7 @@ aliases['zveto_ww']={
 # DB fix: I think ss leptons are selected in the wrong way...
 # && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 \
 # && Alt$(Lepton_pdgId[0],0) * Alt$(Lepton_pdgId[1],0) > 0 \
+# but this is not evident since there is the nLepton>1 request
 aliases['ssww_region']={
     'expr': 'nLepton>1 \
             && nCleanJet >1 \
@@ -324,10 +325,23 @@ aliases['ssLep']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.
 aliases['ss_ee']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11'} # double electron 
 aliases['ss_emu']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13'} # muon & electron   
 aliases['ss_mumu'] = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'} # double muon
+aliases['ss_all']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*11 || \
+                                Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 11*13 || \
+                                Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == 13*13'} # SS ee emu mumu 
 
 # OS Leptons
-aliases['osLep']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'}       # SS generic leptons 
+aliases['osLep']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) < 0'}       # OS generic leptons 
 aliases['os_ee']   = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*11'} # double electron      
 aliases['os_emu']  = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -11*13'} # muon & electron
 aliases['os_mumu'] = { 'expr': 'Alt$(Lepton_pdgId[0],0.)*Alt$(Lepton_pdgId[1],0.) == -13*13'} # double muon
 
+
+# third lepton veto (for p_t > 10 GeV)
+aliases['3rd_lep_veto'] = {'expr' : 'Alt$(Lepton_pt[2],0.) < 10'}
+
+# selection with zeppenfeld variable
+
+aliases['zlep1'] = {'expr' : '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'} 
+aliases['zlep2'] = {'expr' : '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'} 
+
+aliases['z_lep_sel'] = { 'expr': 'fabs(zlep1) > 0.75 && fabs(zlep2) > 0.75'}
