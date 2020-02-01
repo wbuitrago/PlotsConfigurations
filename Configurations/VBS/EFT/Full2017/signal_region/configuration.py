@@ -4,7 +4,7 @@ treeName= 'Events'
 
 date = '_gen31'
 
-version = '_sr_v1'
+version = '_sr_v2.1'
 
 tag = 'VBS_SS'  + date + version
 
@@ -25,7 +25,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples.py'
 
 # file with list of samples
-plotFile = 'plot.py'
+plotFile = 'plot_sr_group.py'
 
 # luminosity to normalize to (in 1/fb)
 lumi = 41.53 

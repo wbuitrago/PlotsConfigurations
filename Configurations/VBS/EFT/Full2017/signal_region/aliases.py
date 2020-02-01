@@ -341,7 +341,9 @@ aliases['3rd_lep_veto'] = {'expr' : 'Alt$(Lepton_pt[2],0.) < 10'}
 
 # selection with zeppenfeld variable
 
+# zeppenfeld variable definition for lepton 1 and 2
 aliases['zlep1'] = {'expr' : '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'} 
 aliases['zlep2'] = {'expr' : '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'} 
 
-aliases['z_lep_sel'] = { 'expr': 'fabs(zlep1) > 0.75 && fabs(zlep2) > 0.75'}
+# zeppenfeld variable selection for wwss
+aliases['z_lep_sel'] = { 'expr': 'fabs(zlep1) < 0.75 && fabs(zlep2) < 0.75'}
