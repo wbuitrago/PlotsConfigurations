@@ -30,15 +30,15 @@ supercut = and_separator.join(supercut_vector)
 
 # inclusive region
 
-cuts['SS_incl']  = { 
-   'expr' : 'ssLep && zVeto ',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
+# cuts['SS_incl']  = { 
+#    'expr' : 'ssLep && zVeto ',
+#    # sub categorization
+#    'categories' : {
+#          'ee'    : 'ss_ee',
+#          'emu'   : 'ss_emu',
+#          'mumu'  : 'ss_mumu',
+#    }
+# }
 
 # signal region
 
@@ -96,7 +96,7 @@ cuts['SS_lowmjj_all']  = {
             mll > 20 &&\
             MET_pt>30 &&\
             softmuon_veto &&\
-            tauVeto_ww &&',
+            tauVeto_ww',
 }
 
 cuts['SS_lowmjj']  = { 
@@ -110,7 +110,7 @@ cuts['SS_lowmjj']  = {
             mll > 20 &&\
             MET_pt>30 &&\
             softmuon_veto &&\
-            tauVeto_ww &&',
+            tauVeto_ww',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
