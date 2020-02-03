@@ -83,3 +83,38 @@ cuts['SS_sr_all']  = {
 }
 
 
+# low mjj control region
+
+cuts['SS_lowmjj_all']  = { 
+   'expr': 'ssLep && \
+            Lepton_pt[0] > 30 &&\
+            Lepton_pt[1] > 30 &&\
+            3rd_lep_veto && \
+            zVeto && \
+            bVeto && \
+            (150 < mjj && mjj < 500) &&\
+            mll > 20 &&\
+            MET_pt>30 &&\
+            softmuon_veto &&\
+            tauVeto_ww &&',
+}
+
+cuts['SS_lowmjj']  = { 
+   'expr': 'ssLep && \
+            Lepton_pt[0] > 30 &&\
+            Lepton_pt[1] > 30 &&\
+            3rd_lep_veto && \
+            zVeto && \
+            bVeto && \
+            (150 < mjj && mjj < 500) &&\
+            mll > 20 &&\
+            MET_pt>30 &&\
+            softmuon_veto &&\
+            tauVeto_ww &&',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}

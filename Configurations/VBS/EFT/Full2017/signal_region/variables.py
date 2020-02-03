@@ -15,7 +15,7 @@ variables['nLepton'] =  {   'name': 'nLepton',
 }
 
 variables['mll']  = {   'name'  : 'mll',            #   variable name
-                        'range' : (50, 0. ,500),    #   variable range
+                        'range' : (30, 0. ,500),    #   variable range
                         'xaxis' : 'mll [GeV]',      #   x axis name
                         'fold'  : 3
                         }
@@ -28,7 +28,7 @@ variables['mll']  = {   'name'  : 'mll',            #   variable name
 #                             }                        
 
 variables['pt1']  = {   'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (30,0.,300.),
+                        'range' : (30,0.,400.),
                         'xaxis' : 'p_{T} 1st lep [GeV]',
                         'fold'  : 3
                         }
@@ -91,19 +91,25 @@ variables['nJet']  = {      'name'  : 'nCleanJet',
                             }
 
 variables['mjj']  = {  'name' : 'mjj',
-                       'range': (50,0.,1000.),
+                       'range': (50,0.,2000.),
                        'xaxis': 'mjj [GeV]',
                        'fold' : 3
                        }               
+# for low mjj control region
+variables['low_mjj']  = {   'name' : 'mjj',
+                            'range': (35,150,500.),
+                            'xaxis': 'mjj [GeV]',
+                            'fold' : 3
+                        }    
 
 variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
-                           'range' : (35,0.,350),
+                           'range' : (25,0.,500),
                            'xaxis' : 'p_{T} 1st jet [GeV]',
                            'fold'  : 3
                            }
 
 variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
-                           'range' : (35,0.,350),
+                           'range' : (15,0.,300),
                            'xaxis' : 'p_{T} 2nd jet [GeV]',
                            'fold'  : 3
                            }     
@@ -153,7 +159,7 @@ variables['dphijj']  = {    'name' : '(fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(C
 ###########################
 
 variables['met']  = {   'name'  : 'MET_pt',         #  variable name
-                        'range' : (20,0,200),       #  variable range
+                        'range' : (20,0,300),       #  variable range
                         'xaxis' : 'met [GeV]',      #  x axis name
                         'fold'  : 3
                     }
