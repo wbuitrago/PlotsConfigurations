@@ -27,23 +27,28 @@ supercut_vector = [     'nLepton >= 2',
 # supercut definition
 supercut = and_separator.join(supercut_vector)     
 
+
+#############################################
+########### SS inclusive region ############
+#############################################
+
+cuts['SS_incl']  = { 
+   'expr' : 'ssLep && zVeto ',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+cuts['SS_incl_all']  = { 
+   'expr' : 'ssLep && zVeto ',
+}
+
 #############################################
 ########### VBS_SS signal region ############
 #############################################
-
-# inclusive region
-
-# cuts['SS_incl']  = { 
-#    'expr' : 'ssLep && zVeto ',
-#    # sub categorization
-#    'categories' : {
-#          'ee'    : 'ss_ee',
-#          'emu'   : 'ss_emu',
-#          'mumu'  : 'ss_mumu',
-#    }
-# }
-
-# signal region
 
 cuts['SS_sr']  = { 
    'expr': 'ssLep && \
@@ -121,3 +126,4 @@ cuts['SS_lowmjj']  = {
          'mumu'  : 'ss_mumu',
    }
 }
+
