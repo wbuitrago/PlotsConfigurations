@@ -30,9 +30,9 @@ groupPlot['eft']  = dict(nameHR="C_{W}=0.3", isSignal=1, color=ROOT.kRed, sample
 ##Fake and prompt substraction
 plot['Fake_lep']  = dict(color=Yellow, isSignal=0, isData=0, scale=1.0)
 ##Signal
-plot['sm']  = dict(color=Azure + 4, isSignal=0, isData=0, scale=1.0) # WpWpJJ_EWK_powheg WpWp_EWK
-plot['linear']  = dict(color=Azure + 4, isSignal=0, isData=0, scale=1.0)
-plot['quadratic']  = dict(color=Azure + 4, isSignal=0, isData=0, scale=1.0)
+plot['sm']  = dict(color=Azure + 4, isSignal=1, isData=0, scale=1.0) # WpWpJJ_EWK_powheg WpWp_EWK
+plot['linear']  = dict(color=Azure + 4, isSignal=1, isData=0, scale=1.0)
+plot['quadratic']  = dict(color=Azure + 4, isSignal=1, isData=0, scale=1.0)
 plot['WpWp_QCD']  = dict(color=Violet, isSignal=0, isData=0, scale=1.0)
 #plot['WpWpJJ_QCD']  = dict(color=Violet, isSignal=0, isData=0, scale=1.0)
 plot['Vg']  = dict(color=Orange + 10, isSignal=0, isData=0, scale=1.0)
