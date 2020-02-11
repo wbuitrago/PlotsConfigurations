@@ -43,14 +43,6 @@ variables['mjj_v4']={'name':'mjj',
                      'fold':3
                      }
 
-variables['mllVSmjj']={'name':'mll:mjj',
-                       'range':([20,120,220,320],[500,1000,1800,2500]),
-                       'xaxis' : 'm_{ll} : m_{jj}',
-                       'fold': 3,
-                       'doWeight': 1,
-                       'binX': 3,
-                       'binY': 3
-                       }
 variables['mjj_v2']={'name':'mjj',
                      'range':(10,150,500),  # for 500 < mjj < 1000
                      'xaxis':'mjj [GeV]',
@@ -107,13 +99,17 @@ variables['jetpt2']={'name':'Alt$(CleanJet_pt[1],-9999.)',
                      'xaxis':'p_{T} 2nd jet',
                      'fold':3
                      }
-'''
-variables['met']={'name':'MET_pt',  # variable name
+
+variables['met_pt']={'name':'MET_pt',  # variable name
                   'range':(10,0,200),  # variable range
                   'xaxis':'pfmet [GeV]',  # x axis name
                   'fold':3
                   }
-'''
+variables['METFixEE2017_pt']  = {   'name': 'METFixEE2017_pt',            #   variable name
+                        'range' : (10,0,200),    #   variable range
+                        'xaxis' : 'METFixEE2017_pt [GeV]',  #   x axis name
+                        'fold' : 3
+                        }
 variables['etaj1']={'name':'Alt$(CleanJet_eta[0],-9999.)',
                     'range':(10,-5,5),
                     'xaxis':'etaj1',

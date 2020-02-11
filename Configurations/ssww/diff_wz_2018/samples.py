@@ -26,7 +26,7 @@ except NameError:
     samples = collections.OrderedDict()
 
 mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
-mcDir_private='/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
+
 ################################################
 ############ NUMBER OF LEPTONS #################
 ################################################
@@ -54,7 +54,7 @@ fakeW_2016 = 'fakeW2l_ele_'+eleWP+'_mu_'+muWP
 ################################################
 mcCommonWeightNoMatch = 'SFweight'
 #mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC*59.74'
-mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
+mcCommonWeight = 'SFweight*PromptGenLepMatch3l'
 ################################################
 ############### B-Tag  WP ######################
 ################################################
@@ -104,7 +104,7 @@ samples['Vg'] = {
 addSampleWeight(samples, 'Vg', 'Zg', '(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
 
 ######## VgS ########
-'''
+
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
         nanoGetSampleFiles(mcDirectory, 'Zg') + \
         nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
@@ -121,6 +121,7 @@ samples['VgS'] = {
 addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
 addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
 addSampleWeight(samples, 'VgS', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
+
 files = nanoGetSampleFiles(mcDirectory, 'Zg') + \
         nanoGetSampleFiles(mcDirectory, 'WGJJ') + \
         nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
@@ -136,7 +137,7 @@ samples['VgS1'] = {
 addSampleWeight(samples, 'VgS1', 'WGJJ', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
 addSampleWeight(samples, 'VgS1', 'Zg', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
 addSampleWeight(samples, 'VgS1', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1)')
-'''
+
 files = nanoGetSampleFiles(mcDirectory, 'Zg') + \
         nanoGetSampleFiles(mcDirectory, 'WGJJ')
 samples['VgS2'] = {
@@ -154,8 +155,8 @@ addSampleWeight(samples, 'VgS2', 'Zg', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId
 files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Q') + \
         nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext2')
-#nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext2') + \
-#nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext2')
+        #nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext2') + \
+        #nanoGetSampleFiles(mcDirectory, 'ZZTo4L_ext2')
 
 samples['ZZ'] = {
     'name': files,
@@ -176,7 +177,7 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
-'''
+
 samples['WZ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight+'*1.2',
@@ -189,7 +190,6 @@ samples['WZ_QCD_powheg'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
-'''
 files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_ext1')# + \
 #nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
 samples['WZ_QCD_AMCNLO'] = {
@@ -197,7 +197,6 @@ samples['WZ_QCD_AMCNLO'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
-'''
 files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')# + \
 #nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
 samples['WZ_QCD_mllmin01'] = {
@@ -205,9 +204,8 @@ samples['WZ_QCD_mllmin01'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
-'''
 files = nanoGetSampleFiles(mcDirectory, 'WLLJJ_WToLNu_EWK')# + \
-#nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
+        #nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
 samples['WZ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
@@ -264,29 +262,10 @@ samples['WpWp_QCD'] = {
 ###########################################
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
-'''
+
 samples['WpWp_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
-'''
-files = nanoGetSampleFiles(mcDir_private, 'SSWW_SM')
-samples['sm'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
-files = nanoGetSampleFiles(mcDir_private, 'SSWW_INT')
-samples['linear'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*(1/0.3)', # 1/0.3 is used to normalize to the cross section to Cw=1, current samples are generated with Cw=0.3
-    'FilesPerJob': 4
-}
-files = nanoGetSampleFiles(mcDir_private, 'SSWW_BSM')
-samples['quadratic'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*(1/0.09)', # 1/0.09 is used to normalize to the cross section to Cw=1, current samples are generated with Cw=0.3
     'FilesPerJob': 4
 }
 ###########################################

@@ -7,42 +7,27 @@
 
 ## Reducible Bkg
 
-'''
+
 structure['ChMisId']  = {
                   'isSignal' : 0,
                   'isData'   : 0
               }
+
 structure['ttbar'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-'''
 structure['Vg']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['VgS2_H']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-structure['VgS2_L']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
+
 structure['ZZ']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
 
-structure['WZTo2L2Q']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-structure['WZ_QCD_AMCNLO']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
-structure['WZ_EWK']  = {
+structure['WZ']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
@@ -51,37 +36,25 @@ structure['DPS']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['TTV']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
 
 structure['VVV']  = {
                   'isSignal' : 0,
                   'isData'   : 0,
+                  #'removeFromCuts' : ['hww2l2v_13TeV_dytt_of2j_vbf'],
                   }
 ##Irreducible Bkg
 
-structure['WpWp_QCD']  = {
+structure['WW_strong']  = {
                       'isSignal' : 0,
                       'isData'   : 0
                       }
 
 ##Signal
 
-structure['sm']  = {
+structure['WpWp_EWK']  = {
                       'isSignal' : 1,
                       'isData'   : 0
                       }
-structure['linear']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-
 #Fake
 structure['Fake_lep']  = {
                   'isSignal' : 0,
