@@ -15,7 +15,7 @@ variables['nLepton'] =  {   'name': 'nLepton',
 }
 
 variables['mll']  = {   'name'  : 'mll',            #   variable name
-                        'range' : (30, 0. ,500),    #   variable range
+                        'range' : (10, 0. ,500),    #   variable range
                         'xaxis' : 'mll [GeV]',      #   x axis name
                         'fold'  : 3
                         }
@@ -28,14 +28,14 @@ variables['mll']  = {   'name'  : 'mll',            #   variable name
 #                             }                        
 
 variables['pt1']  = {   'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (30,0.,400.),
+                        'range' : (10,0.,400.),
                         'xaxis' : 'p_{T} 1st lep [GeV]',
                         'fold'  : 3
                         }
 
 
 variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (30,0.,300.),
+                        'range' : (10,0.,300.),
                         'xaxis' : 'p_{T} 2nd lep [GeV]',
                         'fold'  : 3
                         }      
@@ -54,7 +54,7 @@ variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
 #                             }
 
 variables['detall']  = {  'name' : 'fabs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],9999.))',
-                          'range': (20,0.0,5.0),
+                          'range': (10,0.0,5.0),
                           'xaxis': 'deta ll',
                           'fold' : 3
                           }                            
@@ -91,25 +91,25 @@ variables['nJet']  = {      'name'  : 'nCleanJet',
                             }
 
 variables['mjj']  = {  'name' : 'mjj',
-                       'range': (50,0.,2000.),
+                       'range': (30,0.,3000.),
                        'xaxis': 'mjj [GeV]',
                        'fold' : 3
                        }               
 # for low mjj control region
 variables['low_mjj']  = {   'name' : 'mjj',
-                            'range': (35,150,500.),
+                            'range': (14,150,500.),
                             'xaxis': 'mjj [GeV]',
                             'fold' : 3
                         }    
 
 variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
-                           'range' : (25,0.,500),
+                           'range' : (10,0.,500),
                            'xaxis' : 'p_{T} 1st jet [GeV]',
                            'fold'  : 3
                            }
 
 variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
-                           'range' : (15,0.,300),
+                           'range' : (10,0.,300),
                            'xaxis' : 'p_{T} 2nd jet [GeV]',
                            'fold'  : 3
                            }     
@@ -128,7 +128,7 @@ variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
 #                         }      
 
 variables['detajj']  = {  'name' : 'detajj',
-                          'range': (20,0.0,10.0),
+                          'range': (10,0.0,10.0),
                           'xaxis': 'deta jj',
                           'fold' : 3
                           }
@@ -159,7 +159,7 @@ variables['dphijj']  = {    'name' : '(fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(C
 ###########################
 
 variables['met']  = {   'name'  : 'MET_pt',         #  variable name
-                        'range' : (20,0,300),       #  variable range
+                        'range' : (10,0,300),       #  variable range
                         'xaxis' : 'met [GeV]',      #  x axis name
                         'fold'  : 3
                     }
@@ -199,13 +199,13 @@ variables['my_btag_var']  = {   'name'  : '(fabs(CleanJet_eta[0]) <= fabs(CleanJ
 #############################                     
                         
 variables['Zlep1']  = {  'name': 'zlep1',
-                         'range': (30,-1.5,1.5),
+                         'range': (15,-1.5,1.5),
                          'xaxis': 'Z^{lep}_{1}',
                          'fold': 3
                          }
 
 variables['Zlep2']  = {  'name': 'zlep2',
-                         'range': (30,-1.5,1.5),
+                         'range': (15),-1.5,1.5),
                          'xaxis': 'Z^{lep}_{2}',
                          'fold': 3
                          }

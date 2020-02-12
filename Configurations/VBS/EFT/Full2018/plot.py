@@ -115,12 +115,12 @@ groupPlot['non-prompt']  = {
               }
 
 
-groupPlot['WW_EWK']  = {
-                  'nameHR' : "W^{#pm}W^{#pm} EWK",
-                  'isSignal' : 1,
-                  'color'    : ROOT.kBlue-7, # kAzure+4
-                  'samples'  : ['WpWp_EWK']
-              }
+# groupPlot['WW_EWK']  = {
+#                   'nameHR' : "W^{#pm}W^{#pm} EWK",
+#                   'isSignal' : 1,
+#                   'color'    : ROOT.kBlue-7, # kAzure+4
+#                   'samples'  : ['WpWp_EWK']
+#               }
 
 
 
@@ -179,13 +179,66 @@ plot['Fake_lep']  = {
     'scale'    : 1.0
 }
 
-##Signal
-plot['WpWp_EWK']  = {
+# ##Signal
+# plot['WpWp_EWK']  = {
+#     'color': Azure+4, # kAzure+4
+#     'isSignal' : 1,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+
+#####################################
+# EFT samples
+
+## Standard Model
+plot['sm']  = {
     'color': Azure+4, # kAzure+4
     'isSignal' : 1,
     'isData'   : 0,
     'scale'    : 1.0
 }
+
+## Linear Interference Term
+plot['linear']  = {
+    'color': Azure+4, # kAzure+4
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+## Quadratic BSM Term
+plot['quadratic']  = {
+    'color': Azure+4, # kAzure+4
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+# groupplot
+
+# standard model
+groupPlot['WW_EWK_sm']  = {
+                  'nameHR' : "W^{#pm}W^{#pm} EWK sm",
+                  'isSignal' : 1,
+                  'color'    : ROOT.kBlue, 
+                  'samples'  : ['sm']
+              }
+
+groupPlot['WW_EWK_int']  = {
+                  'nameHR' : "W^{#pm}W^{#pm} EWK int",
+                  'isSignal' : 1,
+                  'color'    : ROOT.kCyan+2, 
+                  'samples'  : ['linear']
+              }
+groupPlot['WW_EWK_bsm']  = {
+                  'nameHR' : "W^{#pm}W^{#pm} EWK bsm",
+                  'isSignal' : 1,
+                  'color'    : ROOT.kCyan+2, 
+                  'samples'  : ['quadratic']
+              }
+
+#####################################
+
 plot['WW_strong']  = {
     'color': Violet, # kViolet
     'isSignal' : 0,
@@ -238,7 +291,7 @@ plot['DATA']  = {
     'color': 1 ,
     'isSignal' : 0,
     'isData'   : 1 ,
-    'isBlind'  : 0 ,
+    'isBlind'  : 1 ,
     'scale'    : 1.0
 }
 

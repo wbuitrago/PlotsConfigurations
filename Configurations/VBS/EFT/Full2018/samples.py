@@ -289,14 +289,53 @@ samples['WW_strong'] = {
 #############   SIGNALS  ##################
 ###########################################
 
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-#+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
+# files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
+# #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
-samples['WpWp_EWK'] = {
+# samples['WpWp_EWK'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'FilesPerJob': 4
+# }
+
+###########################################
+#############  EFT samples  ###############
+###########################################
+
+# directory for latino internally produced EFT samples
+# EftDirectory = '/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5'
+EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
+
+# SM Term
+
+files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
+
+samples['sm'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
+
+# Linear Interaction Term
+
+files = nanoGetSampleFiles(EftDirectory, 'SSWW_INT')
+
+samples['linear'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*(1/0.3)',    # factor for cross section normalization (samples are generated with c_w = 0.3)
+    'FilesPerJob': 4
+}
+
+# Quadratic BSM Term
+
+files = nanoGetSampleFiles(EftDirectory, 'SSWW_BSM')
+
+samples['quadratic'] = {
+    'name': files,
+    'weight': mcCommonWeight+'*(1/0.09)',   # factor for cross section normalization (samples are generated with c_w = 0.3)
+    'FilesPerJob': 4 
+}
+
 ###########################################
 ################## FAKE ###################
 ###########################################

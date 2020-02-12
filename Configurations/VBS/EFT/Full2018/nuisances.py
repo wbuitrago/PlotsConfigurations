@@ -16,17 +16,17 @@ nuisances['lumi']  = {
         #'DY'       : '1.023',    |
         #'top'      : '1.023',    | These 3 backgrounds are data driven, no need to include the luminosity uncertainty
         #'WW'       : '1.023',    |
-        'Vg'       : '1.023',
-        'VgS'      : '1.023',
-        #'WZgS'     : '1.023',
-        #'WZgS_L'   : '1.023',
-        #'WZgS_H'   : '1.023',
-        'ZZ'   : '1.023',
-        'WZ'       : '1.023',
-        'VVV'      : '1.023',
-        'DPS'  : '1.023',
-        'WW_strong'  : '1.023',
-        'WpWp_EWK'   : '1.023',
+        'Vg'        : '1.023',
+        'VgS'       : '1.023',
+        #'WZgS'     : '1.023',      |
+        #'WZgS_L'   : '1.023',      |  These samples are not present.. future removal??
+        #'WZgS_H'   : '1.023',      |
+        'ZZ'        : '1.023',
+        'WZ'        : '1.023',
+        'VVV'       : '1.023',
+        'DPS'       : '1.023',
+        'WW_strong' : '1.023',
+        'WpWp_EWK'  : '1.023',
     },
     'type'  : 'lnN',
 }
@@ -177,6 +177,7 @@ nuisances['charge_flip']  = {
                'type'  : 'lnN',
               }
 
+'''
 
 # statistical fluctuation
 # on MC/data
@@ -188,7 +189,6 @@ nuisances['stat']  = {
               'includeSignal'  : '1',
               'samples' : {}
              }
-'''
 
 
 

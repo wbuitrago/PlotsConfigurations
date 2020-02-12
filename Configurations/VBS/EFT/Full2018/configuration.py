@@ -2,12 +2,11 @@
 
 treeName= 'Events'
 
-date = '_feb10'
+date = '_feb12'
 
-version = '_Full2018_v0'
+version = '_2018_EFT_test'
 
 tag = 'VBS_SS'  + date + version
-
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile' + '_' + tag
@@ -33,11 +32,11 @@ lumi = 59.74
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'plotVBS' + tag
+outputDirPlots = 'plotVBS' + '_' + tag
 
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards' + tag
+outputDirDatacard = 'datacards' + '_' + tag
 
 
 # structure file for datacard
