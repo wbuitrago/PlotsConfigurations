@@ -205,7 +205,7 @@ variables['Zlep1']  = {  'name': 'zlep1',
                          }
 
 variables['Zlep2']  = {  'name': 'zlep2',
-                         'range': (15),-1.5,1.5),
+                         'range': (15,-1.5,1.5),
                          'xaxis': 'Z^{lep}_{2}',
                          'fold': 3
                          }
