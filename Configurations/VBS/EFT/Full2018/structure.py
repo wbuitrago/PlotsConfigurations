@@ -8,16 +8,21 @@
 ## Reducible Bkg
 
 
-structure['ChMisId']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-              }
+# structure['ChMisId']  = {
+#                   'isSignal' : 0,
+#                   'isData'   : 0
+#               }
 
-structure['ttbar'] = {
+# structure['ttbar'] = {
+#                   'isSignal' : 0,
+#                   'isData'   : 0
+#                   }
+structure['Vg']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['Vg']  = {
+
+structure['VgS'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
@@ -27,34 +32,58 @@ structure['ZZ']  = {
                   'isData'   : 0
                   }
 
-structure['WZ']  = {
+structure['WZTo2L2Q']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
 
-structure['DPS']  = {
+structure['WLLJJ_QCD']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
+                
+structure['WLLJJ_EWK']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0
+                  }                
 
 structure['VVV']  = {
                   'isSignal' : 0,
                   'isData'   : 0,
-                  #'removeFromCuts' : ['hww2l2v_13TeV_dytt_of2j_vbf'],
                   }
-##Irreducible Bkg
+
+structure['TTV']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  }   
+
+structure['DPS']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0
+                  }                               
 
 structure['WW_strong']  = {
                       'isSignal' : 0,
                       'isData'   : 0
                       }
 
-##Signal
 
-structure['WpWp_EWK']  = {
-                      'isSignal' : 1,
+# signal DB
+structure['sm']  = {
+                      'isSignal' : 0,
                       'isData'   : 0
                       }
+
+structure['linear']  = {
+                      'isSignal' : 0,
+                      'isData'   : 0
+                      }
+
+structure['quadratic']  = {
+                      'isSignal' : 0,
+                      'isData'   : 0
+                      }                      
+
 #Fake
 structure['Fake_lep']  = {
                   'isSignal' : 0,
@@ -62,12 +91,22 @@ structure['Fake_lep']  = {
               }
 
 # data
-
-
 structure['DATA']  = {
                   'isSignal' : 0,
                   'isData'   : 1
               }
+
+
+
+
+# ##Signal
+
+# structure['WpWp_EWK']  = {
+#                       'isSignal' : 1,
+#                       'isData'   : 0
+#                       }
+
+
 
 
 
@@ -118,10 +157,7 @@ structure['DATA']  = {
 #                   'isData'   : 0
 #                   }
 
-# structure['VgS'] = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0
-#                   }
+
 
 # structure['WZgS_L'] = {
 #                   'isSignal' : 0,
