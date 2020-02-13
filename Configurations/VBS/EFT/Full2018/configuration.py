@@ -2,9 +2,9 @@
 
 treeName= 'Events'
 
-date = '_feb12'
+date = '_feb13'
 
-version = '_2018_EFT_test'
+version = '_2018_nuis_test'
 
 tag = 'VBS_SS'  + date + version
 
@@ -32,7 +32,7 @@ lumi = 59.74
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'plotVBS' + '_' + tag
+outputDirPlots = 'plots' + '_' + tag
 
 
 # used by mkDatacards to define output directory for datacards
@@ -44,4 +44,5 @@ structureFile = 'structure.py'
 
 
 # nuisances file for mkDatacards and for mkShape
-nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances_total.py'
+#nuisancesFile = 'nuisances.py'

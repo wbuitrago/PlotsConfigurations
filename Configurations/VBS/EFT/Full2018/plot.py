@@ -105,8 +105,6 @@ groupPlot['WW_strong']  = {
                   'samples'  : ['WW_strong']
               }
 
-
-
 groupPlot['non-prompt']  = {
                   'nameHR' : 'non-Prompt',
                   'isSignal' : 0,

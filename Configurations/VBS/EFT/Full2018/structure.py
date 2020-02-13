@@ -7,16 +7,11 @@
 
 ## Reducible Bkg
 
-
 # structure['ChMisId']  = {
 #                   'isSignal' : 0,
 #                   'isData'   : 0
 #               }
 
-# structure['ttbar'] = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0
-#                   }
 structure['Vg']  = {
                   'isSignal' : 0,
                   'isData'   : 0
@@ -68,19 +63,19 @@ structure['WW_strong']  = {
                       }
 
 
-# signal DB
+# signal with EFT samples
 structure['sm']  = {
-                      'isSignal' : 0,
+                      'isSignal' : 1,
                       'isData'   : 0
                       }
 
 structure['linear']  = {
-                      'isSignal' : 0,
+                      'isSignal' : 1,
                       'isData'   : 0
                       }
 
 structure['quadratic']  = {
-                      'isSignal' : 0,
+                      'isSignal' : 1,
                       'isData'   : 0
                       }                      
 
@@ -96,10 +91,7 @@ structure['DATA']  = {
                   'isData'   : 1
               }
 
-
-
-
-# ##Signal
+# ##Signal (old without eft)
 
 # structure['WpWp_EWK']  = {
 #                       'isSignal' : 1,
