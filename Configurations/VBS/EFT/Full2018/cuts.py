@@ -27,7 +27,6 @@ supercut_vector = [     'nLepton >= 2',
 # supercut definition
 supercut = and_separator.join(supercut_vector)     
 
-
 #############################################
 ########### SS inclusive region ############
 #############################################
@@ -89,7 +88,6 @@ cuts['SS_sr_all']  = {
             tauVeto_ww &&\
             z_lep_sel',
 }
-
 
 # low mjj control region
 
