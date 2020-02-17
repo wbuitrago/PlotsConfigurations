@@ -31,19 +31,19 @@ supercut = and_separator.join(supercut_vector)
 ########### SS inclusive region ############
 #############################################
 
-cuts['SS_incl']  = { 
-   'expr' : 'ssLep && zVeto ',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
+# cuts['SS_incl']  = { 
+#    'expr' : 'ssLep && zVeto ',
+#    # sub categorization
+#    'categories' : {
+#          'ee'    : 'ss_ee',
+#          'emu'   : 'ss_emu',
+#          'mumu'  : 'ss_mumu',
+#    }
+# }
 
-cuts['SS_incl_all']  = { 
-   'expr' : 'ssLep && zVeto ',
-}
+# cuts['SS_incl_all']  = { 
+#    'expr' : 'ssLep && zVeto ',
+# }
 
 #############################################
 ########### VBS_SS signal region ############
@@ -89,7 +89,9 @@ cuts['SS_sr_all']  = {
             z_lep_sel',
 }
 
-# low mjj control region
+#############################################
+########### low_mjj control region ##########
+#############################################
 
 cuts['SS_lowmjj_all']  = { 
    'expr': 'ssLep && \

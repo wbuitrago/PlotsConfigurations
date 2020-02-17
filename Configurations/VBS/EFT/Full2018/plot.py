@@ -217,20 +217,20 @@ plot['quadratic']  = {
 # standard model
 groupPlot['WW_EWK_sm']  = {
                   'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
-                  'isSignal' : 0,
+                  'isSignal' : 1,
                   'color'    : ROOT.kBlue, 
                   'samples'  : ['sm']
               }
 
 groupPlot['WW_EWK_int']  = {
                   'nameHR'   : "W^{#pm}W^{#pm} EWK int",
-                  'isSignal' : 0,
+                  'isSignal' : 1,
                   'color'    : ROOT.kGreen, 
                   'samples'  : ['linear']
               }
 groupPlot['WW_EWK_bsm']  = {
                   'nameHR'   : "W^{#pm}W^{#pm} EWK bsm",
-                  'isSignal' : 0,
+                  'isSignal' : 1,
                   'color'    : ROOT.kCyan+2, 
                   'samples'  : ['quadratic']
               }

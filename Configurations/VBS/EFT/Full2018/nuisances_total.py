@@ -120,17 +120,6 @@ nuisances['trigg'] = {
     'samples': dict((skey, trig_syst) for skey in mc)
 }
 
-# ##### Trigger Efficiency (duplicate??)
-
-# trig_syst = ['((TriggerEffWeight_2l_u)/(TriggerEffWeight_2l))*(TriggerEffWeight_2l>0.02) + (TriggerEffWeight_2l<=0.02)', '(TriggerEffWeight_2l_d)/(TriggerEffWeight_2l)']
-
-# nuisances['trigg'] = {
-#     'name': 'CMS_eff_hwwtrigger_2018',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': dict((skey, trig_syst) for skey in mc)
-# }
-
 ##### Electron Efficiency and energy scale
 
 nuisances['eff_e'] = {
@@ -147,6 +136,7 @@ nuisances['electronpt'] = {
     'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['sm', 'linear', 'quadratic']),
     'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__ElepTup',
     'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__ElepTdo',
+    #'AsLnN': '1'   # ?
 }
 
 ##### Muon Efficiency and energy scale
@@ -167,6 +157,7 @@ nuisances['muonpt'] = {
     'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__MupTup',
     #'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__MupTdo_suffix',
     'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__MupTdo',
+    #'AsLnN': '1'   # ?
 }
 
 ##### Jet energy scale
@@ -192,6 +183,7 @@ nuisances['met'] = {
     'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__METup',
     #'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__METdo_suffix',
     'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__METdo',
+    #'AsLnN': '1'   # ?
 }
 
 ##### Pileup
