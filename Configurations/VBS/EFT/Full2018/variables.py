@@ -20,6 +20,13 @@ variables['mll']  = {   'name'  : 'mll',            #   variable name
                         'fold'  : 3
                         }
 
+# for low mjj control region
+variables['mll_cr']  = {   'name' : 'mll',
+                            'range': (10,0,500.),
+                            'xaxis': 'mll [GeV]',
+                            'fold' : 3
+                        }                            
+
 ## mll zoom around Z0
 # variables['mll_v2']  = {    'name'  : 'mll',              #   variable name
 #                             'range' : (100, 50 ,150),     #   variable range

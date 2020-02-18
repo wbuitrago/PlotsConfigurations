@@ -212,12 +212,17 @@ samples['ZZ'] = {
     'FilesPerJob': 4
 }
 
-files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
-samples['WZTo2L2Q'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
+
+# not needed, os lepton charges, so it will be included in the mischarge sample that has to be added yet.
+# for the time being, we just remove it since it gives very small contributions
+
+# files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
+# samples['WZTo2L2Q'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'FilesPerJob': 4
+# }
+
 files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_1Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_2Jet') + \
@@ -226,11 +231,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_1Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
+
+
 samples['WLLJJ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight+'*1.2',
     'FilesPerJob': 4
 }
+
 files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')# + \
         #nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
 samples['WLLJJ_EWK'] = {

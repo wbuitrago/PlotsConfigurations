@@ -47,31 +47,14 @@ groupPlot['WLLJJ_QCD']  = {
     'nameHR' : "WZ QCD",
     'isSignal' : 0,
     'color'    : ROOT.kRed, # kViolet+10
-    'samples'  : ['WLLJJ_QCD','WZTo2L2Q']
+    #'samples'  : ['WLLJJ_QCD','WZTo2L2Q']
+    'samples'  : ['WLLJJ_QCD']
 }
 groupPlot['WLLJJ_EWK']  = {
     'nameHR' : "WZ EWK",
     'isSignal' : 0,
     'color'    : ROOT.kMagenta, # kViolet+10
     'samples'  : ['WLLJJ_EWK']
-}
-plot['WLLJJ_QCD']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['WZTo2L2Q']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['WLLJJ_EWK']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
 }
 groupPlot['VVV']  = {
     'nameHR' : 'VVV',
@@ -113,6 +96,7 @@ groupPlot['non-prompt']  = {
               }
 
 
+# SM official samples
 # groupPlot['WW_EWK']  = {
 #                   'nameHR' : "W^{#pm}W^{#pm} EWK",
 #                   'isSignal' : 1,
@@ -120,54 +104,33 @@ groupPlot['non-prompt']  = {
 #                   'samples'  : ['WpWp_EWK']
 #               }
 
+#####################################
+# EFT samples (internal latinos)
+groupPlot['WW_EWK_sm']  = {
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kBlue, 
+                  'samples'  : ['sm']
+              }
 
-
+groupPlot['WW_EWK_int']  = {
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK int",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kGreen, 
+                  'samples'  : ['linear']
+              }
+groupPlot['WW_EWK_bsm']  = {
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK bsm",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kCyan+2, 
+                  'samples'  : ['quadratic']
+              }
+#####################################
 
 #plot = {}
 
 # keys here must match keys in samples.py
 #
-
-
-# # adding missing samples DY and top
-
-# plot['DY']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
-
-# plot['DYtt']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
-
-# groupPlot['DY']  = {
-#     'nameHR' : "DY",
-#     'isSignal' : 0,
-#     'color'    : ROOT.kGreen, # kViolet+10
-#     'samples'  : ['DY','DYtt'],
-#     #'samples'  : ['DY']
-# }
-
-# plot['top']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
-
-# groupPlot['top']  = {
-#     'nameHR' : "top",
-#     'isSignal' : 0,
-#     'color'    : ROOT.kOrange, # kViolet+10
-#     'samples'  : ['top'],
-# } 
-
-
 
 ##Fake and prompt substraction
 plot['Fake_lep']  = {
@@ -177,72 +140,19 @@ plot['Fake_lep']  = {
     'scale'    : 1.0
 }
 
-# ##Signal
-# plot['WpWp_EWK']  = {
-#     'color': Azure+4, # kAzure+4
-#     'isSignal' : 1,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
-
-#####################################
-# EFT samples
-
-## Standard Model
-plot['sm']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 1,
+plot['WLLJJ_QCD']  = {
+    'color': Violet+10, # kViolet+10
+    'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0
 }
 
-## Linear Interference Term
-plot['linear']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 1,
+plot['WLLJJ_EWK']  = {
+    'color': Violet+10, # kViolet+10
+    'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0
 }
-
-## Quadratic BSM Term
-plot['quadratic']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 1,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-
-# groupplot
-
-# standard model
-groupPlot['WW_EWK_sm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
-                  'isSignal' : 1,
-                  'color'    : ROOT.kBlue, 
-                  'samples'  : ['sm']
-              }
-
-groupPlot['WW_EWK_int']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK int",
-                  'isSignal' : 1,
-                  'color'    : ROOT.kGreen, 
-                  'samples'  : ['linear']
-              }
-groupPlot['WW_EWK_bsm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK bsm",
-                  'isSignal' : 1,
-                  'color'    : ROOT.kCyan+2, 
-                  'samples'  : ['quadratic']
-              }
-
-# groupPlot['WW_EWK_int+bsm']  = {
-#                   'nameHR'   : "W^{#pm}W^{#pm} EWK int+bsm",
-#                   'isSignal' : 0,
-#                   'color'    : ROOT.kCyan+2, 
-#                   'samples'  : ['linear','quadratic']
-#               }
-
-#####################################
 
 plot['WW_strong']  = {
     'color': Violet, # kViolet
@@ -290,6 +200,43 @@ plot['TTV']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
+
+# ##Signal
+# plot['WpWp_EWK']  = {
+#     'color': Azure+4, # kAzure+4
+#     'isSignal' : 1,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+
+#####################################
+# EFT samples (internal latinos)
+## Standard Model
+plot['sm']  = {
+    'color': Azure+4, # kAzure+4
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+## Linear Interference Term
+plot['linear']  = {
+    'color': Azure+4, # kAzure+4
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+## Quadratic BSM Term
+plot['quadratic']  = {
+    'color': Azure+4, # kAzure+4
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}            
+
+#####################################
+
 ##Data
 plot['DATA']  = {
     'nameHR' : 'Data',

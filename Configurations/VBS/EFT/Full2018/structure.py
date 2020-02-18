@@ -27,10 +27,10 @@ structure['ZZ']  = {
                   'isData'   : 0
                   }
 
-structure['WZTo2L2Q']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
+# structure['WZTo2L2Q']  = {
+#                   'isSignal' : 0,
+#                   'isData'   : 0
+#                   }
 
 structure['WLLJJ_QCD']  = {
                   'isSignal' : 0,
