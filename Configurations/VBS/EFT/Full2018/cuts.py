@@ -30,7 +30,7 @@ supercut = and_separator.join(supercut_vector)
 #############################################
 ########### SS inclusive region ############
 #############################################
-
+'''
 cuts['SS_incl']  = { 
    'expr' : 'ssLep && zVeto ',
    # sub categorization
@@ -44,11 +44,11 @@ cuts['SS_incl']  = {
 cuts['SS_incl_all']  = { 
    'expr' : 'ssLep && zVeto ',
 }
-
+'''
 #############################################
 ########### VBS_SS signal region ############
 #############################################
-'''
+
 cuts['SS_sr']  = { 
    'expr': 'ssLep && \
             Lepton_pt[0] > 30 &&\
@@ -88,7 +88,7 @@ cuts['SS_sr_all']  = {
             tauVeto_ww &&\
             z_lep_sel',
 }
-'''
+
 #############################################
 ########### low_mjj control region ##########
 #############################################

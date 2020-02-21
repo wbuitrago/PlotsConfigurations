@@ -243,7 +243,7 @@ plot['DATA']  = {
     'color': 1 ,
     'isSignal' : 0,
     'isData'   : 1 ,
-    'isBlind'  : 0 ,
+    'isBlind'  : 1 ,
     'scale'    : 1.0
 }
 
