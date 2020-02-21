@@ -281,6 +281,8 @@ aliases['SFweightMuDown'] = {
     'samples': mc
 }
 
+### vgamma corrections to be added! ###
+
 #####################
 ## my aliases (DB) ##
 #####################
