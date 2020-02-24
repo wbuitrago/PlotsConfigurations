@@ -281,7 +281,16 @@ aliases['SFweightMuDown'] = {
     'samples': mc
 }
 
-### vgamma corrections to be added! ###
+# Vg subsamples
+aliases['gstarLow'] = {
+    'expr': 'Gen_ZGstar_mass >0 && Gen_ZGstar_mass < 4',
+    'samples': 'VgS'
+}
+
+aliases['gstarHigh'] = {
+    'expr': 'Gen_ZGstar_mass <0 || Gen_ZGstar_mass > 4',
+    'samples': 'VgS'
+}
 
 #####################
 ## my aliases (DB) ##
