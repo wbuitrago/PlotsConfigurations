@@ -78,16 +78,14 @@ groupPlot['Vg']  = {
                   'nameHR' : "V#gamma",
                   'isSignal' : 0,
                   'color'    : ROOT.kCyan-7,   # kOrange + 10
-                  'samples'  : ['Vg','VgS']
+                  'samples'  : ['Vg','VgS_L','VgS_H']
               }
-
 groupPlot['WW_strong']  = {
                   'nameHR' : "W^{#pm}W^{#pm} QCD",
                   'isSignal' : 0,
                   'color'    : ROOT.kViolet-4, # kViolet
                   'samples'  : ['WW_strong']
               }
-
 groupPlot['non-prompt']  = {
                   'nameHR' : 'non-Prompt',
                   'isSignal' : 0,
@@ -167,7 +165,13 @@ plot['Vg']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-plot['VgS']  = {
+plot['VgS_L']  = {
+    'color': Orange+10, # kOrange+10
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+plot['VgS_H']  = {
     'color': Orange+10, # kOrange+10
     'isSignal' : 0,
     'isData'   : 0,

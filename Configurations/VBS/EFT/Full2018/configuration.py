@@ -2,9 +2,9 @@
 
 treeName= 'Events'
 
-date = '_feb21'
+date = '_feb24'
 
-version = '_2018_2d_distributions_v0'
+version = '_2018_vgamma_corr_v0'
 
 tag = 'VBS_SS'  + date + version
 
@@ -44,6 +44,6 @@ structureFile = 'structure.py'
 
 
 # nuisances file for mkDatacards and for mkShape
-nuisancesFile = 'nuisances_fast.py'
-# nuisancesFile = 'nuisances_total.py'
+# nuisancesFile = 'nuisances_fast.py'
+nuisancesFile = 'nuisances_total.py'
 

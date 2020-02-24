@@ -231,9 +231,9 @@ variables['met']  = {   'name'  : 'MET_pt',         #  variable name
 ###### 2D distributions ########
 ################################
 
-variables['pt1VSmjj'] = {   'name': 'pt1:mjj',            
-                                    'range' : ((3,30,300),(4,500,2000)),            #   variable range
-                                    'xaxis' : 'p_{T} 1^{st} lep : m_{jj}',
+variables['pt1VSmjj'] = {   'name': 'pt1:mjj',                              # y:x
+                                    'range' : (4,500,2000,3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                    'xaxis' : '1^{st} lep p_{T} : m_{jj}',
                                     'fold' : 3 ,
                                     # do weighted plot too
                                     # 'doWeight' : 1,
@@ -242,9 +242,9 @@ variables['pt1VSmjj'] = {   'name': 'pt1:mjj',
                                     #
                                 }
 
-variables['pt2VSmjj'] = {   'name': 'pt2:mjj',            
-                                    'range' : ((3,30,200),(4,500,2000)),            #   variable range
-                                    'xaxis' : 'p_{T} 1^{st} lep : m_{jj}',
+variables['pt2VSmjj'] = {   'name': 'pt2:mjj',                              # y:x
+                                    'range' : (4,500,2000,3,30,200),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                    'xaxis' : '2^{nd} lep p_{T} : m_{jj}', 
                                     'fold' : 3 ,
                                     # do weighted plot too
                                     # 'doWeight' : 1,

@@ -138,36 +138,40 @@ DataTrig_2018 = {
 ############  Reducible Bkg  ##############
 ###########################################
 
-# charge flip TO BE ADDED!
+# charge mis-reconstruction sample TO BE ADDED!
 
-##########################################
-############### OLD Vgamma ###############
-##########################################
+######## Vg ########  (with giulio correction)
 
-### vgamma corrections to be added! ###
-
-####### Vgamma ########
-files = nanoGetSampleFiles(mcDirectory, 'ZGToLLG') + \
-        nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM')
+files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
+    nanoGetSampleFiles(mcDirectory, 'Zg')
 
 samples['Vg'] = {
     'name': files,
-    'weight': mcCommonWeightNoMatch + '*!(Gen_ZGstar_mass > 0)',
+    'weight': mcCommonWeightNoMatch + '*(Gen_ZGstar_mass <= 0)',
     'FilesPerJob': 4
 }
-#addSampleWeight(samples, 'Vg', 'Zg', '(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
-######## VgS ########
+# the following is needed in both v5 and v6
+addSampleWeight(samples, 'Vg', 'Zg', '0.448')
+
+######## VgS #######  (with giulio correction)
 
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
-    nanoGetSampleFiles(mcDirectory, 'ZGToLLG')
+        nanoGetSampleFiles(mcDirectory, 'Zg') + \
+        nanoGetSampleFiles(mcDirectory, 'WZTo3LNu_mllmin01')
 
 samples['VgS'] = {
     'name': files,
-    'weight': mcCommonWeight,
+    'weight': mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
     'FilesPerJob': 4,
+    'subsamples': {
+      'L': 'gstarLow',
+      'H': 'gstarHigh'
+    }
 }
 addSampleWeight(samples, 'VgS', 'Wg_MADGRAPHMLM', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_mass < 0.1)')
-addSampleWeight(samples, 'VgS', 'ZGToLLG', '(Gen_ZGstar_mass > 0 && Gen_ZGstar_MomId == 22)*(Sum$(GenPart_pdgId == 22 && TMath::Odd(GenPart_statusFlags) && GenPart_pt < 20.) == 0)')
+addSampleWeight(samples, 'VgS', 'Zg', '(Gen_ZGstar_mass > 0)*0.448')
+# applied gen level cut to cover mass from 0.1 to 4.0
+addSampleWeight(samples, 'VgS', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1 && Gen_ZGstar_mass < 4.0 )') 
 
 ######### VV #########
 files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext1') + \
