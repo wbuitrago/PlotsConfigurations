@@ -30,7 +30,7 @@ supercut = and_separator.join(supercut_vector)
 #############################################
 ########### SS inclusive region ############
 #############################################
-'''
+
 cuts['SS_incl']  = { 
    'expr' : 'ssLep && zVeto ',
    # sub categorization
@@ -44,7 +44,7 @@ cuts['SS_incl']  = {
 cuts['SS_incl_all']  = { 
    'expr' : 'ssLep && zVeto ',
 }
-'''
+
 #############################################
 ########### VBS_SS signal region ############
 #############################################
