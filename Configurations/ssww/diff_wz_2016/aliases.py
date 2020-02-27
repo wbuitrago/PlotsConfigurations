@@ -12,11 +12,11 @@ bWP = '0.4941'
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 # fiducial
 aliases['wzinc'] = {
-    'linesToAdd': ['.L %s/ssww/wz_2016/wzinc.cc+' % configurations],
+    'linesToAdd': ['.L %s/ssww/diff_wz_2016/wzinc.cc+' % configurations],
     'class': 'Wzinc',
 }
 aliases['zz'] = {
-    'linesToAdd': ['.L %s/ssww/wz_2016/zz.cc+' % configurations],
+    'linesToAdd': ['.L %s/ssww/diff_wz_2016/zz.cc+' % configurations],
     'class': 'Zz',
 }
 aliases['gstarLow'] = {

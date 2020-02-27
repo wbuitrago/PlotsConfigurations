@@ -11,6 +11,41 @@ bWP = '0.4941'
 
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 # tau veto
+aliases['fiducial'] = {
+    'linesToAdd': ['.L %s/ssww/diff_cr_2017/fiducial.cc+' % configurations],
+    'class': 'FiducialRegion',
+    'samples': mc,
+}
+aliases['genmjj'] = {
+    'linesToAdd': ['.L %s/ssww/diff_cr_2017/genmjj.cc+' % configurations],
+    'class': 'Genmjj',
+    'samples': mc,
+}
+aliases['genmll'] = {
+    'linesToAdd': ['.L %s/ssww/diff_cr_2017/genmll.cc+' % configurations],
+    'class': 'Genmll',
+    'samples': mc,
+}
+aliases['genlep1pt'] = {
+    'linesToAdd': ['.L %s/ssww/diff_cr_2017/genlep1pt.cc+' % configurations],
+    'class': 'Genlep1pt',
+    'samples': mc,
+}
+aliases['genlep2pt'] = {
+    'linesToAdd': ['.L %s/ssww/diff_cr_2017/genlep2pt.cc+' % configurations],
+    'class': 'Genlep2pt',
+    'samples': mc,
+}
+aliases['genjet1pt'] = {
+    'linesToAdd': ['.L %s/ssww/diff_cr_2017/genjet1pt.cc+' % configurations],
+    'class': 'Genjet1pt',
+    'samples': mc,
+}
+aliases['genjet2pt'] = {
+    'linesToAdd': ['.L %s/ssww/diff_cr_2017/genjet2pt.cc+' % configurations],
+    'class': 'Genjet2pt',
+    'samples': mc,
+}
 '''
 aliases['tauVeto_ww'] = {
     'expr': '(Sum$(Tau_pt > 18 && Tau_rawIso < 1 && abs(Tau_eta)<2.3 && Tau_idDecayMode && Tau_idDecayModeNewDMs &&sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4) == 0)'

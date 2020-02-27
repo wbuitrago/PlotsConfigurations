@@ -34,6 +34,9 @@ aliases['gstarHigh'] = {
 aliases['jeteta_exclude']={
     'expr': '(abs(Alt$(CleanJet_eta[0],-9999.)) < 2.7 || abs(Alt$(CleanJet_eta[0],-9999.))>3.0) && (abs(Alt$(CleanJet_eta[1],-9999.)) < 2.7 ||  abs(Alt$(CleanJet_eta[1],-9999.))>3.0)'
 }
+aliases['jeteta_exclude2']={
+    'expr': '(abs(Alt$(CleanJet_eta[0],-9999.)) < 2.5 || abs(Alt$(CleanJet_eta[0],-9999.))>3.0) && (abs(Alt$(CleanJet_eta[1],-9999.)) < 2.5 ||  abs(Alt$(CleanJet_eta[1],-9999.))>3.0)'
+}
 aliases['softmuon_veto']={
     'expr':'(Sum$(abs(Muon_dxy)<0.02 && abs(Muon_dz)<0.1 && Muon_softId && Muon_pt>5 && abs(Muon_eta)<2.4 && sqrt( pow(Muon_eta - Lepton_eta[0], 2) + pow(abs(abs(Muon_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Muon_eta - Lepton_eta[1], 2) + pow(abs(abs(Muon_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4)==0)'
 }
@@ -173,6 +176,10 @@ aliases['zveto_ww']={
 }
 aliases['ssww_region']={
     'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && METFixEE2017_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta && jeteta_exclude'  # pt zlep mjj detajj
+    #'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep
+}
+aliases['ssww_region2']={
+    'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && METFixEE2017_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta && jeteta_exclude2'  # pt zlep mjj detajj
     #'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep
 }
 # B tag scale factors

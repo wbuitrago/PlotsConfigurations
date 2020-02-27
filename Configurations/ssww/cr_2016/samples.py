@@ -17,8 +17,15 @@ def nanoGetSampleFiles(inputDir, sample):
 
     return getSampleFiles(inputDir, sample, True, 'nanoLatino_')
 
-# samples
+def makeMCDirectory(var=''):
+    if var:
+        #return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var='__' + var))
+        return '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv5_Full2016v6/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__{var}'.format(var=var)
+    else:
+        #return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
+        return '/afs/cern.ch/user/y/yiiyama/public/hwwvirtual/Summer16/l2tightOR'
 
+# samples
 try:
     len(samples)
 except NameError:
@@ -223,14 +230,10 @@ samples['VVV'] = {
 
 ########## TTV #########
 
-files = nanoGetSampleFiles(mcDirectory, 'TTWJetsToLNu_ext1') + \
-        nanoGetSampleFiles(mcDirectory, 'TTWJetsToLNu_ext2') + \
+files = nanoGetSampleFiles(mcDirectory, 'TTWJetsToLNu_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'TTWJetsToQQ') + \
-        nanoGetSampleFiles(mcDirectory, 'TTZToLLNuNu_M-10_ext1') + \
-        nanoGetSampleFiles(mcDirectory, 'TTZToLLNuNu_M-10_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'TTZToLLNuNu_M-10_ext3') + \
         nanoGetSampleFiles(mcDirectory, 'tZq_ll_4f')
-#+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
 samples['TTV'] = {
     'name': files,

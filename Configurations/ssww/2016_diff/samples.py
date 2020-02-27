@@ -295,8 +295,6 @@ samples['TL_TT'] = {
 }
 '''
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-#+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
-
 out_fid='!(fiducial)'
 
 samples['WpWp_EWK'] = {

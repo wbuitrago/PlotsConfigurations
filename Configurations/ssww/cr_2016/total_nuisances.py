@@ -2,18 +2,24 @@
 # nuisances
 
 #nuisances = {}
+from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
 
-# name of samples here must match keys in samples.py
-basedir='/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv5_Full2016v6'
-################################ EXPERIMENTAL UNCERTAINTIES  #################################
+def nanoGetSampleFiles(inputDir, Sample):
+    return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
+
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
+    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake_lep')]
 except NameError:
     mc = []
     cuts = {}
     nuisances = {}
     def makeMCDirectory(x=''):
         return ''
+
+
+# name of samples here must match keys in samples.py
+# basedir='/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv5_Full2016v6'
+################################ EXPERIMENTAL UNCERTAINTIES  #################################
 #### Luminosity
 # luminosity uncertainty is 2.3%
 nuisances['lumi_Uncorrelated'] = {
@@ -141,11 +147,13 @@ nuisances['eff_e'] = {
 
 nuisances['electronpt'] = {
     'name': 'CMS_scale_e_2016',
-    'kind': 'tree',
     'type': 'shape',
+    'kind': 'suffix',
+    'mapUp': 'ElepTup',
+    'mapDown': 'ElepTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__ElepTup_suffix',
-    'folderDown': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__ElepTdo_suffix',
+    'folderUp': makeMCDirectory('ElepTup_suffix'),
+    'folderDown': makeMCDirectory('ElepTdo_suffix'),
 }
 
 ##### Muon Efficiency and energy scale
@@ -159,35 +167,39 @@ nuisances['eff_m'] = {
 
 nuisances['muonpt'] = {
     'name': 'CMS_scale_m_2016',
-    'kind': 'tree',
     'type': 'shape',
+    'kind': 'suffix',
+    'mapUp': 'MupTup',
+    'mapDown': 'MupTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__MupTup_suffix',
-    'folderDown': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__MupTdo_suffix',
+    'folderUp': makeMCDirectory('MupTup_suffix'),
+    'folderDown': makeMCDirectory('MupTdo_suffix'),
 }
-
 ##### Jet energy scale
 
 nuisances['jes'] = {
     'name': 'CMS_scale_j_2016',
-    'kind': 'tree',
     'type': 'shape',
+    'kind': 'suffix',
+    'mapUp': 'JESup',
+    'mapDown': 'JESdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__JESup_suffix',
-    'folderDown': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__JESdo_suffix',
+    'folderUp': makeMCDirectory('JESup_suffix'),
+    'folderDown': makeMCDirectory('JESdo_suffix'),
 }
 
 ##### MET energy scale
 
 nuisances['met'] = {
     'name': 'CMS_scale_met_2016',
-    'kind': 'tree',
     'type': 'shape',
+    'kind': 'suffix',
+    'mapUp': 'METup',
+    'mapDown': 'METdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__METup_suffix',
-    'folderDown': basedir+'/MCl1loose2016v6__MCCorr2016v6__l2loose__l2tightOR2016v6__METdo_suffix',
+    'folderUp': makeMCDirectory('METup_suffix'),
+    'folderDown': makeMCDirectory('METdo_suffix'),
 }
-
 ##### Pileup
 
 nuisances['PU'] = {
@@ -198,16 +210,33 @@ nuisances['PU'] = {
     'AsLnN': '1',
 }
 
+variations = ['LHEScaleWeight[%d]' % i for i in [0, 1, 3, 4, 6, 7]]
+
 nuisances['QCDscale'] = {
     'name': 'QCDscale',
-    'kind': 'weight',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WpWp_EWK': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
-        'WpWp_QCD': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
-    }
+        'WpWp_EWK': variations,
+        'WpWp_QCD': variations,
+    },
+    'AsLnN': '1'
 }
 
+variations = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
+
+nuisances['pdf'] = {
+    'name': 'pdf',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
+    'type': 'shape',
+    'samples': {
+        'WpWp_EWK': variations,
+        'WpWp_QCD': variations,
+    },
+    'AsLnN': '1'
+}
 # statistical fluctuation
 # on MC/data
 # "stat" is a special word to identify this nuisance
