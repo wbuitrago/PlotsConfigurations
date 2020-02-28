@@ -30,7 +30,7 @@ except NameError:
 
 mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/'
 
-#mcDir_private='/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
+# mcDir_private='/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
 mcDir_private = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
 
 treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
@@ -272,6 +272,7 @@ samples['Fake_lep'] = {
 }
 
 fakeDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__fakeW'
+
 for _, sd in DataRun:
     for pd in DataSets:
         files = nanoGetSampleFiles(fakeDirectory, pd + '_' + sd)
