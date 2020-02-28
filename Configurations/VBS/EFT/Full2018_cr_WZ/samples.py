@@ -233,8 +233,8 @@ samples['WpWp_QCD'] = {
 ###########################################
 #############   SIGNALS  ##################
 ###########################################
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')
-#+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
+# files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')  # DB: missing??? is this needed?
+files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')  # DB: missing??? is this needed?
 
 samples['WpWp_EWK'] = {
     'name': files,
