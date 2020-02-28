@@ -5,6 +5,7 @@ from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSample
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
+# TO BE FIXED: signals are removed from mc list because at the moment we don'thave "suffix" for private samples
 try:
     mc = [skey for skey in samples if skey != 'DATA' and skey!='sm' and skey!='linear' and skey!='quadratic' and not skey.startswith('Fake')]
 except NameError:
