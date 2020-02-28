@@ -5,8 +5,10 @@
 # name of samples here must match keys in samples.py
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
+# to be fixed later: sm linear and quadratic are removed from mc list since we don't have suffix ntuples for them
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
+    mc = [skey for skey in samples if skey != 'DATA' and skey!='sm' and skey!='linear' and skey!='quadratic' and not skey.startswith('Fake')]
+    # mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
 except NameError:
     mc = []
     cuts = {}

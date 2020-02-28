@@ -119,18 +119,18 @@ groupPlot['WW_EWK_sm']  = {
                   'samples'  : ['sm']
               }
 
-# groupPlot['WW_EWK_int']  = {
-#                   'nameHR'   : "W^{#pm}W^{#pm} EWK int",
-#                   'isSignal' : 3,
-#                   'color'    : ROOT.kCyan, 
-#                   'samples'  : ['linear']
-#               }
-# groupPlot['WW_EWK_bsm']  = {
-#                   'nameHR'   : "W^{#pm}W^{#pm} EWK bsm",
-#                   'isSignal' : 3,
-#                   'color'    : ROOT.kCyan+2, 
-#                   'samples'  : ['quadratic']
-#               }
+groupPlot['WW_EWK_int']  = {
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK int",
+                  'isSignal' : 3,
+                  'color'    : ROOT.kCyan, 
+                  'samples'  : ['linear']
+              }
+groupPlot['WW_EWK_bsm']  = {
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK bsm",
+                  'isSignal' : 3,
+                  'color'    : ROOT.kCyan+2, 
+                  'samples'  : ['quadratic']
+              }
 #####################################
 
 #plot = {}
