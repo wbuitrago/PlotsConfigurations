@@ -5,9 +5,10 @@ from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSample
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
-# TO BE FIXED: signals are removed from mc list because at the moment we don'thave "suffix" for private samples
+# to be fixed later: sm linear and quadratic are removed from mc list since we don't have suffix ntuples for them
 try:
     mc = [skey for skey in samples if skey != 'DATA' and skey!='sm' and skey!='linear' and skey!='quadratic' and not skey.startswith('Fake')]
+    # mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
 except NameError:
     mc = []
     cuts = {}
@@ -225,7 +226,6 @@ nuisances['pdf'] = {
     },
 }
 
-
 ## WZ rate parameter 
 nuisances['WZscale2018']  = {
                'name'  : 'WZscale2018',
@@ -233,7 +233,7 @@ nuisances['WZscale2018']  = {
                    'WZ_QCD' : '1.00',    # change sample name
                    },
                'type'  : 'rateParam',
-               'cuts'  : [wz_vbs_total,wz_vbs_softmuonveto]  
+               'cuts'  : wz_vbs_total  
               }
 
 

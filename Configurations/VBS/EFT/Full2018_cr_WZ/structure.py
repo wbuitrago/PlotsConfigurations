@@ -21,11 +21,11 @@ structure['Vg']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['VgS2_H']  = {
+structure['VgS1_H']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
-structure['VgS2_L']  = {
+structure['VgS1_L']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
@@ -42,6 +42,18 @@ structure['WZ_QCD_AMCNLO']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
+structure['WZ_QCD']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0
+                  }
+structure['WZ_QCD_powheg']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0
+                  } 
+structure['WZ_QCD_mllmin01']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0
+                  }                                       
 structure['WZ_EWK']  = {
                   'isSignal' : 0,
                   'isData'   : 0
