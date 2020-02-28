@@ -206,7 +206,7 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
 
 
-samples['WLLJJ_QCD'] = {
+samples['WZ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight+'*1.2',
     'FilesPerJob': 4

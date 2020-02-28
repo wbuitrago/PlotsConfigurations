@@ -37,7 +37,7 @@ structure['ZZ']  = {
 #                   'isData'   : 0
 #                   }
 
-structure['WLLJJ_QCD']  = {
+structure['WZ_QCD']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }

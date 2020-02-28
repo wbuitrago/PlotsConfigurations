@@ -70,12 +70,12 @@ groupPlot['Other Bgr']  = {
 #     'color': ROOT.kGray, # kGreen
 #     'samples'  : ['DPS']
 # }
-groupPlot['WLLJJ_QCD']  = {
+groupPlot['WZ_QCD']  = {
     'nameHR' : "WZ QCD",
     'isSignal' : 0,
     'color'    : ROOT.kRed, # kViolet+10
-    #'samples'  : ['WLLJJ_QCD','WZTo2L2Q']
-    'samples'  : ['WLLJJ_QCD']
+    #'samples'  : ['WZ_QCD','WZTo2L2Q']
+    'samples'  : ['WZ_QCD']
 }
 groupPlot['WLLJJ_EWK']  = {
     'nameHR' : "WZ EWK",
@@ -147,7 +147,7 @@ plot['Fake_lep']  = {
     'scale'    : 1.0
 }
 
-plot['WLLJJ_QCD']  = {
+plot['WZ_QCD']  = {
     'color': Violet+10, # kViolet+10
     'isSignal' : 0,
     'isData'   : 0,

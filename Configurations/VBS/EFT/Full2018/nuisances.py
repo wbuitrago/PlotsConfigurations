@@ -212,7 +212,7 @@ nuisances['QCDscale'] = {
 nuisances['WZscale2018']  = {
                'name'  : 'WZscale2018',
                'samples'  : {
-                   'WLLJJ_QCD' : '1.00',
+                   'WZ_QCD' : '1.00',
                    },
                'type'  : 'rateParam',
                'cuts'  : [SS_sr,SS_sr_all]
