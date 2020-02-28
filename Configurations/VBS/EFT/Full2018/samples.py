@@ -29,9 +29,19 @@ except NameError:
     import collections
     samples = collections.OrderedDict()
 
-mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
-dataDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv5_Full2018v5/DATAl1loose2018v5__l2loose__l2tightOR2018v5/'
-fakeDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv5_Full2018v5/DATAl1loose2018v5__l2loose__fakeW/'
+mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/'
+mcDir_private = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
+# mcDir_private='/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
+
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
+mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
+mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6{var}'
+
+def makeMCDirectory(var=''):
+    if var:
+        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var='__' + var))
+    else:
+        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
 
 ################################################
 ############ NUMBER OF LEPTONS #################
@@ -41,26 +51,15 @@ Nlep='2'
 #Nlep='3'
 #Nlep='4'
 
-################################################
-############### Lepton WP ######################
-################################################
-'''
-eleWP='cut_WP_Tight80X_SS'
-muWP='cut_Tight80x'
-
-LepWPCut_2016       = 'LepCut'+Nlep+'l__ele_'+eleWP+'__mu_'+muWP
-LepWPweight_2016     = '35.92*LepSF'+Nlep+'l__ele_'+eleWP+'__mu_'+muWP
-
-fakeW_2016 = 'fakeW2l_ele_'+eleWP+'_mu_'+muWP
-'''
-
 
 ################################################
 ############ BASIC MC WEIGHTS ##################
 ################################################
+
 mcCommonWeightNoMatch = 'SFweight'
 #mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC*59.74'
 mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
+
 ################################################
 ############### B-Tag  WP ######################
 ################################################
@@ -188,7 +187,6 @@ samples['ZZ'] = {
 
 # not needed, os lepton charges, so it will be included in the mischarge sample that has to be added yet.
 # for the time being, we just remove it since it gives very small contributions
-
 # files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
 # samples['WZTo2L2Q'] = {
 #     'name': files,
@@ -322,6 +320,8 @@ samples['quadratic'] = {
 ###########################################
 #1389 files
 
+fakeDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__fakeW'
+
 samples['Fake_lep'] = {
     'name': [],
     'weight': 'METFilter_DATA*fakeW',
@@ -339,6 +339,8 @@ for _, sd in DataRun_2018:
 ###########################################
 ################## DATA ###################
 ###########################################
+
+dataDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6'
 
 samples['DATA'] = {
     'name': [],

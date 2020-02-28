@@ -131,12 +131,14 @@ nuisances['eff_e'] = {
 
 nuisances['electronpt'] = {
     'name': 'CMS_scale_e_2018',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['sm', 'linear', 'quadratic']),
-    'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__ElepTup',
-    'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__ElepTdo',
-    #'AsLnN': '1'   # ?
+    'mapUp': 'ElepTup',
+    'mapDown': 'ElepTdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('ElepTup_suffix_redoMVA'),
+    'folderDown': makeMCDirectory('ElepTdo_suffix_redoMVA'),
+    'AsLnN': '1'
 }
 
 ##### Muon Efficiency and energy scale
@@ -150,40 +152,40 @@ nuisances['eff_m'] = {
 
 nuisances['muonpt'] = {
     'name': 'CMS_scale_m_2018',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['sm', 'linear', 'quadratic']),
-    #'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__MupTup_suffix',
-    'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__MupTup',
-    #'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__MupTdo_suffix',
-    'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__MupTdo',
-    #'AsLnN': '1'   # ?
+    'mapUp': 'MupTup',
+    'mapDown': 'MupTdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('MupTup_suffix_redoMVA'),
+    'folderDown': makeMCDirectory('MupTdo_suffix_redoMVA'),
+    'AsLnN': '1'
 }
 
 ##### Jet energy scale
 
 nuisances['jes'] = {
     'name': 'CMS_scale_j_2018',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['sm', 'linear', 'quadratic']),
-    'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__JESup',
-    #'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__JESdo_suffix',
-    'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__JESdo',
-    'AsLnN': '1'
+    'mapUp': 'JESup',
+    'mapDown': 'JESdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('JESup_suffix_redoMVA'),
+    'folderDown': makeMCDirectory('JESdo_suffix_redoMVA'),
 }
 
 ##### MET energy scale
 
 nuisances['met'] = {
     'name': 'CMS_scale_met_2018',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['sm', 'linear', 'quadratic']),
-    'folderUp': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__METup',
-    #'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__METdo_suffix',
-    'folderDown': basedir+'MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5__METdo',
-    #'AsLnN': '1'   # ?
+    'mapUp': 'METup',
+    'mapDown': 'METdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('METup_suffix_redoMVA'),
+    'folderDown': makeMCDirectory('METdo_suffix_redoMVA'),
 }
 
 ##### Pileup
@@ -196,17 +198,31 @@ nuisances['PU'] = {
     'AsLnN': '1',
 }
 
+variations = ['LHEScaleWeight[%d]' % i for i in [0, 1, 3, 4, 6, 7]]
+
 nuisances['QCDscale'] = {
     'name': 'QCDscale',
-    'kind': 'weight',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WpWp_EWK': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
-        'WpWp_QCD': ['LHEScaleWeight[8]', 'LHEScaleWeight[0]'],
-    }
+        'WpWp_EWK': variations,
+        'WpWp_QCD': variations,
+    },
 }
 
+variations = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
 
+nuisances['pdf'] = {
+    'name': 'pdf',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
+    'type': 'shape',
+    'samples': {
+        'WpWp_EWK': variations,
+        'WpWp_QCD': variations,
+    },
+}
 
 ## WZ rate parameter (for signal regions used for fit)
 nuisances['WZscale2018']  = {

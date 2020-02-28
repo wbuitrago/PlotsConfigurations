@@ -74,7 +74,6 @@ groupPlot['WZ_QCD']  = {
     'nameHR' : "WZ QCD",
     'isSignal' : 0,
     'color'    : ROOT.kRed, # kViolet+10
-    #'samples'  : ['WZ_QCD','WZTo2L2Q']
     'samples'  : ['WZ_QCD']
 }
 groupPlot['WLLJJ_EWK']  = {
