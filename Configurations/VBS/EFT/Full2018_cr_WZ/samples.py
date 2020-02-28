@@ -234,8 +234,8 @@ samples['WpWp_QCD'] = {
 #############   SIGNALS  ##################
 ###########################################
 # files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')  # DB: missing??? is this needed?
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')  # DB: missing??? is this needed?
 
+files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK') 
 samples['WpWp_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
@@ -272,13 +272,20 @@ samples['Fake_lep'] = {
     'FilesPerJob': 17
 }
 
+fakeDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv5_Full2018v5/DATAl1loose2018v5__l2loose__fakeW/'
+
 for _, sd in DataRun:
     for pd in DataSets:
-        files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__fakeW/', pd + '_' + sd)
+        files = nanoGetSampleFiles(fakeDirectory, pd + '_' + sd)
         samples['Fake_lep']['name'].extend(files)
         samples['Fake_lep']['weights'].extend([DataTrig[pd]] * len(files))
+
 ###########################################
 ################## DATA ###################
+###########################################
+
+dataDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv5_Full2018v5/DATAl1loose2018v5__l2loose__l2tightOR2018v5/'
+
 samples['DATA'] = {
     'name': [],
     'weight': 'METFilter_DATA*LepWPCut',
@@ -289,6 +296,6 @@ samples['DATA'] = {
 
 for _, sd in DataRun:
     for pd in DataSets:
-        files = nanoGetSampleFiles('/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6/', pd + '_' + sd)
+        files = nanoGetSampleFiles( dataDirectory, pd + '_' + sd)
         samples['DATA']['name'].extend(files)
         samples['DATA']['weights'].extend([DataTrig[pd]] * len(files))
