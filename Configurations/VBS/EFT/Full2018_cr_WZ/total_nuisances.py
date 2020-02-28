@@ -232,7 +232,7 @@ nuisances['WZscale2018']  = {
                    'WZ_QCD' : '1.00',    # change sample name
                    },
                'type'  : 'rateParam',
-               'cuts'  : wz_vbs_total  
+               'cuts'  : [wz_vbs_total,wz_vbs_softmuonveto]  
               }
 
 
