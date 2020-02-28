@@ -12,7 +12,7 @@ bWP = '0.4941'
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 # gen variables
 aliases['fiducial'] = {
-    'linesToAdd': ['.L %s/ssww/2016_diff/fiducial.cc+' % configurations],
+    'linesToAdd': ['.L %s/ssww/2016_diff/wzinc.cc+' % configurations],
     'class': 'FiducialRegion',
     'samples': mc,
 }
@@ -328,6 +328,7 @@ for shift in ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr
 # data/MC scale factors
 aliases['SFweight'] = {
     'expr': ' * '.join(['SFweight2l','LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','PrefireWeight','XSWeight','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
+    #'expr': ' * '.join(['LepWPCut']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
     #'expr': ' * '.join(['SFweight3l', 'LepSF3l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','PrefireWeight','PromptGenLepMatch3l','XSWeight','METFilter_MC']),
     'samples': mc
 }

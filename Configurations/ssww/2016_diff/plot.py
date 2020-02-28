@@ -98,6 +98,12 @@ groupPlot['WpWp_EWK_out']  = {
                   'color'    : ROOT.kBlue, # kAzure+4
                   'samples'  : ['WpWp_EWK_out']
               }
+plot['WpWp_EWK_out']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 '''
 # lep1 pt
 groupPlot['WpWp_EWK_lep1pt_bin0']  = {

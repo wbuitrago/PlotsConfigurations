@@ -11,6 +11,42 @@ bWP = '0.4941'
 
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 # gen variables
+aliases['fiducial'] = {
+    'linesToAdd': ['.L %s/ssww/2016_diff/wzinc.cc+' % configurations],
+    'class': 'FiducialRegion',
+    'samples': mc,
+}
+aliases['genmjj'] = {
+    'linesToAdd': ['.L %s/ssww/2016_diff/genmjj.cc+' % configurations],
+    'class': 'Genmjj',
+    'samples': mc,
+}
+aliases['genmll'] = {
+    'linesToAdd': ['.L %s/ssww/2016_diff/genmll.cc+' % configurations],
+    'class': 'Genmll',
+    'samples': mc,
+}
+aliases['genlep1pt'] = {
+    'linesToAdd': ['.L %s/ssww/2016_diff/genlep1pt.cc+' % configurations],
+    'class': 'Genlep1pt',
+    'samples': mc,
+}
+aliases['genlep2pt'] = {
+    'linesToAdd': ['.L %s/ssww/2016_diff/genlep2pt.cc+' % configurations],
+    'class': 'Genlep2pt',
+    'samples': mc,
+}
+aliases['genjet1pt'] = {
+    'linesToAdd': ['.L %s/ssww/2016_diff/genjet1pt.cc+' % configurations],
+    'class': 'Genjet1pt',
+    'samples': mc,
+}
+aliases['genjet2pt'] = {
+    'linesToAdd': ['.L %s/ssww/2016_diff/genjet2pt.cc+' % configurations],
+    'class': 'Genjet2pt',
+    'samples': mc,
+}
+'''
 aliases['genmjj'] = {
     'expr': 'sqrt(2*Alt$(GenJet_pt[0],-9999.)*Alt$(GenJet_pt[1],-9999.)*(cosh(Alt$(GenJet_eta[0],-9999.)-Alt$(GenJet_eta[1],-9999.))-cos(Alt$(GenJet_phi[0],-9999.)-Alt$(GenJet_phi[1],-9999.))))',
     'samples': mc
@@ -43,6 +79,12 @@ aliases['fiducial'] = {
     'expr': 'nLeptonGen>1 && nGenJet>1 && genmjj>500 && genlep_cut && genmll>20 && genjet_cut && gendetajj>2.5 && Alt$(LeptonGen_pdgId[0],-9999)*Alt$(LeptonGen_pdgId[1],9999)>0 && GenMET_pt>30',
     'samples': mc
 }
+'''
+
+aliases['jeteta_exclude']={
+    'expr': '(abs(Alt$(CleanJet_eta[0],-9999.)) < 2.7 || abs(Alt$(CleanJet_eta[0],-9999.))>3.0) && (abs(Alt$(CleanJet_eta[1],-9999.)) < 2.7 ||  abs(Alt$(CleanJet_eta[1],-9999.))>3.0)'
+}
+
 # tau veto
 aliases['tauVeto_ww'] = {
     'expr': '(Sum$(Tau_pt > 18 && Tau_rawIso < 1 && abs(Tau_eta)<2.3 && Tau_idDecayMode && Tau_idDecayModeNewDMs &&sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4) == 0)'
@@ -191,7 +233,7 @@ aliases['zveto_ww']={
     'expr': '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) != 11*11 || abs(mll - 91.1876) > 15)'
 }
 aliases['ssww_region']={
-    'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep mjj detajj
+    'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta && jeteta_exclude'  # pt zlep mjj detajj
     #'expr': 'nLepton>1 && nCleanJet >1 && Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0 && Alt$(Lepton_pt[2],0.)<10 && MET_pt>30 && mll > 20 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7 && tauVeto_ww && zveto_ww && lep0eta && lep1eta'  # pt zlep
 }
 # wz region
