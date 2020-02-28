@@ -3,7 +3,7 @@
 #nuisances = {}
 
 # name of samples here must match keys in samples.py
-basedir='/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv5_Full2018v5/'
+
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
 try:
     mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
