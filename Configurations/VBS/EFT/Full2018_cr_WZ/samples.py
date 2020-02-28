@@ -234,12 +234,12 @@ samples['WpWp_QCD'] = {
 #############   SIGNALS  ##################
 ###########################################
 
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')  
-samples['WpWp_EWK'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
+# files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')  
+# samples['WpWp_EWK'] = {
+#     'name': files,
+#     'weight': mcCommonWeight, 
+#     'FilesPerJob': 4
+# }
 
 files = nanoGetSampleFiles(mcDir_private, 'SSWW_SM')
 samples['sm'] = {
