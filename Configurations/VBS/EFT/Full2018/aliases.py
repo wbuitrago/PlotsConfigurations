@@ -331,3 +331,4 @@ aliases['zlep2'] = {'expr' : '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0
 # zeppenfeld variable selection for wwss
 aliases['z_lep_sel'] = { 'expr': 'fabs(zlep1) < 0.75 && fabs(zlep2) < 0.75'}
 
+aliases['dphijj'] = {'expr' : '(fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) <= 3.141592) * fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) + (fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) > 3.141592) * (2*3.141592 - (fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.))))' }

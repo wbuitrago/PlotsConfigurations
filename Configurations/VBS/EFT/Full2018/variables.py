@@ -8,36 +8,34 @@
 ##### LEPTON VARS #########
 ###########################
 
-variables['nLepton'] =  {   'name': 'nLepton',
-                            'range': (7,0,7),
-                            'xaxis': '# leptons',
-                            'fold': 3
-}
+# variables['nLepton'] =  {   'name': 'nLepton',
+#                             'range': (7,0,7),
+#                             'xaxis': '# leptons',
+#                             'fold': 3
+# }
 
 variables['mll']  = {   'name'  : 'mll',            #   variable name
                         'range' : (3, 20. ,500),    #   variable range
                         'xaxis' : 'mll [GeV]',      #   x axis name
                         'fold'  : 3
-                        }
+                        }                      
 
-# for low mjj control region
-variables['mll_cr']  = {   'name' : 'mll',
-                            'range': (10,0,500.),
-                            'xaxis': 'mll [GeV]',
-                            'fold' : 3
-                        }                            
-
-## mll zoom around Z0
-# variables['mll_v2']  = {    'name'  : 'mll',              #   variable name
-#                             'range' : (100, 50 ,150),     #   variable range
-#                             'xaxis' : 'mll [GeV]',        #   x axis name
-#                             'fold'  : 3
-#                             }                        
+variables['mll_v1']  = {    'name'  : 'mll',            #   variable name
+                            'range' : ([20,110,300,500],),    #   variable range
+                            'xaxis' : 'mll v1 [GeV]',      #   x axis name
+                            'fold'  : 3
+                        } 
 
 variables['pt1']  = {   'name'  : 'Alt$(Lepton_pt[0],-9999.)',
                         'range' : (3,30.,300.),
                         'xaxis' : 'p_{T} 1st lep [GeV]',
                         'fold'  : 3
+                        }
+
+variables['pt1_v1']  = {    'name'  : 'Alt$(Lepton_pt[0],-9999.)',
+                            'range' : ([30,90,180,300],),
+                            'xaxis' : 'p_{T} 1st lep v1 [GeV]',
+                            'fold'  : 3
                         }
 
 
@@ -46,6 +44,12 @@ variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
                         'xaxis' : 'p_{T} 2nd lep [GeV]',
                         'fold'  : 3
                         }      
+
+variables['pt2_v1']  = {    'name'  : 'Alt$(Lepton_pt[1],-9999.)',
+                            'range' : ([30,70,120,200],),
+                            'xaxis' : 'p_{T} 2nd lep v1 [GeV]',
+                            'fold'  : 3
+                            }   
 
 ## eta leptons
 # variables['eta_lep1'] = {   'name' : 'Alt$(Lepton_eta[0],-9999.)',
@@ -91,23 +95,29 @@ variables['dphill'] = {     'name' : 'Alt$(dphill,-9999.)',
 ##### JETS   VARS #########
 ###########################
 
-variables['nJet']  = {      'name'  : 'nCleanJet',
-                            'range' : (7,0,7),
-                            'xaxis' : '# Clean Jets',
-                            'fold'  : 3
-                            }
+# variables['nJet']  = {      'name'  : 'nCleanJet',
+#                             'range' : (7,0,7),
+#                             'xaxis' : '# Clean Jets',
+#                             'fold'  : 3
+#                             }
 
 variables['mjj']  = {  'name' : 'mjj',
-                       'range': (3,500.,2000.),
+                       'range': (4,500.,2000.),
                        'xaxis': 'mjj [GeV]',
                        'fold' : 3
-                       }               
-# for low mjj control region
-variables['low_mjj']  = {   'name' : 'mjj',
-                            'range': (10,150,500.),
-                            'xaxis': 'mjj [GeV]',
+                       } 
+
+variables['mjj_v1']  = {    'name' : 'mjj',
+                            'range': ([500,800,1100,1500,2000],),
+                            'xaxis': 'mjj v1[GeV]',
                             'fold' : 3
-                        }    
+                       } 
+# for low mjj control region
+# variables['low_mjj']  = {   'name' : 'mjj',
+#                             'range': (10,150,500.),
+#                             'xaxis': 'mjj [GeV]',
+#                             'fold' : 3
+#                         }    
 
 variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
                            'range' : (3,30.,300),
@@ -115,11 +125,23 @@ variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
                            'fold'  : 3
                            }
 
+variables['jetpt1_v1']  = { 'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
+                            'range' : ([30,90,150,220,300],),
+                            'xaxis' : 'p_{T} 1st jet v1[GeV]',
+                            'fold'  : 3
+                            }                           
+
 variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
                            'range' : (3,30.,200),
                            'xaxis' : 'p_{T} 2nd jet [GeV]',
                            'fold'  : 3
                            }     
+
+variables['jetpt2_v1']  = { 'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
+                            'range' : ([30,70,130,200],),
+                            'xaxis' : 'p_{T} 2nd jet v1[GeV]',
+                            'fold'  : 3
+                            }     
 
 # eta
 # variables['etaj1'] = {  'name' : 'Alt$(CleanJet_eta[0],-9999.)',
@@ -135,10 +157,16 @@ variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
 #                         }      
 
 variables['detajj']  = {  'name' : 'detajj',
-                          'range': (5,0.0,10.0),
+                          'range': (4,2.5,9.0),
                           'xaxis': 'deta jj',
                           'fold' : 3
                           }
+
+variables['detajj_v1']  = { 'name' : 'detajj',
+                            'range': ([2.5,3.5,5.0,6.5,9.0],),
+                            'xaxis': 'deta jj v1',
+                            'fold' : 3
+                            }                          
 
 # phi jets
        
@@ -154,11 +182,17 @@ variables['detajj']  = {  'name' : 'detajj',
 #                         'fold' : 3  
 #                         }                             
 
-variables['dphijj']  = {    'name' : '(fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) <= 3.141592) * fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) + (fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.)) > 3.141592) * (2*3.141592 - (fabs(Alt$(CleanJet_phi[0],9999.) - Alt$(CleanJet_phi[1],-9999.))))' ,
+variables['dphijj']  = {    'name' : 'dphijj' ,
                             'range': (5,0.0,3.141592),
                             'xaxis': 'dphi jj',
                             'fold' : 3
-                        }                                                                                     
+                        }      
+
+variables['dphijj_v1']  = {    'name' : 'dphijj' ,
+                            'range': (4,0.0,3.141592),
+                            'xaxis': 'dphi jj v1',
+                            'fold' : 3
+                        }      
                                                                                   
 
 ###########################
@@ -170,6 +204,12 @@ variables['met']  = {   'name'  : 'MET_pt',         #  variable name
                         'xaxis' : 'met [GeV]',      #  x axis name
                         'fold'  : 3
                     }
+
+variables['met_v1']  = {    'name'  : 'MET_pt',         #  variable name
+                            'range' : ([30,80,160,250],),       #  variable range
+                            'xaxis' : 'met v1 [GeV]',      #  x axis name
+                            'fold'  : 3
+                            }                    
 
 # variables['MET_significance']  = {  'name'  : 'MET_significance',   
 #                                     'range' : (20,0.,1.),           
@@ -211,6 +251,12 @@ variables['met']  = {   'name'  : 'MET_pt',         #  variable name
 #                          'fold': 3
 #                          }
 
+variables['Zlep1_sr']  = {  'name': 'zlep1',
+                            'range': (5,-0.75,0.75),
+                            'xaxis': 'Z^{lep}_{1}',
+                            'fold': 3
+                         }
+
 # variables['Zlep2']  = {  'name': 'zlep2',
 #                          'range': (10,-1.5,1.5),
 #                          'xaxis': 'Z^{lep}_{2}',
@@ -231,25 +277,112 @@ variables['met']  = {   'name'  : 'MET_pt',         #  variable name
 ###### 2D distributions ########
 ################################
 
+# pt1
 variables['pt1VSmjj'] = {   'name': 'pt1:mjj',                              # y:x
                                     'range' : (4,500,2000,3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
                                     'fold' : 3 ,
-                                    # do weighted plot too
-                                    # 'doWeight' : 1,
-                                    # 'binX'     : 8,
-                                    # 'binY'     : 9
-                                    #
                                 }
 
-variables['pt2VSmjj'] = {   'name': 'pt2:mjj',                              # y:x
-                                    'range' : (4,500,2000,3,30,200),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                    'xaxis' : '2^{nd} lep p_{T} : m_{jj}', 
+variables['pt1VSzlep1'] = {   'name':   'pt1:zlep1',                              # y:x
+                                        'range' : (5,-0.75,0.75, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : '1^{st} lep p_{T} : z_{l1}', 
+                                        'fold' : 3 ,
+                                } 
+
+variables['pt1VSdetajj'] = {   'name':   'pt1:detajj',                              # y:x
+                                        'range' : (4,2.5,9.0, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : '1^{st} lep p_{T} : d#eta_{jj}', 
+                                        'fold' : 3 ,
+                                }        
+
+variables['pt1VSdphijj'] = {   'name':   'pt1:dphijj',                              # y:x
+                                        'range' : (4,0.,3.141592 , 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : '1^{st} lep p_{T} : d#phi_{jj}', 
+                                        'fold' : 3 ,
+                                } 
+
+                                                                                          
+
+
+# mll
+variables['mllVSmjj'] = {   'name': 'mll:mjj',                              # y:x
+                                    'range' : (4,500,2000, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                    'xaxis' : 'm_{ll} : m_{jj}',
                                     'fold' : 3 ,
-                                    # do weighted plot too
-                                    # 'doWeight' : 1,
-                                    # 'binX'     : 8,
-                                    # 'binY'     : 9
-                                    #
                                 }
 
+variables['mllVSzlep1'] = {   'name':   'mll:zlep1',                              # y:x
+                                        'range' : (5,-0.75,0.75, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : 'm_{ll} : z_{l1}', 
+                                        'fold' : 3 ,
+                                } 
+
+variables['mllVSdetajj'] = {   'name':   'mll:detajj',                              # y:x
+                                        'range' : (4,2.5,9.0, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : 'm_{ll} : d#eta_{jj}', 
+                                        'fold' : 3 ,
+                                }
+
+variables['mllVSdphijj'] = {  'name':   'mll:dphijj',                              # y:x
+                                        'range' : (4,0.,3.141592, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : 'm_{ll} : d#phi_{jj}', 
+                                        'fold' : 3 ,
+                                }                                
+
+
+# 2d with variable binning   
+
+
+# pt1
+variables['pt1VSmjj_v1'] = {   'name': 'pt1:mjj',                              # y:x
+                                    'range' : ([500,800,1100,1500,2000],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                    'xaxis' : '1^{st} lep p_{T} : m_{jj} v1',
+                                    'fold' : 3 ,
+                                }
+
+variables['pt1VSzlep1_v1'] = {   'name':   'pt1:zlep1',                              # y:x
+                                        'range' : ([-0.75,-0.375,0,0.375,0.75],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : '1^{st} lep p_{T} : z_{l1} v1', 
+                                        'fold' : 3 ,
+                                } 
+
+variables['pt1VSdetajj_v1'] = {   'name':   'pt1:detajj',                              # y:x
+                                        'range' : ([2.5,3.5,5.0,6.5,9.0],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : '1^{st} lep p_{T} : d#eta_{jj} v1', 
+                                        'fold' : 3 ,
+                                }        
+
+variables['pt1VSdphijj_v1'] = {   'name':   'pt1:dphijj',                              # y:x
+                                        'range' : ([0,0.785398,1.570796,2.356194,3.141592],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : '1^{st} lep p_{T} : d#phi_{jj} v1', 
+                                        'fold' : 3 ,
+                                } 
+
+                                                                                          
+
+
+# mll
+variables['mllVSmjj_v1'] = {   'name': 'mll:mjj',                              # y:x
+                                    'range' : ([500,800,1100,1500,2000],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                    'xaxis' : 'm_{ll} : m_{jj} v1',
+                                    'fold' : 3 ,
+                                }
+
+variables['mllVSzlep1_v1'] = {   'name':   'mll:zlep1',                              # y:x
+                                        'range' : ([-0.75,-0.375,0,0.375,0.75],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : 'm_{ll} : z_{l1} v1', 
+                                        'fold' : 3 ,
+                                } 
+
+variables['mllVSdetajj_v1'] = {   'name':   'mll:detajj',                              # y:x
+                                        'range' : ([2.5,3.5,5.0,6.5,9.0],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : 'm_{ll} : d#eta_{jj} v1', 
+                                        'fold' : 3 ,
+                                }
+
+variables['mllVSdphijj_v1'] = {  'name':   'mll:dphijj',                              # y:x
+                                        'range' : ([0,0.785398,1.570796,2.356194,3.141592],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+                                        'xaxis' : 'm_{ll} : d#phi_{jj} v1', 
+                                        'fold' : 3 ,
+                                }                                       

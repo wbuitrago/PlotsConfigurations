@@ -37,12 +37,39 @@
 
 Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
 
-groupPlot['ZZ']  = {
-    'nameHR' : "ZZ",
+# to use this just comment out groupplots for all the samples included
+# Other Bgr
+groupPlot['Other Bgr']  = {
+    'nameHR'   : "Other Bgr",
     'isSignal' : 0,
-    'color'    : ROOT.kMagenta-10, # kViolet+10
-    'samples'  : ['ZZ']
+    'color'    : ROOT.kGreen,
+    'samples'  : ['ZZ','VVV','TTV','DPS']
 }
+
+# groupPlot['ZZ']  = {
+#     'nameHR' : "ZZ",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kMagenta-10, # kViolet+10
+#     'samples'  : ['ZZ']
+# }
+# groupPlot['VVV']  = {
+#     'nameHR' : 'VVV',
+#     'isSignal' : 0,
+#     'color': ROOT.kSpring-9, # kGreen
+#     'samples'  : ['VVV']
+# }
+# groupPlot['TTV']  = {
+#     'nameHR' : 'TTV',
+#     'isSignal' : 0,
+#     'color': ROOT.kGray, # kGreen
+#     'samples'  : ['TTV']
+# }
+# groupPlot['DPS']  = {
+#     'nameHR' : 'DPS',
+#     'isSignal' : 0,
+#     'color': ROOT.kGray, # kGreen
+#     'samples'  : ['DPS']
+# }
 groupPlot['WLLJJ_QCD']  = {
     'nameHR' : "WZ QCD",
     'isSignal' : 0,
@@ -56,40 +83,22 @@ groupPlot['WLLJJ_EWK']  = {
     'color'    : ROOT.kMagenta, # kViolet+10
     'samples'  : ['WLLJJ_EWK']
 }
-groupPlot['VVV']  = {
-    'nameHR' : 'VVV',
-    'isSignal' : 0,
-    'color': ROOT.kSpring-9, # kGreen
-    'samples'  : ['VVV']
-}
-groupPlot['TTV']  = {
-    'nameHR' : 'TTV',
-    'isSignal' : 0,
-    'color': ROOT.kGray, # kGreen
-    'samples'  : ['TTV']
-}
-groupPlot['DPS']  = {
-    'nameHR' : 'DPS',
-    'isSignal' : 0,
-    'color': ROOT.kGray, # kGreen
-    'samples'  : ['DPS']
-}
 groupPlot['Vg']  = {
                   'nameHR' : "V#gamma",
                   'isSignal' : 0,
-                  'color'    : ROOT.kCyan-7,   # kOrange + 10
+                  'color'    : ROOT.kAzure,   # kOrange + 10
                   'samples'  : ['Vg','VgS_L','VgS_H']
               }
 groupPlot['WW_strong']  = {
                   'nameHR' : "W^{#pm}W^{#pm} QCD",
                   'isSignal' : 0,
-                  'color'    : ROOT.kViolet-4, # kViolet
+                  'color'    : ROOT.kViolet, # kViolet
                   'samples'  : ['WW_strong']
               }
 groupPlot['non-prompt']  = {
                   'nameHR' : 'non-Prompt',
                   'isSignal' : 0,
-                  'color': ROOT.kYellow-4,    # kYellow
+                  'color': ROOT.kYellow,    # kYellow
                   'samples'  : ['Fake_lep']
               }
 
@@ -106,23 +115,23 @@ groupPlot['non-prompt']  = {
 # EFT samples (internal latinos)
 groupPlot['WW_EWK_sm']  = {
                   'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
-                  'isSignal' : 0,
+                  'isSignal' : 3,
                   'color'    : ROOT.kBlue, 
                   'samples'  : ['sm']
               }
 
-groupPlot['WW_EWK_int']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK int",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kGreen, 
-                  'samples'  : ['linear']
-              }
-groupPlot['WW_EWK_bsm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK bsm",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kCyan+2, 
-                  'samples'  : ['quadratic']
-              }
+# groupPlot['WW_EWK_int']  = {
+#                   'nameHR'   : "W^{#pm}W^{#pm} EWK int",
+#                   'isSignal' : 3,
+#                   'color'    : ROOT.kCyan, 
+#                   'samples'  : ['linear']
+#               }
+# groupPlot['WW_EWK_bsm']  = {
+#                   'nameHR'   : "W^{#pm}W^{#pm} EWK bsm",
+#                   'isSignal' : 3,
+#                   'color'    : ROOT.kCyan+2, 
+#                   'samples'  : ['quadratic']
+#               }
 #####################################
 
 #plot = {}

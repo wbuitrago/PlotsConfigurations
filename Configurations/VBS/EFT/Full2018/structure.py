@@ -17,7 +17,12 @@ structure['Vg']  = {
                   'isData'   : 0
                   }
 
-structure['VgS'] = {
+structure['VgS_L'] = {
+                  'isSignal' : 0,
+                  'isData'   : 0
+                  }
+
+structure['VgS_H'] = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
