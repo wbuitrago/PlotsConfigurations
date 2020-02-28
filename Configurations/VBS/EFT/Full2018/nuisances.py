@@ -206,6 +206,19 @@ nuisances['QCDscale'] = {
     }
 }
 
+
+
+## WZ rate parameter (for signal regions used for fit)
+nuisances['WZscale2018']  = {
+               'name'  : 'WZscale2018',
+               'samples'  : {
+                   'WLLJJ_QCD' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : [SS_sr,SS_sr_all]
+              }
+
+
 # statistical fluctuation
 # on MC/data
 # "stat" is a special word to identify this nuisance
