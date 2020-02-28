@@ -28,19 +28,19 @@ except NameError:
     import collections
     samples = collections.OrderedDict()
 
-# mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/'
-mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5'
+mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/'
+
 #mcDir_private='/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
 mcDir_private = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
 
-# treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
-# mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
-# mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6{var}'
-# def makeMCDirectory(var=''):
-#     if var:
-#         return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var='__' + var))
-#     else:
-#         return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
+mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
+mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6{var}'
+def makeMCDirectory(var=''):
+    if var:
+        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var='__' + var))
+    else:
+        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
 
 ################################################
 ############ BASIC MC WEIGHTS ##################
@@ -233,9 +233,8 @@ samples['WpWp_QCD'] = {
 ###########################################
 #############   SIGNALS  ##################
 ###########################################
-# files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')  # DB: missing??? is this needed?
 
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK') 
+files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')  
 samples['WpWp_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
@@ -272,8 +271,7 @@ samples['Fake_lep'] = {
     'FilesPerJob': 17
 }
 
-fakeDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv5_Full2018v5/DATAl1loose2018v5__l2loose__fakeW/'
-
+fakeDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__fakeW'
 for _, sd in DataRun:
     for pd in DataSets:
         files = nanoGetSampleFiles(fakeDirectory, pd + '_' + sd)
@@ -284,7 +282,7 @@ for _, sd in DataRun:
 ################## DATA ###################
 ###########################################
 
-dataDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv5_Full2018v5/DATAl1loose2018v5__l2loose__l2tightOR2018v5/'
+dataDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6'
 
 samples['DATA'] = {
     'name': [],
