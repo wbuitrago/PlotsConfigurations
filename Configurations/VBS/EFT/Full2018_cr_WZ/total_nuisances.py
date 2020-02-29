@@ -139,11 +139,10 @@ nuisances['electronpt'] = {
     'mapUp': 'ElepTup',
     'mapDown': 'ElepTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('ElepTup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('ElepTdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('ElepTup_suffix'),
+    'folderDown': makeMCDirectory('ElepTdo_suffix'),
     'AsLnN': '1'
 }
-
 
 ##### Muon Efficiency and energy scale
 
@@ -161,8 +160,8 @@ nuisances['muonpt'] = {
     'mapUp': 'MupTup',
     'mapDown': 'MupTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('MupTup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('MupTdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('MupTup_suffix'),
+    'folderDown': makeMCDirectory('MupTdo_suffix'),
     'AsLnN': '1'
 }
 ##### Jet energy scale
@@ -174,8 +173,8 @@ nuisances['jes'] = {
     'mapUp': 'JESup',
     'mapDown': 'JESdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('JESup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('JESdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('JESup_suffix'),
+    'folderDown': makeMCDirectory('JESdo_suffix'),
 }
 
 ##### MET energy scale
@@ -187,8 +186,8 @@ nuisances['met'] = {
     'mapUp': 'METup',
     'mapDown': 'METdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('METup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('METdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('METup_suffix'),
+    'folderDown': makeMCDirectory('METdo_suffix'),
 }
 ##### Pileup
 
@@ -208,7 +207,7 @@ nuisances['QCDscale'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WpWp_EWK': variations,
+        #'WpWp_EWK': variations,   # sample not included
         'WpWp_QCD': variations,
     },
 }
@@ -221,7 +220,7 @@ nuisances['pdf'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WpWp_EWK': variations,
+        #'WpWp_EWK': variations,   # sample not included
         'WpWp_QCD': variations,
     },
 }
@@ -233,7 +232,7 @@ nuisances['WZscale2018']  = {
                    'WZ_QCD' : '1.00',    # change sample name
                    },
                'type'  : 'rateParam',
-               'cuts'  : wz_vbs_total  
+               'cuts'  : ['wz_vbs_total', 'wz_vbs_softmuonveto']
               }
 
 
