@@ -208,7 +208,7 @@ nuisances['QCDscale'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WpWp_EWK': variations,
+        #'WpWp_EWK': variations,
         'WpWp_QCD': variations,
     },
 }
@@ -221,7 +221,7 @@ nuisances['pdf'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WpWp_EWK': variations,
+        #'WpWp_EWK': variations,
         'WpWp_QCD': variations,
     },
 }

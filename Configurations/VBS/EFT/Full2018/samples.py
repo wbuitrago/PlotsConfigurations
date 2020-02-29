@@ -224,7 +224,7 @@ samples['DPS'] = {
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_QCD')
 #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
-samples['WW_strong'] = {
+samples['WW_QCD'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
