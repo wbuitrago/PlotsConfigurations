@@ -138,8 +138,8 @@ nuisances['electronpt'] = {
     'mapUp': 'ElepTup',
     'mapDown': 'ElepTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('ElepTup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('ElepTdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('ElepTup_suffix'),
+    'folderDown': makeMCDirectory('ElepTdo_suffix'),
     'AsLnN': '1'
 }
 
@@ -159,8 +159,8 @@ nuisances['muonpt'] = {
     'mapUp': 'MupTup',
     'mapDown': 'MupTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('MupTup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('MupTdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('MupTup_suffix'),
+    'folderDown': makeMCDirectory('MupTdo_suffix'),
     'AsLnN': '1'
 }
 
@@ -173,8 +173,8 @@ nuisances['jes'] = {
     'mapUp': 'JESup',
     'mapDown': 'JESdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('JESup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('JESdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('JESup_suffix'),
+    'folderDown': makeMCDirectory('JESdo_suffix'),
 }
 
 ##### MET energy scale
@@ -186,8 +186,8 @@ nuisances['met'] = {
     'mapUp': 'METup',
     'mapDown': 'METdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('METup_suffix_redoMVA'),
-    'folderDown': makeMCDirectory('METdo_suffix_redoMVA'),
+    'folderUp': makeMCDirectory('METup_suffix'),
+    'folderDown': makeMCDirectory('METdo_suffix'),
 }
 
 ##### Pileup
@@ -233,7 +233,7 @@ nuisances['WZscale2018']  = {
                    'WZ_QCD' : '1.00',
                    },
                'type'  : 'rateParam',
-               'cuts'  : [SS_sr,SS_sr_all]
+               'cuts'  : ['SS_sr','SS_sr_all']
               }
 
 

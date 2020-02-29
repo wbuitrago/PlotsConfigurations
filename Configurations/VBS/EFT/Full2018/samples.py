@@ -79,50 +79,12 @@ METFilter_FAKE = 'METFilter_FAKE'
 ################################################
 ############ DATA DECLARATION ##################
 ################################################
-DataRun_2016 = [
-    ['B','Run2016B-Nano14Dec2018_ver2-v1'] ,
-    ['C','Run2016C-Nano14Dec2018-v1'] ,
-    ['D','Run2016D-Nano14Dec2018-v1'] ,
-    ['E','Run2016E-Nano14Dec2018-v1'] ,
-    ['F','Run2016F-Nano14Dec2018-v1'] ,
-    ['G','Run2016G-Nano14Dec2018-v1'] ,
-    ['H','Run2016H-Nano14Dec2018-v1'] ,
-]
-
-
-DataSets_2016 = ['MuonEG','DoubleMuon','SingleMuon','DoubleEG','SingleElectron']
-
-DataTrig_2016 = {
-    'MuonEG'         : 'Trigger_ElMu' ,
-    'DoubleMuon'     : '!Trigger_ElMu && Trigger_dblMu' ,
-    'SingleMuon'     : '!Trigger_ElMu && !Trigger_dblMu && Trigger_sngMu' ,
-    'DoubleEG'       : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && Trigger_dblEl' ,
-    'SingleElectron' : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && !Trigger_dblEl && Trigger_sngEl' ,
-}
-DataRun_2017 = [
-    ['B','Run2017B-Nano14Dec2018-v1'] ,
-    ['C','Run2017C-Nano14Dec2018-v1'] ,
-    ['D','Run2017D-Nano14Dec2018-v1'] ,
-    ['E','Run2017E-Nano14Dec2018-v1'] ,
-    ['F','Run2017F-Nano14Dec2018-v1'] ,
-]
-
-DataSets_2017 = ['MuonEG','DoubleMuon','SingleMuon','DoubleEG','SingleElectron']
-
-
-DataTrig_2017 = {
-    'MuonEG'         : 'Trigger_ElMu' ,
-    'DoubleMuon'     : '!Trigger_ElMu &&  Trigger_dblMu' ,
-    'SingleMuon'     : '!Trigger_ElMu && !Trigger_dblMu &&  Trigger_sngMu' ,
-    'DoubleEG'       : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu &&  Trigger_dblEl' ,
-    'SingleElectron' : '!Trigger_ElMu && !Trigger_dblMu && !Trigger_sngMu && !Trigger_dblEl &&  Trigger_sngEl' ,
-}
 
 DataRun_2018 = [
-    ['A','Run2018A-Nano1June2019-v1'] ,
-    ['B','Run2018B-Nano1June2019-v1'] ,
-    ['C','Run2018C-Nano1June2019-v1'] ,
-    ['D','Run2018D-Nano1June2019_ver2-v1'] ,
+    ['A','Run2018A-Nano25Oct2019-v1'] ,
+    ['B','Run2018B-Nano25Oct2019-v1'] ,
+    ['C','Run2018C-Nano25Oct2019-v1'] ,
+    ['D','Run2018D-Nano25Oct2019_ver2-v1'] ,
 ]
 
 DataSets_2018 = ['MuonEG','DoubleMuon','SingleMuon','EGamma']
@@ -210,8 +172,11 @@ samples['WZ_QCD'] = {
     'FilesPerJob': 4
 }
 
-files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')# + \
+#files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')# + \
         #nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To60_EWK_4F')
+
+files = nanoGetSampleFiles(mcDirectory, 'WLLJJ_WToLNu_EWK')
+
 samples['WLLJJ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,

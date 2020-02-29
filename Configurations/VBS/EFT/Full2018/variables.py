@@ -182,13 +182,13 @@ variables['detajj_v1']  = { 'name' : 'detajj',
 #                         'fold' : 3  
 #                         }                             
 
-variables['dphijj']  = {    'name' : 'dphijj' ,
+variables['dphijj']  = {    'name' : 'my_dphijj' ,
                             'range': (5,0.0,3.141592),
                             'xaxis': 'dphi jj',
                             'fold' : 3
                         }      
 
-variables['dphijj_v1']  = {    'name' : 'dphijj' ,
+variables['dphijj_v1']  = {    'name' : 'my_dphijj' ,
                             'range': (4,0.0,3.141592),
                             'xaxis': 'dphi jj v1',
                             'fold' : 3
@@ -296,7 +296,7 @@ variables['pt1VSdetajj'] = {   'name':   'pt1:detajj',                          
                                         'fold' : 3 ,
                                 }        
 
-variables['pt1VSdphijj'] = {   'name':   'pt1:dphijj',                              # y:x
+variables['pt1VSdphijj'] = {   'name':   'pt1:my_dphijj',                              # y:x
                                         'range' : (4,0.,3.141592 , 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
                                         'xaxis' : '1^{st} lep p_{T} : d#phi_{jj}', 
                                         'fold' : 3 ,
@@ -324,7 +324,7 @@ variables['mllVSdetajj'] = {   'name':   'mll:detajj',                          
                                         'fold' : 3 ,
                                 }
 
-variables['mllVSdphijj'] = {  'name':   'mll:dphijj',                              # y:x
+variables['mllVSdphijj'] = {  'name':   'mll:my_dphijj',                              # y:x
                                         'range' : (4,0.,3.141592, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
                                         'xaxis' : 'm_{ll} : d#phi_{jj}', 
                                         'fold' : 3 ,
@@ -353,7 +353,7 @@ variables['pt1VSdetajj_v1'] = {   'name':   'pt1:detajj',                       
                                         'fold' : 3 ,
                                 }        
 
-variables['pt1VSdphijj_v1'] = {   'name':   'pt1:dphijj',                              # y:x
+variables['pt1VSdphijj_v1'] = {   'name':   'pt1:my_dphijj',                              # y:x
                                         'range' : ([0,0.785398,1.570796,2.356194,3.141592],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
                                         'xaxis' : '1^{st} lep p_{T} : d#phi_{jj} v1', 
                                         'fold' : 3 ,
@@ -381,7 +381,7 @@ variables['mllVSdetajj_v1'] = {   'name':   'mll:detajj',                       
                                         'fold' : 3 ,
                                 }
 
-variables['mllVSdphijj_v1'] = {  'name':   'mll:dphijj',                              # y:x
+variables['mllVSdphijj_v1'] = {  'name':   'mll:my_dphijj',                              # y:x
                                         'range' : ([0,0.785398,1.570796,2.356194,3.141592],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
                                         'xaxis' : 'm_{ll} : d#phi_{jj} v1', 
                                         'fold' : 3 ,
