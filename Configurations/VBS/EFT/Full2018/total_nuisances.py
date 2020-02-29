@@ -200,31 +200,31 @@ nuisances['PU'] = {
     'AsLnN': '1',
 }
 
-variations = ['LHEScaleWeight[%d]' % i for i in [0, 1, 3, 4, 6, 7]]
+# variations = ['LHEScaleWeight[%d]' % i for i in [0, 1, 3, 4, 6, 7]]
 
-nuisances['QCDscale'] = {
-    'name': 'QCDscale',
-    'skipCMS': 1,
-    'kind': 'weight_envelope',
-    'type': 'shape',
-    'samples': {
-        #'WpWp_EWK': variations,
-        'WpWp_QCD': variations,
-    },
-}
+# nuisances['QCDscale'] = {
+#     'name': 'QCDscale',
+#     'skipCMS': 1,
+#     'kind': 'weight_envelope',
+#     'type': 'shape',
+#     'samples': {
+#         #'WpWp_EWK': variations,
+#         'WpWp_QCD': variations,
+#     },
+# }
 
-variations = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
+# variations = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
 
-nuisances['pdf'] = {
-    'name': 'pdf',
-    'skipCMS': 1,
-    'kind': 'weight_envelope',
-    'type': 'shape',
-    'samples': {
-        #'WpWp_EWK': variations,
-        'WpWp_QCD': variations,
-    },
-}
+# nuisances['pdf'] = {
+#     'name': 'pdf',
+#     'skipCMS': 1,
+#     'kind': 'weight_envelope',
+#     'type': 'shape',
+#     'samples': {
+#         #'WpWp_EWK': variations,
+#         'WpWp_QCD': variations,
+#     },
+# }
 
 ## WZ rate parameter (for signal regions used for fit)
 nuisances['WZscale2018']  = {
