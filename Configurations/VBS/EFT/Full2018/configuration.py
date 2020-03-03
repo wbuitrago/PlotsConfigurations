@@ -2,11 +2,11 @@
 
 treeName= 'Events'
 
-date = '_feb28'
+date = '_mar02'
 
-version = '_2018'
+version = '_2018_full_nuisances'
 
-tag = 'VBS_SS'  + date + version
+tag = 'VBS_SS'  + version + date
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile' + '_' + tag
@@ -19,7 +19,6 @@ variablesFile = 'variables.py'
 
 # file with list of cuts
 cutsFile = 'cuts.py'
-#cutsFile = 'cuts_forPlots.py'
 
 # file with list of samples
 samplesFile = 'samples.py'

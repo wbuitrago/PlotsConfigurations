@@ -1,7 +1,6 @@
 import os
 import inspect
 
-
 # FIX THIS in dependence of where this file is stored, in order to correctly locate the macros in Differential and Patches folder
 # check also in samples.py
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
@@ -30,8 +29,6 @@ except NameError:
     samples = collections.OrderedDict()
 
 mcDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6/'
-mcDir_private = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
-# mcDir_private='/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
 
 treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
 mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
@@ -101,7 +98,7 @@ DataTrig_2018 = {
 
 # charge mis-reconstruction sample TO BE ADDED!
 
-######## Vg ########  (with giulio correction)
+######## Vg ########  
 
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
     nanoGetSampleFiles(mcDirectory, 'Zg')
@@ -109,12 +106,12 @@ files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
 samples['Vg'] = {
     'name': files,
     'weight': mcCommonWeightNoMatch + '*(Gen_ZGstar_mass <= 0)',
-    'FilesPerJob': 4
+    'FilesPerJob': 3
 }
 # the following is needed in both v5 and v6
 addSampleWeight(samples, 'Vg', 'Zg', '0.448')
 
-######## VgS #######  (with giulio correction)
+######## VgS ####### 
 
 files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
         nanoGetSampleFiles(mcDirectory, 'Zg') + \
@@ -123,7 +120,7 @@ files = nanoGetSampleFiles(mcDirectory, 'Wg_MADGRAPHMLM') + \
 samples['VgS'] = {
     'name': files,
     'weight': mcCommonWeight + ' * (gstarLow * 0.94 + gstarHigh * 1.14)',
-    'FilesPerJob': 4,
+    'FilesPerJob': 3,
     'subsamples': {
       'L': 'gstarLow',
       'H': 'gstarHigh'
@@ -144,7 +141,7 @@ files = nanoGetSampleFiles(mcDirectory, 'ZZTo2L2Nu_ext1') + \
 samples['ZZ'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 3
 }
 
 # not needed, os lepton charges, so it will be included in the mischarge sample that has to be added yet.
@@ -169,7 +166,7 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
 samples['WZ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight+'*1.2',
-    'FilesPerJob': 4
+    'FilesPerJob': 3
 }
 
 #files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-60_EWK_4F')# + \
@@ -180,7 +177,7 @@ files = nanoGetSampleFiles(mcDirectory, 'WLLJJ_WToLNu_EWK')
 samples['WLLJJ_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 3
 }
 ########## VVV #########
 
@@ -193,7 +190,7 @@ files = nanoGetSampleFiles(mcDirectory, 'ZZZ') + \
 samples['VVV'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 3
 }
 
 ########## TTV #########
@@ -206,7 +203,7 @@ files = nanoGetSampleFiles(mcDirectory, 'TTWJetsToLNu') + \
 samples['TTV'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 2
 }
 ########## DPS #########
 files = nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu_DoubleScattering')
@@ -215,7 +212,7 @@ files = nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu_DoubleScattering')
 samples['DPS'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 3
 }
 ###########################################
 #######  IRREDUCIBLE BACKGROUNDS  #########
@@ -227,7 +224,7 @@ files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_QCD')
 samples['WW_QCD'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 3
 }
 ###########################################
 #############   SIGNALS  ##################
@@ -246,9 +243,8 @@ samples['WW_QCD'] = {
 #############  EFT samples  ###############
 ###########################################
 
-# directory for latino internally produced EFT samples
-# EftDirectory = '/eos/user/j/jixiao/HWWnano3/Autumn18_102X_nAODv5_Full2018v5/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5'
-EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v5__MCCorr2018v5__l2loose__l2tightOR2018v5/'
+# private samples location 
+EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
 
 # SM Term
 
@@ -277,7 +273,7 @@ files = nanoGetSampleFiles(EftDirectory, 'SSWW_BSM')
 samples['quadratic'] = {
     'name': files,
     'weight': mcCommonWeight+'*(1/0.09)',   # factor for cross section normalization (samples are generated with c_w = 0.3)
-    'FilesPerJob': 4 
+    'FilesPerJob': 4
 }
 
 ###########################################

@@ -5,9 +5,15 @@
 # name of samples here must match keys in samples.py
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
-# to be fixed later: sm linear and quadratic are removed from mc list since we don't have suffix ntuples for them
+
+MC_sym_link = '/afs/cern.ch/user/r/rdfexp/public/daniele/' # folder with symbolic links for suffix ntuples!
+MCsteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
+MC_suffix =  MC_sym_link + MCsteps
+
+signal_mc = ['sm','linear','quadratic']
+
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and skey!='sm' and skey!='linear' and skey!='quadratic' and not skey.startswith('Fake')]
+    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
     # mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
 except NameError:
     mc = []
@@ -137,9 +143,9 @@ nuisances['electronpt'] = {
     'type': 'shape',
     'mapUp': 'ElepTup',
     'mapDown': 'ElepTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('ElepTup_suffix'),
-    'folderDown': makeMCDirectory('ElepTdo_suffix'),
+    'samples': dict((skey, ['1', '1']) for skey in mc ),
+    'folderUp':   MC_suffix + '__ElepTup_suffix',
+    'folderDown': MC_suffix + '__ElepTdo_suffix',
     'AsLnN': '1'
 }
 
@@ -159,12 +165,14 @@ nuisances['muonpt'] = {
     'mapUp': 'MupTup',
     'mapDown': 'MupTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('MupTup_suffix'),
-    'folderDown': makeMCDirectory('MupTdo_suffix'),
+    'folderUp':   MC_suffix + '__MupTup_suffix',
+    'folderDown': MC_suffix + '__MupTdo_suffix',
     'AsLnN': '1'
 }
 
 ##### Jet energy scale
+
+# not yet available for eft private samples!
 
 nuisances['jes'] = {
     'name': 'CMS_scale_j_2018',
@@ -172,9 +180,9 @@ nuisances['jes'] = {
     'type': 'shape',
     'mapUp': 'JESup',
     'mapDown': 'JESdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('JESup_suffix'),
-    'folderDown': makeMCDirectory('JESdo_suffix'),
+    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc), # look here signal_mc!
+    'folderUp':   MC_suffix + '__JESup_suffix',
+    'folderDown': MC_suffix + '__JESdo_suffix',
 }
 
 ##### MET energy scale
@@ -186,8 +194,8 @@ nuisances['met'] = {
     'mapUp': 'METup',
     'mapDown': 'METdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('METup_suffix'),
-    'folderDown': makeMCDirectory('METdo_suffix'),
+    'folderUp':   MC_suffix + '__METup_suffix',
+    'folderDown': MC_suffix + '__METdo_suffix',
 }
 
 ##### Pileup
@@ -225,6 +233,7 @@ nuisances['pdf'] = {
         'WpWp_QCD': variations,
     },
 }
+
 
 ## WZ rate parameter (for signal regions used for fit)
 nuisances['WZscale2018']  = {

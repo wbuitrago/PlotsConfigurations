@@ -62,7 +62,7 @@ structure['DPS']  = {
                   'isData'   : 0
                   }                               
 
-structure['WW_strong']  = {
+structure['WW_QCD']  = {
                       'isSignal' : 0,
                       'isData'   : 0
                       }
