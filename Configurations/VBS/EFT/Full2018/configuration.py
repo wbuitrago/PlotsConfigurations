@@ -2,11 +2,11 @@
 
 treeName= 'Events'
 
-date = '_mar02'
+date = 'mar02'
 
-version = '_2018_full_nuisances'
+version = '2018_full_nuisances'
 
-tag = 'VBS_SS'  + version + date
+tag = 'VBS_SS' + '_' + version + '_' + date
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile' + '_' + tag
@@ -44,5 +44,5 @@ structureFile = 'structure.py'
 
 # nuisances file for mkDatacards and for mkShape
 # nuisancesFile = 'nuisances_fast.py'
-nuisancesFile = 'total_nuisances.py'
+nuisancesFile = 'nuisances.py'
 
