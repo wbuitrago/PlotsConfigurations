@@ -8,4 +8,11 @@
   * *top_cr* **[old]**: top control regions defined and tested
    
 * **Full2018**
+ 
+ * signal region
+ * low_mjj control region
+ * inclusive region
+ 
 * **Full2018_cr_WZ**
+ 
+ * various WZ control regions
