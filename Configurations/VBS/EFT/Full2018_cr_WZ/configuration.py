@@ -1,14 +1,14 @@
 # example of configuration file
 treeName= 'Events'
 
-date = '_mar02'
+date = 'mar03'
 
-version = '_2018_cr_WZ_full_nuis'
+version = '2018_cr_WZ_full_nuis'
 
-tag = '_VBS_SS'  + version + date
+tag = 'VBS_SS' + '_' + version + '_' + date
 
 # used by mkShape to define output directory for root files
-outputDir = 'rootFile' + tag
+outputDir = 'rootFile' + '_' + tag
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'
@@ -31,11 +31,11 @@ lumi =59.74
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = 'plotVBS'+tag
+outputDirPlots = 'plotVBS' + '_' + tag
 
 
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = 'datacards'+tag
+outputDirDatacard = 'datacards' + '_' +tag
 
 
 # structure file for datacard
@@ -43,4 +43,4 @@ structureFile = 'structure.py'
 
 
 # nuisances file for mkDatacards and for mkShape
-nuisancesFile = 'total_nuisances.py'
+nuisancesFile = 'nuisances.py'
