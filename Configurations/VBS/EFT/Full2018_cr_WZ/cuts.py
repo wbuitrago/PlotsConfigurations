@@ -4,7 +4,7 @@
 
 #supercut for test on succesive selections
 
-supercut='nLepton>2' # DB: is this enough?
+supercut='nLepton>2' 
 
 cuts['wz_inc_total'] ='wzinc && bVeto'
 cuts['wz_inc_softmuonveto'] ='wzinc && bVeto && softmuon_veto'

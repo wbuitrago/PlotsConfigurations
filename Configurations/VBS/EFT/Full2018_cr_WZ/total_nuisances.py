@@ -1,13 +1,21 @@
 
 # nuisances
+
+#privateMC = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
+MC_sym_link = '/afs/cern.ch/user/r/rdfexp/public/daniele/' # folder with symbolic links for suffix ntuples!
+MCsteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
+MC_suffix =  MC_sym_link + MCsteps
+
+signal_mc = ['sm','linear','quadratic']
+
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
 
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
-# to be fixed later: sm linear and quadratic are removed from mc list since we don't have suffix ntuples for them
+
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and skey!='sm' and skey!='linear' and skey!='quadratic' and not skey.startswith('Fake')]
+    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
     # mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
 except NameError:
     mc = []
@@ -18,11 +26,11 @@ except NameError:
 
 #### Luminosity
 
-#nuisances['lumi'] = {
-#    'name': 'lumi_13TeV_2018',
-#    'type': 'lnN',
-#    'samples': dict((skey, '1.025') for skey in mc if skey not in ['WW', 'top', 'DY'])
-#}
+nuisances['lumi'] = {
+   'name': 'lumi_13TeV_2018',
+   'type': 'lnN',
+   'samples': dict((skey, '1.025') for skey in mc if skey not in ['WW', 'top', 'DY'])
+}
 
 nuisances['lumi_Uncorrelated'] = {
     'name': 'lumi_13TeV_2018',
@@ -139,8 +147,8 @@ nuisances['electronpt'] = {
     'mapUp': 'ElepTup',
     'mapDown': 'ElepTdo',
     'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('ElepTup_suffix'),
-    'folderDown': makeMCDirectory('ElepTdo_suffix'),
+    'folderUp': MC_suffix+'__'+'ElepTup_suffix',
+    'folderDown': MC_suffix+'__'+'ElepTdo_suffix',
     'AsLnN': '1'
 }
 
@@ -159,12 +167,15 @@ nuisances['muonpt'] = {
     'type': 'shape',
     'mapUp': 'MupTup',
     'mapDown': 'MupTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('MupTup_suffix'),
-    'folderDown': makeMCDirectory('MupTdo_suffix'),
+    'samples': dict((skey, ['1', '1']) for skey in mc ),
+    'folderUp': MC_suffix+'__'+'MupTup_suffix',
+    'folderDown': MC_suffix+'__'+'MupTdo_suffix',
     'AsLnN': '1'
 }
+
 ##### Jet energy scale
+
+# suffix ntuples not yet available for eft signal samples!
 
 nuisances['jes'] = {
     'name': 'CMS_scale_j_2018',
@@ -172,7 +183,7 @@ nuisances['jes'] = {
     'type': 'shape',
     'mapUp': 'JESup',
     'mapDown': 'JESdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc),
     'folderUp': makeMCDirectory('JESup_suffix'),
     'folderDown': makeMCDirectory('JESdo_suffix'),
 }
@@ -185,10 +196,11 @@ nuisances['met'] = {
     'type': 'shape',
     'mapUp': 'METup',
     'mapDown': 'METdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc),
-    'folderUp': makeMCDirectory('METup_suffix'),
-    'folderDown': makeMCDirectory('METdo_suffix'),
+    'samples': dict((skey, ['1', '1']) for skey in mc ),
+    'folderUp': MC_suffix+'__'+'METup_suffix',
+    'folderDown': MC_suffix+'__'+'METdo_suffix',
 }
+
 ##### Pileup
 
 nuisances['PU'] = {
@@ -207,7 +219,7 @@ nuisances['QCDscale'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        #'WpWp_EWK': variations,   # sample not included
+        #'WpWp_EWK': variations,   
         'WpWp_QCD': variations,
     },
 }
@@ -220,16 +232,17 @@ nuisances['pdf'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        #'WpWp_EWK': variations,   # sample not included
+        #'WpWp_EWK': variations,   
         'WpWp_QCD': variations,
     },
 }
+
 
 ## WZ rate parameter 
 nuisances['WZscale2018']  = {
                'name'  : 'WZscale2018',
                'samples'  : {
-                   'WZ_QCD' : '1.00',    # change sample name
+                   'WZ_QCD' : '1.00',    
                    },
                'type'  : 'rateParam',
                'cuts'  : ['wz_vbs_total', 'wz_vbs_softmuonveto']
