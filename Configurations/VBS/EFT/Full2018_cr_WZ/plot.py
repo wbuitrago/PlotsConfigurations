@@ -26,8 +26,8 @@ groupPlot['DPS']  = dict(nameHR='DPS', isSignal=0, color=ROOT.kGray + 5, samples
 groupPlot['Vg']  = dict(nameHR="V#gamma", isSignal=0, color=ROOT.kCyan - 7, samples=['Vg', 'VgS_H','VgS_L'])
 groupPlot['WpWp_QCD']  = dict(nameHR="W^{#pm}W^{#pm} QCD", isSignal=0, color=ROOT.kViolet - 4, samples=['WpWp_QCD'])
 groupPlot['non-prompt']  = dict(nameHR='non-Prompt', isSignal=0, color=ROOT.kYellow - 4, samples=['Fake_lep'])
-groupPlot['sm']  = dict(nameHR="W^{#pm}W^{#pm} EWK sm", isSignal=0, color=ROOT.kBlue - 7, samples=['sm'])
-groupPlot['eft']  = dict(nameHR="C_{W}=1", isSignal=2, color=ROOT.kRed, samples=['sm','linear','quadratic'])
+# groupPlot['sm']  = dict(nameHR="W^{#pm}W^{#pm} EWK sm", isSignal=0, color=ROOT.kBlue - 7, samples=['sm'])
+# groupPlot['eft']  = dict(nameHR="C_{W}=1", isSignal=3, color=ROOT.kRed, samples=['sm','linear','quadratic'])
 #groupPlot['quadratic']  = dict(nameHR="W^{#pm}W^{#pm} EWK bsm", isSignal=0, color=ROOT.kBlue, samples=['quadratic'])
 #plot = {}
 
@@ -35,14 +35,14 @@ groupPlot['eft']  = dict(nameHR="C_{W}=1", isSignal=2, color=ROOT.kRed, samples=
 ##Fake and prompt substraction
 plot['Fake_lep']  = dict(color=Yellow, isSignal=0, isData=0, scale=1.0)
 ##Signal
-plot['sm']  = dict(color=Azure + 4, isSignal=2, isData=0, scale=1.0) # WpWpJJ_EWK_powheg WpWp_EWK
-plot['linear']  = dict(color=Azure + 4, isSignal=2, isData=0, scale=1.0)
-plot['quadratic']  = dict(color=Azure + 4, isSignal=2, isData=0, scale=1.0)
+# plot['sm']  = dict(color=Azure + 4, isSignal=1, isData=0, scale=1.0) # WpWpJJ_EWK_powheg WpWp_EWK
+# plot['linear']  = dict(color=Azure + 4, isSignal=1, isData=0, scale=1.0)
+# plot['quadratic']  = dict(color=Azure + 4, isSignal=1, isData=0, scale=1.0)
 plot['WpWp_QCD']  = dict(color=Violet, isSignal=0, isData=0, scale=1.0)
 #plot['WpWpJJ_QCD']  = dict(color=Violet, isSignal=0, isData=0, scale=1.0)
 plot['Vg']  = dict(color=Orange + 10, isSignal=0, isData=0, scale=1.0)
-plot['VgS1_H']  = dict(color=Orange + 10, isSignal=0, isData=0, scale=1.0) # VgS VgS1 VgS2
-plot['VgS1_L']  = dict(color=Orange + 10, isSignal=0, isData=0, scale=1.0) # VgS VgS1 VgS2
+plot['VgS_H']  = dict(color=Orange + 10, isSignal=0, isData=0, scale=1.0) # VgS VgS1 VgS2
+plot['VgS_L']  = dict(color=Orange + 10, isSignal=0, isData=0, scale=1.0) # VgS VgS1 VgS2
 ##Reducible Background
 ##VV plot
 plot['ZZ']  = dict(color=Violet + 10, isSignal=0, isData=0, scale=1.0)

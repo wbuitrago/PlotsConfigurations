@@ -81,18 +81,18 @@ structure['WpWp_QCD']  = {
 
 ##Signal
 
-structure['sm']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['linear']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
+# structure['sm']  = {
+#                       'isSignal' : 1,
+#                       'isData'   : 0
+#                       }
+# structure['linear']  = {
+#                       'isSignal' : 1,
+#                       'isData'   : 0
+#                       }
+# structure['quadratic']  = {
+#                       'isSignal' : 1,
+#                       'isData'   : 0
+#                       }
 
 #Fake
 structure['Fake_lep']  = {

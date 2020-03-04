@@ -242,24 +242,25 @@ samples['WpWp_QCD'] = {
 # private samples location 
 EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
 
-files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
-samples['sm'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
-files = nanoGetSampleFiles(EftDirectory, 'SSWW_INT')
-samples['linear'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*(1/0.3)', # 1/0.3 is used to normalize to the cross section to Cw=1, current samples are generated with Cw=0.3
-    'FilesPerJob': 4
-}
-files = nanoGetSampleFiles(EftDirectory, 'SSWW_BSM')
-samples['quadratic'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*(1/0.09)', # 1/0.09 is used to normalize to the cross section to Cw=1, current samples are generated with Cw=0.3
-    'FilesPerJob': 4
-}
+# zero contribute in control region!
+# files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
+# samples['sm'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'FilesPerJob': 4
+# }
+# files = nanoGetSampleFiles(EftDirectory, 'SSWW_INT')
+# samples['linear'] = {
+#     'name': files,
+#     'weight': mcCommonWeight+'*(1/0.3)', # 1/0.3 is used to normalize to the cross section to Cw=1, current samples are generated with Cw=0.3
+#     'FilesPerJob': 4
+# }
+# files = nanoGetSampleFiles(EftDirectory, 'SSWW_BSM')
+# samples['quadratic'] = {
+#     'name': files,
+#     'weight': mcCommonWeight+'*(1/0.09)', # 1/0.09 is used to normalize to the cross section to Cw=1, current samples are generated with Cw=0.3
+#     'FilesPerJob': 4
+# }
 
 ###########################################
 ################## FAKE ###################
