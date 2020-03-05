@@ -134,7 +134,7 @@ cuts['SS_lowmjj']  = {
 
 # mjj 300
 cuts['SS_sr_m300d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>1.0'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>1.0',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -144,7 +144,7 @@ cuts['SS_sr_m300d10']  = {
 }
 
 cuts['SS_sr_m300d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>1.5'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>1.5',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -154,7 +154,7 @@ cuts['SS_sr_m300d15']  = {
 }
 
 cuts['SS_sr_m300d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>2.0'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>2.0',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -164,7 +164,7 @@ cuts['SS_sr_m300d20']  = {
 }
 
 cuts['SS_sr_m300d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>2.5'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>2.5',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -175,7 +175,7 @@ cuts['SS_sr_m300d25']  = {
 
 # mjj 400
 cuts['SS_sr_m400d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>1.0'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>1.0',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -185,7 +185,7 @@ cuts['SS_sr_m400d10']  = {
 }
 
 cuts['SS_sr_m400d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>1.5'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>1.5',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -195,7 +195,7 @@ cuts['SS_sr_m400d15']  = {
 }
 
 cuts['SS_sr_m400d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>2.0'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>2.0',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -205,7 +205,7 @@ cuts['SS_sr_m400d20']  = {
 }
 
 cuts['SS_sr_m400d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>2.5'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>2.5',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -216,7 +216,7 @@ cuts['SS_sr_m400d25']  = {
 
 # mjj 500
 cuts['SS_sr_m500d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>1.0'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>1.0',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -226,7 +226,7 @@ cuts['SS_sr_m500d10']  = {
 }
 
 cuts['SS_sr_m500d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>1.5'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>1.5',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -236,7 +236,7 @@ cuts['SS_sr_m500d15']  = {
 }
 
 cuts['SS_sr_m500d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>2.0'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>2.0',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
@@ -246,7 +246,7 @@ cuts['SS_sr_m500d20']  = {
 }
 
 cuts['SS_sr_m500d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>2.5'
+   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>2.5',
    # sub categorization
    'categories' : {
          'ee'    : 'ss_ee',
