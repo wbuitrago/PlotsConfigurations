@@ -44,42 +44,58 @@ Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860
 groupPlot['WW_QCD']  = {
                   'nameHR' : "W^{#pm}W^{#pm} QCD",
                   'isSignal' : 0,
-                  'color'    : ROOT.kViolet, # kViolet
+                  'color'    : Green,
                   'samples'  : ['WW_QCD']
               }
 
-groupPlot['WW_EWK']  = {
-                  'nameHR' : "W^{#pm}W^{#pm} EWK",
+# groupPlot['WW_EWK']  = {
+#                   'nameHR' : "W^{#pm}W^{#pm} EWK",
+#                   'isSignal' : 0,
+#                   'color'    : Orange,
+#                   'samples'  : ['WpWp_EWK']
+#               }
+
+groupPlot['WW_EWK_mg']  = {
+                  'nameHR' : "W^{#pm}W^{#pm} EWK mg",
                   'isSignal' : 0,
-                  'color'    : ROOT.kBlue, # kAzure+4
-                  'samples'  : ['WpWp_EWK']
-              }
+                  'color'    : Azure,
+                  'samples'  : ['WpWp_EWK_mg']
+              }              
+              
 
 groupPlot['WW_EWK_QCD']  = {
                   'nameHR' : "W^{#pm}W^{#pm} EWK QCD",
                   'isSignal' : 2,
-                  'color'    : ROOT.kRed, # kAzure+4
+                  'color'    : Red,
                   'samples'  : ['WW_EWK_QCD']
               }
 
 plot['WW_QCD']  = {
-    'color': Violet, # kViolet
+    'color': Green,
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0
 }
 ##Signal
-plot['WpWp_EWK']  = {
-    'color': Azure+4, # kAzure+4
+# plot['WpWp_EWK']  = {
+#     'color': Azure,
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+
+plot['WpWp_EWK_mg']  = {
+    'color': Azure,
     'isSignal' : 0,
     'isData'   : 0,
     'scale'    : 1.0
 }
 
+
 ##Signal
 plot['WW_EWK_QCD']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 0,
+    'color': Red, 
+    'isSignal' : 1,
     'isData'   : 0,
     'scale'    : 1.0
 }

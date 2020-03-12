@@ -132,6 +132,88 @@ cuts['SS_lowmjj']  = {
 ############### new signal cuts for testing ##########
 ######################################################
 
+# mjj 100
+cuts['SS_sr_m100d10']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>1.0',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+cuts['SS_sr_m100d15']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>1.5',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+cuts['SS_sr_m100d20']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>2.0',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+cuts['SS_sr_m100d25']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>2.5',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+# mjj 200
+cuts['SS_sr_m200d10']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>1.0',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+cuts['SS_sr_m200d15']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>1.5',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+cuts['SS_sr_m200d20']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>2.0',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
+cuts['SS_sr_m200d25']  = { 
+   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>2.5',
+   # sub categorization
+   'categories' : {
+         'ee'    : 'ss_ee',
+         'emu'   : 'ss_emu',
+         'mumu'  : 'ss_mumu',
+   }
+}
+
 # mjj 300
 cuts['SS_sr_m300d10']  = { 
    'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>1.0',

@@ -229,9 +229,20 @@ samples['WW_QCD'] = {
 #############   SIGNALS  ##################
 ###########################################
 
+# sample generated with powheg
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 
 samples['WpWp_EWK'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 4
+}
+
+
+# same sample, but with madgraph generator
+files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')
+
+samples['WpWp_EWK_mg'] = {
     'name': files,
     'weight': mcCommonWeight,
     'FilesPerJob': 4
