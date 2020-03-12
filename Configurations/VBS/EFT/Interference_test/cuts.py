@@ -132,207 +132,30 @@ cuts['SS_lowmjj']  = {
 ############### new signal cuts for testing ##########
 ######################################################
 
-# mjj 100
-cuts['SS_sr_m100d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>1.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
+## ++ and -- cuts
+for mass_cut in [100,200,300,400,500]:
+      for deta_cut in [1.0,1.5,2.0,2.5]:
+            deta_str = str(deta_cut)
+            cuts[ 'SS_sr_m'+ str(mass_cut) +'d'+ deta_str[0]+deta_str[2] ]  = { 
+                  'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>1.0',
+                  # sub categorization
+                  'categories' : {
+                        'ee'    : 'ss_ee',
+                        'emu'   : 'ss_emu',
+                        'mumu'  : 'ss_mumu',
+                  }
+            }
 
-cuts['SS_sr_m100d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>1.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m100d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>2.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m100d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>100 && detajj>2.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-# mjj 200
-cuts['SS_sr_m200d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>1.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m200d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>1.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m200d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>2.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m200d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>200 && detajj>2.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-# mjj 300
-cuts['SS_sr_m300d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>1.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m300d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>1.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m300d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>2.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m300d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>300 && detajj>2.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-# mjj 400
-cuts['SS_sr_m400d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>1.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m400d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>1.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m400d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>2.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m400d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>400 && detajj>2.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-# mjj 500
-cuts['SS_sr_m500d10']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>1.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m500d15']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>1.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m500d20']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>2.0',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
-
-cuts['SS_sr_m500d25']  = { 
-   'expr': 'VBS_SS_cuts_pt30 && mjj>500 && detajj>2.5',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-         'mumu'  : 'ss_mumu',
-   }
-}
+## ++ only cuts
+for mass_cut in [100,200,300,400,500]:
+      for deta_cut in [1.0,1.5,2.0,2.5]:
+            deta_str = str(deta_cut)
+            cuts[ 'SS_sr_m'+ str(mass_cut) +'d'+ deta_str[0]+deta_str[2] ]  = { 
+                  'expr': 'VBS_SS_cuts_pt30 && mjj>{} && detajj>{} && Lepton_pdgId[0]<0 && Lepton_pdgId[1]<0'.format(str(mass_cut),str(deta_cut)),
+                  # sub categorization
+                  'categories' : {
+                        'ee'    : 'ss_ee',
+                        'emu'   : 'ss_emu',
+                        'mumu'  : 'ss_mumu',
+                  }
+            }

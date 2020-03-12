@@ -229,7 +229,7 @@ samples['WW_QCD'] = {
 #############   SIGNALS  ##################
 ###########################################
 
-# sample generated with powheg
+# sample generated with powheg. It includes only W+W+, not W-W-
 files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 
 samples['WpWp_EWK'] = {
