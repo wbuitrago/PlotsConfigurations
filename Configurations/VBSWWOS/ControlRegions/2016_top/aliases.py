@@ -263,7 +263,7 @@ aliases['lhe_mW2'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[2] * LHEPart_pt[3] * (TMath::CosH(LHEPart_eta[2] - LHEPart_eta[3]) - TMath::Cos(LHEPart_phi[2] - LHEPart_phi[3])))',
     'samples': ['WWewk']
 }
-
+'''
 # use HTXS_njets30 when moving to NanoAODv5 for all trees
 aliases['nCleanGenJet'] = {
     'linesToAdd': [
@@ -294,6 +294,6 @@ for thu in thus:
         'samples': ['ggH_hww'],
         'nominalOnly': True
     }
-
+'''
 
 

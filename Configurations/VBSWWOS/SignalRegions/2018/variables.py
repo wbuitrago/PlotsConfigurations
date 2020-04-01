@@ -14,7 +14,12 @@ variables['VARIABLE']  = {
           'divideByBinWidth': VALUE,   #OPTIONAL, whether to divide (1) or not (0) the bin content by the bin width (for variable bin size histograms). Default is 0
 } 
 '''
-#                    
+#  
+variables['events']  = {   'name': '1',      
+                        'range' : (1,0,2),  
+                        'xaxis' : 'events', 
+                        'fold' : 3
+                        }                  
 variables['Mll']  = {       'name': 'mll',             
                             'range' : (10,50,200),  
                             'xaxis' : 'm_{ll} [GeV]', 
@@ -22,7 +27,7 @@ variables['Mll']  = {       'name': 'mll',
 
 
 variables['ptll']    = {    'name': 'ptll',               
-                            'range' : (20,0,200),   
+                            'range' : (10,30,200),   
                             'xaxis' : 'pt_{ll} [GeV]', 
                         }
 variables['Mjj']  = {       'name': 'mjj',            
@@ -35,6 +40,13 @@ variables['mth']  = {   'name': 'mth',
                         'range' : (20,0,400),    
                         'xaxis' : 'm_{T}^{H} [GeV]', 
                         }
+
+
+variables['mth-DY']  = {   'name': 'mth',
+                        'range' : (10, 0, 60),
+                        'xaxis' : 'm_{T}^{H} [GeV]',
+                        'fold' : 0
+                        }
 variables['mTi']  = {   'name': 'mTi',                
                         'range' : ([100,150,200,250,300,350,400,500,700],),   
                         'xaxis' : 'm_{Ti} [GeV]',  
@@ -45,13 +57,13 @@ variables['detajj']  = {   'name': 'abs(detajj)',
 
                         }
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (20,0.,200),
+                        'range' : (10,20.,100),
                         'xaxis' : 'p_{T} 1st lep'
                         }
 
 
 variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (20,0.,200),
+                        'range' : (10,20.,100),
                         'xaxis' : 'p_{T} 2nd lep'
                         }
 variables['eta1']  = {   'name': 'Alt$(Lepton_eta[0],-9999.)',

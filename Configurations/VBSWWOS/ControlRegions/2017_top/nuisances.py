@@ -11,7 +11,7 @@
 # cuts
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
-mc_sig = ['ggH_hww','qqH_hww']
+
 def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
@@ -199,87 +199,59 @@ nuisances['prefire'] = {
 
 }
 
-
-
-
 ##### Electron Efficiency and energy scale
 
 nuisances['eff_e'] = {
     'name': 'CMS_eff_e_2017',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc), 
+    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc),
 }
 
 nuisances['electronpt'] = {
     'name': 'CMS_scale_e_2017',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hww']),
-    'folderUp': makeMCDirectory('ElepTup'),
-    'folderDown': makeMCDirectory('ElepTdo'),
+    'mapUp': 'ElepTup',
+    'mapDown': 'ElepTdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('ElepTup_suffix'),
+    'folderDown': makeMCDirectory('ElepTdo_suffix'),
     'AsLnN': '1'
 }
 
-nuisances['electronpt'] = {
-    'name': 'CMS_scale_e_2017',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('ElepTup'),
-    'folderDown': makeMCDirectorySig('ElepTdo'),
-    'AsLnN': '1'
-}
 ##### Muon Efficiency and energy scale
 
 nuisances['eff_m'] = {
     'name': 'CMS_eff_m_2017',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc), 
-}
-
-
-nuisances['muonpt'] = {
-    'name': 'CMS_scale_m_2017',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hww']),
-    'folderUp': makeMCDirectory('MupTup'),
-    'folderDown': makeMCDirectory('MupTdo'),
-    'AsLnN': '1'
+    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc),
 }
 
 nuisances['muonpt'] = {
     'name': 'CMS_scale_m_2017',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('MupTup'),
-    'folderDown': makeMCDirectorySig('MupTdo'),
+    'mapUp': 'MupTup',
+    'mapDown': 'MupTdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('MupTup_suffix'),
+    'folderDown': makeMCDirectory('MupTdo_suffix'),
     'AsLnN': '1'
 }
-
 
 ##### Jet energy scale
 
 nuisances['jes'] = {
     'name': 'CMS_scale_j_2017',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hww']),
-    'folderUp': makeMCDirectory('JESup'),
-    'folderDown': makeMCDirectory('JESdo'),
-    'AsLnN': '1'
-}
-
-nuisances['jes'] = {
-    'name': 'CMS_scale_j_2017',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('JESup'),
-    'folderDown': makeMCDirectorySig('JESdo'),
+    'mapUp': 'JESup',
+    'mapDown': 'JESdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('JESup_suffix'),
+    'folderDown': makeMCDirectory('JESdo_suffix'),
     'AsLnN': '1'
 }
 
@@ -288,21 +260,13 @@ nuisances['jes'] = {
 
 nuisances['met'] = {
     'name': 'CMS_scale_met_2017',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hww']),
-    'folderUp': makeMCDirectory('METup'),
-    'folderDown': makeMCDirectory('METdo'),
-    'AsLnN': '1'
-}
-
-nuisances['met'] = {
-    'name': 'CMS_scale_met_2017',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('METup'),
-    'folderDown': makeMCDirectorySig('METdo'),
+    'mapUp': 'METup',
+    'mapDown': 'METdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('METup_suffix'),
+    'folderDown': makeMCDirectory('METdo_suffix'),
     'AsLnN': '1'
 }
 

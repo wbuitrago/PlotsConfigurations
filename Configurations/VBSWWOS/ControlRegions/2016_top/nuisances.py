@@ -1,3 +1,4 @@
+
 # nuisances
 
 #nuisances = {}
@@ -163,6 +164,7 @@ for shift in ['jes', 'lf', 'hf', 'hfstats1', 'hfstats2', 'lfstats1', 'lfstats2',
         'samples': dict((skey, btag_syst) for skey in mc),
     }
 
+
 ##### Trigger Efficiency
 
 trig_syst = ['((TriggerEffWeight_2l_u)/(TriggerEffWeight_2l))*(TriggerEffWeight_2l>0.02) + (TriggerEffWeight_2l<=0.02)', '(TriggerEffWeight_2l_d)/(TriggerEffWeight_2l)']
@@ -191,26 +193,19 @@ nuisances['eff_e'] = {
     'type': 'shape',
     'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc)
 }
-
 nuisances['electronpt'] = {
     'name': 'CMS_scale_e_2016',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hww']),
-    'folderUp': makeMCDirectory('ElepTup'),
-    'folderDown': makeMCDirectory('ElepTdo'),
+    'mapUp' : 'ElepTup',
+    'mapDown': 'ElepTdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('ElepTup_suffix'),
+    'folderDown': makeMCDirectory('ElepTdo_suffix'),
     'AsLnN': '1'
 }
 
-nuisances['electronpt'] = {
-    'name': 'CMS_scale_e_2016',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('ElepTup'),
-    'folderDown': makeMCDirectorySig('ElepTdo'),
-    'AsLnN': '1'
-}
+
 ##### Muon Efficiency and energy scale
 
 nuisances['eff_m'] = {
@@ -222,21 +217,13 @@ nuisances['eff_m'] = {
 
 nuisances['muonpt'] = {
     'name': 'CMS_scale_m_2016',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hww']),
-    'folderUp': makeMCDirectory('MupTup'),
-    'folderDown': makeMCDirectory('MupTdo'),
-    'AsLnN': '1'
-}
-
-nuisances['muonpt'] = {
-    'name': 'CMS_scale_m_2016',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('MupTup'),
-    'folderDown': makeMCDirectorySig('MupTdo'),
+    'mapUp': 'MupTup',
+    'mapDown': 'MupTdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('MupTup_suffix'),
+    'folderDown': makeMCDirectory('MupTdo_suffix'),
     'AsLnN': '1'
 }
 
@@ -244,21 +231,13 @@ nuisances['muonpt'] = {
 
 nuisances['jes'] = {
     'name': 'CMS_scale_j_2016',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hw']),
-    'folderUp': makeMCDirectory('JESup'),
-    'folderDown': makeMCDirectory('JESdo'),
-    'AsLnN': '1'
-}
-
-nuisances['jes'] = {
-    'name': 'CMS_scale_j_2016',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('JESup'),
-    'folderDown': makeMCDirectorySig('JESdo'),
+    'mapUp': 'JESup',
+    'mapDown': 'JESdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('JESup_suffix'),
+    'folderDown': makeMCDirectory('JESdo_suffix'),
     'AsLnN': '1'
 }
 
@@ -266,23 +245,16 @@ nuisances['jes'] = {
 
 nuisances['met'] = {
     'name': 'CMS_scale_met_2016',
-    'kind': 'tree',
+    'kind': 'suffix',
     'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['qqH_hww', 'ggH_hww']),
-    'folderUp': makeMCDirectory('METup'),
-    'folderDown': makeMCDirectory('METdo'),
+    'mapUp': 'METup',
+    'mapDown': 'METdo',
+    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'folderUp': makeMCDirectory('METup_suffix'),
+    'folderDown': makeMCDirectory('METdo_suffix'),
     'AsLnN': '1'
 }
 
-nuisances['met'] = {
-    'name': 'CMS_scale_met_2016',
-    'kind': 'tree',
-    'type': 'shape',
-    'samples': dict((skey, ['1', '1']) for skey in mc_sig),
-    'folderUp': makeMCDirectorySig('METup'),
-    'folderDown': makeMCDirectorySig('METdo'),
-    'AsLnN': '1'
-}
 
 ##### Pileup
 
@@ -299,9 +271,9 @@ nuisances['PU'] = {
     },
     'AsLnN': '1',
 }
-
-##### PS and UE
 '''
+##### PS and UE
+
 nuisances['PS']  = {
     'name'  : 'PS_Herwig',
     'kind'  : 'tree',

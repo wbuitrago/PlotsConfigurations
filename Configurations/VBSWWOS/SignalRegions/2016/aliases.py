@@ -4,9 +4,9 @@ import copy
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # ggH2016
+configurations = os.path.dirname(configurations) # 2016
+configurations = os.path.dirname(configurations) # ControlRegion
 configurations = os.path.dirname(configurations) # Differential
-configurations = os.path.dirname(configurations) # Configurations
 configurations = os.path.dirname(configurations) # Configurations
 
 #aliases = {}
@@ -245,7 +245,8 @@ aliases['SFweightMuDown'] = {
 }
 
 aliases['nllWOTF'] = {
-    'linesToAdd': ['.L %s/Differential/nllW.cc+' % configurations],
+
+    'linesToAdd': [ '.L %s/Differential/nllW.cc+' % configurations],
     'class': 'WWNLLW',
     'args': ('central',),
     'samples': ['WW']
@@ -262,10 +263,12 @@ aliases['lhe_mW2'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[2] * LHEPart_pt[3] * (TMath::CosH(LHEPart_eta[2] - LHEPart_eta[3]) - TMath::Cos(LHEPart_phi[2] - LHEPart_phi[3])))',
     'samples': ['WWewk']
 }
-
+'''
 # use HTXS_njets30 when moving to NanoAODv5 for all trees
 aliases['nCleanGenJet'] = {
-    'linesToAdd': ['.L %s/Differential/ngenjet.cc+' % configurations],
+    'linesToAdd': [
+'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+'.L %s/Differential/ngenjet.cc+' % configurations],
     'class': 'CountGenJet',
     'samples': signals
 }
@@ -291,6 +294,6 @@ for thu in thus:
         'samples': ['ggH_hww'],
         'nominalOnly': True
     }
-
+'''
 
 

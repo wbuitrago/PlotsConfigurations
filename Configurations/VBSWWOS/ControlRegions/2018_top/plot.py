@@ -17,7 +17,7 @@ groupPlot['WWqcd']  = {
                   'nameHR' : 'WpWm_QCD_noTop',
                   'isSignal' : 0,
                   'color': 851, # kAzure -9 
-                  'samples'  : ['WWqcd']
+                  'samples'  : ['WWqcd','ggWW']
               }
 
 groupPlot['DY']  = {  

@@ -7,7 +7,6 @@
 # Groups of samples to improve the plots.
 # If not defined, normal plots is used
 #
-
 groupPlot['top']  = {  
                   'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
@@ -18,7 +17,7 @@ groupPlot['WWqcd']  = {
                   'nameHR' : 'WpWm_QCD_noTop',
                   'isSignal' : 0,
                   'color': 851, # kAzure -9 
-                  'samples'  : ['WWqcd']
+                  'samples'  : ['WWqcd','ggWW']
               }
 
 groupPlot['DY']  = {  
@@ -27,13 +26,6 @@ groupPlot['DY']  = {
                   'color': 418,    # kGreen+2
                   'samples'  : ['DY']
               }
-groupPlot['others'] = {  
-                  'nameHR' : 'others',
-                  'isSignal' : 0,
-                  'color': 857, # kAzure -3  
-                  'samples'  : ['VVV','VZ','Vg', 'VgS_H', 'VgS_L','qqH_hww', 'ggH_hww']
-                  }
-'''
 groupPlot['VVV']  = {  
                   'nameHR' : 'VVV',
                   'isSignal' : 0,
@@ -52,14 +44,13 @@ groupPlot['Vg']  = {
                   'color'    : 631, # kRed -1
                   'samples'  : ['Vg', 'VgS_H', 'VgS_L']
               }
-'''
+
 groupPlot['Fake']  = {  
                   'nameHR' : 'Non-prompt',
                   'isSignal' : 0,
                   'color': 921,    # kGray + 1
                   'samples'  : ['Fake_em', 'Fake_me', 'Fake_ee', 'Fake_mm']
               }
-'''
 groupPlot['Higgs']  = {  
                   'nameHR' : 'Higgs',
                   'isSignal' : 0,
@@ -69,13 +60,6 @@ groupPlot['Higgs']  = {
 
             }
 
-groupPlot['all_bkg']  = {
-                  'nameHR' : 'all_bkg',
-                  'isSignal' : 0,
-                  'color': 921,
-		  'samples'  : ['qqH_hww', 'ggH_hww','Fake_em','Fake_me','Fake_mm','Fake_ee', 'Vg', 'VgS_H', 'VgS_L','VZ', 'VVV','WWqcd', 'DY','top' ]       
-}
-'''
 groupPlot['WWewk']  = {
                   'nameHR' : 'WpWmJJ_EWK_noTop',
                   'isSignal' : 1,
