@@ -92,8 +92,8 @@ misID_sf::evaluate(unsigned)
     idx2=2;
   }
 
-  double _sf1=sf[idx1];
-  double _sf2=sf[idx2];
+  //double _sf1=sf[idx1];
+  //double _sf2=sf[idx2];
   double _rate1=chargeflip_rate[idx1];
   double _rate2=chargeflip_rate[idx2];
   //double mis_id_sf= _rate1*_sf1*(1-_rate2*_sf2)+(1-_rate1*_sf1)*_rate2*_sf2;
