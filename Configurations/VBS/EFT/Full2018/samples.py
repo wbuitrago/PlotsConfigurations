@@ -48,7 +48,6 @@ Nlep='2'
 #Nlep='3'
 #Nlep='4'
 
-
 ################################################
 ############ BASIC MC WEIGHTS ##################
 ################################################
@@ -57,6 +56,7 @@ mcCommonWeightNoMatch = 'SFweight'
 #mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC*59.74'
 mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
 mcCommonWeight_os = mcCommonWeight+'*chargeflip_w'
+
 ################################################
 ############### B-Tag  WP ######################
 ################################################
@@ -103,7 +103,7 @@ ptllDYW_LO = '((0.632927+0.0456956*gen_ptll-0.00154485*gen_ptll*gen_ptll+2.64397
 
 useDYtt = True
 
-files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext') + \
+files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO_ext1')
 
 
@@ -111,7 +111,7 @@ samples['DY'] = {
     'name': files,
     'weight': mcCommonWeight_os + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                      Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
-    'FilesPerJob': 17,
+    'FilesPerJob': 4,
 }
 addSampleWeight(samples,'DY','DYJetsToLL_M-50_ext2',ptllDYW_NLO)
 addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO_ext1',ptllDYW_LO)
@@ -272,7 +272,7 @@ files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
 samples['sm'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 9
 }
 
 # Linear Interaction Term
@@ -282,7 +282,7 @@ files = nanoGetSampleFiles(EftDirectory, 'SSWW_INT')
 samples['linear'] = {
     'name': files,
     'weight': mcCommonWeight+'*(1/0.3)',    # factor for cross section normalization (samples are generated with c_w = 0.3)
-    'FilesPerJob': 4
+    'FilesPerJob': 9
 }
 
 # Quadratic BSM Term
@@ -292,7 +292,7 @@ files = nanoGetSampleFiles(EftDirectory, 'SSWW_BSM')
 samples['quadratic'] = {
     'name': files,
     'weight': mcCommonWeight+'*(1/0.09)',   # factor for cross section normalization (samples are generated with c_w = 0.3)
-    'FilesPerJob': 4
+    'FilesPerJob': 9
 }
 
 ###########################################

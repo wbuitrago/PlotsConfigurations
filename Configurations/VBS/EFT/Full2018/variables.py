@@ -14,11 +14,21 @@
 #                             'fold': 3
 # }
 
-variables['mll']  = {   'name'  : 'mll',            #   variable name
-                        'range' : (3, 20. ,500),    #   variable range
-                        'xaxis' : 'mll [GeV]',      #   x axis name
-                        'fold'  : 3
-                        }                      
+# variables['mll_3bin']  = {      'name'  : 'mll',            #   variable name
+#                                 'range' : (3, 20. ,500),    #   variable range
+#                                 'xaxis' : 'mll [GeV]',      #   x axis name
+#                                 'fold'  : 3
+#                                 }        
+variables['mll_4bin']  = {      'name'  : 'mll',            #   variable name
+                                'range' : (4, 20. ,500),    #   variable range
+                                'xaxis' : 'mll [GeV]',      #   x axis name
+                                'fold'  : 3
+                                }  
+# variables['mll_5bin']  = {      'name'  : 'mll',            #   variable name
+#                                 'range' : (5, 20. ,500),    #   variable range
+#                                 'xaxis' : 'mll [GeV]',      #   x axis name
+#                                 'fold'  : 3
+#                                 }                                                                          
 
 # variables['mll_v1']  = {    'name'  : 'mll',            #   variable name
 #                             'range' : ([20,110,300,500],),    #   variable range
@@ -26,11 +36,21 @@ variables['mll']  = {   'name'  : 'mll',            #   variable name
 #                             'fold'  : 3
 #                         } 
 
-variables['pt1']  = {   'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (3,30.,300.),
-                        'xaxis' : 'p_{T} 1st lep [GeV]',
-                        'fold'  : 3
-                        }
+# variables['pt1_3bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
+#                                 'range' : (3,30.,300.),
+#                                 'xaxis' : 'p_{T} 1st lep [GeV]',
+#                                 'fold'  : 3
+#                                 }
+variables['pt1_4bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
+                                'range' : (4,30.,300.),
+                                'xaxis' : 'p_{T} 1st lep [GeV]',
+                                'fold'  : 3
+                                }
+# variables['pt1_5bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
+#                                 'range' : (5,30.,300.),
+#                                 'xaxis' : 'p_{T} 1st lep [GeV]',
+#                                 'fold'  : 3
+#                                 }                                                
 
 # variables['pt1_v1']  = {    'name'  : 'Alt$(Lepton_pt[0],-9999.)',
 #                             'range' : ([30,90,180,300],),
@@ -101,11 +121,21 @@ variables['dphill'] = {     'name' : 'Alt$(dphill,-9999.)',
 #                             'fold'  : 3
 #                             }
 
-variables['mjj']  = {  'name' : 'mjj',
+# variables['mjj_3bin']  = {  'name' : 'mjj',
+#                        'range': (3,500.,2000.),
+#                        'xaxis': 'mjj [GeV]',
+#                        'fold' : 3
+#                        } 
+variables['mjj_4bin']  = {  'name' : 'mjj',
                        'range': (4,500.,2000.),
                        'xaxis': 'mjj [GeV]',
                        'fold' : 3
                        } 
+# variables['mjj_5bin']  = {  'name' : 'mjj',
+#                        'range': (5,500.,2000.),
+#                        'xaxis': 'mjj [GeV]',
+#                        'fold' : 3
+#                        }                        
 
 # variables['mjj_v1']  = {    'name' : 'mjj',
 #                             'range': ([500,800,1100,1500,2000],),
@@ -199,11 +229,21 @@ variables['dphijj']  = {    'name' : 'my_dphijj' ,
 ##### MET    VARS #########
 ###########################
 
-variables['met']  = {   'name'  : 'MET_pt',         #  variable name
-                        'range' : (3,30,250),       #  variable range
-                        'xaxis' : 'met [GeV]',      #  x axis name
-                        'fold'  : 3
-                    }
+# variables['met_3bin']  = {      'name'  : 'MET_pt',         #  variable name
+#                                 'range' : (3,30,250),       #  variable range
+#                                 'xaxis' : 'met [GeV]',      #  x axis name
+#                                 'fold'  : 3
+#                     }
+variables['met_4bin']  = {      'name'  : 'MET_pt',         #  variable name
+                                'range' : (4,30,250),       #  variable range
+                                'xaxis' : 'met [GeV]',      #  x axis name
+                                'fold'  : 3
+                    }                    
+# variables['met_5bin']  = {      'name'  : 'MET_pt',         #  variable name
+#                                 'range' : (5,30,250),       #  variable range
+#                                 'xaxis' : 'met [GeV]',      #  x axis name
+#                                 'fold'  : 3
+#                     }                    
 
 # variables['met_v1']  = {    'name'  : 'MET_pt',         #  variable name
 #                             'range' : ([30,80,160,250],),       #  variable range
@@ -221,24 +261,24 @@ variables['met']  = {   'name'  : 'MET_pt',         #  variable name
 ##### bTag Variables ######
 ###########################
 
-# variables['Jet_btagDeepB_0']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[0]]',   
-#                                     'range' : (10,0,1),        
-#                                     'xaxis' : 'Jet_btagDeepB_0',     
-#                                     'fold'  : 3
-#                                 }
+variables['Jet_btagDeepB_0']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[0]]',   
+                                    'range' : (10,0,1),        
+                                    'xaxis' : 'Jet_btagDeepB_0',     
+                                    'fold'  : 3
+                                }
 
-# variables['Jet_btagDeepB_1']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[1]]',   
-#                                     'range' : (10,0,1),        
-#                                     'xaxis' : 'Jet_btagDeepB_1',     
-#                                     'fold'  : 3
-#                                 }
+variables['Jet_btagDeepB_1']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[1]]',   
+                                    'range' : (10,0,1),        
+                                    'xaxis' : 'Jet_btagDeepB_1',     
+                                    'fold'  : 3
+                                }
 
 # # one only for the first two jets. It gives the btag variable for the most central of the first two CleanJets
-# variables['my_btag_var']  = {   'name'  : '(fabs(CleanJet_eta[0]) <= fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[0]] + (fabs(CleanJet_eta[0]) > fabs(CleanJet_eta[1])) * Jet_btagDeepB[CleanJet_jetIdx[1]]',
-#                                 'range' : (10,0,1),        
-#                                 'xaxis' : 'central_jet_btag_var',     
-#                                 'fold'  : 3
-#                             }
+variables['central_jet_btag']  = {   'name'  : 'central_jet_btag',
+                                'range' : (10,0,1),        
+                                'xaxis' : 'central_jet_btag_var',     
+                                'fold'  : 3
+                            }
 
 
 #############################
@@ -251,11 +291,11 @@ variables['met']  = {   'name'  : 'MET_pt',         #  variable name
 #                          'fold': 3
 #                          }
 
-variables['Zlep1_sr']  = {  'name': 'zlep1',
-                            'range': (5,-0.75,0.75),
-                            'xaxis': 'Z^{lep}_{1}',
-                            'fold': 3
-                         }
+# variables['Zlep1_sr']  = {  'name': 'zlep1',
+#                             'range': (5,-0.75,0.75),
+#                             'xaxis': 'Z^{lep}_{1}',
+#                             'fold': 3
+#                          }
 
 # variables['Zlep2']  = {  'name': 'zlep2',
 #                          'range': (10,-1.5,1.5),
@@ -277,58 +317,86 @@ variables['Zlep1_sr']  = {  'name': 'zlep1',
 ###### 2D distributions ########
 ################################
 
-# pt1
-variables['pt1VSmjj'] = {   'name': 'pt1:mjj',                              # y:x
-                                    'range' : (4,500,2000,3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+# pt1 3bin
+# variables['pt1VSmjj_3bin'] = {   'name': 'pt1:mjj',                              # y:x
+#                                     'range' : (4,500,2000,3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
+#                                     'fold' : 3 ,
+#                                 }
+
+# pt1 4bin
+variables['pt1VSmjj_4bin'] = {   'name': 'pt1:mjj',                              # y:x
+                                    'range' : (4,500,2000,4,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
                                     'fold' : 3 ,
                                 }
 
-variables['pt1VSzlep1'] = {   'name':   'pt1:zlep1',                              # y:x
-                                        'range' : (5,-0.75,0.75, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                        'xaxis' : '1^{st} lep p_{T} : z_{l1}', 
-                                        'fold' : 3 ,
-                                } 
+# pt1 5bin
+# variables['pt1VSmjj_5bin'] = {   'name': 'pt1:mjj',                              # y:x
+#                                     'range' : (4,500,2000,5,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
+#                                     'fold' : 3 ,
+#                                 }                                
 
-variables['pt1VSdetajj'] = {   'name':   'pt1:detajj',                              # y:x
-                                        'range' : (4,2.5,9.0, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                        'xaxis' : '1^{st} lep p_{T} : d#eta_{jj}', 
-                                        'fold' : 3 ,
-                                }        
+# variables['pt1VSzlep1'] = {   'name':   'pt1:zlep1',                              # y:x
+#                                         'range' : (5,-0.75,0.75, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                         'xaxis' : '1^{st} lep p_{T} : z_{l1}', 
+#                                         'fold' : 3 ,
+#                                 } 
 
-variables['pt1VSdphijj'] = {   'name':   'pt1:my_dphijj',                              # y:x
-                                        'range' : (4,0.,3.141592 , 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                        'xaxis' : '1^{st} lep p_{T} : d#phi_{jj}', 
-                                        'fold' : 3 ,
-                                } 
+# variables['pt1VSdetajj'] = {   'name':   'pt1:detajj',                              # y:x
+#                                         'range' : (4,2.5,9.0, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                         'xaxis' : '1^{st} lep p_{T} : d#eta_{jj}', 
+#                                         'fold' : 3 ,
+#                                 }        
+
+# variables['pt1VSdphijj'] = {   'name':   'pt1:my_dphijj',                              # y:x
+#                                         'range' : (4,0.,3.141592 , 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                         'xaxis' : '1^{st} lep p_{T} : d#phi_{jj}', 
+#                                         'fold' : 3 ,
+#                                 } 
 
                                                                                           
 
 
-# mll
-variables['mllVSmjj'] = {   'name': 'mll:mjj',                              # y:x
-                                    'range' : (4,500,2000, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+# mll 3bin
+# variables['mllVSmjj_3bin'] = {   'name': 'mll:mjj',                              # y:x
+#                                     'range' : (4,500,2000, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                     'xaxis' : 'm_{ll} : m_{jj}',
+#                                     'fold' : 3 ,
+#                                 }
+
+# mll 4bin
+variables['mllVSmjj_4bin'] = {   'name': 'mll:mjj',                              # y:x
+                                    'range' : (4,500,2000, 4,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
                                     'xaxis' : 'm_{ll} : m_{jj}',
                                     'fold' : 3 ,
                                 }
 
-variables['mllVSzlep1'] = {   'name':   'mll:zlep1',                              # y:x
-                                        'range' : (5,-0.75,0.75, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                        'xaxis' : 'm_{ll} : z_{l1}', 
-                                        'fold' : 3 ,
-                                } 
+# # mll 5bin
+# variables['mllVSmjj_5bin'] = {   'name': 'mll:mjj',                              # y:x
+#                                     'range' : (4,500,2000, 5,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                     'xaxis' : 'm_{ll} : m_{jj}',
+#                                     'fold' : 3 ,
+#                                 }
 
-variables['mllVSdetajj'] = {   'name':   'mll:detajj',                              # y:x
-                                        'range' : (4,2.5,9.0, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                        'xaxis' : 'm_{ll} : d#eta_{jj}', 
-                                        'fold' : 3 ,
-                                }
+# variables['mllVSzlep1'] = {   'name':   'mll:zlep1',                              # y:x
+#                                         'range' : (5,-0.75,0.75, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                         'xaxis' : 'm_{ll} : z_{l1}', 
+#                                         'fold' : 3 ,
+#                                 } 
 
-variables['mllVSdphijj'] = {  'name':   'mll:my_dphijj',                              # y:x
-                                        'range' : (4,0.,3.141592, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                        'xaxis' : 'm_{ll} : d#phi_{jj}', 
-                                        'fold' : 3 ,
-                                }                                
+# variables['mllVSdetajj'] = {   'name':   'mll:detajj',                              # y:x
+#                                         'range' : (4,2.5,9.0, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                         'xaxis' : 'm_{ll} : d#eta_{jj}', 
+#                                         'fold' : 3 ,
+#                                 }
+
+# variables['mllVSdphijj'] = {  'name':   'mll:my_dphijj',                              # y:x
+#                                         'range' : (4,0.,3.141592, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                         'xaxis' : 'm_{ll} : d#phi_{jj}', 
+#                                         'fold' : 3 ,
+#                                 }                                
 
 
 # 2d with variable binning   

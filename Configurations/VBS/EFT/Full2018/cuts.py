@@ -41,9 +41,9 @@ cuts['SS_incl']  = {
    }
 }
 
-cuts['SS_incl_all']  = { 
-   'expr' : 'ssLep && zVeto ',
-}
+# cuts['SS_incl_all']  = { 
+#    'expr' : 'ssLep && zVeto ',
+# }
 
 #############################################
 ########### VBS_SS signal region ############
@@ -73,39 +73,39 @@ cuts['SS_sr']  = {
 
 # signal region w/o categories
 
-cuts['SS_sr_all']  = { 
-   'expr': 'ssLep && \
-            Lepton_pt[0] > 30 &&\
-            Lepton_pt[1] > 30 &&\
-            3rd_lep_veto && \
-            zVeto && \
-            bVeto && \
-            detajj > 2.5 &&\
-            mjj > 500 &&\
-            mll > 20 &&\
-            MET_pt>30 &&\
-            softmuon_veto &&\
-            tauVeto_ww &&\
-            z_lep_sel',
-}
+# cuts['SS_sr_all']  = { 
+#    'expr': 'ssLep && \
+#             Lepton_pt[0] > 30 &&\
+#             Lepton_pt[1] > 30 &&\
+#             3rd_lep_veto && \
+#             zVeto && \
+#             bVeto && \
+#             detajj > 2.5 &&\
+#             mjj > 500 &&\
+#             mll > 20 &&\
+#             MET_pt>30 &&\
+#             softmuon_veto &&\
+#             tauVeto_ww &&\
+#             z_lep_sel',
+# }
 
 #############################################
 ########### low_mjj control region ##########
 #############################################
 
-cuts['SS_lowmjj_all']  = { 
-   'expr': 'ssLep && \
-            Lepton_pt[0] > 30 &&\
-            Lepton_pt[1] > 30 &&\
-            3rd_lep_veto && \
-            zVeto && \
-            bVeto && \
-            (150 < mjj && mjj < 500) &&\
-            mll > 20 &&\
-            MET_pt>30 &&\
-            softmuon_veto &&\
-            tauVeto_ww',
-}
+# cuts['SS_lowmjj_all']  = { 
+#    'expr': 'ssLep && \
+#             Lepton_pt[0] > 30 &&\
+#             Lepton_pt[1] > 30 &&\
+#             3rd_lep_veto && \
+#             zVeto && \
+#             bVeto && \
+#             (150 < mjj && mjj < 500) &&\
+#             mll > 20 &&\
+#             MET_pt>30 &&\
+#             softmuon_veto &&\
+#             tauVeto_ww',
+# }
 
 cuts['SS_lowmjj']  = { 
    'expr': 'ssLep && \
@@ -126,3 +126,52 @@ cuts['SS_lowmjj']  = {
          'mumu'  : 'ss_mumu',
    }
 }
+
+#############################################
+########### no-btag control region ##########
+#############################################
+
+# cuts['SS_nobtag']  = { 
+#    'expr': 'ssLep && \
+#             Lepton_pt[0] > 30 &&\
+#             Lepton_pt[1] > 30 &&\
+#             3rd_lep_veto && \
+#             zVeto && \
+#             detajj > 2.5 &&\
+#             mjj > 500 &&\
+#             mll > 20 &&\
+#             MET_pt>30 &&\
+#             softmuon_veto &&\
+#             tauVeto_ww &&\
+#             z_lep_sel',
+#    # sub categorization
+#    'categories' : {
+#          'ee'    : 'ss_ee',
+#          'emu'   : 'ss_emu',
+#          'mumu'  : 'ss_mumu',
+#    }
+# }
+
+# cbt_cuts = [ 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0 ]
+
+# for value in cbt_cuts:
+#       cuts['SS_sr_cbt_{}'.format(str(value))]  = { 
+#             'expr': 'ssLep && \
+#                   Lepton_pt[0] > 30 &&\
+#                   Lepton_pt[1] > 30 &&\
+#                   3rd_lep_veto && \
+#                   zVeto && \
+#                   detajj > 2.5 &&\
+#                   mjj > 500 &&\
+#                   mll > 20 &&\
+#                   MET_pt>30 &&\
+#                   softmuon_veto &&\
+#                   tauVeto_ww &&\
+#                   z_lep_sel' + ' && central_jet_btag < {}'.format(str(value)) ,
+#             # sub categorization
+#             'categories' : {
+#                   'ee'    : 'ss_ee',
+#                   'emu'   : 'ss_emu',
+#                   'mumu'  : 'ss_mumu',
+#             }
+#       }

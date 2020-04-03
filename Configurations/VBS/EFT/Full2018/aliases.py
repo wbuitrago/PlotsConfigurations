@@ -16,7 +16,7 @@ mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','
 
 # chargeflip
 aliases['chargeflip_w'] = {
-    'linesToAdd': ['.L %s/VBS/EFT/Full2018/mischarge_sf+' % configurations],
+    'linesToAdd': ['.L %s/VBS/EFT/Full2018/mischarge_sf.cc+' % configurations],
     'class': 'misID_sf',
     'samples': mc,
 }
