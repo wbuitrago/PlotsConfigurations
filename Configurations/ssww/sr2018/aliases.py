@@ -19,7 +19,7 @@ aliases['softmuon_veto']={
 }
 # chargeflip
 aliases['chargeflip_w'] = {
-    'linesToAdd': ['.L %s/ssww/sr2018/mischarge_sf+' % configurations],
+    'linesToAdd': ['.L %s/ssww/sr2018/mischarge_sf.cc+' % configurations],
     'class': 'misID_sf',
     'samples': mc,
 }
