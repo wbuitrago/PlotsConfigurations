@@ -129,32 +129,32 @@ addSampleWeight(samples,'DY_ss','DYJetsToLL_M-50_ext2',ptllDYW_NLO)
 addSampleWeight(samples,'DY_ss','DYJetsToLL_M-10to50-LO_ext1',ptllDYW_LO)
 
 
-###### Top #######
-'''
-files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_s-channel_ext1') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1') + \
-    nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1')
+# ###### Top #######
 
-samples['top'] = {
-    'name': files,
-    'weight': mcCommonWeight_chargeflip,
-    'FilesPerJob': 2,
-}
+# files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
+#     nanoGetSampleFiles(mcDirectory, 'ST_s-channel_ext1') + \
+#     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
+#     nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
+#     nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1') + \
+#     nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1')
 
-# ss version for check
-addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
+# samples['top'] = {
+#     'name': files,
+#     'weight': mcCommonWeight_chargeflip,
+#     'FilesPerJob': 2,
+# }
 
-samples['top_ss'] = {
-    'name': files,
-    'weight': mcCommonWeight_ss,
-    'FilesPerJob': 2,
-}
+# # ss version for check
+# addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 
-addSampleWeight(samples,'top_ss','TTTo2L2Nu','Top_pTrw')
-'''
+# samples['top_ss'] = {
+#     'name': files,
+#     'weight': mcCommonWeight_ss,
+#     'FilesPerJob': 2,
+# }
+
+# addSampleWeight(samples,'top_ss','TTTo2L2Nu','Top_pTrw')
+
 
 # ######## Vg ########  
 
