@@ -55,8 +55,9 @@ Nlep='2'
 mcCommonWeightNoMatch = 'SFweight'
 #mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC*59.74'
 mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
-mcCommonWeight_os = mcCommonWeight+'*osLep'
-mcCommonWeight_os_chargeflip = mcCommonWeight_os+'*chargeflip_w'
+
+mcCommonWeight_chargeflip = mcCommonWeight+'*chargeflip_w'
+
 mcCommonWeight_ss = mcCommonWeight+'*ssLep'
 
 ################################################
@@ -103,21 +104,57 @@ DataTrig_2018 = {
 ptllDYW_NLO = '(0.87*(gen_ptll<10)+(0.379119+0.099744*gen_ptll-0.00487351*gen_ptll**2+9.19509e-05*gen_ptll**3-6.0212e-07*gen_ptll**4)*(gen_ptll>=10 && gen_ptll<45)+(9.12137e-01+1.11957e-04*gen_ptll-3.15325e-06*gen_ptll**2-4.29708e-09*gen_ptll**3+3.35791e-11*gen_ptll**4)*(gen_ptll>=45 && gen_ptll<200) + 1*(gen_ptll>200))'
 ptllDYW_LO = '((0.632927+0.0456956*gen_ptll-0.00154485*gen_ptll*gen_ptll+2.64397e-05*gen_ptll*gen_ptll*gen_ptll-2.19374e-07*gen_ptll*gen_ptll*gen_ptll*gen_ptll+6.99751e-10*gen_ptll*gen_ptll*gen_ptll*gen_ptll*gen_ptll)*(gen_ptll>0)*(gen_ptll<100)+(1.41713-0.00165342*gen_ptll)*(gen_ptll>=100)*(gen_ptll<300)+1*(gen_ptll>=300))'
 
-useDYtt = True
+# useDYtt = True # not used!
 
 files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO_ext1')
 
-
 samples['DY'] = {
     'name': files,
-    'weight': mcCommonWeight_os_chargeflip + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
+    'weight': mcCommonWeight_chargeflip + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                      Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
-    'FilesPerJob': 4,
+    'FilesPerJob': 3,
 }
 addSampleWeight(samples,'DY','DYJetsToLL_M-50_ext2',ptllDYW_NLO)
 addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO_ext1',ptllDYW_LO)
 
+# ss version for check
+samples['DY_ss'] = {
+    'name': files,
+    'weight': mcCommonWeight_ss + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
+                                     Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
+    'FilesPerJob': 3,
+}
+addSampleWeight(samples,'DY_ss','DYJetsToLL_M-50_ext2',ptllDYW_NLO)
+addSampleWeight(samples,'DY_ss','DYJetsToLL_M-10to50-LO_ext1',ptllDYW_LO)
+
+
+###### Top #######
+'''
+files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
+    nanoGetSampleFiles(mcDirectory, 'ST_s-channel_ext1') + \
+    nanoGetSampleFiles(mcDirectory, 'ST_t-channel_antitop') + \
+    nanoGetSampleFiles(mcDirectory, 'ST_t-channel_top') + \
+    nanoGetSampleFiles(mcDirectory, 'ST_tW_antitop_ext1') + \
+    nanoGetSampleFiles(mcDirectory, 'ST_tW_top_ext1')
+
+samples['top'] = {
+    'name': files,
+    'weight': mcCommonWeight_chargeflip,
+    'FilesPerJob': 2,
+}
+
+# ss version for check
+addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
+
+samples['top_ss'] = {
+    'name': files,
+    'weight': mcCommonWeight_ss,
+    'FilesPerJob': 2,
+}
+
+addSampleWeight(samples,'top_ss','TTTo2L2Nu','Top_pTrw')
+'''
 
 # ######## Vg ########  
 
@@ -260,22 +297,22 @@ addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO_ext1',ptllDYW_LO)
 # #     'FilesPerJob': 4
 # # }
 
-# ###########################################
-# #############  EFT samples  ###############
-# ###########################################
+###########################################
+#############  EFT samples  ###############
+###########################################
 
-# private samples location 
-EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
+# # private samples location 
+# EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
 
-# SM Term
+# # SM Term
 
-files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
+# files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
 
-samples['sm'] = {
-    'name': files,
-    'weight': mcCommonWeight_ss,
-    'FilesPerJob': 9
-}
+# samples['sm'] = {
+#     'name': files,
+#     'weight': mcCommonWeight_ss,
+#     'FilesPerJob': 4
+# }
 
 # # Linear Interaction Term
 
@@ -318,22 +355,22 @@ samples['sm'] = {
 #         samples['Fake_lep']['name'].extend(files)
 #         samples['Fake_lep']['weights'].extend([DataTrig_2018[pd]] * len(files))
 
-# ###########################################
-# ################## DATA ###################
-# ###########################################
+###########################################
+################## DATA ###################
+###########################################
 
-# dataDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6'
+dataDirectory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Run2018_102X_nAODv6_Full2018v6/DATAl1loose2018v6__l2loose__l2tightOR2018v6'
 
-# samples['DATA'] = {
-#     'name': [],
-#     'weight': 'METFilter_DATA*LepWPCut',
-#     'weights': [],
-#     'isData': ['all'],
-#     'FilesPerJob': 17
-# }
+samples['DATA'] = {
+    'name': [],
+    'weight': 'METFilter_DATA*LepWPCut*ssLep',
+    'weights': [],
+    'isData': ['all'],
+    'FilesPerJob': 17
+}
 
-# for _, sd in DataRun_2018:
-#     for pd in DataSets_2018:
-#         files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
-#         samples['DATA']['name'].extend(files)
-#         samples['DATA']['weights'].extend([DataTrig_2018[pd]] * len(files))
+for _, sd in DataRun_2018:
+    for pd in DataSets_2018:
+        files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
+        samples['DATA']['name'].extend(files)
+        samples['DATA']['weights'].extend([DataTrig_2018[pd]] * len(files))

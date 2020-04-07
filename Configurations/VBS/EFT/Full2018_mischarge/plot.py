@@ -41,12 +41,12 @@ eft_scale = 1.0
 
 # to use this just comment out groupplots for all the samples included
 # Other Bgr
-groupPlot['Other Bgr']  = {
-    'nameHR'   : "Other Bgr",
-    'isSignal' : 0,
-    'color'    : ROOT.kGreen,
-    'samples'  : ['ZZ','VVV','TTV','DPS']
-}
+# groupPlot['Other Bgr']  = {
+#     'nameHR'   : "Other Bgr",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kGreen,
+#     'samples'  : ['ZZ','VVV','TTV','DPS']
+# }
 
 # groupPlot['ZZ']  = {
 #     'nameHR' : "ZZ",
@@ -71,44 +71,66 @@ groupPlot['Other Bgr']  = {
 #     'isSignal' : 0,
 #     'color': ROOT.kGray, # kGreen
 #     'samples'  : ['DPS']
+# # }
+# groupPlot['WZ_QCD']  = {
+#     'nameHR' : "WZ QCD",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kRed, # kViolet+10
+#     'samples'  : ['WZ_QCD']
 # }
-groupPlot['WZ_QCD']  = {
-    'nameHR' : "WZ QCD",
-    'isSignal' : 0,
-    'color'    : ROOT.kRed, # kViolet+10
-    'samples'  : ['WZ_QCD']
-}
-groupPlot['WLLJJ_EWK']  = {
-    'nameHR' : "WZ EWK",
-    'isSignal' : 0,
-    'color'    : ROOT.kMagenta, # kViolet+10
-    'samples'  : ['WLLJJ_EWK']
-}
-groupPlot['Vg']  = {
-                  'nameHR' : "V#gamma",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kOrange,   # kOrange + 10
-                  'samples'  : ['Vg','VgS_L','VgS_H']
-              }
-groupPlot['WW_QCD']  = {
-                  'nameHR' : "W^{#pm}W^{#pm} QCD",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kViolet, # kViolet
-                  'samples'  : ['WW_QCD']
-              }
-groupPlot['non-prompt']  = {
-                  'nameHR' : 'non-Prompt',
-                  'isSignal' : 0,
-                  'color': ROOT.kYellow,    # kYellow
-                  'samples'  : ['Fake_lep']
-              }
-groupPlot['mis-charge']  = {
-                  'nameHR' : 'mis-charge',
+# groupPlot['WLLJJ_EWK']  = {
+#     'nameHR' : "WZ EWK",
+#     'isSignal' : 0,
+#     'color'    : ROOT.kMagenta, # kViolet+10
+#     'samples'  : ['WLLJJ_EWK']
+# }
+# groupPlot['Vg']  = {
+#                   'nameHR' : "V#gamma",
+#                   'isSignal' : 0,
+#                   'color'    : ROOT.kOrange,   # kOrange + 10
+#                   'samples'  : ['Vg','VgS_L','VgS_H']
+#               }
+# groupPlot['WW_QCD']  = {
+#                   'nameHR' : "W^{#pm}W^{#pm} QCD",
+#                   'isSignal' : 0,
+#                   'color'    : ROOT.kViolet, # kViolet
+#                   'samples'  : ['WW_QCD']
+#               }
+# groupPlot['non-prompt']  = {
+#                   'nameHR' : 'non-Prompt',
+#                   'isSignal' : 0,
+#                   'color': ROOT.kYellow,    # kYellow
+#                   'samples'  : ['Fake_lep']
+#               }
+groupPlot['DY']  = {
+                  'nameHR' : 'DY',
                   'isSignal' : 0,
                   'color': Grey,    # kYellow
                   'samples'  : ['DY']
-              }              
+              } 
+              
+groupPlot['DY_ss']  = {
+                  'nameHR' : 'DY_ss',
+                  'isSignal' : 0,
+                  'color': Green,    # kYellow
+                  'samples'  : ['DY_ss']
+              }                 
 
+                                        
+
+# groupPlot['DY_ss']  = {
+#                   'nameHR' : 'DY_ss',
+#                   'isSignal' : 0,
+#                   'color': Green,    # kYellow
+#                   'samples'  : ['DY_ss']
+#               }              
+
+# groupPlot['top']  = {
+#                   'nameHR' : 'top',
+#                   'isSignal' : 0,
+#                   'color': Yellow,    # kYellow
+#                   'samples'  : ['top']
+#               }  
 
 # SM official samples
 # groupPlot['WW_EWK']  = {
@@ -128,25 +150,25 @@ groupPlot['mis-charge']  = {
 #                   'samples'  : ['sm','linear','quadratic']
 #               }
 
-groupPlot['WW_EWK_sm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kBlue, 
-                  'samples'  : ['sm']
-              }              
+# groupPlot['WW_EWK_sm']  = {
+#                   'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
+#                   'isSignal' : 0,
+#                   'color'    : ROOT.kBlue, 
+#                   'samples'  : ['sm']
+#               }              
 
-groupPlot['WW_EWK_int']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK int",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kViolet, 
-                  'samples'  : ['linear']
-              }
-groupPlot['WW_EWK_bsm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK bsm ",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kCyan+2, 
-                  'samples'  : ['quadratic']
-              }
+# groupPlot['WW_EWK_int']  = {
+#                   'nameHR'   : "W^{#pm}W^{#pm} EWK int",
+#                   'isSignal' : 0,
+#                   'color'    : ROOT.kViolet, 
+#                   'samples'  : ['linear']
+#               }
+# groupPlot['WW_EWK_bsm']  = {
+#                   'nameHR'   : "W^{#pm}W^{#pm} EWK bsm ",
+#                   'isSignal' : 0,
+#                   'color'    : ROOT.kCyan+2, 
+#                   'samples'  : ['quadratic']
+#               }
 #####################################
 
 
@@ -155,80 +177,80 @@ groupPlot['WW_EWK_bsm']  = {
 # keys here must match keys in samples.py
 #
 
-##Fake and prompt substraction
-plot['Fake_lep']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+# ##Fake and prompt substraction
+# plot['Fake_lep']  = {
+#     'color': Yellow,    # kYellow
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-plot['WZ_QCD']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+# plot['WZ_QCD']  = {
+#     'color': Violet+10, # kViolet+10
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-plot['WLLJJ_EWK']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+# plot['WLLJJ_EWK']  = {
+#     'color': Violet+10, # kViolet+10
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-plot['WW_QCD']  = {
-    'color': Violet, # kViolet
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+# plot['WW_QCD']  = {
+#     'color': Violet, # kViolet
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-plot['Vg']  = {
-    'color': Orange+10, # kOrange+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['VgS_L']  = {
-    'color': Orange+10, # kOrange+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['VgS_H']  = {
-    'color': Orange+10, # kOrange+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-##Reducible Background
-##VV plot
-plot['ZZ']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['DPS']  = {
-    'color': Violet+10, # kViolet+10
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-##VVV
-plot['VVV']  = {
-    'color': Green, # kGreen
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
-plot['TTV']  = {
-    'color': Green+10, # kGreen
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+# plot['Vg']  = {
+#     'color': Orange+10, # kOrange+10
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+# plot['VgS_L']  = {
+#     'color': Orange+10, # kOrange+10
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+# plot['VgS_H']  = {
+#     'color': Orange+10, # kOrange+10
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+# ##Reducible Background
+# ##VV plot
+# plot['ZZ']  = {
+#     'color': Violet+10, # kViolet+10
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+# plot['DPS']  = {
+#     'color': Violet+10, # kViolet+10
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+# ##VVV
+# plot['VVV']  = {
+#     'color': Green, # kGreen
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+# plot['TTV']  = {
+#     'color': Green+10, # kGreen
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 plot['DY']  = {
     'color': Grey, # kGreen
     'isSignal' : 0,
@@ -236,6 +258,27 @@ plot['DY']  = {
     'scale'    : 1.0
 }
 
+plot['DY_ss']  = {
+    'color': Grey, # kGreen
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+# plot['DY_ss']  = {
+#     'color': Green, # kGreen
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
+
+
+# plot['top']  = {
+#     'color': Yellow, # kGreen
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
 # ##Signal
 # plot['WpWp_EWK']  = {
@@ -248,29 +291,29 @@ plot['DY']  = {
 #####################################
 # EFT samples (internal latinos)
 ## Standard Model
-eft_scale = 1.0
-plot['sm']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 1,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+# eft_scale = 1.0
+# plot['sm']  = {
+#     'color': Azure+4, # kAzure+4
+#     'isSignal' : 1,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
-## Linear Interference Term
-plot['linear']  = {
-    'color': Red+4, # kAzure+4
-    'isSignal' : 1,
-    'isData'   : 0,
-    'scale'    : eft_scale
-}
+# ## Linear Interference Term
+# plot['linear']  = {
+#     'color': Red+4, # kAzure+4
+#     'isSignal' : 1,
+#     'isData'   : 0,
+#     'scale'    : eft_scale
+# }
 
-## Quadratic BSM Term
-plot['quadratic']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 1,
-    'isData'   : 0,
-    'scale'    : eft_scale
-}            
+# ## Quadratic BSM Term
+# plot['quadratic']  = {
+#     'color': Azure+4, # kAzure+4
+#     'isSignal' : 1,
+#     'isData'   : 0,
+#     'scale'    : eft_scale
+# }            
 
 #####################################
 

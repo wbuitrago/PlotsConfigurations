@@ -14,9 +14,11 @@ bWP = '0.4184'
 
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 
+
 # chargeflip
+# remember to CHECK THE FOLDER!!!
 aliases['chargeflip_w'] = {
-    'linesToAdd': ['.L %s/VBS/EFT/Full2018/mischarge_sf_probdata.cc+' % configurations],
+    'linesToAdd': ['.L %s/VBS/EFT/Full2018_mischarge/mischarge_sf.cc+' % configurations],
     'class': 'misID_sf',
     'samples': mc,
 }
@@ -88,8 +90,9 @@ aliases['PromptGenLepMatch2l'] = {
     'expr': 'Alt$(Lepton_promptgenmatched[0]*Lepton_promptgenmatched[1], 0)',
     'samples': mc
 }
+
 aliases['Top_pTrw'] = {
-    'expr': '(topGenPt * antitopGenPt > 0.) * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPt) * TMath::Exp(0.0615 - 0.0005 * antitopGenPt))) + (topGenPt * antitopGenPt <= 0.)',
+    'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPt) * TMath::Exp(0.0615 - 0.0005 * antitopGenPt))) + isSingleTop',
     'samples': ['top']
 }
 

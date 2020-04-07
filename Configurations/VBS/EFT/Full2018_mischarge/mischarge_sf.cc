@@ -24,7 +24,8 @@ protected:
   void bindTree_(multidraw::FunctionLibrary&) override;
 
   UIntValueReader* nLepton;
-  FloatArrayReader* Lepton_pdgId;
+  // FloatArrayReader* Lepton_pdgId;
+  IntArrayReader* Lepton_pdgId;  // mod by D.B. due to error "The branch Lepton_pdgId contains data of type int. It cannot be accessed by a TTreeReaderArray<float>"
   FloatArrayReader* Lepton_pt;
   FloatArrayReader* Lepton_eta;
 
@@ -70,9 +71,10 @@ misID_sf::evaluate(unsigned)
   }
   if(Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1])!=11*11)
     return 0.;
-
-  double chargeflip_rate[3]={4.65073e-05,2.44799e-04,9.31889e-04};
-  double sf[3]={1.18974,1.52196,1.22942};
+  
+  double chargeflip_rate[3]={5.53316e-05,3.72575e-04,1.14568e-03};
+  //double chargeflip_rate[3]={4.65073e-05,2.44799e-04,9.31889e-04};
+  //double sf[3]={1.18974,1.52196,1.22942};
   int idx1=0;
   int idx2=0;
   if(abs(Lepton_eta->At(iPromptL[0]))>=0 && abs(Lepton_eta->At(iPromptL[0]))<1.0){
@@ -91,11 +93,12 @@ misID_sf::evaluate(unsigned)
     idx2=2;
   }
 
-  double _sf1=sf[idx1];
-  double _sf2=sf[idx2];
+  //double _sf1=sf[idx1];
+  //double _sf2=sf[idx2];
   double _rate1=chargeflip_rate[idx1];
   double _rate2=chargeflip_rate[idx2];
-  double mis_id_sf= _rate1*_sf1*(1-_rate2*_sf2)+(1-_rate1*_sf1)*_rate2*_sf2;
+  //double mis_id_sf= _rate1*_sf1*(1-_rate2*_sf2)+(1-_rate1*_sf1)*_rate2*_sf2;
+  double mis_id_sf= _rate1*(1-_rate2)+(1-_rate1)*_rate2;
   return mis_id_sf;
 }
 

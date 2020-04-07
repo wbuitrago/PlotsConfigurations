@@ -40,12 +40,12 @@ variables['mll_4bin']  = {      'name'  : 'mll',            #   variable name
 #                                 'range' : (3,30.,300.),
 #                                 'xaxis' : 'p_{T} 1st lep [GeV]',
 #                                 'fold'  : 3
+# #                                 }
+# variables['pt1_4bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
+#                                 'range' : (4,30.,300.),
+#                                 'xaxis' : 'p_{T} 1st lep [GeV]',
+#                                 'fold'  : 3
 #                                 }
-variables['pt1_4bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-                                'range' : (4,30.,300.),
-                                'xaxis' : 'p_{T} 1st lep [GeV]',
-                                'fold'  : 3
-                                }
 # variables['pt1_5bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
 #                                 'range' : (5,30.,300.),
 #                                 'xaxis' : 'p_{T} 1st lep [GeV]',
@@ -59,11 +59,11 @@ variables['pt1_4bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
 #                         }
 
 
-variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (3,30.,200.),
-                        'xaxis' : 'p_{T} 2nd lep [GeV]',
-                        'fold'  : 3
-                        }      
+# variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
+#                         'range' : (3,30.,200.),
+#                         'xaxis' : 'p_{T} 2nd lep [GeV]',
+#                         'fold'  : 3
+#                         }      
 
 # variables['pt2_v1']  = {    'name'  : 'Alt$(Lepton_pt[1],-9999.)',
 #                             'range' : ([30,70,120,200],),
@@ -84,11 +84,11 @@ variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
 #                             'fold' : 3
 #                             }
 
-variables['detall']  = {  'name' : 'fabs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],9999.))',
-                          'range': (5,0.0,5.0),
-                          'xaxis': 'deta ll',
-                          'fold' : 3
-                          }                            
+# variables['detall']  = {  'name' : 'fabs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],9999.))',
+#                           'range': (5,0.0,5.0),
+#                           'xaxis': 'deta ll',
+#                           'fold' : 3
+#                           }                            
 
 ## phi leptons
        
@@ -104,11 +104,11 @@ variables['detall']  = {  'name' : 'fabs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_
 #                             'fold' : 3  
 #                             }               
 
-variables['dphill'] = {     'name' : 'Alt$(dphill,-9999.)',
-                            'range': (5,0,3.141592),
-                            'xaxis': 'dphi ll',
-                            'fold' : 3    
-                            }                               
+# variables['dphill'] = {     'name' : 'Alt$(dphill,-9999.)',
+#                             'range': (5,0,3.141592),
+#                             'xaxis': 'dphi ll',
+#                             'fold' : 3    
+#                             }                               
 
 
 ###########################
@@ -149,11 +149,11 @@ variables['mjj_4bin']  = {  'name' : 'mjj',
 #                             'fold' : 3
 #                         }    
 
-variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
-                           'range' : (3,30.,300),
-                           'xaxis' : 'p_{T} 1st jet [GeV]',
-                           'fold'  : 3
-                           }
+# variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
+#                            'range' : (3,30.,300),
+#                            'xaxis' : 'p_{T} 1st jet [GeV]',
+#                            'fold'  : 3
+#                            }
 
 # variables['jetpt1_v1']  = { 'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
 #                             'range' : ([30,90,150,220,300],),
@@ -161,11 +161,11 @@ variables['jetpt1']  = {   'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
 #                             'fold'  : 3
 #                             }                           
 
-variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
-                           'range' : (3,30.,200),
-                           'xaxis' : 'p_{T} 2nd jet [GeV]',
-                           'fold'  : 3
-                           }     
+# variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
+#                            'range' : (3,30.,200),
+#                            'xaxis' : 'p_{T} 2nd jet [GeV]',
+#                            'fold'  : 3
+#                            }     
 
 # variables['jetpt2_v1']  = { 'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
 #                             'range' : ([30,70,130,200],),
@@ -186,11 +186,11 @@ variables['jetpt2']  = {   'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
 #                         'fold' : 3
 #                         }      
 
-variables['detajj']  = {  'name' : 'detajj',
-                          'range': (4,2.5,9.0),
-                          'xaxis': 'deta jj',
-                          'fold' : 3
-                          }
+# variables['detajj']  = {  'name' : 'detajj',
+#                           'range': (4,2.5,9.0),
+#                           'xaxis': 'deta jj',
+#                           'fold' : 3
+#                           }
 
 # variables['detajj_v1']  = { 'name' : 'detajj',
 #                             'range': ([2.5,3.5,5.0,6.5,9.0],),
@@ -212,11 +212,11 @@ variables['detajj']  = {  'name' : 'detajj',
 #                         'fold' : 3  
 #                         }                             
 
-variables['dphijj']  = {    'name' : 'my_dphijj' ,
-                            'range': (5,0.0,3.141592),
-                            'xaxis': 'dphi jj',
-                            'fold' : 3
-                        }      
+# variables['dphijj']  = {    'name' : 'my_dphijj' ,
+#                             'range': (5,0.0,3.141592),
+#                             'xaxis': 'dphi jj',
+#                             'fold' : 3
+#                         }      
 
 # variables['dphijj_v1']  = {    'name' : 'my_dphijj' ,
 #                             'range': (4,0.0,3.141592),
@@ -234,11 +234,11 @@ variables['dphijj']  = {    'name' : 'my_dphijj' ,
 #                                 'xaxis' : 'met [GeV]',      #  x axis name
 #                                 'fold'  : 3
 #                     }
-variables['met_4bin']  = {      'name'  : 'MET_pt',         #  variable name
-                                'range' : (4,30,250),       #  variable range
-                                'xaxis' : 'met [GeV]',      #  x axis name
-                                'fold'  : 3
-                    }                    
+# variables['met_4bin']  = {      'name'  : 'MET_pt',         #  variable name
+#                                 'range' : (4,30,250),       #  variable range
+#                                 'xaxis' : 'met [GeV]',      #  x axis name
+#                                 'fold'  : 3
+#                     }                    
 # variables['met_5bin']  = {      'name'  : 'MET_pt',         #  variable name
 #                                 'range' : (5,30,250),       #  variable range
 #                                 'xaxis' : 'met [GeV]',      #  x axis name
@@ -261,24 +261,24 @@ variables['met_4bin']  = {      'name'  : 'MET_pt',         #  variable name
 ##### bTag Variables ######
 ###########################
 
-variables['Jet_btagDeepB_0']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[0]]',   
-                                    'range' : (10,0,1),        
-                                    'xaxis' : 'Jet_btagDeepB_0',     
-                                    'fold'  : 3
-                                }
+# variables['Jet_btagDeepB_0']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[0]]',   
+#                                     'range' : (10,0,1),        
+#                                     'xaxis' : 'Jet_btagDeepB_0',     
+#                                     'fold'  : 3
+#                                 }
 
-variables['Jet_btagDeepB_1']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[1]]',   
-                                    'range' : (10,0,1),        
-                                    'xaxis' : 'Jet_btagDeepB_1',     
-                                    'fold'  : 3
-                                }
+# variables['Jet_btagDeepB_1']  = {   'name'  : 'Jet_btagDeepB[CleanJet_jetIdx[1]]',   
+#                                     'range' : (10,0,1),        
+#                                     'xaxis' : 'Jet_btagDeepB_1',     
+#                                     'fold'  : 3
+#                                 }
 
-# # one only for the first two jets. It gives the btag variable for the most central of the first two CleanJets
-variables['central_jet_btag']  = {   'name'  : 'central_jet_btag',
-                                'range' : (10,0,1),        
-                                'xaxis' : 'central_jet_btag_var',     
-                                'fold'  : 3
-                            }
+# # # one only for the first two jets. It gives the btag variable for the most central of the first two CleanJets
+# variables['central_jet_btag']  = {   'name'  : 'central_jet_btag',
+#                                 'range' : (10,0,1),        
+#                                 'xaxis' : 'central_jet_btag_var',     
+#                                 'fold'  : 3
+#                             }
 
 
 #############################
@@ -324,12 +324,12 @@ variables['central_jet_btag']  = {   'name'  : 'central_jet_btag',
 #                                     'fold' : 3 ,
 #                                 }
 
-# pt1 4bin
-variables['pt1VSmjj_4bin'] = {   'name': 'pt1:mjj',                              # y:x
-                                    'range' : (4,500,2000,4,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                    'xaxis' : '1^{st} lep p_{T} : m_{jj}',
-                                    'fold' : 3 ,
-                                }
+# # pt1 4bin
+# variables['pt1VSmjj_4bin'] = {   'name': 'pt1:mjj',                              # y:x
+#                                     'range' : (4,500,2000,4,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
+#                                     'fold' : 3 ,
+#                                 }
 
 # pt1 5bin
 # variables['pt1VSmjj_5bin'] = {   'name': 'pt1:mjj',                              # y:x
@@ -366,12 +366,12 @@ variables['pt1VSmjj_4bin'] = {   'name': 'pt1:mjj',                             
 #                                     'fold' : 3 ,
 #                                 }
 
-# mll 4bin
-variables['mllVSmjj_4bin'] = {   'name': 'mll:mjj',                              # y:x
-                                    'range' : (4,500,2000, 4,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-                                    'xaxis' : 'm_{ll} : m_{jj}',
-                                    'fold' : 3 ,
-                                }
+# # mll 4bin
+# variables['mllVSmjj_4bin'] = {   'name': 'mll:mjj',                              # y:x
+#                                     'range' : (4,500,2000, 4,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
+#                                     'xaxis' : 'm_{ll} : m_{jj}',
+#                                     'fold' : 3 ,
+#                                 }
 
 # # mll 5bin
 # variables['mllVSmjj_5bin'] = {   'name': 'mll:mjj',                              # y:x
