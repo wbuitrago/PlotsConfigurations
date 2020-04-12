@@ -20,3 +20,8 @@
 * **Full2018_mischarge**
 
   * mischarge test configurations
+
+* **Interference_test**
+
+  * EWK_QCD interference for wwss vbs samples 
+  
