@@ -69,7 +69,7 @@ misID_sf::evaluate(unsigned)
         return 0;
     }
   }
-  if(Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1])!=11*11)
+  if(Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1])!= -11*11)   //minus sign corrected  ( we want to apply the weight to os ee)
     return 0.;
   
   double chargeflip_rate[3]={5.53316e-05,3.72575e-04,1.14568e-03};
