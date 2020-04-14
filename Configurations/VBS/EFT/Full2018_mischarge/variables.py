@@ -19,11 +19,18 @@
 #                                 'xaxis' : 'mll [GeV]',      #   x axis name
 #                                 'fold'  : 3
 #                                 }        
-variables['mll_4bin']  = {      'name'  : 'mll',            #   variable name
-                                'range' : (4, 20. ,500),    #   variable range
-                                'xaxis' : 'mll [GeV]',      #   x axis name
-                                'fold'  : 3
-                                }  
+# variables['mll_4bin']  = {      'name'  : 'mll',            #   variable name
+#                                 'range' : (4, 20. ,500),    #   variable range
+#                                 'xaxis' : 'mll [GeV]',      #   x axis name
+#                                 'fold'  : 3
+#                                 }  
+
+variables['mll']  = {   'name'  : 'mll',            #   variable name
+                        'range' : (25, 20. ,500),    #   variable range
+                        'xaxis' : 'mll [GeV]',      #   x axis name
+                        'fold'  : 3
+                        }  
+
 # variables['mll_5bin']  = {      'name'  : 'mll',            #   variable name
 #                                 'range' : (5, 20. ,500),    #   variable range
 #                                 'xaxis' : 'mll [GeV]',      #   x axis name
@@ -126,11 +133,18 @@ variables['mll_4bin']  = {      'name'  : 'mll',            #   variable name
 #                        'xaxis': 'mjj [GeV]',
 #                        'fold' : 3
 #                        } 
-variables['mjj_4bin']  = {  'name' : 'mjj',
-                       'range': (4,500.,2000.),
+# variables['mjj_4bin']  = {  'name' : 'mjj',
+#                        'range': (4,500.,2000.),
+#                        'xaxis': 'mjj [GeV]',
+#                        'fold' : 3
+#                        } 
+
+variables['mjj']  = {  'name' : 'mjj',
+                       'range': (25,500.,2000.),
                        'xaxis': 'mjj [GeV]',
                        'fold' : 3
                        } 
+
 # variables['mjj_5bin']  = {  'name' : 'mjj',
 #                        'range': (5,500.,2000.),
 #                        'xaxis': 'mjj [GeV]',
@@ -312,145 +326,3 @@ variables['mjj_4bin']  = {  'name' : 'mjj',
 #                         'xaxis' : 'p_{T} 3rd lep [GeV]',
 #                         'fold'  : 3
 #                         }  
-
-################################
-###### 2D distributions ########
-################################
-
-# pt1 3bin
-# variables['pt1VSmjj_3bin'] = {   'name': 'pt1:mjj',                              # y:x
-#                                     'range' : (4,500,2000,3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
-#                                     'fold' : 3 ,
-#                                 }
-
-# # pt1 4bin
-# variables['pt1VSmjj_4bin'] = {   'name': 'pt1:mjj',                              # y:x
-#                                     'range' : (4,500,2000,4,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
-#                                     'fold' : 3 ,
-#                                 }
-
-# pt1 5bin
-# variables['pt1VSmjj_5bin'] = {   'name': 'pt1:mjj',                              # y:x
-#                                     'range' : (4,500,2000,5,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : '1^{st} lep p_{T} : m_{jj}',
-#                                     'fold' : 3 ,
-#                                 }                                
-
-# variables['pt1VSzlep1'] = {   'name':   'pt1:zlep1',                              # y:x
-#                                         'range' : (5,-0.75,0.75, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : '1^{st} lep p_{T} : z_{l1}', 
-#                                         'fold' : 3 ,
-#                                 } 
-
-# variables['pt1VSdetajj'] = {   'name':   'pt1:detajj',                              # y:x
-#                                         'range' : (4,2.5,9.0, 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : '1^{st} lep p_{T} : d#eta_{jj}', 
-#                                         'fold' : 3 ,
-#                                 }        
-
-# variables['pt1VSdphijj'] = {   'name':   'pt1:my_dphijj',                              # y:x
-#                                         'range' : (4,0.,3.141592 , 3,30,300),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : '1^{st} lep p_{T} : d#phi_{jj}', 
-#                                         'fold' : 3 ,
-#                                 } 
-
-                                                                                          
-
-
-# mll 3bin
-# variables['mllVSmjj_3bin'] = {   'name': 'mll:mjj',                              # y:x
-#                                     'range' : (4,500,2000, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : 'm_{ll} : m_{jj}',
-#                                     'fold' : 3 ,
-#                                 }
-
-# # mll 4bin
-# variables['mllVSmjj_4bin'] = {   'name': 'mll:mjj',                              # y:x
-#                                     'range' : (4,500,2000, 4,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : 'm_{ll} : m_{jj}',
-#                                     'fold' : 3 ,
-#                                 }
-
-# # mll 5bin
-# variables['mllVSmjj_5bin'] = {   'name': 'mll:mjj',                              # y:x
-#                                     'range' : (4,500,2000, 5,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : 'm_{ll} : m_{jj}',
-#                                     'fold' : 3 ,
-#                                 }
-
-# variables['mllVSzlep1'] = {   'name':   'mll:zlep1',                              # y:x
-#                                         'range' : (5,-0.75,0.75, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : 'm_{ll} : z_{l1}', 
-#                                         'fold' : 3 ,
-#                                 } 
-
-# variables['mllVSdetajj'] = {   'name':   'mll:detajj',                              # y:x
-#                                         'range' : (4,2.5,9.0, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : 'm_{ll} : d#eta_{jj}', 
-#                                         'fold' : 3 ,
-#                                 }
-
-# variables['mllVSdphijj'] = {  'name':   'mll:my_dphijj',                              # y:x
-#                                         'range' : (4,0.,3.141592, 3,20,500),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : 'm_{ll} : d#phi_{jj}', 
-#                                         'fold' : 3 ,
-#                                 }                                
-
-
-# 2d with variable binning   
-
-
-# # pt1
-# variables['pt1VSmjj_v1'] = {   'name': 'pt1:mjj',                              # y:x
-#                                     'range' : ([500,800,1100,1500,2000],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : '1^{st} lep p_{T} : m_{jj} v1',
-#                                     'fold' : 3 ,
-#                                 }
-
-# variables['pt1VSzlep1_v1'] = {   'name':   'pt1:zlep1',                              # y:x
-#                                         'range' : ([-0.75,-0.375,0,0.375,0.75],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : '1^{st} lep p_{T} : z_{l1} v1', 
-#                                         'fold' : 3 ,
-#                                 } 
-
-# variables['pt1VSdetajj_v1'] = {   'name':   'pt1:detajj',                              # y:x
-#                                         'range' : ([2.5,3.5,5.0,6.5,9.0],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : '1^{st} lep p_{T} : d#eta_{jj} v1', 
-#                                         'fold' : 3 ,
-#                                 }        
-
-# variables['pt1VSdphijj_v1'] = {   'name':   'pt1:my_dphijj',                              # y:x
-#                                         'range' : ([0,0.785398,1.570796,2.356194,3.141592],[30,90,180,300],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : '1^{st} lep p_{T} : d#phi_{jj} v1', 
-#                                         'fold' : 3 ,
-#                                 } 
-
-                                                                                          
-
-
-# # mll
-# variables['mllVSmjj_v1'] = {   'name': 'mll:mjj',                              # y:x
-#                                     'range' : ([500,800,1100,1500,2000],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                     'xaxis' : 'm_{ll} : m_{jj} v1',
-#                                     'fold' : 3 ,
-#                                 }
-
-# variables['mllVSzlep1_v1'] = {   'name':   'mll:zlep1',                              # y:x
-#                                         'range' : ([-0.75,-0.375,0,0.375,0.75],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : 'm_{ll} : z_{l1} v1', 
-#                                         'fold' : 3 ,
-#                                 } 
-
-# variables['mllVSdetajj_v1'] = {   'name':   'mll:detajj',                              # y:x
-#                                         'range' : ([2.5,3.5,5.0,6.5,9.0],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : 'm_{ll} : d#eta_{jj} v1', 
-#                                         'fold' : 3 ,
-#                                 }
-
-# variables['mllVSdphijj_v1'] = {  'name':   'mll:my_dphijj',                              # y:x
-#                                         'range' : ([0,0.785398,1.570796,2.356194,3.141592],[20,110,300,500],),        # (nbinx,xmin,xmax,nbiny,ymin,ymax)
-#                                         'xaxis' : 'm_{ll} : d#phi_{jj} v1', 
-#                                         'fold' : 3 ,
-#                                 }                                       

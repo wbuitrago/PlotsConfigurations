@@ -111,26 +111,38 @@ groupPlot['DY']  = {
               
 groupPlot['DY_ss']  = {
                   'nameHR' : 'DY_ss',
-                  'isSignal' : 0,
+                  'isSignal' : 2,
                   'color': Green,    # kYellow
                   'samples'  : ['DY_ss']
-              }                 
+              }            
 
+groupPlot['DY_cf']  = {
+                  'nameHR' : 'DY_cf',
+                  'isSignal' : 2,
+                  'color': Azure,    # kYellow
+                  'samples'  : ['DY_cf']
+              }      
                                         
+groupPlot['top']  = {
+                  'nameHR' : 'top',
+                  'isSignal' : 0,
+                  'color': Red,    # kYellow
+                  'samples'  : ['top']
+              }  
 
-# groupPlot['DY_ss']  = {
-#                   'nameHR' : 'DY_ss',
-#                   'isSignal' : 0,
-#                   'color': Green,    # kYellow
-#                   'samples'  : ['DY_ss']
-#               }              
-
-# groupPlot['top']  = {
-#                   'nameHR' : 'top',
-#                   'isSignal' : 0,
-#                   'color': Yellow,    # kYellow
-#                   'samples'  : ['top']
-#               }  
+groupPlot['top_cf']  = {
+                  'nameHR' : 'top_cf',
+                  'isSignal' : 2,
+                  'color': Orange,    # kYellow
+                  'samples'  : ['top_cf']
+              }  
+        
+groupPlot['top_ss']  = {
+                  'nameHR' : 'top_ss',
+                  'isSignal' : 2,
+                  'color': Yellow,    # kYellow
+                  'samples'  : ['top_ss']
+              }  
 
 # SM official samples
 # groupPlot['WW_EWK']  = {
@@ -260,7 +272,14 @@ plot['DY']  = {
 
 plot['DY_ss']  = {
     'color': Grey, # kGreen
-    'isSignal' : 0,
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+plot['DY_cf']  = {
+    'color': Grey, # kGreen
+    'isSignal' : 1,
     'isData'   : 0,
     'scale'    : 1.0
 }
@@ -273,12 +292,28 @@ plot['DY_ss']  = {
 # }
 
 
-# plot['top']  = {
-#     'color': Yellow, # kGreen
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
+plot['top']  = {
+    'color': Yellow, # kGreen
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+plot['top_cf']  = {
+    'color': Yellow, # kGreen
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+plot['top_ss']  = {
+    'color': Yellow, # kGreen
+    'isSignal' : 1,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+
+
 
 # ##Signal
 # plot['WpWp_EWK']  = {
@@ -317,15 +352,15 @@ plot['DY_ss']  = {
 
 #####################################
 
-##Data
-plot['DATA']  = {
-    'nameHR' : 'Data',
-    'color': 1 ,
-    'isSignal' : 0,
-    'isData'   : 1 ,
-    'isBlind'  : 1 ,
-    'scale'    : 1.0
-}
+# ##Data
+# plot['DATA']  = {
+#     'nameHR' : 'Data',
+#     'color': 1 ,
+#     'isSignal' : 0,
+#     'isData'   : 1 ,
+#     'isBlind'  : 1 ,
+#     'scale'    : 1.0
+# }
 
 
 # additional options
