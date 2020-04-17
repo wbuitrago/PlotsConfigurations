@@ -14,22 +14,29 @@
 #                             'fold': 3
 # }
 
-# variables['mll_3bin']  = {      'name'  : 'mll',            #   variable name
-#                                 'range' : (3, 20. ,500),    #   variable range
-#                                 'xaxis' : 'mll [GeV]',      #   x axis name
-#                                 'fold'  : 3
-#                                 }        
-# variables['mll_4bin']  = {      'name'  : 'mll',            #   variable name
-#                                 'range' : (4, 20. ,500),    #   variable range
-#                                 'xaxis' : 'mll [GeV]',      #   x axis name
-#                                 'fold'  : 3
-#                                 }  
-
 variables['mll']  = {   'name'  : 'mll',            #   variable name
-                        'range' : (25, 20. ,500),    #   variable range
+                        'range' : (25, 0 ,500),    #   variable range
                         'xaxis' : 'mll [GeV]',      #   x axis name
                         'fold'  : 3
                         }  
+
+variables['mll_v1']  = {    'name'  : 'mll',            #   variable name
+                            'range' : (25, 50 ,130),    #   variable range
+                            'xaxis' : 'mll [GeV]',      #   x axis name
+                            'fold'  : 0
+                        } 
+
+variables['mll_v2']  = {    'name'  : 'mll',            #   variable name
+                            'range' : (25, 60 ,120),    #   variable range
+                            'xaxis' : 'mll [GeV]',      #   x axis name
+                            'fold'  : 0
+                        }
+
+variables['mll_v3']  = {    'name'  : 'mll',            #   variable name
+                            'range' : (25, 70 ,110),    #   variable range
+                            'xaxis' : 'mll [GeV]',      #   x axis name
+                            'fold'  : 0
+                        }                                                                         
 
 # variables['mll_5bin']  = {      'name'  : 'mll',            #   variable name
 #                                 'range' : (5, 20. ,500),    #   variable range
@@ -43,53 +50,31 @@ variables['mll']  = {   'name'  : 'mll',            #   variable name
 #                             'fold'  : 3
 #                         } 
 
-# variables['pt1_3bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-#                                 'range' : (3,30.,300.),
-#                                 'xaxis' : 'p_{T} 1st lep [GeV]',
-#                                 'fold'  : 3
-# #                                 }
-# variables['pt1_4bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-#                                 'range' : (4,30.,300.),
-#                                 'xaxis' : 'p_{T} 1st lep [GeV]',
-#                                 'fold'  : 3
-#                                 }
-# variables['pt1_5bin']  = {      'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-#                                 'range' : (5,30.,300.),
-#                                 'xaxis' : 'p_{T} 1st lep [GeV]',
-#                                 'fold'  : 3
-#                                 }                                                
-
-# variables['pt1_v1']  = {    'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-#                             'range' : ([30,90,180,300],),
-#                             'xaxis' : 'p_{T} 1st lep v1 [GeV]',
-#                             'fold'  : 3
-#                         }
+variables['pt1']  = {   'name'  : 'Alt$(Lepton_pt[0],-9999.)',
+                        'range' : (25,0.,300.),
+                        'xaxis' : 'p_{T} 1st lep [GeV]',
+                        'fold'  : 3
+                    }
 
 
-# variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
-#                         'range' : (3,30.,200.),
-#                         'xaxis' : 'p_{T} 2nd lep [GeV]',
-#                         'fold'  : 3
-#                         }      
-
-# variables['pt2_v1']  = {    'name'  : 'Alt$(Lepton_pt[1],-9999.)',
-#                             'range' : ([30,70,120,200],),
-#                             'xaxis' : 'p_{T} 2nd lep v1 [GeV]',
-#                             'fold'  : 3
-#                             }   
+variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
+                        'range' : (25,0.,300.),
+                        'xaxis' : 'p_{T} 2nd lep [GeV]',
+                        'fold'  : 3
+                    }      
 
 ## eta leptons
-# variables['eta_lep1'] = {   'name' : 'Alt$(Lepton_eta[0],-9999.)',
-#                             'range': (20,-2.5,2.5),
-#                             'xaxis': 'eta lep1',
-#                             'fold' : 3
-#                             }
+variables['eta_lep1'] = {   'name' : 'Alt$(Lepton_eta[0],-9999.)',
+                            'range': (20,-2.5,2.5),
+                            'xaxis': 'eta lep1',
+                            'fold' : 3
+                            }
 
-# variables['eta_lep2'] = {   'name' : 'Alt$(Lepton_eta[1],-9999.)',
-#                             'range': (20,-2.5,2.5),
-#                             'xaxis': 'eta lep2',
-#                             'fold' : 3
-#                             }
+variables['eta_lep2'] = {   'name' : 'Alt$(Lepton_eta[1],-9999.)',
+                            'range': (20,-2.5,2.5),
+                            'xaxis': 'eta lep2',
+                            'fold' : 3
+                            }
 
 # variables['detall']  = {  'name' : 'fabs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],9999.))',
 #                           'range': (5,0.0,5.0),

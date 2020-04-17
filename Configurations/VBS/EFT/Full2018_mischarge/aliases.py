@@ -22,6 +22,12 @@ aliases['chargeflip_w'] = {
     'class': 'misID_sf',
     'samples': mc,
 }
+# remember to CHECK THE FOLDER!!!
+aliases['chargeflip_w_MC'] = {
+    'linesToAdd': ['.L %s/VBS/EFT/Full2018_mischarge/mischarge_sf_MC.cc+' % configurations],
+    'class': 'misID_sf',
+    'samples': mc,
+}
 
 # tau veto
 aliases['tauVeto_ww'] = {

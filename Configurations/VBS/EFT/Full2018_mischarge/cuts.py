@@ -31,7 +31,7 @@ supercut = and_separator.join(supercut_vector)
 ########### SS inclusive region ############
 #############################################
 
-# lookout! I removed zveto ...  possible strange DATA/MC ratio
+# lookout! I removed zveto from inclusive region!
 
 cuts['SS_incl']  = { 
    'expr' : '1', # dummy cut.. true selection in categories
@@ -40,6 +40,17 @@ cuts['SS_incl']  = {
          'ee'    : 'ee',
          #'emu'   : 'emu',
          #'mumu'  : 'mumu',
+   }
+}
+
+# corresponding to the eta interval of the mischarge measurements
+cuts['SS_incl_ee']  = { 
+   'expr' : '1', # dummy cut.. true selection in categories
+   # sub categorization
+   'categories' : {
+         'eta_00_10' : 'fabs(Lepton_eta[0]<1.0) && fabs(Lepton_eta[1]<1.0)',
+         'eta_10_15' : 'fabs(Lepton_eta[0]>1.0) && fabs(Lepton_eta[1]>1.0) && fabs(Lepton_eta[0]<1.5) && fabs(Lepton_eta[1]<1.5) ',
+         'eta_15_25' : 'fabs(Lepton_eta[0]>1.5) && fabs(Lepton_eta[1]>1.5) && fabs(Lepton_eta[0]<2.5) && fabs(Lepton_eta[1]<2.5) ',
    }
 }
 
