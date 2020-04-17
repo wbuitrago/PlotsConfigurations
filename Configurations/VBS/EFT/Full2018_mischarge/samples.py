@@ -55,7 +55,7 @@ mcCommonWeightNoMatch = 'SFweight'
 mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
 
 mcCommonWeight_chargeflip = mcCommonWeight+'*chargeflip_w'
-mcCommonWeight_chargeflip_MC = mcCommonWeight+'*chargeflip_w_MC'
+mcCommonWeight_chargeflip_mc = mcCommonWeight+'*chargeflip_w_mc'
 
 mcCommonWeight_ss = mcCommonWeight+'*ssLep'
 
@@ -111,7 +111,7 @@ files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
 # macro weight measured on MC
 samples['DY_cf_mc'] = {
     'name': files,
-    'weight': mcCommonWeight_chargeflip_MC + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 && Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
+    'weight': mcCommonWeight_chargeflip_mc + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 && Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
     'FilesPerJob': 6,
 }
 addSampleWeight(samples,'DY_cf_mc','DYJetsToLL_M-50_ext2',ptllDYW_NLO)
@@ -149,7 +149,7 @@ files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
 # macro weight measured on MC
 samples['top_cf_mc'] = {
     'name': files,
-    'weight': mcCommonWeight_chargeflip_MC,
+    'weight': mcCommonWeight_chargeflip_mc,
     'FilesPerJob': 2,
 }
 

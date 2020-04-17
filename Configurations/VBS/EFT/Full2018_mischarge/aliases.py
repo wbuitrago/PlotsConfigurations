@@ -23,9 +23,9 @@ aliases['chargeflip_w'] = {
     'samples': mc,
 }
 # remember to CHECK THE FOLDER!!!
-aliases['chargeflip_w_MC'] = {
+aliases['chargeflip_w_mc'] = {
     'linesToAdd': ['.L %s/VBS/EFT/Full2018_mischarge/mischarge_sf_MC.cc+' % configurations],
-    'class': 'misID_sf',
+    'class': 'misID_sf_mc',
     'samples': mc,
 }
 
@@ -104,27 +104,27 @@ lastcopy = (1 << 13)
 
 aliases['isTTbar'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 2' % lastcopy,
-    'samples': ['top','top_cf','top_ss']
+    'samples': ['top_cf_mc','top_cf_data','top_ss']
 }
 
 aliases['isSingleTop'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 1' % lastcopy,
-    'samples': ['top','top_cf','top_ss']
+    'samples': ['top_cf_mc','top_cf_data','top_ss']
 }
 
 aliases['topGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == 6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top','top_cf','top_ss']
+    'samples': ['top_cf_mc','top_cf_data','top_ss']
 }
 
 aliases['antitopGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == -6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top','top_cf','top_ss']
+    'samples': ['top_cf_mc','top_cf_data','top_ss']
 }
 
 aliases['Top_pTrw'] = {
     'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPtOTF) * TMath::Exp(0.0615 - 0.0005 * antitopGenPtOTF))) + isSingleTop',
-    'samples': ['top','top_cf','top_ss']
+    'samples': ['top_cf_mc','top_cf_data','top_ss']
 }
 
 
