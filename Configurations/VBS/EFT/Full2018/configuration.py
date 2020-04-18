@@ -2,7 +2,7 @@
 
 treeName= 'Events'
 
-date = 'apr17'
+date = 'apr18'
 
 version = '2018_test'
 
@@ -18,7 +18,8 @@ aliasesFile = 'aliases.py'
 variablesFile = 'variables.py'
 
 # file with list of cuts
-cutsFile = 'cuts.py'
+#cutsFile = 'cuts.py'
+cutsFile = 'cuts_fast.py'
 
 # file with list of samples
 samplesFile = 'samples.py'
@@ -43,6 +44,7 @@ structureFile = 'structure.py'
 
 
 # nuisances file for mkDatacards and for mkShape
-# nuisancesFile = 'nuisances_fast.py'
-nuisancesFile = 'nuisances.py'
+# nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances_fast.py'
+
 
