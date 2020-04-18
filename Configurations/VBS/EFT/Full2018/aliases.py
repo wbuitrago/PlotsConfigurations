@@ -15,11 +15,6 @@ bWP = '0.4184'
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 
 # chargeflip
-aliases['chargeflip_w'] = {
-    'linesToAdd': ['.L %s/VBS/EFT/Full2018/mischarge_sf_probdata.cc+' % configurations],
-    'class': 'misID_sf',
-    'samples': mc,
-}
 
 # tau veto
 aliases['tauVeto_ww'] = {

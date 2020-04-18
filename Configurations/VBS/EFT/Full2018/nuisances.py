@@ -6,7 +6,8 @@
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
 
-MC_sym_link = '/afs/cern.ch/user/r/rdfexp/public/daniele/' # folder with symbolic links for suffix ntuples!
+# MC_sym_link = '/afs/cern.ch/user/r/rdfexp/public/daniele/' # folder with symbolic links for suffix ntuples!
+MC_sym_link = '/afs/cern.ch/user/d/dbrambil/public/SampleLinks/' # folder with symbolic links for suffix ntuples!
 MCsteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
 MC_suffix =  MC_sym_link + MCsteps
 
@@ -21,6 +22,7 @@ except NameError:
     nuisances = {}
     def makeMCDirectory(x=''):
         return ''
+        
 #### Luminosity
 
 #nuisances['lumi'] = {
