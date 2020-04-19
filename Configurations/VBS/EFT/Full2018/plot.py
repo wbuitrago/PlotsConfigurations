@@ -102,12 +102,6 @@ groupPlot['non-prompt']  = {
                   'color': ROOT.kYellow,    # kYellow
                   'samples'  : ['Fake_lep']
               }
-groupPlot['mis-charge']  = {
-                  'nameHR' : 'mis-charge',
-                  'isSignal' : 0,
-                  'color': Grey,    # kYellow
-                  'samples'  : ['DY']
-              }              
 
 
 # SM official samples
@@ -229,12 +223,7 @@ plot['TTV']  = {
     'isData'   : 0,
     'scale'    : 1.0
 }
-plot['DY']  = {
-    'color': Grey, # kGreen
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+
 
 
 # ##Signal
