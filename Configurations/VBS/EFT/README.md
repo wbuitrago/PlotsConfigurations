@@ -7,6 +7,9 @@
   * *init_config* **[old]**: configuration copied from ggH/Full2017 as a starting point, with small modifications in order to make it work
   * *top_cr* **[old]**: top control regions defined and tested
    
+* **Full2018_2d**
+ * *OLD* do not use this 
+
 * **Full2018**
  
   * signal region:
