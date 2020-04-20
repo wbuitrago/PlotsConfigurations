@@ -2,9 +2,9 @@
 
 treeName= 'Events'
 
-date = 'apr18'
+date = 'apr19'
 
-version = '2018_test'
+version = '2018_test_fullconfig'
 
 tag = 'VBS_SS' + '_' + version + '_' + date
 
@@ -18,8 +18,8 @@ aliasesFile = 'aliases.py'
 variablesFile = 'variables.py'
 
 # file with list of cuts
-#cutsFile = 'cuts.py'
-cutsFile = 'cuts_fast.py'
+cutsFile = 'cuts.py'
+# cutsFile = 'cuts_fast.py'
 
 # file with list of samples
 samplesFile = 'samples.py'
@@ -44,7 +44,7 @@ structureFile = 'structure.py'
 
 
 # nuisances file for mkDatacards and for mkShape
-# nuisancesFile = 'nuisances.py'
-nuisancesFile = 'nuisances_fast.py'
+nuisancesFile = 'nuisances.py'
+# nuisancesFile = 'nuisances_fast.py'
 
 
