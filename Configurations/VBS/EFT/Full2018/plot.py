@@ -123,22 +123,22 @@ groupPlot['non-prompt']  = {
 #               }
 
 groupPlot['WW_EWK_sm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
-                  'isSignal' : 0,
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK (C_W) sm",
+                  'isSignal' : 1,
                   'color'    : ROOT.kBlue, 
                   'samples'  : ['sm']
               }              
 
 groupPlot['WW_EWK_int']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK int",
-                  'isSignal' : 0,
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK (C_W) int",
+                  'isSignal' : 1,
                   'color'    : ROOT.kViolet, 
                   'samples'  : ['linear']
               }
 groupPlot['WW_EWK_bsm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK bsm ",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kCyan+2, 
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK (C_W) bsm ",
+                  'isSignal' : 1,
+                  'color'    : ROOT.kCyan, 
                   'samples'  : ['quadratic']
               }
 #####################################

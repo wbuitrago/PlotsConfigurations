@@ -13,8 +13,10 @@ MC_suffix =  MC_sym_link + MCsteps
 
 signal_mc = ['sm','linear','quadratic']
 
+mischarge = ['DY','top','WW','WWewk','ggWW']
+
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
+    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake') and skey not in mischarge]
     # mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
 except NameError:
     mc = []
@@ -23,36 +25,32 @@ except NameError:
     def makeMCDirectory(x=''):
         return ''
         
-#### Luminosity
+print(mc)
 
-#nuisances['lumi'] = {
-#    'name': 'lumi_13TeV_2018',
-#    'type': 'lnN',
-#    'samples': dict((skey, '1.025') for skey in mc if skey not in ['WW', 'top', 'DY'])
-#}
+#### Luminosity
 
 nuisances['lumi_Uncorrelated'] = {
     'name': 'lumi_13TeV_2018',
     'type': 'lnN',
-    'samples': dict((skey, '1.015') for skey in mc if skey not in ['WW', 'top', 'DY'])
+    'samples': dict((skey, '1.015') for skey in mc)
 }
 
 nuisances['lumi_XYFact'] = {
     'name': 'lumi_13TeV_XYFact',
     'type': 'lnN',
-    'samples': dict((skey, '1.02') for skey in mc if skey not in ['WW', 'top', 'DY'])
+    'samples': dict((skey, '1.02') for skey in mc)
 }
 
 nuisances['lumi_LScale'] = {
     'name': 'lumi_13TeV_LSCale',
     'type': 'lnN',
-    'samples': dict((skey, '1.002') for skey in mc if skey not in ['WW', 'top', 'DY'])
+    'samples': dict((skey, '1.002') for skey in mc)
 }
 
 nuisances['lumi_CurrCalib'] = {
     'name': 'lumi_13TeV_CurrCalib',
     'type': 'lnN',
-    'samples': dict((skey, '1.002') for skey in mc if skey not in ['WW', 'top', 'DY'])
+    'samples': dict((skey, '1.002') for skey in mc)
 }
 
 #### FAKES
@@ -237,7 +235,7 @@ nuisances['pdf'] = {
 }
 
 
-## WZ rate parameter (for signal regions used for fit)
+### WZ rate parameter (for signal regions used for fit)
 nuisances['WZscale2018']  = {
                'name'  : 'WZscale2018',
                'samples'  : {
@@ -247,6 +245,19 @@ nuisances['WZscale2018']  = {
                'cuts'  : ['SS_sr','SS_sr_all']
               }
 
+#### chargeflip nuisance
+
+nuisances['mischarge'] = {
+    'name': 'mischarge',
+    'type': 'lnN',
+    'samples': {
+        'DY'    : '1.5',
+        'top'   : '1.5',
+        'WW'    : '1.5',
+        'WWewk' : '1.5',
+        'ggWW'  : '1.5',
+    },
+}
 
 # statistical fluctuation
 # on MC/data

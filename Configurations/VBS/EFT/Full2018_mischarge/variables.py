@@ -15,7 +15,7 @@
 # }
 
 variables['mll']  = {   'name'  : 'mll',            #   variable name
-                        'range' : (25, 0 ,500),    #   variable range
+                        'range' : (25, 15 ,500),    #   variable range
                         'xaxis' : 'mll [GeV]',      #   x axis name
                         'fold'  : 3
                         }  
@@ -51,14 +51,14 @@ variables['mll_v3']  = {    'name'  : 'mll',            #   variable name
 #                         } 
 
 variables['pt1']  = {   'name'  : 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : (25,0.,300.),
+                        'range' : (25,25,300.),
                         'xaxis' : 'p_{T} 1st lep [GeV]',
                         'fold'  : 3
                     }
 
 
 variables['pt2']  = {   'name'  : 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : (25,0.,300.),
+                        'range' : (25,25,300.),
                         'xaxis' : 'p_{T} 2nd lep [GeV]',
                         'fold'  : 3
                     }      
@@ -125,10 +125,16 @@ variables['eta_lep2'] = {   'name' : 'Alt$(Lepton_eta[1],-9999.)',
 #                        } 
 
 variables['mjj']  = {  'name' : 'mjj',
-                       'range': (25,500.,2000.),
+                       'range': (25,0.,2000.),
                        'xaxis': 'mjj [GeV]',
                        'fold' : 3
                        } 
+
+variables['mjj_sr']  = {  'name' : 'mjj',
+                       'range': (25,500.,2000.),
+                       'xaxis': 'mjj [GeV]',
+                       'fold' : 3
+                       }                        
 
 # variables['mjj_5bin']  = {  'name' : 'mjj',
 #                        'range': (5,500.,2000.),

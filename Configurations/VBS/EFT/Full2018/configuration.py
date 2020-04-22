@@ -2,9 +2,9 @@
 
 treeName= 'Events'
 
-date = 'apr19'
+date = 'apr22'
 
-version = '2018_test_fullconfig'
+version = '2018_full_mischarge'
 
 tag = 'VBS_SS' + '_' + version + '_' + date
 
