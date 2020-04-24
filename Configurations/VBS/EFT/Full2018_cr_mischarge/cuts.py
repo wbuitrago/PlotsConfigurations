@@ -182,11 +182,10 @@ cuts['SS_dy_ee_cr']  = {
             abs(mll - 91.1876) < 15',
 }
 
-cuts['SS_top_cr']  = { 
-   'expr': 'btag2',
-   # sub categorization
-   'categories' : {
-         'ee'    : 'ss_ee',
-         'emu'   : 'ss_emu',
-   }
+cuts['SS_top_ee_cr']  = { 
+   'expr': 'ss_ee && bReq',
+}
+
+cuts['SS_top_emu_cr']  = { 
+   'expr': 'ss_emu && bReq',
 }

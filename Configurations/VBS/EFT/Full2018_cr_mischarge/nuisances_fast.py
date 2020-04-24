@@ -53,17 +53,17 @@ nuisances['lumi_CurrCalib'] = {
     'samples': dict((skey, '1.002') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
-# #### FAKES
+#### FAKES
 
-# ## FIXME: check the 30% lnN
-# nuisances['fake_syst'] = {
-#     'name': 'CMS_fake_syst',
-#     'type': 'lnN',
-#     'samples': {
-#         'Fake_lep': '1.3'
-#     },
-#     #'perRecoBin': True
-# }
+## FIXME: check the 30% lnN
+nuisances['fake_syst'] = {
+    'name': 'CMS_fake_syst',
+    'type': 'lnN',
+    'samples': {
+        'Fake_lep': '1.3'
+    },
+    #'perRecoBin': True
+}
 
 # nuisances['fake_ele'] = {
 #     'name': 'CMS_fake_e_2018',
