@@ -20,10 +20,10 @@ variables['mll']  = {   'name'  : 'mll',            #   variable name
                         'fold'  : 3
                         }  
 
-variables['mll_v3']  = {    'name'  : 'mll',            #   variable name
+variables['mll_v1']  = {    'name'  : 'mll',            #   variable name
                             'range' : (25, 75 ,105),    #   variable range
                             'xaxis' : 'mll [GeV]',      #   x axis name
-                            'fold'  : 0
+                            'fold'  : 3
                         }                                                                         
 
 variables['pt1']  = {   'name'  : 'Alt$(Lepton_pt[0],-9999.)',
