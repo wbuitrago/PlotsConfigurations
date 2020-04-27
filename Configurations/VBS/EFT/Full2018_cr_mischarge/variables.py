@@ -14,6 +14,16 @@ variables['nLepton'] =  {   'name': 'nLepton',
                             'fold': 3
 }
 
+
+# Andrea Massironi, [27.04.20 11:24]
+# 3) add pt_ll plot
+
+variables['ptll']  = {   'name'  : 'ptll',            #   variable name
+                        'range' : (25, 0 ,200),    #   variable range
+                        'xaxis' : 'ptll [GeV]',      #   x axis name
+                        'fold'  : 3
+                        } 
+
 variables['mll']  = {   'name'  : 'mll',            #   variable name
                         'range' : (25, 15 ,500),    #   variable range
                         'xaxis' : 'mll [GeV]',      #   x axis name

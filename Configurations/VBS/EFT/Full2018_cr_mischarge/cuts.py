@@ -67,3 +67,48 @@ cuts['SS_top']  = {
       'emu'   : 'ss_emu',
    }
 }
+
+
+
+# following: same cuts, OPPOSITE SIGN region
+
+cuts['OS_incl_ee'] = {
+   'expr' : 'os_ee',
+}
+
+cuts['OS_incl_ee'] = {
+   'expr' : 'os_ee',
+   'categories' : {
+      '0j' : 'zeroJet',
+      '1j' : 'oneJet',
+      '2j' : 'twoJetOrMore',
+   }   
+}
+
+# Z -> ee region
+
+cuts['OS_Z_ee']  = { 
+   'expr': 'os_ee && \
+            abs(mll - 91.1876) < 15',
+}
+
+cuts['OS_Z_ee']  = { 
+   'expr': 'os_ee && \
+            abs(mll - 91.1876) < 15',
+   'categories' : {
+      '0j' : 'zeroJet',
+      '1j' : 'oneJet',
+      '2j' : 'twoJetOrMore',
+   }           
+}
+
+# top os cr
+# emu, 2 jet + btag (tight WP) 
+
+cuts['OS_top']  = { 
+   'expr': 'bReq && twoJet',
+   'categories' : {
+      'ee'    : 'os_ee',
+      'emu'   : 'os_emu',
+   }
+}

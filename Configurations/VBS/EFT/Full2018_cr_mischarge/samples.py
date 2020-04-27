@@ -164,6 +164,26 @@ samples['ggWW'] = {
     'FilesPerJob': 4
 }
 
+# #### HWW ####
+# to be added next...
+
+# #### ggH -> WW
+# samples['ggH_hww'] = {
+#     'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToWWTo2L2NuPowheg_M125'),
+#     'weight': [mcCommonWeight, {'class': 'Weight2MINLO', 'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE')}],
+#     'FilesPerJob': 1,
+#     'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations]
+# }
+
+
+# ############ VBF H->WW ############
+# samples['qqH_hww'] = {
+#     'name': nanoGetSampleFiles(mcDirectory, 'VBFHToWWTo2L2Nu_M125'),
+#     'weight': mcCommonWeight,
+#     'FilesPerJob': 4
+# }
+
+
 # -------------------- mis-charge ----------------------------------------------
 
 ######## Vg ########  
