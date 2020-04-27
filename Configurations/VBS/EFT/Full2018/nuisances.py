@@ -13,10 +13,8 @@ MC_suffix =  MC_sym_link + MCsteps
 
 signal_mc = ['sm','linear','quadratic']
 
-mischarge = ['DY','top','WW','WWewk','ggWW']
-
 try:
-    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake') and skey not in mischarge]
+    mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake') ]
     # mc = [skey for skey in samples if skey != 'DATA' and not skey.startswith('Fake')]
 except NameError:
     mc = []
@@ -180,7 +178,7 @@ nuisances['jes'] = {
     'type': 'shape',
     'mapUp': 'JESup',
     'mapDown': 'JESdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc), # look here signal_mc!
+    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc), # TO BE FIXED: JES uncertainty missing for EFT private samples
     'folderUp':   MC_suffix + '__JESup_suffix',
     'folderDown': MC_suffix + '__JESdo_suffix',
 }
@@ -251,11 +249,7 @@ nuisances['mischarge'] = {
     'name': 'mischarge',
     'type': 'lnN',
     'samples': {
-        'DY'    : '1.5',
-        'top'   : '1.5',
-        'WW'    : '1.5',
-        'WWewk' : '1.5',
-        'ggWW'  : '1.5',
+        'mischarge'    : '1.5',
     },
 }
 

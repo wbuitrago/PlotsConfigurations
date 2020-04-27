@@ -47,7 +47,6 @@ groupPlot['Other Bgr']  = {
     'color'    : ROOT.kGreen,
     'samples'  : ['ZZ','VVV','TTV','DPS']
 }
-
 # groupPlot['ZZ']  = {
 #     'nameHR' : "ZZ",
 #     'isSignal' : 0,
@@ -99,10 +98,16 @@ groupPlot['WW_QCD']  = {
 groupPlot['non-prompt']  = {
                   'nameHR' : 'non-Prompt',
                   'isSignal' : 0,
-                  'color': ROOT.kYellow,    # kYellow
+                  'color': ROOT.kYellow,    
                   'samples'  : ['Fake_lep']
               }
 
+groupPlot['mischarge']  = {
+                  'nameHR'   : "MisCharge",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kGreen + 2, 
+                  'samples'  : ['mischarge']
+              }
 
 # SM official samples
 # groupPlot['WW_EWK']  = {
@@ -123,21 +128,21 @@ groupPlot['non-prompt']  = {
 #               }
 
 groupPlot['WW_EWK_sm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK (C_W) sm",
-                  'isSignal' : 1,
+                  'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
+                  'isSignal' : 3,
                   'color'    : ROOT.kBlue, 
                   'samples'  : ['sm']
               }              
 
 groupPlot['WW_EWK_int']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK (C_W) int",
-                  'isSignal' : 1,
+                  'nameHR'   : "EFT C_{W} int",
+                  'isSignal' : 3,
                   'color'    : ROOT.kViolet, 
                   'samples'  : ['linear']
               }
 groupPlot['WW_EWK_bsm']  = {
-                  'nameHR'   : "W^{#pm}W^{#pm} EWK (C_W) bsm ",
-                  'isSignal' : 1,
+                  'nameHR'   : "EFT C_{W} bsm",
+                  'isSignal' : 3,
                   'color'    : ROOT.kCyan, 
                   'samples'  : ['quadratic']
               }
@@ -224,6 +229,15 @@ plot['TTV']  = {
     'scale'    : 1.0
 }
 
+# mischarge samples
+#---------------------------------
+plot['mischage']  = {
+    'color': Grey, # kGreen
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
+#---------------------------------
 
 
 # ##Signal
@@ -269,7 +283,7 @@ plot['DATA']  = {
     'color': 1 ,
     'isSignal' : 0,
     'isData'   : 1 ,
-    'isBlind'  : 1 ,
+    'isBlind'  : 0 ,
     'scale'    : 1.0
 }
 

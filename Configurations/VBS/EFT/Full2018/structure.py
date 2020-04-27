@@ -7,10 +7,12 @@
 
 ## Reducible Bkg
 
-# structure['ChMisId']  = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0
-#               }
+# MisCharge # --------------------
+structure['mischarge']  = {
+                  'isSignal' : 0,
+                  'isData'   : 0
+                  }
+# --------------------------------
 
 structure['Vg']  = {
                   'isSignal' : 0,

@@ -48,7 +48,7 @@ cuts['SS_incl']  = {
 #############################################
 ########### VBS_SS signal region ############
 #############################################
-
+'''
 cuts['SS_sr']  = { 
    'expr': 'ssLep && \
             Lepton_pt[0] > 30 &&\
@@ -70,7 +70,7 @@ cuts['SS_sr']  = {
          'mumu'  : 'ss_mumu',
    }
 }
-
+'''
 # signal region w/o categories
 
 # cuts['SS_sr_all']  = { 
@@ -175,3 +175,4 @@ cuts['SS_lowmjj']  = {
 #                   'mumu'  : 'ss_mumu',
 #             }
 #       }
+#
