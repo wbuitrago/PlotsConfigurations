@@ -17,14 +17,6 @@ mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','
 # chargeflip
 
 # weight for ggH_hww
-samples['ggH_hww'] = {
-    'name': nanoGetSampleFiles(mcDirectory, 'GluGluHToWWTo2L2NuPowheg_M125'),
-    'weight': [mcCommonWeight, {
-        'class': 'Weight2MINLO', 
-        'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE')}],
-    'FilesPerJob': 1,
-    'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations]
-}
 
 aliases['Weight2MINLO'] = {
     'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
@@ -102,34 +94,34 @@ aliases['PromptGenLepMatch2l'] = {
     'samples': mc
 }
 
-# aliases for top sample
+# aliases for top sample (in mischarge sample)
 
 # PostProcessing did not create (anti)topGenPt for ST samples with _ext1
 lastcopy = (1 << 13)
 
 aliases['isTTbar'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 2' % lastcopy,
-    'samples': ['top']
+    'samples': ['mischarge']
 }
 
 aliases['isSingleTop'] = {
     'expr': 'Sum$(TMath::Abs(GenPart_pdgId) == 6 && TMath::Odd(GenPart_statusFlags / %d)) == 1' % lastcopy,
-    'samples': ['top']
+    'samples': ['mischarge']
 }
 
 aliases['topGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == 6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top']
+    'samples': ['mischarge']
 }
 
 aliases['antitopGenPtOTF'] = {
     'expr': 'Sum$((GenPart_pdgId == -6 && TMath::Odd(GenPart_statusFlags / %d)) * GenPart_pt)' % lastcopy,
-    'samples': ['top']
+    'samples': ['mischarge']
 }
 
 aliases['Top_pTrw'] = {
     'expr': 'isTTbar * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPtOTF) * TMath::Exp(0.0615 - 0.0005 * antitopGenPtOTF))) + isSingleTop',
-    'samples': ['top']
+    'samples': ['mischarge']
 }
 
 #bjet
