@@ -2,9 +2,9 @@
 
 treeName= 'Events'
 
-date = 'apr28'
+date = 'apr30'
 
-version = '2018_cr_mischarge'
+version = '2018_cr_mischarge_chflip_SF'
 
 tag = 'VBS_SS' + '_' + version + '_' + date
 

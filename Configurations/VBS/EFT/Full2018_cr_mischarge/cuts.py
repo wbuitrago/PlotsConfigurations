@@ -27,19 +27,6 @@ supercut_vector = [     'nLepton >= 2',
 # supercut definition
 supercut = and_separator.join(supercut_vector)     
 
-# cuts['SS_incl_ee'] = {
-#    'expr' : 'ss_ee',
-# }
-
-# cuts['SS_incl_ee'] = {
-#    'expr' : 'ss_ee',
-#    'categories' : {
-#       '0j' : 'zeroJet',
-#       '1j' : 'oneJet',
-#       '2j' : 'twoJetOrMore',
-#    }   
-# }
-
 # Z -> ee region
 
 cuts['SS_Z_ee_incl']  = { 
@@ -68,22 +55,7 @@ cuts['SS_top']  = {
    }
 }
 
-
-
 # following: same cuts, OPPOSITE SIGN region
-
-# cuts['OS_incl_ee'] = {
-#    'expr' : 'os_ee',
-# }
-
-# cuts['OS_incl_ee'] = {
-#    'expr' : 'os_ee',
-#    'categories' : {
-#       '0j' : 'zeroJet',
-#       '1j' : 'oneJet',
-#       '2j' : 'twoJetOrMore',
-#    }   
-# }
 
 # Z -> ee region
 

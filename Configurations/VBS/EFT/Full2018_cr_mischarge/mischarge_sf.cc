@@ -27,8 +27,7 @@ protected:
   void bindTree_(multidraw::FunctionLibrary&) override;
 
   UIntValueReader* nLepton;
-  // FloatArrayReader* Lepton_pdgId;
-  IntArrayReader* Lepton_pdgId;  // mod by D.B. due to error "The branch Lepton_pdgId contains data of type int. It cannot be accessed by a TTreeReaderArray<float>"
+  IntArrayReader* Lepton_pdgId;  
   FloatArrayReader* Lepton_pt;
   FloatArrayReader* Lepton_eta;
 
@@ -101,7 +100,7 @@ misID_sf::evaluate(unsigned)
 
   double mis_id_sf_data= _rate1*(1-_rate2)+(1-_rate1)*_rate2;
   double mis_id_sf_mc= _rate1*_sf1*(1-_rate2*_sf2)+(1-_rate1*_sf1)*_rate2*_sf2;
-  double corr_w = mis_id_sf_data/mis_id_sf_mc
+  double corr_w = mis_id_sf_data/mis_id_sf_mc ;
   
   return corr_w;
 }
@@ -114,12 +113,4 @@ misID_sf::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(Lepton_pt, "Lepton_pt");
   _library.bindBranch(Lepton_eta, "Lepton_eta");
 
-  //_library.bindBranch(nGenJet, "nGenJet");
-  //_library.bindBranch(GenJet_pt, "GenJet_pt");
-  //_library.bindBranch(GenJet_eta, "GenJet_eta");
-  //_library.bindBranch(GenJet_phi, "GenJet_phi");
-  //_library.bindBranch(GenJet_mass, "GenJet_mass");
-
-  //_library.bindBranch(GenMET_pt, "GenMET_pt");
-  //_library.bindBranch(GenMET_phi, "GenMET_phi");
 }

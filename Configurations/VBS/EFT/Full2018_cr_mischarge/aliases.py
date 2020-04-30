@@ -14,7 +14,14 @@ bWP = '0.4184'
 
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 
-# chargeflip
+# chargeflip correction weight
+# to take into account differences between DATA and MC
+mischarge_samples = ['DY','top','WW','WWewk','ggWW']
+aliases['chargeflip_w'] = {
+    'linesToAdd': ['.L %s/VBS/EFT/Full2018_cr_mischarge/mischarge_sf.cc+' % configurations], # REMEMBER check path...
+    'class': 'misID_sf',
+    'samples': mischarge_samples,
+}
 
 # tau veto
 aliases['tauVeto_ww'] = {

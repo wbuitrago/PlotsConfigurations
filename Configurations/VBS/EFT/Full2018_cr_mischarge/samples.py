@@ -55,7 +55,7 @@ Nlep='2'
 mcCommonWeightNoMatch = 'SFweight'
 #mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC*59.74'
 mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
-#mcCommonWeight_os = mcCommonWeight+'*chargeflip_w'
+mcCommonWeight_chflip= mcCommonWeight+'*chargeflip_w'
 
 ################################################
 ############### B-Tag  WP ######################
@@ -109,7 +109,7 @@ files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
 
 samples['DY'] = {
     'name': files,
-    'weight': mcCommonWeight + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
+    'weight': mcCommonWeight_chflip + '*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                      Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
     'FilesPerJob': 6,
 }
@@ -127,7 +127,7 @@ files = nanoGetSampleFiles(mcDirectory, 'TTTo2L2Nu') + \
 
 samples['top'] = {
     'name': files,
-    'weight': mcCommonWeight,
+    'weight': mcCommonWeight_chflip,
     'FilesPerJob': 2,
 }
 
@@ -137,13 +137,13 @@ addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 
 samples['WW'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu'),
-    'weight': mcCommonWeight + '*nllW',
+    'weight': mcCommonWeight_chflip + '*nllW',
     'FilesPerJob': 3
 }
 
 samples['WWewk'] = {
     'name': nanoGetSampleFiles(mcDirectory, 'WpWmJJ_EWK'),
-    'weight': mcCommonWeight + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)', #filter tops and Higgs
+    'weight': mcCommonWeight_chflip + '*(Sum$(abs(GenPart_pdgId)==6 || GenPart_pdgId==25)==0)', #filter tops and Higgs
     'FilesPerJob': 4
 }
 
@@ -160,7 +160,7 @@ files = nanoGetSampleFiles(mcDirectory, 'GluGluToWWToENEN') + \
 
 samples['ggWW'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.53/1.4', # updating k-factor
+    'weight': mcCommonWeight_chflip + '*1.53/1.4', # updating k-factor
     'FilesPerJob': 4
 }
 
@@ -231,15 +231,6 @@ samples['ZZ'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 3
 }
-
-# not needed, os lepton charges, so it will be included in the mischarge sample that has to be added yet.
-# for the time being, we just remove it since it gives very small contributions
-# files = nanoGetSampleFiles(mcDirectory, 'WZTo2L2Q')
-# samples['WZTo2L2Q'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 4
-# }
 
 files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_1Jet') + \
@@ -314,51 +305,50 @@ samples['WW_QCD'] = {
 #############   SIGNALS  ##################
 ###########################################
 
-# files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-# #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
+files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 
-# samples['WpWp_EWK'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 4
-# }
-
-###########################################
-#############  EFT samples  ###############
-###########################################
-
-# private samples location 
-EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
-
-# SM Term
-
-files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
-
-samples['sm'] = {
+samples['WpWp_EWK'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 9
+    'FilesPerJob': 4
 }
 
-# Linear Interaction Term
+# ###########################################
+# #############  EFT samples  ###############
+# ###########################################
 
-files = nanoGetSampleFiles(EftDirectory, 'SSWW_INT')
+# # private samples location 
+# EftDirectory = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
 
-samples['linear'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*(1/0.3)',    # factor for cross section normalization (samples are generated with c_w = 0.3)
-    'FilesPerJob': 9
-}
+# # SM Term
 
-# Quadratic BSM Term
+# files = nanoGetSampleFiles(EftDirectory, 'SSWW_SM')
 
-files = nanoGetSampleFiles(EftDirectory, 'SSWW_BSM')
+# samples['sm'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'FilesPerJob': 9
+# }
 
-samples['quadratic'] = {
-    'name': files,
-    'weight': mcCommonWeight+'*(1/0.09)',   # factor for cross section normalization (samples are generated with c_w = 0.3)
-    'FilesPerJob': 9
-}
+# # Linear Interaction Term
+
+# files = nanoGetSampleFiles(EftDirectory, 'SSWW_INT')
+
+# samples['linear'] = {
+#     'name': files,
+#     'weight': mcCommonWeight+'*(1/0.3)',    # factor for cross section normalization (samples are generated with c_w = 0.3)
+#     'FilesPerJob': 9
+# }
+
+# # Quadratic BSM Term
+
+# files = nanoGetSampleFiles(EftDirectory, 'SSWW_BSM')
+
+# samples['quadratic'] = {
+#     'name': files,
+#     'weight': mcCommonWeight+'*(1/0.09)',   # factor for cross section normalization (samples are generated with c_w = 0.3)
+#     'FilesPerJob': 9
+# }
 
 ###########################################
 ################## FAKE ###################
