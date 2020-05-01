@@ -43,7 +43,7 @@ misID_sf::evaluate(unsigned)
 {
     unsigned nL{*nLepton->Get()};
     if (nL < 2)
-        return 0.;
+        return 1.;
 
     // more lepton selections
     std::vector<unsigned> iPromptL{};
@@ -58,13 +58,12 @@ misID_sf::evaluate(unsigned)
 
     // 2 leptons or more required
     if (iPromptL.size() < 2)
-        return 0.; // false
+        return 1.; 
     if (iPromptL.size() > 2){
         if (Lepton_pt->At(iPromptL[2])>10){
-            return 0;
+            return 1;
         }
     } 
-
 
     // ch. flip probability measured from DATA (for different |eta| regions)
     double chargeflip_rate_data[3]={5.53316e-05,3.72575e-04,1.14568e-03};
@@ -73,12 +72,11 @@ misID_sf::evaluate(unsigned)
     // DATA/MC prob. ratios
     double sf[3]={1.18974,1.52196,1.22942}; // not used...
 
-
     // keep only ee or emu events
     if(Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1]) != 11*11 &&
        Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1]) != 11*13) 
     {
-        return 0;
+        return 1;
     }
 
     // selecting same sign e-e events
@@ -131,16 +129,14 @@ misID_sf::evaluate(unsigned)
         }else if(abs(Lepton_eta->At(iPromptL[e_index]))>=1.5 && abs(Lepton_eta->At(iPromptL[e_index]))<2.5){
             idx=2;
         }
-        
         // compute data mis id sf 
-        double mis_id_sf_data = chargeflip_rate_data[idx1];
+        double mis_id_sf_data = chargeflip_rate_data[idx];
         // compute mc mis id sf
-        double mis_id_sf_mc   = chargeflip_rate_mc[idx1];
+        double mis_id_sf_mc   = chargeflip_rate_mc[idx];
         double corr_w = mis_id_sf_data/mis_id_sf_mc ;
         return corr_w;
     }
-
-
+    return 1. ; // doing nothing.. just to avoid warning
 }
 
 void

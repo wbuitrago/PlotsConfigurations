@@ -95,12 +95,12 @@ groupPlot['WW_QCD']  = {
                   'color'    : ROOT.kViolet, # kViolet
                   'samples'  : ['WW_QCD']
               }
-# groupPlot['non-prompt']  = {
-#                   'nameHR' : 'non-Prompt',
-#                   'isSignal' : 0,
-#                   'color': ROOT.kYellow,    
-#                   'samples'  : ['Fake_lep']
-#               }
+groupPlot['non-prompt']  = {
+                  'nameHR' : 'non-Prompt',
+                  'isSignal' : 0,
+                  'color': ROOT.kYellow,    
+                  'samples'  : ['Fake_lep']
+              }
 
 groupPlot['mischarge']  = {
                   'nameHR'   : "MisCharge",
@@ -148,13 +148,13 @@ groupPlot['WW_EWK']  = {
 # keys here must match keys in samples.py
 #
 
-# ##Fake and prompt substraction
-# plot['Fake_lep']  = {
-#     'color': Yellow,    # kYellow
-#     'isSignal' : 0,
-#     'isData'   : 0,
-#     'scale'    : 1.0
-# }
+##Fake and prompt substraction
+plot['Fake_lep']  = {
+    'color': Yellow,    # kYellow
+    'isSignal' : 0,
+    'isData'   : 0,
+    'scale'    : 1.0
+}
 
 plot['WZ_QCD']  = {
     'color': Violet+10, # kViolet+10

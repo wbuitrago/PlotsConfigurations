@@ -27,38 +27,66 @@ supercut_vector = [     'nLepton >= 2',
 # supercut definition
 supercut = and_separator.join(supercut_vector)     
 
-# Z -> ee region
+#-------------------------------------------------------#
+#------------ TOP CONTROL REGION -----------------------#
+#-------------------------------------------------------#
 
-cuts['SS_Z_ee_incl']  = { 
-   'expr': 'ss_ee && \
-            abs(mll - 91.1876) < 15',
-}
-
-cuts['SS_Z_ee']  = { 
-   'expr': 'ss_ee && \
-            abs(mll - 91.1876) < 15',
-   'categories' : {
-      '0j' : 'zeroJet',
-      '1j' : 'oneJet',
-      '2j' : 'twoJetOrMore',
-   }           
-}
-
-# top ss cr
-# emu, 2 jet + btag 
-cuts['SS_top']  = { 
+# OS
+# medium WP btag
+cuts['OS_top_mWP']  = { 
    'expr' : 'twoJet && \
-            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.7527 ) && \
-            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.7527 )' 
+            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.4184 ) && \
+            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.4184 )' ,
    'categories' : {
-      'ee'    : 'ss_ee',
-      'emu'   : 'ss_emu',
+      'ee'    : 'os_ee && abs(mll - 91.1876) > 15',
+      'emu'   : 'os_emu',
+      'mumu'  : 'os_mumu && abs(mll - 91.1876) > 15',
    }
 }
 
-# following: same cuts, OPPOSITE SIGN region
 
-# Z -> ee region
+# tight WP btag
+cuts['OS_top_tWP']  = { 
+   'expr' : 'twoJet && \
+            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.7527 ) && \
+            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.7527 )' ,
+   'categories' : {
+      'ee'    : 'os_ee && abs(mll - 91.1876) > 15',
+      'emu'   : 'os_emu',
+      'mumu'  : 'os_mumu && abs(mll - 91.1876) > 15',
+   }
+}
+
+# SS
+# medium WP btag
+cuts['SS_top_mWP']  = { 
+   'expr' : 'twoJet && \
+            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.4184 ) && \
+            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.4184 )', 
+   'categories' : {
+      'ee'    : 'ss_ee && abs(mll - 91.1876) > 15',
+      'emu'   : 'ss_emu',
+      'mumu'  : 'ss_mumu && abs(mll - 91.1876) > 15',
+   }
+}
+
+# tight WP btag
+cuts['SS_top_tWP']  = { 
+   'expr' : 'twoJet && \
+            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.7527 ) && \
+            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.7527 )', 
+   'categories' : {
+      'ee'    : 'ss_ee && abs(mll - 91.1876) > 15',
+      'emu'   : 'ss_emu',
+      'mumu'  : 'ss_mumu && abs(mll - 91.1876) > 15',
+   }
+}
+
+#-------------------------------------------------------#
+#------------ Zee CONTROL REGION -----------------------#
+#-------------------------------------------------------#
+
+# OS Z -> ee region
 
 cuts['OS_Z_ee_incl']  = { 
    'expr': 'os_ee && \
@@ -75,15 +103,21 @@ cuts['OS_Z_ee']  = {
    }           
 }
 
-# top os cr
-# emu or ee, 2 jet + btag (tight WP) 
+# SS Z -> ee region
 
-cuts['OS_top']  = { 
-   'expr' : 'twoJet && \
-            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.7527 ) && \
-            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.7527 )' 
-   'categories' : {
-      'ee'    : 'os_ee',
-      'emu'   : 'os_emu',
-   }
+cuts['SS_Z_ee_incl']  = { 
+   'expr': 'ss_ee && \
+            abs(mll - 91.1876) < 15',
 }
+
+cuts['SS_Z_ee']  = { 
+   'expr': 'ss_ee && \
+            abs(mll - 91.1876) < 15',
+   'categories' : {
+      '0j' : 'zeroJet',
+      '1j' : 'oneJet',
+      '2j' : 'twoJetOrMore',
+   }           
+}
+
+
