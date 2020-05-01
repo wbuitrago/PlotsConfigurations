@@ -46,9 +46,10 @@ cuts['SS_Z_ee']  = {
 
 # top ss cr
 # emu, 2 jet + btag 
-
 cuts['SS_top']  = { 
-   'expr': 'bReq && twoJet',
+   'expr' : 'twoJet && \
+            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.7527 ) && \
+            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.7527 )' 
    'categories' : {
       'ee'    : 'ss_ee',
       'emu'   : 'ss_emu',
@@ -75,10 +76,12 @@ cuts['OS_Z_ee']  = {
 }
 
 # top os cr
-# emu, 2 jet + btag (tight WP) 
+# emu or ee, 2 jet + btag (tight WP) 
 
 cuts['OS_top']  = { 
-   'expr': 'bReq && twoJet',
+   'expr' : 'twoJet && \
+            ( CleanJet_eta[0]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[0]] > 0.7527 ) && \
+            ( CleanJet_eta[1]<2.5 && Jet_btagDeepB[CleanJet_jetIdx[1]] > 0.7527 )' 
    'categories' : {
       'ee'    : 'os_ee',
       'emu'   : 'os_emu',

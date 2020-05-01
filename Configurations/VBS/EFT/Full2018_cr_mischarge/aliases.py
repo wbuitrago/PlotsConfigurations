@@ -10,7 +10,8 @@ configurations = os.path.dirname(configurations) # Configurations level
 
 #aliases = {}
 bAlgo = 'DeepB'
-bWP = '0.4184'
+bWP = '0.4184' # medium WP
+# bWP = '0.7527' # tight WP
 
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 
@@ -147,14 +148,8 @@ aliases['bVeto'] = {
     'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
 }
 
-# medium WP
-# aliases['bReq'] = {
-#     'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
-# }
-
-# tight WP
 aliases['bReq'] = {
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.7527 ) >= 1'
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184 ) >= 1'
 }
 
 aliases['btag0'] = {
