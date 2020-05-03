@@ -48,7 +48,7 @@ cuts['SS_incl']  = {
 #############################################
 ########### VBS_SS signal region ############
 #############################################
-'''
+
 cuts['SS_sr']  = { 
    'expr': 'ssLep && \
             Lepton_pt[0] > 30 &&\
@@ -70,7 +70,7 @@ cuts['SS_sr']  = {
          'mumu'  : 'ss_mumu',
    }
 }
-'''
+
 # signal region w/o categories
 
 # cuts['SS_sr_all']  = { 
@@ -151,28 +151,3 @@ cuts['SS_lowmjj']  = {
 #          'mumu'  : 'ss_mumu',
 #    }
 # }
-
-# cbt_cuts = [ 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0 ]
-
-# for value in cbt_cuts:
-#       cuts['SS_sr_cbt_{}'.format(str(value))]  = { 
-#             'expr': 'ssLep && \
-#                   Lepton_pt[0] > 30 &&\
-#                   Lepton_pt[1] > 30 &&\
-#                   3rd_lep_veto && \
-#                   zVeto && \
-#                   detajj > 2.5 &&\
-#                   mjj > 500 &&\
-#                   mll > 20 &&\
-#                   MET_pt>30 &&\
-#                   softmuon_veto &&\
-#                   tauVeto_ww &&\
-#                   z_lep_sel' + ' && central_jet_btag < {}'.format(str(value)) ,
-#             # sub categorization
-#             'categories' : {
-#                   'ee'    : 'ss_ee',
-#                   'emu'   : 'ss_emu',
-#                   'mumu'  : 'ss_mumu',
-#             }
-#       }
-#

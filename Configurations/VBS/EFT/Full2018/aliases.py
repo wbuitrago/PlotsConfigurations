@@ -15,9 +15,14 @@ bWP = '0.4184'
 mc = [skey for skey in samples if skey not in ('Fake_lep_2016','Fake_lep_2017','Fake_lep_2018','Fake_lep','DATA_2016', 'DATA_2017', 'DATA_2018','DATA')]
 
 # chargeflip
+# to take into account differences between DATA and MC
+aliases['chargeflip_w'] = {
+    'linesToAdd': ['.L %s/VBS/EFT/Full2018/mischarge_sf.cc+' % configurations], # REMEMBER check path...
+    'class': 'misID_sf',
+    'samples': 'mischarge',
+}
 
 # weight for ggH_hww
-
 aliases['Weight2MINLO'] = {
     'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
     'class': 'Weight2MINLO',

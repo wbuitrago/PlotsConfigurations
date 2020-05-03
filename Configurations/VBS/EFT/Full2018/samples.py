@@ -34,12 +34,6 @@ treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
 mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
 mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6{var}'
 
-def makeMCDirectory(var=''):
-    if var:
-        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var='__' + var))
-    else:
-        return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
-
 ################################################
 ############ NUMBER OF LEPTONS #################
 ################################################
@@ -55,7 +49,6 @@ Nlep='2'
 mcCommonWeightNoMatch = 'SFweight'
 #mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC*59.74'
 mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
-#mcCommonWeight_os = mcCommonWeight+'*chargeflip_w'
 
 ################################################
 ############### B-Tag  WP ######################
@@ -63,7 +56,7 @@ mcCommonWeight = 'SFweight*PromptGenLepMatch2l'
 
 # Definitions in aliases.py
 
-#SFweight += '*btagSF'
+# SFweight += '*btagSF'
 
 ################################################
 ############   MET  FILTERS  ###################
@@ -123,7 +116,7 @@ files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
 
 samples['mischarge'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.7', # SF measured from Full2018_cr_mischarge (SS Zee region)
+    'weight': mcCommonWeight + '*chargeflip_w*1.3',  # SF=1.3 measured in Full2018_cr_mischarge (SS Z->ee region)
     'FilesPerJob': 4
 }
 
@@ -161,7 +154,6 @@ addSampleWeight(samples,'mischarge','GluGluToWWToTNTN',ggWW_weight)
 # HWW (ggH) weights
 addSampleWeight(samples,'mischarge','GluGluHToWWTo2L2NuPowheg_M125','Weight2MINLO')
 
-   
 # -------------------- mis-charge single-sample --------------------------------
 
 ######## Vg ########  
@@ -293,7 +285,6 @@ samples['WW_QCD'] = {
 ###########################################
 
 # files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
-# #+ nanoGetSampleFiles(mcDirectory, 'WWG'), #should this be included? or is it already taken into account in the WW sample?
 
 # samples['WpWp_EWK'] = {
 #     'name': files,
