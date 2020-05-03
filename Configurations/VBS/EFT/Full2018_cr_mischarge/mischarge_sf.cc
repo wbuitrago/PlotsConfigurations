@@ -72,7 +72,7 @@ misID_sf::evaluate(unsigned)
     // DATA/MC prob. ratios
     double sf[3]={1.18974,1.52196,1.22942}; // not used...
 
-    // keep only ee or emu events
+    // assign weight 1 to everything except SS ee and emu
     if(Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1]) != 11*11 &&
        Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1]) != 11*13) 
     {

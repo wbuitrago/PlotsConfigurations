@@ -95,12 +95,12 @@ groupPlot['WW_QCD']  = {
                   'color'    : ROOT.kViolet, # kViolet
                   'samples'  : ['WW_QCD']
               }
-groupPlot['non-prompt']  = {
-                  'nameHR' : 'non-Prompt',
-                  'isSignal' : 0,
-                  'color': ROOT.kYellow,    
-                  'samples'  : ['Fake_lep']
-              }
+# groupPlot['non-prompt']  = {
+#                   'nameHR' : 'non-Prompt',
+#                   'isSignal' : 0,
+#                   'color': ROOT.kYellow,    
+#                   'samples'  : ['Fake_lep']
+#               }
 
 groupPlot['mischarge']  = {
                   'nameHR'   : "MisCharge",
@@ -149,12 +149,12 @@ groupPlot['WW_EWK']  = {
 #
 
 ##Fake and prompt substraction
-plot['Fake_lep']  = {
-    'color': Yellow,    # kYellow
-    'isSignal' : 0,
-    'isData'   : 0,
-    'scale'    : 1.0
-}
+# plot['Fake_lep']  = {
+#     'color': Yellow,    # kYellow
+#     'isSignal' : 0,
+#     'isData'   : 0,
+#     'scale'    : 1.0
+# }
 
 plot['WZ_QCD']  = {
     'color': Violet+10, # kViolet+10
@@ -225,8 +225,8 @@ plot['TTV']  = {
 
 # mischarge samples
 #---------------------------------
-# mischarge_SF = 1.7
-mischarge_SF = 1.0
+mischarge_SF = 1.3
+# mischarge_SF = 1.0
 plot['DY']  = {
     'color': Grey, # kGreen
     'isSignal' : 0,
