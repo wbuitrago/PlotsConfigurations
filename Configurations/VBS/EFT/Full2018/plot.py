@@ -39,14 +39,8 @@ Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=860; Grey=920
 
 eft_scale = 1.0
 
-# to use this just comment out groupplots for all the samples included
-# Other Bgr
-groupPlot['Other Bgr']  = {
-    'nameHR'   : "Other Bgr",
-    'isSignal' : 0,
-    'color'    : ROOT.kGreen,
-    'samples'  : ['ZZ','VVV','TTV','DPS']
-}
+# plots are in order of importance for SS sr emu (main SR)
+
 # groupPlot['ZZ']  = {
 #     'nameHR' : "ZZ",
 #     'isSignal' : 0,
@@ -71,12 +65,20 @@ groupPlot['Other Bgr']  = {
 #     'color': ROOT.kGray, # kGreen
 #     'samples'  : ['DPS']
 # }
-groupPlot['WZ_QCD']  = {
-    'nameHR' : "WZ QCD",
+
+# Other Bgr
+groupPlot['Other Bgr']  = {
+    'nameHR'   : "Other Bgr",
     'isSignal' : 0,
-    'color'    : ROOT.kRed, # kViolet+10
-    'samples'  : ['WZ_QCD']
+    'color'    : ROOT.kGreen,
+    'samples'  : ['ZZ','VVV','TTV','DPS']
 }
+groupPlot['WW_QCD']  = {
+                  'nameHR' : "W^{#pm}W^{#pm} QCD",
+                  'isSignal' : 0,
+                  'color'    : ROOT.kViolet, # kViolet
+                  'samples'  : ['WW_QCD']
+              }
 groupPlot['WLLJJ_EWK']  = {
     'nameHR' : "WZ EWK",
     'isSignal' : 0,
@@ -89,24 +91,23 @@ groupPlot['Vg']  = {
                   'color'    : ROOT.kOrange,   # kOrange + 10
                   'samples'  : ['Vg','VgS_L','VgS_H']
               }
-groupPlot['WW_QCD']  = {
-                  'nameHR' : "W^{#pm}W^{#pm} QCD",
-                  'isSignal' : 0,
-                  'color'    : ROOT.kViolet, # kViolet
-                  'samples'  : ['WW_QCD']
-              }
-groupPlot['non-prompt']  = {
-                  'nameHR' : 'non-Prompt',
-                  'isSignal' : 0,
-                  'color': ROOT.kYellow,    
-                  'samples'  : ['Fake_lep']
-              }
-
 groupPlot['mischarge']  = {
                   'nameHR'   : "MisCharge",
                   'isSignal' : 0,
                   'color'    : ROOT.kGreen + 2, 
                   'samples'  : ['mischarge']
+              }
+groupPlot['WZ_QCD']  = {
+    'nameHR' : "WZ QCD",
+    'isSignal' : 0,
+    'color'    : ROOT.kRed, # kViolet+10
+    'samples'  : ['WZ_QCD']
+}
+groupPlot['non-prompt']  = {
+                  'nameHR' : 'non-Prompt',
+                  'isSignal' : 0,
+                  'color': ROOT.kYellow,    
+                  'samples'  : ['Fake_lep']
               }
 
 # SM official samples
@@ -119,14 +120,8 @@ groupPlot['mischarge']  = {
 
 
 #####################################
+# signals
 # EFT samples (internal latinos)
-# groupPlot['WW_EWK_sm']  = {
-#                   'nameHR'   : "W^{#pm}W^{#pm} EWK SM + EFT (k={})".format(str(eft_scale_param)),
-#                   'isSignal' : 0,
-#                   'color'    : ROOT.kBlue, 
-#                   'samples'  : ['sm','linear','quadratic']
-#               }
-
 groupPlot['WW_EWK_sm']  = {
                   'nameHR'   : "W^{#pm}W^{#pm} EWK sm",
                   'isSignal' : 3,
@@ -231,7 +226,7 @@ plot['TTV']  = {
 
 # mischarge samples
 #---------------------------------
-plot['mischage']  = {
+plot['mischarge']  = {
     'color': Grey, # kGreen
     'isSignal' : 0,
     'isData'   : 0,

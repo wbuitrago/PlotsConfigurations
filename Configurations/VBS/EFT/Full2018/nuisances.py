@@ -247,7 +247,7 @@ nuisances['mischarge'] = {
     'name': 'mischarge',
     'type': 'lnN',
     'samples': {
-        'mischarge'    : '1.5',
+        'mischarge'    : '1.3',
     },
 }
 
