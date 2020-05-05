@@ -62,7 +62,7 @@ variables['mll']  = {   'name': 'mll',            #   variable name
                         'fold' :3
                         }
 variables['mll-DY']  = {   'name': 'mll',            #   variable name    
-                        'range' : (10,40,80),    #   variable range
+                        'range' : (10,40,120),    #   variable range
                         'xaxis' : 'm_{ll} [GeV]',  #   x axis name
                         'fold' :3
                         }
@@ -90,7 +90,7 @@ variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
                         'xaxis' : 'p_{T} 1st lep [GeV]',
                         'fold' :3
                         }
-variables['pt1']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
+variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
                         'range' : (20,0.,200),
                         'xaxis' : 'p_{T} 2nd lep [GeV]',
                         'fold' :3
@@ -118,7 +118,7 @@ variables['jeteta1'] = {  'name': 'Alt$(CleanJet_eta[0],-9999.)',
                         'xaxis': '#eta 1st jet',
                         'fold' : 3
                         }
-variables['jeteta1'] = {  'name': 'Alt$(CleanJet_eta[1],-9999.)',
+variables['jeteta2'] = {  'name': 'Alt$(CleanJet_eta[1],-9999.)',
                         'range': (10,-5,5),
                         'xaxis': '#eta 2nd jet',
                         'fold' : 3
@@ -153,7 +153,7 @@ variables['puppiMET_phi']  = {   'name': 'PuppiMET_phi',
                         }
 
 
-variables['njet']  = {   'name': 'Sum$(CleanJet_pt > 30)',            #   variable name    
+variables['njet']  = {   'name': 'Sum$(CleanJet_pt >= 30)',            #   variable name    
                         'range' : (10,0,10),    #   variable range
                         'xaxis' : 'njet',  #   x axis name
                         'fold' : 3
@@ -166,13 +166,7 @@ variables['njet']  = {   'name': 'Sum$(CleanJet_pt > 30)',            #   variab
 #--- 2D variables --
 
 
-variables['MjjVSmTi'] = {   'name': 'mjj:mTi',               
-                             'range' : ([100,250,400,600],[500,700,1000,1500,2000],),            #   variable range
-                             'xaxis' : 'm_{jj} : m_{Ti}',      #   x axis name
-                             'fold' : 3  
-                             }
-
-variables['MjjVSmTi_ext']  = {   'name': 'mjj:mTi',            #   variable name    
+variables['MjjVSmTi']  = {   'name': 'mjj:mTi',            #   variable name    
                         'range' : ([100,250,400,600,1000],[500,700,1000,1300,1600,2000],),    #   variable range
                         'xaxis' : 'mjj:mTi',  #   x axis name
                         'fold' : 3

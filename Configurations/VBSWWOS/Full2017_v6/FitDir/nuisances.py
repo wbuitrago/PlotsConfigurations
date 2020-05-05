@@ -27,6 +27,17 @@ except NameError:
 from LatinoAnalysis.Tools.HiggsXSection import HiggsXSection
 HiggsXS = HiggsXSection()
 
+cuts0j = []
+cuts1j = []
+cuts2j = []
+for k in cuts:
+  for cat in cuts[k]['categories']:
+#    if '0j' in cat: cuts0j.append(k+'_'+cat)
+#    elif '1j' in cat: cuts1j.append(k+'_'+cat)
+#    elif '2j' in cat: cuts2j.append(k+'_'+cat)
+    if '2j' in cat: cuts2j.append(k+'_'+cat) 
+    else: print 'WARNING: name of category does not contain on either 0j,1j,2j'
+
 
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
@@ -42,43 +53,43 @@ HiggsXS = HiggsXSection()
 nuisances['lumi_Uncorrelated'] = {
     'name': 'lumi_13TeV_2017',
     'type': 'lnN',
-    'samples': dict((skey, '1.02') for skey in mc if skey not in [ 'top','DY'])
+    'samples': dict((skey, '1.02') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
 nuisances['lumi_XYFact'] = {
     'name': 'lumi_13TeV_XYFact',
     'type': 'lnN',
-    'samples': dict((skey, '1.008') for skey in mc if skey not in [ 'top','DY'])
+    'samples': dict((skey, '1.008') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
 nuisances['lumi_LScale'] = {
     'name': 'lumi_13TeV_LSCale',
     'type': 'lnN',
-    'samples': dict((skey, '1.003') for skey in mc if skey not in [ 'top','DY'])
+    'samples': dict((skey, '1.003') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
 nuisances['lumi_BBDefl'] = {
     'name': 'lumi_13TeV_BBDefl',
     'type': 'lnN',
-    'samples': dict((skey, '1.004') for skey in mc if skey not in [ 'top','DY'])
+    'samples': dict((skey, '1.004') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
 nuisances['lumi_DynBeta'] = {
     'name': 'lumi_13TeV_DynBeta',
     'type': 'lnN',
-    'samples': dict((skey, '1.005') for skey in mc if skey not in [ 'top','DY'])
+    'samples': dict((skey, '1.005') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
 nuisances['lumi_CurrCalib'] = {
     'name': 'lumi_13TeV_CurrCalib',
     'type': 'lnN',
-    'samples': dict((skey, '1.003') for skey in mc if skey not in [ 'top','DY'])
+    'samples': dict((skey, '1.003') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
 nuisances['lumi_Ghosts'] = {
     'name': 'lumi_13TeV_Ghosts',
     'type': 'lnN',
-    'samples': dict((skey, '1.001') for skey in mc if skey not in [ 'top','DY'])
+    'samples': dict((skey, '1.001') for skey in mc if skey not in ['WW', 'top', 'DY'])
 }
 
 #### FAKES
@@ -104,26 +115,6 @@ nuisances['fake_syst_me'] = {
     'perRecoBin': True
 }
 
-
-nuisances['fake_syst_ee'] = {
-    'name': 'CMS_fake_syst_ee',
-    'type': 'lnN',
-    'samples': {
-        'Fake_ee': '1.3'
-    },
-   # 'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
-    #'perRecoBin': True
-}
-
-nuisances['fake_syst_mm'] = {
-    'name': 'CMS_fake_syst_mm',
-    'type': 'lnN',
-    'samples': {
-        'Fake_mm': '1.3'
-    },
-    #'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
-    #'perRecoBin': True
-}
 
 
 nuisances['fake_ele'] = {
@@ -287,20 +278,21 @@ nuisances['PU'] = {
 }
 
 ##### PS and UE
-'''
+
 nuisances['PS']  = {
     'name': 'PS',
     'type': 'shape',
     'kind': 'weight_envelope',
     'samples': {
 #        'WW': ['PSWeight[0]', 'PSWeight[1]', 'PSWeight[2]', 'PSWeight[3]'],
+        'ggWW': ['PSWeight[0]', 'PSWeight[1]', 'PSWeight[2]', 'PSWeight[3]'],
         'ggH_hww': ['PSWeight[0]', 'PSWeight[1]', 'PSWeight[2]', 'PSWeight[3]'],
         'qqH_hww': ['PSWeight[0]', 'PSWeight[1]', 'PSWeight[2]', 'PSWeight[3]'],
     },
     'AsLnN': '1',
     'samplespost': lambda self, samples: dict([('WW', ['1.', '1.'])] + [(sname, ['1.', '1.']) for sname in samples if 'ggH_hww' in sname or 'qqH_hww' in sname])
 }
-'''
+
 nuisances['UE']  = {
                 'name'  : 'UE',
                 'skipCMS' : 1,
@@ -534,16 +526,14 @@ nuisances['WWqscale2j']  = {
 }
 
 
+'''
 # Uncertainty on SR/CR ratio
 nuisances['CRSR_accept_DY'] = {
     'name': 'CMS_hww_CRSR_accept_DY',
     'type': 'lnN',
     'samples': {'DY': '1.02'},
-    #'samples': {'DY': '1.1'},
     'cuts': [cut for cut in cuts if '_CR_' in cut],
-    #'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut and cut in self['cuts']]),
     'cutspost': (lambda self, cuts: [cut for cut in cuts if '_DY_' in cut]),
-    #'perRecoBin': True
 }
 
 # Uncertainty on SR/CR ratio
@@ -551,11 +541,9 @@ nuisances['CRSR_accept_top'] = {
     'name': 'CMS_hww_CRSR_accept_top',
     'type': 'lnN',
     'samples': {'top': '1.01'},
-    #'samples': {'top': '1.05'},
     'cuts': [cut for cut in cuts if '_CR_' in cut],
     'cutspost': (lambda self, cuts: [cut for cut in cuts if '_top_' in cut]),
 }
-'''
 # Theory uncertainty for ggH
 #
 #
@@ -641,20 +629,115 @@ nuisances['stat'] = {
 
 ## rate parameters
 
-nuisances['Topnorm2j']  = {
-               'name'  : 'CMS_Topnorm2j',
+
+
+## rate parameters
+'''
+nuisances['DYttnorm0j']  = {
+               'name'  : 'CMS_hww_DYttnorm0j',
                'samples'  : {
-                   'top' : '1.00',
+                   'DY' : '1.00',
                    },
                'type'  : 'rateParam',
+               'cuts'  : cuts0j
               }
+nuisances['DYttnorm1j']  = {
+               'name'  : 'CMS_hww_DYttnorm1j',
+               'samples'  : {
+                   'DY' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts1j
+              }
+'''
 nuisances['DYttnorm2j']  = {
-                 'name'  : 'CMS_DYttnorm2j',
+                 'name'  : 'CMS_hww_DYttnorm2j',
                  'samples'  : {
                      'DY' : '1.00',
                      },
                  'type'  : 'rateParam',
+                 'cuts'  : cuts2j
                 }
+'''
+nuisances['WWnorm0j']  = {
+               'name'  : 'CMS_hww_WWnorm0j',
+               'samples'  : {
+                   'WW' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts0j
+              }
+nuisances['ggWWnorm0j']  = {
+               'name'  : 'CMS_hww_WWnorm0j',
+               'samples'  : {
+                   'ggWW' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts0j
+              }
+nuisances['WWnorm1j']  = {
+               'name'  : 'CMS_hww_WWnorm1j',
+               'samples'  : {
+                   'WW' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts1j
+              }
+nuisances['ggWWnorm1j']  = {
+               'name'  : 'CMS_hww_WWnorm1j',
+               'samples'  : {
+                   'ggWW' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts1j
+              }
+'''
+nuisances['WWnorm2j']  = {
+               'name'  : 'CMS_hww_WWnorm2j',
+               'samples'  : {
+                   'WW' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts2j
+              }
+
+
+nuisances['ggWWnorm2j']  = {
+               'name'  : 'CMS_hww_WWnorm2j',
+               'samples'  : {
+                   'ggWW' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts2j
+              }
+
+'''
+nuisances['Topnorm0j']  = {
+               'name'  : 'CMS_hww_Topnorm0j',
+               'samples'  : {
+                   'top' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts0j
+              }
+nuisances['Topnorm1j']  = {
+               'name'  : 'CMS_hww_Topnorm1j',
+               'samples'  : {
+                   'top' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts1j
+              }
+'''
+nuisances['Topnorm2j']  = {
+               'name'  : 'CMS_hww_Topnorm2j',
+               'samples'  : {
+                   'top' : '1.00',
+                   },
+               'type'  : 'rateParam',
+               'cuts'  : cuts2j
+              }
+
 
 
 for n in nuisances.values():

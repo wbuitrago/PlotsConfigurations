@@ -4,7 +4,7 @@
 tag = '2018_full_v6'
 outputDir = 'rootFile'
 treeName = 'Events'
-
+date='290420'
 # luminosity to normalize to
 lumi = 59.74
 
@@ -27,7 +27,7 @@ plotFile = 'plot.py'
 structureFile = 'structure.py'
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2018/full_v6'
+outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2018/full_v6_'+date
 # nuisances file for mkDatacards and for mkShape
 nuisancesFile = 'nuisances.py'
 # used by mkDatacards to define output directory for datacards

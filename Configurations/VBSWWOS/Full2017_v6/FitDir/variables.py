@@ -19,55 +19,20 @@ variables['events']  = {   'name': '1',
                         'range' : (1,0,2),  
                         'xaxis' : 'events', 
                         'fold' : 3
-                        }      
-variables['mTi']  = {   'name': 'mTi',            #   variable name    
-                        'range' : ([100,150,200,250,300,350,400,450,500,600,700,1000],),    #   variable range
-                        'xaxis' : 'm_{T,i} [GeV]',  #   x axis name
-                        'fold' : 3
-                        }
-
+                        }     
 
 variables['mjj']  = {   'name': 'mjj',            #   variable name    
                         'range' : (10,500,3000),    #   variable range
                         'xaxis' : 'm_{jj} [GeV]',  #   x axis name
                         'fold' :3
-                        }
-
-variables['detajj']  = {   'name': 'detajj',            #   variable name    
-                           'range' : (10,3.5,8.5),    #   variable range
-                           'xaxis' : '#Delta #eta jj',  #   x axis name
-                           'fold' :0
-                           }
-
-
-variables['Zepp1']  = {   'name': 'Lepton_eta[0]-0.5*(CleanJet_eta[0]+CleanJet_eta[1])',            #   variable name    
-                           'range' : (10,-5,5),    #   variable range
-                           'xaxis' : 'Zeppenfeld_1',  #   x axis name
-                           'fold' :0
-                           }
-
-variables['Zepp2']  = {   'name': 'Lepton_eta[1]-0.5*(CleanJet_eta[0]+CleanJet_eta[1])',            #   variable name    
-                           'range' : (10,-5,5),    #   variable range
-                           'xaxis' : 'Zeppenfeld_2',  #   x axis name
-                           'fold' :0
-                           }
-
-variables['Zeppll']  = {   'name': 'Zll[0]',            #   variable name    
-                           'range' : (10,0,5),    #   variable range
-                           'xaxis' : 'Zeppenfeld_ll',  #   x axis name
-                           'fold' :0
-                           }            
+                        } 
 
 #--- 2D variables --
 
 
-variables['MjjVSmTi'] = {   'name': 'mjj:mTi',               
-                             'range' : ([100,250,400,600],[500,700,1000,1500,2000],),            #   variable range
-                             'xaxis' : 'm_{jj} : m_{Ti}',      #   x axis name
-                             'fold' : 3  
-                             }
 
-variables['MjjVSmTi_ext']  = {   'name': 'mjj:mTi',            #   variable name    
+
+variables['MjjVSmTi']  = {   'name': 'mjj:mTi',            #   variable name    
                         'range' : ([100,250,400,600,1000],[500,700,1000,1300,1600,2000],),    #   variable range
                         'xaxis' : 'mjj:mTi',  #   x axis name
                         'fold' :3

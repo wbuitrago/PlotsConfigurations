@@ -13,11 +13,11 @@ groupPlot['top']  = {
                   'color': 400,   # kYellow
                   'samples'  : ['top']
               }
-groupPlot['WpWmJJ_QCD_noTop']  = {  
-                  'nameHR' : 'WpWm_QCD_noTop',
+groupPlot['WW']  = {  
+                  'nameHR' : 'WW',
                   'isSignal' : 0,
                   'color': 851, # kAzure -9 
-                  'samples'  : ['WpWmJJ_QCD_noTop', 'ggWW']
+                  'samples'  : ['WW', 'ggWW']
               }
 
 groupPlot['DY']  = {  
@@ -49,7 +49,7 @@ groupPlot['Fake']  = {
                   'nameHR' : 'Non-prompt',
                   'isSignal' : 0,
                   'color': 921,    # kGray + 1
-                  'samples'  : ['Fake_em', 'Fake_me', 'Fake_mm', 'Fake_ee']
+                  'samples'  : ['Fake_em', 'Fake_me']
               }
 groupPlot['Higgs']  = {  
                   'nameHR' : 'Higgs',
@@ -121,8 +121,8 @@ plot['VgS_L']  = {
               }
 
 
-plot['WpWmJJ_QCD_noTop']  = {
-                  'nameHR' : 'WpWmJJ_QCD_noTop',
+plot['WW']  = {
+                  'nameHR' : 'WW',
                   'isSignal' : 0,
                   'isData'   : 0 ,
                   'color': 7 #                                                                           
@@ -140,18 +140,6 @@ plot['Fake_em']  = {
                  'isData'   : 0 
              }
 plot['Fake_me']  = { 
-                 'nameHR' : 'Fake',
-                 'color': 921 ,  
-                 'isSignal' : 0,
-                 'isData'   : 0 
-             }
-plot['Fake_ee']  = { 
-                 'nameHR' : 'Fake',
-                 'color': 921 ,  
-                 'isSignal' : 0,
-                 'isData'   : 0 
-             }
-plot['Fake_mm']  = { 
                  'nameHR' : 'Fake',
                  'color': 921 ,  
                  'isSignal' : 0,

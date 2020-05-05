@@ -3,6 +3,7 @@
 tag = '2016_full_v6'
 outputDir = 'rootFile'
 treeName = 'Events'
+date='280420'
 
 # luminosity to normalize to
 lumi = 35.9
@@ -29,7 +30,7 @@ structureFile = 'structure.py'
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2016/sig_v6'
+outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2016/full_v6_'+date
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard = '/afs/cern.ch/work/f/fcetorel/private/work2/VBS_OS/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBS_OS/Full2016_v6/FitDirdatacards/'
+outputDirDatacard = '/afs/cern.ch/work/f/fcetorel/private/work2/VBS_OS/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBS_OS/Full2016_v6/FitDir/datacards/'
 

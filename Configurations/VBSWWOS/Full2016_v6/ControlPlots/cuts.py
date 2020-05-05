@@ -2,31 +2,43 @@
 
 
 #cuts = {}
-    
-supercut = 'mll>50  \
-            && ptll > 30 \
-            && Alt$(Lepton_pdgId[0]*Lepton_pdgId[1],0)==-11*13 \
-            && abs(Lepton_eta[0])<2.5 && abs(Lepton_eta[1])<2.5 \
-            && Lepton_pt[0]>25 \
+supercut = '   Lepton_pt[0]>25 \
             && Lepton_pt[1]>10 \
             && (abs(Lepton_pdgId[1])==13 || Lepton_pt[1]>13) \
             && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) \
-            && PuppiMET_pt>20 \
+            && abs(Lepton_eta[0])<2.5 && abs(Lepton_eta[1])<2.5 \
+            && ptll>30 \
+            && PuppiMET_pt > 20 \
+            && mjj > 500 \
+            && detajj > 3.5 \
            '
 
 
-cuts['top_me']  =              'mjj>500 \
-                               && detajj > 3.5 \
-                               && Alt$(CleanJet_pt[0],0.)>30 && Alt$(CleanJet_pt[1],0.)>30 \
-                               && ((zeroJet && !bVeto) || bReq) \
-'
+## Top control regions
+cuts['top']  = { 
+   'expr' : 'topcr',
+   'categories' : {
+#      '0j' : 'zeroJet',
+#      '1j' : 'oneJet && Alt$(CleanJet_pt[1],0)<30',
+      '2j_em_me' : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13)',
+      '2j_ee_mm' : 'mll>120 && PuppiMET_pt>60 && multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11 || Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)',
+   }
+}
 
-cuts['DYtt']  =  'mjj>500 \
-                  && detajj > 3.5 \
-                  && mth<60 \
-                  && Alt$(CleanJet_pt[0],0.)>30 && Alt$(CleanJet_pt[1],0.)>30 \
-                  && mll>40 && mll<80 \
-                  && bVeto\
-'
+
+## DYtt control regions
+cuts['DY']  = { 
+   'expr' : 'dycr',
+   # Define the sub-categorization of dycr
+   'categories' : { 
+#        '0j'     : 'zeroJet',
+#        '1j'     : 'oneJet && Alt$(CleanJet_pt[1],0)<30',
+        '2j'     : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11 || Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)', 
+#        '2j_ee'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11)',
+#        '2j_mm'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)',
+    }
+}
+
+
 
 

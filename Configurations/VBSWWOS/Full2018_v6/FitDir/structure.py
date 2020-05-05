@@ -14,7 +14,7 @@ structure['top']  = {
      'isData'   : 0
 }
 
-structure['WpWmJJ_QCD_noTop']  = { 
+structure['WW']  = { 
      'isSignal' : 0,
      'isData'   : 0
 }
@@ -55,14 +55,7 @@ structure['Fake_me']  = {
                  'isSignal' : 0,
                  'isData'   : 0 
              }
-structure['Fake_ee']  = { 
-                 'isSignal' : 0,
-                 'isData'   : 0 
-             }
-structure['Fake_mm']  = { 
-                 'isSignal' : 0,
-                 'isData'   : 0 
-             }
+
 
 structure['qqH_hww'] = {
                   'isSignal' : 0,

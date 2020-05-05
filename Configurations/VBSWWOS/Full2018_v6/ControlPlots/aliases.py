@@ -116,7 +116,7 @@ aliases['twoJet'] = {
 }
 
 # >=2 jets with pt > 30 GeV
-aliases['twoJetOrMore'] = {
+aliases['multiJet'] = {
     'expr': 'Alt$(CleanJet_pt[0], 0) >= 30. && Alt$(CleanJet_pt[1], 0) >= 30.'
 }
 
@@ -158,7 +158,25 @@ aliases['btag2'] = {
     'expr': 'twoJet && bReq'
 }
 
+# CR definitions
 
+aliases['topcr'] = {
+    'expr': 'mll>50 && ((zeroJet && !bVeto) || bReq)'
+}
+
+aliases['dycr'] = {
+    'expr': 'mth<60 && mll>70 && mll<120 && bVeto'
+}
+
+aliases['wwcr'] = {
+    'expr': 'mth>60 && mtw2>30 && mll>100 && bVeto'
+}
+
+# SR definition
+
+aliases['sr'] = {
+    'expr': 'mth>60 && bVeto'
+}
 
 # B tag scale factors
 aliases['bVetoSF'] = {
