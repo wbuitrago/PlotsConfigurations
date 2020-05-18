@@ -14,7 +14,7 @@ variables['VARIABLE']  = {
           'divideByBinWidth': VALUE,   #OPTIONAL, whether to divide (1) or not (0) the bin content by the bin width (for variable bin size histograms). Default is 0
 } 
 '''
-#  
+
 variables['events']  = {   'name': '1',      
                         'range' : (1,0,2),  
                         'xaxis' : 'events', 
@@ -37,5 +37,3 @@ variables['MjjVSmTi']  = {   'name': 'mjj:mTi',            #   variable name
                         'xaxis' : 'mjj:mTi',  #   x axis name
                         'fold' :3
                         }
-
-

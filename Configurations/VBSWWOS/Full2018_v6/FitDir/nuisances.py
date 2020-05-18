@@ -84,8 +84,8 @@ nuisances['fake_syst_em'] = {
     'samples': {
         'Fake_em': '1.3'
     },
-  #  'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
-  #  'perRecoBin': True
+   'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
+   'perRecoBin': True
 }
 
 nuisances['fake_syst_me'] = {
@@ -94,8 +94,8 @@ nuisances['fake_syst_me'] = {
     'samples': {
         'Fake_me': '1.3'
     },
-   # 'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
-   # 'perRecoBin': True
+   'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
+   'perRecoBin': True
 }
 
 
@@ -366,7 +366,7 @@ nuisances['pdf_qqbar'] = {
 nuisances['pdf_Higgs_gg_ACCEPT'] = {
     'name': 'pdf_Higgs_gg_ACCEPT',
     'samples': {
-        'ggH_hww': '1.006'
+        'ggH_hww': '1.005'
     },
     'type': 'lnN',
 }
@@ -374,7 +374,7 @@ nuisances['pdf_Higgs_gg_ACCEPT'] = {
 nuisances['pdf_gg_ACCEPT'] = {
     'name': 'pdf_gg_ACCEPT',
     'samples': {
-        'ggWW': '1.006',
+        'ggWW': '1.005',
     },
     'type': 'lnN',
 }
@@ -383,7 +383,7 @@ nuisances['pdf_Higgs_qqbar_ACCEPT'] = {
     'name': 'pdf_Higgs_qqbar_ACCEPT',
     'type': 'lnN',
     'samples': {
-        'qqH_hww': '1.002'
+        'qqH_hww': '1.011'
     },
 }
 
@@ -391,7 +391,7 @@ nuisances['pdf_qqbar_ACCEPT'] = {
     'name': 'pdf_qqbar_ACCEPT',
     'type': 'lnN',
     'samples': {
-        'VZ': '1.001',
+        'VZ': '1.005',
     },
 }
 ##### Renormalization & factorization scales
@@ -406,7 +406,7 @@ nuisances['pdf_qqbar_ACCEPT'] = {
 #[5] is MUR="2.0" MUF="0.5"; 
 #[6] is MUR="2.0" MUF="1.0"; 
 #[7] is MUR="2.0" MUF="2.0"*
-'''
+
 variationsDY = ['LHEScaleWeight[%d]' % i for i in [0, 1, 3, 4, 6, 7]]
 
 nuisances['QCDscale_V'] = {
@@ -454,7 +454,6 @@ nuisances['QCDscale_ggVV'] = {
     },
 }
 
-'''
 
 '''
 ##### Renormalization & factorization scales
@@ -608,11 +607,18 @@ nuisances['QCDscale_qqbar_ACCEPT'] = {
     'name': 'QCDscale_qqbar_ACCEPT',
     'type': 'lnN',
     'samples': {
-        'qqH_hww': '1.003'
+        'qqH_hww': '1.007'
     }
 }
 
-
+#FIXME: these come from HIG-16-042, maybe should be recomputed?
+nuisances['QCDscale_gg_ACCEPT'] = {
+    'name': 'QCDscale_gg_ACCEPT',
+    'samples': {
+        'ggWW': '1.027',
+    },
+    'type': 'lnN',
+}
 ## Use the following if you want to apply the automatic combine MC stat nuisances.
 nuisances['stat'] = {
     'type': 'auto',
@@ -622,6 +628,7 @@ nuisances['stat'] = {
     #  nuisance ['includeSignal'] =  Include MC stat nuisances on signal processes (1=True, 0=False)
     'samples': {}
 }
+
 
 ##rate parameters
 
@@ -643,14 +650,14 @@ nuisances['DYttnorm1j']  = {
                'cuts'  : cuts1j
               }
 '''
-nuisances['DYttnorm2j']  = {
-                 'name'  : 'CMS_hww_DYttnorm2j',
-                 'samples'  : {
-                     'DY' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                 'cuts'  : cuts2j
-                }
+#nuisances['DYttnorm2j']  = {
+#                 'name'  : 'CMS_hww_DYttnorm2j',
+#                 'samples'  : {
+#                     'DY' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
 '''
 nuisances['WWnorm0j']  = {
                'name'  : 'CMS_hww_WWnorm0j',
@@ -688,7 +695,7 @@ nuisances['ggWWnorm1j']  = {
 nuisances['WWnorm2j']  = {
                'name'  : 'CMS_hww_WWnorm2j',
                'samples'  : {
-                   'WpWmJJ_QCD_noTop' : '1.00',
+                   'WW' : '1.00',
                    },
                'type'  : 'rateParam',
                'cuts'  : cuts2j

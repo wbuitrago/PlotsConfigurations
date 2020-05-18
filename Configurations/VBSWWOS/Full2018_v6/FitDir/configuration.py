@@ -4,7 +4,7 @@
 tag = '2018_full_v6'
 outputDir = 'rootFile'
 treeName = 'Events'
-date='290420'
+date='150520'
 # luminosity to normalize to
 lumi = 59.74
 
@@ -31,4 +31,4 @@ outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2018/full_v6_'+date
 # nuisances file for mkDatacards and for mkShape
 nuisancesFile = 'nuisances.py'
 # used by mkDatacards to define output directory for datacards
-outputDirDatacard ='/afs/cern.ch/work/f/fcetorel/private/work2/VBS_OS/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBS_OS/Full2018_v6/FitDir/datacards/'
+outputDirDatacard ='/afs/cern.ch/work/f/fcetorel/private/work2/VBS_OS/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBS_OS/Full2018_v6/FitDir/datacards'+date+'/'
