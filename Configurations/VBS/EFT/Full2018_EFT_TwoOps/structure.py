@@ -177,7 +177,25 @@ structure['quadratic_cW']  = {
                       'isData'   : 0
                       } 
 
-# cHl1_int missing???
+# cHl1_int missing
+
+# cross terms 
+structure['linear_mixed_cqq3_cqq31']  = {
+    'isSignal' : 1,
+    'isData'   : 0
+    } 
+structure['linear_mixed_cW_cqq1']  = {
+    'isSignal' : 1,
+    'isData'   : 0
+    } 
+structure['linear_mixed_cW_cHW']  = {
+    'isSignal' : 1,
+    'isData'   : 0
+    } 
+structure['linear_mixed_cW_cll1']  = {
+    'isSignal' : 1,
+    'isData'   : 0
+    } 
 
 # ----------------------------------------------------
 

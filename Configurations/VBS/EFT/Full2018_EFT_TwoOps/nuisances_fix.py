@@ -19,16 +19,17 @@ except NameError:
     def makeMCDirectory(x=''):
         return ''
         
-# print ("mc : ", mc )
-
-# signal_mc = ['sm','linear','quadratic']
+        
 signal_mc = [skey for skey in mc if skey.startswith('sm') or skey.startswith('linear') or skey.startswith('quadratic')]
 signal_mc_lin_mix = [skey for skey in mc if skey.startswith('linear_mixed')]
-signal_mc_lin = [skey for skey in mc if skey.startswith('linear') and not in signal_mc_lin_mix]
+signal_mc_lin = [skey for skey in mc if skey.startswith('linear') and skey not in signal_mc_lin_mix]
 signal_mc_quad = [skey for skey in mc if skey.startswith('quadratic')]
 
 
-print ("signal_mc : ", signal_mc)
+# print ("signal_mc : ", signal_mc)
+# print ("signal_mc_lin_mix : ", signal_mc_lin_mix)
+# print ("signal_mc_quad : ", signal_mc_quad)
+# print ("signal_mc_lin : ", signal_mc_lin )
 
 #### Luminosity
 
@@ -117,7 +118,7 @@ for shift in ['jes', 'lf', 'hf', 'hfstats1', 'hfstats2', 'lfstats1', 'lfstats2',
         'name': name,
         'kind': 'weight',
         'type': 'shape',
-        'samples': dict((skey, btag_syst) for skey in mc if skey not in signal_mc_lin ), # test for BOGUS NORM problem
+        'samples': dict((skey, btag_syst) for skey in mc if skey not in signal_mc_lin + signal_mc_lin_mix ), # test for BOGUS NORM problem
         # 'samples': dict((skey, btag_syst) for skey in mc  ), 
     }
 
@@ -130,7 +131,7 @@ nuisances['trigg'] = {
     'name': 'CMS_eff_hwwtrigger_2018',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, trig_syst) for skey in mc if skey not in signal_mc_lin) # test for BOGUS NORM problem
+    'samples': dict((skey, trig_syst) for skey in mc if skey not in signal_mc_lin + signal_mc_lin_mix) # test for BOGUS NORM problem
     # 'samples': dict((skey, trig_syst) for skey in mc ) 
 }
 
@@ -140,7 +141,7 @@ nuisances['eff_e'] = {
     'name': 'CMS_eff_e_2018',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc if skey not in signal_mc_lin) # test for BOGUS NORM problem
+    'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc if skey not in signal_mc_lin + signal_mc_lin_mix) # test for BOGUS NORM problem
     # 'samples': dict((skey, ['SFweightEleUp', 'SFweightEleDown']) for skey in mc ) ,
 }
 
@@ -150,7 +151,7 @@ nuisances['electronpt'] = {
     'type': 'shape',
     'mapUp': 'ElepTup',
     'mapDown': 'ElepTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc ),
+    'samples': dict((skey, ['1', '1']) for skey in mc if skey!='linear_mixed_cW_cHW'),
     'folderUp':   MC_suffix + '__ElepTup_suffix',
     'folderDown': MC_suffix + '__ElepTdo_suffix',
     'AsLnN': '1'
@@ -162,7 +163,7 @@ nuisances['eff_m'] = {
     'name': 'CMS_eff_m_2018',
     'kind': 'weight',
     'type': 'shape',
-    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc if skey not in signal_mc_lin) # test for BOGUS NORM problem
+    'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc if skey not in signal_mc_lin + signal_mc_lin_mix) # test for BOGUS NORM problem
     # 'samples': dict((skey, ['SFweightMuUp', 'SFweightMuDown']) for skey in mc )
 }
 
@@ -188,7 +189,8 @@ nuisances['jes'] = {
     'type': 'shape',
     'mapUp': 'JESup',
     'mapDown': 'JESdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc), # TO BE FIXED: JES uncertainty missing for all EFT private samples
+    # 'samples': dict((skey, ['1', '1']) for skey in mc ), 
+    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc_lin + signal_mc_lin_mix), # test for BOGUS NORM problem
     'folderUp':   MC_suffix + '__JESup_suffix',
     'folderDown': MC_suffix + '__JESdo_suffix',
 }
@@ -201,7 +203,7 @@ nuisances['met'] = {
     'type': 'shape',
     'mapUp': 'METup',
     'mapDown': 'METdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc_lin), # test for BOGUS NORM problem
+    'samples': dict((skey, ['1', '1']) for skey in mc if skey not in signal_mc_lin + signal_mc_lin_mix), # test for BOGUS NORM problem
     # 'samples': dict((skey, ['1', '1']) for skey in mc ), 
     'folderUp':   MC_suffix + '__METup_suffix',
     'folderDown': MC_suffix + '__METdo_suffix',
