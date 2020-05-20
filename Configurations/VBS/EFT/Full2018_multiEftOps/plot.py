@@ -129,18 +129,30 @@ groupPlot['WW_EWK_sm']  = {
                   'samples'  : ['sm']
               }              
 
-groupPlot['WW_EWK_int']  = {
-                  'nameHR'   : "EFT C_{W} int",
-                  'isSignal' : 3,
-                  'color'    : ROOT.kViolet, 
-                  'samples'  : ['linear']
-              }
-groupPlot['WW_EWK_bsm']  = {
-                  'nameHR'   : "EFT C_{W} bsm",
-                  'isSignal' : 3,
-                  'color'    : ROOT.kCyan, 
-                  'samples'  : ['quadratic']
-              }
+operator_list=['cHDD','cHWB','cHW','cHbox','cHq3','cW','cll1','cqq11','cqq1','cqq31','cqq3']
+op='cqq3'  # operators to plot
+eft_scale = 1.0
+# groupPlot['WW_{}_bsm'.format(op)]  = {
+#                 'nameHR'   : "{} bsm (k={})".format(op,eft_scale),
+#                 'isSignal' : 3,
+#                 'color'    : ROOT.kCyan, 
+#                 'samples'  : ['quadratic_{}'.format(op)]
+#             }
+# groupPlot['EFT_{}_int'.format(op)]  = {
+#                 'nameHR'   : "{} int (k={})".format(op,eft_scale),
+#                 'isSignal' : 3,
+#                 'color'    : ROOT.kViolet, 
+#                 'samples'  : ['linear_{}'.format(op)]
+#             }
+
+# int and bsm together (since it doesn't plot negative components...)
+groupPlot['EFT_{}'.format(op)]  = {
+                'nameHR'   : "{} (k={})".format(op,eft_scale),
+                'isSignal' : 3,
+                'color'    : ROOT.kCyan, 
+                'samples'  : ['linear_{}'.format(op) , 'quadratic_{}'.format(op)]
+            }
+
 #####################################
 
 
@@ -246,29 +258,27 @@ plot['mischarge']  = {
 #####################################
 # EFT samples (internal latinos)
 ## Standard Model
-eft_scale = 1.0
+
 plot['sm']  = {
-    'color': Azure+4, # kAzure+4
+    'color'    : Azure+4, # kAzure+4
     'isSignal' : 1,
     'isData'   : 0,
     'scale'    : 1.0
 }
-
-## Linear Interference Term
-plot['linear']  = {
-    'color': Red+4, # kAzure+4
-    'isSignal' : 1,
-    'isData'   : 0,
-    'scale'    : eft_scale
+# op defined above
+plot['linear_{}'.format(op)]  = {
+'color'    : Red+4, # kAzure+4
+'isSignal' : 1,
+'isData'   : 0,
+'scale'    : eft_scale
+}
+plot['quadratic_{}'.format(op)]  = {
+'color'    : Azure+4, # kAzure+4
+'isSignal' : 1,
+'isData'   : 0,
+'scale'    : eft_scale*eft_scale
 }
 
-## Quadratic BSM Term
-plot['quadratic']  = {
-    'color': Azure+4, # kAzure+4
-    'isSignal' : 1,
-    'isData'   : 0,
-    'scale'    : eft_scale
-}            
 
 #####################################
 
@@ -278,7 +288,7 @@ plot['DATA']  = {
     'color': 1 ,
     'isSignal' : 0,
     'isData'   : 1 ,
-    'isBlind'  : 0 ,
+    'isBlind'  : 1 ,
     'scale'    : 1.0
 }
 

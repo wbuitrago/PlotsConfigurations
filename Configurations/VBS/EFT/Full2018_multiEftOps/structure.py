@@ -77,107 +77,19 @@ structure['sm']  = {
                       'isSignal' : 1,
                       'isData'   : 0
                       }
-# cHbox
-structure['linear_cHbox']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cHbox']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }                      
-# cHDD
-structure['linear_cHDD']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cHDD']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }     
-# cHq3
-structure['linear_cHq3']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cHq3']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }  
-# cHWB
-structure['linear_cHWB']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cHWB']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }  
-# cHW
-structure['linear_cHW']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cHW']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }  
-# cll1
-structure['linear_cll1']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cll1']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }  
-# cqq11
-structure['linear_cqq11']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cqq11']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      } 
-# cqq1
-structure['linear_cqq1']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cqq1']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      } 
-# cqq31
-structure['linear_cqq31']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cqq31']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      } 
-# cqq3
-structure['linear_cqq3']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cqq3']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      } 
-# cW
-structure['linear_cW']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      }
-structure['quadratic_cW']  = {
-                      'isSignal' : 1,
-                      'isData'   : 0
-                      } 
 
-# cHl1_int missing???
+op_list = ['cHbox','cHDD','cHl1','cHq3','cHWB','cHW','cll1','cqq11','cqq1','cqq31','cqq3','cW']
+
+for op in op_list:
+    structure['linear_{}'.format(op)]  = {
+                      'isSignal' : 1,
+                      'isData'   : 0
+                      }
+    structure['quadratic_{}'.format(op)]  = {
+                      'isSignal' : 1,
+                      'isData'   : 0
+                      }  
+
 
 # ----------------------------------------------------
 

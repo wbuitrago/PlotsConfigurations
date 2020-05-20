@@ -171,7 +171,7 @@ nuisances['muonpt'] = {
     'type': 'shape',
     'mapUp': 'MupTup',
     'mapDown': 'MupTdo',
-    'samples': dict((skey, ['1', '1']) for skey in mc),
+    'samples': dict((skey, ['1', '1']) for skey in mc if skey != 'linear_cHl1'),
     'folderUp':   MC_suffix + '__MupTup_suffix',
     'folderDown': MC_suffix + '__MupTdo_suffix',
     'AsLnN': '1'

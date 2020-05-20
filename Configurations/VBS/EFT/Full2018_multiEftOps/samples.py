@@ -34,6 +34,9 @@ treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
 mcProduction = 'Autumn18_102X_nAODv6_Full2018v6'
 mcSteps = 'MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6{var}'
 
+# EFT private samples dir
+EftDir = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
+
 ################################################
 ############ NUMBER OF LEPTONS #################
 ################################################
@@ -284,193 +287,42 @@ samples['WW_QCD'] = {
 #############   SIGNALS  ##################
 ###########################################
 
-# files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
+files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK')
 
-# samples['WpWp_EWK'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 4
-# }
+samples['sm'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 1
+}
 
 ###########################################
 #############  EFT samples  ###############
 ###########################################
 
-# cW (old first sample) and sm sample position
-EftDirectoryOld = '/afs/cern.ch/work/j/jixiao/public/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
-# All EFT operators
-EftDir = '/eos/user/j/jixiao/HWWnano3/eft/Autumn18_102X_nAODv6_Full2018v6/MCl1loose2018v6__MCCorr2018v6__l2loose__l2tightOR2018v6'
+# # SM Term
+# files = nanoGetSampleFiles(EftDirectoryOld, 'SSWW_SM')
+# samples['sm'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'FilesPerJob': 4
+# }
 
-# SM Term
-files = nanoGetSampleFiles(EftDirectoryOld, 'SSWW_SM')
-samples['sm'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
+op_list = ['cHbox','cHDD','cHl1','cHq3','cHWB','cHW','cll1','cqq11','cqq1','cqq31','cqq3','cW']
 
-# cHbox # gives "bogus norm" problem
-# linear term has negative events
-files = nanoGetSampleFiles(EftDir, 'cHbox_int')
-samples['linear_cHbox'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cHbox_bsm')
-samples['quadratic_cHbox'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
+for op in op_list:
+    files = nanoGetSampleFiles(EftDir, '{}_int'.format(op))
+    samples['linear_{}'.format(op)] = {
+        'name': files,
+        'weight': mcCommonWeight, 
+        'FilesPerJob': 1
+    }
+    files = nanoGetSampleFiles(EftDir, '{}_bsm'.format(op))
+    samples['quadratic_{}'.format(op)] = {
+        'name': files,
+        'weight': mcCommonWeight,
+        'FilesPerJob': 1
+    }
 
-# cHDD # gives "bogus norm" problem
-# linear term has negative events
-files = nanoGetSampleFiles(EftDir, 'cHDD_int')
-samples['linear_cHDD'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cHDD_bsm')
-samples['quadratic_cHDD'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cHq3
-files = nanoGetSampleFiles(EftDir, 'cHq3_int')
-samples['linear_cHq3'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cHq3_bsm')
-samples['quadratic_cHq3'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cHWB # gives "bogus norm" problem
-# linear term has negative events
-files = nanoGetSampleFiles(EftDir, 'cHWB_int')
-samples['linear_cHWB'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cHWB_bsm')
-samples['quadratic_cHWB'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cHW
-files = nanoGetSampleFiles(EftDir, 'cHW_int')
-samples['linear_cHW'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cHW_bsm')
-samples['quadratic_cHW'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cll1
-files = nanoGetSampleFiles(EftDir, 'cll1_int')
-samples['linear_cll1'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cll1_bsm')
-samples['quadratic_cll1'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cqq11 # gives "bogus norm" problem
-# linear term has negative events
-files = nanoGetSampleFiles(EftDir, 'cqq11_int')
-samples['linear_cqq11'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cqq11_bsm')
-samples['quadratic_cqq11'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cqq1 # gives "bogus norm" problem
-# linear term has negative events
-files = nanoGetSampleFiles(EftDir, 'cqq1_int')
-samples['linear_cqq1'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cqq1_bsm')
-samples['quadratic_cqq1'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cqq31 # gives "bogus norm" problem
-# linear term has negative events
-files = nanoGetSampleFiles(EftDir, 'cqq31_int')
-samples['linear_cqq31'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cqq31_bsm')
-samples['quadratic_cqq31'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cqq3 # gives "bogus norm" problem
-# linear term has negative events
-files = nanoGetSampleFiles(EftDir, 'cqq3_int')
-samples['linear_cqq3'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cqq3_bsm')
-samples['quadratic_cqq3'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cW
-files = nanoGetSampleFiles(EftDir, 'cW_int')
-samples['linear_cW'] = {
-    'name': files,
-    'weight': mcCommonWeight, 
-    'FilesPerJob': 1
-}
-files = nanoGetSampleFiles(EftDir, 'cW_bsm')
-samples['quadratic_cW'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 1
-}
-
-# cHl1_int missing???
 
 ###########################################
 ################## FAKE ###################
@@ -512,4 +364,6 @@ for _, sd in DataRun_2018:
         files = nanoGetSampleFiles(dataDirectory, pd + '_' + sd)
         samples['DATA']['name'].extend(files)
         samples['DATA']['weights'].extend([DataTrig_2018[pd]] * len(files))
+
+
 
