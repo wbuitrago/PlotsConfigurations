@@ -225,8 +225,8 @@ plot['TTV']  = {
 
 # mischarge samples
 #---------------------------------
-mischarge_SF = 1.3
-# mischarge_SF = 1.0
+# mischarge_SF = 1.3
+mischarge_SF = 1.0
 plot['DY']  = {
     'color': Grey, # kGreen
     'isSignal' : 0,
