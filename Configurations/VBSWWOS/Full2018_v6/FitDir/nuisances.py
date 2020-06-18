@@ -650,14 +650,14 @@ nuisances['DYttnorm1j']  = {
                'cuts'  : cuts1j
               }
 '''
-#nuisances['DYttnorm2j']  = {
-#                 'name'  : 'CMS_hww_DYttnorm2j',
-#                 'samples'  : {
-#                     'DY' : '1.00',
-#                     },
-#                 'type'  : 'rateParam',
-#                 'cuts'  : cuts2j
-#                }
+nuisances['DYttnorm2j']  = {
+                 'name'  : 'CMS_hww_DYttnorm2j',
+                 'samples'  : {
+                     'DY' : '1.00',
+                     },
+                 'type'  : 'rateParam',
+                 'cuts'  : cuts2j
+                }
 '''
 nuisances['WWnorm0j']  = {
                'name'  : 'CMS_hww_WWnorm0j',
