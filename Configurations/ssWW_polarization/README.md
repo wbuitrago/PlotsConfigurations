@@ -1,0 +1,2 @@
+### Tips
+- `sr201?_DNN` folds are used for exporting files for training. Some functions are in `functions.hh`. About how to build DNN, please see [here](https://unimib-analyses.docs.cern.ch/ml_tutorial/introduction/).
