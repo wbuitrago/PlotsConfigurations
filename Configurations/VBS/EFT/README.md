@@ -27,4 +27,11 @@
 * **Interference_test**
 
   * EWK_QCD interference for wwss vbs samples 
+
+* **Full2018_multiEftOps**  
+
+  * Configuration for 1 dim EFT fit for many dim6 operators
+
+* **Full2018_EFT_TwoOps**
   
+  * Configuration for 2 dimensional EFT fits
