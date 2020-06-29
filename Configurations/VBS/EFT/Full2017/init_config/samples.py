@@ -5,6 +5,7 @@ import inspect
 # FIX THIS in dependence of where this file is stored, in order to correctly locate the macros in Differential and Patches folder
 # check also in aliases.py
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
+configurations = os.path.dirname(configurations) # init_config
 configurations = os.path.dirname(configurations) # Full2017
 configurations = os.path.dirname(configurations) # EFT
 configurations = os.path.dirname(configurations) # VBS, Differential & Patches level
@@ -61,7 +62,7 @@ def makeMCDirectory(var=''):
         return '/afs/cern.ch/user/y/yiiyama/public/hwwvirtual/Fall17/l2tightOR__{var}'.format(var=var)
     else:
         #return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
-        return '/afs/cern.ch/user/y/yiiyama/public/hwwvirtual/Fall17/l2tightOR'
+        return '/afs/cern.ch/user/y/yiiyama/public/hwwvirtual/Fall17/l2tightOR' 
 
 mcDirectory = makeMCDirectory()
 fakeDirectory = os.path.join(treeBaseDir, dataReco, fakeSteps)
