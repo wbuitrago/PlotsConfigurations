@@ -3,9 +3,8 @@ import copy
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # 2016
-configurations = os.path.dirname(configurations) # ControlRegion
-configurations = os.path.dirname(configurations) # Differential
+configurations = os.path.dirname(configurations) # Full2017_v6
+configurations = os.path.dirname(configurations) # ggH
 configurations = os.path.dirname(configurations) # Configurations
 
 #aliases = {}
@@ -78,77 +77,67 @@ aliases['PromptGenLepMatch2l'] = {
     'samples': mc
 }
 
+aliases['nCleanGenJet'] = {
+    'linesToAdd': ['.L %s/src/PlotsConfigurations/Configurations/Differential/ngenjet.cc+' % os.getenv('CMSSW_BASE')],
+    'class': 'CountGenJet',
+    'samples': mc
+}
+
 aliases['Top_pTrw'] = {
     'expr': '(topGenPt * antitopGenPt > 0.) * (TMath::Sqrt(TMath::Exp(0.0615 - 0.0005 * topGenPt) * TMath::Exp(0.0615 - 0.0005 * antitopGenPt))) + (topGenPt * antitopGenPt <= 0.)',
     'samples': ['top']
 }
 
+handle = open('%s/src/PlotsConfigurations/Configurations/patches/DYrew.py' % os.getenv('CMSSW_BASE'),'r')
+exec(handle)
+handle.close()
+aliases['DY_NLO_pTllrw'] = {
+    #'expr': '1',
+    'expr': '('+DYrew['2017']['NLO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
+    'samples': ['DY']
+}
 
-#bjet
+aliases['DY_LO_pTllrw'] = {
+    #'expr': '1',
+    'expr': '('+DYrew['2017']['LO'].replace('x', 'gen_ptll')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
+    'samples': ['DY']
+}
+
+# Jet bins
+# using Alt$(CleanJet_pt[n], 0) instead of Sum$(CleanJet_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
+
 # No jet with pt > 30 GeV
 aliases['zeroJet'] = {
     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
 }
 
-# ==1 jet with pt > 30 GeV
 aliases['oneJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) >= 30. && Alt$(CleanJet_pt[1], 0) < 30.'
+    'expr': 'Alt$(CleanJet_pt[0], 0) > 30.'
 }
 
-# ==2 jets with pt > 30 GeV
-aliases['twoJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) >= 30. && Alt$(CleanJet_pt[1], 0) >= 30. && Alt$(CleanJet_pt[2], 0) < 30.'
-}
-
-# >=2 jets with pt > 30 GeV
 aliases['multiJet'] = {
-    'expr': 'Alt$(CleanJet_pt[0], 0) >= 30. && Alt$(CleanJet_pt[1], 0) >= 30.'
+    'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
 }
 
-
-#bVeto and central veto
-
-aliases['centralVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 30 && CleanJet_eta > TMath::Min(CleanJet_eta[0], CleanJet_eta[1]) && CleanJet_eta < TMath::Max(CleanJet_eta[0], CleanJet_eta[1]) && abs(CleanJet_eta - CleanJet_eta[0]) > 1 && abs(CleanJet_eta - CleanJet_eta[1]) > 1)==0'
-}
-
-
-aliases['Zll'] = {
-            'expr' : '0.5*abs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))'
-}
+# B tagging
 
 aliases['bVeto'] = {
     'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) == 0'
 }
-#bReq
-
 
 aliases['bReq'] = {
     'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1522) >= 1'
 }
 
-
-
-aliases['btag0'] = {
-    'expr': 'zeroJet && !bVeto'
-}
-
-aliases['btag1'] = {
-    'expr': 'oneJet && bReq'
-}
-
-aliases['btag2'] = {
-    'expr': 'twoJet && bReq'
-}
-
 # CR definitions
 
 aliases['topcr'] = {
+#    'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
     'expr': 'mll>50 && ((zeroJet && !bVeto) || bReq)'
 }
 
 aliases['dycr'] = {
-    'expr': 'mth<60 && mll>70 && mll<120 && bVeto'
+    'expr': 'mth<60 && bVeto'
 }
 
 aliases['wwcr'] = {
@@ -158,9 +147,15 @@ aliases['wwcr'] = {
 # SR definition
 
 aliases['sr'] = {
+#    'expr': 'mth>60 && mtw2>30 && bVeto'
     'expr': 'mth>60 && bVeto'
 }
-# B tag scale factors
+
+aliases['centralVeto'] = {
+    'expr': 'Sum$(CleanJet_pt > 30 && CleanJet_eta > TMath::Min(CleanJet_eta[0], CleanJet_eta[1]) && CleanJet_eta < TMath::Max(CleanJet_eta[0], CleanJet_eta[1]) && abs(CleanJet_eta - CleanJet_eta[0]) > 1 && abs(CleanJet_eta - CleanJet_eta[1]) > 1) == 0'        
+}
+
+#B tag scale factors
 
 aliases['bVetoSF'] = {
     'expr': 'TMath::Exp(Sum$(TMath::Log((CleanJet_pt>20 && abs(CleanJet_eta)<2.5)*Jet_btagSF_shape[CleanJet_jetIdx]+1*(CleanJet_pt<20 || abs(CleanJet_eta)>2.5))))',
@@ -194,6 +189,7 @@ for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2',
         'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'down'),
         'samples': mc
     }
+
 # data/MC scale factors
 aliases['SFweight'] = {
     'expr': ' * '.join(['SFweight2l', 'LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut', 'btagSF', 'PrefireWeight']),
@@ -216,15 +212,4 @@ aliases['SFweightMuDown'] = {
     'expr': 'LepSF2l__mu_'+muWP+'__Do',
     'samples': mc
 }
-
-
-
-
-
-
-
-
-
-
-
 

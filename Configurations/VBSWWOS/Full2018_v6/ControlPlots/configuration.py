@@ -4,7 +4,7 @@
 tag = '2018_cr_v6'
 outputDir = 'rootFile'
 treeName = 'Events'
-date= ''
+date= '181020'
 # luminosity to normalize to
 lumi = 59.74
 
@@ -30,5 +30,3 @@ structureFile = 'structure.py'
 outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2018/ControlRegions_v6_'+date
 # nuisances file for mkDatacards and for mkShape
 nuisancesFile = 'nuisances.py'
-# used by mkDatacards to define output directory for datacards
-outputDirDatacard = '/afs/cern.ch/work/f/fcetorel/private/work2/VBS_OS/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBSOS/Full/Full2018_v6/datacards'
