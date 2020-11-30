@@ -44,16 +44,23 @@ cuts['top']  = {
 
 
 ## DYtt control regions
-cuts['DY']  = { 
+cuts['DY']  = {
    'expr' : 'dycr',
    # Define the sub-categorization of dycr
-   'categories' : { 
+   'categories' : {
 #      '0j'     : 'zeroJet',
 #      '1j'     : 'oneJet && Alt$(CleanJet_pt[1],0)<30',
-      '2j_em_me'     : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13) && mll>50 && mll<80', 
-#       '2j_ee_mm'     : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11 || Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && abs(mll-91.2)<15', 
-      '2j_ee'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) && abs(mll-91.2)<15',
-      '2j_mm'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && abs(mll-91.2)<15',
-    }
+      '2j_em_me'     : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13) && mll>50 && mll<80',
+#       '2j_ee_mm'     : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11 || Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && abs(mll-91.2)<15',
+#      '2j_ee'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) && abs(mll-91.2)<15',
+#      '2j_mm'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && abs(mll-91.2)<15',
+#      '2j_em_me_lowZ'     : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13) && mll>50 && mll<80 && 0.5*abs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))<1',
+#      '2j_em_me_highZ'     : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13) && mll>50 && mll<80 && 0.5*abs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))>1',
+      '2j_ee_lowZ'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) && abs(mll-91.2)<15 && 0.5*abs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))<1',
+      '2j_ee_highZ'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) && abs(mll-91.2)<15 && 0.5*abs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))>=1',
+      '2j_mm_lowZ'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && abs(mll-91.2)<15 && 0.5*abs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))<1',
+      '2j_mm_highZ'  : 'multiJet && (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && abs(mll-91.2)<15 && 0.5*abs((Lepton_eta[0]+Lepton_eta[1])-(CleanJet_eta[0]+CleanJet_eta[1]))>=1',
+
+      }
 }
 

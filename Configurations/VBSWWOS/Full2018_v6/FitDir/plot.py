@@ -7,51 +7,6 @@
 # Groups of samples to improve the plots.
 # If not defined, normal plots is used
 #
-groupPlot['Multiboson']  = {  
-                  'nameHR' : 'Multiboson',
-                  'isSignal' : 0,
-                  'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
-              }
-
-
-groupPlot['Higgs']  = {
-                  'nameHR' : 'Higgs',
-                  'isSignal' : 0,
-                  'color': 632, # kRed 
-                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
-                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
-              }
-
-
-groupPlot['Zjj']  = {
-                  'nameHR' : 'Zjj',
-                  'isSignal' : 0,
-                  'color': 615, # kViolet + 1
-                  'samples'  : ['Zjj']
-              }
-
-
-groupPlot['Fake']  = {
-                  'nameHR' : 'nonprompt',
-                  'isSignal' : 0,
-                  'color': 921,    # kGray + 1
-                  'samples'  : ['Fake_m', 'Fake_e']
-}
-
-groupPlot['DY']  = {  
-                  'nameHR' : "DY",
-                  'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
-              }
-
-groupPlot['WW']  = {  
-                  'nameHR' : 'WW',
-                  'isSignal' : 0,
-                  'color': 851, # kAzure -9 
-                  'samples'  : ['WW', 'ggWW']
-              }
 
 
 groupPlot['top']  = {  
@@ -61,6 +16,27 @@ groupPlot['top']  = {
                   'samples'  : ['top']
               }
 
+groupPlot['WW']  = {  
+                  'nameHR' : 'WW',
+                  'isSignal' : 0,
+                  'color': 851, # kAzure -9 
+                  'samples'  : ['WW', 'ggWW']
+              }
+
+groupPlot['Fake']  = {
+                  'nameHR' : 'nonprompt',
+                  'isSignal' : 0,
+                  'color': 921,    # kGray + 1
+                  'samples'  : ['Fake_m', 'Fake_e']
+}
+
+
+groupPlot['DY']  = {  
+                  'nameHR' : "DY",
+                  'isSignal' : 0,
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY', 'DYtt']
+              }
 
 '''
 groupPlot['VVV']  = {  
@@ -93,6 +69,21 @@ groupPlot['VgS']  = {
 
 '''
 
+groupPlot['Multiboson']  = {  
+                  'nameHR' : 'Multiboson',
+                  'isSignal' : 0,
+                  'color': 617, # kViolet + 1  
+                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
+              }
+
+
+groupPlot['Higgs']  = {
+                  'nameHR' : 'Higgs',
+                  'isSignal' : 0,
+                  'color': 632, # kRed 
+                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
+                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
+              }
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
@@ -130,6 +121,19 @@ plot['DY']  = {
 
               }
 
+plot['DYtt']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+                }
+
+plot['Zjj']  = {  
+                  'color': 600,    # kBlue
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.0                  
+              }
 
 plot['Fake_m']  = {  
                   'color': 921,    # kGray + 1
@@ -337,13 +341,6 @@ plot['ggH_hww'] = {
                   'color': 632, # kRed 
                   'isSignal' : 0,
                   'isData'   : 0,    
-                  'scale'    : 1    #
-                  }
-plot['Zjj'] = {
-                  'nameHR' : 'Zjj',
-                  'color': 632, # kRed
-                  'isSignal' : 0,
-                  'isData'   : 0,
                   'scale'    : 1    #
                   }
 

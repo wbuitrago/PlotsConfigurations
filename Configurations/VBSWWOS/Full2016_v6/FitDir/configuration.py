@@ -1,35 +1,20 @@
-# example of configuration file
-
-tag = '2016_v6'
+# used by mkShape to define output directory for root files
 outputDir = 'rootFile'
-treeName = 'Events'
-date='181020'
-# luminosity to normalize to
-lumi = 35.9
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'
 
 # file with list of variables
-variablesFile = 'variables.py' 
+variablesFile = 'variables.py'
 
 # file with list of cuts
-cutsFile = 'cuts.py' 
+cutsFile = 'cuts.py'
 
 # file with list of samples
-samplesFile = 'samples.py' 
+samplesFile = 'samples.py'
 
-# file with list of plot
-plotFile = 'plot.py'
+# luminosity to normalize to (in 1/fb)
+lumi = 35.867
 
 # nuisances file for mkDatacards and for mkShape
 nuisancesFile = 'nuisances.py'
-# structure file for datacard
-structureFile = 'structure.py'
-
-# used by mkPlot to define output directory for plots
-# different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2016/SignalRegion_v6_'+date
-# used by mkDatacards to define output directory for datacards
-outputDirDatacard = '/afs/cern.ch/work/f/fcetorel/private/work2/VBS_OS/CMSSW_10_2_15_patch2/src/PlotsConfigurations/Configurations/VBS_OS/Full2016_v6/FitDir/datacards/'
-

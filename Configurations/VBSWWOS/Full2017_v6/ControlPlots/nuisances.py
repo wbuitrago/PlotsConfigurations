@@ -98,7 +98,7 @@ nuisances['fake_syst_e'] = {
     'samples': {
         'Fake_e': '1.3'
     },
-    'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
+    #'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
 }
 
 nuisances['fake_syst_m'] = {
@@ -107,7 +107,7 @@ nuisances['fake_syst_m'] = {
     'samples': {
         'Fake_m': '1.3'
     },
-    'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
+    #'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
 }
 
 nuisances['fake_ele'] = {
@@ -738,15 +738,31 @@ nuisances['DYttnorm1j']  = {
                'cuts'  : cuts1j
               }
 '''
-nuisances['DYnorm2j']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_2017',
+#nuisances['DYnorm2j']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_2017',
+#                 'samples'  : {
+#                     'DY' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
+nuisances['DYnorm2j_lowZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_lowZ_2017',
                  'samples'  : {
-                     'DY' : '1.00',
+                     'DY_lowZ' : '1.00',
                      },
                  'type'  : 'rateParam',
                  'cuts'  : cuts2j
                 }
 
+nuisances['DYnorm2j_highZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_highZ_2017',
+                 'samples'  : {
+                     'DY_highZ' : '1.00',
+                     },
+                 'type'  : 'rateParam',
+                 'cuts'  : cuts2j
+                }
 '''
 nuisances['WWnorm0j']  = {
                'name'  : 'CMS_hww_WWnorm0j',

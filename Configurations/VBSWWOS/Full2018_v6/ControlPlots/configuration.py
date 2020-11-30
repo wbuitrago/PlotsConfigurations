@@ -4,7 +4,7 @@
 tag = '2018_cr_v6'
 outputDir = 'rootFile'
 treeName = 'Events'
-date= '181020'
+date= '140820'
 # luminosity to normalize to
 lumi = 59.74
 

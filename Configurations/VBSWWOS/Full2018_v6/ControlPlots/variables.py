@@ -14,6 +14,17 @@ variables['events']  = {   'name': '1',
                          'fold' : 3
                         }
 
+variables['mjj_vs_mTi']  = {   'name': 'mjj:mTi',            #   variable name    
+                        'range' : ([100,250,400,600,1000],[500,700,1000,1300,1600,2000],),    #   variable range
+                        'xaxis' : 'mjj:mTi',  #   x axis name
+                        'fold' :3
+                        }
+
+variables['mTi']  = {   'name': 'mTi',            #   variable name    
+                        'range' : ([100,150,200,250,300,350,400,450,500,600,800,1000],),    #   variable range
+                        'xaxis' : 'm_{T,i} [GeV]',  #   x axis name
+                        'fold' : 3
+                        }
 
 variables['mth']  = {   'name': 'mth',            #   variable name    
                         'range' : (20,0,400),    #   variable range

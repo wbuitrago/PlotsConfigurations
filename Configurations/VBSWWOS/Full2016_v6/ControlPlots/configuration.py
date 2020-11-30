@@ -1,33 +1,33 @@
-# example of configuration file
+# Configuration file to produce initial root files -- has both merged and binned ggH samples
+
+treeName = 'Events'
 
 tag = 'vbs_2016'
+
+# used by mkShape to define output directory for root files
 outputDir = 'rootFile'
-treeName = 'Events'
-date='181020'
-# luminosity to normalize to
-lumi = 35.9
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'
 
 # file with list of variables
-variablesFile = 'variables.py' 
+variablesFile = 'variables.py'
 
 # file with list of cuts
-cutsFile = 'cuts.py' 
+cutsFile = 'cuts.py'
 
 # file with list of samples
-samplesFile = 'samples.py' 
+samplesFile = 'samples.py'
 
-# file with list of plot
+# file with list of samples
 plotFile = 'plot.py'
 
-# nuisances file for mkDatacards and for mkShape
-nuisancesFile = 'nuisances.py'
-# structure file for datacard
-structureFile = 'structure.py'
+# luminosity to normalize to (in 1/fb)
+lumi = 35.867
 
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
-outputDirPlots = '/eos/user/f/fcetorel/www/VBS_OS/test/2016/ControlRegions_v6_'+date
+outputDirPlots = 'plots'
 
+# nuisances file for mkDatacards and for mkShape
+nuisancesFile = 'nuisances.py'

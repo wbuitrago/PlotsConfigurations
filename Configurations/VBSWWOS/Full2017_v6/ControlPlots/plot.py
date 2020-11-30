@@ -24,14 +24,6 @@ groupPlot['Higgs']  = {
               }
 
 
-groupPlot['Zjj']  = {
-                  'nameHR' : 'Zjj',
-                  'isSignal' : 0,
-                  'color': 615, # kViolet + 1
-                  'samples'  : ['Zjj']
-              }
-
-
 groupPlot['Fake']  = {
                   'nameHR' : 'nonprompt',
                   'isSignal' : 0,
@@ -43,7 +35,7 @@ groupPlot['DY']  = {
                   'nameHR' : "DY",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
+                  'samples'  : ['DY_highZ', 'DY_lowZ']
               }
 
 groupPlot['WW']  = {  
@@ -92,7 +84,12 @@ groupPlot['VgS']  = {
               }
 
 '''
-
+groupPlot['Zjj']  = {  
+                  'nameHR' : 'Zjj ewk',
+                  'color': 600,    # kBlue
+                  'isSignal' : 0,
+                  'samples'    : ['Zjj']         
+              }
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
@@ -109,7 +106,28 @@ groupPlot['VBS']  = {
 
 # keys here must match keys in samples.py    
 #                    
-plot['DY']  = {  
+plot['DY_lowZ']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+                  #'cuts'  : {
+                       #'hww2l2v_13TeV_of0j'      : 0.95 ,
+                       #'hww2l2v_13TeV_top_of0j'  : 0.95 , 
+                       #'hww2l2v_13TeV_dytt_of0j' : 0.95 ,
+                       #'hww2l2v_13TeV_em_0j'     : 0.95 , 
+                       #'hww2l2v_13TeV_me_0j'     : 0.95 , 
+                       ##
+                       #'hww2l2v_13TeV_of1j'      : 1.08 ,
+                       #'hww2l2v_13TeV_top_of1j'  : 1.08 , 
+                       #'hww2l2v_13TeV_dytt_of1j' : 1.08 ,
+                       #'hww2l2v_13TeV_em_1j'     : 1.08 , 
+                       #'hww2l2v_13TeV_me_1j'     : 1.08 , 
+                        #},
+
+              }
+
+plot['DY_highZ']  = {  
                   'color': 418,    # kGreen+2
                   'isSignal' : 0,
                   'isData'   : 0, 
@@ -168,7 +186,12 @@ plot['top'] = {
                         #},
                   }
 
-
+plot['Zjj']  = {  
+                  'color': 600,    # kBlue
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.0                  
+              }
 plot['WW']  = {
                   'color': 851, # kAzure -9 
                   'isSignal' : 0,
@@ -339,13 +362,6 @@ plot['ggH_hww'] = {
                   'isData'   : 0,    
                   'scale'    : 1    #
                   }
-plot['Zjj'] = {
-                  'nameHR' : 'Zjj',
-                  'color': 632, # kRed
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1    #
-                  }
 
 #plot['bbH_hww'] = {
 #                  'nameHR' : 'bbH',
@@ -379,7 +395,6 @@ plot['DATA']  = {
 
 # additional options
 
-legend['lumi'] = 'L = 41.5/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
 

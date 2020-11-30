@@ -8,27 +8,19 @@
 # If not defined, normal plots is used
 #
 
-groupPlot['Multiboson']  = {  
-                  'nameHR' : 'Multiboson',
+
+groupPlot['top']  = {  
+                  'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
-                  'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
+                  'color': 400,   # kYellow
+                  'samples'  : ['top']
               }
 
-
-groupPlot['Higgs']  = {
-                  'nameHR' : 'Higgs',
+groupPlot['WW']  = {  
+                  'nameHR' : 'WW_QCD',
                   'isSignal' : 0,
-                  'color': 632, # kRed 
-                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
-                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
-              }
-
-groupPlot['Zjj']  = {
-                  'nameHR' : 'Zjj',
-                  'isSignal' : 0,
-                  'color': 615, # kViolet + 1
-                  'samples'  : ['Zjj']
+                  'color': 851, # kAzure -9 
+                  'samples'  : ['WW', 'ggWW']
               }
 
 groupPlot['Fake']  = {
@@ -38,28 +30,13 @@ groupPlot['Fake']  = {
                   'samples'  : ['Fake_m', 'Fake_e']
 }
 
+
 groupPlot['DY']  = {  
                   'nameHR' : "DY",
                   'isSignal' : 0,
                   'color': 418,    # kGreen+2
-                  'samples'  : ['DY']
+                  'samples'  : ['DY_lowZ', 'DY_highZ']
               }
-
-groupPlot['WW']  = {  
-                  'nameHR' : 'WW',
-                  'isSignal' : 0,
-                  'color': 851, # kAzure -9 
-                  'samples'  : ['WW', 'ggWW']
-              }
-
-
-groupPlot['top']  = {  
-                  'nameHR' : 'tW and t#bar{t}',
-                  'isSignal' : 0,
-                  'color': 400,   # kYellow
-                  'samples'  : ['top']
-              }
-
 
 '''
 groupPlot['VVV']  = {  
@@ -68,6 +45,7 @@ groupPlot['VVV']  = {
                   'color': 857, # kAzure -3  
                   'samples'  : ['VVV']
               }
+
 
 groupPlot['VZ']  = {  
                   'nameHR' : "VZ",
@@ -91,7 +69,28 @@ groupPlot['VgS']  = {
               }
 
 '''
+groupPlot['Multiboson']  = {  
+                  'nameHR' : 'Multiboson',
+                  'isSignal' : 0,
+                  'color': 617, # kViolet + 1  
+                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
+              }
 
+
+groupPlot['Higgs']  = {
+                  'nameHR' : 'Higgs',
+                  'isSignal' : 0,
+                  'color': 632, # kRed 
+                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
+                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
+              }
+
+groupPlot['Zjj']  = {  
+                  'nameHR': 'Zjj',
+                  'isSignal' : 0,
+                  'color': 600,    # kBlue
+                  'samples'    : ['Zjj']
+              }
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
@@ -101,14 +100,11 @@ groupPlot['VBS']  = {
               }
 
 
-
-
-
 #plot = {}
 
 # keys here must match keys in samples.py    
 #                    
-plot['DY']  = {  
+plot['DY_lowZ']  = {  
                   'color': 418,    # kGreen+2
                   'isSignal' : 0,
                   'isData'   : 0, 
@@ -127,6 +123,20 @@ plot['DY']  = {
                        #'hww2l2v_13TeV_me_1j'     : 1.08 , 
                         #},
 
+              }
+
+plot['DY_highZ']  = {  
+                  'color': 418,    # kGreen+2
+                  'isSignal' : 0,
+                  'isData'   : 0, 
+                  'scale'    : 1.0,
+                }
+
+plot['Zjj']  = {  
+                  'color': 600,    # kBlue
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.0                  
               }
 
 
@@ -338,13 +348,6 @@ plot['ggH_hww'] = {
                   'isData'   : 0,    
                   'scale'    : 1    #
                   }
-plot['Zjj'] = {
-                  'nameHR' : 'Zjj',
-                  'color': 632, # kRed
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1    #
-                  }
 
 #plot['bbH_hww'] = {
 #                  'nameHR' : 'bbH',
@@ -370,7 +373,7 @@ plot['DATA']  = {
                   'color': 1 ,  
                   'isSignal' : 0,
                   'isData'   : 1 ,
-                  'isBlind'  : 0
+                  'isBlind'  : 1
               }
 
 
@@ -378,7 +381,7 @@ plot['DATA']  = {
 
 # additional options
 
-#legend['lumi'] = 'L = 59.7/fb'
+legend['lumi'] = 'L = 35.9/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
 

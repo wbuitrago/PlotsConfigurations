@@ -30,12 +30,17 @@ HiggsXS = HiggsXSection()
 cuts0j = []
 cuts1j = []
 cuts2j = []
-
+cuts2j_df = []
+cuts2j_sf = []
 for k in cuts:
   for cat in cuts[k]['categories']:
     if '0j' in cat: cuts0j.append(k+'_'+cat)
     elif '1j' in cat: cuts1j.append(k+'_'+cat)
-    elif '2j' in cat: cuts2j.append(k+'_'+cat)
+    elif '2j' in cat: 
+      cuts2j.append(k+'_'+cat)
+      if 'em' in cat: cuts2j_df.append(k+'_'+cat)
+      elif 'mm' or 'ee' in cat: cuts2j_sf.append(k+'_'+cat)
+
     else: print 'WARNING: name of category does not contain on either 0j,1j,2j'
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
@@ -98,7 +103,7 @@ nuisances['fake_syst_e'] = {
     'samples': {
         'Fake_e': '1.3'
     },
-    'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
+    #'cutspost': lambda self, cuts: [cut for cut in cuts if '20me' not in cut],
 }
 
 nuisances['fake_syst_m'] = {
@@ -107,7 +112,7 @@ nuisances['fake_syst_m'] = {
     'samples': {
         'Fake_m': '1.3'
     },
-    'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
+    #'cutspost': lambda self, cuts: [cut for cut in cuts if '20em' not in cut],
 }
 
 nuisances['fake_ele'] = {
@@ -738,15 +743,85 @@ nuisances['DYttnorm1j']  = {
                'cuts'  : cuts1j
               }
 '''
-nuisances['DYnorm2j']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_2017',
+nuisances['DYnorm2j_df_lowZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_df_2017',
                  'samples'  : {
-                     'DY' : '1.00',
+                     'DY_lowZ' : '1.00',
                      },
                  'type'  : 'rateParam',
-                 'cuts'  : cuts2j
+                 'cuts'  : cuts2j_df
+                }
+nuisances['DYnorm2j_df_highZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_df_2017',
+                 'samples'  : {
+                     'DY_highZ' : '1.00',
+                     },
+                 'type'  : 'rateParam',
+                 'cuts'  : cuts2j_df
                 }
 
+nuisances['DYnorm2j_sf_highZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_sf_2017',
+                 'samples'  : {
+                     'DY_highZ' : '1.00',
+                     },
+                 'type'  : 'rateParam',
+                 'cuts'  : cuts2j_sf
+                }
+nuisances['DYnorm2j_sf_lowZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_sf_2017',
+                 'samples'  : {
+                     'DY_lowZ' : '1.00',
+                     },
+                 'type'  : 'rateParam',
+                 'cuts'  : cuts2j_sf
+                }
+
+##only 1 rate param for DY
+#nuisances['DYnorm2j']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_2017',
+#                 'samples'  : {
+#                     'DY' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
+#
+##2 rate param for DY in ALL flavor categories but correlated
+#nuisances['DYnorm2j_highZ']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_2017',
+#                 'samples'  : {
+#                     'DY_highZ' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
+#nuisances['DYnorm2j_lowZ']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_2017',
+#                 'samples'  : {
+#                     'DY_lowZ' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
+#
+#nuisances['DYnorm2j_lowZ']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_lowZ_2017',
+#                 'samples'  : {
+#                     'DY_lowZ' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
+#
+#nuisances['DYnorm2j_highZ']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_highZ_2017',
+#                 'samples'  : {
+#                     'DY_highZ' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
 '''
 nuisances['WWnorm0j']  = {
                'name'  : 'CMS_hww_WWnorm0j',

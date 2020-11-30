@@ -7,30 +7,21 @@
 # Groups of samples to improve the plots.
 # If not defined, normal plots is used
 #
-groupPlot['Multiboson']  = {  
-                  'nameHR' : 'Multiboson',
+
+
+groupPlot['top']  = {  
+                  'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
-                  'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
+                  'color': 400,   # kYellow
+                  'samples'  : ['top']
               }
 
-
-groupPlot['Higgs']  = {
-                  'nameHR' : 'Higgs',
+groupPlot['WW']  = {  
+                  'nameHR' : 'WW',
                   'isSignal' : 0,
-                  'color': 632, # kRed 
-                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
-                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
+                  'color': 851, # kAzure -9 
+                  'samples'  : ['WW', 'ggWW']
               }
-
-
-groupPlot['Zjj']  = {
-                  'nameHR' : 'Zjj',
-                  'isSignal' : 0,
-                  'color': 615, # kViolet + 1
-                  'samples'  : ['Zjj']
-              }
-
 
 groupPlot['Fake']  = {
                   'nameHR' : 'nonprompt',
@@ -46,21 +37,12 @@ groupPlot['DY']  = {
                   'samples'  : ['DY']
               }
 
-groupPlot['WW']  = {  
-                  'nameHR' : 'WW',
+groupPlot['Zjj']  = {  
+                  'nameHR' : "Zjj",
                   'isSignal' : 0,
-                  'color': 851, # kAzure -9 
-                  'samples'  : ['WW', 'ggWW']
+                  'color': 600,    # kBlue
+                  'samples'  : ['Zjj']
               }
-
-
-groupPlot['top']  = {  
-                  'nameHR' : 'tW and t#bar{t}',
-                  'isSignal' : 0,
-                  'color': 400,   # kYellow
-                  'samples'  : ['top']
-              }
-
 
 '''
 groupPlot['VVV']  = {  
@@ -93,6 +75,21 @@ groupPlot['VgS']  = {
 
 '''
 
+groupPlot['Multiboson']  = {  
+                  'nameHR' : 'Multiboson',
+                  'isSignal' : 0,
+                  'color': 617, # kViolet + 1  
+                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
+              }
+
+
+groupPlot['Higgs']  = {
+                  'nameHR' : 'Higgs',
+                  'isSignal' : 0,
+                  'color': 632, # kRed 
+                  'samples'  : ['qqH_hww', 'ZH_hww', 'WH_hww', 'ggZH_hww', 'ggH_hww','bbH_hww','ttH_hww','ZH_htt', 'ggZH_htt', 'WH_htt', 'ggH_htt','bbH_htt','ttH_htt', 'qqH_htt' ]
+                  #'samples'  : ['H_htt', 'H_hww', 'ZH_hww', 'ggZH_hww', 'WH_hww', 'ggH_hww','bbH_hww','ttH_hww', 'ggH_htt' ]
+              }
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
@@ -130,6 +127,12 @@ plot['DY']  = {
 
               }
 
+plot['Zjj']  = {  
+                  'color': 600,    # kBlue
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.0                  
+              }
 
 plot['Fake_m']  = {  
                   'color': 921,    # kGray + 1
@@ -339,13 +342,6 @@ plot['ggH_hww'] = {
                   'isData'   : 0,    
                   'scale'    : 1    #
                   }
-plot['Zjj'] = {
-                  'nameHR' : 'Zjj',
-                  'color': 632, # kRed
-                  'isSignal' : 0,
-                  'isData'   : 0,
-                  'scale'    : 1    #
-                  }
 
 #plot['bbH_hww'] = {
 #                  'nameHR' : 'bbH',
@@ -371,7 +367,7 @@ plot['DATA']  = {
                   'color': 1 ,  
                   'isSignal' : 0,
                   'isData'   : 1 ,
-                  'isBlind'  : 0
+                  'isBlind'  : 1
               }
 
 
