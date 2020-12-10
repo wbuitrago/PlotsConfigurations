@@ -746,8 +746,26 @@ nuisances['DYttnorm1j']  = {
 #                 'type'  : 'rateParam',
 #                 'cuts'  : cuts2j
 #                }
-nuisances['DYnorm2j_df_lowZ']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_df_2017',
+#nuisances['DYnorm2j_df_lowZ']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_df_2017',
+#                 'samples'  : {
+#                     'DY_lowZ' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
+#
+#nuisances['DYnorm2j_df_highZ']  = {
+#                 'name'  : 'CMS_hww_DYnorm2j_df_2017',
+#                 'samples'  : {
+#                     'DY_highZ' : '1.00',
+#                     },
+#                 'type'  : 'rateParam',
+#                 'cuts'  : cuts2j
+#                }
+#
+nuisances['DYnorm2j_lowZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_lowZ_2017',
                  'samples'  : {
                      'DY_lowZ' : '1.00',
                      },
@@ -755,26 +773,8 @@ nuisances['DYnorm2j_df_lowZ']  = {
                  'cuts'  : cuts2j
                 }
 
-nuisances['DYnorm2j_df_highZ']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_df_2017',
-                 'samples'  : {
-                     'DY_highZ' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                 'cuts'  : cuts2j
-                }
-
-nuisances['DYnorm2j_sf_lowZ']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_sf_lowZ_2017',
-                 'samples'  : {
-                     'DY_lowZ' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                 'cuts'  : cuts2j
-                }
-
-nuisances['DYnorm2j_sf_highZ']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_sf_highZ_2017',
+nuisances['DYnorm2j_highZ']  = {
+                 'name'  : 'CMS_hww_DYnorm2j_highZ_2017',
                  'samples'  : {
                      'DY_highZ' : '1.00',
                      },
