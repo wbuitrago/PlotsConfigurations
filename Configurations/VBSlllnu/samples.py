@@ -44,20 +44,20 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM')
 samples['SM'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 1
+    'FilesPerJob': 5
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq1_LI')
 samples['cqq1_LI'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 1
+    'FilesPerJob': 5
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq1_QU')
 samples['cqq1_QU'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 1
+    'FilesPerJob': 5
 }
 

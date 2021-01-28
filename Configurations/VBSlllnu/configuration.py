@@ -4,7 +4,7 @@ treeName= 'Events'
 #date='_Nov252018_ptll'
 date='_l3_2018'
 
-tag = 'VBS_SS'+date
+tag = 'VBS_SS1'+date
 
 
 # used by mkShape to define output directory for root files
