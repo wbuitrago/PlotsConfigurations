@@ -40,10 +40,10 @@ mc = [skey for skey in samples if skey not in ('Fake','DATA')]
 #        '.L ' + dnn_reader_path + 'dnn_score_nonVBS_mc.cc+',
 #        ],
 #}
-aliases['wzinc'] = {
-    'linesToAdd': ['.L %s/Configurations/VBSlllnu/wzinc.cc+' % configurations],
-    'class': 'Wzinc',
-}
+#aliases['wzinc'] = {
+#    'linesToAdd': ['.L %s/Configurations/tmp_VBSlllnu/wzinc.cc+' % configurations],
+#    'class': 'Wzinc',
+#}
 # tau veto
 aliases['tauVeto_wz'] = {
     'expr': '(Sum$(Tau_pt > 18 && abs(Tau_eta)<2.3 && (Tau_idMVAoldDM2017v2>> 1 & 1) && Tau_idDecayMode &&sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Tau_eta - Lepton_eta[2], 2) + pow(abs(abs(Tau_phi - Lepton_phi[2])-pi)-pi, 2) ) >= 0.4) == 0)'

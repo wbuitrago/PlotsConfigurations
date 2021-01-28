@@ -34,11 +34,12 @@ def makeMCDirectory(var=''):
     else:
         return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
 
+mcCommonWeightNoMatch = 'SFweight'
+mcCommonWeight = 'SFweight*PromptGenLepMatch3l'
+
 ################################################
 ############ BASIC MC WEIGHTS ##################
 ################################################
-mcCommonWeightNoMatch = 'SFweight'
-mcCommonWeight = 'SFweight*PromptGenLepMatch3l'
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM')
 samples['SM'] = {

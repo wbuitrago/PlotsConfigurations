@@ -1,4 +1,3 @@
-
 # nuisances
 
 #nuisances = {}
@@ -10,31 +9,26 @@
 #### Luminosity
 # luminosity uncertainty is 2.3%
 
-##nuisances['lumi']  = {
-##    'name'  : 'lumi_13TeV_2018',
-##    'samples'  : {
-##        'Vg'       : '1.023',
-##        'VgS'      : '1.023',
-##        'ZZ'   : '1.023',
-##        'WZ'       : '1.023',
-##        'VVV'      : '1.023',
-##        'DPS'  : '1.023',
-##        'WpWp_QCD'  : '1.023',
-##        'WpWp_EWK'   : '1.023',
-##    },
-##    'type'  : 'lnN',
-##}
+nuisances['lumi']  = {
+    'name'  : 'lumi_13TeV_2018',
+    'samples'  : {
+        'SM'       : '1.023',
+        'cqq1_LI'      : '1.023',
+        'cqq1_QU'   : '1.023',
+    },
+    'type'  : 'lnN',
+}
 
 # statistical fluctuation
 # on MC/data
 # "stat" is a special word to identify this nuisance
 # Use the following if you want to apply the automatic combine MC stat nuisances->Faster than bin-by-bin
-##nuisances['stat']  = {
-##    'type'  : 'auto',
-##    'maxPoiss'  : '10',
-##    'includeSignal'  : '1',
-##    'samples' : {}
-#}
+nuisances['stat']  = {
+    'type'  : 'auto',
+    'maxPoiss'  : '10',
+    'includeSignal'  : '1',
+    'samples' : {}
+}
 
 
 
