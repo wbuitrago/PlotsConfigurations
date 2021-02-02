@@ -41,7 +41,7 @@ mc = [skey for skey in samples if skey not in ('Fake','DATA')]
 #        ],
 #}
 #aliases['wzinc'] = {
-#    'linesToAdd': ['.L %s/Configurations/VBSlllnu/wzinc.cc+' % configurations],
+#    'linesToAdd': ['.L %s/Configurations/tmp_VBSlllnu/wzinc.cc+' % configurations],
 #    'class': 'Wzinc',
 #}
 # tau veto

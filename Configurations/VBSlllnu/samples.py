@@ -17,11 +17,19 @@ def nanoGetSampleFiles(inputDir, sample):
 
     return getSampleFiles(inputDir, sample, True, 'nanoLatino_')
 
+# samples
+
 try:
     len(samples)
 except NameError:
     import collections
     samples = collections.OrderedDict()
+
+################################################
+############ BASIC MC WEIGHTS ##################
+################################################
+mcCommonWeightNoMatch = 'SFweight'
+mcCommonWeight = 'SFweight*PromptGenLepMatch3l'
 
 mcDirectory = '/eos/user/e/evernazz/nanoAOD_PostProc_ntuple/Autumn18_102X_nAODv7_Full2018v7/MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
 treeBaseDir = '/eos/user/e/evernazz/nanoAOD_PostProc_ntuple'
@@ -33,13 +41,6 @@ def makeMCDirectory(var=''):
         return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var='__' + var))
     else:
         return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
-
-mcCommonWeightNoMatch = 'SFweight'
-mcCommonWeight = 'SFweight*PromptGenLepMatch3l'
-
-################################################
-############ BASIC MC WEIGHTS ##################
-################################################
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM')
 samples['SM'] = {

@@ -1,3 +1,4 @@
+
 # nuisances
 
 #nuisances = {}
@@ -12,9 +13,14 @@
 nuisances['lumi']  = {
     'name'  : 'lumi_13TeV_2018',
     'samples'  : {
-        'SM'       : '1.023',
-        'cqq1_LI'      : '1.023',
-        'cqq1_QU'   : '1.023',
+        'Vg'       : '1.023',
+        'VgS'      : '1.023',
+        'ZZ'   : '1.023',
+        'WZ'       : '1.023',
+        'VVV'      : '1.023',
+        'DPS'  : '1.023',
+        'WpWp_QCD'  : '1.023',
+        'WpWp_EWK'   : '1.023',
     },
     'type'  : 'lnN',
 }

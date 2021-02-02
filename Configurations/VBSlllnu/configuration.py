@@ -4,7 +4,8 @@ treeName= 'Events'
 #date='_Nov252018_ptll'
 date='_l3_2018'
 
-tag = 'VBS_SS'+date
+tag = 'VBS_WZ'+date
+
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile'+date
@@ -42,4 +43,4 @@ structureFile = 'structure.py'
 
 
 # nuisances file for mkDatacards and for mkShape
-#nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances.py'
