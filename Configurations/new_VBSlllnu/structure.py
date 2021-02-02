@@ -17,10 +17,6 @@ structure['ttbar'] = {
                   'isData'   : 0
                   }
 '''
-structure['WZ_EWK']  = {'isSignal' : 0, 'isData' : 0}
-structure['Fake']  = {'isSignal' : 0, 'isData' : 0}
-structure['DATA']  = {'isSignal' : 0, 'isData' : 1}
-
 structure['SM']  = {'isSignal' : 1, 'isData' : 0}
 structure['cqq1_LI']  = {'isSignal' : 1, 'isData' : 0}
 structure['cqq1_QU']  = {'isSignal' : 0, 'isData' : 0}
