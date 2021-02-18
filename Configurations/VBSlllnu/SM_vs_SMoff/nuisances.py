@@ -15,14 +15,6 @@ nuisances['lumi']  = {
     'samples'  : {
         'SM'          : '1.023',
         'WZ_EWK'      : '1.023',
-        'cqq1_LI'     : '1.023',
-        'cqq1_QU'     : '1.023',
-        'cqq11_LI'    : '1.023',
-        'cqq11_QU'    : '1.023',
-        'cqq3_LI'     : '1.023',
-        'cqq3_QU'     : '1.023',
-        'cqq31_LI'    : '1.023',
-        'cqq31_QU'    : '1.023',
     },
     'type'  : 'lnN',
 }
@@ -31,6 +23,7 @@ nuisances['lumi']  = {
 # on MC/data
 # "stat" is a special word to identify this nuisance
 # Use the following if you want to apply the automatic combine MC stat nuisances->Faster than bin-by-bin
+
 nuisances['stat']  = {
     'type'  : 'auto',
     'maxPoiss'  : '10',
