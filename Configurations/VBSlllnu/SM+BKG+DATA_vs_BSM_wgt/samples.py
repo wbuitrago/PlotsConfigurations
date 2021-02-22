@@ -49,9 +49,8 @@ def makeMCDirectory(var=''):
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM')
 samples['sm'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cqq11 
@@ -60,17 +59,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq11_QU')
 samples['sm_lin_quad_cqq11'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq11_QU')
 samples['quad_cqq11'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cqq1
@@ -79,17 +76,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq1_QU')
 samples['sm_lin_quad_cqq1'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq1_QU')
 samples['quad_cqq1'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cqq31
@@ -98,17 +93,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq31_QU')
 samples['sm_lin_quad_cqq31'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq31_QU')
 samples['quad_cqq31'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cqq3
@@ -117,17 +110,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq3_QU')
 samples['sm_lin_quad_cqq3'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq3_QU')
 samples['quad_cqq3'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cW
@@ -136,17 +127,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cW_QU')
 samples['sm_lin_quad_cW'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cW_QU')
 samples['quad_cW'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cHl3
@@ -155,17 +144,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cHl3_QU')
 samples['sm_lin_quad_cHl3'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cHl3_QU')
 samples['quad_cHl3'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cHq3
@@ -174,17 +161,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cHq3_QU')
 samples['sm_lin_quad_cHq3'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cHq3_QU')
 samples['quad_cHq3'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 # EFTNeg cll1
@@ -193,17 +178,15 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cll1_QU')
 samples['sm_lin_quad_cll1'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cll1_QU')
 samples['quad_cll1'] = {
     'name': files,
-    'weight': 1.112,
-    'weights': mcCommonWeight,
-    'FilesPerJob': 20,
+    'weight': mcCommonWeight + '*1.112',
+    'FilesPerJob': 5,
 }
 
 #Mixing
