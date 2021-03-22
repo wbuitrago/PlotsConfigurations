@@ -18,6 +18,13 @@ variables['mll'] = {
     'fold'  : 3
 }
 
+variables['mee'] = {
+    'name'  : 'mee',
+    'range' : (12,20.,500),
+    'xaxis' : 'mee [GeV]',
+    'fold'  : 3
+}
+
 variables['ptl1'] = {
     'name'  : 'Alt$(Lepton_pt[0],-9999.)',
     'range' : (10,30.,300.),

@@ -50,8 +50,8 @@ samples['WZ_EWK'] = {
 }
 
 
-mcDirectory = '/eos/user/e/evernazz/nanoAOD_PostProc_ntuple/Autumn18_102X_nAODv7_Full2018v7/MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
-treeBaseDir = '/eos/user/e/evernazz/nanoAOD_PostProc_ntuple'
+mcDirectory = '/eos/user/e/evernazz/nanoAOD_PostProc_ntuple_WZeu/Autumn18_102X_nAODv7_Full2018v7/MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
+treeBaseDir = '/eos/user/e/evernazz/nanoAOD_PostProc_ntuple_WZeu'
 mcProduction = 'Autumn18_102X_nAODv7_Full2018v7'
 mcSteps = 'MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7{var}'
 
