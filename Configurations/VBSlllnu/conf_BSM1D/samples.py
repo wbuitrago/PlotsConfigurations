@@ -46,12 +46,12 @@ def makeMCDirectory(var=''):
     else:
         return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM')
-# samples['sm'] = {
-#    'name': files,
-#    'weight': mcCommonWeight + '*1.112',
-#    'FilesPerJob': 10,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM')
+samples['sm'] = {
+   'name': files,
+   'weight': mcCommonWeight + '*1.112',
+   'FilesPerJob': 10,
+}
 
 # EFTNeg cqq11 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \

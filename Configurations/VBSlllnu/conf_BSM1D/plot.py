@@ -14,7 +14,7 @@
 Red=632; Violet=880; Green=416; Orange=800; Yellow=400; Azure=840; Blue=600; 
 
 #Signal
-plot['sm']                = dict(color=Azure, isSignal=1, isData=0, scale=1.0)
+plot['sm']        = dict(color=Azure, isSignal=1, isData=0, scale=1.0)
 
 #Reducible Background
 plot['SSWW']      = dict(color=Azure, isSignal=0, isData=0, scale=1.0) 

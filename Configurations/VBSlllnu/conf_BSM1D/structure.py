@@ -7,7 +7,7 @@
 
 ## Reducible Bkg
 
-# structure['sm']  = {'isSignal' : 0, 'isData' : 0}
+structure['sm']  = {'isSignal' : 1, 'isData' : 0}
 
 structure['sm_lin_quad_cqq11']  = {'isSignal' : 1, 'isData' : 0}
 structure['quad_cqq11']  = {'isSignal' : 1, 'isData' : 0}
