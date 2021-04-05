@@ -49,7 +49,7 @@ def makeMCDirectory(var=''):
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM')
 samples['sm'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -59,14 +59,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq11_QU')
 samples['sm_lin_quad_cqq11'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq11_QU')
 samples['quad_cqq11'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -76,14 +76,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq1_QU')
 samples['sm_lin_quad_cqq1'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq1_QU')
 samples['quad_cqq1'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -93,14 +93,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq31_QU')
 samples['sm_lin_quad_cqq31'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq31_QU')
 samples['quad_cqq31'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -110,14 +110,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cqq3_QU')
 samples['sm_lin_quad_cqq3'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cqq3_QU')
 samples['quad_cqq3'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -127,14 +127,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cW_QU')
 samples['sm_lin_quad_cW'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cW_QU')
 samples['quad_cW'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -144,14 +144,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cHl3_QU')
 samples['sm_lin_quad_cHl3'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cHl3_QU')
 samples['quad_cHl3'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -161,14 +161,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cHq3_QU')
 samples['sm_lin_quad_cHq3'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cHq3_QU')
 samples['quad_cHq3'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
@@ -178,14 +178,14 @@ files = nanoGetSampleFiles(mcDirectory, 'WZeu_SM') + \
         nanoGetSampleFiles(mcDirectory, 'WZeu_cll1_QU')
 samples['sm_lin_quad_cll1'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
 files = nanoGetSampleFiles(mcDirectory, 'WZeu_cll1_QU')
 samples['quad_cll1'] = {
     'name': files,
-    'weight': mcCommonWeight + '*1.112',
+    'weight': mcCommonWeight + '*1.043',
     'FilesPerJob': 5,
 }
 
