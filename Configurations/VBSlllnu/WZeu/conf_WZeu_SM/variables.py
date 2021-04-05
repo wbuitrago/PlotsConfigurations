@@ -13,28 +13,21 @@ variables['nJet'] = {
 
 variables['mll'] = {
     'name'  : 'mll',
-    'range' : (12,20.,500),
+    'range' : (10,20.,300),
     'xaxis' : 'mll [GeV]',
     'fold'  : 3
 }
 
 variables['mllZ'] = {
     'name'  : 'wzeu_var[1]',
-    'range' : (8,60.,120),
+    'range' : (5,80.,100),
     'xaxis' : 'mll Z [GeV]',
-    'fold'  : 3
-}
-
-variables['mlll'] = {
-    'name'  : 'wzeu_var[2]',
-    'range' : (10,100,500),
-    'xaxis' : 'mlll [GeV]',
     'fold'  : 3
 }
 
 variables['mee'] = {
     'name'  : 'wzeu_var[0]',
-    'range' : (8,60.,120),
+    'range' : (5,80.,100),
     'xaxis' : 'mee [GeV]',
     'fold'  : 3
 }
@@ -62,7 +55,7 @@ variables['ptl2'] = {
 
 variables['ptl2Z'] = {
     'name'  : 'wzeu_var[4]',
-    'range' : (15,10,200),
+    'range' : (10,10,100),
     'xaxis' : 'p_{T} 2nd lep Z [GeV]',
     'fold'  : 3
 }
@@ -70,77 +63,77 @@ variables['ptl2Z'] = {
 
 variables['ptl3'] = {
     'name'  : 'Alt$(Lepton_pt[2],-9999.)',
-    'range' : (15,10,150),
+    'range' : (10,10,100),
     'xaxis' : 'p_{T} 3rd lep [GeV]',
     'fold'  : 3
 }
 
 variables['ptlW'] = {
     'name'  : 'wzeu_var[5]',
-    'range' : (15,10,250),
+    'range' : (10,10,150),
     'xaxis' : 'p_{T} lep W [GeV]',
     'fold'  : 3
 }
 
 variables['etal1'] = {
     'name'  : 'Alt$(Lepton_eta[0],-9999.)',
-    'range' : (10,-2.5,2.5),
+    'range' : (10,-2.,2.),
     'xaxis' : 'eta lep1',
     'fold'  : 3
 }
 
 variables['etal1Z'] = {
     'name'  : 'wzeu_var[6]',
-    'range' : (10,-2.5,2.5),
+    'range' : (10,-2.,2.),
     'xaxis' : 'eta lep1 Z',
     'fold'  : 3
 }
 
 variables['etal2'] = {
     'name'  : 'Alt$(Lepton_eta[1],-9999.)',
-    'range' : (10,-2.5,2.5),
+    'range' : (10,-2.,2.),
     'xaxis' : 'eta lep2',
     'fold'  : 3
 }
 
 variables['etal2Z'] = {
     'name'  : 'wzeu_var[7]',
-    'range' : (10,-2.5,2.5),
+    'range' : (10,-2.,2.),
     'xaxis' : 'eta lep2 Z',
     'fold'  : 3
 }
 
 variables['etal3'] = {
     'name'  : 'Alt$(Lepton_eta[2],-9999.)',
-    'range' : (10,-2.5,2.5),
+    'range' : (10,-2.,2.),
     'xaxis' : 'eta lep3',
     'fold'  : 3
 }
 
 variables['etalW'] = {
     'name'  : 'wzeu_var[8]',
-    'range' : (10,-2.5,2.5),
+    'range' : (10,-2.,2.),
     'xaxis' : 'eta lep W',
     'fold'  : 3
 }
 
 variables['mjj'] = {
     'name'  : 'mjj',
-    'range' : ([400,600,800, 1000, 1500, 2000, 3000],),
+    'range' : ([400,700,1000,1300,1600,2000,2500,3000],),
     'xaxis' : 'mjj [GeV]',
     'fold'  : 3
 }
 
 variables['ptj1'] = {
     'name'  : 'Alt$(CleanJet_pt[0],-9999.)',
-    'range' : (10,50,400),
+    'range' : (8,50,450),
     'xaxis' : 'p_{T} 1st jet [GeV]',
     'fold'  : 3
 }
 
 variables['ptj2'] = {
     'name'  : 'Alt$(CleanJet_pt[1],-9999.)',
-    'range' : (10,35,200),
+    'range' : (8,35,200),
     'xaxis' : 'p_{T} 2nd jet [GeV]',
     'fold'  : 3
 }
@@ -166,20 +159,6 @@ variables['detajj'] = {
     'fold'  : 3
 }
 
-variables['phi_j1'] = { 
-    'name'  : 'Alt$(CleanJet_phi[0],-9999.)',
-    'range' : (5,-3.141592,3.141592),
-    'xaxis' : 'phi_j1',
-    'fold'  : 3
-}
-
-variables['phi_j2'] = { 
-    'name'  : 'Alt$(CleanJet_phi[1],-9999.)',
-    'range' : (5,-3.141592,3.141592),
-    'xaxis' : 'phi_j2',
-    'fold'  : 3
-}
-
 variables['dphijj'] = {
     'name'  : 'dphijj',
     'range' : (5,0.0,3.141592),
@@ -189,21 +168,21 @@ variables['dphijj'] = {
 
 variables['met'] = {
     'name'  : 'MET_pt',
-    'range' : (10,20,300),
+    'range' : (10,20,200),
     'xaxis' : 'met [GeV]', 
     'fold'  : 3
 }
 
 variables['Zlep1'] = {
     'name'  : 'zlep1',
-    'range' : (10,-1.,1.),
+    'range': ([-1,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,1.],),
     'xaxis' : 'Z^{lep}_{1}',
     'fold'  : 3
 }
 
 variables['Zlep2'] = {
     'name': 'zlep2',
-    'range': (10,-1.,1.),
+    'range': ([-1,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,1.],),
     'xaxis': 'Z^{lep}_{2}',
     'fold': 3
 }

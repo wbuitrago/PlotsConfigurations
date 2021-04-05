@@ -1,4 +1,5 @@
 import inspect
+import os
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
 configurations = os.path.dirname(configurations) # Full2017
@@ -12,16 +13,22 @@ bWP = '0.4184'
 mc = [skey for skey in samples if skey not in ('Fake','DATA')]
 
 aliases['wzinc'] = {
-    'linesToAdd': ['.L %s/VBSlllnu/wzinc.cc+' % configurations],
+    'linesToAdd': ['.L %s/macros/wzinc.cc+' % configurations],
     'class': 'Wzinc',
 }
 
-aliases['mee'] = {
+aliases['wzinc1'] = {
+    'linesToAdd': ['.L %s/macros/wzinc1.cc+' % configurations],
+    'class': 'Wzinc1',
+}
+
+aliases['wzeu_var'] = {
     'linesToAdd': [
                    'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-                   '.L {}/VBSlllnu/wzeu.cc+'.format(configurations)
+                   '.L {}/macros/wzeu.cc+'.format(configurations)
                   ],
     'class': 'WZeu',
+    'args': (),
 }
 
 # tau veto
@@ -183,6 +190,10 @@ aliases['jetpt30']={
 aliases['jetpt50']={
     'expr': 'Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7'
 }
+aliases['jetpt_opt']={
+    'expr': 'Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >35 && abs(Alt$(CleanJet_eta[0],-9999.)) < 4.7&& abs(Alt$(CleanJet_eta[1],-9999.)) < 4.7'
+}
+
 aliases['leppt0']={
     'expr': 'Alt$(Lepton_pt[0],-9999.) >25 && Alt$(Lepton_pt[1],-9999.) >20'
 }
@@ -198,6 +209,7 @@ aliases['HEM']={
 aliases['zlep_wz']={
     'expr': 'abs((Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 1 && abs((Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) < 1 && abs((Alt$(Lepton_eta[2],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj) <1'
 }
+
 aliases['zveto_ww']={
     'expr': '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) != 11*11 || abs(mll - 91.1876) > 15)'
 }

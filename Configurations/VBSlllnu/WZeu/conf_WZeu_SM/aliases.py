@@ -13,19 +13,19 @@ bWP = '0.4184'
 mc = [skey for skey in samples if skey not in ('Fake','DATA')]
 
 aliases['wzinc'] = {
-    'linesToAdd': ['.L %s/VBSlllnu/macros/wzinc.cc+' % configurations],
+    'linesToAdd': ['.L %s/macros/wzinc.cc+' % configurations],
     'class': 'Wzinc',
 }
 
 aliases['wzinc1'] = {
-    'linesToAdd': ['.L %s/VBSlllnu/macros/wzinc1.cc+' % configurations],
+    'linesToAdd': ['.L %s/macros/wzinc1.cc+' % configurations],
     'class': 'Wzinc1',
 }
 
 aliases['wzeu_var'] = {
     'linesToAdd': [
                    'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-                   '.L {}/VBSlllnu/macros/wzeu.cc+'.format(configurations)
+                   '.L {}/macros/wzeu.cc+'.format(configurations)
                   ],
     'class': 'WZeu',
     'args': (),
