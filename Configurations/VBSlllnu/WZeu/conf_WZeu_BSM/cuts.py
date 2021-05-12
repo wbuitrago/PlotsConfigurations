@@ -13,7 +13,6 @@ supercut='nLepton>2 && \
 
 ## Signal regions
 
-cuts['wz_jetpt30_zlep'] = 'wzinc && bVeto && MET_pt>30 && tauVeto_wz && jetpt30 && abs(detajj)>2.5 && mjj>500 && zlep_wz'
-cuts['wz_jetpt50_zlep'] = 'wzinc && bVeto && MET_pt>30 && tauVeto_wz && jetpt50 && abs(detajj)>2.5 && mjj>500 && zlep_wz'
-cuts['wz_zlep'] = 'wzinc && bVeto && MET_pt>20 && tauVeto_wz && jetpt_opt && abs(detajj)>1.5 && mjj>400 && zlep_wz'
-
+cuts['SR'] = 'wzinc && bVeto && MET_pt>20 && tauVeto_wz && jetpt_opt && abs(detajj)>1.5 && mjj>400 && zlep_wz'
+cuts['CR'] = 'wzinc && bVeto && MET_pt>20 && tauVeto_wz && jetpt_opt && abs(detajj)>1.5 && mjj<400 && zlep_wz'
+# cuts['CR_200'] = 'wzinc && bVeto && MET_pt>20 && tauVeto_wz && jetpt_opt && abs(detajj)>1.5 && mjj<400 && mjj>200 && zlep_wz'

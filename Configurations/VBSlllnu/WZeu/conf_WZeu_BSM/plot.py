@@ -31,9 +31,9 @@ plot['DPS']       = dict(color=Azure, isSignal=0, isData=0, scale=1.0)
 plot['VVV']       = dict(color=Azure, isSignal=0, isData=0, scale=1.0)
 plot['Fake']      = dict(color=Azure, isSignal=0, isData=0, scale=1.0)
 
-plot['DATA']      = dict(nameHR='Data', color=1, isSignal=0, isData=1, isBlind=0, scale=1.0)
+plot['DATA']      = dict(nameHR='Data', color=1, isSignal=0, isData=1, isBlind=1, scale=1.0)
 
-groupPlot['ZZ']      = dict(nameHR="ZZ", isSignal=0, color=ROOT.kMagenta-10, samples=['ZZ4L','ggZZ'])
+groupPlot['ZZ']    = dict(nameHR="ZZ", isSignal=0, color=ROOT.kMagenta-10, samples=['ZZ4L','ggZZ'])
 groupPlot['WpWp']    = dict(nameHR="W^{#pm}W^{#pm}", isSignal=0, color=ROOT.kOrange+1, samples=['SSWW','WpWp_QCD'])
 groupPlot['WZ_QCD']  = dict(nameHR="WZ QCD", isSignal=0, color=ROOT.kMagenta, samples=['WZ_QCD'])
 groupPlot['VVV']     = dict(nameHR='VVV', isSignal=0, color=ROOT.kSpring-9, samples=['VVV'])

@@ -8,7 +8,7 @@ tag = 'VBS_WZeu'+date
 
 
 # used by mkShape to define output directory for root files
-outputDir = 'rootFile'+date+'_BSM'
+outputDir = 'rootFile'+date
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'

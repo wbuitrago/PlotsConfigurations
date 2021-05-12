@@ -267,6 +267,7 @@ nuisances['QCDscale'] = {
     'samples': {
         'WpWp_QCD': variations,
         'WZ_QCD': variations,
+        'sm' : variations,
     },
 }
 
@@ -280,6 +281,7 @@ nuisances['pdf'] = {
     'samples': {
         'WZ_QCD': variations,
         'WpWp_QCD': variations,
+        'sm' : variations,
     },
 }
 

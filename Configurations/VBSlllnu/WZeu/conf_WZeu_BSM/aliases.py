@@ -1,5 +1,7 @@
 import inspect
 import os
+import math as mt
+import numpy as np
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
 configurations = os.path.dirname(configurations) # Full2017
@@ -17,17 +19,12 @@ aliases['wzinc'] = {
     'class': 'Wzinc',
 }
 
-aliases['wzinc1'] = {
-    'linesToAdd': ['.L %s/macros/wzinc1.cc+' % configurations],
-    'class': 'Wzinc1',
-}
-
-aliases['wzeu_var'] = {
+aliases['wz_var'] = {
     'linesToAdd': [
                    'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-                   '.L {}/macros/wzeu.cc+'.format(configurations)
+                   '.L %s/macros/wz_var.cc+' % configurations
                   ],
-    'class': 'WZeu',
+    'class': 'WZvar',
     'args': (),
 }
 
