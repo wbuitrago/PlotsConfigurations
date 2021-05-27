@@ -195,77 +195,78 @@ nuisances['PU'] = {
 
 # EW corrections
 
-nuisances['EW_correction'] = {
-    'name': 'EW_correction',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'LL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-        'TL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-        'TT': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-    },
-}
+# nuisances['EW_correction'] = {
+#     'name': 'EW_correction',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'LL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
+#         'TL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
+#         'TT': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
+#     },
+# }
 
 #qcd scale
 
-nuisances['QCDscale_LL'] = {
-    'name': 'QCDscale_LL',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'LL': ['ScaleW_up', 'ScaleW_do'],
-        'LL2': ['ScaleW_up', 'ScaleW_do'],
-    },
-}
+# nuisances['QCDscale_LL'] = {
+#     'name': 'QCDscale_LL',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'LL': ['ScaleW_up', 'ScaleW_do'],
+#         'LL2': ['ScaleW_up', 'ScaleW_do'],
+#     },
+# }
 
-nuisances['QCDscale_TL'] = {
-    'name': 'QCDscale_TL',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'TL': ['ScaleW_up', 'ScaleW_do'],
-        'TL2': ['ScaleW_up', 'ScaleW_do'],
-    },
-}
-nuisances['QCDscale_TT'] = {
-    'name': 'QCDscale_TT',
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'TT': ['ScaleW_up', 'ScaleW_do'],
-        'TT2': ['ScaleW_up', 'ScaleW_do'],
-    },
-}
+# nuisances['QCDscale_TL'] = {
+#     'name': 'QCDscale_TL',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'TL': ['ScaleW_up', 'ScaleW_do'],
+#         'TL2': ['ScaleW_up', 'ScaleW_do'],
+#     },
+# }
+# nuisances['QCDscale_TT'] = {
+#     'name': 'QCDscale_TT',
+#     'kind': 'weight',
+#     'type': 'shape',
+#     'samples': {
+#         'TT': ['ScaleW_up', 'ScaleW_do'],
+#         'TT2': ['ScaleW_up', 'ScaleW_do'],
+#     },
+# }
 
-# pdf scale
+# # pdf scale
 
-nuisances['pdfscale_LL'] = {
-    'name': 'pdfscale_LL',
-    'type': 'lnN',
-    'samples': {
-        'LL': '1.00028',
-        'LL2': '1.00028',
-    },
-}
+# nuisances['pdfscale_LL'] = {
+#     'name': 'pdfscale_LL',
+#     'type': 'lnN',
+#     'samples': {
+#         'LL': '1.00028',
+#         'LL2': '1.00028',
+#     },
+# }
 
-nuisances['pdfscale_TL'] = {
-    'name': 'pdfscale_TL',
-    'type': 'lnN',
-    'samples': {
-        'TL': '1.00035',
-        'TL2': '1.00035',
-    },
-}
+# nuisances['pdfscale_TL'] = {
+#     'name': 'pdfscale_TL',
+#     'type': 'lnN',
+#     'samples': {
+#         'TL': '1.00035',
+#         'TL2': '1.00035',
+#     },
+# }
 
-nuisances['pdfscale_TT'] = {
-    'name': 'pdfscale_TT',
-    'type': 'lnN',
-    'samples': {
-        'TT': '1.0012',
-        'TT2': '1.0012',
-    },
-}
+# nuisances['pdfscale_TT'] = {
+#     'name': 'pdfscale_TT',
+#     'type': 'lnN',
+#     'samples': {
+#         'TT': '1.0012',
+#         'TT2': '1.0012',
+#     },
+# }
 
+# variations for official sample WZ EWK ['LHEScaleWeight[40]','LHEScaleWeight[20]']? 43 entries
 variations = ['LHEScaleWeight[%d]' % i for i in [0,1,3,5,7,8]]
 
 nuisances['QCDscale'] = {
@@ -274,12 +275,14 @@ nuisances['QCDscale'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WpWp_QCD': variations,
+        'sm':     variations,
         'WZ_QCD': variations,
     },
 }
 
-variations = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
+# variations for official sample WZ EWK ['LHEPdfWeight[%d]' % i for i in range(0,33)]
+variations1 = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
+variations2 = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
 
 nuisances['pdf'] = {
     'name': 'pdf',
@@ -287,8 +290,8 @@ nuisances['pdf'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WZ_QCD': variations,
-        'WpWp_QCD': variations,
+        'sm':     variations2,
+        'WZ_QCD': variations1,
     },
 }
 
@@ -307,27 +310,27 @@ nuisances['pdf'] = {
 #    'type'  : 'rateParam',
 #}
 
-nuisances['WZscale2018']  = {
-    'name'  : 'WZscale2018',
-    'samples'  : {
-        'WZ_QCD' : '1.00',    # change sample name
-    },
-    'type'  : 'rateParam',
-}
-nuisances['tZqscale2018']  = {
-    'name'  : 'tZqscale2018',
-    'samples'  : {
-        'tZq' : '1.00',    # change sample name
-    },
-    'type'  : 'rateParam',
-}
-nuisances['ZZscale2018']  = {
-    'name'  : 'ZZscale2018',
-    'samples'  : {
-        'ZZ4L' : '1.00',    # change sample name
-    },
-    'type'  : 'rateParam',
-}
+# nuisances['WZscale2018']  = {
+#     'name'  : 'WZscale2018',
+#     'samples'  : {
+#         'WZ_QCD' : '1.00',    # change sample name
+#     },
+#     'type'  : 'rateParam',
+# }
+# nuisances['tZqscale2018']  = {
+#     'name'  : 'tZqscale2018',
+#     'samples'  : {
+#         'tZq' : '1.00',    # change sample name
+#     },
+#     'type'  : 'rateParam',
+# }
+# nuisances['ZZscale2018']  = {
+#     'name'  : 'ZZscale2018',
+#     'samples'  : {
+#         'ZZ4L' : '1.00',    # change sample name
+#     },
+#     'type'  : 'rateParam',
+# }
 
 # statistical fluctuation
 # on MC/data

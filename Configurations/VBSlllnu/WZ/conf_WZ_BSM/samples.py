@@ -46,12 +46,20 @@ def makeMCDirectory(var=''):
     else:
         return os.path.join(treeBaseDir, mcProduction, mcSteps.format(var=''))
 
-# WZ EWK
+# # WZ EWK official
+# files = nanoGetSampleFiles(mcDirectory, 'WLLJJ_WToLNu_EWK')
+# samples['sm'] = {
+#    'name': files,
+#    'weight': mcCommonWeight,
+#    'FilesPerJob': 10,
+# }
+
+# WZ EWK private
 files = nanoGetSampleFiles(mcDirectory, 'WZin_SM')
 samples['sm'] = {
    'name': files,
    'weight': mcCommonWeight,
-   'FilesPerJob': 10,
+   'FilesPerJob': 20,
 }
 
 # # EFTNeg cqq11 
@@ -532,28 +540,20 @@ samples['sm'] = {
 # ########### BACKGROUND SAMPLES ################
 # ###############################################
 
-# WZ QCD
+# # WZ QCD official
+# files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu')
+# samples['WZ_QCD'] = {
+#     'name': files,
+#     'weight': mcCommonWeight,
+#     'FilesPerJob': 10,
+# }
+
+# WZ QCD private
 files = nanoGetSampleFiles(mcDirectory, 'WZQCD_SM')
 samples['WZ_QCD'] = {
     'name': files,
     'weight': mcCommonWeight,
-    'FilesPerJob': 10,
-}
-
-# SSWW
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_EWK_madgraph')
-samples['SSWW'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
-
-# SSWW QCD
-files = nanoGetSampleFiles(mcDirectory, 'WpWpJJ_QCD')
-samples['WpWp_QCD'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
+    'FilesPerJob': 20,
 }
 
 # ZZ
@@ -617,12 +617,6 @@ addSampleWeight(samples, 'VgS1', 'ZGToLLG', '(Gen_ZGstar_mass > 0)')
 addSampleWeight(samples, 'VgS1', 'WZTo3LNu_mllmin01', '(Gen_ZGstar_mass > 0.1 && Gen_ZGstar_mass<4)')
 
 # Others
-files = nanoGetSampleFiles(mcDirectory, 'WWTo2L2Nu_DoubleScattering')
-samples['DPS'] = {
-    'name': files,
-    'weight': mcCommonWeight,
-    'FilesPerJob': 4
-}
 
 files = nanoGetSampleFiles(mcDirectory, 'ZZZ') + \
         nanoGetSampleFiles(mcDirectory, 'WZZ') + \
