@@ -267,7 +267,9 @@ nuisances['PU'] = {
 # }
 
 # variations for official sample WZ EWK ['LHEScaleWeight[40]','LHEScaleWeight[20]']? 43 entries
-variations = ['LHEScaleWeight[%d]' % i for i in [0,1,3,5,7,8]]
+variations_priv = ['LHEScaleWeight[%d]' % i for i in [0,1,3,5,7,8]]
+variations_off_EWK  = ['LHEScaleWeight[%d]' % i for i in range(0,44)]
+variations_off_QCD  = ['LHEScaleWeight[%d]' % i for i in range(0,9)]
 
 nuisances['QCDscale'] = {
     'name': 'QCDscale',
@@ -275,14 +277,16 @@ nuisances['QCDscale'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'sm':     variations,
-        'WZ_QCD': variations,
+        'WZ_EWK_priv': variations_priv,
+        'WZ_QCD_priv': variations_priv,
+        'WZ_EWK_off' : variations_off_EWK,
+        'WZ_QCD_off' : variations_off_QCD,
     },
 }
 
 # variations for official sample WZ EWK ['LHEPdfWeight[%d]' % i for i in range(0,33)]
-variations1 = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
-variations2 = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
+variations_off = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
+variations_priv = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
 
 nuisances['pdf'] = {
     'name': 'pdf',
@@ -290,8 +294,25 @@ nuisances['pdf'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'sm':     variations2,
-        'WZ_QCD': variations1,
+        'WZ_EWK_priv': variations_priv,
+        'WZ_QCD_priv': variations_priv,
+        'WZ_EWK_off' : variations_off,
+        'WZ_QCD_off' : variations_off,
+    },
+}
+
+variations = ['PSWeight[%d]' % i for i in range(0,4)]
+
+nuisances['PS'] = {
+    'name': 'PS',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
+    'type': 'shape',
+    'samples': {
+        'WZ_EWK_priv': variations,
+        'WZ_QCD_priv': variations,
+        'WZ_EWK_off' : variations,
+        'WZ_QCD_off' : variations,
     },
 }
 
