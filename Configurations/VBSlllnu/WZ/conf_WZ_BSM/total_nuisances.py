@@ -281,8 +281,7 @@ nuisances['QCDscale'] = {
 }
 
 # variations for official sample WZ EWK ['LHEPdfWeight[%d]' % i for i in range(0,33)]
-variations1 = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
-variations2 = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
+variations = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
 
 nuisances['pdf'] = {
     'name': 'pdf',
@@ -290,8 +289,21 @@ nuisances['pdf'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'sm':     variations2,
-        'WZ_QCD': variations1,
+        'sm':     variations,
+        'WZ_QCD': variations,
+    },
+}
+
+variations = ['PSWeight[%d]' % i for i in range(0,4)]
+
+nuisances['PS'] = {
+    'name': 'PS',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
+    'type': 'shape',
+    'samples': {
+        'sm':     variations,
+        'WZ_QCD': variations,
     },
 }
 
