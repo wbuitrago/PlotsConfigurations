@@ -18,25 +18,25 @@ except NameError:
 nuisances['lumi_Uncorrelated'] = {
     'name': 'lumi_13TeV_2018',
     'type': 'lnN',
-    'samples': dict((skey, '1.015') for skey in mc if skey not in ['WW', 'Top', 'DY', 'Higgs'])
+    'samples': dict((skey, '1.015') for skey in mc)
 }
 
 nuisances['lumi_XYFact'] = {
     'name': 'lumi_13TeV_XYFact',
     'type': 'lnN',
-    'samples': dict((skey, '1.02') for skey in mc if skey not in ['WW', 'Top', 'DY', 'Higgs'])
+    'samples': dict((skey, '1.02') for skey in mc)
 }
 
 nuisances['lumi_LScale'] = {
     'name': 'lumi_13TeV_LSCale',
     'type': 'lnN',
-    'samples': dict((skey, '1.002') for skey in mc if skey not in ['WW', 'Top', 'DY', 'Higgs'])
+    'samples': dict((skey, '1.002') for skey in mc)
 }
 
 nuisances['lumi_CurrCalib'] = {
     'name': 'lumi_13TeV_CurrCalib',
     'type': 'lnN',
-    'samples': dict((skey, '1.002') for skey in mc if skey not in ['WW', 'Top', 'DY', 'Higgs'])
+    'samples': dict((skey, '1.002') for skey in mc)
 }
 
 # nuisances['lumi'] = {
@@ -266,32 +266,21 @@ nuisances['PU'] = {
 #     },
 # }
 
-# variations for official sample WZ EWK ['LHEScaleWeight[40]','LHEScaleWeight[20]']? 43 entries
-variations = ['LHEScaleWeight[%d]' % i for i in [0,1,3,5,7,8]]
-
 nuisances['QCDscale'] = {
     'name': 'QCDscale',
     'skipCMS': 1,
-    'kind': 'weight_envelope',
+    'kind': 'weight',
     'type': 'shape',
     'samples': {
-        'sm':     variations,
-        'WZ_QCD': variations,
+        'sm': ['1.065+0.00009321*CleanJet_pt[0]', '0.7443-0.0001092*CleanJet_pt[0]'],
+        'WZ_QCD': ['1.089+0.000106*CleanJet_pt[0]', '0.9269-0.00008684*CleanJet_pt[0]'],
     },
 }
 
-# variations for official sample WZ EWK ['LHEPdfWeight[%d]' % i for i in range(0,33)]
-variations = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
-
 nuisances['pdf'] = {
     'name': 'pdf',
-    'skipCMS': 1,
-    'kind': 'weight_envelope',
-    'type': 'shape',
-    'samples': {
-        'sm':     variations,
-        'WZ_QCD': variations,
-    },
+    'type': 'lnN',
+    'samples': dict((skey, '1.02') for skey in mc)
 }
 
 variations = ['PSWeight[%d]' % i for i in range(0,4)]
