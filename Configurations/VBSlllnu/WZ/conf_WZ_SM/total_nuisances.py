@@ -18,19 +18,19 @@ except NameError:
 nuisances['lumi_Uncorrelated'] = {
     'name': 'lumi_13TeV_2018',
     'type': 'lnN',
-    'samples': dict((skey, '1.015') for skey in mc if skey not in ['WW', 'Top', 'DY', 'Higgs'])
+    'samples': dict((skey, '1.015') for skey in mc)
 }
 
 nuisances['lumi_XYFact'] = {
     'name': 'lumi_13TeV_XYFact',
     'type': 'lnN',
-    'samples': dict((skey, '1.02') for skey in mc if skey not in ['WW', 'Top', 'DY', 'Higgs'])
+    'samples': dict((skey, '1.02') for skey in mc)
 }
 
 nuisances['lumi_LScale'] = {
     'name': 'lumi_13TeV_LSCale',
     'type': 'lnN',
-    'samples': dict((skey, '1.002') for skey in mc if skey not in ['WW', 'Top', 'DY', 'Higgs'])
+    'samples': dict((skey, '1.002') for skey in mc)
 }
 
 nuisances['lumi_CurrCalib'] = {
@@ -266,40 +266,54 @@ nuisances['PU'] = {
 #     },
 # }
 
-# variations for official sample WZ EWK ['LHEScaleWeight[40]','LHEScaleWeight[20]']? 43 entries
-variations_priv = ['LHEScaleWeight[%d]' % i for i in [0,1,3,5,7,8]]
+# variations_priv = ['LHEScaleWeight[%d]' % i for i in [0,1,3,5,7,8]]
 variations_off_EWK  = ['LHEScaleWeight[%d]' % i for i in range(0,44)]
 variations_off_QCD  = ['LHEScaleWeight[%d]' % i for i in range(0,9)]
 
-nuisances['QCDscale'] = {
-    'name': 'QCDscale',
+nuisances['QCDscale_off'] = {
+    'name': 'QCDscale_off',
     'skipCMS': 1,
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'WZ_EWK_priv': variations_priv,
-        'WZ_QCD_priv': variations_priv,
         'WZ_EWK_off' : variations_off_EWK,
         'WZ_QCD_off' : variations_off_QCD,
     },
 }
 
-# variations for official sample WZ EWK ['LHEPdfWeight[%d]' % i for i in range(0,33)]
-variations_off = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
-variations_priv = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
+nuisances['QCDscale_priv'] = {
+    'name': 'QCDscale_priv',
+    'skipCMS': 1,
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'WZ_EWK_priv': ['1.065+0.00009321*CleanJet_pt[0]', '0.7443-0.0001092*CleanJet_pt[0]'],
+        'WZ_QCD_priv': ['1.089+0.000106*CleanJet_pt[0]', '0.9269-0.00008684*CleanJet_pt[0]'],
+    },
+}
+
+# variations_off = ['LHEPdfWeight[%d]' % i for i in range(0,33)]
+# variations_priv = ['LHEPdfWeight[%d]' % i for i in range(0,101)]
+
+# nuisances['pdf'] = {
+#     'name': 'pdf',
+#     'skipCMS': 1,
+#     'kind': 'weight_envelope',
+#     'type': 'shape',
+#     'samples': {
+#         'WZ_EWK_priv': variations_priv,
+#         'WZ_QCD_priv': variations_priv,
+#         'WZ_EWK_off' : variations_off,
+#         'WZ_QCD_off' : variations_off,
+#     },
+# }
 
 nuisances['pdf'] = {
     'name': 'pdf',
-    'skipCMS': 1,
-    'kind': 'weight_envelope',
-    'type': 'shape',
-    'samples': {
-        'WZ_EWK_priv': variations_priv,
-        'WZ_QCD_priv': variations_priv,
-        'WZ_EWK_off' : variations_off,
-        'WZ_QCD_off' : variations_off,
-    },
+    'type': 'lnN',
+    'samples': dict((skey, '1.02') for skey in mc)
 }
+
 
 variations = ['PSWeight[%d]' % i for i in range(0,4)]
 
