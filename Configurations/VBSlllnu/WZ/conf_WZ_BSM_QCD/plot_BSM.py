@@ -6,8 +6,8 @@
 # If not defined, normal plots is used
 #
 
-op='cHW'; 
-k1=0.5; k2=1; k3=2; 
+op='cHWB'; 
+k1=0.5; k2=2; k3=4; 
 
 clin = ROOT.TColor.GetFreeColorIndex()
 col1 = ROOT.TColor(clin, 0.44213725, 0.05882353, 0.4745098)
@@ -29,7 +29,6 @@ plot['sm_lin_quad_{}'.format(op)] = dict(color=1, isSignal=1, isData=0, scale=1.
 plot['quad_{}'.format(op)]        = dict(color=1, isSignal=1, isData=0, scale=1.0)
 
 #Reducible Background
-plot['WZ_QCD'] = dict(color=1, isSignal=0, isData=0, scale=1.0)
 plot['ZZ4L']   = dict(color=1, isSignal=0, isData=0, scale=1.0) 
 plot['ggZZ']   = dict(color=1, isSignal=0, isData=0, scale=1.0)
 plot['TTV']    = dict(color=1, isSignal=0, isData=0, scale=1.0)
@@ -44,7 +43,7 @@ groupPlot['BKG'] = {
     'nameHR' : 'BKG',
     'isSignal' : 0, 
     'color' : cbkg, 
-    'samples' : ['WZ_QCD','VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake']
+    'samples' : ['VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake']
 }
 
 groupPlot['SM'] = {
@@ -72,12 +71,11 @@ groupPlot['{}_1'.format(op)] = {
     'nameHR' : '{} = {}'.format(op,k1),
     'isSignal' : 2,
     'color' : ceft1,
-    'samples' : ['sm','sm_lin_quad_{}'.format(op),'quad_{}'.format(op),'WZ_QCD','VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake'],
+    'samples' : ['sm','sm_lin_quad_{}'.format(op),'quad_{}'.format(op),'VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake'],
     'scale' : { 
                 'sm' : 1-k1, 
                 'sm_lin_quad_{}'.format(op) : k1, 
                 'quad_{}'.format(op) : k1*(k1-1),
-                'WZ_QCD' : 1,
                 'VVV' : 1,
                 'ZZ4L' : 1,
                 'TTV' : 1,
@@ -93,12 +91,11 @@ groupPlot['{}_2'.format(op)] = {
     'nameHR' : '{} = {}'.format(op,k2),
     'isSignal' : 2,
     'color' : ceft2,
-    'samples' : ['sm','sm_lin_quad_{}'.format(op),'quad_{}'.format(op),'WZ_QCD','VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake'],
+    'samples' : ['sm','sm_lin_quad_{}'.format(op),'quad_{}'.format(op),'VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake'],
     'scale' : { 
                 'sm' : 1-k2, 
                 'sm_lin_quad_{}'.format(op) : k2, 
                 'quad_{}'.format(op) : k2*(k2-1),
-                'WZ_QCD' : 1,
                 'VVV' : 1,
                 'ZZ4L' : 1,
                 'TTV' : 1,
@@ -114,12 +111,11 @@ groupPlot['{}_3'.format(op)] = {
     'nameHR' : '{} = {}'.format(op,k3),
     'isSignal' : 2,
     'color' : ceft3,
-    'samples' : ['sm','sm_lin_quad_{}'.format(op),'quad_{}'.format(op),'WZ_QCD','VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake'],
+    'samples' : ['sm','sm_lin_quad_{}'.format(op),'quad_{}'.format(op),'VVV','ZZ4L','TTV','tZq','Vg', 'VgS1_H', 'VgS1_L','Fake'],
     'scale' : {
                 'sm' : 1-k3, 
                 'sm_lin_quad_{}'.format(op) : k3, 
                 'quad_{}'.format(op) : k3*(k3-1),
-                'WZ_QCD' : 1,
                 'VVV' : 1,
                 'ZZ4L' : 1,
                 'TTV' : 1,

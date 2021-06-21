@@ -6,23 +6,11 @@
 
 structure['sm']  = {'isSignal' : 1, 'isData' : 0}
 
-structure['sm_lin_quad_cqq11']  = {'isSignal' : 1, 'isData' : 0}
-structure['quad_cqq11']  = {'isSignal' : 1, 'isData' : 0}
-
-structure['sm_lin_quad_cqq1']  = {'isSignal' : 1, 'isData' : 0}
-structure['quad_cqq1']  = {'isSignal' : 1, 'isData' : 0}
-
-structure['sm_lin_quad_cqq31']  = {'isSignal' : 1, 'isData' : 0}
-structure['quad_cqq31']  = {'isSignal' : 1, 'isData' : 0}
-
-structure['sm_lin_quad_cqq3']  = {'isSignal' : 1, 'isData' : 0}
-structure['quad_cqq3']  = {'isSignal' : 1, 'isData' : 0}
-
 structure['sm_lin_quad_cW']  = {'isSignal' : 1, 'isData' : 0}
 structure['quad_cW']  = {'isSignal' : 1, 'isData' : 0}
 
-# structure['sm_lin_quad_cHl3']  = {'isSignal' : 1, 'isData' : 0}
-# structure['quad_cHl3']  = {'isSignal' : 1, 'isData' : 0}
+structure['sm_lin_quad_cHl3']  = {'isSignal' : 1, 'isData' : 0}
+structure['quad_cHl3']  = {'isSignal' : 1, 'isData' : 0}
 
 structure['sm_lin_quad_cHq3']  = {'isSignal' : 1, 'isData' : 0}
 structure['quad_cHq3']  = {'isSignal' : 1, 'isData' : 0}
@@ -41,9 +29,6 @@ structure['quad_cHq1']  = {'isSignal' : 1, 'isData' : 0}
 
 structure['sm_lin_quad_cHWB']  = {'isSignal' : 1, 'isData' : 0}
 structure['quad_cHWB']  = {'isSignal' : 1, 'isData' : 0}
-
-structure['sm_lin_quad_cHW']  = {'isSignal' : 1, 'isData' : 0}
-structure['quad_cHW']  = {'isSignal' : 1, 'isData' : 0}
 
 # structure['sm_lin_quad_mixed_cqq1_cqq11'] = {'isSignal' : 1, 'isData' : 0}
 # structure['sm_lin_quad_mixed_cqq1_cqq3'] = {'isSignal' : 1, 'isData' : 0}
@@ -74,7 +59,6 @@ structure['quad_cHW']  = {'isSignal' : 1, 'isData' : 0}
 # structure['sm_lin_quad_mixed_cHl3_cW'] = {'isSignal' : 1, 'isData' : 0}
 # structure['sm_lin_quad_mixed_cHl3_cHq3'] = {'isSignal' : 1, 'isData' : 0}
 
-structure['WZ_QCD']  = {'isSignal' : 0, 'isData' : 0}
 structure['ZZ4L']  = {'isSignal' : 0, 'isData' : 0}
 structure['ggZZ']  = {'isSignal' : 0, 'isData' : 0}
 structure['TTV']  = {'isSignal' : 0, 'isData' : 0}
