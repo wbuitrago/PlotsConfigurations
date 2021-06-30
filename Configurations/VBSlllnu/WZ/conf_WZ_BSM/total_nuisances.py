@@ -296,13 +296,14 @@ nuisances['PS'] = {
     },
 }
 
-#nuisances['TLscale2018']  = {
-#    'name'  : 'TLscale2018',
-#    'samples'  : {
-#        'TL' : '1.00',    # change sample name
-#    },
-#    'type'  : 'rateParam',
-#}
+nuisances['QCDnorm']  = {
+   'name'  : 'QCDnorm',
+   'samples'  : {
+       'WZ_QCD' : '1.00',
+   },
+   'type'  : 'rateParam',
+}
+
 #nuisances['TTscale2018']  = {
 #    'name'  : 'TTscale2018',
 #    'samples'  : {

@@ -6,8 +6,10 @@
 # If not defined, normal plots is used
 #
 
-op='cHW'; 
-k1=0.5; k2=1; k3=2; 
+op='cll1'; 
+k1=1;   k2=10; k3=30; # cHDD cll1 cHl1
+# k1=1;   k2=5;  k3=10;  # cHl3 cHq1 cHq3 cHWB cHW
+# k1=0.5; k2=1;  k3=2;   # cqq1 cqq11 cqq3 cqq31 cW
 
 clin = ROOT.TColor.GetFreeColorIndex()
 col1 = ROOT.TColor(clin, 0.44213725, 0.05882353, 0.4745098)

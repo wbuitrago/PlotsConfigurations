@@ -79,9 +79,9 @@ structure['ZZ4L']  = {'isSignal' : 0, 'isData' : 0}
 structure['ggZZ']  = {'isSignal' : 0, 'isData' : 0}
 structure['TTV']  = {'isSignal' : 0, 'isData' : 0}
 structure['tZq']  = {'isSignal' : 0, 'isData' : 0}
-structure['Vg']  = {'isSignal' : 0, 'isData' : 0, 'removeFromCuts' : ['SR_3mu']}
-structure['VgS1_L']  = {'isSignal' : 0, 'isData' : 0, 'removeFromCuts' : ['SR_3mu']}
-structure['VgS1_H']  = {'isSignal' : 0, 'isData' : 0, 'removeFromCuts' : ['SR_3mu']}
+structure['Vg']  = {'isSignal' : 0, 'isData' : 0, 'removeFromCuts' : ['SR_3mu','SR_3e']}
+structure['VgS1_L']  = {'isSignal' : 0, 'isData' : 0, 'removeFromCuts' : ['SR_3mu','SR_3e']}
+structure['VgS1_H']  = {'isSignal' : 0, 'isData' : 0, 'removeFromCuts' : ['SR_3mu','SR_3e']}
 structure['VVV']  = {'isSignal' : 0, 'isData' : 0}
 
 structure['Fake']  = {'isSignal' : 0, 'isData' : 0}
