@@ -266,15 +266,59 @@ nuisances['PU'] = {
 #     },
 # }
 
-nuisances['QCDscale'] = {
-    'name': 'QCDscale',
+nuisances['QCDscale_3l'] = {
+    'name': 'QCDscale_3l',
     'skipCMS': 1,
     'kind': 'weight',
     'type': 'shape',
     'samples': {
-        'sm': ['1.065+0.00009321*CleanJet_pt[0]', '0.7443-0.0001092*CleanJet_pt[0]'],
-        'WZ_QCD': ['1.089+0.000106*CleanJet_pt[0]', '0.9269-0.00008684*CleanJet_pt[0]'],
+        'sm': ['1.0835572412+0.000110517022223*CleanJet_pt[0]', '0.895780776659+-9.69833067552e-05*CleanJet_pt[0]'],
     },
+    'cuts': ['SR_3l']
+}
+
+nuisances['QCDscale_3e'] = {
+    'name': 'QCDscale_3e',
+    'skipCMS': 1,
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'sm': ['1.08340090789+0.000110370354984*CleanJet_pt[0]', '0.894187410985+-9.72232222106e-05*CleanJet_pt[0]'],
+    },
+    'cuts': ['SR_3e']
+}
+
+nuisances['QCDscale_3mu'] = {
+    'name': 'QCDscale_3mu',
+    'skipCMS': 1,
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'sm': ['1.08364957007+0.000109910480726*CleanJet_pt[0]', '0.895872521632+-9.64497978585e-05*CleanJet_pt[0]'],
+    },
+    'cuts': ['SR_3mu']
+}
+
+nuisances['QCDscale_2e_mu'] = {
+    'name': 'QCDscale_2e_mu',
+    'skipCMS': 1,
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'sm': ['1.08415019895+0.000107723225518*CleanJet_pt[0]', '0.896758547563+-9.43292108095e-05*CleanJet_pt[0]'],
+    },
+    'cuts': ['SR_2e_mu']
+}
+
+nuisances['QCDscale_2mu_e'] = {
+    'name': 'QCDscale_2mu_e',
+    'skipCMS': 1,
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
+        'sm': ['1.08312490937+0.000113144936388*CleanJet_pt[0]', '0.895654607576+-9.92714243407e-05*CleanJet_pt[0]'],
+    },
+    'cuts': ['SR_2mu_e']
 }
 
 nuisances['pdf'] = {
@@ -292,17 +336,17 @@ nuisances['PS'] = {
     'type': 'shape',
     'samples': {
         'sm':     variations,
-        'WZ_QCD': variations,
     },
 }
 
-#nuisances['TLscale2018']  = {
-#    'name'  : 'TLscale2018',
+# nuisances['QCDnorm']  = {
+#    'name'  : 'QCDnorm',
 #    'samples'  : {
-#        'TL' : '1.00',    # change sample name
+#        'WZ_QCD' : '1.00',
 #    },
 #    'type'  : 'rateParam',
-#}
+# }
+
 #nuisances['TTscale2018']  = {
 #    'name'  : 'TTscale2018',
 #    'samples'  : {
