@@ -39,12 +39,6 @@ nuisances['lumi_CurrCalib'] = {
     'samples': dict((skey, '1.002') for skey in mc)
 }
 
-# nuisances['lumi'] = {
-#     'name': 'lumi_13TeV_2018',
-#     'type': 'lnN',
-#     'samples': dict((skey, '1.025') for skey in mc if skey not in ['WW', 'top', 'DY'])
-# }
-
 #### FAKES
 
 ## FIXME: check the 30% lnN
@@ -184,6 +178,7 @@ nuisances['met'] = {
     'folderUp': makeMCDirectory('METup_suffix'),
     'folderDown': makeMCDirectory('METdo_suffix'),
 }
+
 ##### Pileup
 
 nuisances['PU'] = {
@@ -193,86 +188,24 @@ nuisances['PU'] = {
     'samples': dict((skey, ['(puWeightUp/puWeight)', '(puWeightDown/puWeight)']) for skey in mc),
 }
 
-# EW corrections
-
-# nuisances['EW_correction'] = {
-#     'name': 'EW_correction',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'LL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#         'TL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#         'TT': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#     },
-# }
-
 #qcd scale
 
-# nuisances['QCDscale_LL'] = {
-#     'name': 'QCDscale_LL',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'LL': ['ScaleW_up', 'ScaleW_do'],
-#         'LL2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-
-# nuisances['QCDscale_TL'] = {
-#     'name': 'QCDscale_TL',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'TL': ['ScaleW_up', 'ScaleW_do'],
-#         'TL2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-# nuisances['QCDscale_TT'] = {
-#     'name': 'QCDscale_TT',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'TT': ['ScaleW_up', 'ScaleW_do'],
-#         'TT2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-
-# # pdf scale
-
-# nuisances['pdfscale_LL'] = {
-#     'name': 'pdfscale_LL',
-#     'type': 'lnN',
-#     'samples': {
-#         'LL': '1.00028',
-#         'LL2': '1.00028',
-#     },
-# }
-
-# nuisances['pdfscale_TL'] = {
-#     'name': 'pdfscale_TL',
-#     'type': 'lnN',
-#     'samples': {
-#         'TL': '1.00035',
-#         'TL2': '1.00035',
-#     },
-# }
-
-# nuisances['pdfscale_TT'] = {
-#     'name': 'pdfscale_TT',
-#     'type': 'lnN',
-#     'samples': {
-#         'TT': '1.0012',
-#         'TT2': '1.0012',
-#     },
-# }
-
-nuisances['QCDscale'] = {
-    'name': 'QCDscale',
+nuisances['QCDscaleEWK'] = {
+    'name': 'QCDscaleEWK',
     'skipCMS': 1,
     'kind': 'weight',
     'type': 'shape',
     'samples': {
         'sm': ['1.065+0.00009321*CleanJet_pt[0]', '0.7443-0.0001092*CleanJet_pt[0]'],
+    },
+}
+
+nuisances['QCDscaleQCD'] = {
+    'name': 'QCDscaleQCD',
+    'skipCMS': 1,
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
         'WZ_QCD': ['1.089+0.000106*CleanJet_pt[0]', '0.9269-0.00008684*CleanJet_pt[0]'],
     },
 }
@@ -303,36 +236,6 @@ nuisances['QCDnorm']  = {
    },
    'type'  : 'rateParam',
 }
-
-#nuisances['TTscale2018']  = {
-#    'name'  : 'TTscale2018',
-#    'samples'  : {
-#        'TT' : '1.00',    # change sample name
-#    },
-#    'type'  : 'rateParam',
-#}
-
-# nuisances['WZscale2018']  = {
-#     'name'  : 'WZscale2018',
-#     'samples'  : {
-#         'WZ_QCD' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
-# nuisances['tZqscale2018']  = {
-#     'name'  : 'tZqscale2018',
-#     'samples'  : {
-#         'tZq' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
-# nuisances['ZZscale2018']  = {
-#     'name'  : 'ZZscale2018',
-#     'samples'  : {
-#         'ZZ4L' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
 
 # statistical fluctuation
 # on MC/data

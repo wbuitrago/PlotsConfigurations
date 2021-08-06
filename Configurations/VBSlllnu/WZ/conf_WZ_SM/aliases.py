@@ -40,7 +40,7 @@ aliases['2mu_e'] = {
              (abs(Alt$(Lepton_pdgId[0],9999))==13 && abs(Alt$(Lepton_pdgId[1],9999))==11 && abs(Alt$(Lepton_pdgId[2],9999))==13)'
 }
 
-aliases['3e'] = {
+aliases['3ele'] = {
     'expr': '(abs(Alt$(Lepton_pdgId[0],9999))==11 && abs(Alt$(Lepton_pdgId[1],9999))==11 && abs(Alt$(Lepton_pdgId[2],9999))==11)'
 }
 

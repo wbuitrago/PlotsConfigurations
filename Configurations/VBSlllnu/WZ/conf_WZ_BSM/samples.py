@@ -277,29 +277,29 @@ samples['quad_cHW'] = {
 
 # Mixing
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_cqq11_IN')
-# samples['sm_lin_quad_mixed_cqq1_cqq11'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_cqq11_IN')
+samples['sm_lin_quad_mixed_cqq1_cqq11'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_cqq3_IN')
-# samples['sm_lin_quad_mixed_cqq1_cqq3'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_cqq3_IN')
+samples['sm_lin_quad_mixed_cqq1_cqq3'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
 # files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
 #         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
@@ -325,213 +325,297 @@ samples['quad_cHW'] = {
 #     'FilesPerJob': 20,
 # }
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_cqq31_IN')
-# samples['sm_lin_quad_mixed_cqq11_cqq31'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_cqq31_IN')
+samples['sm_lin_quad_mixed_cqq11_cqq31'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_cqq31_IN')
-# samples['sm_lin_quad_mixed_cqq3_cqq31'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_cqq31_IN')
+samples['sm_lin_quad_mixed_cqq3_cqq31'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq1_IN')
-# samples['sm_lin_quad_mixed_cW_cqq1'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq1_IN')
+samples['sm_lin_quad_mixed_cW_cqq1'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq11_IN')
-# samples['sm_lin_quad_mixed_cW_cqq11'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq11_IN')
+samples['sm_lin_quad_mixed_cW_cqq11'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq3_IN')
-# samples['sm_lin_quad_mixed_cW_cqq3'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq3_IN')
+samples['sm_lin_quad_mixed_cW_cqq3'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq31_IN')
-# samples['sm_lin_quad_mixed_cW_cqq31'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_cqq31_IN')
+samples['sm_lin_quad_mixed_cW_cqq31'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq1_IN')
-# samples['sm_lin_quad_mixed_cHq3_cqq1'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq1_IN')
+samples['sm_lin_quad_mixed_cHq3_cqq1'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq11_IN')
-# samples['sm_lin_quad_mixed_cHq3_cqq11'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq11_IN')
+samples['sm_lin_quad_mixed_cHq3_cqq11'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq3_IN')
-# samples['sm_lin_quad_mixed_cHq3_cqq3'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq3_IN')
+samples['sm_lin_quad_mixed_cHq3_cqq3'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq31_IN')
-# samples['sm_lin_quad_mixed_cHq3_cqq31'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cqq31_IN')
+samples['sm_lin_quad_mixed_cHq3_cqq31'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cW_IN')
-# samples['sm_lin_quad_mixed_cHq3_cW'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_cW_IN')
+samples['sm_lin_quad_mixed_cHq3_cW'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq1_IN')
-# samples['sm_lin_quad_mixed_cHl3_cqq1'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_cqq1_IN')
+samples['sm_lin_quad_mixed_cHq1_cqq1'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq11_IN')
-# samples['sm_lin_quad_mixed_cHl3_cqq11'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_cqq11_IN')
+samples['sm_lin_quad_mixed_cHq1_cqq11'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq3_IN')
-# samples['sm_lin_quad_mixed_cHl3_cqq3'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_cqq3_IN')
+samples['sm_lin_quad_mixed_cHq1_cqq3'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq31_IN')
-# samples['sm_lin_quad_mixed_cHl3_cqq31'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_cqq31_IN')
+samples['sm_lin_quad_mixed_cHq1_cqq31'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cW_IN')
-# samples['sm_lin_quad_mixed_cHl3_cW'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_cW_IN')
+samples['sm_lin_quad_mixed_cHq1_cW'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-# files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
-#         nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cHq3_IN')
-# samples['sm_lin_quad_mixed_cHl3_cHq3'] = {
-#     'name': files,
-#     'weight': mcCommonWeight,
-#     'FilesPerJob': 20,
-# }
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_cHq3_IN')
+samples['sm_lin_quad_mixed_cHq1_cHq3'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
 
-###############################################
-########### BACKGROUND SAMPLES ################
-###############################################
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cHq1_IN')
+samples['sm_lin_quad_mixed_cHl3_cHq1'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq1_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq1_IN')
+samples['sm_lin_quad_mixed_cHl3_cqq1'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq11_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq11_IN')
+samples['sm_lin_quad_mixed_cHl3_cqq11'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq3_IN')
+samples['sm_lin_quad_mixed_cHl3_cqq3'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cqq31_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cqq31_IN')
+samples['sm_lin_quad_mixed_cHl3_cqq31'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cW_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cW_IN')
+samples['sm_lin_quad_mixed_cHl3_cW'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
+
+files = nanoGetSampleFiles(mcDirectory, 'WZin_SM') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_LI') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHq3_QU') + \
+        nanoGetSampleFiles(mcDirectory, 'WZin_cHl3_cHq3_IN')
+samples['sm_lin_quad_mixed_cHl3_cHq3'] = {
+    'name': files,
+    'weight': mcCommonWeight,
+    'FilesPerJob': 20,
+}
+
+# ###############################################
+# ########### BACKGROUND SAMPLES ################
+# ###############################################
 
 # WZ QCD private
 files = nanoGetSampleFiles(mcDirectory, 'WZQCD_SM')

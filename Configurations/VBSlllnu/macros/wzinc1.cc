@@ -145,6 +145,10 @@ Wzinc1::evaluate(unsigned)
   if (!((Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[1])>0||pl0l1.M()>4) && (Lepton_pdgId->At(iPromptL[0])*Lepton_pdgId->At(iPromptL[2])>0||pl0l2.M()>4) && (Lepton_pdgId->At(iPromptL[1])*Lepton_pdgId->At(iPromptL[2])>0||pl1l2.M()>4)))
     return 0.;
 
+// This is different from wzinc.cc
+//  if (plll.M() <= 100.)
+//    return 0.;
+
   return 1.;
 }
 

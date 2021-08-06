@@ -193,101 +193,46 @@ nuisances['PU'] = {
     'samples': dict((skey, ['(puWeightUp/puWeight)', '(puWeightDown/puWeight)']) for skey in mc),
 }
 
-# EW corrections
-
-# nuisances['EW_correction'] = {
-#     'name': 'EW_correction',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'LL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#         'TL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#         'TT': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#     },
-# }
-
-#qcd scale
-
-# nuisances['QCDscale_LL'] = {
-#     'name': 'QCDscale_LL',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'LL': ['ScaleW_up', 'ScaleW_do'],
-#         'LL2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-
-# nuisances['QCDscale_TL'] = {
-#     'name': 'QCDscale_TL',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'TL': ['ScaleW_up', 'ScaleW_do'],
-#         'TL2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-# nuisances['QCDscale_TT'] = {
-#     'name': 'QCDscale_TT',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'TT': ['ScaleW_up', 'ScaleW_do'],
-#         'TT2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-
-# # pdf scale
-
-# nuisances['pdfscale_LL'] = {
-#     'name': 'pdfscale_LL',
-#     'type': 'lnN',
-#     'samples': {
-#         'LL': '1.00028',
-#         'LL2': '1.00028',
-#     },
-# }
-
-# nuisances['pdfscale_TL'] = {
-#     'name': 'pdfscale_TL',
-#     'type': 'lnN',
-#     'samples': {
-#         'TL': '1.00035',
-#         'TL2': '1.00035',
-#     },
-# }
-
-# nuisances['pdfscale_TT'] = {
-#     'name': 'pdfscale_TT',
-#     'type': 'lnN',
-#     'samples': {
-#         'TT': '1.0012',
-#         'TT2': '1.0012',
-#     },
-# }
-
 # variations_priv = ['LHEScaleWeight[%d]' % i for i in [0,1,3,5,7,8]]
 variations_off_EWK  = ['LHEScaleWeight[%d]' % i for i in range(0,44)]
 variations_off_QCD  = ['LHEScaleWeight[%d]' % i for i in range(0,9)]
 
-nuisances['QCDscale_off'] = {
-    'name': 'QCDscale_off',
+nuisances['QCDscale_offEWK'] = {
+    'name': 'QCDscale_offEWK',
     'skipCMS': 1,
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
         'WZ_EWK_off' : variations_off_EWK,
+    },
+}
+
+nuisances['QCDscale_offQCD'] = {
+    'name': 'QCDscale_offQCD',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
+    'type': 'shape',
+    'samples': {
         'WZ_QCD_off' : variations_off_QCD,
     },
 }
 
-nuisances['QCDscale_priv'] = {
-    'name': 'QCDscale_priv',
+nuisances['QCDscale_privEWK'] = {
+    'name': 'QCDscale_privEWK',
     'skipCMS': 1,
     'kind': 'weight',
     'type': 'shape',
     'samples': {
         'WZ_EWK_priv': ['1.065+0.00009321*CleanJet_pt[0]', '0.7443-0.0001092*CleanJet_pt[0]'],
+    },
+}
+
+nuisances['QCDscale_privQCD'] = {
+    'name': 'QCDscale_privQCD',
+    'skipCMS': 1,
+    'kind': 'weight',
+    'type': 'shape',
+    'samples': {
         'WZ_QCD_priv': ['1.089+0.000106*CleanJet_pt[0]', '0.9269-0.00008684*CleanJet_pt[0]'],
     },
 }
@@ -317,55 +262,35 @@ nuisances['pdf'] = {
 
 variations = ['PSWeight[%d]' % i for i in range(0,4)]
 
-nuisances['PS'] = {
-    'name': 'PS',
+nuisances['PS_off'] = {
+    'name': 'PS_off',
+    'skipCMS': 1,
+    'kind': 'weight_envelope',
+    'type': 'shape',
+    'samples': {
+        'WZ_EWK_off' : variations,
+        'WZ_QCD_off' : variations,
+    },
+}
+
+nuisances['PS_priv'] = {
+    'name': 'PS_priv',
     'skipCMS': 1,
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
         'WZ_EWK_priv': variations,
         'WZ_QCD_priv': variations,
-        'WZ_EWK_off' : variations,
-        'WZ_QCD_off' : variations,
     },
 }
 
-#nuisances['TLscale2018']  = {
-#    'name'  : 'TLscale2018',
-#    'samples'  : {
-#        'TL' : '1.00',    # change sample name
-#    },
-#    'type'  : 'rateParam',
-#}
-#nuisances['TTscale2018']  = {
-#    'name'  : 'TTscale2018',
-#    'samples'  : {
-#        'TT' : '1.00',    # change sample name
-#    },
-#    'type'  : 'rateParam',
-#}
-
-# nuisances['WZscale2018']  = {
-#     'name'  : 'WZscale2018',
-#     'samples'  : {
-#         'WZ_QCD' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
-# nuisances['tZqscale2018']  = {
-#     'name'  : 'tZqscale2018',
-#     'samples'  : {
-#         'tZq' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
-# nuisances['ZZscale2018']  = {
-#     'name'  : 'ZZscale2018',
-#     'samples'  : {
-#         'ZZ4L' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
+nuisances['QCDnorm']  = {
+   'name'  : 'QCDnorm',
+   'samples'  : {
+       'WZ_QCD_priv' : '1.00',
+   },
+   'type'  : 'rateParam',
+}
 
 # statistical fluctuation
 # on MC/data

@@ -39,12 +39,6 @@ nuisances['lumi_CurrCalib'] = {
     'samples': dict((skey, '1.002') for skey in mc)
 }
 
-# nuisances['lumi'] = {
-#     'name': 'lumi_13TeV_2018',
-#     'type': 'lnN',
-#     'samples': dict((skey, '1.025') for skey in mc if skey not in ['WW', 'top', 'DY'])
-# }
-
 #### FAKES
 
 ## FIXME: check the 30% lnN
@@ -184,6 +178,7 @@ nuisances['met'] = {
     'folderUp': makeMCDirectory('METup_suffix'),
     'folderDown': makeMCDirectory('METdo_suffix'),
 }
+
 ##### Pileup
 
 nuisances['PU'] = {
@@ -193,132 +188,26 @@ nuisances['PU'] = {
     'samples': dict((skey, ['(puWeightUp/puWeight)', '(puWeightDown/puWeight)']) for skey in mc),
 }
 
-# EW corrections
-
-# nuisances['EW_correction'] = {
-#     'name': 'EW_correction',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'LL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#         'TL': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#         'TT': ['(EW_weight_up/EW_weight)', '(EW_weight_do/EW_weight)'],
-#     },
-# }
-
 #qcd scale
 
-# nuisances['QCDscale_LL'] = {
-#     'name': 'QCDscale_LL',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'LL': ['ScaleW_up', 'ScaleW_do'],
-#         'LL2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-
-# nuisances['QCDscale_TL'] = {
-#     'name': 'QCDscale_TL',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'TL': ['ScaleW_up', 'ScaleW_do'],
-#         'TL2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-# nuisances['QCDscale_TT'] = {
-#     'name': 'QCDscale_TT',
-#     'kind': 'weight',
-#     'type': 'shape',
-#     'samples': {
-#         'TT': ['ScaleW_up', 'ScaleW_do'],
-#         'TT2': ['ScaleW_up', 'ScaleW_do'],
-#     },
-# }
-
-# # pdf scale
-
-# nuisances['pdfscale_LL'] = {
-#     'name': 'pdfscale_LL',
-#     'type': 'lnN',
-#     'samples': {
-#         'LL': '1.00028',
-#         'LL2': '1.00028',
-#     },
-# }
-
-# nuisances['pdfscale_TL'] = {
-#     'name': 'pdfscale_TL',
-#     'type': 'lnN',
-#     'samples': {
-#         'TL': '1.00035',
-#         'TL2': '1.00035',
-#     },
-# }
-
-# nuisances['pdfscale_TT'] = {
-#     'name': 'pdfscale_TT',
-#     'type': 'lnN',
-#     'samples': {
-#         'TT': '1.0012',
-#         'TT2': '1.0012',
-#     },
-# }
-
-nuisances['QCDscale_3l'] = {
-    'name': 'QCDscale_3l',
+nuisances['QCDscaleEWK'] = {
+    'name': 'QCDscaleEWK',
     'skipCMS': 1,
     'kind': 'weight',
     'type': 'shape',
     'samples': {
-        'sm': ['1.0835572412+0.000110517022223*CleanJet_pt[0]', '0.895780776659+-9.69833067552e-05*CleanJet_pt[0]'],
+        'EW_sm': ['1.065+0.00009321*CleanJet_pt[0]', '0.7443-0.0001092*CleanJet_pt[0]'],
     },
-    'cuts': ['SR_3l']
 }
 
-nuisances['QCDscale_3e'] = {
-    'name': 'QCDscale_3e',
+nuisances['QCDscaleQCD'] = {
+    'name': 'QCDscaleQCD',
     'skipCMS': 1,
     'kind': 'weight',
     'type': 'shape',
     'samples': {
-        'sm': ['1.08340090789+0.000110370354984*CleanJet_pt[0]', '0.894187410985+-9.72232222106e-05*CleanJet_pt[0]'],
+        'QCD_sm': ['1.089+0.000106*CleanJet_pt[0]', '0.9269-0.00008684*CleanJet_pt[0]'],
     },
-    'cuts': ['SR_3e']
-}
-
-nuisances['QCDscale_3mu'] = {
-    'name': 'QCDscale_3mu',
-    'skipCMS': 1,
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'sm': ['1.08364957007+0.000109910480726*CleanJet_pt[0]', '0.895872521632+-9.64497978585e-05*CleanJet_pt[0]'],
-    },
-    'cuts': ['SR_3mu']
-}
-
-nuisances['QCDscale_2e_mu'] = {
-    'name': 'QCDscale_2e_mu',
-    'skipCMS': 1,
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'sm': ['1.08415019895+0.000107723225518*CleanJet_pt[0]', '0.896758547563+-9.43292108095e-05*CleanJet_pt[0]'],
-    },
-    'cuts': ['SR_2e_mu']
-}
-
-nuisances['QCDscale_2mu_e'] = {
-    'name': 'QCDscale_2mu_e',
-    'skipCMS': 1,
-    'kind': 'weight',
-    'type': 'shape',
-    'samples': {
-        'sm': ['1.08312490937+0.000113144936388*CleanJet_pt[0]', '0.895654607576+-9.92714243407e-05*CleanJet_pt[0]'],
-    },
-    'cuts': ['SR_2mu_e']
 }
 
 nuisances['pdf'] = {
@@ -335,7 +224,8 @@ nuisances['PS'] = {
     'kind': 'weight_envelope',
     'type': 'shape',
     'samples': {
-        'sm':     variations,
+        'EW_sm':     variations,
+        'QCD_sm':     variations,
     },
 }
 
@@ -345,36 +235,6 @@ nuisances['PS'] = {
 #        'WZ_QCD' : '1.00',
 #    },
 #    'type'  : 'rateParam',
-# }
-
-#nuisances['TTscale2018']  = {
-#    'name'  : 'TTscale2018',
-#    'samples'  : {
-#        'TT' : '1.00',    # change sample name
-#    },
-#    'type'  : 'rateParam',
-#}
-
-# nuisances['WZscale2018']  = {
-#     'name'  : 'WZscale2018',
-#     'samples'  : {
-#         'WZ_QCD' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
-# nuisances['tZqscale2018']  = {
-#     'name'  : 'tZqscale2018',
-#     'samples'  : {
-#         'tZq' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
-# }
-# nuisances['ZZscale2018']  = {
-#     'name'  : 'ZZscale2018',
-#     'samples'  : {
-#         'ZZ4L' : '1.00',    # change sample name
-#     },
-#     'type'  : 'rateParam',
 # }
 
 # statistical fluctuation
