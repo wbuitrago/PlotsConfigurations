@@ -10,11 +10,11 @@ variables['events']  = {   'name': '1',
                         'fold' : 3
                         }
 
-variables['nvtx']  = {   'name': 'PV_npvsGood',
-                        'range' : (20,0,100),
-                        'xaxis' : 'nvtx',
-                         'fold' : 3
-                      }
+# variables['nvtx']  = {   'name': 'PV_npvsGood',
+#                         'range' : (20,0,100),
+#                         'xaxis' : 'nvtx',
+#                          'fold' : 3
+#                       }
 
 variables['mll']  = {   'name': 'mll',
                         'range' : (20, 12,200),
@@ -22,17 +22,17 @@ variables['mll']  = {   'name': 'mll',
                         'fold' : 0
                         }
 
-variables['mth']  = {   'name': 'mth',
-                        'range' : (20, 60,200),
-                        'xaxis' : 'm_{T}^{H} [GeV]',
-                        'fold' : 0
-                        }
+# variables['mth']  = {   'name': 'mth',
+#                         'range' : (20, 60,200),
+#                         'xaxis' : 'm_{T}^{H} [GeV]',
+#                         'fold' : 0
+#                         }
 
-variables['mth-DY']  = {   'name': 'mth',
-                        'range' : (10, 0, 60),
-                        'xaxis' : 'm_{T}^{H} [GeV]',
-                        'fold' : 0
-                        }
+# variables['mth-DY']  = {   'name': 'mth',
+#                         'range' : (10, 0, 60),
+#                         'xaxis' : 'm_{T}^{H} [GeV]',
+#                         'fold' : 0
+#                         }
 
 variables['ptll']  = {   'name': 'ptll',
                         'range' : (20, 30,200),

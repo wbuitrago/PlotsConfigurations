@@ -1,10 +1,14 @@
 # cuts
 
-supercut = ' mll > 12 \
-            && Lepton_pt[0]>25 \
+supercut = '   Lepton_pt[0]>25 \
             && Lepton_pt[1]>13 \
             && (nLepton>=2 && Alt$(Lepton_pt[2],0)<10) \
             && abs(Lepton_eta[0])<2.5 && abs(Lepton_eta[1])<2.5 \
+            && ptll>30 \
+            && PuppiMET_pt > 60 \
+            && mjj > 300 \
+            && detajj > 2.5 \
+            && ((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
            '
 
 ## Signal regions
