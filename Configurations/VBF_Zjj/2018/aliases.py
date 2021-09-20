@@ -3,9 +3,8 @@ import copy
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # SF
-configurations = os.path.dirname(configurations) # Full2018_v7
-configurations = os.path.dirname(configurations) # VBS_OS
+configurations = os.path.dirname(configurations) # 2018
+configurations = os.path.dirname(configurations) # VBF_Zjj
 configurations = os.path.dirname(configurations) # Configurations
 
 #aliases = {}
@@ -236,7 +235,7 @@ if btag_algo == "deepcsv":
       }
 
 elif btag_algo == "deepflav":
-    btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepJet_102XSF_V2.csv' % os.getenv('CMSSW_BASE')
+    btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepJet_102XSF_V1.csv' % os.getenv('CMSSW_BASE')
     aliases['Jet_btagSF_deepflav_shape'] = {
         'linesToAdd': [
             'gSystem->Load("libCondFormatsBTauObjects.so");',

@@ -13,17 +13,15 @@ supercut = '   Lepton_pt[0]>25 \
 
 ## Signal regions
 cuts['Zjj_13TeV'] = {
-   'expr': 'SR',
+   'expr': 'sr',
     # Define the sub-categorization of sr
    'categories' : {
       #
       #'em' : ' zeroJet  && (Lepton_pdgId[0]*Lepton_pdgId[1] == -11*13) && mth<60 && mll>40 && mll<80',
       #
-      'ee' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) && mjj>500 && detajj>2.5 && multijet',
+      'ee' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) && mjj>500 && detajj>2.5 && multiJet',
       #
-      'mm' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && mjj>500 && detajj>2.5 && multijet', 
+      'mm' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) && mjj>500 && detajj>2.5 && multiJet', 
       #
    }
 }
-
-

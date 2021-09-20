@@ -136,7 +136,7 @@ plot['ggWW']  = {
 
 plot['WWewk']  = {
                   'color': 851, # kAzure -9 
-                  'isSignal' : ,
+                  'isSignal' : 0,
                   'isData'   : 0,
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
                   }
