@@ -56,7 +56,7 @@ The `--doNotCleanup` option is used to keep the input root files. Without this o
 
 You can now proceed making plots (`mkPlot.py --help` to see all available options):
 
-    mkPlot.py --pycfg configuration.py --inputFile rootFile/plots_TAG.root --showIntegralLegend 1
+    mkPlot.py --pycfg=configuration.py --inputFile=rootFile/plots_TAG.root --showIntegralLegend=1
 
 and datacards (`mkDatacards.py --help` to see all available options):
 
