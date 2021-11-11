@@ -67,6 +67,7 @@ jetbin_detabins = [3,3,2]
 wjets_palette = ['#DF7000', '#FF8A00','#FFA133','#F7C307','#FFE200','#FFEC57']
 
 
+"""
 wjets_bins = []
 for ir in range(1,22):
     wjets_bins.append("Wjets_res_"+str(ir))
@@ -129,6 +130,7 @@ groupPlot["Wjets"]  = {
                         'fill': 1001
                 }
 
+"""
 groupPlot['VBS']  = {  
                  'nameHR' : 'VBS',
                  'isSignal' : 1,
@@ -144,6 +146,7 @@ groupPlot['VBS']  = {
 # keys here must match keys in samples.py    
 # 
 
+"""
 plot['VVV']  = { 
                   'color': colors["kAzure"] -3,    
                   'isSignal' : 0,
@@ -245,7 +248,7 @@ plot['DATA']  = {
                  'isBlind'  : 0
              }
 
-
+"""
 
 # additional options
 

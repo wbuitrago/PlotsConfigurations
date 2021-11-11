@@ -1,21 +1,14 @@
 from pprint import pprint
 # # # name of samples here must match keys in samples.py 
 
-# from samples_split.py
 # VBS_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_ZZ", "VBS_os_WpToLNu_WmTo2J", "VBS_os_WpTo2J_WmToLNu", "VBS_WpWp", "VBS_WmWm", "VBS_WpZjj", "VBS_WmZjj"]
-# VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
+# VBS_WV_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_os_WpToLNu_WmTo2J", "VBS_os_WpTo2J_WmToLNu", "VBS_WpWp", "VBS_WmWm", "VBS_WpZjj", "VBS_WmZjj"]
+# VBS_ZV_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_ZZ", "VBS_WpZjj", "VBS_WmZjj"]
 
-VBS_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_ZZ", "VBS_os_WpToLNu_WmTo2J", "VBS_os_WpTo2J_WmToLNu", "VBS_WpWp", "VBS_WmWm", "VBS_WpZjj", "VBS_WmZjj"]
-VBS_WV_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_os_WpToLNu_WmTo2J", "VBS_os_WpTo2J_WmToLNu", "VBS_WpWp", "VBS_WmWm", "VBS_WpZjj", "VBS_WmZjj"]
-VBS_ZV_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_ZZ", "VBS_WpZjj", "VBS_WmZjj"]
-VV_WV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj"]
-VV_ZV_samples = ["VV_WZll", "VV_ZZ"]
+VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VBS_WV_samples = ["ewk_WpZ", "ewk_WmZ","ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VBS_ZV_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ"]
 
-# VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
-# VBS_WV_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj"]
-# VBS_ZV_samples = ["VBS_WZll", "VBS_ZZ"]
-# VV_WV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj"]
-# VV_ZV_samples = ["VV_WZll", "VV_ZZ"]
 
 
 ########################################################
@@ -24,6 +17,12 @@ VV_ZV_samples = ["VV_WZll", "VV_ZZ"]
 
 # mc =["DY", "top", "VV", "VVV",  "VBF-V_dipole", "Vg", "VgS",  "ggWW","VBS_dipoleRecoil"] + wjets_all_bins + VBS_samples + VV_samples
 #"VBF-V","VBS",
+# mc = VV_WV_samples + VV_ZV_samples
+
+VV_WV_samples = []
+VV_ZV_samples = []
+
+mc = []
 
 phasespaces = ["res_wjetcr_ele","res_wjetcr_mu" ,"boost_wjetcr_ele" ,"boost_wjetcr_mu",
         "res_topcr_ele","res_topcr_mu" ,"boost_topcr_ele" ,"boost_topcr_mu",
@@ -550,14 +549,14 @@ nuisances['TopPtRew'] = {
 
 ###########################################
 
-for jtype in ["quark", "gluon"]:
-      for  jeta in ["higheta", "loweta"]:
-        nuisances['QGLmorphing_{}_{}'.format(jtype, jeta)]  = {
-            'name': 'QGLmorph_{}_{}_1718'.format(jtype, jeta),
-            'kind': 'suffix',
-            'type': 'shape',
-            'samples': dict((skey, ['1.','1.']) for skey in mc),
-        }
+# for jtype in ["quark", "gluon"]:
+#      for  jeta in ["higheta", "loweta"]:
+#        nuisances['QGLmorphing_{}_{}'.format(jtype, jeta)]  = {
+#            'name': 'QGLmorph_{}_{}_1718'.format(jtype, jeta),
+#            'kind': 'suffix',
+#            'type': 'shape',
+#            'samples': dict((skey, ['1.','1.']) for skey in mc),
+#        }
 
 
 # ######################
