@@ -2,6 +2,7 @@
 from itertools import product, chain
 #structure = {}
 
+"""
 wjets_bins = []
 for ir in range(1,22):
     wjets_bins.append("Wjets_res_"+str(ir))
@@ -144,3 +145,30 @@ structure['DATA']  = {
 
 
 samples = {k:v for k,v in samples.items() if "VBS" in k}
+
+"""
+
+structure['ewk_WpWm']  = { 
+                  'isSignal' : 1,
+                  'isData'   : 0 
+              }
+structure['ewk_WpWp']  = { 
+                  'isSignal' : 1,
+                  'isData'   : 0 
+              }
+structure['ewk_WmWm']  = { 
+                  'isSignal' : 1,
+                  'isData'   : 0 
+              }
+structure['ewk_WpZ']  = { 
+                  'isSignal' : 1,
+                  'isData'   : 0 
+              }
+structure['ewk_WmZ']  = { 
+                  'isSignal' : 1,
+                  'isData'   : 0 
+              }
+structure['ewk_ZZ']  = { 
+                  'isSignal' : 1,
+                  'isData'   : 0 
+              }

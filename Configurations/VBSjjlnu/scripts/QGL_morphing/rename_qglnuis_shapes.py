@@ -15,9 +15,13 @@ oF = R.TFile.Open(args.outputfile,"RECREATE")
 oFF = R.TFile.Open(args.outputfile_fit,"UPDATE")
 
 # samples= ['VBS','DY','top','VV','VVV','Vg','VgS', 'VBF-V','ggWW'] # 'VBS_dipoleRecoil'
-VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
-VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
+# VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
+# VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
+# samples =  VBS_samples + VV_samples #+['VBF-V_dipole',"VBS_dipoleRecoil"] +
+VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VV_samples = []
 samples =  VBS_samples + VV_samples #+['VBF-V_dipole',"VBS_dipoleRecoil"] +
+
 wjets_bins = {"res":[], "boost":[]}
 # for ir in range(1,22):
 #     wjets_bins["res"].append("Wjets_res_"+str(ir))

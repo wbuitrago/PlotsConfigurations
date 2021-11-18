@@ -7,11 +7,23 @@ conf_folder = configurations +"/VBSjjlnu/Full2018v7"
 
 #aliases = {}
 
-mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
+# mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
-#VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
-VBS_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_ZZ", "VBS_os_WpToLNu_WmTo2J", "VBS_os_WpTo2J_WmToLNu", "VBS_WpWp", "VBS_WmWm", "VBS_WpZjj", "VBS_WmZjj"]
-VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
+# VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
+# VBS_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_ZZ", "VBS_os_WpToLNu_WmTo2J", "VBS_os_WpTo2J_WmToLNu", "VBS_WpWp", "VBS_WmWm", "VBS_WpZjj", "VBS_WmZjj"]
+# VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
+
+VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VBS_WV_samples = ["ewk_WpZ", "ewk_WmZ","ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VBS_ZV_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ"]
+
+mc = VBS_samples
+
+
+signal_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VV_samples = [] 
+
+
 
 ####################
 
@@ -130,14 +142,19 @@ aliases['nJetsBtag']= {
 }
 
 
+# btagSF_corr_samples_groups = {
+#     'VBS': ['VBS','VBS_ZLL'],
+#     #'VBS_dipoleRecoil': ['VBS_dipoleRecoil',"VBS_top","VBS_notop"] + VBS_samples,
+#     'VBS_dipoleRecoil': VBS_samples,
+#     'Wjets_HT': wjets_res_bins  + wjets_boost_bins,
+#     'Vg_VgS_VBFV':['Vg','VgS','VBF-V','VBF-V_dipole'] ,
+#     'VV_VVV_ggWW':['VVV','VV','ggWW']+ VV_samples ,
+#     'top':['top'],
+#     'DY': ['DY']
+# }
+
 btagSF_corr_samples_groups = {
-    'VBS': ['VBS','VBS_ZLL'],
-    'VBS_dipoleRecoil': ['VBS_dipoleRecoil',"VBS_top","VBS_notop"] + VBS_samples,
-    'Wjets_HT': wjets_res_bins  + wjets_boost_bins,
-    'Vg_VgS_VBFV':['Vg','VgS','VBF-V','VBF-V_dipole'] ,
-    'VV_VVV_ggWW':['VVV','VV','ggWW']+ VV_samples ,
-    'top':['top'],
-    'DY': ['DY']
+    'VBS_dipoleRecoil': signal_samples
 }
 
 for sgroup_name, sgroup in btagSF_corr_samples_groups.items():

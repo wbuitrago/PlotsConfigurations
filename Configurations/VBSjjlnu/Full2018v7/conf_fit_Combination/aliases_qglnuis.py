@@ -9,6 +9,9 @@ conf_folder = configurations +"/VBSjjlnu/Full2018v7"
 
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
+signal_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VV_samples = [] 
+
 ####################
 
 aliases['nJets30']= {
@@ -124,14 +127,18 @@ aliases['nJetsBtag']= {
 }
 
 
+# btagSF_corr_samples_groups = {
+#     'VBS': ['VBS','VBS_ZLL'],
+#     'VBS_dipoleRecoil': ['VBS_dipoleRecoil'] + signal_samples,
+#     'Wjets_HT': wjets_res_bins  + wjets_boost_bins,
+#     'Vg_VgS_VBFV':['Vg','VgS','VBF-V','VBF-V_dipole'],
+#     'VV_VVV_ggWW':['VVV','VV','ggWW'] + VV_samples,
+#     'top':['top'],
+#     'DY': ['DY']
+# }
+
 btagSF_corr_samples_groups = {
-    'VBS': ['VBS','VBS_ZLL'],
-    'VBS_dipoleRecoil': ['VBS_dipoleRecoil'] + signal_samples,
-    'Wjets_HT': wjets_res_bins  + wjets_boost_bins,
-    'Vg_VgS_VBFV':['Vg','VgS','VBF-V','VBF-V_dipole'],
-    'VV_VVV_ggWW':['VVV','VV','ggWW'] + VV_samples,
-    'top':['top'],
-    'DY': ['DY']
+    'VBS_dipoleRecoil': signal_samples
 }
 
 for sgroup_name, sgroup in btagSF_corr_samples_groups.items():
