@@ -13,7 +13,8 @@ parser.add_argument("-ec","--exclude-cuts", help="Exclude cuts", type=str, nargs
 args = parser.parse_args()
 
 
-samples= ['VBS','VBS_dipoleRecoil','DY','top','VV','VVV','Vg','VgS', 'VBF-V','ggWW']
+#samples= ['VBS','VBS_dipoleRecoil','DY','top','VV','VVV','Vg','VgS', 'VBF-V','ggWW']
+samples= ['VBS','ewk_WpWp', 'ewk_WmWm', 'ewk_WpWm', 'ewk_WpZ', 'ewk_WmZ', 'ewk_ZZ','DY','top','VV','VVV','Vg','VgS', 'VBF-V','ggWW']
 wjets_bins = []
 for ir in range(1,22):
     wjets_bins.append("Wjets_res_"+str(ir))

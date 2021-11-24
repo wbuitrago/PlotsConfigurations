@@ -1,6 +1,6 @@
 from __future__ import print_function
 import argparse
-
+from tqdm import tqdm
 '''
 This script saves in a TFile the effect of the selected nuisance for the 
 given samples and variables. 
@@ -21,7 +21,7 @@ parser.add_argument("-e","--exclude-vars", help="Exclude vars", type=str, nargs=
 args = parser.parse_args()
 
 import ROOT as R 
-R.gROOT.SetBatch(True)
+#R.gROOT.SetBatch(True)
 R.TH1.SetDefaultSumw2()
 
 
@@ -59,30 +59,31 @@ for cut in cuts:
         oF.mkdir(cut + "/"+var)
         for s in samples:
             print (">> Sample: ", s )
-            try:
-                h_nom = iF.Get("{}/{}/histo_{}".format(cut, var, s ))
+            
+            h_nom = iF.Get("{}/{}/histo_{}".format(cut, var, s ))
 
-                for n in args.nuisances:
-                    #print "{}/{}/histo_{}_{}Up".format(cut, var, s, n)
-                    h_up = iF.Get("{}/{}/histo_{}_{}Up".format(cut, var, s, n)).Clone()
-                    h_do = iF.Get("{}/{}/histo_{}_{}Down".format(cut, var, s, n)).Clone()
+            for n in args.nuisances:
+               try:
+                 #print(n)
+                 #print "{}/{}/histo_{}_{}Up".format(cut, var, s, n)
+                 h_up = iF.Get("{}/{}/histo_{}_{}Up".format(cut, var, s, n)).Clone()
+                 h_do = iF.Get("{}/{}/histo_{}_{}Down".format(cut, var, s, n)).Clone()
+                 h_up.Divide(h_nom)
+                 h_do.Divide(h_nom)
+                 oF.cd(cut + "/"+var)
+                 h_up.Write()
+                 h_do.Write()
 
-                    h_up.Divide(h_nom)
-                    h_do.Divide(h_nom)
-                    oF.cd(cut + "/"+var)
-                    h_up.Write()
-                    h_do.Write()
-
-                    if args.fit:
-                        # Try the linear fit
-                        lin_up = R.TF1("f_{}_{}Up".format(s, n), "pol1")
-                        lin_do = R.TF1("f_{}_{}Do".format(s, n), "pol1")
-                        h_up.Fit(lin_up, "W")
-                        h_do.Fit(lin_do, 'W')
-                        lin_up.Write()
-                        lin_do.Write()
-            except:
-                print("Missing sample: ", s, " --> skipping")
+                 if args.fit:
+                     # Try the linear fit
+                     lin_up = R.TF1("f_{}_{}Up".format(s, n), "pol1")
+                     lin_do = R.TF1("f_{}_{}Do".format(s, n), "pol1")
+                     h_up.Fit(lin_up, "W")
+                     h_do.Fit(lin_do, 'W')
+                     lin_up.Write()
+                     lin_do.Write()
+               except:
+                   print("Missing sample: ", s, " nuis ", n, " --> skipping")
 
 
         oF.cd()

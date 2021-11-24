@@ -686,7 +686,6 @@ for sample in mc:
                 }
 
 
-
 nuisances['PS_ISR_VBS_WV']  = {
                     'name'  : 'CMS_PS_ISR_VBS_WV',
                     'kind'  : 'weight',
@@ -899,6 +898,18 @@ for n in nuisances.values():
 
 # nuisances = {k:v for k,v in nuisances.items() if 'dipole' == k} #if 'PS' in k or 'QCD' in k
 
+<<<<<<< HEAD:Configurations/VBSjjlnu/Full2018v7/conf_fit_Combination/nuisances_datacard_split_2pois.py
 # nuisances = {k:v for k,v in nuisances.items() if 'zlep_residual' in k} #if 'PS' in k or 'QCD' in k
 
+=======
+# Customization for mu fit with QCDscale normalization included
+exclude = ["QCD_scale_VBS_WV_accept","QCD_scale_VBS_ZV_accept", "QCD_scale_QCD_WV_accept", "pdf_weight_accept"]
+nuisances = {k:v for k,v in nuisances.items() if k not in exclude}
+
+# exclude = ["QCD_scale_VBS_WV_full","QCD_scale_VBS_ZV_accept", "QCD_scale_QCD_WV_accept", "pdf_weight"]
+# nuisances = {k:v for k,v in nuisances.items() if k not in exclude}
+
+
+# print ' '.join(nuis['name'] for nname, nuis in nuisances.iteritems() if nname not in ('lumi', 'stat'))
+>>>>>>> 1108f00dbe164371ee2339513a38d9e6a7eba23c:Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.5/nuisances_datacard_split.py
 # print ' '.join(nuis['name'] for nname, nuis in nuisances.iteritems() if nname not in ('lumi', 'stat'))

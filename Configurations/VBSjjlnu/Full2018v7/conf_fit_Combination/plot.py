@@ -123,61 +123,61 @@ groupPlot["Wjets"]  = {
                 }
 
 
-groupPlot['VBS']  = {  
-                 'nameHR' : 'VBS',
+# groupPlot['VBS']  = {  
+#                  'nameHR' : 'VBS',
+#                  'isSignal' : 1,
+#                  'color': colors["kRed"]+1,   
+#                  'samples'  : ['ewk_WpWp', 'ewk_WmWm', 'ewk_WpZ', 'ewk_WmZ', 'ewk_WpWm', 'ewk_ZZ'],
+#                  'fill': 1001
+#               }
+
+groupPlot['ewk_WpWp']  = {  
+                 'nameHR' : 'ewk_WpWp',
                  'isSignal' : 1,
-                 'color': colors["kRed"]+1,   
-                 'samples'  : ['ewk_WpWp', 'ewk_WmWm', 'ewk_WpZ', 'ewk_WmZ', 'ewk_WpWm', 'ewk_ZZ'],
+                 'color': colors["kBlue"], #palette["Peach3"],   
+                 'samples'  : ['ewk_WpWp'],
                  'fill': 1001
               }
 
-# groupPlot['ewk_WpWp']  = {  
-#                  'nameHR' : 'ewk_WpWp',
-#                  'isSignal' : 1,
-#                  'color': palette["Orange"], #palette["Peach3"],   
-#                  'samples'  : ['ewk_WpWp'],
-#                  'fill': 1001
-#               }
+groupPlot['ewk_WpWm']  = {  
+                 'nameHR' : 'ewk_WpWm',
+                 'isSignal' : 1,
+                 'color': palette["Orange2"],   
+                 'samples'  : ['ewk_WpWm'],
+                 'fill': 1001
+              }
 
-# groupPlot['ewk_WpWm']  = {  
-#                  'nameHR' : 'ewk_WpWm',
-#                  'isSignal' : 1,
-#                  'color': palette["Orange2"],   
-#                  'samples'  : ['ewk_WpWm'],
-#                  'fill': 1001
-#               }
+groupPlot['ewk_WmWm']  = {  
+                 'nameHR' : 'ewk_WmWm',
+                 'isSignal' : 1,
+                 'color': palette["Pink2"],   
+                 'samples'  : ['ewk_WmWm'],
+                 'fill': 1001
+              }
 
-# groupPlot['ewk_WmWm']  = {  
-#                  'nameHR' : 'ewk_WmWm',
-#                  'isSignal' : 1,
-#                  'color': palette["Pink2"],   
-#                  'samples'  : ['ewk_WmWm'],
-#                  'fill': 1001
-#               }
+groupPlot['ewk_WmZ']  = {  
+                 'nameHR' : 'ewk_WmZ',
+                 'isSignal' : 1,
+                 'color': colors["kMagenta"],   
+                 'samples'  : ['ewk_WmZ'],
+                 'fill': 1001
+              }
 
-# groupPlot['ewk_WmZ']  = {  
-#                  'nameHR' : 'ewk_WmZ',
-#                  'isSignal' : 1,
-#                  'color': palette["Green3"],   
-#                  'samples'  : ['ewk_WmZ'],
-#                  'fill': 1001
-#               }
+groupPlot['ewk_WpZ']  = {  
+                 'nameHR' : 'ewk_WpZ',
+                 'isSignal' : 1,
+                 'color': colors["kRed"],   
+                 'samples'  : ['ewk_WpZ'],
+                 'fill': 1001
+              }
 
-# groupPlot['ewk_WpZ']  = {  
-#                  'nameHR' : 'ewk_WpZ',
-#                  'isSignal' : 1,
-#                  'color': palette["LightGreen"],   
-#                  'samples'  : ['ewk_WpZ'],
-#                  'fill': 1001
-#               }
-
-# groupPlot['ewk_ZZ']  = {  
-#                  'nameHR' : 'ewk_ZZ',
-#                  'isSignal' : 1,
-#                  'color': palette["Violet"],   
-#                  'samples'  : ['ewk_ZZ'],
-#                  'fill': 1001
-#               }
+groupPlot['ewk_ZZ']  = {  
+                 'nameHR' : 'ewk_ZZ',
+                 'isSignal' : 1,
+                 'color': colors["kGray"],   
+                 'samples'  : ['ewk_ZZ'],
+                 'fill': 1001
+              }
 
 #plot = {}
 

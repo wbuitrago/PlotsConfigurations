@@ -575,12 +575,10 @@ samples['VV_ZZ']  = { 'name' :
 
 #VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
 VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
-# VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
-
+VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
 #samples = {key:v for key,v in samples.items() if key in VBS_samples + VV_samples}
 
-samples = {key:v for key,v in samples.items() if key in VBS_samples}
+#samples = {key:v for key,v in samples.items() if key in VBS_samples}
 
 # samples = {   key:v for key,v in samples.items() if key not in ['VBF-V','VBS',"VBS_interf"]}
 # samples = {key:v for key,v in samples.items() if key in ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]}
-

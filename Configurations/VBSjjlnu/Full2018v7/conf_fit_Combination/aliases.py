@@ -13,15 +13,15 @@ conf_folder = configurations +"/VBSjjlnu/Full2018v7"
 # VBS_samples = ["VBS_WpZll", "VBS_WmZll", "VBS_ZZ", "VBS_os_WpToLNu_WmTo2J", "VBS_os_WpTo2J_WmToLNu", "VBS_WpWp", "VBS_WmWm", "VBS_WpZjj", "VBS_WmZjj"]
 # VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
 
+mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
+
 VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
 VBS_WV_samples = ["ewk_WpZ", "ewk_WmZ","ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
 VBS_ZV_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ"]
+VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
 
-mc = VBS_samples
-
-
-signal_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
-VV_samples = [] 
+#signal_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+#VV_samples = [] 
 
 
 
