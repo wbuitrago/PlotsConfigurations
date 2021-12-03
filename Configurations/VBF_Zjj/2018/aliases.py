@@ -190,12 +190,12 @@ aliases['HighZ'] = {
 }
 
 aliases['hardJets'] = {
-    'expr':  'Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[CleanJet_jetIdx[0]] > 25 && GenJet_pt[CleanJet_jetIdx[1]] > 25',
+    'expr':  'Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25',
     'samples': ['DY']
 }
 
 aliases['PUJets'] = {
-    'expr':  '!(Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[CleanJet_jetIdx[0]] > 25 && GenJet_pt[CleanJet_jetIdx[1]] > 25)',
+    'expr':  '!(Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25)',
     'samples': ['DY']
 }
 
@@ -235,7 +235,7 @@ if btag_algo == "deepcsv":
       }
 
 elif btag_algo == "deepflav":
-    btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepJet_102XSF_V1.csv' % os.getenv('CMSSW_BASE')
+    btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepJet_102XSF_V2.csv' % os.getenv('CMSSW_BASE')
     aliases['Jet_btagSF_deepflav_shape'] = {
         'linesToAdd': [
             'gSystem->Load("libCondFormatsBTauObjects.so");',
@@ -337,33 +337,33 @@ aliases['SFweightMuDown'] = {
     'samples': mc_emb
 }
 
-aliases['Weight2MINLO'] = {
-    'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
-    'class': 'Weight2MINLO',
-    'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE'),
-    'samples' : [skey for skey in samples if 'ggH_hww' in skey],
-}
+# aliases['Weight2MINLO'] = {
+#     'linesToAdd': ['.L %s/Differential/weight2MINLO.cc+' % configurations],
+#     'class': 'Weight2MINLO',
+#     'args': '%s/src/LatinoAnalysis/Gardener/python/data/powheg2minlo/NNLOPS_reweight.root' % os.getenv('CMSSW_BASE'),
+#     'samples' : [skey for skey in samples if 'ggH_hww' in skey],
+# }
 
-## GGHUncertaintyProducer wasn't run for GluGluHToWWTo2L2Nu_Powheg_M125 
-thus = [
-    'ggH_mu',
-    'ggH_res',
-    'ggH_mig01',
-    'ggH_mig12',
-    'ggH_VBF2j',
-    'ggH_VBF3j',
-    'ggH_pT60',
-    'ggH_pT120',
-    'ggH_qmtop'
-]
+# ## GGHUncertaintyProducer wasn't run for GluGluHToWWTo2L2Nu_Powheg_M125 
+# thus = [
+#     'ggH_mu',
+#     'ggH_res',
+#     'ggH_mig01',
+#     'ggH_mig12',
+#     'ggH_VBF2j',
+#     'ggH_VBF3j',
+#     'ggH_pT60',
+#     'ggH_pT120',
+#     'ggH_qmtop'
+# ]
 
-for thu in thus:
-    aliases[thu+'_2'] = {
-        'linesToAdd': ['.L %s/Differential/gghuncertainty.cc+' % configurations],
-        'class': 'GGHUncertainty',
-        'args': (thu,),
-        'samples': ['ggH_hww']
-    }
+# for thu in thus:
+#     aliases[thu+'_2'] = {
+#         'linesToAdd': ['.L %s/Differential/gghuncertainty.cc+' % configurations],
+#         'class': 'GGHUncertainty',
+#         'args': (thu,),
+#         'samples': ['ggH_hww']
+#     }
 
 aliases['lhe_mjj'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[4] * LHEPart_pt[5] * (TMath::CosH(LHEPart_eta[4] - LHEPart_eta[5]) - TMath::Cos(LHEPart_phi[4] - LHEPart_phi[5])))',

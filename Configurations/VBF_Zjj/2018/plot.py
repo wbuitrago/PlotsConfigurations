@@ -13,12 +13,6 @@ groupPlot['Multiboson']  = {
                   'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }
 
-groupPlot['Zjj']  = {  
-                  'nameHR': 'Zjj',
-                  'isSignal' : 1,
-                  'color': 600,    # kBlue
-                  'samples'    : ['Zjj']
-              }
 
 groupPlot['WW']  = {  
                   'nameHR' : 'WW_QCD',
@@ -41,6 +35,46 @@ groupPlot['DY_PUJets']  = {
                   'samples'  : ['DY_PUJets']
               }
 
+'''
+groupPlot['DY']  = {  
+                  'nameHR' : "DY",
+                  'isSignal' : 0,
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY_lowZ', 'DY_highZ']
+              }
+
+
+groupPlot['VVV']  = {  
+                  'nameHR' : 'VVV',
+                  'isSignal' : 0,
+                  'color': 857, # kAzure -3  
+                  'samples'  : ['VVV']
+              }
+
+
+groupPlot['VZ']  = {  
+                  'nameHR' : "VZ",
+                  'isSignal' : 0,
+                  'color'    : 617,   # kViolet + 1  
+                  'samples'  : ['VZ', 'WZ', 'ZZ']
+              }
+
+groupPlot['Vg']  = {  
+                  'nameHR' : "V#gamma",
+                  'isSignal' : 0,
+                  'color'    : 800,  #810,   # kOrange + 10
+                  'samples'  : ['Vg', 'Wg']
+              }
+
+groupPlot['VgS']  = {
+                  'nameHR' : "V#gamma*",
+                  'isSignal' : 0,
+                  'color'    : 409,   # kGreen - 9
+                  'samples'  : ['VgS_H','VgS_L']
+              }
+
+'''
+
 groupPlot['top']  = {  
                   'nameHR' : 'tW and t#bar{t}',
                   'isSignal' : 0,
@@ -50,11 +84,16 @@ groupPlot['top']  = {
 
 groupPlot['VBS']  = {
                   'nameHR' : 'VBS',
-                  'isSignal' : 2,
+                  'isSignal' : 0,
                   'color': 888, #666,
                   'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
               }
-
+groupPlot['Zjj']  = {  
+                  'nameHR': 'Zjj',
+                  'isSignal' : 2,
+                  'color': 600,    # kBlue
+                  'samples'    : ['Zjj']
+              }
 
 #plot = {}
 
@@ -76,7 +115,7 @@ plot['DY_PUJets']  = {
 
 plot['Zjj']  = {  
                   'color': 600,    # kBlue
-                  'isSignal' : 0,
+                  'isSignal' : 1,
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
@@ -170,6 +209,7 @@ plot['VZ']  = {
                   'isData'   : 0,
                   'scale'    : 1.0
                   }
+
 
 plot['VVV']  = { 
                   'color': 857, # kAzure -3  
