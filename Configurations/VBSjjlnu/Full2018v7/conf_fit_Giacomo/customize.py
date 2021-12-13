@@ -6,8 +6,7 @@ from pprint import pprint
 
 
 #Order of sample for plot in top_only 
-# plots_top_order_res = [  'VV+VVV', 'DY', "Others",'Fake','top', 'Wjets', 'VBS']
-plots_top_order_res = [  'VV+VVV', 'DY', "Others",'top','Fake','Wjets', 'VBS']
+plots_top_order_res = [  'VV+VVV', 'DY', "Others",'Fake', 'Wjets','top','VBS']
 plots_wjets_order_res = [  'VV+VVV', 'DY', "Others", 'top','Fake',  'Wjets', 'VBS']
 plots_top_order_boost = [  'VV+VVV',  'DY', "Others",'Fake', 'Wjets','top','VBS']
 plots_wjets_order_boost = [  'VV+VVV', 'DY', "Others",'top','Fake','Wjets', 'VBS']
@@ -252,14 +251,6 @@ def customize(samples,cuts,variables,nuisances,plot,groupPlot, key=None):
         new_plot ={ k:v for k,v in plot.items() if 'res' not in k}
         scale_plot = scaleBins(new_plot,  norm_factors)
         return samples, new_cuts, variables, nuisances, scale_plot, new_groupPlot
-
-    if key=="top_boost_rescaled":
-        norm_factors = get_wjets_scaling(os.path.dirname(__file__) + "/wjets_norm/bins_norm.txt")
-        new_cuts = filter_cuts(cuts, r"boost_top_.*")
-        new_groupPlot = reorder_plots(groupPlot,  plots_top_order_boost)
-        new_plot ={ k:v for k,v in plot.items() if 'res' not in k}
-        scale_plot = scaleBins(new_plot,  norm_factors)
-        return samples, new_cuts, variables, nuisances, scale_plot, new_groupPlot
     
     if key=="wjets_res_rescaled":
         norm_factors = get_wjets_scaling(os.path.dirname(__file__) + "/wjets_norm/bins_norm.txt")
@@ -274,18 +265,11 @@ def customize(samples,cuts,variables,nuisances,plot,groupPlot, key=None):
         new_cuts = filter_cuts(cuts, r"res_sig_.*")
         new_groupPlot = reorder_plots(groupPlot,  plots_wjets_order_res)
         new_plot ={ k:v for k,v in plot.items() if 'boost' not in k}
+        print(new_plot)
         scale_plot = scaleBins(new_plot,  norm_factors)
         return samples, new_cuts, variables, nuisances, scale_plot, new_groupPlot
 
-    if key=="top_res_rescaled":
-        norm_factors = get_wjets_scaling(os.path.dirname(__file__) + "/wjets_norm/bins_norm.txt")
-        new_cuts = filter_cuts(cuts, r"res_top_.*")
-        new_groupPlot = reorder_plots(groupPlot,  plots_top_order_boost)
-        new_plot ={ k:v for k,v in plot.items() if 'res' not in k}
-        scale_plot = scaleBins(new_plot,  norm_factors)
-        return samples, new_cuts, variables, nuisances, scale_plot, new_groupPlot
-
-    ####################
+    ########################3
 
     if key=="check_nuis":
         sample = 'Fake'
@@ -302,7 +286,6 @@ def customize(samples,cuts,variables,nuisances,plot,groupPlot, key=None):
         new_plot["VBS"] = plot["VBS"]
         return samples, new_cuts, variables, nuisances, new_plot, new_groupPlot
 
-    
     if key=="redo_mjj_boost":
         new_cuts = filter_cuts(cuts, r"boost_.*")
         new_groupPlot = reorder_plots(groupPlot,  plots_wjets_order_res)
@@ -310,6 +293,7 @@ def customize(samples,cuts,variables,nuisances,plot,groupPlot, key=None):
         new_variables = { "mjj_vbs": variables["mjj_vbs"]}
         new_variables["mjj_vbs"]['range'] = (22, 500, 3140)
         return samples, new_cuts, new_variables, nuisances, new_plot, new_groupPlot
+
 
     else:
         return samples,cuts,variables,nuisances,plot,groupPlot

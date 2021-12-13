@@ -1,3 +1,5 @@
+# plot configuration
+
 from ROOT import TColor
 from itertools import product
 
@@ -62,14 +64,15 @@ palette = {
 
 jetbin_detabins = [3,3,2]
 #wjets_palette = ['#FFF59D', '#FFEE58', '#FFD54F', '#FFB300', '#FF8F00', '#F57C00', '#E65100','#BF360C']
-wjets_palette = ['#DF7000', '#FF8A00','#FFA133','#F7C307','#FFE200','#FFEC57']
+wjets_palette = ['#DD2C00', '#FF3D00',  '#FF6D00','#F57C00', '#FFAB00', '#FFC400', '#FFEA00', '#FFFF00']
 
 
 wjets_bins = []
-for ir in range(1,22):
-    wjets_bins.append("Wjets_res_"+str(ir))
-for ir in range(1,8):
-    wjets_bins.append("Wjets_boost_"+str(ir))
+for ir in range(1,7):
+    wjets_bins.append("Wjets_HT_res_"+str(ir))
+for ir in range(1,6):
+    wjets_bins.append("Wjets_HT_boost_"+str(ir))
+
 
 
 
@@ -77,7 +80,7 @@ groupPlot['VV+VVV']  = {
                   'nameHR' : 'VV+VVV',
                   'isSignal' : 0,
                   'color': palette["Pink"], #palette["Peach3"],  
-                  'samples'  : ['VVV', 'VV','ggWW'],
+                  'samples'  : ['VVV', 'VV'],
                   'fill': 1001
               }
 
@@ -92,12 +95,14 @@ groupPlot['DY']  = {
               }
 
 groupPlot['Others']  = {  
-                'nameHR' : "VBF-V + V#gamma",
+                'nameHR' : "Others",
                 'isSignal' : 0,
                 'color':palette["GreenLighter"],# palette["Green5"],    #Green2
-                'samples'  : ['VBF-V_dipole', 'Vg','VgS' ],
+                'samples'  : ['VBF-V', 'Vg','VgS' ],
                 'fill': 1001
             }
+
+
 
 
 groupPlot['Fake']  = {  
@@ -131,65 +136,11 @@ groupPlot['VBS']  = {
                  'nameHR' : 'VBS',
                  'isSignal' : 1,
                  'color': colors["kRed"]+1,   
-                 'samples'  : ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"],
+                 'samples'  : ['VBS'],
                  'fill': 1001
               }
 
-# groupPlot['VBS']  = {  
-#                  'nameHR' : 'VBS',
-#                  'isSignal' : 1,
-#                  'color': colors["kRed"]+1,   
-#                  'samples'  : ["VBS_dipoleRecoil"],
-#                  'fill': 1001
-#               }
 
-# groupPlot['ewk_WpWp']  = {  
-#                  'nameHR' : 'ewk_WpWp',
-#                  'isSignal' : 1,
-#                  'color': colors["kBlue"], #palette["Peach3"],   
-#                  'samples'  : ['ewk_WpWp'],
-#                  'fill': 1001
-#               }
-
-# groupPlot['ewk_WpWm']  = {  
-#                  'nameHR' : 'ewk_WpWm',
-#                  'isSignal' : 1,
-#                  'color': palette["Orange2"],   
-#                  'samples'  : ['ewk_WpWm'],
-#                  'fill': 1001
-#               }
-
-# groupPlot['ewk_WmWm']  = {  
-#                  'nameHR' : 'ewk_WmWm',
-#                  'isSignal' : 1,
-#                  'color': palette["Pink2"],   
-#                  'samples'  : ['ewk_WmWm'],
-#                  'fill': 1001
-#               }
-
-# groupPlot['ewk_WmZ']  = {  
-#                  'nameHR' : 'ewk_WmZ',
-#                  'isSignal' : 1,
-#                  'color': colors["kMagenta"],   
-#                  'samples'  : ['ewk_WmZ'],
-#                  'fill': 1001
-#               }
-
-# groupPlot['ewk_WpZ']  = {  
-#                  'nameHR' : 'ewk_WpZ',
-#                  'isSignal' : 1,
-#                  'color': colors["kRed"],   
-#                  'samples'  : ['ewk_WpZ'],
-#                  'fill': 1001
-#               }
-
-# groupPlot['ewk_ZZ']  = {  
-#                  'nameHR' : 'ewk_ZZ',
-#                  'isSignal' : 1,
-#                  'color': colors["kGray"],   
-#                  'samples'  : ['ewk_ZZ'],
-#                  'fill': 1001
-#               }
 
 #plot = {}
 
@@ -220,7 +171,7 @@ plot['DY']  = {
                 'scale'    : 1.0,
             }
 
-plot['VBF-V_dipole']  = {
+plot['VBF-V']  = {
                   'color': colors['kYellow']+3,  
                   'isSignal' : 0,
                   'isData'   : 0,
@@ -237,13 +188,6 @@ plot['Vg']  = {
 
 
 plot['VgS']  = {  
-                'color': colors['kMagenta']+1,
-                'isSignal' : 0,
-                'isData'   : 0, 
-                'scale'    : 1.0,
-            }
-
-plot['ggWW']  = {  
                 'color': colors['kMagenta']+1,
                 'isSignal' : 0,
                 'isData'   : 0, 
@@ -280,62 +224,12 @@ for wjetbin in wjets_bins:
                     'scale'    : 1.0 
                     }
 
-
-
-# Signals
-plot['ewk_WpWp']  = { 
-                  'color': wjets_palette[0],    
-                  'isSignal' : 1,
-                  'isData'   : 0,
-                  'scale'    : 1.0
-                  }
-
-
-plot['ewk_WmWm']  = {
-                  'color': wjets_palette[1],  
-                  'isSignal' : 1,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-              }   
-         
-
-
-plot['ewk_WpWm']  = {  
-                'color': wjets_palette[2],
-                'isSignal' : 1,
-                'isData'   : 0, 
-                'scale'    : 1.0,
-            }
-
-plot['ewk_WpZ']  = {
-                  'color': wjets_palette[3],  
+plot['VBS']  = {
+                  'color': colors["kCyan"]+1, 
                   'isSignal' : 1,
                   'isData'   : 0,
                   'scale'    : 1.   ,
               }
-
-plot['ewk_WmZ']  = {
-                  'color': wjets_palette[4],  
-                  'isSignal' : 1,
-                  'isData'   : 0,
-                  'scale'    : 1.   ,
-              }   
-         
-
-
-plot['ewk_ZZ']  = {  
-                'color': wjets_palette[5],
-                'isSignal' : 1,
-                'isData'   : 0, 
-                'scale'    : 1.0,
-            }
-
-# plot['VBS_dipoleRecoil']  = {
-#                   'color': colors["kCyan"]+1, 
-#                   'isSignal' : 1,
-#                   'isData'   : 0,
-#                   'scale'    : 1.   ,
-#               }
 
 # # data
 
@@ -348,9 +242,10 @@ plot['DATA']  = {
              }
 
 
+
 # additional options
 
-legend['lumi'] = 'L = 41.5/fb'
+legend['lumi'] = 'L = 59.74/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
 

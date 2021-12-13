@@ -489,14 +489,16 @@ nuisances['TopPtRew'] = {
 
 ##################
 
-for jtype in ["quark", "gluon"]:
-      for  jeta in ["higheta", "loweta"]:
-        nuisances['QGLmorphing_{}_{}'.format(jtype, jeta)]  = {
-            'name': 'QGLmorph_{}_{}_1718'.format(jtype, jeta),
-            'kind': 'suffix',
-            'type': 'shape',
-            'samples': dict((skey, ['1.','1.']) for skey in mc),
-        }
+# Disable when generating mkShapesMulti, restore when plotting and so on
+
+# for jtype in ["quark", "gluon"]:
+#       for  jeta in ["higheta", "loweta"]:
+#         nuisances['QGLmorphing_{}_{}'.format(jtype, jeta)]  = {
+#             'name': 'QGLmorph_{}_{}_1718'.format(jtype, jeta),
+#             'kind': 'suffix',
+#             'type': 'shape',
+#             'samples': dict((skey, ['1.','1.']) for skey in mc),
+#         }
 
 
 # ######################
@@ -708,14 +710,25 @@ nuisances['PS_FSR_QCD_ZV']  = {
 
 #########################################
 
+# nuisances['PU']  = {
+#                 'name'  : 'CMS_PU_2017',
+#                 'kind'  : 'weight',
+#                 'type'  : 'shape',
+#                 'samples'  : {
+#                     # s : ['(puWeight_noeras[1]/puWeight_noeras[0]) * {}'.format(nuis_factors[s]["CMS_PU_2017"][0]),
+#                     #      '(puWeight_noeras[2]/puWeight_noeras[0])* {}'.format(nuis_factors[s]["CMS_PU_2017"][1])] for s in mc },
+#                     s : ["",""] for s in mc }, # only for dataset and plotting 
+#                 'AsLnN'      : '1',
+# }
+
 nuisances['PU']  = {
                 'name'  : 'CMS_PU_2017',
                 'kind'  : 'weight',
                 'type'  : 'shape',
                 'samples'  : {
-                    # s : ['(puWeight_noeras[1]/puWeight_noeras[0]) * {}'.format(nuis_factors[s]["CMS_PU_2017"][0]),
-                    #      '(puWeight_noeras[2]/puWeight_noeras[0])* {}'.format(nuis_factors[s]["CMS_PU_2017"][1])] for s in mc },
-                    s : ["",""] for s in mc }, # only for dataset and plotting 
+                    s : ['(puWeight_noeras[1]/puWeight_noeras[0])',
+                         '(puWeight_noeras[2]/puWeight_noeras[0])'] for s in mc },
+                    # s : ["",""] for s in mc }, # only for dataset and plotting 
                 'AsLnN'      : '1',
 }
 
@@ -851,7 +864,5 @@ for n in nuisances.values():
 # Customization for mu fit with QCDscale normalization included
 # exclude = ["QCD_scale_VBS_WV_accept","QCD_scale_VBS_ZV_accept", "QCD_scale_QCD_WV_accept", "pdf_weight_accept"]
 # nuisances = {k:v for k,v in nuisances.items() if k not in exclude}
-
 nuisances = {k:v for k,v in nuisances.items() if "QGLmorphing_" in k} 
-
 # print ' '.join(nuis['name'] for nname, nuis in nuisances.iteritems() if nname not in ('lumi', 'stat'))

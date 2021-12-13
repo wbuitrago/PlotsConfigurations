@@ -157,7 +157,7 @@ if args.process == "graph":
         exit(1)
 
 for datac in config:
-    if args.datacards and not any([re.match(d,datac["datacard_name"])!=None for d in args.datacards]): continue
+    #if args.datacards and not any([re.match(d,datac["datacard_name"])!=None for d in args.datacards]): continue
     datac['workspace'] = args.outputdir + "/" + datac["datacard_name"] + "/combined_{}.root".format(datac["datacard_name"])
     outdir = args.outputdir + "/" + datac["datacard_name"] + "/likelihood_scan"
 

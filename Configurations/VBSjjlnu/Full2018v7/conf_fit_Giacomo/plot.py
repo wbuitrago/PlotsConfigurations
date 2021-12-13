@@ -1,3 +1,5 @@
+# plot configuration
+
 from ROOT import TColor
 from itertools import product
 
@@ -134,14 +136,6 @@ groupPlot['VBS']  = {
                  'samples'  : ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"],
                  'fill': 1001
               }
-
-# groupPlot['VBS']  = {  
-#                  'nameHR' : 'VBS',
-#                  'isSignal' : 1,
-#                  'color': colors["kRed"]+1,   
-#                  'samples'  : ["VBS_dipoleRecoil"],
-#                  'fill': 1001
-#               }
 
 # groupPlot['ewk_WpWp']  = {  
 #                  'nameHR' : 'ewk_WpWp',
@@ -330,13 +324,6 @@ plot['ewk_ZZ']  = {
                 'scale'    : 1.0,
             }
 
-# plot['VBS_dipoleRecoil']  = {
-#                   'color': colors["kCyan"]+1, 
-#                   'isSignal' : 1,
-#                   'isData'   : 0,
-#                   'scale'    : 1.   ,
-#               }
-
 # # data
 
 plot['DATA']  = { 
@@ -348,9 +335,10 @@ plot['DATA']  = {
              }
 
 
+
 # additional options
 
-legend['lumi'] = 'L = 41.5/fb'
+legend['lumi'] = 'L = 59.74/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
 

@@ -224,14 +224,15 @@ def compatibility(datac):
 
 
 for datac in config:
-    if args.datacards and not any([re.match(d,datac["datacard_name"])!=None for d in args.datacards]): continue
+    #print(args.datacards, [re.match(d,datac["datacard_name"])])
+    #if args.datacards and not any([re.match(d,datac["datacard_name"])!=None for d in args.datacards]): continue
 
     outdir = args.outputdir + "/" + datac["datacard_name"]
     datac["outputdir"] = outdir 
 
     if not os.path.exists(outdir):
         os.makedirs(outdir)
-
+    
     create_logger(datac["datacard_name"], outdir+"/log.txt")
     log = logging.getLogger(datac["datacard_name"])
     if args.dry: log.info("Working in dry mode, no commands executed")

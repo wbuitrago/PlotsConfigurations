@@ -1,3 +1,5 @@
+# plot configuration
+
 from ROOT import TColor
 from itertools import product
 
@@ -62,7 +64,7 @@ palette = {
 
 jetbin_detabins = [3,3,2]
 #wjets_palette = ['#FFF59D', '#FFEE58', '#FFD54F', '#FFB300', '#FF8F00', '#F57C00', '#E65100','#BF360C']
-wjets_palette = ['#DF7000', '#FF8A00','#FFA133','#F7C307','#FFE200','#FFEC57']
+wjets_palette = ['#DD2C00', '#FF3D00',  '#FF6D00','#F57C00', '#FFAB00', '#FFC400', '#FFEA00', '#FFFF00']
 
 
 wjets_bins = []
@@ -70,6 +72,7 @@ for ir in range(1,22):
     wjets_bins.append("Wjets_res_"+str(ir))
 for ir in range(1,8):
     wjets_bins.append("Wjets_boost_"+str(ir))
+
 
 
 
@@ -95,9 +98,11 @@ groupPlot['Others']  = {
                 'nameHR' : "VBF-V + V#gamma",
                 'isSignal' : 0,
                 'color':palette["GreenLighter"],# palette["Green5"],    #Green2
-                'samples'  : ['VBF-V_dipole', 'Vg','VgS' ],
+                'samples'  : ['VBF-V_dipole', 'Vg','VgS', ],
                 'fill': 1001
             }
+
+
 
 
 groupPlot['Fake']  = {  
@@ -134,14 +139,6 @@ groupPlot['VBS']  = {
                  'samples'  : ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"],
                  'fill': 1001
               }
-
-# groupPlot['VBS']  = {  
-#                  'nameHR' : 'VBS',
-#                  'isSignal' : 1,
-#                  'color': colors["kRed"]+1,   
-#                  'samples'  : ["VBS_dipoleRecoil"],
-#                  'fill': 1001
-#               }
 
 # groupPlot['ewk_WpWp']  = {  
 #                  'nameHR' : 'ewk_WpWp',
@@ -191,6 +188,16 @@ groupPlot['VBS']  = {
 #                  'fill': 1001
 #               }
 
+# groupPlot['VBS']  = {  
+#                  'nameHR' : 'VBS',
+#                  'isSignal' : 1,
+#                  'color': colors["kRed"]+1,   
+#                  'samples'  : ['VBS_dipoleRecoil'],
+#                  'fill': 1001
+#               }
+
+
+
 #plot = {}
 
 # keys here must match keys in samples.py    
@@ -227,6 +234,13 @@ plot['VBF-V_dipole']  = {
                   'scale'    : 1.   ,
               }
 
+plot['ggWW']  = {
+                  'color': colors['kYellow']+3,  
+                  'isSignal' : 0,
+                  'isData'   : 0,
+                  'scale'    : 1.   ,
+              }
+
 plot['Vg']  = {
                   'color': colors['kGreen']+3,  
                   'isSignal' : 0,
@@ -237,13 +251,6 @@ plot['Vg']  = {
 
 
 plot['VgS']  = {  
-                'color': colors['kMagenta']+1,
-                'isSignal' : 0,
-                'isData'   : 0, 
-                'scale'    : 1.0,
-            }
-
-plot['ggWW']  = {  
                 'color': colors['kMagenta']+1,
                 'isSignal' : 0,
                 'isData'   : 0, 
@@ -280,6 +287,12 @@ for wjetbin in wjets_bins:
                     'scale'    : 1.0 
                     }
 
+# plot['VBS_dipoleRecoil']  = {
+#                   'color': colors["kCyan"]+1, 
+#                   'isSignal' : 1,
+#                   'isData'   : 0,
+#                   'scale'    : 1.   ,
+#               }
 
 
 # Signals
@@ -330,13 +343,6 @@ plot['ewk_ZZ']  = {
                 'scale'    : 1.0,
             }
 
-# plot['VBS_dipoleRecoil']  = {
-#                   'color': colors["kCyan"]+1, 
-#                   'isSignal' : 1,
-#                   'isData'   : 0,
-#                   'scale'    : 1.   ,
-#               }
-
 # # data
 
 plot['DATA']  = { 
@@ -348,9 +354,10 @@ plot['DATA']  = {
              }
 
 
+
 # additional options
 
-legend['lumi'] = 'L = 41.5/fb'
+legend['lumi'] = 'L = 35.867/fb'
 
 legend['sqrt'] = '#sqrt{s} = 13 TeV'
 

@@ -15,7 +15,7 @@ parser.add_argument("-n","--nuisances", help="Nuisances", type=str, nargs="+")
 parser.add_argument("-nr","--nuisances-rename", help="Nuisances rename", type=str, nargs="+")
 parser.add_argument("-ev","--exclude-vars", help="Exclude vars", type=str, nargs="+")
 parser.add_argument("-ec","--exclude-cuts", help="Exclude cuts", type=str, nargs="+")
-
+parser.add_argument("-dv","--do-vars", help="Do only these vars", type=str, nargs="+")
 args = parser.parse_args()
 
 import ROOT as R 
@@ -45,6 +45,7 @@ for cut in nF.GetListOfKeys():
         print ("Cut: ", cut.GetName())
         for var  in R.gDirectory.GetListOfKeys():
             if args.exclude_vars and var.GetName() in args.exclude_vars: continue
+            if args.do_vars and var.GetName() not  in args.do_vars: continue
             oF.mkdir(cut.GetName() + "/"+var.GetName())
             print ("> Var: ", var.GetName() )
             for sample in samples:
@@ -56,18 +57,20 @@ for cut in nF.GetListOfKeys():
                 else: rename_nuisances = args.nuisances
                 for nuis, nuis_rename in zip(args.nuisances, rename_nuisances):
                     try:
+                        print("histo_{}_{}Up".format(sample, nuis_rename))
                         h_up = h_nom.Clone("histo_{}_{}Up".format(sample, nuis_rename))
                         h_do = h_nom.Clone("histo_{}_{}Down".format(sample, nuis_rename))
-                        
+                        #print(h_up, h_do)
                         eff_up = nF.Get("{}/{}/histo_{}_{}Up".format(cut.GetName(), var.GetName(), sample, nuis ))
                         eff_do = nF.Get("{}/{}/histo_{}_{}Down".format(cut.GetName(), var.GetName(),  sample, nuis ))
-                        
+                        #print(eff_up, eff_do)
                         h_up.Multiply(eff_up)
                         h_do.Multiply(eff_do)
 
                         oF.cd(cut.GetName() + "/"+var.GetName())
                         h_up.Write()
                         h_do.Write()
+                        print("Went fine: ", sample, nuis_rename)
                     except Exception as e:
                         print(e)
                         print("Problem with: ", sample, nuis_rename, " --> skipping")

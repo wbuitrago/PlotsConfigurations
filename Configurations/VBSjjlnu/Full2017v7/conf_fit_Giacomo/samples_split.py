@@ -451,46 +451,46 @@ samples['DATA']  = {   'name': [ ] ,
 ####################################
 ### VV Samples splitting
 
-samples['VBS_ssWW']  = { 'name' :  
-               nanoGetSampleFiles(directory_signal,'WpToLNu_WpTo2J_dipoleRecoil') +
-               nanoGetSampleFiles(directory_signal,'WmToLNu_WmTo2J_dipoleRecoil'),
-       'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
-       'FilesPerJob' :5,
-       'EventsPerJob' : 70000,
-}
+# samples['VBS_ssWW']  = { 'name' :  
+#                nanoGetSampleFiles(directory_signal,'WpToLNu_WpTo2J_dipoleRecoil') +
+#                nanoGetSampleFiles(directory_signal,'WmToLNu_WmTo2J_dipoleRecoil'),
+#        'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
+#        'FilesPerJob' :5,
+#        'EventsPerJob' : 70000,
+# }
 
-samples['VBS_osWW']  = { 'name' :  
-               nanoGetSampleFiles(directory_signal,'WpToLNu_WmTo2J_dipoleRecoil') +
-               nanoGetSampleFiles(directory_signal,'WpTo2J_WmToLNu_dipoleRecoil'),
-       'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
-       'FilesPerJob' :5,
-       'EventsPerJob' : 70000,
-}
-
-
-samples['VBS_WZjj']  = { 'name' :  
-               nanoGetSampleFiles(directory_signal,'WmToLNu_ZTo2J_dipoleRecoil',) +
-               nanoGetSampleFiles(directory_signal,'WpToLNu_ZTo2J_dipoleRecoil',),
-       'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
-       'FilesPerJob' :5,
-       'EventsPerJob' : 70000,
-}
-
-samples['VBS_WZll']  = { 'name' :   
-               nanoGetSampleFiles(directory_signal,'WmTo2J_ZTo2L_dipoleRecoil', ) +
-               nanoGetSampleFiles(directory_signal,'WpTo2J_ZTo2L_dipoleRecoil', ),
-       'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
-       'FilesPerJob' :5,
-       'EventsPerJob' : 70000,
-}
+# samples['VBS_osWW']  = { 'name' :  
+#                nanoGetSampleFiles(directory_signal,'WpToLNu_WmTo2J_dipoleRecoil') +
+#                nanoGetSampleFiles(directory_signal,'WpTo2J_WmToLNu_dipoleRecoil'),
+#        'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
+#        'FilesPerJob' :5,
+#        'EventsPerJob' : 70000,
+# }
 
 
-samples['VBS_ZZ']  = { 'name' :  
-               nanoGetSampleFiles(directory_signal,'ZTo2L_ZTo2J_dipoleRecoil',  ),
-       'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
-       'FilesPerJob' :5,
-       'EventsPerJob' : 70000,
-}
+# samples['VBS_WZjj']  = { 'name' :  
+#                nanoGetSampleFiles(directory_signal,'WmToLNu_ZTo2J_dipoleRecoil',) +
+#                nanoGetSampleFiles(directory_signal,'WpToLNu_ZTo2J_dipoleRecoil',),
+#        'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
+#        'FilesPerJob' :5,
+#        'EventsPerJob' : 70000,
+# }
+
+# samples['VBS_WZll']  = { 'name' :   
+#                nanoGetSampleFiles(directory_signal,'WmTo2J_ZTo2L_dipoleRecoil', ) +
+#                nanoGetSampleFiles(directory_signal,'WpTo2J_ZTo2L_dipoleRecoil', ),
+#        'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
+#        'FilesPerJob' :5,
+#        'EventsPerJob' : 70000,
+# }
+
+
+# samples['VBS_ZZ']  = { 'name' :  
+#                nanoGetSampleFiles(directory_signal,'ZTo2L_ZTo2J_dipoleRecoil',  ),
+#        'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch+'*btagSF_corr_VBS',
+#        'FilesPerJob' :5,
+#        'EventsPerJob' : 70000,
+# }
 
 
 
@@ -586,8 +586,24 @@ samples['ewk_ZZ']  = { 'name' :
        'EventsPerJob' : 70000,
 }
 
+# just to check sigmal yield is equal to the split one
+# samples['VBS_dipoleRecoil']  = { 'name' :  
+#                 nanoGetSampleFiles(directory_signal,'WmToLNu_ZTo2J_dipoleRecoil',) +
+#                nanoGetSampleFiles(directory_signal,'WmTo2J_ZTo2L_dipoleRecoil', ) +
+#                nanoGetSampleFiles(directory_signal,'WpTo2J_ZTo2L_dipoleRecoil', ) +
+#                nanoGetSampleFiles(directory_signal,'WpToLNu_ZTo2J_dipoleRecoil',) +
+#                nanoGetSampleFiles(directory_signal,'WpToLNu_WpTo2J_dipoleRecoil') +
+#                nanoGetSampleFiles(directory_signal,'WmToLNu_WmTo2J_dipoleRecoil') +
+#                nanoGetSampleFiles(directory_signal,'WpToLNu_WmTo2J_dipoleRecoil') +
+#                nanoGetSampleFiles(directory_signal,'WpTo2J_WmToLNu_dipoleRecoil') +
+#                nanoGetSampleFiles(directory_signal,'ZTo2L_ZTo2J_dipoleRecoil',  ),
+#        'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch + '*btagSF_corr_VBS',
+#        'FilesPerJob' : 15,
+#         'EventsPerJob' : 70000,
+# }
+
 
 VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
 VV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj", "VV_WZll", "VV_ZZ"]
 
-samples = {   key:v for key,v in samples.items() if key in VBS_samples}
+# samples = {   key:v for key,v in samples.items() if key in VBS_samples + ["VBS_dipoleRecoil"]}
