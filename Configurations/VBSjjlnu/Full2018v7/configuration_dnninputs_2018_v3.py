@@ -13,7 +13,7 @@ aliasesFile = direc+'/aliases_tree.py'
 
 # file with list of variables
 #variablesFile = direc+'/variables.py'
-variablesFile = direc+'/variables_tree.py'
+variablesFile = direc+'/variables_tree_GEN.py'
 
 # file with list of cuts
 cutsFile = direc +'/cuts_tree.py' 

@@ -143,12 +143,32 @@ aliases['DY_LO_pTllrw'] = {
 ###########################################################################################
 #fakes
 
+# basedir_fakes = configurations + "/VBSjjlnu/weights_files/fake_rates/2018"
+
+# ets = ["25", "35", "45"]
+
+# el_pr_file = os.getenv('CMSSW_BASE') + "/src/LatinoAnalysis/NanoGardener/python/data/fake_prompt_rates/Full2018v7/mvaFall17V1Iso_WP90/ElePR.root"
+# mu_pr_file = os.getenv('CMSSW_BASE') + "/src/LatinoAnalysis/NanoGardener/python/data/fake_prompt_rates/Full2018v7/cut_Tight_HWWW/MuonPR.root"
+
+# for et in ets:
+#     el_fr_file = basedir_fakes + "/plot_ElCh_JetEt"+et+"_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
+#     mu_fr_file = basedir_fakes + "/plot_MuCh_JetEt"+et+"_l1_etaVpt_ptmu_fw_ewk_2D.root"
+#     aliases['fakeWeight_'+et] = { 
+#         'class': 'newFakeWeightOTFall',
+#         'args': (eleWP, muWP, copy.deepcopy(el_fr_file), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file), copy.deepcopy(mu_pr_file), False, False, False),  #doabsEta=False, no stat variations
+#         'linesToAdd' : [
+#             'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#             '.L {}/VBSjjlnu/macros/newfakeweight_OTFall.cc+'.format(configurations)
+#         ],     
+#         'samples': ["Fake"]
+#     }
+
 basedir_fakes = configurations + "/VBSjjlnu/weights_files/fake_rates/2018"
 
 ets = ["25", "35", "45"]
 
-el_pr_file = os.getenv('CMSSW_BASE') + "/src/LatinoAnalysis/NanoGardener/python/data/fake_prompt_rates/Full2018v7/mvaFall17V1Iso_WP90/ElePR.root"
-mu_pr_file = os.getenv('CMSSW_BASE') + "/src/LatinoAnalysis/NanoGardener/python/data/fake_prompt_rates/Full2018v7/cut_Tight_HWWW/MuonPR.root"
+el_pr_file = configurations + "/VBSjjlnu/weights_files/prompt_rates/2018/plot_ElCh_l1_etaVpt_ptel_2D_pr.root"
+mu_pr_file = configurations + "/VBSjjlnu/weights_files/prompt_rates/2018/plot_MuCh_l1_etaVpt_ptmu_2D_pr.root"
 
 for et in ets:
     el_fr_file = basedir_fakes + "/plot_ElCh_JetEt"+et+"_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
@@ -225,6 +245,147 @@ aliases['tag_jets_systems_pt'] = {
 
 aliases['vbs_jets_pt'] ={
     'expr' : 'tag_jets_systems_pt[0]'
+}
+
+##########################################
+
+aliases['gen_jets_vectors'] = {
+    'class': 'GenLevelObjects',
+    'args': (),
+    'linesToAdd' : [
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        '.L {}/VBSjjlnu/macros/GenLevelObjects.cc+'.format(configurations)
+    ]   
+}
+
+
+aliases['VBS_Category'] ={
+    'expr' : 'gen_jets_vectors[0]'
+}
+
+aliases['GenLeptonE'] ={
+    'expr' : 'gen_jets_vectors[1]'
+}
+
+aliases['GenLeptonPx'] ={
+    'expr' : 'gen_jets_vectors[2]'
+}
+
+aliases['GenLeptonPy'] ={
+    'expr' : 'gen_jets_vectors[3]'
+}
+
+aliases['GenLeptonPz'] ={
+    'expr' : 'gen_jets_vectors[4]'
+}
+
+aliases['GenLeptonPDGID'] ={
+    'expr' : 'gen_jets_vectors[5]'
+}
+
+aliases['GenJetVBS1E'] ={
+    'expr' : 'gen_jets_vectors[6]'
+}
+
+aliases['GenJetVBS1Px'] ={
+    'expr' : 'gen_jets_vectors[7]'
+}
+
+aliases['GenJetVBS1Py'] ={
+    'expr' : 'gen_jets_vectors[8]'
+}
+
+aliases['GenJetVBS1Pz'] ={
+    'expr' : 'gen_jets_vectors[9]'
+}
+
+aliases['GenJetVBS2E'] ={
+    'expr' : 'gen_jets_vectors[10]'
+}
+
+aliases['GenJetVBS2Px'] ={
+    'expr' : 'gen_jets_vectors[11]'
+}
+
+aliases['GenJetVBS2Py'] ={
+    'expr' : 'gen_jets_vectors[12]'
+}
+
+aliases['GenJetVBS2Pz'] ={
+    'expr' : 'gen_jets_vectors[13]'
+}
+
+aliases['GenJetVBSMjj'] ={
+    'expr' : 'gen_jets_vectors[14]'
+}
+
+aliases['GenJetVBSPt'] ={
+    'expr' : 'gen_jets_vectors[15]'
+}
+
+aliases['GenJetV1E'] ={
+    'expr' : 'gen_jets_vectors[16]'
+}
+
+aliases['GenJetV1Px'] ={
+    'expr' : 'gen_jets_vectors[17]'
+}
+
+aliases['GenJetV1Py'] ={
+    'expr' : 'gen_jets_vectors[18]'
+}
+
+aliases['GenJetV1Pz'] ={
+    'expr' : 'gen_jets_vectors[19]'
+}
+
+aliases['GenJetV2E'] ={
+    'expr' : 'gen_jets_vectors[20]'
+}
+
+aliases['GenJetV2Px'] ={
+    'expr' : 'gen_jets_vectors[21]'
+}
+
+aliases['GenJetV2Py'] ={
+    'expr' : 'gen_jets_vectors[22]'
+}
+
+aliases['GenJetV2Pz'] ={
+    'expr' : 'gen_jets_vectors[23]'
+}
+
+aliases['GenJetVMjj'] ={
+    'expr' : 'gen_jets_vectors[24]'
+}
+
+aliases['GenJetVPt'] ={
+    'expr' : 'gen_jets_vectors[25]'
+}
+
+aliases['GenMETPhi'] ={
+    'expr' : 'gen_jets_vectors[26]'
+}
+
+aliases['GenMETPt'] ={
+    'expr' : 'gen_jets_vectors[27]'
+}
+
+aliases['Njets'] ={
+    'expr' : 'gen_jets_vectors[28]'
+}
+
+
+aliases['NLep'] ={
+    'expr' : 'gen_jets_vectors[29]'
+}
+
+aliases['Nele'] ={
+    'expr' : 'gen_jets_vectors[30]'
+}
+
+aliases['Nmu'] ={
+    'expr' : 'gen_jets_vectors[31]'
 }
 
 ######################################

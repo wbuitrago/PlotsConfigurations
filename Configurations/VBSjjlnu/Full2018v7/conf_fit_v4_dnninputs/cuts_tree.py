@@ -16,6 +16,8 @@ supercut = '(   (abs(Lepton_pdgId[0])==11 && Lepton_pt[0]>35)\
 ############ 
 ## Signal
 
+cuts["all"] = supercut
+
 cuts["res_sig_ele"] = 'VBS_category==1 \
                                 && abs(Lepton_pdgId[0])==11 \
                                 && vjet_0_pt > 30 && vjet_1_pt > 30 \
