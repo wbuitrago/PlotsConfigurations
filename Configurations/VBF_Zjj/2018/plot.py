@@ -1,3 +1,11 @@
+# groupPlot['VBS']  = {
+#                   'nameHR' : 'VBS',
+#                   'isSignal' : 0,
+#                   'color': 888, #666,
+#                   'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
+#               }
+
+
 
 groupPlot['Fake']  = {
                   'nameHR' : 'nonprompt',
@@ -6,13 +14,13 @@ groupPlot['Fake']  = {
                   'samples'  : ['Fake_e', 'Fake_m']
 }
 
-groupPlot['Multiboson']  = {  
-                  'nameHR' : 'Multiboson',
-                  'isSignal' : 0,
-                  'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
-              }
 
+groupPlot['top']  = {  
+                  'nameHR' : 'tW and t#bar{t}',
+                  'isSignal' : 0,
+                  'color': 400,   # kYellow
+                  'samples'  : ['top']
+              }
 
 groupPlot['WW']  = {  
                   'nameHR' : 'WW_QCD',
@@ -21,12 +29,14 @@ groupPlot['WW']  = {
                   'samples'  : ['WW', 'ggWW']
               }
 
-groupPlot['DY_hardJets']  = {  
-                  'nameHR' : "DY no PU jets",
+              
+groupPlot['Multiboson']  = {  
+                  'nameHR' : 'Multiboson',
                   'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY_hardJets']
+                  'color': 617, # kViolet + 1  
+                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
               }
+
 
 groupPlot['DY_PUJets']  = {  
                   'nameHR' : "DY 1 PU jet",
@@ -34,6 +44,23 @@ groupPlot['DY_PUJets']  = {
                   'color': 416,    # kGreen
                   'samples'  : ['DY_PUJets']
               }
+
+
+groupPlot['DY_hardJets']  = {  
+                  'nameHR' : "DY no PU jets",
+                  'isSignal' : 0,
+                  'color': 418,    # kGreen+2
+                  'samples'  : ['DY_hardJets']
+              }
+
+groupPlot['Zjj']  = {  
+                  'nameHR': 'Zjj',
+                  'isSignal' : 1,
+                  'color': 600,    # kBlue
+                  'samples'    : ['Zjj']
+              }
+
+
 
 '''
 groupPlot['DY']  = {  
@@ -75,30 +102,22 @@ groupPlot['VgS']  = {
 
 '''
 
-groupPlot['top']  = {  
-                  'nameHR' : 'tW and t#bar{t}',
-                  'isSignal' : 0,
-                  'color': 400,   # kYellow
-                  'samples'  : ['top']
-              }
 
-groupPlot['VBS']  = {
-                  'nameHR' : 'VBS',
-                  'isSignal' : 0,
-                  'color': 888, #666,
-                  'samples'  : ['WWewk']#,'qqH_hww', 'ZH_hww', 'WH_hww', ']
-              }
-groupPlot['Zjj']  = {  
-                  'nameHR': 'Zjj',
-                  'isSignal' : 2,
-                  'color': 600,    # kBlue
-                  'samples'    : ['Zjj']
-              }
+
+
 
 #plot = {}
 
 # keys here must match keys in samples.py    
-#                    
+#         
+
+plot['Zjj']  = {  
+                  'color': 600,    # kBlue
+                  'isSignal' : 1,
+                  'isData'   : 0,
+                  'scale'    : 1.0                  
+              }
+
 plot['DY_hardJets']  = {  
                   'color': 418,    # kGreen+2
                   'isSignal' : 0,
@@ -113,12 +132,7 @@ plot['DY_PUJets']  = {
                   'scale'    : 1.0,
               }
 
-plot['Zjj']  = {  
-                  'color': 600,    # kBlue
-                  'isSignal' : 1,
-                  'isData'   : 0,
-                  'scale'    : 1.0                  
-              }
+
 
 
 plot['Fake_e']  = {  

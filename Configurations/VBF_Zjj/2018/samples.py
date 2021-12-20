@@ -137,9 +137,11 @@ samples['Zjj'] = {
 
 ###### DY MC ######
 
-files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO') + \
+# files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO') + \
+        # nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO_ext1') + \
+files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50') + \
+        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') +\
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO_ext1') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-70to100') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-100to200') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-200to400') + \
@@ -166,11 +168,17 @@ samples['DY'] = {
     }
 }
 
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-10to50-LO',                  'DYJetsToLL_M-10to50-LO_ext1'])
+CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50',                  'DYJetsToLL_M-50_ext2'])
+# CombineBaseW(samples, 'DY', ['DYJetsToLL_M-10to50-LO',                  'DYJetsToLL_M-10to50-LO_ext2'])
+addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50',                    'DY_NLO_pTllrw')
+addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50_ext2',             'DY_NLO_pTllrw')
+addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO_ext1',      'DY_LO_pTllrw')
+# addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO',           'DY_LO_pTllrw')
 
-addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50_ext2',             'DY_NLO_pTllrw*(LHE_HT < 70)')
-addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO',           'DY_LO_pTllrw*(LHE_HT < 100)')
-addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO_ext1',      'DY_LO_pTllrw*(LHE_HT < 100)')
+addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50',                    '(LHE_HT < 70)')
+addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50_ext2',             '(LHE_HT < 70)')
+addSampleWeight(samples,    'DY',   'DYJetsToLL_M-10to50-LO_ext1',      '(LHE_HT < 100)')
+
 addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50_HT-70to100',       'DY_LO_pTllrw')
 addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50_HT-100to200',      'DY_LO_pTllrw')
 addSampleWeight(samples,    'DY',   'DYJetsToLL_M-50_HT-200to400',      'DY_LO_pTllrw')
@@ -338,9 +346,9 @@ samples['Fake']['subsamples'] = {
   'm': 'abs(Lepton_pdgId[1]) == 13'
 }
 
-###########################################
-################## DATA ###################
-###########################################
+##########################################
+################# DATA ###################
+##########################################
 
 samples['DATA'] = {
   'name': [],
