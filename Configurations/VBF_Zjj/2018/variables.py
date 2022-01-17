@@ -27,10 +27,36 @@ variables['mjjHigh']  = {   'name': 'mjj',
                         'xaxis' : 'm_{jj} [GeV]',
                         'fold' : 3,
                         'blind': {
-                            'Zjj_13TeV': [1600, 3000]
+                            'Zjj_13TeV_superinclusive': [1000, 3000]
                             }
-                        }
+}
+variables['ZeppenfeldZ']  = {   'name': 'ZeppenfeldDilepton',
+                        'range' : (30, -2,2),
+                        'xaxis' : 'z_{Z}',
+                        'fold' : 3,
+}
+variables['Zeppenfeldl1']  = {   'name': 'ZeppenfeldLeadingLepton',
+                        'range' : (30, -2,2),
+                        'xaxis' : 'z_{l1}',
+                        'fold' : 3,
+}
+# variables['ZeppenfeldLow']  = {   'name': 'ZeppenfeldDilepton',
+#                         'range' : (30, 0,0.5),
+#                         'xaxis' : 'z^*_{Z}',
+#                         'fold' : 3,
+#                         # 'blind': {
+#                         #     'Zjj_13TeV_superinclusive': [1000, 3000]
+#                         #     }
+# }
 
+# variables['ZeppenfeldHigh']  = {   'name': 'ZeppenfeldDilepton',
+#                         'range' : (30, 0.5,2),
+#                         'xaxis' : 'z^*_{Z}',
+#                         'fold' : 3,
+#                         # 'blind': {
+#                         #     'Zjj_13TeV_superinclusive': [1000, 3000]
+#                         #     }
+# }
 # variables['mjj_High']  = {   'name': 'mjj',
 #                         'range' : (30, 200,7000),
 #                         'xaxis' : 'm_{jj} [GeV]',
@@ -49,11 +75,11 @@ variables['mjjHigh']  = {   'name': 'mjj',
 #                         }
 
 
-variables['mll-near-Z']  = {   'name': 'mll',
-                        'range' : (30, 76,106),
-                        'xaxis' : 'm_{ll} [GeV]',
-                        'fold' : 3
-                        }
+# variables['mll-near-Z']  = {   'name': 'mll',
+#                         'range' : (30, 76,106),
+#                         'xaxis' : 'm_{ll} [GeV]',
+#                         'fold' : 3
+#                         }
 
 # variables['mth']  = {   'name': 'mth',
 #                         'range' : (20, 60,200),
@@ -73,17 +99,17 @@ variables['ptll']  = {   'name': 'ptll',
                         'fold' : 3
                         }
 
-variables['ptl1']  = {   'name': 'Lepton_pt[0]',
-                        'range' : (30,30,150),
-                        'xaxis' : 'p_{T} 1st lep',
-                        'fold'  : 0
-                        }
+# variables['ptl1']  = {   'name': 'Lepton_pt[0]',
+#                         'range' : (30,30,150),
+#                         'xaxis' : 'p_{T} 1st lep',
+#                         'fold'  : 0
+#                         }
 
-variables['ptl2']  = {   'name': 'Lepton_pt[1]',
-                        'range' : (30,20,150),
-                        'xaxis' : 'p_{T} 2nd lep',
-                        'fold'  : 0
-                        }
+# variables['ptl2']  = {   'name': 'Lepton_pt[1]',
+#                         'range' : (30,20,150),
+#                         'xaxis' : 'p_{T} 2nd lep',
+#                         'fold'  : 0
+#                         }
 # variables['etaj1']  = {   'name': 'CleanJet_eta[0]',
 #                         'range' : (30,-4.7,4.7),
 #                         'xaxis' : '#eta_{j} 1st jet',
@@ -138,19 +164,19 @@ variables['puppimet']  = {
 #                         'fold' : 2   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
 #                         }
 # 
-variables['jetpt1']  = {
-                        'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
-                        'range' : (20,50,200),
-                        'xaxis' : 'p_{T} 1st jet',
-                        'fold' : 2   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
-                        }
+# variables['jetpt1']  = {
+#                         'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
+#                         'range' : (20,50,200),
+#                         'xaxis' : 'p_{T} 1st jet',
+#                         'fold' : 2   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+#                         }
 
-variables['jetpt2']  = {
-                        'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[1], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
-                        'range' : (20,30,200),
-                        'xaxis' : 'p_{T} 2nd jet',
-                        'fold' : 2   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
-                        }
+# variables['jetpt2']  = {
+#                         'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[1], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
+#                         'range' : (20,30,200),
+#                         'xaxis' : 'p_{T} 2nd jet',
+#                         'fold' : 2   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+#                         }
 # 
 # variables['jeteta1']  = {  'name': '(Sum$(CleanJet_pt>50)>0)*(Alt$(CleanJet_eta[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
 #                         'range' : (20,-5.0,5.0),
