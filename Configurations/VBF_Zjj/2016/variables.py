@@ -20,30 +20,27 @@ variables['mjj']      = {   'name': 'mjj',            #   variable name
                             'fold' :3
                         }
 
-variables['mjj_s1_sb4_berr03_ee_lowZ']      = {   
-                            'name': 'mjj',            #   variable name    
-                            'range' : ([500., 780., 1210., 1680., 4000.],),    #   variable range
-                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
-                            'fold' :3
+
+
+variables['ptll']  = {   'name': 'ptll',
+                        'range' : (30, 0,200),
+                        'xaxis' : 'p_{T}^{ll} [GeV]',
+                        'fold' : 3
                         }
 
-variables['mjj_s1_sb4_berr03_ee_highZ']      = {   
-                            'name': 'mjj',            #   variable name    
-                            'range' : ([500., 1115., 4000.],),    #   variable range
-                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
-                            'fold' :3
+
+variables['puppimet']  = {
+                        'name': 'PuppiMET_pt',
+                        'range' : (20,0,200),
+                        'xaxis' : 'puppimet [GeV]',
+                        'fold'  : 3
                         }
 
-variables['mjj_s1_sb4_berr03_mm_lowZ']      = {   
-                            'name': 'mjj',            #   variable name    
-                            'range' : ([500., 780., 1195., 1390., 1705., 2195., 4000.],),    #   variable range
-                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
-                            'fold' :3
+variables['detajj']  = {  'name': 'detajj',
+                        'range' : (32,0,8.0),
+                        'xaxis' : '#Delta_{#eta} jets',
+                        'fold'  : 3
                         }
 
-variables['mjj_s1_sb4_berr03_mm_highZ']      = {   
-                            'name': 'mjj',            #   variable name    
-                            'range' : ([500., 765., 1105., 1685., 4000.],),    #   variable range
-                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
-                            'fold' :3
-                        }
+
+

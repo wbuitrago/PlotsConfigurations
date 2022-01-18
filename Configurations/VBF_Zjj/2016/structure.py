@@ -6,7 +6,7 @@
 #                    
 
 structure['Zjj']  = {  
-                  'isSignal' : 0,
+                  'isSignal' : 1,
                   'isData'   : 0,
               }
 
@@ -44,7 +44,7 @@ structure['WW']  = {
                   }
 
 structure['WWewk']  = {
-                  'isSignal' : 1,
+                  'isSignal' : 0,
                   'isData'   : 0,
                   }
 

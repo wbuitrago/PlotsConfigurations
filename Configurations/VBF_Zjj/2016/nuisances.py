@@ -407,8 +407,6 @@ topvariations = ['Alt$(LHEScaleWeight[0],1)', 'Alt$(LHEScaleWeight[1],1)', 'Alt$
 ## top variation with no envelope applied: [0] and [8] element are considered the Up and Down variation respectively
 #topvariations = ['Alt$(LHEScaleWeight[0],1)', 'Alt$(LHEScaleWeight[8],1)']
 
-topvars0j = []
-topvars1j = []
 topvars2j = []
 WWvars2j  = []
 
@@ -555,25 +553,7 @@ nuisances['stat'] = {
 }
 
 ## rate parameters
-'''
-nuisances['DYnorm2j_lowZ']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_lowZ',
-                 'samples'  : {
-                   'DY_lowZ' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                 'cuts'  : cuts2j
-                }
 
-nuisances['DYnorm2j_highZ']  = {
-                 'name'  : 'CMS_hww_DYnorm2j_highZ',
-                 'samples'  : {
-                   'DY_highZ' : '1.00',
-                     },
-                 'type'  : 'rateParam',
-                 'cuts'  : cuts2j
-                }
-'''
 nuisances['DYnorm2j_hardJets']  = {
                  'name'  : 'CMS_hww_DYnorm2j_hardJets',
                  'samples'  : {
@@ -591,44 +571,6 @@ nuisances['DYnorm2j_PUJets']  = {
                  'type'  : 'rateParam',
                  'cuts'  : cuts2j
                 }
-'''
-nuisances['WWnorm0j']  = {
-               'name'  : 'CMS_hww_WWnorm0j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['ggWWnorm0j']  = {
-               'name'  : 'CMS_hww_WWnorm0j',
-               'samples'  : {
-                   'ggWW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-
-nuisances['WWnorm1j']  = {
-               'name'  : 'CMS_hww_WWnorm1j',
-               'samples'  : {
-                   'WW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-
-nuisances['ggWWnorm1j']  = {
-               'name'  : 'CMS_hww_WWnorm1j',
-               'samples'  : {
-                   'ggWW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
 
 nuisances['WWnorm2j']  = {
                'name'  : 'CMS_hww_WWnorm2j',
@@ -649,25 +591,6 @@ nuisances['ggWWnorm2j']  = {
                'cuts'  : cuts2j
               }
 
-'''
-nuisances['Topnorm0j']  = {
-               'name'  : 'CMS_hww_Topnorm0j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts0j
-              }
-
-nuisances['Topnorm1j']  = {
-               'name'  : 'CMS_hww_Topnorm1j',
-               'samples'  : {
-                   'top' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts1j
-              }
-'''
 nuisances['Topnorm2j']  = {
                'name'  : 'CMS_hww_Topnorm2j',
                'samples'  : {
