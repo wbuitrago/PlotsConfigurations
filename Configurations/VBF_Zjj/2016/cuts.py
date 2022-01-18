@@ -20,9 +20,13 @@ supercut = '   Lepton_pt[0]>30 \
 #}
 
 
+#aliases['multiJet'] = {
+    #'expr': 'Alt$(CleanJet_pt[1], 0) > 30.'
+#}
+
 
 ## Signal regions
-cuts['Zjj_13TeV'] = {
+cuts['Zjj_13TeV_2j'] = {
    'expr': 'sr',
     # Define the sub-categorization of sr
    'categories' : {

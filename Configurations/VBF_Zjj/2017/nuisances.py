@@ -431,9 +431,6 @@ nuisances['pdf_qqbar_ACCEPT'] = {
 ## This should work for samples with either 8 or 9 LHE scale weights (Length$(LHEScaleWeight) == 8 or 9)
 variations = ['LHEScaleWeight[0]', 'LHEScaleWeight[1]', 'LHEScaleWeight[3]', 'LHEScaleWeight[Length$(LHEScaleWeight)-4]', 'LHEScaleWeight[Length$(LHEScaleWeight)-2]', 'LHEScaleWeight[Length$(LHEScaleWeight)-1]']
 VBSvariations = ['LHEScaleWeight[0]/1.0600', 'LHEScaleWeight[2]/0.9449'] # LO samples include only variations on muF scale
-
-topvars0j = []
-topvars1j = []
 topvars2j = []
 WWvars2j  = []
 
@@ -453,8 +450,6 @@ WWScaleNormFactors2j = {
 }
 
 for var in variations:
-  topvars0j.append(var+'/'+str(topScaleNormFactors0j[var]))
-  topvars1j.append(var+'/'+str(topScaleNormFactors1j[var]))
   topvars2j.append(var+'/'+str(topScaleNormFactors2j[var]))
   WWvars2j.append(var+'/'+str(WWScaleNormFactors2j[var]))
 
