@@ -228,7 +228,11 @@ if btag_algo=="deepcsv":
         }
 
 elif btag_algo=="deepflav":
-    btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepFlavour_94XSF_V4_B_F.csv' % os.getenv('CMSSW_BASE')
+    btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepFlavour_94XSF_V4_B_F.csv' % os.getenv('CMSSW_BASE')  # ---> dove e'???? #FIXME
+    #btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepFlavour_94XSF_V3_B_F.csv' % os.getenv('CMSSW_BASE')
+    #cd PhysicsTools/NanoAODTools/data/btagSF/
+    #wget https://twiki.cern.ch/twiki/pub/CMS/BtagRecommendation94X/DeepFlavour_94XSF_V4_B_F.csv
+    #cp /afs/cern.ch/user/g/gpizzati/public/btagSF/DeepFlavour_94XSF_V4_B_F.csv .
     
     aliases['Jet_btagSF_deepflav_shape'] = {
         'linesToAdd': [

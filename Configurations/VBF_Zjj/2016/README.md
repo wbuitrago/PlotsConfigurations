@@ -14,7 +14,11 @@ How to run the analysis.
 or
 
     hadd rootFile/plots_vbf_zjj_2016.root rootFile/plots_vbf_zjj_2016_ALL_*.root
+
     
+# Resubmit:
+
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__vbf_zjj_2016__ALL/*/mkShapes__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'    
 
 # Make plots:
 
