@@ -25,7 +25,7 @@ supercut = '   Lepton_pt[0]>30 \
 
 
 ## Signal regions
-cuts['Zjj_13TeV'] = {
+cuts['Zjj_13TeV_2j'] = {
    'expr': 'sr',
     # Define the sub-categorization of sr
    'categories' : {
