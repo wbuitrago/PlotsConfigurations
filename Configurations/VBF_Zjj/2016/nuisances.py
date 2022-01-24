@@ -582,14 +582,17 @@ nuisances['WWnorm2j']  = {
               }
 
 
-nuisances['ggWWnorm2j']  = {
-               'name'  : 'CMS_hww_WWnorm2j',
-               'samples'  : {
-                   'ggWW' : '1.00',
-                   },
-               'type'  : 'rateParam',
-               'cuts'  : cuts2j
-              }
+#
+# Do I need? Too much?
+#
+#nuisances['ggWWnorm2j']  = {
+               #'name'  : 'CMS_hww_WWnorm2j',
+               #'samples'  : {
+                   #'ggWW' : '1.00',
+                   #},
+               #'type'  : 'rateParam',
+               #'cuts'  : cuts2j
+              #}
 
 nuisances['Topnorm2j']  = {
                'name'  : 'CMS_hww_Topnorm2j',
