@@ -13,6 +13,17 @@
 
 
 
+variables['detajjmjj'] = {   'name': 'mjj:detajj',            #   variable name    
+                            'range' : ([2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0],[200., 500., 750., 1000., 1500., 2000., 3000., 5000.],),    #   variable range
+                            'xaxis' : 'm_{jj} [GeV] : #Delta_{#eta} jets',  #   x axis name
+                            'fold' :3
+                             # do weighted plot too
+                             'doWeight' : 1,
+                             'binX'     : 8,
+                             'binY'     : 9
+                        }
+
+
 
 # to plot
 
