@@ -70,7 +70,7 @@ groupPlot['VBS']  = {
 
 groupPlot['Zjj']  = {  
                   'nameHR': 'Zjj',
-                  'isSignal' : 2,
+                  'isSignal' : 1,
                   'color': 600,    # kBlue
                   'samples'    : ['Zjj']
               }

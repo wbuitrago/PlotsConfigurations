@@ -8,6 +8,14 @@
 #gROOT.ProcessLineSync('.L mucca.C+')
 #gROOT.ProcessLineSync('initMyReader()')
 
+
+# to fit
+
+
+
+
+# to plot
+
 variables['events']   = {   'name': '1',
                             'range' : (1,0,2),
                             'xaxis' : 'events',
