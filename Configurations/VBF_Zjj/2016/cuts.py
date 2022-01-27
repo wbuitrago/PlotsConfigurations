@@ -27,23 +27,20 @@ supercut = '   Lepton_pt[0]>30 \
 
 
 
+
+
 ## Control regions
 cuts['Top_13TeV_2j'] = {
    'expr': 'topcr',
     # Define the sub-categorization of sr
    'categories' : {
       #
-      'ee' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) \
+      'eemm' : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13))\
             && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
             && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
             && mll > 105 \
             ',
       #
-      'mm' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) \
-            && abs(Lepton_eta[0])<2.4 && abs(Lepton_eta[1])<2.4 \
-            && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-            && mll > 105 \
-            ',
    }
 }
 
@@ -53,17 +50,12 @@ cuts['WW_13TeV_2j'] = {
     # Define the sub-categorization of sr
    'categories' : {
       #
-      'ee' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) \
+      'eemm' : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13))\
             && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
             && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
             && PuppiMET_pt>100 \
             ',
       #
-      'mm' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) \
-            && abs(Lepton_eta[0])<2.4 && abs(Lepton_eta[1])<2.4 \
-            && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-            && PuppiMET_pt>100 \
-            ',
    }
 }
 
@@ -75,19 +67,13 @@ cuts['DY_13TeV_2j'] = {
     # Define the sub-categorization of sr
    'categories' : {
       #
-      'ee' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) \
+      'eemm' : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13))\
             && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
             && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
             && PuppiMET_pt<100 \
             && detajj<2.0 \
             ',
       #
-      'mm' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) \
-            && abs(Lepton_eta[0])<2.4 && abs(Lepton_eta[1])<2.4 \
-            && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-            && PuppiMET_pt<100 \
-            && detajj<2.0 \
-            ',
    }
 }
 
@@ -101,41 +87,40 @@ cuts['Zjj_13TeV_2j'] = {
     # Define the sub-categorization of sr
    'categories' : {
       #
-      'ee' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) \
-            && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
-            && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-            ',
-      #
-      'mm' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) \
-            && abs(Lepton_eta[0])<2.4 && abs(Lepton_eta[1])<2.4 \
-            && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-            ',
-      #
-      'ee-highptll' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) \
+      'eemm-highptll' : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
                        && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
                        && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
                        && ptll>60 \
                        ',
       #
-      'mm-highptll' : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) \
-                       && abs(Lepton_eta[0])<2.4 && abs(Lepton_eta[1])<2.4 \
-                       && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-                       && ptll>60 \
-                       ',
-      #
-      'ee-lowptll'  : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) \
+      'eemm-lowptll'  : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
                        && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
                        && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
                        && ptll<=60 \
                        ',
       #
-      'mm-lowptll'  : '(Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13) \
-                       && abs(Lepton_eta[0])<2.4 && abs(Lepton_eta[1])<2.4 \
-                       && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-                       && ptll<=60 \
-                       ',
    }
 }
+
+
+
+
+## Signal regions
+cuts['Optimization_13TeV_2j'] = {
+   'expr': 'sr',
+    # Define the sub-categorization of sr
+   'categories' : {
+      #
+      'eemm' : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
+                       && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
+                       && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
+                       ',
+      #
+   }
+}
+
+
+
 
 
 
