@@ -29,6 +29,7 @@ or
     mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2016.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1
     mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2016.root --showIntegralLegend=1
     mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2016.root --showIntegralLegend=1  --plotNormalizedDistributionsTHstack
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2016.root --showIntegralLegend=1  --plotNormalizedDistributions
 
     
     

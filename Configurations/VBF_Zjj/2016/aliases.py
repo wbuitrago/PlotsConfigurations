@@ -166,7 +166,7 @@ aliases['wwcr'] = {
 # SR definition
 
 aliases['sr'] = {
-    'expr': 'bVeto && PuppiMET_pt<100 && ptll>30 && detajj>2.0'
+    'expr': 'bVeto && PuppiMET_pt<100 && ptll>30 && detajj>2.0 && abs(mll-90)<15'
 }
 
 aliases['LowZ'] = {

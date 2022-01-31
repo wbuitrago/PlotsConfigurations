@@ -8,6 +8,7 @@ supercut = '   Lepton_pt[0]>30 \
             && multiJet \
             && mjj>200 && abs(CleanJet_eta[0])<4.7 && abs(CleanJet_eta[1])<4.7 \
             && CleanJet_pt[0]>50 && CleanJet_pt[1]>30 \
+            && mll>50 \
            '
 # supercut: && ptll>30
 #&& abs(mll-90)<15
@@ -90,13 +91,13 @@ cuts['Zjj_13TeV_2j'] = {
       'eemm-highptll' : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
                        && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
                        && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-                       && ptll>60 \
+                       && (ptll>100 || CleanJet_pt[1]>50) \
                        ',
       #
       'eemm-lowptll'  : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
                        && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
                        && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-                       && ptll<=60 \
+                       && !(ptll>100 || CleanJet_pt[1]>50) \
                        ',
       #
    }

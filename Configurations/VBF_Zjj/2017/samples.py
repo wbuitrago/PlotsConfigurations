@@ -112,7 +112,7 @@ mcCommonWeight = 'XSWeight*SFweight*PromptGenLepMatch2l*METFilter_MC'
 ###### DY #######
 files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext1') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO_ext1') + \
+        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50-LO_ext1') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-70to100') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-100to200') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-100to200_ext1') + \
@@ -123,12 +123,12 @@ files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-800to1200') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-1200to2500') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-2500toInf') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-100to200_ext1') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-200to400_newpmx') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-400to600') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-400to600_ext1') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-600toInf') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-600toInf_ext1')
+        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-100to200_ext1') + \
+        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-200to400_newpmx') + \
+        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-400to600') + \
+        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-400to600_ext1') + \
+        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-600toInf') + \
+        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-4to50_HT-600toInf_ext1')
 
 samples['DY'] = {
     'name': files,
@@ -141,15 +141,15 @@ samples['DY'] = {
     }
 }
     
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50'                , 'DYJetsToLL_M-50_ext1'])
+#CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50'                , 'DYJetsToLL_M-50_ext1'])
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-100to200'    , 'DYJetsToLL_M-50_HT-100to200_ext1'])
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-200to400'    , 'DYJetsToLL_M-50_HT-200to400_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-400to600' , 'DYJetsToLL_M-4to50_HT-400to600_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-600toInf' , 'DYJetsToLL_M-4to50_HT-600toInf_ext1'])
+#CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-400to600' , 'DYJetsToLL_M-4to50_HT-400to600_ext1'])
+#CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-600toInf' , 'DYJetsToLL_M-4to50_HT-600toInf_ext1'])
 
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50',                       'DY_NLO_pTllrw*(LHE_HT < 70)')
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_ext1',                  'DY_NLO_pTllrw*(LHE_HT < 70)')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50-LO_ext1',           'DY_LO_pTllrw*(LHE_HT < 100)')
+#addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50-LO_ext1',           'DY_LO_pTllrw*(LHE_HT < 100)')
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-70to100',            'DY_LO_pTllrw')
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-100to200',           'DY_LO_pTllrw')
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-100to200_ext1',      'DY_LO_pTllrw')
@@ -160,12 +160,12 @@ addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-600to800',           'DY_LO_p
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-800to1200',          'DY_LO_pTllrw')
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-1200to2500',         'DY_LO_pTllrw')
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_HT-2500toInf',          'DY_LO_pTllrw')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-100to200_ext1',   'DY_LO_pTllrw')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-200to400_newpmx', 'DY_LO_pTllrw')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600',        'DY_LO_pTllrw')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600_ext1',   'DY_LO_pTllrw')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf',        'DY_LO_pTllrw')
-addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf_ext1',   'DY_LO_pTllrw')
+#addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-100to200_ext1',   'DY_LO_pTllrw')
+#addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-200to400_newpmx', 'DY_LO_pTllrw')
+#addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600',        'DY_LO_pTllrw')
+#addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-400to600_ext1',   'DY_LO_pTllrw')
+#addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf',        'DY_LO_pTllrw')
+#addSampleWeight(samples, 'DY', 'DYJetsToLL_M-4to50_HT-600toInf_ext1',   'DY_LO_pTllrw')
 
 
 ###### Zjj EWK #######
