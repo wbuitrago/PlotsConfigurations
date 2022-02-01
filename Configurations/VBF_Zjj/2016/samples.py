@@ -114,8 +114,6 @@ def CombineBaseW(samples, proc, samplelist):
 ###### DY #######
 
 files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-10to50_ext1') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-70to100') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-100to200') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-100to200_ext1') + \
@@ -126,15 +124,7 @@ files = nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_ext2') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-600to800') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-800to1200') + \
         nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-1200to2500') + \
-        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-2500toInf') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-70to100') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-100to200') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-200to400') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-200to400_ext1') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-400to600') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-400to600_ext1') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-600toinf') + \
-        #nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-5to50_HT-600toinf_ext1')
+        nanoGetSampleFiles(mcDirectory, 'DYJetsToLL_M-50_HT-2500toInf')
 
 samples['DY'] = {
     'name': files,

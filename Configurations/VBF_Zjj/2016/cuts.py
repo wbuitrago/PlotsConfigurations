@@ -88,16 +88,16 @@ cuts['Zjj_13TeV_2j'] = {
     # Define the sub-categorization of sr
    'categories' : {
       #
-      'eemm-highptll' : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
+      'eemm-high'     : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
                        && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
                        && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-                       && (ptll>100 || CleanJet_pt[1]>50) \
+                       && (CleanJet_pt[1]>50) \
                        ',
       #
-      'eemm-lowptll'  : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
+      'eemm-low'      : '((Lepton_pdgId[0]*Lepton_pdgId[1] == -11*11) || (Lepton_pdgId[0]*Lepton_pdgId[1] == -13*13)) \
                        && abs(Lepton_eta[0])<2.1 && abs(Lepton_eta[1])<2.1 \
                        && Lepton_pt[0]>30 && Lepton_pt[1]>20 \
-                       && !(ptll>100 || CleanJet_pt[1]>50) \
+                       && (CleanJet_pt[1]<=50) \
                        ',
       #
    }
