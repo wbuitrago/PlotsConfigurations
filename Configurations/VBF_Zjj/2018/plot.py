@@ -178,7 +178,6 @@ plot['WW']  = {
                   'isSignal' : 0,
                   'isData'   : 0,    
                   'scale'    : 1.0   # ele/mu trigger efficiency   datadriven
-                  #'scale'    : 9.0   # ele/mu trigger efficiency   datadriven
                   }
 
 plot['ggWW']  = {
