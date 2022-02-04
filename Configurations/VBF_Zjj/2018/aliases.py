@@ -174,7 +174,7 @@ aliases['wwcr'] = {
 
 aliases['dycr'] = {
     #'expr': 'bVeto && PuppiMET_pt<=100 && detajj<3'
-    'expr': 'bVeto && abs(mll-91.2)<15'
+    'expr': 'bVeto && abs(mll-90)<15'
 }
 """
 aliases['dypucr'] = {
@@ -187,7 +187,7 @@ aliases['dypucr'] = {
 
 aliases['sr'] = {
     #'expr': 'mth>60 && mtw2>30 && bVeto'
-    'expr': '(bVeto) && PuppiMET_pt<100 && detajj>2 && abs(mll-91.2)<15'
+    'expr': '(bVeto) && PuppiMET_pt<100 && detajj>2 && abs(mll-90)<15'
 }
 aliases['ZeppenfeldDilepton'] = {
     'expr' : '(0.5*((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1]))/abs(CleanJet_eta[0] - CleanJet_eta[1]))'
