@@ -127,7 +127,7 @@ samples['DY'] = {
     'name': files,
     'weight': mcCommonWeight + "*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                          Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )",
-    'FilesPerJob': 8,
+    'FilesPerJob': 4,
     'subsamples': {
       'hardJets'  : 'hardJets',
       'PUJets'    : 'PUJets'
