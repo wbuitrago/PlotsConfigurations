@@ -2,7 +2,7 @@
 
 treeName = 'Events'
 
-tag = 'EWKZ2J_2018_final_complete13_v7'
+tag = 'vbf_zjj_2018'
 
 # used by mkShape to define output directory for root files
 outputDir = 'rootFile'
@@ -28,7 +28,7 @@ lumi = 59.74
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
 #outputDirPlots = 'plots'
-outputDirPlots = 'plots_EWKZjj_DAS13'
+outputDirPlots = 'plots'
 
 
 # used by mkDatacards to define output directory for datacards

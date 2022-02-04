@@ -1,16 +1,7 @@
-DY control region
+Signal region
 =====================
 
 How to run the analysis.
-
-Remember to define the file: Tools/python/userConfig.py (if not already done)
-    
-    #!/usr/bin/env python
-    baseDir  = '/afs/cern.ch/user/a/amassiro/jobs/'
-    jobDir   = baseDir+'jobs/'
-    workDir  = baseDir+'workspace/'
-    jobDirSplit=True
-
     
 # Produce the shapes:
 
@@ -22,14 +13,25 @@ Remember to define the file: Tools/python/userConfig.py (if not already done)
 
 or
 
-    hadd rootFile/plots_DY2018_v6.root rootFile/plots_DY2018_v6_ALL_*.root
-    
+    hadd rootFile/plots_vbf_zjj_2018.root rootFile/plots_vbf_zjj_2018_ALL_*.root
 
+    
+# Resubmit:
+
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__vbf_zjj_2018__ALL/*/mkShapes__*.jid | awk '{print "  sed -i @s/workday/tomorrow/g@      " $9}'  | tr "@" "'" |  sed 's/jid/jds/'    
+
+    ls -alrth /afs/cern.ch/user/a/amassiro/jobs/jobs/mkShapes__vbf_zjj_2018__ALL/*/mkShapes__*.jid | awk '{print "condor_submit " $9}'  | sed 's/jid/jds/'    
+
+        
+        
 # Make plots:
 
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_DY2018_v6.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_DY2018_v6.root --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2018.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2018.root --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2018.root --showIntegralLegend=1  --plotNormalizedDistributionsTHstack
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_zjj_2018.root --showIntegralLegend=1  --plotNormalizedDistributions
 
+    
     
     
 Special usecase:
@@ -66,6 +68,3 @@ Special usecase:
     combine -M FitDiagnostics   -t -1 --expectSignal=1 combined.root   &> logFit.txt
     combine -M AsymptoticLimits -t -1 --expectSignal=0 combined.root   &> logLimit.txt
     combine -M Significance     -t -1 --expectSignal=1 combined.root   &> logSignificance.txt
-
-    
-    
