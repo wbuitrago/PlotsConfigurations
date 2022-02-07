@@ -72,7 +72,7 @@ protected:
   TTreeReaderValue<Double_t>* deltaphill{};
   */
 
-  TTreeReaderArray <Double_t>* cut_index{};
+ // TTreeReaderArray <Double_t>* cut_index{};
   //  
   //    FloatValueReader* mjj{};
   //    TTreeReaderValue<Double_t>* jetpt1{};
@@ -116,30 +116,32 @@ double
 MVAReader_notTop::evaluate(unsigned)
 {
   // Run only if 
+/*
   if ((int)((cut_index->At(0))) != cut_) {
     return -999.;
   }
+*/
   //    // std::cout << "cut_index = " << (int)(*(cut_index->Get())) << "; cut =  " << cut_ << std::endl;
 
   std::vector<float> input{};
  
   // GP variables
 
-  input.push_back(* (Lepton_eta1->Get()) );
-  input.push_back(* (Lepton_eta2->Get()) );
-  input.push_back( (R_j1l1->At(0)) );
-  input.push_back( (R_j1l2->At(0)) );
-  input.push_back( (R_j2l1->At(0)) );
-  input.push_back( (R_j2l2->At(0)) );
-  input.push_back( (ZeppenfeldDilepton->At(0)) );
-  input.push_back(* (deltaetall->Get()) );
-  input.push_back(* (deltaphijj->Get()) );
-  input.push_back(* (deltaphill->Get()) );
-  input.push_back(* (detajj->Get()) );
+  input.push_back((float)* (Lepton_eta1->Get()) );
+  input.push_back((float)* (Lepton_eta2->Get()) );
+  input.push_back((float) (R_j1l1->At(0)) );
+  input.push_back((float) (R_j1l2->At(0)) );
+  input.push_back((float) (R_j2l1->At(0)) );
+  input.push_back((float) (R_j2l2->At(0)) );
+  input.push_back((float) (ZeppenfeldDilepton->At(0)) );
+  input.push_back((float)* (deltaetall->Get()) );
+  input.push_back((float)* (deltaphijj->Get()) );
+  input.push_back((float)* (deltaphill->Get()) );
+  input.push_back((float)* (detajj->Get()) );
 
-  input.push_back(* (mjj->Get()) );
+  input.push_back((float)* (mjj->Get()) );
 
-  input.push_back(* (ptj1->Get()) );
+  input.push_back((float)* (ptj1->Get()) );
 
  
 
@@ -163,7 +165,7 @@ MVAReader_notTop::evaluate(unsigned)
   //    input.push_back( TMath::Abs(*(dphill->Get())));
   //    input.push_back( *(mtw1->Get()) );
   //    // input.push_back( *(mtw2->Get()) );
-
+  std::cout << "Siamo arrivati fin qui"  << std::endl;
 
   // return dnn_tensorflow->analyze(input).at(0);
   vector<float> dnn_scores = dnn_tensorflow->analyze(input);
@@ -192,7 +194,7 @@ MVAReader_notTop::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(deltaphill, "deltaphill");
 
   // old variables
-  _library.bindBranch(cut_index, "cut_index");
+  //    _library.bindBranch(cut_index, "cut_index");
   //    _library.bindBranch(mjj, "mjj");
   //    _library.bindBranch(jetpt1, "jetpt1_al");
   //    _library.bindBranch(jetpt2, "jetpt2_al");

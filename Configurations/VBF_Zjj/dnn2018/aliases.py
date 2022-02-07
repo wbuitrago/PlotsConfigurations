@@ -186,7 +186,7 @@ aliases['sr'] = {
     'expr': 'bVeto && PuppiMET_pt<=100 && detajj>=3 && ptll>60'
 }
 aliases['ZeppenfeldDilepton'] = {
-    'expr' : '(0.5*((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1]))/TMath::Abs(CleanJet_eta[0] - CleanJet_eta[1]))'
+    'expr' : '(0.5*((Alt$(Lepton_eta[0],-9999.) + Alt$(Lepton_eta[1],-9999.)) - (Alt$(CleanJet_eta[0],-9999.) + Alt$(CleanJet_eta[1],-9999.)))/TMath::Abs(Alt$(CleanJet_eta[0],-9999.) - Alt$(CleanJet_eta[1],-9999.)))'
 }
 aliases['ZeppenfeldLeadingLepton'] = {
     'expr' : '(Lepton_eta[0] - 0.5*(CleanJet_eta[0] + CleanJet_eta[1]))/abs(CleanJet_eta[0] - CleanJet_eta[1])'
@@ -243,16 +243,16 @@ aliases['deltaphijj'] = {
 }
 
 aliases['R_j1l1'] = {
-    'expr':  'TMath::Sqrt(TMath::Power(CleanJet_eta[0]-Lepton_eta[0],2)+TMath::Power(CleanJet_phi[0]-Lepton_phi[0],2))'
+    'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
 }
 aliases['R_j2l1'] = {
-    'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[0],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[0],2))'
+    'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
 }
 aliases['R_j1l2'] = {
-    'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Lepton_phi[1],2))'
+    'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
 aliases['R_j2l2'] = {
-    'expr': 'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Lepton_eta[1],2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Lepton_phi[1],2))'
+    'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
 ## DNN
 model_notTop = "ovetrained_model/"
