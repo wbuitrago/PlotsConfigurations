@@ -37,25 +37,27 @@ protected:
  
   bool verbose;
   void bindTree_(multidraw::FunctionLibrary&) override;
-  ~MVAReader_notTop(); 
+  //  ~MVAReader_notTop(); 
 
   DNNEvaluatorSavedModel* dnn_tensorflow;
   // GP variables
-  FloatValueReader* mjj{};
-  FloatValueReader* detajj{};
+  DoubleValueReader* Lepton_eta1{};
+  DoubleValueReader* Lepton_eta2{};
 
-  DoubleValueReader* ptj1{};
   TTreeReaderArray<Double_t>* R_j1l1{};
   TTreeReaderArray<Double_t>* R_j1l2{};
   TTreeReaderArray<Double_t>* R_j2l1{};
   TTreeReaderArray<Double_t>* R_j2l2{};
-  DoubleValueReader* deltaphijj{};
 
   TTreeReaderArray<Double_t>* ZeppenfeldDilepton{};
-  DoubleValueReader* Lepton_eta1{};
-  DoubleValueReader* Lepton_eta2{};
   DoubleValueReader* deltaetall{};
+  DoubleValueReader* deltaphijj{};
   DoubleValueReader* deltaphill{};
+
+  FloatValueReader* detajj{};
+
+  FloatValueReader* mjj{};
+  DoubleValueReader* ptj1{};
 
   /*
   TTreeReaderValue<Double_t>* ptj1{};
@@ -177,21 +179,24 @@ void
 MVAReader_notTop::bindTree_(multidraw::FunctionLibrary& _library)
 {  
   // GP variables
-  _library.bindBranch(mjj, "mjj");
+  _library.bindBranch(Lepton_eta1, "Lepton_eta1_al");
+  _library.bindBranch(Lepton_eta2, "Lepton_eta2_al");
+
+  _library.bindBranch(R_j1l1, "R_j1l1_al");
+  _library.bindBranch(R_j1l2, "R_j1l2_al");
+  _library.bindBranch(R_j2l1, "R_j2l1_al");
+  _library.bindBranch(R_j2l2, "R_j2l2_al");
+
+  _library.bindBranch(ZeppenfeldDilepton, "ZeppenfeldDilepton_al");
+
+  _library.bindBranch(deltaetall, "deltaetall_al");
+  _library.bindBranch(deltaphijj, "deltaphijj_al");
+  _library.bindBranch(deltaphill, "deltaphill_al");
   _library.bindBranch(detajj, "detajj");
 
-  _library.bindBranch(ptj1, "ptj1");
-  _library.bindBranch(R_j1l1, "R_j1l1");
-  _library.bindBranch(R_j1l2, "R_j1l2");
-  _library.bindBranch(R_j2l1, "R_j2l1");
-  _library.bindBranch(R_j2l2, "R_j2l2");
-  _library.bindBranch(deltaphijj, "deltaphijj");
+  _library.bindBranch(mjj, "mjj");
 
-  _library.bindBranch(ZeppenfeldDilepton, "ZeppenfeldDilepton");
-  _library.bindBranch(Lepton_eta1, "Lepton_eta1");
-  _library.bindBranch(Lepton_eta2, "Lepton_eta2");
-  _library.bindBranch(deltaetall, "deltaetall");
-  _library.bindBranch(deltaphill, "deltaphill");
+  _library.bindBranch(ptj1, "ptj1_al");
 
   // old variables
   //    _library.bindBranch(cut_index, "cut_index");
@@ -214,10 +219,12 @@ MVAReader_notTop::bindTree_(multidraw::FunctionLibrary& _library)
   //    _library.bindBranch(mtw1, "mtw1");
   //    // _library.bindBranch(mtw2, "mtw2");
 }
+/*
 MVAReader_notTop::~MVAReader_notTop(){
   delete dnn_transformation;
   delete dnn_tensorflow;
 
 }
+*/
 
 #endif

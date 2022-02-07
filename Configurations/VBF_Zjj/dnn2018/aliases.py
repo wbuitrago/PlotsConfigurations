@@ -209,49 +209,49 @@ aliases['PUJets'] = {
     'expr':  '!(Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25)',
     'samples': ['DY']
 }
-aliases['Lepton_eta1'] = {
+aliases['Lepton_eta1_al'] = {
     'expr': 'Alt$(Lepton_eta[0],-9999.)'
 }
-aliases['Lepton_eta2'] = {
+aliases['Lepton_eta2_al'] = {
     'expr': 'Alt$(Lepton_eta[1],-9999.)'
 }
-aliases['deltaphill'] = {
+aliases['deltaphill_al'] = {
     # 'expr': 'abs(Lepton_phi[0]-Lepton_phi[1])'
     'expr': 'TMath::Abs(Alt$(Lepton_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.))'
 }
-aliases['ZeppenfeldDilepton'] = {
-    'expr' : '(0.5*((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1]))/abs(CleanJet_eta[0] - CleanJet_eta[1]))'
+aliases['ZeppenfeldDilepton_al'] = {
+    'expr' : '(0.5*((Alt$(Lepton_eta[0],-9999.) + Alt$(Lepton_eta[1],-9999.)) - (Alt$(CleanJet_eta[0],-9999.) + Alt$(CleanJet_eta[1],-9999.)))/TMath::Abs(Alt$(CleanJet_eta[0],-9999.) - Alt$(CleanJet_eta[1],-9999.)))'
 }
 
-aliases['deltaetall'] = {
+aliases['deltaetall_al'] = {
     # 'expr': 'abs(Lepton_eta[0]-Lepton_eta[1])' 
     'expr': 'TMath::Abs(Alt$(Lepton_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.))'
 }
 
-aliases['met'] = {
+aliases['met_al'] = {
     'expr': 'PuppiMET_pt'
 }
 
-aliases['ptj1'] = {
+aliases['ptj1_al'] = {
     # 'expr': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99'
     'expr': 'Alt$(CleanJet_pt[0],-9999.)'
 }
 
-aliases['deltaphijj'] = {
+aliases['deltaphijj_al'] = {
     #'expr': 'abs(CleanJet_phi[0]-CleanJet_phi[1])'
     'expr': 'TMath::Abs(Alt$(CleanJet_phi[0],-9999.)-Alt$(CleanJet_phi[1],-9999.))'
 }
 
-aliases['R_j1l1'] = {
+aliases['R_j1l1_al'] = {
     'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
 }
-aliases['R_j2l1'] = {
+aliases['R_j2l1_al'] = {
     'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[0],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[0],-9999.),2))'
 }
-aliases['R_j1l2'] = {
+aliases['R_j1l2_al'] = {
     'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[0],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[0],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
-aliases['R_j2l2'] = {
+aliases['R_j2l2_al'] = {
     'expr':  'TMath::Sqrt(TMath::Power(Alt$(CleanJet_eta[1],-9999.)-Alt$(Lepton_eta[1],-9999.),2)+TMath::Power(Alt$(CleanJet_phi[1],-9999.)-Alt$(Lepton_phi[1],-9999.),2))'
 }
 ## DNN
