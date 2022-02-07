@@ -140,9 +140,9 @@ samples['DY'] = {
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-100to200'    , 'DYJetsToLL_M-50_HT-100to200_ext1'])
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-200to400'    , 'DYJetsToLL_M-50_HT-200to400_ext1'])
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-400to600'    , 'DYJetsToLL_M-50_HT-400to600_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-200to400' , 'DYJetsToLL_M-5to50_HT-200to400_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-400to600' , 'DYJetsToLL_M-5to50_HT-400to600_ext1'])
-CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-600toinf' , 'DYJetsToLL_M-5to50_HT-600toinf_ext1'])
+#CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-200to400' , 'DYJetsToLL_M-5to50_HT-200to400_ext1'])
+#CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-400to600' , 'DYJetsToLL_M-5to50_HT-400to600_ext1'])
+#CombineBaseW(samples, 'DY', ['DYJetsToLL_M-5to50_HT-600toinf' , 'DYJetsToLL_M-5to50_HT-600toinf_ext1'])
 
 addSampleWeight(samples, 'DY', 'DYJetsToLL_M-50_ext2',                  'DY_NLO_pTllrw*(LHE_HT < 70)')
 #addSampleWeight(samples, 'DY', 'DYJetsToLL_M-10to50',                   'DY_NLO_pTllrw*(LHE_HT < 70)')

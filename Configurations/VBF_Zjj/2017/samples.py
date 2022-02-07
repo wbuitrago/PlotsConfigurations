@@ -127,14 +127,14 @@ samples['DY'] = {
     'name': files,
     'weight': mcCommonWeight + "*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                                          Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )",
-    'FilesPerJob': 8,
+    'FilesPerJob': 4,
     'subsamples': {
       'hardJets'  : 'hardJets',
       'PUJets'    : 'PUJets'
     }
 }
     
-#CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50'                , 'DYJetsToLL_M-50_ext1'])
+CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50'                , 'DYJetsToLL_M-50_ext1'])
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-100to200'    , 'DYJetsToLL_M-50_HT-100to200_ext1'])
 CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50_HT-200to400'    , 'DYJetsToLL_M-50_HT-200to400_ext1'])
 #CombineBaseW(samples, 'DY', ['DYJetsToLL_M-4to50_HT-400to600' , 'DYJetsToLL_M-4to50_HT-400to600_ext1'])

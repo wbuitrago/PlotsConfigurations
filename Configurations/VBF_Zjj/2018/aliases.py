@@ -163,27 +163,31 @@ aliases['DiffFlav'] = {
 
 aliases['topcr'] = {
     #'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
-    'expr': '!bVeto'
+    #'expr': '!bVeto'
+    'expr' : 'mll>50 && ((zeroJet && !bVeto) || bReq)'
 }
 
 aliases['wwcr'] = {
-    'expr': 'bVeto && PuppiMET_pt>100'
+    #'expr': 'bVeto && PuppiMET_pt>100'
+    'expr': 'mth>60 && mtw2>30 && mll>100 && bVeto'
 }
 
 aliases['dycr'] = {
-    'expr': 'bVeto && PuppiMET_pt<=100 && detajj<3'
+    #'expr': 'bVeto && PuppiMET_pt<=100 && detajj<3'
+    'expr': 'bVeto && abs(mll-90)<15'
 }
+"""
 aliases['dypucr'] = {
     'expr': 'bVeto && PuppiMET_pt<=100 && detajj>=3 && ptll<60'
 }
-
+"""
 
 
 # SR definition
 
 aliases['sr'] = {
     #'expr': 'mth>60 && mtw2>30 && bVeto'
-    'expr': 'bVeto && PuppiMET_pt<=100 && detajj>=3 && ptll>60'
+    'expr': '(bVeto) && PuppiMET_pt<100 && detajj>2 && abs(mll-90)<15'
 }
 aliases['ZeppenfeldDilepton'] = {
     'expr' : '(0.5*((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1]))/abs(CleanJet_eta[0] - CleanJet_eta[1]))'

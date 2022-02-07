@@ -158,7 +158,7 @@ aliases['topcr'] = {
 }
 
 aliases['dycr'] = {
-    'expr': 'bVeto && abs(mll-91.2)<15'
+    'expr': 'bVeto && abs(mll-90)<15'
 
 }
 

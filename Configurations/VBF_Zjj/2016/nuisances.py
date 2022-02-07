@@ -466,7 +466,8 @@ nuisances['QCDscale_WWewk'] = {
     'type': 'shape',
     'samples': {
         'WWewk': VBSvariations
-    }
+    },
+   'AsLnN': '1'    # FIXME
 }
 
 nuisances['QCDscale_V'] = {
