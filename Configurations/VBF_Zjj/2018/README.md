@@ -3,6 +3,9 @@ Signal region
 
 How to run the analysis.
     
+    cp /afs/cern.ch/user/g/gpizzati/public/btagSF/DeepJet_102XSF_V2.csv /afs/cern.ch/work/a/amassiro/Latinos/Framework/VBS/CMSSW_10_6_4/src/PhysicsTools/NanoAODTools/data/btagSF/DeepJet_102XSF_V2.csv
+ 
+ 
 # Produce the shapes:
 
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=workday

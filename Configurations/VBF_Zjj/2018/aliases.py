@@ -249,6 +249,7 @@ if btag_algo == "deepcsv":
           'samples': mc
       }
 
+# cp /afs/cern.ch/user/g/gpizzati/public/btagSF/DeepJet_102XSF_V2.csv /afs/cern.ch/work/a/amassiro/Latinos/Framework/VBS/CMSSW_10_6_4/src/PhysicsTools/NanoAODTools/data/btagSF/DeepJet_102XSF_V2.csv
 elif btag_algo == "deepflav":
     btagSFSource = '%s/src/PhysicsTools/NanoAODTools/data/btagSF/DeepJet_102XSF_V2.csv' % os.getenv('CMSSW_BASE')
     aliases['Jet_btagSF_deepflav_shape'] = {
