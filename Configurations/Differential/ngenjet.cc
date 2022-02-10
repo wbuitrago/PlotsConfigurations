@@ -10,19 +10,22 @@
 
 #include <iostream>
 
+#ifndef CountGenJet_HH
+#define CountGenJet_HH
+
 class CountGenJet : public multidraw::TTreeFunction {
 public:
   CountGenJet();
-
+  
   char const* getName() const override { return "CountGenJet"; }
   TTreeFunction* clone() const override { return new CountGenJet(); }
-
+  
   unsigned getNdata() override { return 1; }
   double evaluate(unsigned) override;
-
+  
 protected:
   void bindTree_(multidraw::FunctionLibrary&) override;
-
+  
   UIntValueReader* nLeptonGen{};
   BoolArrayReader* LeptonGen_isPrompt{};
   // IntArrayReader* DressedLepton_pdgId{};
@@ -47,7 +50,7 @@ protected:
 };
 
 CountGenJet::CountGenJet() :
-  TTreeFunction()
+TTreeFunction()
 {
 }
 
@@ -57,21 +60,21 @@ CountGenJet::evaluate(unsigned)
   unsigned nJ{*nGenJet->Get()};
   
   unsigned nL{*nLeptonGen->Get()};
-
+  
   std::vector<unsigned> iPromptL{};
   iPromptL.reserve(nL);
-
+  
   for (unsigned iL{0}; iL != nL; ++iL) {
     if (!LeptonGen_isPrompt->At(iL))
       continue;
-
+    
     unsigned absId{static_cast<unsigned>(std::abs(LeptonGen_pdgId->At(iL)))};
     if (absId != 11 && absId != 13)
       continue;
-
+    
     iPromptL.push_back(iL);
   }
-
+  
   if (iPromptL.size() == 0) {
     unsigned n{0};
     for (unsigned iJ{0}; iJ != nJ; ++iJ) {
@@ -80,18 +83,18 @@ CountGenJet::evaluate(unsigned)
     }
     return n;
   }
-
+  
   std::vector<ROOT::Math::PtEtaPhiMVector> dressedLeptons{};
   for (unsigned iL : iPromptL) {
     dressedLeptons.emplace_back(
       LeptonGen_pt->At(iL),
-      LeptonGen_eta->At(iL),
-      LeptonGen_phi->At(iL),
-      LeptonGen_mass->At(iL));
+                                LeptonGen_eta->At(iL),
+                                LeptonGen_phi->At(iL),
+                                LeptonGen_mass->At(iL));
   }
-
+  
   unsigned nP{*nPhotonGen->Get()};
-
+  
   for (unsigned iP{0}; iP != nP; ++iP) {
     double minDR2{1000.};
     int iDMin{-1};
@@ -105,25 +108,25 @@ CountGenJet::evaluate(unsigned)
         iDMin = iD;
       }
     }
-
+    
     if (minDR2 < 0.09)
       dressedLeptons[iDMin] += ROOT::Math::PtEtaPhiMVector(
         PhotonGen_pt->At(iP),
-        PhotonGen_eta->At(iP),
-        PhotonGen_phi->At(iP),
-        PhotonGen_mass->At(iP));
+                                                           PhotonGen_eta->At(iP),
+                                                           PhotonGen_phi->At(iP),
+                                                           PhotonGen_mass->At(iP));
   }
-
+  
   unsigned n{0};
   for (unsigned iJ{0}; iJ != nJ; ++iJ) {
     if (GenJet_pt->At(iJ) < 30.)
       continue;
-
+    
     bool overlap{false};
     for (auto& p4 : dressedLeptons) {
       if (p4.pt() < 10.)
         continue;
-
+      
       double dEta{p4.eta() - GenJet_eta->At(iJ)};
       double dPhi{TVector2::Phi_mpi_pi(p4.phi() - GenJet_phi->At(iJ))};
       if (dEta * dEta + dPhi * dPhi < 0.016) {
@@ -162,3 +165,5 @@ CountGenJet::bindTree_(multidraw::FunctionLibrary& _library)
   _library.bindBranch(GenJet_eta, "GenJet_eta");
   _library.bindBranch(GenJet_phi, "GenJet_phi");
 }
+#endif
+
