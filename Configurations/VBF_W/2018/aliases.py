@@ -4,7 +4,7 @@ import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
 configurations = os.path.dirname(configurations) # 2018
-configurations = os.path.dirname(configurations) # VBF_Zjj
+configurations = os.path.dirname(configurations) # VBF_W
 configurations = os.path.dirname(configurations) # Configurations
 
 #aliases = {}
