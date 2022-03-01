@@ -1,256 +1,95 @@
 # structure configuration for datacard
-
+from itertools import product, chain
 #structure = {}
 
-# keys here must match keys in samples.py    
-#                    
+wjets_bins = []
+for ir in range(1,7):
+    wjets_bins.append("Wjets_HT_res_"+str(ir))
+for ir in range(1,6):
+    wjets_bins.append("Wjets_HT_boost_"+str(ir))
+
+
+phase_spaces_boost = [c for c in cuts if "boost" in c]
+phase_spaces_res = [c for c in cuts if "res" in c]
+
+
+for wbin in wjets_bins:
+    if 'boost' in wbin:
+        structure[wbin] = {
+                    'isSignal' : 0,
+                    'isData'   : 0 ,
+                    'removeFromCuts': phase_spaces_res 
+        }
+    else:
+        structure[wbin] = {
+                    'isSignal' : 0,
+                    'isData'   : 0 ,
+                    'removeFromCuts': phase_spaces_boost 
+        }
+
+
+
 structure['DY']  = {  
                   'isSignal' : 0,
                   'isData'   : 0
               }
 
-structure['singleTop']  = {  
+structure['top']  = {  
                   'isSignal' : 0,
-                  'isData'   : 0 
-              }
-
-structure['ttbar']  = {  
-                  'isSignal' : 0,
-                  'isData'   : 0 
-              }
-
-
-structure['Wjets']  = {  
-                  'isSignal' : 0,
-                  'isData'   : 0 
+                  'isData'   : 0
               }
 
 structure['VV']  = {  
                   'isSignal' : 0,
+                  'isData'   : 0
+              }
+
+
+#structure['Fake']  = {  
+#                  'isSignal' : 0,
+#                  'isData'   : 0
+#              }
+
+
+#structure['VVV']  = {  
+#                  'isSignal' : 0,
+#                  'isData'   : 0 
+#              }
+
+structure['VBS']  = { 
+                  'isSignal' : 0,
                   'isData'   : 0 
               }
 
- structure['Fake']  = {  
-                   'isSignal' : 0,
-                   'isData'   : 0 
-               }
-
-structure['Fake_e']  = {  
+structure['Vg']  = {  
                   'isSignal' : 0,
-                  'isData'   : 0,
-#                  'removeFromCuts' : [ k for k in cuts if 'me' in k],
+                  'isData'   : 0 
               }
 
-structure['Fake_m']  = {  
+structure['VgS']  = {  
                   'isSignal' : 0,
-                  'isData'   : 0,
-#                  'removeFromCuts' : [ k for k in cuts if 'em' in k],
+                  'isData'   : 0 
               }
 
+structure['Wjets_HT']  = {  
+                  'isSignal' : 0,
+                  'isData'   : 0 
+              }
 
-# structure['Fake_em']  = {  
-#                   'isSignal' : 0,
-#                   'isData'   : 0,
-#                   'removeFromCuts' : [
-#                                       'hww2l2v_13TeV_me_pm_0j_pt2ge20',
-#                                       'hww2l2v_13TeV_me_pm_0j_pt2ge20', 
-#                                       'hww2l2v_13TeV_me_pm_1j_pt2ge20', 
-#                                       'hww2l2v_13TeV_me_mp_0j_pt2ge20',
-#                                       'hww2l2v_13TeV_me_mp_1j_pt2ge20',
-#                                       'hww2l2v_13TeV_me_pm_0j_pt2lt20',
-#                                       'hww2l2v_13TeV_me_pm_1j_pt2lt20',
-#                                       'hww2l2v_13TeV_me_mp_0j_pt2lt20',
-#                                       'hww2l2v_13TeV_me_mp_1j_pt2lt20'],
-#               }
-
-# structure['Fake_me']  = {  
-#                   'isSignal' : 0,
-#                   'isData'   : 0,
-#                   'removeFromCuts' : [
-#                                       'hww2l2v_13TeV_em_pm_0j_pt2ge20',
-#                                       'hww2l2v_13TeV_em_pm_0j_pt2ge20', 
-#                                       'hww2l2v_13TeV_em_pm_1j_pt2ge20', 
-#                                       'hww2l2v_13TeV_em_mp_0j_pt2ge20',
-#                                       'hww2l2v_13TeV_em_mp_1j_pt2ge20',
-#                                       'hww2l2v_13TeV_em_pm_0j_pt2lt20',
-#                                       'hww2l2v_13TeV_em_pm_1j_pt2lt20',
-#                                       'hww2l2v_13TeV_em_mp_0j_pt2lt20',
-#                                       'hww2l2v_13TeV_em_mp_1j_pt2lt20'],
-#               }
-
-# structure['top'] = {   
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-
-# structure['singletop'] = {   
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-# structure['top'] = {   
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-
-# structure['WW']  = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0    
-#                   }
-
-# structure['WWewk']  = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0
-#                   }
-
-# structure['ggWW']  = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0    
-#                   }
-
-# structure['ggWW_Int']  = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0    
-#                   }
-
-# structure['Wg']  = { 
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-# structure['Vg']  = { 
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-# structure['VgS'] = { 
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-# structure['WZgS_L'] = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0
-#                   }
-
-# structure['WZgS_H'] = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0
-#                   }
-
-# structure['Zg']  = { 
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-# structure['VZ']  = { 
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-# structure['WZ']  = { 
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-
-# structure['VVV']  = { 
-#                   'isSignal' : 0,
-#                   'isData'   : 0 
-#                   }
-
-# structure['ZZ']  = {
-#                   'isSignal' : 0,
-#                   'isData'   : 0    
-#                   }
-
-
-# structure['ggH'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['ggH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['qqH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['qqH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['WH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['ZH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['ggZH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['H_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-# structure['bbH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0
-#                   }
-
-# structure['ttH_hww'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0
-#                   }
-
-# structure['ggH_htt'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0,
-#                   }
-
-# structure['qqH_htt'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0,
-#                   }
-
-# structure['WH_htt'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0,
-#                   }
-
-# structure['ZH_htt'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0,
-#                   }
-
-# structure['H_htt'] = {
-#                   'isSignal' : 1,
-#                   'isData'   : 0    
-#                   }
-
-structure['VBF_WLNu']  = { 
+structure['WLNuJJ']  = {  
                   'isSignal' : 1,
                   'isData'   : 0 
               }
 
+
 # data
 
 
-structure['DATA']  = { 
-                  'isSignal' : 0,
-                  'isData'   : 1 
-              }
+#structure['DATA']  = { 
+#                  'isSignal' : 0,
+#                  'isData'   : 1 
+#              }
+
+
+
+

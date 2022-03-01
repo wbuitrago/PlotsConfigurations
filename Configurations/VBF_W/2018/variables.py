@@ -1,7 +1,7 @@
-# variabeadines
 
-#variables = {}
-    
+##############################################
+# now variables to plot
+# Include also variables to be plotted
 
 variables['events']  = {   'name': '1',      
                         'range' : (1,0,2),  
@@ -9,340 +9,242 @@ variables['events']  = {   'name': '1',
                         'fold' : 3
                         }
 
-#fatjet
-variables["FatJet_eta"] = {   
-                        'name': 'abs(CleanFatJet_eta[0])',      
-                        'range' : (40,0,2.5),  
-                        'xaxis' : 'FatJet #eta', 
-                        'fold' : 3  # both underflow and overflow bin are moved inside the histogram
-                }
 
-variables['FatJet_pt'] = {   'name': 'CleanFatJet_pt[0]',      
-                        'range' : (60,150,650),  
-                        'xaxis' : 'FatJet_pt', 
-                        'fold' : 3
+######## lepton 1 ##########
+
+variables['pt1']  = {   'name': 'Lepton_pt[0]',     
+                        'range' : (30,40,250),   
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold'  : 3
                         }
 
-variables['FatJet_tau21'] = {   'name': 'CleanFatJet_tau21[0]',     
-                        'range' : (60,0,0.45),  
-                        'xaxis' : 'FatJet_tau21', 
-                        'fold' : 3
+variables['eta1']  = {  'name': 'Lepton_eta[0]',     
+                        'range' : (30,-3,3),   
+                        'xaxis' : '#eta 1st lep',
+                        'fold'  : 3                         
                         }
 
-variables['nFatJet'] = {   'name': 'nCleanFatJet',      
-                        'range' : (5,0,5),  
-                        'xaxis' : 'nCleanFatJet', 
-                        'fold' : 3
+                        
+variables['phi1']  = {  'name': 'Lepton_phi[0]',
+                        'range' : (40,-3.2,3.2),
+                        'xaxis' : '#phi 1st lep',
+                        'fold'  : 3
                         }
 
-#jets 
-
-variables['nCleanJetNotFat'] = {   'name': 'nCleanJetNotFat',      
-                        'range' : (6,0,6),  
-                        'xaxis' : 'nCleanJetNotFat', 
+variables['mtw1']  = {   'name': 'mtw1',
+                        'range' : (30, 20,300),
+                         'xaxis' : 'm_{T}^{l1+MET} [GeV]',
                         'fold' : 3
-                        }
-
-#leptons
-
-variables['Lepton_eta'] = {   'name': 'abs(Lepton_eta[0])',      
-                        'range' : (50,0,2.5),  
-                        'xaxis' : 'Lepton #eta', 
-                        'fold' : 3
-                        }
+                       }
 
 
-variables['Lepton_pt'] = {   'name': 'Lepton_pt[0]',      
-                        'range' : (60,0,400),  
-                        'xaxis' : 'Lepton_pt', 
-                        'fold' : 3
-                        }                       
-
-#new variables
-
-#masses
-variables['mjj_vbs'] = {   'name': 'mjj_vbs',      
-                        'range' : (80,200,2700),  
-                        'xaxis' : 'mjj_vbs', 
-                        'fold' : 3
-                        }
-
-#variables['FatJet_mass'] = {   'name': 'mjj_vjet',      
-#                        'range' : (45,65,105),  
-#                        'xaxis' : 'FatJet_mass', 
+#variables['mT2']  = {   'name': 'mT2',
+#                        'range' : (30, 20,300),
+#                        'xaxis' : 'm_{T}^{2} [GeV]',
 #                        'fold' : 3
 #                        }
 
-#vbs jets pt
-variables['vbs_pt_high'] = {   'name': 'vbs_pt_high',      
-                        'range' : (80,0,700),  
-                        'xaxis' : 'vbs_pt_high', 
-                        'fold' : 3
-                        }
 
-variables['vbs_pt_low'] = {   'name': 'vbs_pt_low',      
-                        'range' : (80,15,200),  
-                        'xaxis' : 'vbs_pt_low', 
-                        'fold' : 3
-                        }
-
-#
-variables['vbs_etaprod'] = {   'name': 'vbs_etaprod',      
-                        'range' : (70,-10,10),  
-                        'xaxis' : 'vbs_etaprod', 
-                        'fold' : 3
-                        }
-
-#vbs etas
-variables['vbs_eta_high'] = {   'name': 'vbs_eta_high',      
-                        'range' : (50,0,5),  
-                        'xaxis' : 'vbs_#eta_high', 
-                        'fold' : 3
-                        }
-
-variables['vbs_eta_low'] = {   'name': 'vbs_eta_low',      
-                        'range' : (50,0,5),  
-                        'xaxis' : 'vbs_#eta_low', 
-                        'fold' : 3
-                        }
-
-#delta angles between the VBS jets
-variables['deltaeta_vbs'] = {   'name': 'deltaeta_vbs',      
-                        'range' : (60,0,9),  
-                        'xaxis' : '#Delta#eta_vbs', 
-                        'fold' : 3
-                        }
-
-variables['deltaphi_vbs'] = {   'name': 'deltaphi_vbs',      
-                        'range' : (40,0,3.5),  
-                        'xaxis' : '#Delta#phi_vbs', 
-                        'fold' : 3
-                        }
-
-#delta angles between the VBS jets and lepton
-variables['deltaphi_lep_vbs_high'] = {   'name': 'deltaphi_lep_vbs_high',      
-                        'range' : (40,0,3.5),  
-                        'xaxis' : '#Delta#phi_lep_vbs_high', 
-                        'fold' : 3
-                        }
-
-variables['deltaphi_lep_vbs_low'] = {   'name': 'deltaphi_lep_vbs_low',      
-                        'range' : (35,0,3.5),  
-                        'xaxis' : '#Delta#phi_lep_vbs_low', 
-                        'fold' : 3
-                        }
-
-variables['deltaeta_lep_vbs_high'] = {   'name': 'deltaeta_lep_vbs_high',      
-                        'range' : (60,0,6.5),  
-                        'xaxis' : '#Delta#eta_lep_vbs_high', 
-                        'fold' : 3
-                        }                        
-
-variables['deltaeta_lep_vbs_low'] = {   'name': 'deltaeta_lep_vbs_low',      
-                        'range' : (50,0,7),  
-                        'xaxis' : '#Delta#eta_lep_vbs_low', 
-                        'fold' : 3
-                        }
-
-#angle between Fatjet and lepton
-variables['deltaphi_lep_FatJet'] = {   'name': 'deltaphi_lep_vjet_high',      
-                        'range' : (40,0,3.5),  
-                        'xaxis' : '#Delta#phi_lep_FatJet', 
-                        'fold' : 3
-                        }
-
-variables['deltaeta_lep_FatJet'] = {   'name': 'abs( Lepton_eta[0] - CleanFatJet_eta[0] )',      
-                        'range' : (50,0,5),  
-                        'xaxis' : '#Delta#eta_lep_FatJet', 
-                        'fold' : 3
-                        }
-
-#angle between Fatjet and vbs jets
-variables['deltaeta_FatJet_vbshigh'] = {   'name': 'abs(CleanFatJet_eta[0]- vbs_eta_high)',      
-                        'range' : (40,0,8),  
-                        'xaxis' : '#Delta#eta FatJet leading VBS jet', 
-                        'fold' : 3
-                        }
-
-variables['deltaeta_FatJet_vbslow'] = {   'name': 'abs(CleanFatJet_eta[0]- vbs_eta_low)',      
-                        'range' : (50,0,5),  
-                        'xaxis' : '#Delta#eta_FatJet_vbslow', 
-                        'fold' : 3
-                        }
-
-#delta R between the nearest VBS/fat jet and lepton
-variables['deltaR_lep_vbs'] = {   'name': 'deltaR_lep_vbs',      
-                        'range' : (60,0,5.5),  
-                        'xaxis' : '#Delta_R_lep_vbs', 
-                        'fold' : 3
-                        }
-
-variables['deltaR_lep_FatJet'] = {   'name': 'deltaR_lep_vjet',      
-                        'range' : (80,0,6),  
-                        'xaxis' : '#Delta_R_lep_FatJet', 
-                        'fold' : 3
-                        }
-#angle nu lep
-variables['deltaphi_lep_nu'] = {   'name': 'deltaphi_lep_nu',      
-                        'range' : (40,0,3.5),  
-                        'xaxis' : '#Delta#phi_lep_nu', 
-                        'fold' : 3
-                        }
-
-variables['deltaeta_lep_nu'] = {   'name': 'deltaeta_lep_nu',      
-                        'range' : (60,0,7),  
-                        'xaxis' : '#Delta#eta_lep_nu', 
-                        'fold' : 3
-                        }
-
-variables['deltaR_lep_nu'] = {   'name': 'deltaR_lep_nu',      
-                        'range' : (60,0,7.5),  
-                        'xaxis' : '#Delta_R_lep_nu', 
-                        'fold' : 3
-                        }
-
-#deltaR_vbs
-variables['deltaR_vbs'] = {   'name': 'deltaR_vbs',      
-                        'range' : (80,0,9.5),  
-                        'xaxis' : '#Delta_R_vbs', 
-                        'fold' : 3
-                        }
-
-#Rvjets_high
-variables['Rvjets_high'] = {   'name': 'Rvjets_high',      
-                        'range' : (50,0,80),  
-                        'xaxis' : 'Rvjets_high', 
-                        'fold' : 3
-                        }
-
-#Zvjets_high
-variables['Zvjets'] = {   'name': 'Zvjets_fixed[0]',      
-                        'range' : (60,-3,3),  
-                        'xaxis' : 'Zvjets', 
-                        'fold' : 3
-                        }
-
-#Zlep
-variables['Zlep'] = {   'name': 'Zlep',      
-                        'range' : (60,-3,3),  
-                        'xaxis' : 'Zlep', 
-                        'fold' : 3
-                        }
-
-#Asym
-variables['Asym_vbs'] = {   'name': 'Asym_vbs',      
-                        'range' : (45,0,1),  
-                        'xaxis' : 'Asym_vbs', 
-                        'fold' : 3
-                        }
-
-#Mw_lep ??
-variables['Mw_lep'] = {   'name': 'Mw_lep',      
-                        'range' : (60,0,250),  
-                        'xaxis' : 'Mw_lep', 
-                        'fold' : 3
-                        }
-
-variables['w_lep_pt'] = {   'name': 'w_lep_pt',      
-                        'range' : (50,0,600),  
-                        'xaxis' : 'w_lep_pt', 
-                        'fold' : 3
-                        }
-
-variables['Mww'] = {   'name': 'Mww',      
-                        'range' : (60,0,1800),  
-                        'xaxis' : 'Mww', 
-                        'fold' : 3
-                        }
-
-variables['R_ww'] = {   'name': 'R_ww',      
-                        'range' : (80,0,80),  
-                        'xaxis' : 'R_ww', 
-                        'fold' : 3
-                        }
-
-variables['R_mw'] = {   'name': 'R_mw',      
-                        'range' : (80,0,0.6),  
-                        'xaxis' : 'R_mw', 
-                        'fold' : 3
-                        }
-
-variables['A_ww'] = {   'name': 'A_ww',      
-                        'range' : (60,0,1.1),  
-                        'xaxis' : 'A_ww', 
-                        'fold' : 3
-                        }
-
-#???
-variables['Centr_vbs'] = {   'name': 'Centr_vbs',      
-                        'range' : (50,0,3),  
-                        'xaxis' : 'Centr_vbs', 
-                        'fold' : 3
-                        }
-
-variables['Centr_ww'] = {   'name': 'Centr_ww',      
-                        'range' : (70,-6,5),  
-                        'xaxis' : 'Centr_ww', 
-                        'fold' : 3
-                        }
-
-variables['Lep_proj'] = {   'name': 'Lep_proj',      
-                        'range' : (50,-50,500),  
-                        'xaxis' : 'Lep_proj', 
-                        'fold' : 3
-                        }
-
-variables['Lep_projw'] = {   'name': 'Lep_projw',      
-                        'range' : (50,0,1),  
-                        'xaxis' : 'Lep_projw', 
-                        'fold' : 3
-                        }
-
-variables['Ht'] = {   'name': 'Ht',      
-                        'range' : (60,0,1800),  
-                        'xaxis' : 'Ht', 
-                        'fold' : 3
+variables['puppimet']  = {
+                        'name': 'PuppiMET_pt',
+                        'range' : (20,0,200),
+                        'xaxis' : 'puppimet [GeV]',
+                        'fold'  : 3
                         }
 
 
-#MET
-variables['recoMET'] = {   'name': 'recoMET',      
-                        'range' : (60,0,300),  
-                        'xaxis' : 'recoMET', 
-                        'fold' : 3
+
+
+############# getti ###################
+variables['njet']  = {
+                         'name': 'Sum$(CleanJet_pt>30)',     
+                         'range' : (8,0,8),   
+                         'xaxis' : 'Number of jets',
+                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                         }
+
+variables['jetpt1']  = {
+                        'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
+                        'range' : (40,0,200),
+                        'xaxis' : 'p_{T} 1st jet',
+                        'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                         }
 
-variables['recoMET_pz'] = {   'name': 'recoMET_pz',      
-                        'range' : (60,-700,700),  
-                        'xaxis' : 'recoMET_pz', 
-                        'fold' : 3
+variables['jetpt2']  = {
+                         'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[1], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
+                         'range' : (40,0,200),
+                         'xaxis' : 'p_{T} 2nd jet',
+                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                         }
+
+variables['jeteta1']  = {  'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_eta[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
+                         'range' : (40,-5.0,5.0),
+                         'xaxis' : '#eta 1st jet',
+                         'fold'  : 3
+                       }
+
+variables['jeteta2']  = {  'name': '(Sum$(CleanJet_pt>30)>1)*(Alt$(CleanJet_eta[1], 0)) - (Sum$(CleanJet_pt>30)<=1)*99',
+                         'range' : (40,-5.0,5.0),
+                         'xaxis' : '#eta 2nd jet',
+                         'fold'  : 3
+                         }
+
+
+variables['mjjbins']      = {   'name': 'mjj',            #   variable name    
+                            'range' : ([500., 750., 1000., 1500., 2000., 4000.],),    #   variable range
+                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
+                            'fold' :3
                         }
 
-variables['PuppiMET_pt'] = {   'name': 'PuppiMET_pt',      
-                        'range' : (60,0,300),  
-                        'xaxis' : 'PuppiMET_pt', 
-                        'fold' : 3
-                        }
-variables['RawMET_pt'] = {   'name': 'RawMET_pt',      
-                        'range' : (60,0,300),  
-                        'xaxis' : 'RawMET_pt', 
-                        'fold' : 3
+
+
+variables['mjj']      = {   'name': 'mjj',            #   variable name    
+                            'range' : ([200., 500., 750., 1000., 1250., 1500., 1750, 2000., 3000., 4000., 5000.],),    #   variable range
+                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
+                            'fold' :3
                         }
 
-variables['MET_pt'] = {   'name': 'MET_pt',      
-                        'range' : (60,0,300),  
-                        'xaxis' : 'MET_pt', 
-                        'fold' : 3
+
+
+variables['detajjmjj'] = {   'name': 'mjj:detajj',            #   variable name    
+                            'range' : ([2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0],[200., 1500., 2000., 3000., 5000.],),    #   variable range
+                            'xaxis' : 'm_{jj} [GeV] : #Delta#eta_{jj}',  #   x axis name
+                            'fold' :3 ,
+                            # do weighted plot too
+                            'doWeight' : 1,
+                            'binX'     : 6,
+                            'binY'     : 4
                         }
 
-variables['GenMET_pt'] = {   'name': 'GenMET_pt',      
-                        'range' : (60,0,300),  
-                        'xaxis' : 'GenMET_pt', 
-                        'fold' : 3
-                        }
+#variables['events']  = {   'name': '1',      
+#                        'range' : (1,0,2),  
+#                        'xaxis' : 'events', 
+#                        'fold' : 3,
+#                        'weight': 'btagSF'
+#                        }
 
-variables['puppi_reco_MET_diff'] = {   'name': 'PuppiMET_pt - recoMET',      
-                        'range' : (60,-300,300),  
-                        'xaxis' : 'puppi_reco_MET_dif', 
-                        'fold' : 3
-                        }
+#variables['Lepton_pt[0]']  = {   'name': 'Lepton_pt[0]',      
+#                        'range' : (100,30,3030),  
+#                        'xaxis' : 'pt', 
+#                        'fold' : 3,
+#                        #'weight': 'btagSF'
+#                        }
+
+########################3
+
+
+
+#variables['nJetsBtag'] = {   'name': 'nJetsBtag',      
+#                        'range' : (8, 2, 10),  
+#                        'xaxis' : 'N jets btaggable', 
+#                        'fold' : 3,
+#                        }
+
+
+#variables['nJetsBtag_btagSF'] = {   'name': 'nJetsBtag',      
+#                        'range' : (8, 2, 10),  
+#                        'xaxis' : 'N jets btaggable', 
+#                        'fold' : 3,
+#                        'weight': 'btagSF'
+#                        }
+
+
+#jets 
+#variables['nJets'] = {   'name': 'nJets30',      
+#                        'range' : (8,2,10),  
+#                        'xaxis' : 'nJets cleaned from Ak8 >= 30 GeV', 
+#                        'fold' : 3
+#                        }
+
+#variables['nJets_btagSF'] = {   'name': 'nJets30',      
+#                        'range' : (8,2,10),  
+#                        'xaxis' : 'nJets cleaned from Ak8 >= 30 GeV', 
+#                        'fold' : 3,
+#                         'weight': 'btagSF'
+#                        }
+
+# variables['mTi']  = {   'name': 'mTi',
+#                         'range' : (40, 20,300),
+#                         'xaxis' : 'm_{ll+MET} [GeV]',
+#                         'fold' : 0
+#                         }
+
+#variables['ptll']  = {   'name': 'ptll',     
+#                        'range' : (30, 30,300),   
+#                        'xaxis' : 'p_{T}^{ll} [GeV]',
+#                        'fold' : 3
+#                        }
+
+
+#variables['pt2']  = {   'name': 'Lepton_pt[1]',     
+#                        'range' : (30,10,150),   
+#                        'xaxis' : 'p_{T} 2nd lep',
+#                        'fold'  : 3 
+#                        }
+
+
+
+# variables['phi2']  = {  'name': 'Lepton_phi[1]',
+#                         'range' : (40,-3.2,3.2),
+#                         'xaxis' : '#phi 2nd lep',
+#                         'fold'  : 3
+#                         }
+
+#variables['puppimet']  = {
+#                        'name': 'PuppiMET_pt',
+#                        'range' : (30,20,300),
+#                        'xaxis' : 'puppimet [GeV]',
+#                        'fold'  : 3
+#                        }
+
+
+# variables['PfMetDivSumMet']  = {
+#                         'name': 'PfMetDivSumMet',
+#                         'range' : (30,0,10),
+#                         'xaxis' : 'METsig',
+#                         'fold'  : 3
+#                         }
+
+
+# variables['pfmet']  = {
+#                         'name': 'MET_pt',
+#                         'range' : (40,0,200),
+#                         'xaxis' : 'pfmet [GeV]',
+#                         'fold'  : 3
+#                         }
+
+
+# variables['Fixedpfmet']  = {
+#                         'name': 'METFixEE2017_pt',
+#                         'range' : (40,0,300),
+#                         'xaxis' : 'Fixedpfmet [GeV]',
+#                         'fold'  : 3
+#                         }
+
+#variables['mpmet']  = {
+#                        'name': 'mpmet',
+#                        'range' : (30,20,200),
+#                        'xaxis' : 'mpmet [GeV]',
+#                        'fold'  : 3
+#                        }
+
+
+
+# variables['trkMet']  = {   'name': 'TkMET_pt',
+#                         'range' : (40,0,200),
+#                         'xaxis' : 'trk met [GeV]',
+#                          'fold' : 3
+#                         }
+
+#variables['dphill']  = {   'name': 'abs(dphill)',     
+#                        'range' : (30,0,3.14),   
+#                        'xaxis' : '#Delta#phi_{ll}',
+#                        'fold' : 3
+#                        }
+
+
+#variables['dphillmet']  = {   'name': 'dphillmet',     
+#                        'range' : (30,0,3.14),   
+#                        'xaxis' : '#Delta#phi_{ll, MET}',
+#                        'fold' : 3
+#                        }
