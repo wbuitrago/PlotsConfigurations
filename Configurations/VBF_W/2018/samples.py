@@ -221,15 +221,15 @@ samples['WLNuJJ']  = {  'name'   :
 ### Wjets samples
 
 samples['Wjets_HT'] = { 'name' :   
-          nanoGetSampleFiles(mcDirectory, 'WJetsToLNu-LO')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT70_100')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT100_200')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT200_400')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT400_600')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT600_800')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT800_1200')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT1200_2500')
-          + nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT2500_inf'),
+          nanoGetSampleFiles(mcDirectory, 'WJetsToLNu-LO'),
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT70_100')
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT100_200')
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT200_400')
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT400_600')
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT600_800')
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT800_1200')
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT1200_2500')
+          #+ nanoGetSampleFiles(mcDirectory, 'WJetsToLNu_HT2500_inf'),
 				#'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch + '* ewknloW',
         'weight' : XSWeight,
 				'FilesPerJob' : 15,   

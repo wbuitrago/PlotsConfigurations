@@ -12,16 +12,38 @@
 #            && Mtw_lep < 185 \
 #            '
 
-supercut = '(   (abs(Lepton_pdgId[0])==11 && Lepton_pt[0]>35)\
-             || (abs(Lepton_pdgId[0])==13 && Lepton_pt[0]>30 ) ) \
-            && Alt$(Lepton_pt[1],0)<=10 && Alt$(Lepton_isLoose[1],1)> 0.5 \
-            '
+supercut = '1'
 
 ########prova
-cuts["fatjet_ele"] = 'abs(Lepton_pdgId[0])==11 \
-                        && Lepton_pt[0] >= 40 \
-                        '
-                    
+#cuts["fatjet_ele"] = 'abs(Lepton_pdgId[0])==11 \
+#                        && Lepton_pt[0] >= 40 \
+#                        '
+
+
+cuts['Z'] = '1'
+
+cuts['A'] = 'Lepton_pt[0] >= 30 \
+            && Alt$(CleanJet_pt[1], 0) > 30.'
+
+cuts['B'] = 'Lepton_pt[0] >= 30 \
+            && Alt$(CleanJet_pt[1], 0) > 30. \
+            && mjj >= 200'
+
+cuts['C'] = 'Lepton_pt[0] >= 30 \
+            && Alt$(CleanJet_pt[1], 0) > 30. \
+            && mjj >= 400'
+
+cuts['D'] = 'Lepton_pt[0] >= 30 \
+            && Alt$(CleanJet_pt[1], 0) > 30. \
+            && mjj >= 200 \
+            && detajj >= 1'
+
+cuts['E'] = 'Lepton_pt[0] >= 30 \
+            && Alt$(CleanJet_pt[1], 0) > 30. \
+            && mjj >= 200 \
+            && detajj >= 2'
+
+
 ############ 
 ## Signal
 

@@ -13,7 +13,7 @@ variables['events']  = {   'name': '1',
 ######## lepton 1 ##########
 
 variables['pt1']  = {   'name': 'Lepton_pt[0]',     
-                        'range' : (30,40,250),   
+                        'range' : (25,0,250),   
                         'xaxis' : 'p_{T} 1st lep',
                         'fold'  : 3
                         }
@@ -32,7 +32,7 @@ variables['phi1']  = {  'name': 'Lepton_phi[0]',
                         }
 
 variables['mtw1']  = {   'name': 'mtw1',
-                        'range' : (30, 20,300),
+                        'range' : (30,0,300),
                          'xaxis' : 'm_{T}^{l1+MET} [GeV]',
                         'fold' : 3
                        }
@@ -56,23 +56,30 @@ variables['puppimet']  = {
 
 
 ############# getti ###################
-variables['njet']  = {
+variables['njet_30']  = {
                          'name': 'Sum$(CleanJet_pt>30)',     
                          'range' : (8,0,8),   
-                         'xaxis' : 'Number of jets',
+                         'xaxis' : 'Number of jets w/ pt>30 GeV',
+                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                         }
+
+variables['njet_40']  = {
+                         'name': 'Sum$(CleanJet_pt>40)',     
+                         'range' : (8,0,8),   
+                         'xaxis' : 'Number of jets w/ pt>40 GeV',
                          'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                          }
 
 variables['jetpt1']  = {
                         'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
-                        'range' : (40,0,200),
+                        'range' : (100,0,1000),
                         'xaxis' : 'p_{T} 1st jet',
                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                         }
 
 variables['jetpt2']  = {
                          'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[1], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
-                         'range' : (40,0,200),
+                         'range' : (40,0,400),
                          'xaxis' : 'p_{T} 2nd jet',
                          'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                          }
@@ -90,30 +97,30 @@ variables['jeteta2']  = {  'name': '(Sum$(CleanJet_pt>30)>1)*(Alt$(CleanJet_eta[
                          }
 
 
-variables['mjjbins']      = {   'name': 'mjj',            #   variable name    
-                            'range' : ([500., 750., 1000., 1500., 2000., 4000.],),    #   variable range
-                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
-                            'fold' :3
-                        }
+#variables['mjjbins']      = {   'name': 'mjj',            #   variable name    
+#                            'range' : ([500., 750., 1000., 1500., 2000., 4000.],),    #   variable range
+#                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
+#                            'fold' :3
+#                        }
 
 
 
 variables['mjj']      = {   'name': 'mjj',            #   variable name    
-                            'range' : ([200., 500., 750., 1000., 1250., 1500., 1750, 2000., 3000., 4000., 5000.],),    #   variable range
+                            'range' : (50,0,5000),    #   variable range
                             'xaxis' : 'm_{jj} [GeV]',  #   x axis name
                             'fold' :3
                         }
 
 
 
-variables['detajjmjj'] = {   'name': 'mjj:detajj',            #   variable name    
-                            'range' : ([2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0],[200., 1500., 2000., 3000., 5000.],),    #   variable range
-                            'xaxis' : 'm_{jj} [GeV] : #Delta#eta_{jj}',  #   x axis name
-                            'fold' :3 ,
+variables['detajjmjj'] = {   'name': 'detajj',            #   variable name    
+                            'range' : (80,-10,10),    #   variable range
+                            'xaxis' : '#Delta#eta_{jj}',  #   x axis name
+                            'fold' : 3
                             # do weighted plot too
-                            'doWeight' : 1,
-                            'binX'     : 6,
-                            'binY'     : 4
+                            #'doWeight' : 1,
+                            #'binX'     : 6,
+                            #'binY'     : 4
                         }
 
 #variables['events']  = {   'name': '1',      
@@ -189,13 +196,6 @@ variables['detajjmjj'] = {   'name': 'mjj:detajj',            #   variable name
 #                         'xaxis' : '#phi 2nd lep',
 #                         'fold'  : 3
 #                         }
-
-#variables['puppimet']  = {
-#                        'name': 'PuppiMET_pt',
-#                        'range' : (30,20,300),
-#                        'xaxis' : 'puppimet [GeV]',
-#                        'fold'  : 3
-#                        }
 
 
 # variables['PfMetDivSumMet']  = {
