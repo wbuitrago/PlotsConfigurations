@@ -52,6 +52,19 @@ variables['puppimet']  = {
                         'fold'  : 3
                         }
 
+variables['nlep_30']  = {
+                         'name': 'Sum$(Lepton_pt>30)',     
+                         'range' : (8,0,8),   
+                         'xaxis' : 'Number of leptons w/ pt>30 GeV',
+                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                         }   
+
+variables['nlep_10']  = {
+                         'name': 'Sum$(Lepton_pt>10)',     
+                         'range' : (20,0,20),   
+                         'xaxis' : 'Number of leptons w/ pt>10 GeV',
+                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                         }               
 
 
 
@@ -113,8 +126,8 @@ variables['mjj']      = {   'name': 'mjj',            #   variable name
 
 
 
-variables['detajjmjj'] = {   'name': 'detajj',            #   variable name    
-                            'range' : (80,-10,10),    #   variable range
+variables['detajj'] = {   'name': 'detajj',            #   variable name    
+                            'range' : (80,-1,10),    #   variable range
                             'xaxis' : '#Delta#eta_{jj}',  #   x axis name
                             'fold' : 3
                             # do weighted plot too
