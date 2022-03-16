@@ -74,15 +74,15 @@ dataPrivateDirectory = os.path.join(treeBaseDirPrivate, dataReco, dataSteps + '_
 ############### Lepton WP ######################
 ################################################
 
-#eleWP='mvaFall17V1Iso_WP90'
-#muWP='cut_Tight_HWWW'
+eleWP='mvaFall17V1Iso_WP90'
+muWP='cut_Tight_HWWW'
 
 
-#LepWPCut_1l =  '(Lepton_isTightElectron_'+eleWP+'[0]>0.5 || Lepton_isTightMuon_'+muWP+'[0]>0.5)'
+LepWPCut_1l =  '(Lepton_isTightElectron_'+eleWP+'[0]>0.5 || Lepton_isTightMuon_'+muWP+'[0]>0.5)'
 #LepWPWeight_1l = 'Lepton_tightElectron_'+eleWP+'_IdIsoSF'+'[0]*\
 #                Lepton_tightMuon_'+muWP+'_IdIsoSF[0]'
 
-#LepWPCut = LepWPCut_1l
+LepWPCut = LepWPCut_1l
 #LepWPWeight = LepWPWeight_1l
 ################################################
 ############ BASIC MC WEIGHTS ##################
@@ -105,7 +105,7 @@ XSWeight   = 'XSWeight'
 ################################################
 
 #METFilter_MC   = 'METFilter_MC'
-#METFilter_DATA = 'METFilter_DATA'
+METFilter_DATA = 'METFilter_DATA'
 
 ################################################
 ############ DATA DECLARATION ##################
@@ -435,8 +435,7 @@ samples['VVV']  = {  'name'   :   nanoGetSampleFiles(mcPrivateDirectory,'ZZZ')
 #########################################
 
 samples['DATA']  = {   'name': [ ] ,
-#                       #'weight' : METFilter_DATA+'*'+LepWPCut,
-                       'weight' : XSWeight,
+                       'weight' : METFilter_DATA+'*'+LepWPCut,
                        'weights' : [ ],
                        'isData': ['all'],
                        'FilesPerJob' : 40,         

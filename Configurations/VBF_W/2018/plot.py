@@ -89,6 +89,14 @@ groupPlot['Higgs']  = {
                 'fill': 1001
               }
 
+groupPlot['VV+VVV+VBS']  = {  
+                'nameHR' : 'VV+VVV+VBS',
+                'isSignal' : 0,
+                'color': palette["Violet"], #palette["Peach3"],  
+                'samples'  : ['VVV', 'VV', 'VBS'],
+                'fill': 1001
+              }
+
 groupPlot['WLNuJJ']  = {  
                 'nameHR' : 'WLNuJJ',
                 'isSignal' : 1,
@@ -101,17 +109,18 @@ groupPlot['Others']  = {
                 'nameHR' : "Others",
                 'isSignal' : 0,
                 'color'    : palette["Orange"],
-                'samples'  : ['ggWW', 'DY', 'VBF-Z', 'Vg'],
+                'samples'  : ['ggWW', 'VBF-Z', 'Vg'],
                 'fill': 1001
               }
 
-groupPlot['VV+VVV+VBS']  = {  
-                'nameHR' : 'VV+VVV+VBS',
+groupPlot['DY']  = {  
+                'nameHR' : "DY",
                 'isSignal' : 0,
-                'color': palette["Violet"], #palette["Peach3"],  
-                'samples'  : ['VVV', 'VV', 'VBS'],
+                'color'    : palette["DarkBlue"],
+                'samples'  : ['DY'],
                 'fill': 1001
-              }
+              }         
+
 
 groupPlot['Top']  = {  
                 'nameHR' : "Top",
