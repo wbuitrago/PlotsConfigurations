@@ -14,75 +14,25 @@
 
 supercut = '1'
 
-########prova
-#cuts["fatjet_ele"] = 'abs(Lepton_pdgId[0])==11 \
-#                        && Lepton_pt[0] >= 40 \
-#                        '
 
 
-cuts['Z'] = '1'
-
-#cuts['A1'] = 'Lepton_pt[0] >= 30. \
-#            '
-
-#cuts['A2'] = 'Alt$(CleanJet_pt[1], 0) > 30. \
-#            '
-
-cuts['A'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            '     
+cuts['ele'] = 'abs(Lepton_pdgId[0])==11 \
+                && Lepton_pt[0] >= 40 \
+                '
 
 
-cuts['B1'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100.'
-
-cuts['B2'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100. \
-            && CleanJet_pt[1] > 50.'
+cuts['mu'] = 'abs(Lepton_pdgId[0])==13 \
+                && Lepton_pt[0] >= 40 \
+             '    
 
 
-cuts['C1'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100. \
-            && mjj >= 500.'
+#cuts['E1'] = 'Lepton_pt[0] >= 30. \
+#            && Alt$(CleanJet_pt[1], 0) > 30. \
+#            && CleanJet_pt[0] > 100. \
+#            && mjj >= 500. \
+#            && detajj > 2. \
+#            && Lepton_eta[0] > -2 && Lepton_eta[0] < 2'
 
-cuts['C2'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100. \
-            && CleanJet_pt[1] > 50. \
-            && mjj >= 500.'
-
-
-cuts['D1'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100. \
-            && mjj >= 500. \
-            && detajj > 2.'
-
-cuts['D2'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100. \
-            && CleanJet_pt[1] > 50. \
-            && mjj >= 500. \
-            && detajj > 1.'
-
-
-cuts['E1'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100. \
-            && mjj >= 500. \
-            && detajj > 2. \
-            && Lepton_eta[0] > -2 && Lepton_eta[0] < 2'
-
-cuts['E2'] = 'Lepton_pt[0] >= 30. \
-            && Alt$(CleanJet_pt[1], 0) > 30. \
-            && CleanJet_pt[0] > 100. \
-            && CleanJet_pt[1] > 50. \
-            && mjj >= 500. \
-            && detajj > 1. \
-            && Lepton_eta[0] > -2 && Lepton_eta[0] < 2'
 
 
 

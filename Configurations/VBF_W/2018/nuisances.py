@@ -1,35 +1,35 @@
 # nuisances
 # # # name of samples here must match keys in samples.py 
 
-mc =["WLNuJJ", "DY", "top",  "Wjets_HT", "VV", "VVV", "ggWW", "Vg", "VgS", "VBS"]
+mc =["WLNuJJ", "Wjets_HT", "top", "VV", "VBS",  "ggWW", "Higgs", "DY", "VBF-Z", "Vg", "VVV"]
 
 ################################ EXPERIMENTAL UNCERTAINTIES  #################################
 
 # # #### Luminosity
 
-nuisances['lumi_Uncorrelated'] = {
-    'name': 'lumi_13TeV_2018',
-    'type': 'lnN',
-    'samples': dict((skey, '1.015') for skey in mc if skey not in ['top',"Wjets_HT"])
-}
+#nuisances['lumi_Uncorrelated'] = {
+#    'name': 'lumi_13TeV_2018',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.015') for skey in mc if skey not in ['top',"Wjets_HT"])
+#}
 
-nuisances['lumi_XYFact'] = {
-    'name': 'lumi_13TeV_XYFact',
-    'type': 'lnN',
-    'samples': dict((skey, '1.02') for skey in mc if skey not in ['top', "Wjets_HT"])
-}
+#nuisances['lumi_XYFact'] = {
+#    'name': 'lumi_13TeV_XYFact',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.02') for skey in mc if skey not in ['top', "Wjets_HT"])
+#}
 
-nuisances['lumi_LScale'] = {
-    'name': 'lumi_13TeV_LSCale',
-    'type': 'lnN',
-    'samples': dict((skey, '1.002') for skey in mc if skey not in ['top', "Wjets_HT"])
-}
+#nuisances['lumi_LScale'] = {
+#    'name': 'lumi_13TeV_LSCale',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.002') for skey in mc if skey not in ['top', "Wjets_HT"])
+#}
 
-nuisances['lumi_CurrCalib'] = {
-    'name': 'lumi_13TeV_CurrCalib',
-    'type': 'lnN',
-    'samples': dict((skey, '1.002') for skey in mc if skey not in ['top', "Wjets_HT"])
-}
+#nuisances['lumi_CurrCalib'] = {
+#    'name': 'lumi_13TeV_CurrCalib',
+#    'type': 'lnN',
+#    'samples': dict((skey, '1.002') for skey in mc if skey not in ['top', "Wjets_HT"])
+#}
 
 
 ##########Fakes
