@@ -119,11 +119,11 @@ aliases['Top_pTrw'] = {
 
 #########################################################################################
 
-#aliases['nCleanGenJet'] = {
-#    'linesToAdd': ['.L %s/src/PlotsConfigurations/Configurations/Differential/ngenjet.cc+' % os.getenv('CMSSW_BASE')],
-#    'class': 'CountGenJet',
-#    'samples': mc
-#}
+aliases['nCleanGenJet'] = {
+    'linesToAdd': ['.L %s/src/PlotsConfigurations/Configurations/Differential/ngenjet.cc+' % os.getenv('CMSSW_BASE')],
+    'class': 'CountGenJet',
+    'samples': mc
+}
 
 ##### DY Z pT reweighting
 aliases['getGenZpt_OTF'] = {
