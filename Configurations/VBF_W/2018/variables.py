@@ -124,13 +124,13 @@ variables['mjj']      = {   'name': 'mjj',            #   variable name
                         }
 
 variables['PV_npvs']      = {   'name': 'PV_npvs',            #   variable name    
-                            'range' : (50,0,50),    #   variable range
+                            'range' : (60,0,60),    #   variable range
                             'xaxis' : 'nPV',  #   x axis name
                             'fold' :3
                         }
 
 variables['PV_npvsGood']      = {   'name': 'PV_npvsGood',            #   variable name    
-                            'range' : (50,0,50),    #   variable range
+                            'range' : (60,0,60),    #   variable range
                             'xaxis' : 'PV_npvsGood',  #   x axis name
                             'fold' :3
                         }

@@ -3,7 +3,7 @@ import copy
 import inspect
 
 configurations = os.getenv("CMSSW_BASE") + "/src/PlotsConfigurations/Configurations/"
-conf_folder = configurations +"/VBF_W/2018/prov/"
+conf_folder = configurations +"/VBF_W/2018/"
 
 #aliases = {}
 
@@ -28,20 +28,28 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 #    'samples': mc
 #}
 
-#aliases['SingleLepton_trigEff_corrected'] = {
-#    'expr': '(abs(Lepton_pdgId[0])==11)*ele_trig_eff[0] +  (abs(Lepton_pdgId[0])==13)*TriggerEffWeight_1l',
-#    'samples': mc
-#}
+aliases['nCleanGenJet'] = {
+    'linesToAdd': ['.L %s/patches/triggerEff_1lep.cc+' % configurations],
+    'class': 'TrigEff_1lep',
+    'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),
+    'samples': mc
+}
 
-#aliases['SingleLepton_trigEff_corrected_up'] = {
-#    'expr': '(abs(Lepton_pdgId[0])==11)*ele_trig_eff[1] +  (abs(Lepton_pdgId[0])==13)*TriggerEffWeight_1l_u',
-#    'samples': mc
-#}
 
-#aliases['SingleLepton_trigEff_corrected_down'] = {
-#    'expr': '(abs(Lepton_pdgId[0])==11)*ele_trig_eff[2] +  (abs(Lepton_pdgId[0])==13)*TriggerEffWeight_1l_d',
-#    'samples': mc
-#}
+aliases['SingleLepton_trigEff_corrected'] = {
+    'expr': '(abs(Lepton_pdgId[0])==11)*ele_trig_eff[0] +  (abs(Lepton_pdgId[0])==13)*TriggerEffWeight_1l',
+    'samples': mc
+}
+
+aliases['SingleLepton_trigEff_corrected_up'] = {
+   'expr': '(abs(Lepton_pdgId[0])==11)*ele_trig_eff[1] +  (abs(Lepton_pdgId[0])==13)*TriggerEffWeight_1l_u',
+    'samples': mc
+}
+
+aliases['SingleLepton_trigEff_corrected_down'] = {
+    'expr': '(abs(Lepton_pdgId[0])==11)*ele_trig_eff[2] +  (abs(Lepton_pdgId[0])==13)*TriggerEffWeight_1l_d',
+    'samples': mc
+}
 ############################################
 # B tagging
 #loose 0.1241
@@ -120,7 +128,7 @@ aliases['Top_pTrw'] = {
 #########################################################################################
 
 aliases['nCleanGenJet'] = {
-    'linesToAdd': ['.L %s/src/PlotsConfigurations/Configurations/Differential/ngenjet.cc+' % os.getenv('CMSSW_BASE')],
+    'linesToAdd': ['.L %s/Differential/ngenjet.cc+' % configurations],
     'class': 'CountGenJet',
     'samples': mc
 }
