@@ -12,9 +12,13 @@
 #            && Mtw_lep < 185 \
 #            '
 
-supercut = '1'
+supercut = 'nLepton>=1  && Lepton_pt[0]>25 \
+            && Alt$(Lepton_pt[1],0)<=15 && Alt$(Lepton_isLoose[1],1)> 0.5 \
+            && (  Alt$(Lepton_isTightElectron_mvaFall17V1Iso_WP90[1], 0) < 0.5 \
+            && Alt$(Lepton_isTightMuon_cut_Tight_HWWW[1],0) < 0.5 )  \
+            '
 
-
+cuts['Z'] = '1'
 
 cuts['ele'] = 'abs(Lepton_pdgId[0])==11 \
                 && Lepton_pt[0] >= 40 \

@@ -75,12 +75,6 @@ wjets_palette = ['#DD2C00', '#FF3D00',  '#FF6D00','#F57C00', '#FFAB00', '#FFC400
 
 
 
-
-
-
-
-
-
 groupPlot['Higgs']  = {  
                 'nameHR' : "Higgs",
                 'isSignal' : 0,
@@ -96,20 +90,20 @@ groupPlot['VV+VVV+VBS']  = {
                 'samples'  : ['VVV', 'VV', 'VBS'],
                 'fill': 1001
               }
+              
+groupPlot['Others']  = {  
+                'nameHR' : "Others",
+                'isSignal' : 0,
+                'color'    : palette["Orange"],
+                'samples'  : ['ggWW', 'VBF-Z', 'Vg'],
+                'fill': 1001
+              }
 
 groupPlot['WLNuJJ']  = {  
                 'nameHR' : 'WLNuJJ',
                 'isSignal' : 1,
                 'color': colors['kRed']+1,   
                 'samples'  : ['WLNuJJ'],
-                'fill': 1001
-              }
-
-groupPlot['Others']  = {  
-                'nameHR' : "Others",
-                'isSignal' : 0,
-                'color'    : palette["Orange"],
-                'samples'  : ['ggWW', 'VBF-Z', 'Vg'],
                 'fill': 1001
               }
 

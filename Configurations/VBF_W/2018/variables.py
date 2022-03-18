@@ -37,14 +37,6 @@ variables['mtw1']  = {   'name': 'mtw1',
                         'fold' : 3
                        }
 
-
-#variables['mT2']  = {   'name': 'mT2',
-#                        'range' : (30, 20,300),
-#                        'xaxis' : 'm_{T}^{2} [GeV]',
-#                        'fold' : 3
-#                        }
-
-
 variables['puppimet']  = {
                         'name': 'PuppiMET_pt',
                         'range' : (20,0,200),
@@ -109,22 +101,11 @@ variables['jeteta2']  = {  'name': '(Sum$(CleanJet_pt>30)>1)*(Alt$(CleanJet_eta[
                          'fold'  : 3
                          }
 
-
-#variables['mjjbins']      = {   'name': 'mjj',            #   variable name    
-#                            'range' : ([500., 750., 1000., 1500., 2000., 4000.],),    #   variable range
-#                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
-#                            'fold' :3
-#                        }
-
-
-
 variables['mjj']      = {   'name': 'mjj',            #   variable name    
                             'range' : (50,0,5000),    #   variable range
                             'xaxis' : 'm_{jj} [GeV]',  #   x axis name
                             'fold' :3
                         }
-
-
 
 variables['detajj'] = {   'name': 'detajj',            #   variable name    
                             'range' : (80,-1,10),    #   variable range
@@ -134,6 +115,24 @@ variables['detajj'] = {   'name': 'detajj',            #   variable name
                             #'doWeight' : 1,
                             #'binX'     : 6,
                             #'binY'     : 4
+                        }
+
+variables['mjj']      = {   'name': 'mjj',            #   variable name    
+                            'range' : (50,0,5000),    #   variable range
+                            'xaxis' : 'm_{jj} [GeV]',  #   x axis name
+                            'fold' :3
+                        }
+
+variables['PV_npvs']      = {   'name': 'PV_npvs',            #   variable name    
+                            'range' : (50,0,50),    #   variable range
+                            'xaxis' : 'nPV',  #   x axis name
+                            'fold' :3
+                        }
+
+variables['PV_npvsGood']      = {   'name': 'PV_npvsGood',            #   variable name    
+                            'range' : (50,0,50),    #   variable range
+                            'xaxis' : 'PV_npvsGood',  #   x axis name
+                            'fold' :3
                         }
 
 #variables['events']  = {   'name': '1',      
