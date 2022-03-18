@@ -28,7 +28,7 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 #    'samples': mc
 #}
 
-aliases['nCleanGenJet'] = {
+aliases['ele_trig_eff'] = {
     'linesToAdd': ['.L %s/patches/triggerEff_1lep.cc+' % configurations],
     'class': 'TrigEff_1lep',
     'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),

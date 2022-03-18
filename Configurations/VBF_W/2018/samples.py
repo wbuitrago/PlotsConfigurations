@@ -90,11 +90,11 @@ LepWPWeight = LepWPWeight_1l
 #corrected trigger efficiency
 
 XSWeight   = 'XSWeight'
-#SFweight1l = [ 'puWeight', 'SingleLepton_trigEff_corrected[0]',
-#              'Lepton_RecoSF[0]',LepWPWeight_1l, LepWPCut_1l,
-#              'PUJetIdSF', 'BoostedWtagSF_nominal']  #btagSF removed
+SFweight1l = [ 'puWeight', 'SingleLepton_trigEff_corrected[0]',
+              'Lepton_RecoSF[0]',LepWPWeight_1l, LepWPCut_1l,
+              'PUJetIdSF', 'BoostedWtagSF_nominal']  #btagSF removed
 
-#SFweight = '*'.join(SFweight1l)
+SFweight = '*'.join(SFweight1l)
 
 GenLepMatch   = 'Lepton_genmatched[0]'
 
@@ -133,7 +133,7 @@ DataTrig = {
 
 samples['WLNuJJ']  = {  'name'   :  nanoGetSampleFiles(mcPrivateDirectory,'WLNuJJ_EWK'),
 #                        'weight' : XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch,
-                        'weight': XSWeight+'*'+GenLepMatch+'*'+METFilter_MC,
+                        'weight': XSWeight+'*'+GenLepMatch+'*'+METFilter_MC+'*'+SFweight,
                         'FilesPerJob' : 15,
                         'EventsPerJob' : 70000,
                     }
