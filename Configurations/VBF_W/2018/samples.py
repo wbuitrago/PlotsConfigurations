@@ -92,7 +92,7 @@ LepWPWeight = LepWPWeight_1l
 XSWeight   = 'XSWeight'
 SFweight1l = [ 'puWeight', 'SingleLepton_trigEff_corrected[0]',
               'Lepton_RecoSF[0]',LepWPWeight_1l, LepWPCut_1l,
-              'PUJetIdSF', 'BoostedWtagSF_nominal']  #btagSF removed
+              'PUJetIdSF']  #btagSF removed
 
 SFweight = '*'.join(SFweight1l)
 
