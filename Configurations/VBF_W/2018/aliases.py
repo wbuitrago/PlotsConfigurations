@@ -15,12 +15,6 @@ aliases['zeroJet'] = {
     'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
 }
 
-## cuts
-
-aliases['top_cr'] = {
-    'expr': 'mll>50 && ((zeroJet && !bVeto) || bReq)'
-}
-
 
 
 #aliases['nJets30']= {
@@ -105,6 +99,16 @@ aliases['nJetsBtag']= {
 # for s in systs:
 #   aliases['btagSF'+s+'up'] = { 'expr': '(bVeto*'+aliases['bVetoSF']['expr'].replace('shape','shape_up_'+s)+'+bReqTight*'+aliases['bReqSF']['expr'].replace('shape','shape_up_'+s)+'+ ( (!bVeto) && (!bReqTight) ))', 'samples':mc  }
 #   aliases['btagSF'+s+'down'] = { 'expr': '(bVeto*'+aliases['bVetoSF']['expr'].replace('shape','shape_down_'+s)+'+bReqTight*'+aliases['bReqSF']['expr'].replace('shape','shape_down_'+s)+'+ ( (!bVeto) && (!bReqTight) ))', 'samples':mc }
+
+
+
+
+## cuts
+
+aliases['top_cr'] = {
+    'expr': '((zeroJet && !bVeto) || bReq)'
+}
+
 
 # ################################################################################################
 
