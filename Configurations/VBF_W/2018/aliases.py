@@ -11,6 +11,18 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 
 ####################
 
+aliases['zeroJet'] = {
+    'expr': 'Alt$(CleanJet_pt[0], 0) < 30.'
+}
+
+## cuts
+
+aliases['top_cr'] = {
+    'expr': 'mll>50 && ((zeroJet && !bVeto) || bReq)'
+}
+
+
+
 #aliases['nJets30']= {
 #    'expr' : 'Sum$(CleanJet_pt[CleanJetNotFat_jetIdx] >= 30)'
 #}
@@ -18,22 +30,22 @@ mc = [skey for skey in samples if skey not in ('Fake', 'DATA')]
 ###################
 # trigger eff
 
-#aliases['ele_trig_eff'] = {
-#    'linesToAdd': [
-#        'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
-#        '.L %s/src/PlotsConfigurations/Configurations/patches/triggerEff_1lep.cc+' % os.getenv('CMSSW_BASE')
-#    ],
-#    'class': 'TrigEff_1lep',
-#    'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),
-#    'samples': mc
-#}
-
 aliases['ele_trig_eff'] = {
-    'linesToAdd': ['.L %s/patches/triggerEff_1lep.cc+' % configurations],
+    'linesToAdd': [
+        'gSystem->AddIncludePath("-I%s/src");' % os.getenv('CMSSW_BASE'),
+        '.L %s/src/PlotsConfigurations/Configurations/patches/triggerEff_1lep.cc+' % os.getenv('CMSSW_BASE')
+    ],
     'class': 'TrigEff_1lep',
     'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),
     'samples': mc
 }
+
+#aliases['ele_trig_eff'] = {
+#    'linesToAdd': ['.L %s/patches/triggerEff_1lep.cc+' % configurations],
+#    'class': 'TrigEff_1lep',
+#    'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),
+#    'samples': mc
+#}
 
 
 aliases['SingleLepton_trigEff_corrected'] = {
