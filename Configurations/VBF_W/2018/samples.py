@@ -90,7 +90,7 @@ LepWPWeight = LepWPWeight_1l
 #corrected trigger efficiency
 
 XSWeight   = 'XSWeight'
-SFweight1l = ['SingleLepton_trigEff_corrected[0]',
+SFweight1l = ['puWeight', SingleLepton_trigEff_corrected[0]',
               'Lepton_RecoSF[0]',LepWPWeight_1l, LepWPCut_1l,
               'PUJetIdSF']  #btagSF removed
 
@@ -243,7 +243,6 @@ samples['VV']  = { 'name' :  nanoGetSampleFiles(mcPrivateDirectory,'WmToLNu_WmTo
 
 ###############################################
 
-#29
 ############ VBS ############
 
 samples['VBS']  = { 'name' :  nanoGetSampleFiles(mcPrivateDirectory,'WmToLNu_ZTo2J') 
@@ -275,6 +274,8 @@ samples['ggWW']  = {  'name'   :
                     'EventsPerJob' : 70000,
                   }
 
+
+##VBF-Z has an updated k-factor and different sample files
 ##################################################
 
 ########### Higgs Related #############
@@ -317,6 +318,7 @@ samples['DY'] = {    'name'   :   #nanoGetSampleFiles(mcPrivateDirectory,'DYJets
                       #  'suppressNegativeNuisances' :['all'],
                 }
 
+#VBF-Z does use less sample (only M-50 and applies dome different weights (but uses signal at higher energies))
 #CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50', 'DYJetsToLL_M-50_ext2'])
 addSampleWeight(samples,'DY','DYJetsToLL_M-50','DY_NLO_pTllrw')
 addSampleWeight(samples,'DY','DYJetsToLL_M-50_ext2','DY_NLO_pTllrw')
@@ -338,7 +340,7 @@ addSampleWeight(samples,'DY','DYJetsToLL_M-4to50_HT-400to600','DY_LO_pTllrw')
 addSampleWeight(samples,'DY','DYJetsToLL_M-4to50_HT-600toInf','DY_LO_pTllrw')
 
 ################################
-#58
+
 ########## VBF - Z #############
 
 samples['VBF-Z']  = {   'name'   :  nanoGetSampleFiles(mcPrivateDirectory,'EWKZ2Jets_ZToLL_M-50'),
@@ -348,6 +350,7 @@ samples['VBF-Z']  = {   'name'   :  nanoGetSampleFiles(mcPrivateDirectory,'EWKZ2
                         'EventsPerJob' : 70000,
                   }
 
+##VBF-Z --> slighly different weight
 ###############################
 
 
@@ -366,6 +369,7 @@ samples['Vg']  = {  'name'   :   nanoGetSampleFiles(mcPrivateDirectory,'Wg_MADGR
 # the following baseW correction is needed in both v5 and v6 (for Zg, Not for ZGToLLG)
 #addSampleWeight(samples, 'Vg', 'Zg', '0.448')
 
+##VBF-Z has different weights (common)+genstar
 ###############################
 
 

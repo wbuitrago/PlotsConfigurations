@@ -21,13 +21,14 @@ supercut = 'nLepton>=1  && Lepton_pt[0]>25 \
 cuts['Z'] = '1'
 
 cuts['ele'] = 'abs(Lepton_pdgId[0])==11 \
-                && Lepton_pt[0] >= 40 \
                 '
 
 
 cuts['mu'] = 'abs(Lepton_pdgId[0])==13 \
-                && Lepton_pt[0] >= 40 \
              '    
+
+# Top control region
+cuts['topcr']  = '((zeroJet && !bVeto) || bReq)'
 
 
 #cuts['E1'] = 'Lepton_pt[0] >= 30. \

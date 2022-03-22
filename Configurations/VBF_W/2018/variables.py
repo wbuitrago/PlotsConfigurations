@@ -135,6 +135,14 @@ variables['PV_npvsGood']      = {   'name': 'PV_npvsGood',            #   variab
                             'fold' :3
                         }
 
+
+##control
+variables['ele_trig_eff[0]']      = {   'name': 'ele_trig_eff[0]',            #   variable name    
+                            'range' : (100,0,10),    #   variable range
+                            'xaxis' : 'ele_trig_eff[0]',  #   x axis name
+                            'fold' :3
+                        }
+
 #variables['events']  = {   'name': '1',      
 #                        'range' : (1,0,2),  
 #                        'xaxis' : 'events', 
