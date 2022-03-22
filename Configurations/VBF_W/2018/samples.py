@@ -90,9 +90,9 @@ LepWPWeight = LepWPWeight_1l
 #corrected trigger efficiency
 
 XSWeight   = 'XSWeight'
-SFweight1l = ['puWeight', SingleLepton_trigEff_corrected[0],
+SFweight1l = [ 'puWeight', 'SingleLepton_trigEff_corrected[0]',
               'Lepton_RecoSF[0]',LepWPWeight_1l, LepWPCut_1l,
-              'PUJetIdSF']  #btagSF removed
+              'btagSF','PUJetIdSF'] #btagSF removed
 
 SFweight = '*'.join(SFweight1l)
 
