@@ -295,8 +295,8 @@ samples['Higgs']  = {   'name'   :  nanoGetSampleFiles(mcPrivateDirectory,'GluGl
 
 DY_photon_filter = '( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 && Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )'
 
-samples['DY'] = {    'name'   :   nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50') #Don't use LO(_ext0)! DYMVA Training!
-                                  + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_ext2')
+samples['DY'] = {    'name'   :   #nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50') #Don't use LO(_ext0)! DYMVA Training!
+                                  nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_ext2')
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-10to50-LO_ext1')
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_HT-70to100')
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_HT-100to200')
@@ -320,7 +320,7 @@ samples['DY'] = {    'name'   :   nanoGetSampleFiles(mcPrivateDirectory,'DYJetsT
 
 #VBF-Z does use less sample (only M-50 and applies dome different weights (but uses signal at higher energies))
 #CombineBaseW(samples, 'DY', ['DYJetsToLL_M-50', 'DYJetsToLL_M-50_ext2'])
-addSampleWeight(samples,'DY','DYJetsToLL_M-50','DY_NLO_pTllrw')
+#addSampleWeight(samples,'DY','DYJetsToLL_M-50','DY_NLO_pTllrw')
 addSampleWeight(samples,'DY','DYJetsToLL_M-50_ext2','DY_NLO_pTllrw')
 addSampleWeight(samples,'DY','DYJetsToLL_M-10to50-LO_ext1','DY_LO_pTllrw') 
 addSampleWeight(samples,'DY','DYJetsToLL_M-50',               '(LHE_HT < 70)')

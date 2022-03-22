@@ -31,7 +31,7 @@ aliases['ele_trig_eff'] = {
     ],
     'class': 'TrigEff_1lep',
     'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),
-    'samples': mc
+    #'samples': mc
 }
 
 #aliases['ele_trig_eff'] = {
