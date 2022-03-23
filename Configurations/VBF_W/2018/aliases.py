@@ -31,16 +31,8 @@ aliases['ele_trig_eff'] = {
     ],
     'class': 'TrigEff_1lep',
     'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),
-    #'samples': mc
+    'samples': mc
 }
-
-#aliases['ele_trig_eff'] = {
-#    'linesToAdd': ['.L %s/patches/triggerEff_1lep.cc+' % configurations],
-#    'class': 'TrigEff_1lep',
-#    'args': ('/afs/cern.ch/user/a/arun/public/fixedTextfiles/2018/mvaid/Ele32_pt_eta_efficiency_withSys_Run2018.txt'),
-#    'samples': mc
-#}
-
 
 aliases['SingleLepton_trigEff_corrected'] = {
     'expr': '(abs(Lepton_pdgId[0])==11)*ele_trig_eff[0] +  (abs(Lepton_pdgId[0])==13)*TriggerEffWeight_1l',
@@ -66,11 +58,11 @@ aliases['bVeto'] = {
 }
 
 aliases['bReq'] = {
-    'expr': '(Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1)'
+    'expr': '(Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 2)'
 }
 
 aliases['bReqTight'] = {
-    'expr': '(Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.7527) >= 1)'
+    'expr': '(Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.7527) >= 2)'
 }
 
 

@@ -28,7 +28,7 @@ cuts['mu'] = 'abs(Lepton_pdgId[0])==13 \
              '    
 
 # Top control region
-cuts['topcr']  = '((zeroJet && !bVeto) || bReq)'
+cuts['topcr']  = '((zeroJet && !bVeto) || bReqTight)'
 
 
 #cuts['E1'] = 'Lepton_pt[0] >= 30. \
