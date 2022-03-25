@@ -147,13 +147,13 @@ groupPlot['Wjets_HT_PUJets']  = {
                 'fill': 1001
                 }
 
- groupPlot['Fake']  = {  
-                 'nameHR' : "Non-prompt",
-                 'isSignal' : 0,
-                 'color': palette["LightBlue"],   
-                 'samples'  : ['Fake'],
-                 'fill': 1001
-             }
+groupPlot['Fake']  = {  
+                'nameHR' : "Non-prompt",
+                'isSignal' : 0,
+                'color': palette["LightBlue"],   
+                'samples'  : ['Fake'],
+                'fill': 1001
+            }
 
 
 #groupPlot['top']  = {  

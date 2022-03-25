@@ -434,6 +434,14 @@ samples['Fake'] = {
   'FilesPerJob' : 40,
 }
 
+for _, sd in DataRun:
+  for pd in DataSets:
+    # BE Careful --> we use directory_data because the Lepton tight cut was not applied in post-processing
+    files = nanoGetSampleFiles(dataPrivateDirectory, pd + '_' + sd)
+    samples['Fake']['name'].extend(files)
+    samples['Fake']['weights'].extend([DataTrig[pd]] * len(files))
+
+
 #########################################
 ################ DATA ###################
 #########################################

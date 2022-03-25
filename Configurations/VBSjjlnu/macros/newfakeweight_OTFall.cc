@@ -97,8 +97,8 @@ newFakeWeightOTFall::newFakeWeightOTFall(string ele_WP, string mu_WP, string in_
   //inputfile->Close();
   fr_ele_file = new TFile(fr_ele_path.c_str(), "read");
   pr_ele_file = new TFile(pr_ele_path.c_str(), "read");
-  fr_ele_h2 = (TH2F*) fr_ele_file->Get("FR_pT_eta_EWKcorr");   
-  pr_ele_h2 = (TH2F*) pr_ele_file->Get("PR_pT_eta");
+  fr_ele_h2 = (TH2F*) fr_ele_file->Get("FR_pT_eta_EWKcorr"); 
+  pr_ele_h2 = (TH2F*) pr_ele_file->Get("PR_pT_eta");  
   fr_ele_h2->SetDirectory(0);
   pr_ele_h2->SetDirectory(0);
   fr_ele_file->Close();
@@ -107,7 +107,7 @@ newFakeWeightOTFall::newFakeWeightOTFall(string ele_WP, string mu_WP, string in_
   fr_mu_file = new TFile(fr_mu_path.c_str(), "read");
   pr_mu_file = new TFile(pr_mu_path.c_str(), "read");
   fr_mu_h2 = (TH2F*) fr_mu_file->Get("FR_pT_eta_EWKcorr");   
-  pr_mu_h2 = (TH2F*) pr_mu_file->Get("PR_pT_eta");
+  pr_mu_h2 = (TH2F*) pr_mu_file->Get("PR_pT_eta");  
   fr_mu_h2->SetDirectory(0);
   pr_mu_h2->SetDirectory(0);
   fr_mu_file->Close();
