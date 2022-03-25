@@ -57,7 +57,12 @@ structure['Higgs']  = {
                   'isData'   : 0 
               }
 
-structure['DY']  = {  
+structure['DY_M-50']  = {  
+                  'isSignal' : 0,
+                  'isData'   : 0
+              }
+
+structure['DY_else']  = {  
                   'isSignal' : 0,
                   'isData'   : 0
               }
@@ -71,6 +76,16 @@ structure['Vg']  = {
                   'isSignal' : 0,
                   'isData'   : 0 
               }
+
+structure['VgS']  = {  
+                  'isSignal' : 0,
+                  'isData'   : 0 
+              }
+
+#structure['WWewk']  = {  
+#                  'isSignal' : 0,
+#                  'isData'   : 0 
+#              }
 
 structure['VVV']  = {  
                   'isSignal' : 0,

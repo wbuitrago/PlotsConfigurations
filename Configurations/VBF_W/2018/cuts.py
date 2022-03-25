@@ -27,6 +27,18 @@ cuts['ele'] = 'abs(Lepton_pdgId[0])==11 \
 cuts['mu'] = 'abs(Lepton_pdgId[0])==13 \
              '    
 
+cuts['horn_ele'] = '((Alt$(abs(CleanJet_eta[0]), 3) <2.5) || (Alt$(abs(CleanJet_eta[0]), 0) > 3.))\
+                    && ((Alt$(abs(CleanJet_eta[1]), 3) <2.5) || (Alt$(abs(CleanJet_eta[1]), 0) >3.))\
+                    && Alt$(abs(Lepton_pdgId[0]),0) == 11'
+
+cuts['horn_mu'] = '((Alt$(abs(CleanJet_eta[0]), 3) <2.5) || (Alt$(abs(CleanJet_eta[0]), 0) > 3.))\
+                    && ((Alt$(abs(CleanJet_eta[1]), 3) <2.5) || (Alt$(abs(CleanJet_eta[1]), 0) >3.))\
+                    && Alt$(abs(Lepton_pdgId[0]),0) == 13'
+
+cuts['crazy_cat1'] = '((Alt$(abs(CleanJet_eta[0]), 3) <2.5) || (Alt$(abs(CleanJet_eta[0]), 0) > 3.))\
+                    && ((Alt$(abs(CleanJet_eta[1]), 3) <2.5) || (Alt$(abs(CleanJet_eta[1]), 0) >3.))\
+                    && nLepton==1'
+                    
 # Top control region
 cuts['topcr']  = '((zeroJet && !bVeto) || bReqTight)'
 

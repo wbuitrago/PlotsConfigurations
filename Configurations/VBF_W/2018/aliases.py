@@ -17,6 +17,42 @@ aliases['zeroJet'] = {
 
 
 
+
+###### user defined 
+
+############# L1 ###########
+aliases ['x_ptl1'] = {
+    'expr': 'Lepton_pt[0] * TMath::Cos(Lepton_phi[0])'
+}
+
+aliases ['y_ptl1'] = {
+    'expr': 'Lepton_pt[0] * TMath::Sen(Lepton_phi[0])'
+}
+
+
+########## MET ############
+aliases ['x_ptMET'] = {
+    'expr': 'Lepton_pt[0] * TMath::Cos(PuppiMET_phi)'
+}
+
+aliases ['y_ptMET'] = {
+    'expr': 'PuppiMET_pt * TMath::Sen(PuppiMET_phi)'
+}
+
+
+########### W ###########
+aliases['x_ptW'] = {
+    'expr': 'x_ptl1 + x_ptMET'
+}
+
+aliases['y_ptW'] = {
+    'expr': 'y_ptl1 + y_ptMET'
+}
+
+aliases['ptW'] = {
+    'expr': 'TMath::Sqrt(x_ptW*x_ptW + y_ptW*y_ptW)'
+}
+
 #aliases['nJets30']= {
 #    'expr' : 'Sum$(CleanJet_pt[CleanJetNotFat_jetIdx] >= 30)'
 #}
@@ -93,6 +129,15 @@ aliases['nJetsBtag']= {
 #   aliases['btagSF'+s+'down'] = { 'expr': '(bVeto*'+aliases['bVetoSF']['expr'].replace('shape','shape_down_'+s)+'+bReqTight*'+aliases['bReqSF']['expr'].replace('shape','shape_down_'+s)+'+ ( (!bVeto) && (!bReqTight) ))', 'samples':mc }
 
 
+aliases['hardJets'] = {
+    'expr':  'Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25',
+    'samples': ['Wjets_HT']
+}
+
+aliases['PUJets'] = {
+    'expr':  '!(Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25)',
+    'samples': ['Wjets_HT']
+}
 
 
 ## cuts
@@ -145,58 +190,58 @@ aliases['nCleanGenJet'] = {
 aliases['getGenZpt_OTF'] = {
     'linesToAdd':['.L %s/src/PlotsConfigurations/Configurations/patches/getGenZpt.cc+' % os.getenv('CMSSW_BASE')],
     'class': 'getGenZpt',
-    'samples': ['DY']
+    'samples': mc
 }
 handle = open('%s/src/PlotsConfigurations/Configurations/patches/DYrew30.py' % os.getenv('CMSSW_BASE'),'r')
 exec(handle)
 handle.close()
 aliases['DY_NLO_pTllrw'] = {
     'expr': '('+DYrew['2018']['NLO'].replace('x', 'getGenZpt_OTF')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': mc
 }
 aliases['DY_LO_pTllrw'] = {
     'expr': '('+DYrew['2018']['LO'].replace('x', 'getGenZpt_OTF')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
-    'samples': ['DY']
+    'samples': mc
 }
 
 
 ###########################################################################################
 #fakes
 
-#basedir_fakes = configurations + "/VBSjjlnu/weights_files/fake_rates/2018"
+basedir_fakes = configurations + "/VBSjjlnu/weights_files/fake_rates/2018"
 
 ets = ["25", "35", "45"]
 
 el_pr_file = os.getenv('CMSSW_BASE') + "/src/LatinoAnalysis/NanoGardener/python/data/fake_prompt_rates/Full2018v7/mvaFall17V1Iso_WP90/ElePR.root"
 mu_pr_file = os.getenv('CMSSW_BASE') + "/src/LatinoAnalysis/NanoGardener/python/data/fake_prompt_rates/Full2018v7/cut_Tight_HWWW/MuonPR.root"
 
-#for et in ets:
-#    el_fr_file = basedir_fakes + "/plot_ElCh_JetEt"+et+"_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
-#    mu_fr_file = basedir_fakes + "/plot_MuCh_JetEt"+et+"_l1_etaVpt_ptmu_fw_ewk_2D.root"
-#    aliases['fakeWeight_'+et] = { 
-#        'class': 'newFakeWeightOTFall',
-#        'args': (eleWP, muWP, copy.deepcopy(el_fr_file), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file), copy.deepcopy(mu_pr_file), False, False, False),  #doabsEta=False, no stat variations
-#        'linesToAdd' : [
-#            'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-#            '.L {}/VBSjjlnu/macros/newfakeweight_OTFall.cc+'.format(configurations)
-#        ],     
-#        'samples': ["Fake"]
-#    }
+for et in ets:
+    el_fr_file = basedir_fakes + "/plot_ElCh_JetEt"+et+"_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
+    mu_fr_file = basedir_fakes + "/plot_MuCh_JetEt"+et+"_l1_etaVpt_ptmu_fw_ewk_2D.root"
+    aliases['fakeWeight_'+et] = { 
+        'class': 'newFakeWeightOTFall',
+        'args': (eleWP, muWP, copy.deepcopy(el_fr_file), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file), copy.deepcopy(mu_pr_file), False, False, False),  #doabsEta=False, no stat variations
+        'linesToAdd' : [
+            'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+            '.L {}/VBSjjlnu/macros/newfakeweight_OTFall.cc+'.format(configurations)
+        ],     
+        'samples': ["Fake"]
+    }
 
 #stat variations
-# el_fr_file35 = basedir_fakes + "/plot_ElCh_JetEt35_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
-# mu_fr_file35 = basedir_fakes + "/plot_MuCh_JetEt35_l1_etaVpt_ptmu_fw_ewk_2D.root"
+ el_fr_file35 = basedir_fakes + "/plot_ElCh_JetEt35_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
+ mu_fr_file35 = basedir_fakes + "/plot_MuCh_JetEt35_l1_etaVpt_ptmu_fw_ewk_2D.root"
 
-# aliases['fakeWeight_35_statUp'] = { 
-#         'class': 'newFakeWeightOTFall',
-#         'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, True, False),   
-#         'samples': ["Fake"]
-#     }
-# aliases['fakeWeight_35_statDo'] = { 
-#         'class': 'newFakeWeightOTFall',
-#         'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, False, True), 
-#         'samples': ["Fake"]
-#     }
+ aliases['fakeWeight_35_statUp'] = { 
+         'class': 'newFakeWeightOTFall',
+         'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, True, False),   
+         'samples': ["Fake"]
+     }
+ aliases['fakeWeight_35_statDo'] = { 
+         'class': 'newFakeWeightOTFall',
+         'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, False, True), 
+         'samples': ["Fake"]
+     }
 
 
 ###################################3
@@ -452,3 +497,8 @@ aliases['gstarHigh'] = {
 # aliases['DNNoutput'] = {
 #     'expr': '(VBS_category==0)*(DNNoutput_boosted) + (VBS_category==1)*(DNNoutput_resolved)'
 # }
+
+aliases['lhe_mjj'] = {
+    'expr': 'TMath::Sqrt(2. * LHEPart_pt[4] * LHEPart_pt[5] * (TMath::CosH(LHEPart_eta[4] - LHEPart_eta[5]) - TMath::Cos(LHEPart_phi[4] - LHEPart_phi[5])))',
+    'samples': ['VBF-Z']
+}

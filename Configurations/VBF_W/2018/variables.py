@@ -19,7 +19,7 @@ variables['pt1']  = {   'name': 'Lepton_pt[0]',
                         }
 
 variables['eta1']  = {  'name': 'Lepton_eta[0]',     
-                        'range' : (30,-3,3),   
+                        'range' : (24,-2.4,2.4),   
                         'xaxis' : '#eta 1st lep',
                         'fold'  : 3                         
                         }
@@ -32,14 +32,14 @@ variables['phi1']  = {  'name': 'Lepton_phi[0]',
                         }
 
 variables['mtw1']  = {   'name': 'mtw1',
-                        'range' : (30,0,300),
+                        'range' : (20,0,200),
                          'xaxis' : 'm_{T}^{l1+MET} [GeV]',
                         'fold' : 3
                        }
 
 variables['puppimet']  = {
                         'name': 'PuppiMET_pt',
-                        'range' : (20,0,200),
+                        'range' : (30,0,300),
                         'xaxis' : 'puppimet [GeV]',
                         'fold'  : 3
                         }
@@ -58,7 +58,26 @@ variables['nlep_10']  = {
                          'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                          }               
 
+variables['nlep']  = {
+                         'name': 'nLepton',     
+                         'range' : (20,0,20),   
+                         'xaxis' : 'Number of leptons',
+                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                         }      
 
+
+variables['dphilmet1']  = {   'name': 'dphilmet1',     
+                        'range' : (30,0,3.14),   
+                        'xaxis' : '#Delta#phi_{l1, MET}',
+                        'fold' : 3
+                        }
+
+
+variables['ptW']  = {   'name': 'ptW',     
+                        'range' : (100,0,500),   
+                        'xaxis' : 'pT(W) [GeV]',
+                        'fold' : 3
+                        }
 
 ############# getti ###################
 variables['njet_30']  = {
@@ -77,14 +96,14 @@ variables['njet_40']  = {
 
 variables['jetpt1']  = {
                         'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
-                        'range' : (100,0,1000),
+                        'range' : (100,0,500),
                         'xaxis' : 'p_{T} 1st jet',
                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                         }
 
 variables['jetpt2']  = {
                          'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[1], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
-                         'range' : (40,0,400),
+                         'range' : (100,0,500),
                          'xaxis' : 'p_{T} 2nd jet',
                          'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                          }
@@ -123,6 +142,39 @@ variables['mjj']      = {   'name': 'mjj',            #   variable name
                             'fold' :3
                         }
 
+variables['dphijet1met']  = {   'name': 'dphijet1met',     
+                        'range' : (30,0,3.14),   
+                        'xaxis' : '#Delta#phi_{J1, MET}',
+                        'fold' : 3
+                        }
+
+variables['dphijet2met']  = {   'name': 'dphijet2met',     
+                        'range' : (30,0,3.14),   
+                        'xaxis' : '#Delta#phi_{J2, MET}',
+                        'fold' : 3
+                        }
+
+variables['dphijjmet']  = {   'name': 'dphijjmet',     
+                        'range' : (30,0,3.14),   
+                        'xaxis' : '#Delta#phi_{JJ, MET}',
+                        'fold' : 3
+                        }
+
+variables['dphijjmet_cut']  = {   'name': 'dphijjmet_cut',     
+                        'range' : (30,0,3.14),   
+                        'xaxis' : '#Delta#phi_{JJ, MET}_cut',
+                        'fold' : 3
+                        }
+
+variables['dphilep1jet1']  = {   'name': 'dphilep1jet1',     
+                        'range' : (30,0,3.14),   
+                        'xaxis' : '#Delta#phi_{L1, J1}',
+                        'fold' : 3
+                        }
+
+
+
+#PU
 variables['PV_npvs']      = {   'name': 'PV_npvs',            #   variable name    
                             'range' : (60,0,60),    #   variable range
                             'xaxis' : 'nPV',  #   x axis name
@@ -262,9 +314,3 @@ variables['PV_npvsGood']      = {   'name': 'PV_npvsGood',            #   variab
 #                        'fold' : 3
 #                        }
 
-
-#variables['dphillmet']  = {   'name': 'dphillmet',     
-#                        'range' : (30,0,3.14),   
-#                        'xaxis' : '#Delta#phi_{ll, MET}',
-#                        'fold' : 3
-#                        }
