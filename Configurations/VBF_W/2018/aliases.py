@@ -26,7 +26,7 @@ aliases ['x_ptl1'] = {
 }
 
 aliases ['y_ptl1'] = {
-    'expr': 'Lepton_pt[0] * TMath::Sen(Lepton_phi[0])'
+    'expr': 'Lepton_pt[0] * TMath::Sin(Lepton_phi[0])'
 }
 
 
@@ -36,7 +36,7 @@ aliases ['x_ptMET'] = {
 }
 
 aliases ['y_ptMET'] = {
-    'expr': 'PuppiMET_pt * TMath::Sen(PuppiMET_phi)'
+    'expr': 'PuppiMET_pt * TMath::Sin(PuppiMET_phi)'
 }
 
 
@@ -229,15 +229,15 @@ for et in ets:
     }
 
 #stat variations
- el_fr_file35 = basedir_fakes + "/plot_ElCh_JetEt35_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
- mu_fr_file35 = basedir_fakes + "/plot_MuCh_JetEt35_l1_etaVpt_ptmu_fw_ewk_2D.root"
+el_fr_file35 = basedir_fakes + "/plot_ElCh_JetEt35_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
+mu_fr_file35 = basedir_fakes + "/plot_MuCh_JetEt35_l1_etaVpt_ptmu_fw_ewk_2D.root"
 
- aliases['fakeWeight_35_statUp'] = { 
+aliases['fakeWeight_35_statUp'] = { 
          'class': 'newFakeWeightOTFall',
          'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, True, False),   
          'samples': ["Fake"]
      }
- aliases['fakeWeight_35_statDo'] = { 
+aliases['fakeWeight_35_statDo'] = { 
          'class': 'newFakeWeightOTFall',
          'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, False, True), 
          'samples': ["Fake"]

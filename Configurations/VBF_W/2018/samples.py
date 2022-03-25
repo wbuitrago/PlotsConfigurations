@@ -426,13 +426,13 @@ samples['VVV']  = {  'name'   :   nanoGetSampleFiles(mcPrivateDirectory,'ZZZ')
 fakeW = 'fakeWeight_35'
 
 ### Fakes
-#samples['Fake'] = {
-#  'name': [],
-#  'weight': METFilter_DATA+'*'+fakeW,
-#  'weights': [],
-#  'isData': ['all'],
-#  'FilesPerJob' : 40,
-#}
+samples['Fake'] = {
+  'name': [],
+  'weight': METFilter_DATA+'*'+fakeW,
+  'weights': [],
+  'isData': ['all'],
+  'FilesPerJob' : 40,
+}
 
 #########################################
 ################ DATA ###################

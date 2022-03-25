@@ -78,7 +78,7 @@ wjets_palette = ['#DD2C00', '#FF3D00',  '#FF6D00','#F57C00', '#FFAB00', '#FFC400
 groupPlot['Higgs']  = {  
                 'nameHR' : "Higgs",
                 'isSignal' : 0,
-                'color'    : palette["LightBlue"],
+                'color'    : colors['kWhite'],
                 'samples'  : ['Higgs'],
                 'fill': 1001
               }
@@ -147,13 +147,13 @@ groupPlot['Wjets_HT_PUJets']  = {
                 'fill': 1001
                 }
 
-# groupPlot['Fake']  = {  
-#                 'nameHR' : "Non-prompt",
-#                 'isSignal' : 0,
-#                 'color': palette["LightBlue"],   
-#                 'samples'  : ['Fake'],
-#                 'fill': 1001
-#             }
+ groupPlot['Fake']  = {  
+                 'nameHR' : "Non-prompt",
+                 'isSignal' : 0,
+                 'color': palette["LightBlue"],   
+                 'samples'  : ['Fake'],
+                 'fill': 1001
+             }
 
 
 #groupPlot['top']  = {  
@@ -270,6 +270,14 @@ plot['VgS'] = {
                 }
 
 plot['VVV'] = {   
+                 'color': colors['kAzure']-1,
+                 'isSignal' : 0,
+                 'isData'   : 0, 
+                 'scale'    : 1.0 
+                }
+
+
+plot['Fake'] = {   
                  'color': colors['kAzure']-1,
                  'isSignal' : 0,
                  'isData'   : 0, 
