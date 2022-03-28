@@ -61,6 +61,11 @@ mcPrivateDirectory = os.path.join(treeBaseDirPrivate,  mcProduction , mcSteps + 
 dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps + '__' + skim)
 dataPrivateDirectory = os.path.join(treeBaseDirPrivate, dataReco, dataSteps + '__' + skim)
 
+
+############################# PROVA
+treeBaseDir_SMP = '/eos/cms/store/group/phys_smp/VJets_NLO_VBSanalyses/'
+directory_data   = os.path.join(treeBaseDir_SMP, dataReco+ '_skim', dataSteps)
+
 def CombineBaseW(samples, proc, samplelist):
   newbaseW = getBaseWnAOD(mcPrivateDirectory, 'Autumn18_102X_nAODv7_Full2018v7', samplelist)
   for s in samplelist:
@@ -450,7 +455,7 @@ samples['DATA']  = {   'name': [ ] ,
                        'weight' : METFilter_DATA+'*'+LepWPCut,
                        'weights' : [ ],
                        'isData': ['all'],
-                       'FilesPerJob' : 40,         
+                       'FilesPerJob' : 60,         
             }
 
 for Run in DataRun :

@@ -142,31 +142,31 @@ variables['mjj']      = {   'name': 'mjj',            #   variable name
                             'fold' :3
                         }
 
-variables['dphijet1met']  = {   'name': 'dphijet1met',     
+variables['dphijet1met']  = {   'name': 'abs(dphijet1met)',     
                         'range' : (30,0,3.14),   
                         'xaxis' : '#Delta#phi_{J1, MET}',
                         'fold' : 3
                         }
 
-variables['dphijet2met']  = {   'name': 'dphijet2met',     
+variables['dphijet2met']  = {   'name': 'abs(dphijet2met)',     
                         'range' : (30,0,3.14),   
                         'xaxis' : '#Delta#phi_{J2, MET}',
                         'fold' : 3
                         }
 
-variables['dphijjmet']  = {   'name': 'dphijjmet',     
+variables['dphijjmet']  = {   'name': 'abs(dphijjmet)',     
                         'range' : (30,0,3.14),   
                         'xaxis' : '#Delta#phi_{JJ, MET}',
                         'fold' : 3
                         }
 
-variables['dphijjmet_cut']  = {   'name': 'dphijjmet_cut',     
+variables['dphijjmet_cut']  = {   'name': 'abs(dphijjmet_cut)',     
                         'range' : (30,0,3.14),   
                         'xaxis' : '#Delta#phi_{JJ, MET}_cut',
                         'fold' : 3
                         }
 
-variables['dphilep1jet1']  = {   'name': 'dphilep1jet1',     
+variables['dphilep1jet1']  = {   'name': 'abs(dphilep1jet1)',     
                         'range' : (30,0,3.14),   
                         'xaxis' : '#Delta#phi_{L1, J1}',
                         'fold' : 3
