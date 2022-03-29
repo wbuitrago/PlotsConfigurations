@@ -101,6 +101,13 @@ variables['jetpt1']  = {
                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                         }
 
+variables['jetpt1_easy']  = {
+                        'name': 'CleanJet_pt[0]',
+                        'range' : (100,0,500),
+                        'xaxis' : 'p_{T} 1st jet',
+                        'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                        }
+
 variables['jetpt2']  = {
                          'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_pt[1], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
                          'range' : (100,0,500),
@@ -108,17 +115,38 @@ variables['jetpt2']  = {
                          'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                          }
 
+variables['jetpt2_easy']  = {
+                        'name': 'CleanJet_pt[1]',
+                        'range' : (100,0,500),
+                        'xaxis' : 'p_{T} 1st jet',
+                        'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                        }
+
 variables['jeteta1']  = {  'name': '(Sum$(CleanJet_pt>30)>0)*(Alt$(CleanJet_eta[0], 0)) - (Sum$(CleanJet_pt>30)==0)*99',
                          'range' : (40,-5.0,5.0),
                          'xaxis' : '#eta 1st jet',
                          'fold'  : 3
                        }
 
+variables['jeteta1_easy']  = {
+                        'name': 'CleanJet_eta[0]',
+                        'range' : (100,0,500),
+                        'xaxis' : 'p_{T} 1st jet',
+                        'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                        }
+
 variables['jeteta2']  = {  'name': '(Sum$(CleanJet_pt>30)>1)*(Alt$(CleanJet_eta[1], 0)) - (Sum$(CleanJet_pt>30)<=1)*99',
                          'range' : (40,-5.0,5.0),
                          'xaxis' : '#eta 2nd jet',
                          'fold'  : 3
                          }
+
+variables['jeteta2_easy']  = {
+                        'name': 'CleanJet_eta[1]',
+                        'range' : (100,0,500),
+                        'xaxis' : 'p_{T} 1st jet',
+                        'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
+                        }
 
 variables['mjj']      = {   'name': 'mjj',            #   variable name    
                             'range' : (50,0,5000),    #   variable range
@@ -143,32 +171,38 @@ variables['mjj']      = {   'name': 'mjj',            #   variable name
                         }
 
 variables['dphijet1met']  = {   'name': 'abs(dphijet1met)',     
-                        'range' : (30,0,3.14),   
+                        'range' : (30,0,10),   
                         'xaxis' : '#Delta#phi_{J1, MET}',
                         'fold' : 3
                         }
 
 variables['dphijet2met']  = {   'name': 'abs(dphijet2met)',     
-                        'range' : (30,0,3.14),   
+                        'range' : (30,0,10),   
                         'xaxis' : '#Delta#phi_{J2, MET}',
                         'fold' : 3
                         }
 
 variables['dphijjmet']  = {   'name': 'abs(dphijjmet)',     
-                        'range' : (30,0,3.14),   
+                        'range' : (30,0,10),   
                         'xaxis' : '#Delta#phi_{JJ, MET}',
                         'fold' : 3
                         }
 
 variables['dphijjmet_cut']  = {   'name': 'abs(dphijjmet_cut)',     
-                        'range' : (30,0,3.14),   
+                        'range' : (30,0,10),   
                         'xaxis' : '#Delta#phi_{JJ, MET}_cut',
                         'fold' : 3
                         }
 
 variables['dphilep1jet1']  = {   'name': 'abs(dphilep1jet1)',     
-                        'range' : (30,0,3.14),   
+                        'range' : (30,0,10),   
                         'xaxis' : '#Delta#phi_{L1, J1}',
+                        'fold' : 3
+                        }
+
+variables['dphijj']  = {   'name': 'abs(dphijj)',     
+                        'range' : (30,0,10),   
+                        'xaxis' : '#Delta#phi_{J1, J2}',
                         'fold' : 3
                         }
 

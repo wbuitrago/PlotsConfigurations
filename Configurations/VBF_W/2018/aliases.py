@@ -17,8 +17,10 @@ aliases['zeroJet'] = {
 
 
 
+#####################################
+######## user defined ###############
+#####################################
 
-###### user defined 
 
 ############# L1 ###########
 aliases ['x_ptl1'] = {
@@ -53,9 +55,12 @@ aliases['ptW'] = {
     'expr': 'TMath::Sqrt(x_ptW*x_ptW + y_ptW*y_ptW)'
 }
 
-#aliases['nJets30']= {
-#    'expr' : 'Sum$(CleanJet_pt[CleanJetNotFat_jetIdx] >= 30)'
-#}
+
+############ DELTAPHI #####################
+aliases['Dphijet1met'] = {
+    'expr': 'abs(CleanJet_phi[0] - PuppiMET_phi)'
+    if (abs(CleanJet_phi[0] - PuppiMET_phi))
+}
 
 ###################
 # trigger eff
