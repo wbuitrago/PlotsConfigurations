@@ -147,13 +147,13 @@ groupPlot['Wjets_HT_PUJets']  = {
                 'fill': 1001
                 }
 
-groupPlot['Fake']  = {  
-                'nameHR' : "Non-prompt",
-                'isSignal' : 0,
-                'color': palette["LightBlue"],   
-                'samples'  : ['Fake'],
-                'fill': 1001
-            }
+#groupPlot['Fake']  = {  
+#                'nameHR' : "Non-prompt",
+#                'isSignal' : 0,
+#                'color': palette["LightBlue"],   
+#                'samples'  : ['Fake'],
+#                'fill': 1001
+#            }
 
 
 #groupPlot['top']  = {  
@@ -277,12 +277,12 @@ plot['VVV'] = {
                 }
 
 
-plot['Fake'] = {   
-                 'color': colors['kAzure']-1,
-                 'isSignal' : 0,
-                 'isData'   : 0, 
-                 'scale'    : 1.0 
-                }
+#plot['Fake'] = {   
+#                 'color': colors['kAzure']-1,
+#                 'isSignal' : 0,
+#                 'isData'   : 0, 
+#                 'scale'    : 1.0 
+#                }
 
 #plot['WWewk'] = {   
 #                 'color': colors['kAzure']-1,

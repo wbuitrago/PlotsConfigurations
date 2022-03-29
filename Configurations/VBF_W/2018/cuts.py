@@ -47,24 +47,32 @@ cuts['topcr_mu']  = '((zeroJet && !bVeto) || bReqTight) \
 ## Fake CR
 cuts['FakeCR_ele']  = '(mtw1 <= 40.) \
                        && PuppiMET_pt<=40. \
-                       && !bReqTight \
+                       && bVeto \
+                       && detajj < 4. \
+                       && CleanJet_pt[1]>60. \
                        && Alt$(abs(Lepton_pdgId[0]),0) == 11'
 
 cuts['FakeCR_mu']  = '(mtw1 <= 40.) \
                        && PuppiMET_pt<=40. \
-                       && !bReqTight \
+                       && bVeto\
+                       && detajj < 4. \
+                       && CleanJet_pt[1]>60. \
                        && Alt$(abs(Lepton_pdgId[0]),0) == 13'
 
 ##WJets PU CR
 cuts['WJetsPUCR_ele']  = 'detajj >= 4. \
                        && CleanJet_pt[1]<=60.\
                        && bVeto \
+                       && mtw1 > 40. \
+                       && PuppiMET_pt>40. \
                        && Alt$(abs(Lepton_pdgId[0]),0) == 11'
 
 ##WJets PU CR
 cuts['WJetsPUCR_mu']  = 'detajj >= 4. \
                        && CleanJet_pt[1]<=60.\
                        && bVeto \
+                       && mtw1 > 40. \
+                       && PuppiMET_pt>40. \
                        && Alt$(abs(Lepton_pdgId[0]),0) == 13'
 
 
