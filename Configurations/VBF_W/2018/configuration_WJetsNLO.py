@@ -20,7 +20,7 @@ cutsFile = 'cuts_WJetsNLO.py'
 samplesFile = 'samples_WJetsNLO.py' 
 
 # file with list of samples
-plotFile = 'plot.py' 
+plotFile = 'plot_WJetsNLO.py' 
 
 # luminosity to normalize to (in 1/fb)
 lumi = 59.74
