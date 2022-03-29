@@ -29,6 +29,23 @@ aliases ['y_ptl1'] = {
     'expr': 'Lepton_pt[0] * TMath::Sin(Lepton_phi[0])'
 }
 
+# dijet
+aliases ['x_ptj1'] = {
+    'expr': 'CleanJet_pt[0] * TMath::Cos(CleanJet_phi[0])'
+}
+
+aliases ['x_ptj2'] = {
+    'expr': 'CleanJet_pt[1] * TMath::Cos(CleanJet_phi[1])'
+}
+
+aliases ['y_ptj1'] = {
+    'expr': 'CleanJet_pt[0] * TMath::Sin(CleanJet_phi[0])'
+}
+
+aliases ['y_ptj2'] = {
+    'expr': 'CleanJet_pt[1] * TMath::Sin(CleanJet_phi[1])'
+}
+
 
 ########## MET ############
 aliases ['x_ptMET'] = {
@@ -51,6 +68,24 @@ aliases['y_ptW'] = {
 
 aliases['ptW'] = {
     'expr': 'TMath::Sqrt(x_ptW*x_ptW + y_ptW*y_ptW)'
+}
+
+
+aliases['x_Wjj'] = {
+    'expr': 'x_ptj1 + x_ptj2 + x_ptW'
+}
+
+aliases['y_Wjj'] = {
+    'expr': 'y_ptj1 + y_ptj2 + y_ptW'
+}
+
+aliases['ptWjj'] = {
+    'expr': 'TMath::Sqrt(x_Wjj*x_Wjj + y_Wjj*y_Wjj)'
+}
+
+aliases['Rpt_req_0p2'] = {
+    'expr': '((ptWjj / (CleanJet_pt[0] + CleanJet_pt[1] + ptW)) < 0.2)'
+    #'expr': '(ptWjj / (ptW)) < 0.2)'
 }
 
 #aliases['nJets30']= {
