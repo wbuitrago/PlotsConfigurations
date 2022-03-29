@@ -57,10 +57,16 @@ elif  'cern' in SITE:
 
 mcDirectory = os.path.join(treeBaseDir,  mcProduction , mcSteps + '__MCCombJJLNu2018')
 mcPrivateDirectory = os.path.join(treeBaseDirPrivate,  mcProduction , mcSteps + '__' + skim)
+
 #fakeDirectory = os.path.join(treeBaseDir, fakeReco, fakeSteps)
 dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps + '__' + skim)
 dataPrivateDirectory = os.path.join(treeBaseDirPrivate, dataReco, dataSteps + '__' + skim)
 dataPrivateDirectory_fakeW = os.path.join(treeBaseDir, dataReco, dataSteps)
+
+
+# Try senza skim
+dataPrivateDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
+mcPrivateDirectory =  os.path.join(treeBaseDir,  mcProduction , mcSteps)
 
 
 ############################# PROVA
@@ -181,10 +187,15 @@ files+= nanoGetSampleFiles(mcDirectory, 'WJetsToLNu-2J')
 
 samples['Wjets_HT'] = {
     'name'   : files,
-    'weight' : CommonWeight +'*ewknloW', # ewk nlo correction https://arxiv.org/pdf/1705.04664v2.pdf 
+    #'weight' : CommonWeight +'*ewknloW', # ewk nlo correction https://arxiv.org/pdf/1705.04664v2.pdf 
+    'weight' : CommonWeight+'*' + Wjets_photon_filter,
     #'weight' : mcCommonWeight + '*ewknloW', 
     #'weight' : mcCommonWeight, 
     'FilesPerJob' : 4,
+    'subsamples': {
+        'hardJets'  : 'hardJets',
+        'PUJets'    : 'PUJets'
+                  }
 }
 
 # # Fix Wjets binned + LO 

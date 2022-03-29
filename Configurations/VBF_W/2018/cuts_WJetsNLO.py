@@ -12,25 +12,61 @@
 #            && Mtw_lep < 185 \
 #            '
 
-supercut = 'nLepton>=1  && Lepton_pt[0]>30 \
+# supercut = 'nLepton>=1  && Lepton_pt[0]>30 \
+#             &&  (Alt$(CleanJet_pt[1], 0) > 30.) \
+#             && (Alt$(CleanJet_pt[0],0) > 100.) \
+#             && (mjj >= 500.) \
+#             && (detajj > 2.) \
+#             && (Alt$(Lepton_eta[0],-3) > -2.) \
+#             && (Alt$(Lepton_eta[0],3) < 2.) \
+#             && Alt$(Lepton_pt[1],0)<=15 && Alt$(Lepton_isLoose[1],1)> 0.5 \
+#             && (  Alt$(Lepton_isTightElectron_mvaFall17V1Iso_WP90[1], 0) < 0.5 \
+#             && Alt$(Lepton_isTightMuon_cut_Tight_HWWW[1],0) < 0.5 )  \
+#             '
+
+supercut = 'nLepton>=1  \
             &&  (Alt$(CleanJet_pt[1], 0) > 30.) \
-            && (mjj >= 500.) \
-            && (detajj > 2.) \
-            && (Alt$(Lepton_eta[0],-3) > -2.) \
-            && (Alt$(Lepton_eta[0],3) < 2.) \
+            && (Alt$(CleanJet_pt[0],0) > 50.) \
+            && (mjj >= 200.) \
+            && mtw1 > 40. \
             && Alt$(Lepton_pt[1],0)<=15 && Alt$(Lepton_isLoose[1],1)> 0.5 \
             && (  Alt$(Lepton_isTightElectron_mvaFall17V1Iso_WP90[1], 0) < 0.5 \
             && Alt$(Lepton_isTightMuon_cut_Tight_HWWW[1],0) < 0.5 )  \
             '
 
+
 cuts['Z'] = '1'
 
-cuts['ele'] = 'abs(Lepton_pdgId[0])==11 \
-                '
+cuts['ele'] = 'abs(Lepton_pdgId[0])==11  \
+               && Lepton_pt[0]>30 \
+               && (Alt$(Lepton_eta[0],-3) > -2.1) \
+               && (Alt$(Lepton_eta[0], 3) < 2.1) \
+               && PuppiMET_pt>40. \
+              '
+
+cuts['ele_R'] = 'abs(Lepton_pdgId[0])==11  \
+               && Lepton_pt[0]>30 \
+               && (Alt$(Lepton_eta[0],-3) > -2.1) \
+               && (Alt$(Lepton_eta[0], 3) < 2.1) \
+               && PuppiMET_pt>40. \
+               && Rpt_req_0p2 \
+              '
 
 
-cuts['mu'] = 'abs(Lepton_pdgId[0])==13 \
-             '    
+cuts['mu'] = 'abs(Lepton_pdgId[0])==13  \
+               && Lepton_pt[0]>25 \
+               && (Alt$(Lepton_eta[0],-3) > -2.4) \
+               && (Alt$(Lepton_eta[0], 3) < 2.4) \
+               && PuppiMET_pt>20. \
+              ' 
+
+cuts['mu_R'] = 'abs(Lepton_pdgId[0])==13  \
+               && Lepton_pt[0]>25 \
+               && (Alt$(Lepton_eta[0],-3) > -2.4) \
+               && (Alt$(Lepton_eta[0], 3) < 2.4) \
+               && PuppiMET_pt>20. \
+               && Rpt_req_0p2 \
+               '   
 
 cuts['horn_ele'] = '((Alt$(abs(CleanJet_eta[0]), 3) <2.5) || (Alt$(abs(CleanJet_eta[0]), 0) > 3.))\
                     && ((Alt$(abs(CleanJet_eta[1]), 3) <2.5) || (Alt$(abs(CleanJet_eta[1]), 0) >3.))\
