@@ -26,13 +26,23 @@
 
 supercut = 'nLepton>=1  \
             &&  (Alt$(CleanJet_pt[1], 0) > 30.) \
-            && (Alt$(CleanJet_pt[0],0) > 50.) \
-            && (mjj >= 200.) \
-            && mtw1 > 40. \
             && Alt$(Lepton_pt[1],0)<=15 && Alt$(Lepton_isLoose[1],1)> 0.5 \
             && (  Alt$(Lepton_isTightElectron_mvaFall17V1Iso_WP90[1], 0) < 0.5 \
             && Alt$(Lepton_isTightMuon_cut_Tight_HWWW[1],0) < 0.5 )  \
+            && Lepton_pt[0] >= 30. \
+            && CleanJet_pt[0] > 100.\
+            && mjj >= 500. \
+            && detajj > 2. \
+            && Lepton_eta[0] > -2 && Lepton_eta[0] < 2 \
             '
+#last 5 cuts are due to compare with skimmed config!!
+
+#cuts['E1'] = 'Lepton_pt[0] >= 30. \
+#            && Alt$(CleanJet_pt[1], 0) > 30. \
+#            && CleanJet_pt[0] > 100. \
+#            && mjj >= 500. \
+#            && detajj > 2. \
+#            && Lepton_eta[0] > -2 && Lepton_eta[0] < 2'
 
 
 cuts['Z'] = '1'

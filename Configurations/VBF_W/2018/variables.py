@@ -13,7 +13,7 @@ variables['events']  = {   'name': '1',
 ######## lepton 1 ##########
 
 variables['pt1']  = {   'name': 'Lepton_pt[0]',     
-                        'range' : (25,0,250),   
+                        'range' : (25,0,175),   
                         'xaxis' : 'p_{T} 1st lep',
                         'fold'  : 3
                         }
@@ -79,7 +79,7 @@ variables['Dphilep1met']  = {   'name': 'Dphilep1met',
                         }
 
 variables['ptW']  = {   'name': 'ptW',     
-                        'range' : (100,0,500),   
+                        'range' : (100,0,300),   
                         'xaxis' : 'pT(W) [GeV]',
                         'fold' : 3
                         }
@@ -101,15 +101,15 @@ variables['njet_40']  = {
 
 variables['jetpt1']  = {
                         'name': 'CleanJet_pt[0]',
-                        'range' : (100,0,500),
+                        'range' : (100,0,350),
                         'xaxis' : 'p_{T} 1st jet',
                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                         }
 
 variables['jetpt2']  = {
                         'name': 'CleanJet_pt[1]',
-                        'range' : (100,0,500),
-                        'xaxis' : 'p_{T} 1st jet',
+                        'range' : (100,0,300),
+                        'xaxis' : 'p_{T} 2nd jet',
                         'fold' : 3   # 0 = not fold (default), 1 = fold underflowbin, 2 = fold overflow bin, 3 = fold underflow and overflow
                         }
 
@@ -123,7 +123,7 @@ variables['jeteta1']  = {
 variables['jeteta2']  = {
                         'name': 'CleanJet_eta[1]',
                          'range' : (40,-5.0,5.0),
-                         'xaxis' : '#eta 1st jet',
+                         'xaxis' : '#eta 2nd jet',
                          'fold'  : 3
                         }
 
