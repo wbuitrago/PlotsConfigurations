@@ -36,8 +36,6 @@ cuts['ele_R'] = 'abs(Lepton_pdgId[0])==11  \
                && Rpt_req_0p2 \
               '
 
--0.75 - -1.75 philep1
-
 cuts['mu'] = 'abs(Lepton_pdgId[0])==13  \
                && Lepton_pt[0]>25 \
                && (Alt$(Lepton_eta[0],-3) > -2.4) \
