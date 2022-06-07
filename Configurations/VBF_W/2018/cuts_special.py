@@ -16,8 +16,13 @@ supercut = 'nLepton>=1  && Lepton_pt[0]>25 \
             && Alt$(Lepton_pt[1],0)<=15 && Alt$(Lepton_isLoose[1],1)> 0.5 \
             && (  Alt$(Lepton_isTightElectron_mvaFall17V1Iso_WP90[1], 0) < 0.5 \
             && Alt$(Lepton_isTightMuon_cut_Tight_HWWW[1],0) < 0.5 )  \
-            && (   abs(Lepton_pdgId[0])==11 && (Lepton_phi[0] <= -0.75 && Lepton_phi[0] >= -1.75) \
-              || abs(Lepton_pdgId[0])==13 && (Lepton_phi[0] <= 1. && Lepton_phi[0] >= 0.25)   )'
+            && ((abs(Lepton_pdgId[0])==11) && (Lepton_eta[0] >= -1.35))'
+
+
+# taglio sui picchi sospetti di fake MC
+#            && (   (abs(Lepton_pdgId[0])==11 && (Lepton_phi[0] <= -0.75 && Lepton_phi[0] >= -1.75)) \
+#              || (abs(Lepton_pdgId[0])==13 && (Lepton_phi[0] <= 1. && Lepton_phi[0] >= 0.25))   )'
+
 
 cuts['Z'] = '1'
 
