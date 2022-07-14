@@ -160,6 +160,7 @@ samples['WLNuJJ']  = {  'name'   :  nanoGetSampleFiles(mcPrivateDirectory,'WLNuJ
 
 ####### Wjets #########
 Wjets_photon_filter = '!(Sum$( PhotonGen_isPrompt==1 && PhotonGen_pt>10 && abs(PhotonGen_eta)<2.5 ) > 0) '
+Total_correction = 'WJets_reweight'
 
 samples['Wjets_HT'] = { 'name' :   nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu-LO')
                                    + nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu_HT70_100')
@@ -171,7 +172,7 @@ samples['Wjets_HT'] = { 'name' :   nanoGetSampleFiles(mcPrivateDirectory, 'WJets
                                    + nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu_HT1200_2500')
                                    + nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu_HT2500_inf'),
 #				                'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch + '* ewknloW',
-                        'weight': CommonWeight+'*' + Wjets_photon_filter +'* ewknloW',
+                        'weight': CommonWeight+'*' + Wjets_photon_filter +'* ewknloW' + '*' +Total_correction,
 			                	'FilesPerJob' : 15, 
                         'subsamples': {
                           'hardJets'  : 'hardJets',
@@ -193,7 +194,6 @@ addSampleWeight(samples,'Wjets_HT', 'WJetsToLNu_HT1200_2500', '1.3268')
 addSampleWeight(samples,'Wjets_HT', 'WJetsToLNu_HT2500_inf',  '2.7948') 
 
 ###############################################
-
 
 
 ############ Top ############
@@ -435,11 +435,13 @@ samples['VVV']  = {  'name'   :   nanoGetSampleFiles(mcPrivateDirectory,'ZZZ')
 
 # Then corrected
 fakeW = 'fakeWeight_35'
+Fake_correction = '(((abs(Lepton_pdgId[0])==11)*(0.8013918943)) + ((abs(Lepton_pdgId[0])==13)*(0.7654731335)))'
+#Fake_correction = '1.'
 
 ### Fakes
 samples['Fake'] = {
   'name': [],
-  'weight': METFilter_DATA+'*'+fakeW,
+  'weight': METFilter_DATA+'*'+fakeW + '*' + Fake_correction,
   'weights': [],
   'isData': ['all'],
   'FilesPerJob' : 40,
@@ -452,6 +454,7 @@ for _, sd in DataRun:
     samples['Fake']['name'].extend(files)
     samples['Fake']['weights'].extend([DataTrig[pd]] * len(files))
 
+    
 
 #########################################
 ################ DATA ###################

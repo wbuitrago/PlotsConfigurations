@@ -14,6 +14,7 @@ How to run the analysis.
 or
 
     hadd rootFile/plots_vbf_w_2018.root rootFile/plots_vbf_w_2018_ALL_*.root
+    hadd rootFile/plots_vbf_w_2018.root rootFile/plots_vbf_w_2018_do.root rootFile/prov/plots_vbf_w_2018.root 
 
 
 # Make plots:

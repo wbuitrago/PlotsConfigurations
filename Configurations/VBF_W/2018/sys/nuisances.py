@@ -2,7 +2,7 @@ from pprint import pprint
 # # # name of samples here must match keys in samples.py 
 
 mc =["WLNuJJ", "Wjets_HT", "top", "VV", "VBS", "ggWW", "Higgs", "DY_M-50", "DY_else", "VBF-Z", "Vg", "VgS", "VVV"]
-
+regions = ["ele_SR","mu_SR","ele_HWJ","mu_HWJ","ele_PUWJ", "mu_PUWJ","topcr","ele_FakeCR","mu_FakeCR"]
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
 
 def nanoGetSampleFiles(inputDir, Sample):
@@ -810,6 +810,47 @@ nuisances['UE']  = {
 # #             }
 # #             if regrouped_Wjets: 
 # #                 nuisances["{}_norm_{}_res_2018".format(wjbin, fl)]['name'] = 'CMS_Wjets_norm_{}_res_2018'.format(fl)
+
+
+###############
+# Normalization factors
+###############
+
+nuisances["Top_norm_2018"]  = {
+    'name'  : 'CMS_Top_norm_2018',
+    'samples'  : {
+        'top' : '1.00',
+        },
+    'type'  : 'rateParam',
+    'cuts' : 'topcr'
+}
+
+for fl in ["ele", "mu"]:
+    nuisances["Fake_norm_{}_2018".format(fl)]  = {
+        'name'  : 'CMS_Fake_norm_{}_2018'.format(fl),
+        'samples'  : {
+            'Fake' : '1.00',
+            },
+        'type'  : 'rateParam',
+        'cuts' : [f for f in regions if "{}_FakeCR".format(fl) in f]
+    }
+
+for fl in ["ele", "mu"]:
+    for subs in ["hardJets", "PUJets"]:
+        if subs == "hardJets":
+            nuisances["WhardJet_norm_{}_2018".format(fl)]  = {
+                'name'  : 'CMS_WhardJet_norm_{}_2018'.format(fl),
+                'samples'  : {"Wjets_HT_hardJet" : '1.00'},
+                'type'  : 'rateParam',
+                'cuts' : [f for f in regions if "{}_HWJ".format(fl) in f]
+        }
+        else:
+            nuisances["WPUJet_norm_{}_2018".format(fl)]  = {
+                'name'  : 'CMS_WPUJet_norm_{}_2018'.format(fl),
+                'samples'  : {"Wjets_HT_PUJet" : '1.00'},
+                'type'  : 'rateParam',
+                'cuts' : [f for f in regions if "{}_PUWJ".format(fl) in f]
+        }
 
 
 # # ## Use the following if you want to apply the automatic combine MC stat nuisances.

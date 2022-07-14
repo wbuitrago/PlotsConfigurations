@@ -28,6 +28,7 @@ colors = {
 }
 
 palette = {
+    "FerrariRed": (255,40,0), #ff2800
     "Orange": (242, 108, 13), #f26c0d  
     "Yellow": (247, 195, 7), #f7c307
     "LightBlue": (153, 204, 255), #99ccff
@@ -84,7 +85,7 @@ groupPlot['Higgs']  = {
               }
 
 groupPlot['VV+VVV+VBS']  = {  
-                'nameHR' : 'VV+VVV+infiltrato',
+                'nameHR' : 'VV+VVV+VBS',
                 'isSignal' : 0,
                 'color': palette["Violet"], #palette["Peach3"],  
                 'samples'  : ['VVV', 'VV','VBS'],
@@ -96,14 +97,6 @@ groupPlot['Others']  = {
                 'isSignal' : 0,
                 'color'    : palette["Orange"],
                 'samples'  : ['ggWW', 'VBF-Z', 'Vg', 'VgS'],
-                'fill': 1001
-              }
-
-groupPlot['WLNuJJ']  = {  
-                'nameHR' : 'WLNuJJ',
-                'isSignal' : 1,
-                'color': colors['kRed']+1,   
-                'samples'  : ['WLNuJJ'],
                 'fill': 1001
               }
 
@@ -155,7 +148,13 @@ groupPlot['Fake']  = {
               'fill': 1001
           }
 
-
+groupPlot['WLNuJJ']  = {  
+                'nameHR' : 'WLNuJJ',
+                'isSignal' : 1,
+                'color': palette["FerrariRed"],   
+                'samples'  : ['WLNuJJ'],
+                'fill': 1001
+              }
 
 
 #plot = {}
@@ -177,7 +176,8 @@ plot['Wjets_HT_hardJets'] = {
                  'isData'   : 0, 
                  #'scale'    : 1.09950003 
                  'scale'    : 1.0
-                 #'scale'    : 1.4
+                 #'scale'    : 1.1231175589276459 #mu
+                 #'scale'    : 1.2795330335917352
                 }
 
 plot['Wjets_HT_PUJets'] = {   
@@ -186,7 +186,8 @@ plot['Wjets_HT_PUJets'] = {
                  'isData'   : 0, 
                  #'scale'    : 1.050420857 
                  'scale'    : 1.0
-                 #'scale'    : 1.19
+                 #'scale'    : 1.0958905448504972
+                 #'scale'    : 1.1768637821969707
                 }
 
 plot['top'] = {   
@@ -272,6 +273,8 @@ plot['Fake'] = {
                 'isSignal' : 0,
                 'isData'   : 0, 
                 'scale'    : 1.0 
+                #'scale' : 0.713100632928824
+                #'scale' : 0.6454715517898252
                }
 
 
@@ -292,7 +295,6 @@ plot['DATA']  = {
                   'isData'   : 1 ,
                   'isBlind'  : 0
               }
-
 
 
 # additional options

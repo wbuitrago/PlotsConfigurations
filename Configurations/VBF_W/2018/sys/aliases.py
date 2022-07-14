@@ -207,6 +207,15 @@ aliases['PUJets'] = {
     'samples': ['Wjets_HT']
 }
 
+aliases['WJH_correction'] = {
+    'expr': '((abs(Lepton_pdgId[0])==11)*1.2795330335917352 + (abs(Lepton_pdgId[0])==13)*1.1231175589276459)',
+    'samples': ['Wjets_HT']
+}
+
+aliases['WPU_correction'] = {
+    'expr': '((abs(Lepton_pdgId[0])==11)*1.1768637821969707 + (abs(Lepton_pdgId[0])==13)*1.0958905448504972)',
+    'samples': ['Wjets_HT']
+}
 
 # ################################################################################################
 
@@ -588,3 +597,33 @@ aliases['lhe_mjj'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[4] * LHEPart_pt[5] * (TMath::CosH(LHEPart_eta[4] - LHEPart_eta[5]) - TMath::Cos(LHEPart_phi[4] - LHEPart_phi[5])))',
     'samples': ['VBF-Z']
 }
+
+aliases['mu_isT'] = {
+    'expr': '(Lepton_isTightMuon_cut_Tight_HWWW[0]<0.5)+(Lepton_isTightMuon_cut_Tight_HWWW[0]>0.5)',
+    #'samples': ['Fake'] 
+}
+
+aliases['ele_isT'] = {
+    'expr': '(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]<0.5)+(Lepton_isTightElectron_mvaFall17V1Iso_WP90[0]>0.5)',
+    #'samples': ['Fake'] 
+}
+
+
+## WJET REWEIGHT
+
+aliases['category_WJets'] = {
+    'expr': '0 * hardJets + 1 * PUJets',
+    'samples': ['Wjets_HT']
+}
+
+morphing_file = "/afs/cern.ch/user/a/abulla/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBF_W/2018/WJets_reweight.root"
+aliases['WJets_reweight'] = {
+    'class': 'ReweightJet1pT',
+    'samples': ['Wjets_HT'],
+    'args': (morphing_file, False),
+     'linesToAdd' : [
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        '.L {}/reweight_Jet1pT.cc+'.format(conf_folder)
+        ] 
+} 
+
