@@ -96,6 +96,7 @@ aliases['nCleanGenJet'] = {
 }
 
 ##### DY Z pT reweighting
+"""
 aliases['getGenZpt_OTF'] = {
     'linesToAdd':['.L %s/src/PlotsConfigurations/Configurations/patches/getGenZpt.cc+' % os.getenv('CMSSW_BASE')],
     'class': 'getGenZpt',
@@ -112,6 +113,19 @@ aliases['DY_LO_pTllrw'] = {
     'expr': '('+DYrew['2018']['LO'].replace('x', 'getGenZpt_OTF')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
     'samples': ['DY']
 }
+"""
+
+"""
+morphing_file = configurations + "/VBF_Zjj/2018/DY_corr.root"
+aliases['corr'] = {
+    'class': 'ReweightZpT',
+    'args': (morphing_file, False),
+     'linesToAdd' : [
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        '.L {}/VBF_Zjj/2018/reweight_zpt.cc+'.format(configurations)
+        ] 
+} 
+"""
 
 # Jet bins
 # using Alt$(CleanJet_pt[n], 0) instead of Sum$(CleanJet_pt >= 30) because jet pt ordering is not strictly followed in JES-varied samples
@@ -164,19 +178,43 @@ aliases['DiffFlav'] = {
 aliases['topcr'] = {
     #'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
     #'expr': '!bVeto'
-    'expr' : 'mll>50 && ((zeroJet && !bVeto) || bReq)'
+    'expr' : 'mll>105 && ((zeroJet && !bVeto) || bReq)'
 }
 
 aliases['wwcr'] = {
-    #'expr': 'bVeto && PuppiMET_pt>100'
-    'expr': 'mth>60 && mtw2>30 && mll>100 && bVeto'
+    #'expr': 'mll>105 && bVeto && PuppiMET_pt>100'
+    'expr': 'abs(mll-90)>15 && bVeto'
+    #'expr': 'mth>60 && mtw2>30 && mll>100 && bVeto'
 }
 
 aliases['dycr'] = {
     #'expr': 'bVeto && PuppiMET_pt<=100 && detajj<3'
+    #'expr': 'bVeto && abs(mll-90)<15 && detajj<3'
+    #'expr': 'bVeto && abs(mll-90)<15 && detajj<3'
     'expr': 'bVeto && abs(mll-90)<15'
 }
+
 """
+
+aliases['dypucr'] = {
+    #'expr': 'bVeto && abs(mll-90)<15  && detajj>=3 && (Alt$(CleanJet_pt[1], 0) < 50)'
+    'expr': 'bVeto && abs(mll-90)<15 && detajj>=3 && (Alt$(CleanJet_pt[1], 0) < 50)'
+}
+
+"""
+
+
+
+
+"""
+aliases['dycr'] = {
+    #'expr': 'bVeto && PuppiMET_pt<=100 && detajj<3'
+    'expr': 'bVeto && abs(mll-90)<15 && detajj<2.5'
+}
+
+aliases['dypucr'] = {
+    'expr': 'bVeto && abs(mll-90)<15 && detajj>=2.5 && (Alt$(CleanJet_pt[1], 0) < 50)'
+}
 aliases['dypucr'] = {
     'expr': 'bVeto && PuppiMET_pt<=100 && detajj>=3 && ptll<60'
 }
@@ -187,8 +225,10 @@ aliases['dypucr'] = {
 
 aliases['sr'] = {
     #'expr': 'mth>60 && mtw2>30 && bVeto'
-    'expr': '(bVeto) && PuppiMET_pt<100 && detajj>2 && abs(mll-90)<15'
+    #'expr': '(bVeto) && PuppiMET_pt<100 && detajj>2 && abs(mll-90)<15'
+    'expr': 'bVeto && abs(mll-90)<15 && detajj>=3 && mjj>200 && (Alt$(CleanJet_pt[0], 0) >= 80) && (Alt$(CleanJet_pt[1], 0) >= 50)'
 }
+
 aliases['ZeppenfeldDilepton'] = {
     'expr' : '(0.5*((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1]))/abs(CleanJet_eta[0] - CleanJet_eta[1]))'
 }
@@ -204,15 +244,44 @@ aliases['HighZ'] = {
     'expr':  'abs(ZeppenfeldDilepton) >=1.5'
 }
 
-aliases['hardJets'] = {
-    'expr':  'Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25',
-    'samples': ['DY']
+#aliases['hardJets'] = {
+#    'expr':  '(Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25)',
+#    'samples': ['DY']
+#}
+#
+#aliases['PUJets'] = {
+#    'expr':  '(!(Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25))',
+#    'samples': ['DY']
+#}
+#aliases['category_DY'] = {
+#    'expr': '0 * Alt$(hardJets,99999) + 1 * Alt$(PUJets, 99999)',
+#    'samples': ['DY']
+#}
+
+
+#aliases['corr_DY'] = {
+#    'expr': '1',
+#    'samples': ['DY']
+#}
+aliases['ptj2'] = {
+    'expr': 'Alt$(CleanJet_pt[1],999999)'
 }
 
-aliases['PUJets'] = {
-    'expr':  '!(Jet_genJetIdx[CleanJet_jetIdx[0]] >= 0 && Jet_genJetIdx[CleanJet_jetIdx[1]] >= 0 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[0]]] > 25 && GenJet_pt[Jet_genJetIdx[CleanJet_jetIdx[1]]] > 25)',
-    'samples': ['DY']
-}
+#morphing_file = "/eos/user/g/gpizzati/SWAN_projects/ML_classification/DY_corr_ptj1.root"
+
+
+"""
+aliases['corrPU'] = {
+    'class': 'ReweightPUZpT',
+    'samples': ['DY'],
+    'args': (morphing_file, False),
+     'linesToAdd' : [
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        '.L {}/VBF_Zjj/2018/reweightPU_zpt.cc+'.format(configurations)
+        ] 
+} 
+"""
+
 
 # B tag scale factors
 if btag_algo == "deepcsv":
@@ -385,3 +454,25 @@ aliases['lhe_mjj'] = {
     'expr': 'TMath::Sqrt(2. * LHEPart_pt[4] * LHEPart_pt[5] * (TMath::CosH(LHEPart_eta[4] - LHEPart_eta[5]) - TMath::Cos(LHEPart_phi[4] - LHEPart_phi[5])))',
     'samples': ['Zjj']
 }
+
+morphing_file = "/eos/user/g/gpizzati/dnn/2018_new/h2d_corr.root"
+aliases['corr_DY'] = {
+    'class': 'ReweightZpT',
+    'samples': ['DY'],
+    'args': (morphing_file, False),
+     'linesToAdd' : [
+        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+        '.L {}/VBF_Zjj/2018/reweight_zpt.cc+'.format(configurations)
+        ] 
+} 
+#aliases['corr_DY'] = {
+#    'expr': 'Alt$(corr, 1000000)',
+#    'samples': ['DY']
+#}
+
+"""
+aliases['corr_DY'] = {
+    'expr': '1',
+    'samples': ['DY']
+}
+"""
