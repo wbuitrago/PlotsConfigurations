@@ -68,7 +68,7 @@ nuisances['lumi_correlated_1718'] = {
 }  
 
 #### FAKES
-
+"""
 nuisances['fake_syst_e'] = {
     'name': 'CMS_fake_syst_e',
     'type': 'lnN',
@@ -557,7 +557,7 @@ nuisances['Topnorm2j']  = {
                'cuts'  : cuts2j
               }
 
-
+"""
 for n in nuisances.values():
     n['skipCMS'] = 1
 

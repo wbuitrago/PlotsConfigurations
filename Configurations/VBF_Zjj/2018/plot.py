@@ -22,36 +22,42 @@ groupPlot['top']  = {
                   'samples'  : ['top']
               }
 
-groupPlot['WW']  = {  
-                  'nameHR' : 'WW_QCD',
-                  'isSignal' : 0,
-                  'color': 851, # kAzure -9 
-                  'samples'  : ['WW', 'ggWW']
-              }
+#groupPlot['WW']  = {  
+#                  'nameHR' : 'WW_QCD',
+#                  'isSignal' : 0,
+#                  'color': 851, # kAzure -9 
+#                  'samples'  : ['WW', 'ggWW']
+#              }
 
               
 groupPlot['Multiboson']  = {  
                   'nameHR' : 'Multiboson',
                   'isSignal' : 0,
                   'color': 617, # kViolet + 1  
-                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L']
+                  'samples'  : ['VVV', 'VZ', 'WZ', 'ZZ', 'Vg', 'Wg', 'VgS_H', 'VgS_L', 'WW', 'WWewk', 'ggWW']
               }
 
-
-groupPlot['DY_PUJets']  = {  
-                  'nameHR' : "DY 1 PU jet",
+groupPlot['DY']  = {  
+                  'nameHR' : "DY",
                   'isSignal' : 0,
                   'color': 416,    # kGreen
-                  'samples'  : ['DY_PUJets']
+                  'samples'  : ['DY']
               }
 
-
-groupPlot['DY_hardJets']  = {  
-                  'nameHR' : "DY no PU jets",
-                  'isSignal' : 0,
-                  'color': 418,    # kGreen+2
-                  'samples'  : ['DY_hardJets']
-              }
+#groupPlot['DY_PUJets']  = {  
+#                  'nameHR' : "DY 1 PU jet",
+#                  'isSignal' : 0,
+#                  'color': 416,    # kGreen
+#                  'samples'  : ['DY_PUJets']
+#              }
+#
+#
+#groupPlot['DY_hardJets']  = {  
+#                  'nameHR' : "DY no PU jets",
+#                  'isSignal' : 0,
+#                  'color': 418,    # kGreen+2
+#                  'samples'  : ['DY_hardJets']
+#              }
 
 groupPlot['Zjj']  = {  
                   'nameHR': 'Zjj',
@@ -117,20 +123,26 @@ plot['Zjj']  = {
                   'isData'   : 0,
                   'scale'    : 1.0                  
               }
-
-plot['DY_hardJets']  = {  
+plot['DY']  = {  
                   'color': 418,    # kGreen+2
                   'isSignal' : 0,
                   'isData'   : 0, 
                   'scale'    : 1.0,
               }
 
-plot['DY_PUJets']  = {  
-                  'color': 416,    # kGreen
-                  'isSignal' : 0,
-                  'isData'   : 0, 
-                  'scale'    : 1.0,
-              }
+#plot['DY_hardJets']  = {  
+#                  'color': 418,    # kGreen+2
+#                  'isSignal' : 0,
+#                  'isData'   : 0, 
+#                  'scale'    : 1.0,
+#              }
+#
+#plot['DY_PUJets']  = {  
+#                  'color': 416,    # kGreen
+#                  'isSignal' : 0,
+#                  'isData'   : 0, 
+#                  'scale'    : 1.0,
+#              }
 
 
 
