@@ -2,11 +2,11 @@ from pprint import pprint
 # # # name of samples here must match keys in samples.py 
 
 mc =["WLNuJJ", "Wjets_HT", "top", "VV", "VBS", "ggWW", "Higgs", "DY_M-50", "DY_else", "VBF-Z", "Vg", "VgS", "VVV"]
-regions = ["ele_SR","mu_SR","ele_HWJ","mu_HWJ","ele_PUWJ", "mu_PUWJ","topcr","ele_FakeCR","mu_FakeCR"]
-from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
+regions = ["ele_SR","mu_SR","ele_HWJ","mu_HWJ","ele_PUWJ", "mu_PUWJ","topcr","ele_FakeCR","mu_FakeCR", "ele", "mu"]
+# from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseW, addSampleWeight
 
-def nanoGetSampleFiles(inputDir, Sample):
-    return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
+# def nanoGetSampleFiles(inputDir, Sample):
+#     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
 # # try:
 # #     mc_emb = [skey for skey in samples if skey != 'DATA' and skey != 'DY_M-50' and skey != 'DY_else' and not skey.startswith('Fake')]
@@ -204,7 +204,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #                 'mapUp': 'ElepTup',
 #                 'mapDown': 'ElepTdo',
 #                 #'cuts': phase_spaces_tot_ele,
-#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW","Wjets_HT"]),
+#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW","Wjets_HT","WLNuJJ"]),
 #                 'folderUp' : mcPrivateDirectory+'__systematics',
 #                 'folderDown' : mcPrivateDirectory+'__systematics'
 # }
@@ -241,7 +241,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #                 'mapUp': 'MupTup',
 #                 'mapDown': 'MupTdo',
 #                 #'cuts': phase_spaces_tot_mu,
-#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW","Wjets_HT"]),
+#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW","Wjets_HT","WLNuJJ"]),
 #                 'folderUp' : mcPrivateDirectory+'__systematics',
 #                 'folderDown' : mcPrivateDirectory+'__systematics'
 # }
@@ -301,7 +301,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #       'type': 'shape',
 #       'mapUp': js+'up',
 #       'mapDown': js+'do',
-#       'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VZ', 'Vg', 'VgS', 'Wjets_HT']),
+#       'samples': dict((skey, ['1', '1']) for skey in mc if skey not in ['VZ', 'Vg', 'VgS', 'Wjets_HT','WLNuJJ']),
 #       'folderUp': mcPrivateDirectory+'__systematics',
 #       'folderDown': mcPrivateDirectory+'__systematics',
 #       'AsLnN': '1'
@@ -329,7 +329,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #                 'type': 'shape',
 #                 'mapUp': 'JERup',
 #                 'mapDown': 'JERdo',
-#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW", "Wjets_HT"]),
+#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW", "Wjets_HT","WLNuJJ"]),
 #                 'folderUp' : mcPrivateDirectory+'__systematics',
 #                 'folderDown' : mcPrivateDirectory+'__systematics',
 #                 'AsLnN'      : '1',
@@ -342,7 +342,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #                 'mapUp': 'fatjetJERup',
 #                 'mapDown': 'fatjetJERdo',
 #                 #'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
-#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "ggWW","Wjets_HT"]),
+#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "ggWW","Wjets_HT","WLNuJJ"]),
 #                 'folderUp' : mcPrivateDirectory+'__systematics',
 #                 'folderDown' : mcPrivateDirectory+'__systematics',
 #                 'AsLnN'      : '1',
@@ -435,7 +435,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #                 'type'  : 'shape',
 #                 'mapUp':   'METup',
 #                 'mapDown': 'METdo', 
-#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW","Wjets_HT"]),
+#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS', "ggWW","Wjets_HT","WLNuJJ"]),
 #                 'folderUp' : mcPrivateDirectory+'__systematics',
 #                 'folderDown' : mcPrivateDirectory+'__systematics',
 #                 'AsLnN'      : '1',
@@ -482,7 +482,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #     'mapUp': 'fatjetJMRup',
 #     'mapDown': 'fatjetJMRdo',
 #     #'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
-#     'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "ggWW","Wjets_HT"]),
+#     'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "ggWW","Wjets_HT","WLNuJJ"]),
 #     'folderUp' : mcPrivateDirectory+'__systematics',
 #     'folderDown' : mcPrivateDirectory+'__systematics',
 #     'AsLnN'      : '1',
@@ -496,7 +496,7 @@ def nanoGetSampleFiles(inputDir, Sample):
 #     'mapUp': 'fatjetJMSup',
 #     'mapDown': 'fatjetJMSdo',
 #     #'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
-#     'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "VV", "ggWW","Wjets_HT"]),
+#     'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "VV", "ggWW","Wjets_HT","WLNuJJ"]),
 #     'folderUp' : mcPrivateDirectory+'__systematics',
 #     'folderDown' : mcPrivateDirectory+'__systematics',
 #     'AsLnN'      : '1',
@@ -873,3 +873,112 @@ def nanoGetSampleFiles(inputDir, Sample):
 
 
 # # # print ' '.join(nuis['name'] for nname, nuis in nuisances.iteritems() if nname not in ('lumi', 'stat'))
+
+
+# ########################################################
+# ####                                                ####
+# ####                   EFT                          ####
+# ####                                                ####
+# #########################################################
+
+# nuisances['electronpt']  = {
+#                 'name'  : 'CMS_scale_e_2018',
+#                 'kind'  : 'suffix',
+#                 'type'  : 'shape',
+#                 'mapUp': 'ElepTup',
+#                 'mapDown': 'ElepTdo',
+#                 #'cuts': phase_spaces_tot_ele,
+#                 'samples': dict((skey, ['1.','1.']) for skey in ["WLNuJJ"]),
+#                 'folderUp' : EFTPrivateDirectory+'__systematics',
+#                 'folderDown' : EFTPrivateDirectory+'__systematics'
+# }
+
+# nuisances['muonpt']  = {
+#                 'name'  : 'CMS_scale_m_2018',
+#                 'kind'  : 'suffix',
+#                 'type'  : 'shape',
+#                 'mapUp': 'MupTup',
+#                 'mapDown': 'MupTdo',
+#                 #'cuts': phase_spaces_tot_mu,
+#                 'samples': dict((skey, ['1.','1.']) for skey in ["WLNuJJ"]),
+#                 'folderUp' : EFTPrivateDirectory+'__systematics',
+#                 'folderDown' : EFTPrivateDirectory+'__systematics'
+# }
+
+# jes_systs = ['JESAbsolute','JESAbsolute_2018','JESBBEC1','JESBBEC1_2018','JESEC2','JESEC2_2018','JESFlavorQCD','JESHF','JESHF_2018','JESRelativeBal','JESRelativeSample_2018']
+# for js in jes_systs:
+#     nuisances[js] = {
+#     'name': 'CMS_scale_'+js,
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp': js+'up',
+#     'mapDown': js+'do',
+#     'samples': dict((skey, ['1', '1']) for skey in['WLNuJJ']),
+#     'folderUp': EFTPrivateDirectory+'__systematics',
+#     'folderDown': EFTPrivateDirectory+'__systematics',
+#     'AsLnN': '1'
+#     }
+
+# nuisances['JER'] = {
+#                 'name': 'CMS_res_j_2018',
+#                 'kind': 'suffix',
+#                 'type': 'shape',
+#                 'mapUp': 'JERup',
+#                 'mapDown': 'JERdo',
+#                 'samples': dict((skey, ['1.','1.']) for skey in ["WLNuJJ"]),
+#                 'folderUp' : EFTPrivateDirectory+'__systematics',
+#                 'folderDown' : EFTPrivateDirectory+'__systematics',
+#                 'AsLnN'      : '1',
+# }
+
+# nuisances['fatjetJER'] = {
+#                 'name': 'CMS_fatjet_res_2018',
+#                 'kind': 'suffix',
+#                 'type': 'shape',
+#                 'mapUp': 'fatjetJERup',
+#                 'mapDown': 'fatjetJERdo',
+#                 #'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
+#                 'samples': dict((skey, ['1.','1.']) for skey in ["WLNuJJ"]),
+#                 'folderUp' : EFTPrivateDirectory+'__systematics',
+#                 'folderDown' : EFTPrivateDirectory+'__systematics',
+#                 'AsLnN'      : '1',
+# }
+
+# nuisances['MET']  = {
+#                 'name'  : 'CMS_scale_met_2018',
+#                 'kind'  : 'suffix',
+#                 'type'  : 'shape',
+#                 'mapUp':   'METup',
+#                 'mapDown': 'METdo', 
+#                 'samples': dict((skey, ['1.','1.']) for skey in ["WLNuJJ"]),
+#                 'folderUp' : EFTPrivateDirectory+'__systematics',
+#                 'folderDown' : EFTPrivateDirectory+'__systematics',
+#                 'AsLnN'      : '1',
+# }
+
+# nuisances['fatjetJMR']  = {
+#     'name': 'CMS_fatjet_jmr_2018',
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp': 'fatjetJMRup',
+#     'mapDown': 'fatjetJMRdo',
+#     #'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
+#     'samples': dict((skey, ['1.','1.']) for skey in ["WLNuJJ"]),
+#     'folderUp' : EFTPrivateDirectory+'__systematics',
+#     'folderDown' : EFTPrivateDirectory+'__systematics',
+#     'AsLnN'      : '1',
+
+# }
+
+# nuisances['fatjetJMS']  = {
+#     'name': 'CMS_fatjet_jms_2018',
+#     'kind': 'suffix',
+#     'type': 'shape',
+#     'mapUp': 'fatjetJMSup',
+#     'mapDown': 'fatjetJMSdo',
+#     #'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
+#     'samples': dict((skey, ['1.','1.']) for skey in ["WLNuJJ"]),
+#     'folderUp' : EFTPrivateDirectory+'__systematics',
+#     'folderDown' : EFTPrivateDirectory+'__systematics',
+#     'AsLnN'      : '1',
+# }
