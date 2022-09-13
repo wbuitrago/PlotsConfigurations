@@ -2,8 +2,8 @@ import os
 import copy
 import inspect
 
-configurations = os.getenv("CMSSW_BASE") + "/src/PlotsConfigurations/Configurations/"
-conf_folder = configurations +"/VBF_W/2018/"
+configurations = os.getenv("CMSSW_BASE") + "/src/PlotsConfigurations/Configurations"
+conf_folder = configurations +"/VBF_W/2018"
 
 #aliases = {}
 
@@ -636,16 +636,20 @@ model_best='216_8'
 folderpath = os.path.realpath(inspect.getfile(inspect.currentframe()))
 folderpath =  os.path.dirname(folderpath)
 #FIXME choose the correct model 
-mva_reader_path = folderpath + '/mva/'
+mva_reader_path = folderpath + '/mva/mva_reader_DNN.cc+' 
 models_path = '/eos/user/a/abulla/NN/models'
+
+# print('.L {}/sys/dnn/mva/mva_reader_DNN.cc'.format(conf_folder))
+
+# print('mva_reader_path: ',mva_reader_path)
 
 aliases['DNNoutput'] = {
     'class': 'MVAReaderDNN',
     'args': ( models_path + '/' + model_best, models_path + '/' + model_best + 'cumulative_signal_2018.root', False, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mva_reader_DNN.cc' 
+        # 'gSystem->Load("libDNNEvaluator.so")',
+        '.L {}/sys/dnn/mva/mva_reader_DNN.cc'.format(conf_folder)
     ]
 }
 

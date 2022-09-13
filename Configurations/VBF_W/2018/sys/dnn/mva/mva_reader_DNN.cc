@@ -38,24 +38,22 @@ protected:
  
   bool verbose;
   void bindTree_(multidraw::FunctionLibrary&) override;
-  ~MVAReaderDNN();
+  //~MVAReaderDNN();
   
   DNNEvaluatorSavedModel* dnn_tensorflow;
 
-  IntValueReader* VBS_category{};
-
   FloatValueReader* detajj{};
-  DoubleValueReader* jetpt1{};
-  FloatValueReader* mjj{};
-  DoubleValueReader* R{};
-  DoubleValueReader* QGL1{};
-  DoubleValueReader* QGL2{};
+  // DoubleValueReader* jetpt1{};
+  // FloatValueReader* mjj{};
+  // DoubleValueReader* R{};
+  // DoubleValueReader* QGL1{};
+  // DoubleValueReader* QGL2{};
 
-  DoubleValueReader* ptW{};
+  // DoubleValueReader* ptW{};
   
-  DoubleValueReader* pt1{};
-  DoubleValueReader* Zl1{};
-  DoubleValueReader* eta1{};
+  // DoubleValueReader* pt1{};
+  // DoubleValueReader* Zl1{};
+  // DoubleValueReader* eta1{};
 
 /*
 - detajj
@@ -95,16 +93,16 @@ MVAReaderDNN::evaluate(unsigned)
 
   std::vector<float> input{};
 
-  input.push_back( TMath::Abs(*(detajj->Get())) );
-  input.push_back( *(jetpt1->Get()) );
-  input.push_back( *(mjj->Get()) );
-  input.push_back( *(ptW->Get()) );
-  input.push_back( *(R->Get()) );
-  input.push_back( *(pt1->Get()) );
-  input.push_back( *(Zl1->Get()) );
-  input.push_back( *(eta1->Get()) );
-  input.push_back( *(QGL1->Get()) );
-  input.push_back( *(mQGL2->Get()) );
+  input.push_back( *(detajj->Get()) );
+  // input.push_back( *(jetpt1->Get()) );
+  // input.push_back( *(mjj->Get()) );
+  // input.push_back( *(ptW->Get()) );
+  // input.push_back( *(R->Get()) );
+  // input.push_back( *(pt1->Get()) );
+  // input.push_back( *(Zl1->Get()) );
+  // input.push_back( *(eta1->Get()) );
+  // input.push_back( *(QGL1->Get()) );
+  // input.push_back( *(QGL2->Get()) );
   
   vector<float> dnn_scores = dnn_tensorflow->analyze(input);
   return dnn_transformation->Eval(dnn_scores.at(0));
@@ -114,34 +112,34 @@ void
 MVAReaderDNN::bindTree_(multidraw::FunctionLibrary& _library)
 {  
   _library.bindBranch(detajj, "detajj");
-  _library.bindBranch(jetpt1, "jetpt1");
-  _library.bindBranch(mjj, "mjj");
-  _library.bindBranch(ptW, "ptW");
-  _library.bindBranch(R, "R");
-  _library.bindBranch(pt1, "pt1");
-  _library.bindBranch(Zl1, "Zl1");
-  _library.bindBranch(eta1, "eta1");
-  _library.bindBranch(QGL1, "QGL1");
-  _library.bindBranch(QGL2, "QGL2");
+  // _library.bindBranch(jetpt1, "jetpt1");
+  // _library.bindBranch(mjj, "mjj");
+  // _library.bindBranch(ptW, "ptW");
+  // _library.bindBranch(R, "R");
+  // _library.bindBranch(pt1, "pt1");
+  // _library.bindBranch(Zl1, "Zl1");
+  // _library.bindBranch(eta1, "eta1");
+  // _library.bindBranch(QGL1, "QGL1");
+  // _library.bindBranch(QGL2, "QGL2");
 
 
 }
 
 
-MVAReaderDNN::~MVAReaderDNN(){  
-  delete dnn_transformation;
-  delete dnn_tensorflow;
+// MVAReaderDNN::~MVAReaderDNN(){  
+//   delete dnn_transformation;
+//   delete dnn_tensorflow;
 
-  detajj = nullptr;
-  jetpt1 = nullptr;
-  mjj = nullptr;
-  ptW = nullptr;
-  R = nullptr;
-  pt1 = nullptr;
-  Zl1 = nullptr;
-  eta1 = nullptr;
-  QGL1 = nullptr;
-  QGL2 = nullptr;
-}
+//   detajj = nullptr;
+//   jetpt1 = nullptr;
+//   mjj = nullptr;
+//   ptW = nullptr;
+//   R = nullptr;
+//   pt1 = nullptr;
+//   Zl1 = nullptr;
+//   eta1 = nullptr;
+//   QGL1 = nullptr;
+//   QGL2 = nullptr;
+// }
 
 #endif 
