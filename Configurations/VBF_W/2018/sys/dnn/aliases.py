@@ -620,7 +620,7 @@ aliases['category_WJets'] = {
     'samples': ['Wjets_HT']
 }
 
-morphing_file = "/afs/cern.ch/user/a/abulla/CMSSW_10_6_4/src/PlotsConfigurations/Configurations/VBF_W/2018/WJets_reweight.root"
+morphing_file = "/afs/cern.ch/user/a/abulla/CMSSW_11_1_4/src/PlotsConfigurations/Configurations/VBF_W/2018/WJets_reweight.root"
 aliases['WJets_reweight'] = {
     'class': 'ReweightJet1pT',
     'samples': ['Wjets_HT'],
@@ -632,12 +632,12 @@ aliases['WJets_reweight'] = {
 } 
 
 ## DNN
-model_best='216_8'
+model_best='216_8/'
 folderpath = os.path.realpath(inspect.getfile(inspect.currentframe()))
 folderpath =  os.path.dirname(folderpath)
 #FIXME choose the correct model 
 mva_reader_path = folderpath + '/mva/mva_reader_DNN.cc+' 
-models_path = '/eos/user/a/abulla/NN/models'
+models_path = '/afs/cern.ch/user/a/abulla/CMSSW_11_1_4/src/PlotsConfigurations/Configurations/VBF_W/2018/sys/dnn/NN/models'
 
 # print('.L {}/sys/dnn/mva/mva_reader_DNN.cc'.format(conf_folder))
 
@@ -645,11 +645,11 @@ models_path = '/eos/user/a/abulla/NN/models'
 
 aliases['DNNoutput'] = {
     'class': 'MVAReaderDNN',
-    'args': ( models_path + '/' + model_best, models_path + '/' + model_best + 'cumulative_signal_2018.root', False, 1),
+    'args': ( models_path + '/' + model_best, models_path + '/' + model_best + 'cumulative_signal_2018.root', True, 1),
     'linesToAdd':[
         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        # 'gSystem->Load("libDNNEvaluator.so")',
-        '.L {}/sys/dnn/mva/mva_reader_DNN.cc'.format(conf_folder)
+        'gSystem->Load("libDNNEvaluator.so")',
+        '.L {}/sys/dnn/mva/mva_reader_DNN.cc+'.format(conf_folder)
     ]
 }
 
