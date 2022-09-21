@@ -631,21 +631,21 @@ aliases['WJets_reweight'] = {
         ] 
 } 
 
-## DNN
-model_best='216_8'
-folderpath = os.path.realpath(inspect.getfile(inspect.currentframe()))
-folderpath =  os.path.dirname(folderpath)
-#FIXME choose the correct model 
-mva_reader_path = folderpath + '/mva/'
-models_path = '/eos/user/a/abulla/NN/models'
+# ## DNN
+# model_best='216_8'
+# folderpath = os.path.realpath(inspect.getfile(inspect.currentframe()))
+# folderpath =  os.path.dirname(folderpath)
+# #FIXME choose the correct model 
+# mva_reader_path = folderpath + '/mva/'
+# models_path = '/eos/user/a/abulla/NN/models'
 
-aliases['DNNoutput'] = {
-    'class': 'MVAReaderDNN',
-    'args': ( models_path + '/' + model_best, models_path + '/' + model_best + 'cumulative_signal_2018.root', False, 1),
-    'linesToAdd':[
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        'gSystem->Load("libDNNEvaluator.so")',
-        '.L ' + mva_reader_path + 'mva_reader_DNN.cc' 
-    ]
-}
+# aliases['DNNoutput'] = {
+#     'class': 'MVAReaderDNN',
+#     'args': ( models_path + '/' + model_best, models_path + '/' + model_best + 'cumulative_signal_2018.root', False, 1),
+#     'linesToAdd':[
+#         'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#         'gSystem->Load("libDNNEvaluator.so")',
+#         '.L ' + mva_reader_path + 'mva_reader_DNN.cc' 
+#     ]
+# }
 

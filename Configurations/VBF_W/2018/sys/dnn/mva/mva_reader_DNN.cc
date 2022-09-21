@@ -13,8 +13,8 @@
 using namespace std;
 using namespace NNEvaluation;
 
-#ifndef MVAREADERDNN
-#define MVAREADERDNN
+#ifndef MVAReaderDNN
+#define MVAReaderDNN
 
 typedef TTreeReaderValue<Double_t> DoubleValueReader;
 

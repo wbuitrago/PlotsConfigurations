@@ -429,12 +429,12 @@ variables['QGL2'] = {   'name': 'Jet_qgl[1]',
                          }
 }
 
-variables['DNNoutput'] = {   'name': 'DNNoutput',     
-                        'range' : (20,0,1),   
-                        'xaxis' : 'DNNoutput',
-                        'fold' : 3,
-                        'blind': {
-                           'ele_SR' : 'full',
-                           'mu_SR' : 'full'
-                         }
-}
+# variables['DNNoutput'] = {   'name': 'DNNoutput',     
+#                         'range' : (20,0,1),   
+#                         'xaxis' : 'DNNoutput',
+#                         'fold' : 3,
+#                         'blind': {
+#                            'ele_SR' : 'full',
+#                            'mu_SR' : 'full'
+#                          }
+# }
