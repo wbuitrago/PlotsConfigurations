@@ -42,20 +42,19 @@ protected:
   
   DNNEvaluatorSavedModel* dnn_tensorflow;
 
-  IntValueReader* VBS_category{};
-
   FloatValueReader* detajj{};
-  DoubleValueReader* jetpt1{};
+  FloatArrayReader* CleanJet_pt{};
   FloatValueReader* mjj{};
-  DoubleValueReader* R{};
-  DoubleValueReader* QGL1{};
-  DoubleValueReader* QGL2{};
+  // DoubleValueReader* R_AN{};
+  FloatArrayReader* Jet_qgl{};
 
-  DoubleValueReader* ptW{};
+  // DoubleValueReader* x_ptl1{};
+//  DoubleValueReader* ptW{};
+
+  FloatArrayReader* Lepton_eta{};
+  FloatArrayReader* Lepton_pt{};
+  // DoubleValueReader* Zl1{};
   
-  DoubleValueReader* pt1{};
-  DoubleValueReader* Zl1{};
-  DoubleValueReader* eta1{};
 
 /*
 - detajj
@@ -78,11 +77,13 @@ MVAReaderDNN::MVAReaderDNN(const char* model_path, const char* transform_path, b
     verbose(verbose),
     category_(category)
 {
+    std::cout << "PATH_model: " << model_path_.c_str();
     dnn_tensorflow = new DNNEvaluatorSavedModel(model_path_, verbose);
 
     // Load the TGRaph used to transform the DNN score
     // The TGraph is the cumulative distribution of the DNN on the signal
     TFile * tf_file = new TFile(transform_path_.c_str(), "READ");
+    std::cout << "PATH: " << transform_path_.c_str();
     dnn_transformation = (TGraph*) tf_file->Get("Graph");
     tf_file->Close();
 }
@@ -95,16 +96,19 @@ MVAReaderDNN::evaluate(unsigned)
 
   std::vector<float> input{};
 
-  input.push_back( TMath::Abs(*(detajj->Get())) );
-  input.push_back( *(jetpt1->Get()) );
+  input.push_back( *(detajj->Get()) );
+  input.push_back( CleanJet_pt->At(0) );
   input.push_back( *(mjj->Get()) );
-  input.push_back( *(ptW->Get()) );
-  input.push_back( *(R->Get()) );
-  input.push_back( *(pt1->Get()) );
-  input.push_back( *(Zl1->Get()) );
-  input.push_back( *(eta1->Get()) );
-  input.push_back( *(QGL1->Get()) );
-  input.push_back( *(mQGL2->Get()) );
+  // std::cout << "sto per fare R_AN" << endl;
+  input.push_back( 1. );
+  // std::cout << "Fatta R_AN" << endl;
+  input.push_back( Jet_qgl->At(0) );
+  input.push_back( Jet_qgl->At(1) );
+
+  input.push_back( 1. );
+  input.push_back( Lepton_eta->At(0) );
+  input.push_back( Lepton_pt->At(0) );
+  input.push_back( 1. );
   
   vector<float> dnn_scores = dnn_tensorflow->analyze(input);
   return dnn_transformation->Eval(dnn_scores.at(0));
@@ -114,16 +118,16 @@ void
 MVAReaderDNN::bindTree_(multidraw::FunctionLibrary& _library)
 {  
   _library.bindBranch(detajj, "detajj");
-  _library.bindBranch(jetpt1, "jetpt1");
+  _library.bindBranch(CleanJet_pt, "CleanJet_pt");
   _library.bindBranch(mjj, "mjj");
-  _library.bindBranch(ptW, "ptW");
-  _library.bindBranch(R, "R");
-  _library.bindBranch(pt1, "pt1");
-  _library.bindBranch(Zl1, "Zl1");
-  _library.bindBranch(eta1, "eta1");
-  _library.bindBranch(QGL1, "QGL1");
-  _library.bindBranch(QGL2, "QGL2");
-
+  // _library.bindBranch(x_ptl1, "x_ptl1");
+  // std::cout << "sto per bindare R_AN" << endl;
+  // _library.bindBranch(R_AN, "R_AN");
+  // std::cout << "bindata R_AN" << endl;
+  _library.bindBranch(Lepton_pt, "Lepton_pt");
+  // _library.bindBranch(Zl1, "Zl1");
+  _library.bindBranch(Lepton_eta, "Lepton_eta");
+  _library.bindBranch(Jet_qgl, "Jet_qgl");
 
 }
 
@@ -133,15 +137,14 @@ MVAReaderDNN::~MVAReaderDNN(){
   delete dnn_tensorflow;
 
   detajj = nullptr;
-  jetpt1 = nullptr;
+  CleanJet_pt = nullptr;
   mjj = nullptr;
-  ptW = nullptr;
-  R = nullptr;
-  pt1 = nullptr;
-  Zl1 = nullptr;
-  eta1 = nullptr;
-  QGL1 = nullptr;
-  QGL2 = nullptr;
+  // x_ptl1 = nullptr;
+  // R_AN = nullptr;
+  Lepton_pt = nullptr;
+  // Zl1 = nullptr;
+  Lepton_eta = nullptr;
+  Jet_qgl = nullptr;
 }
 
 #endif 
