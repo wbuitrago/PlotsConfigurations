@@ -617,6 +617,7 @@ aliases['ele_isT'] = {
 
 aliases['category_WJets'] = {
     'expr': '0 * hardJets + 1 * PUJets',
+    # 'expr': '1.',
     'samples': ['Wjets_HT']
 }
 
