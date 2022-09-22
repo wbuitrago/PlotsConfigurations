@@ -616,7 +616,7 @@ aliases['ele_isT'] = {
 ## WJET REWEIGHT
 
 aliases['category_WJets'] = {
-    'expr': 'Alt$(0.*(hardJets) + 1.*(PUJets),-1)',
+    'expr': '0.*(hardJets) + 1.*(PUJets)',
     'samples': ['Wjets_HT']
 }
 
