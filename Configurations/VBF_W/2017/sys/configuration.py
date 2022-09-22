@@ -2,11 +2,10 @@
 
 treeName = 'Events'
 
-#tag='vbf_w_EFT_2018_NEW'
-tag = 'vbf_w_EFT_nuis_2018'
+tag = 'vbf_w_2018'
 
 # used by mkShape to define output directory for root files
-outputDir = 'rootFile/nuis'
+outputDir = 'rootFile/testMassiro'
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'
@@ -29,7 +28,7 @@ lumi = 59.74
 # used by mkPlot to define output directory for plots
 # different from "outputDir" to do things more tidy
 #outputDirPlots = 'plots'
-outputDirPlots = 'plots/nuis'
+outputDirPlots = 'plots'
 
 
 # used by mkDatacards to define output directory for datacards
