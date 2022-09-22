@@ -74,7 +74,7 @@ ReweightJet1pT::~ReweightJet1pT(){
   delete mu_hard_weight;
   delete mu_PU_weight;
   delete _file;
-  category_WJets = nullptr;
+  // category_WJets = nullptr;
 }
 
 
