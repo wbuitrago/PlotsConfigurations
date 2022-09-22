@@ -154,7 +154,7 @@ variables['njet_80']  = {
 
 variables['jetpt1']  = {
                         'name': 'CleanJet_pt[0]',
-                        'range' : (70,0,350),
+                        'range' : (70,40,350),
                         'xaxis' : 'p_{T} 1st jet',
                         'fold' : 3,
                         'blind': {
@@ -166,7 +166,7 @@ variables['jetpt1']  = {
 
 variables['jetpt1_PU']  = {
                         'name': 'CleanJet_pt[0]',
-                        'range' : (25,0,150),
+                        'range' : (25,40,150),
                         'xaxis' : 'p_{T}PU 1st jet',
                         'fold' : 3,
                         'blind': {
@@ -177,7 +177,7 @@ variables['jetpt1_PU']  = {
 
 variables['jetpt2']  = {
                         'name': 'CleanJet_pt[1]',
-                        'range' : (50,0,250),
+                        'range' : (50,30,250),
                         'xaxis' : 'p_{T} 2nd jet',
                         'fold' : 3,
                         'blind': {
@@ -188,7 +188,7 @@ variables['jetpt2']  = {
 
 variables['jetpt2_PU']  = {
                         'name': 'CleanJet_pt[1]',
-                        'range' : (12,0,60),
+                        'range' : (10,30,60),
                         'xaxis' : 'p_{T}PU 2nd jet',
                         'fold' : 3,
                         'blind': {
@@ -220,7 +220,7 @@ variables['jeteta2']  = {
                         }
 
 variables['mjj']      = {   'name': 'mjj',            #   variable name    
-                            'range' : (25,400,2500),    #   variable range
+                            'range' : (25,500,2500),    #   variable range
                             'xaxis' : 'm_{jj} [GeV]',  #   x axis name
                             'fold' : 3,
                             'blind': {
@@ -230,7 +230,7 @@ variables['mjj']      = {   'name': 'mjj',            #   variable name
                         }
 
 variables['mjjPU']      = {   'name': 'mjj',            #   variable name    
-                            'range' : (25,400,2500),    #   variable range
+                            'range' : (15,400,2500),    #   variable range
                             'xaxis' : 'm_{jj} [GeV]PU',  #   x axis name
                             'fold' : 3,
                             'blind': {
