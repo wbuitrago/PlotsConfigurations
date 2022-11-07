@@ -173,61 +173,49 @@ aliases['DiffFlav'] = {
     'samples': mc
 }
 
+# need def. for CRs
+
+aliases['ptj1'] = {
+        'expr': 'Alt$(CleanJet_pt[0],999999)'
+}
+aliases['ptj2'] = {
+        'expr': 'Alt$(CleanJet_pt[1],999999)'
+}
+
 # CR definitions
 
 aliases['topcr'] = {
-    #'expr': 'mtw2>30 && mll>50 && ((zeroJet && !bVeto) || bReq)'
-    #'expr': '!bVeto'
-    'expr' : 'mll>105 && ((zeroJet && !bVeto) || bReq)'
+    'expr' : 'abs(mll-90)>15 && bReq'
 }
 
-aliases['wwcr'] = {
-    #'expr': 'mll>105 && bVeto && PuppiMET_pt>100'
+aliases['vvcr'] = {
     'expr': 'abs(mll-90)>15 && bVeto'
-    #'expr': 'mth>60 && mtw2>30 && mll>100 && bVeto'
 }
 
-aliases['dycr'] = {
-    #'expr': 'bVeto && PuppiMET_pt<=100 && detajj<3'
-    #'expr': 'bVeto && abs(mll-90)<15 && detajj<3'
-    #'expr': 'bVeto && abs(mll-90)<15 && detajj<3'
+aliases['Zcut'] = {
     'expr': 'bVeto && abs(mll-90)<15'
 }
 
-"""
-
-aliases['dypucr'] = {
-    #'expr': 'bVeto && abs(mll-90)<15  && detajj>=3 && (Alt$(CleanJet_pt[1], 0) < 50)'
-    'expr': 'bVeto && abs(mll-90)<15 && detajj>=3 && (Alt$(CleanJet_pt[1], 0) < 50)'
+aliases['totalcr'] = {
+    'expr': 'Zcut'
 }
 
-"""
-
-
-
-
-"""
 aliases['dycr'] = {
-    #'expr': 'bVeto && PuppiMET_pt<=100 && detajj<3'
-    'expr': 'bVeto && abs(mll-90)<15 && detajj<2.5'
+    'expr': 'Zcut && ptj1 > 50 && ptj2 > 50 && dphijj > 2 && detajj < 3'
 }
 
 aliases['dypucr'] = {
-    'expr': 'bVeto && abs(mll-90)<15 && detajj>=2.5 && (Alt$(CleanJet_pt[1], 0) < 50)'
+    'expr': 'Zcut && ptj1 < 50 && ptj2 < 50 && dphijj < 2 && detajj>=3'
 }
-aliases['dypucr'] = {
-    'expr': 'bVeto && PuppiMET_pt<=100 && detajj>=3 && ptll<60'
+
+aliases['srInclusive'] = {
+    'expr': 'Zcut && ptj1 > 50 && ptj2 > 50 && dphijj > 2 && detajj > 3'
 }
-"""
-
-
-# SR definition
 
 aliases['sr'] = {
-    #'expr': 'mth>60 && mtw2>30 && bVeto'
-    #'expr': '(bVeto) && PuppiMET_pt<100 && detajj>2 && abs(mll-90)<15'
-    'expr': 'bVeto && abs(mll-90)<15 && detajj>=3 && mjj>200 && (Alt$(CleanJet_pt[0], 0) >= 80) && (Alt$(CleanJet_pt[1], 0) >= 50)'
+    'expr': 'Zcut && ptj1 > 100 && ptj2 > 100 && dphijj > 2 && detajj > 3 && mjj > 500'
 }
+
 
 aliases['ZeppenfeldDilepton'] = {
     'expr' : '(0.5*((Lepton_eta[0] + Lepton_eta[1]) - (CleanJet_eta[0] + CleanJet_eta[1]))/abs(CleanJet_eta[0] - CleanJet_eta[1]))'
