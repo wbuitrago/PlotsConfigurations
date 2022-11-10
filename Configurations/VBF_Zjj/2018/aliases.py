@@ -11,6 +11,12 @@ configurations = os.path.dirname(configurations) # Configurations
 
 # imported from samples.py:
 # samples, signals
+folderpath = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
+folderpath = os.path.dirname(folderpath)
+
+with open(folderpath + "/config.py") as file:
+    exec(file.read())
+
 
 mc = [skey for skey in samples if skey not in ('Fake', 'DATA', 'Dyemb')]
 mc_emb = [skey for skey in samples if skey not in ('Fake', 'DATA')]
@@ -443,24 +449,40 @@ aliases['lhe_mjj'] = {
     'samples': ['Zjj']
 }
 
-morphing_file = "/eos/user/g/gpizzati/dnn/2018_new/h2d_corr.root"
-aliases['corr_DY'] = {
-    'class': 'ReweightZpT',
-    'samples': ['DY'],
-    'args': (morphing_file, False),
-     'linesToAdd' : [
-        'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-        '.L {}/VBF_Zjj/2018/reweight_zpt.cc+'.format(configurations)
-        ] 
-} 
-#aliases['corr_DY'] = {
-#    'expr': 'Alt$(corr, 1000000)',
-#    'samples': ['DY']
-#}
 
-"""
-aliases['corr_DY'] = {
-    'expr': '1',
-    'samples': ['DY']
-}
-"""
+if corrDY == 1:
+    morphing_file = "/eos/user/g/gpizzati/dnn/2018_new/h2d_corr.root"
+    aliases['corr_DY'] = {
+        'class': 'ReweightZpT',
+        'samples': ['DY'],
+        'args': (morphing_file, False),
+         'linesToAdd' : [
+            'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+            '.L {}/VBF_Zjj/2018/reweight_zpt.cc+'.format(configurations)
+            ]
+    }
+
+elif corrDY == 0:
+    aliases['corr_DY'] = {
+        'expr': '1',
+        'samples': ['DY']
+    }
+
+else:
+    ##### DY Z pT reweighting
+    aliases['getGenZpt_OTF'] = {
+        'linesToAdd':['.L %s/src/PlotsConfigurations/Configurations/patches/getGenZpt.cc+' % os.getenv('CMSSW_BASE')],
+        'class': 'getGenZpt',
+        'samples': ['DY']
+    }
+    handle = open('%s/src/PlotsConfigurations/Configurations/patches/DYrew.py' % os.getenv('CMSSW_BASE'),'r')
+    exec(handle)
+    handle.close()
+    aliases['DY_NLO_pTllrw'] = {
+        'expr': '('+DYrew['2016']['NLO'].replace('x', 'getGenZpt_OTF')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
+        'samples': ['DY']
+    }
+    aliases['DY_LO_pTllrw'] = {
+        'expr': '('+DYrew['2016']['LO'].replace('x', 'getGenZpt_OTF')+')*(nCleanGenJet == 0)+1.0*(nCleanGenJet > 0)',
+        'samples': ['DY']
+    }                      

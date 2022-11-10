@@ -1,11 +1,22 @@
 # Configuration file to produce initial root files 
 
 treeName = 'Events'
+import os
+import copy
+import inspect
 
-tag = 'vbf_zjj_2018'
+folderpath = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
+folderpath = os.path.dirname(folderpath)
 
-# used by mkShape to define output directory for root files
-outputDir = 'rootFile'
+with open(folderpath + "/config.py") as file:
+    exec(file.read())
+
+if extract:
+    tag = 'extract_new_18'
+    outputDir = 'extract/samples/' # create the directory first!
+else:
+    tag = 'vbf_zjj_2018'
+    outputDir = 'rootFile'
 
 # file with TTree aliases
 aliasesFile = 'aliases.py'
