@@ -32,8 +32,8 @@ or
 
 
 # Make plots:
-# For this section, at the time being (nov. 2022), it is needed CMSSW10_6_4 (for example) recreating the same path ~/CMSSW 10../src/Plotconfig/config/VBF_W/2018/ and here it is needed utils folder
-# this is due to root, i think, because when running mkplot segmentation violation happens!
+For this section, at the time being (nov. 2022), it is needed CMSSW10_6_4 (for example) recreating the same path ~/CMSSW 10../src/Plotconfig/config/VBF_W/2018/ and here it is needed utils folder.
+This is due to ROOT, I think, because when running mkplot segmentation violation happens!
 
 
     mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1 --plotNormalizedDistributions
