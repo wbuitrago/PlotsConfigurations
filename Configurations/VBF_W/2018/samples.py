@@ -55,10 +55,16 @@ elif  'cern' in SITE:
   treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
   treeBaseDirPrivate = '/eos/user/a/abulla/nanoAOD/postProc/'
 
-mcDirectory = os.path.join(treeBaseDir,  mcProduction , mcSteps + '__' + skim)
+def makeMCDirectory(var=''):
+  if var:
+      return os.path.join(treeBaseDirPrivate, mcProduction, (mcSteps + '__' + skim).format(var='__' + var))
+  else:
+      return os.path.join(treeBaseDirPrivate, mcProduction, (mcSteps + '__' + skim).format(var=''))
+
+mcDirectory = os.path.join(treeBaseDir,  mcProduction , mcSteps)
 mcPrivateDirectory = os.path.join(treeBaseDirPrivate,  mcProduction , mcSteps + '__' + skim)
-#fakeDirectory = os.path.join(treeBaseDir, fakeReco, fakeSteps)
-dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps + '__' + skim)
+#fakeDirectory = os.path.join(treeBaseDir, fakeRe
+dataDirectory = os.path.join(treeBaseDir, dataReco, dataSteps)
 dataPrivateDirectory = os.path.join(treeBaseDirPrivate, dataReco, dataSteps + '__' + skim)
 
 
@@ -154,6 +160,7 @@ samples['WLNuJJ']  = {  'name'   :  nanoGetSampleFiles(mcPrivateDirectory,'WLNuJ
 
 ####### Wjets #########
 Wjets_photon_filter = '!(Sum$( PhotonGen_isPrompt==1 && PhotonGen_pt>10 && abs(PhotonGen_eta)<2.5 ) > 0) '
+Total_correction = 'WJets_reweight'
 
 samples['Wjets_HT'] = { 'name' :   nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu-LO')
                                    + nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu_HT70_100')
@@ -165,7 +172,7 @@ samples['Wjets_HT'] = { 'name' :   nanoGetSampleFiles(mcPrivateDirectory, 'WJets
                                    + nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu_HT1200_2500')
                                    + nanoGetSampleFiles(mcPrivateDirectory, 'WJetsToLNu_HT2500_inf'),
 #				                'weight': XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch + '* ewknloW',
-                        'weight': CommonWeight+'*' + Wjets_photon_filter +'* ewknloW',
+                        'weight': CommonWeight+'*' + Wjets_photon_filter +'* ewknloW' + '*' +Total_correction,
 			                	'FilesPerJob' : 15, 
                         'subsamples': {
                           'hardJets'  : 'hardJets',
@@ -187,7 +194,6 @@ addSampleWeight(samples,'Wjets_HT', 'WJetsToLNu_HT1200_2500', '1.3268')
 addSampleWeight(samples,'Wjets_HT', 'WJetsToLNu_HT2500_inf',  '2.7948') 
 
 ###############################################
-
 
 
 ############ Top ############
@@ -212,8 +218,8 @@ samples['top'] = {    'name'   : nanoGetSampleFiles(mcPrivateDirectory,'TTTo2L2N
 
 addSampleWeight(samples,'top','TTTo2L2Nu','Top_pTrw')
 addSampleWeight(samples,'top','TTToSemiLeptonic','Top_pTrw')
-#addSampleWeight(samples,'top','TTZjets','Top_pTrw')
-#addSampleWeight(samples,'top','TTWjets','Top_pTrw')
+# addSampleWeight(samples,'top','TTZjets','Top_pTrw')
+# addSampleWeight(samples,'top','TTWjets','Top_pTrw')
 
 #Not corrected in baseW, so we should correct the XS here
 addSampleWeight(samples,'top','ST_t-channel_top',  "100. / 32.4 ") # N.B We are using inclusive sample with leptonic-only XS
@@ -429,11 +435,13 @@ samples['VVV']  = {  'name'   :   nanoGetSampleFiles(mcPrivateDirectory,'ZZZ')
 
 # Then corrected
 fakeW = 'fakeWeight_35'
+Fake_correction = '(((abs(Lepton_pdgId[0])==11)*(0.8013918943)) + ((abs(Lepton_pdgId[0])==13)*(0.7654731335)))'
+#Fake_correction = '1.'
 
 ### Fakes
 samples['Fake'] = {
   'name': [],
-  'weight': METFilter_DATA+'*'+fakeW,
+  'weight': METFilter_DATA+'*'+fakeW + '*' + Fake_correction,
   'weights': [],
   'isData': ['all'],
   'FilesPerJob' : 40,
@@ -446,6 +454,7 @@ for _, sd in DataRun:
     samples['Fake']['name'].extend(files)
     samples['Fake']['weights'].extend([DataTrig[pd]] * len(files))
 
+    
 
 #########################################
 ################ DATA ###################

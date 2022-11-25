@@ -28,6 +28,7 @@ colors = {
 }
 
 palette = {
+    "FerrariRed": (255,40,0), #ff2800
     "Orange": (242, 108, 13), #f26c0d  
     "Yellow": (247, 195, 7), #f7c307
     "LightBlue": (153, 204, 255), #99ccff
@@ -87,7 +88,7 @@ groupPlot['VV+VVV+VBS']  = {
                 'nameHR' : 'VV+VVV+VBS',
                 'isSignal' : 0,
                 'color': palette["Violet"], #palette["Peach3"],  
-                'samples'  : ['VVV', 'VV', 'VBS'],
+                'samples'  : ['VVV', 'VV','VBS'],
                 'fill': 1001
               }
               
@@ -96,14 +97,6 @@ groupPlot['Others']  = {
                 'isSignal' : 0,
                 'color'    : palette["Orange"],
                 'samples'  : ['ggWW', 'VBF-Z', 'Vg', 'VgS'],
-                'fill': 1001
-              }
-
-groupPlot['WLNuJJ']  = {  
-                'nameHR' : 'WLNuJJ',
-                'isSignal' : 1,
-                'color': colors['kRed']+1,   
-                'samples'  : ['WLNuJJ'],
                 'fill': 1001
               }
 
@@ -148,28 +141,20 @@ groupPlot['Wjets_HT_PUJets']  = {
                 }
 
 groupPlot['Fake']  = {  
-                'nameHR' : "Non-prompt",
-                'isSignal' : 0,
-                'color': palette["LightBlue"],   
-                'samples'  : ['Fake'],
+               'nameHR' : "Non-prompt",
+               'isSignal' : 0,
+               'color': palette["LightBlue"],   
+              'samples'  : ['Fake'],
+              'fill': 1001
+          }
+
+groupPlot['WLNuJJ']  = {  
+                'nameHR' : 'WLNuJJ',
+                'isSignal' : 1,
+                'color': palette["FerrariRed"],   
+                'samples'  : ['WLNuJJ'],
                 'fill': 1001
-            }
-
-
-#groupPlot['top']  = {  
-#                 'nameHR' : 'top',
-#                 'isSignal' : 0,
-#                 'color':  palette["MediumBlue"], #palette["MediumBlue2"],  
-#                 'samples'  : ['top'],
-#                 'fill': 1001
-#             }
-
-
-
-
-
-
-
+              }
 
 
 #plot = {}
@@ -189,14 +174,20 @@ plot['Wjets_HT_hardJets'] = {
                  'color': colors['kAzure']-1,
                  'isSignal' : 0,
                  'isData'   : 0, 
-                 'scale'    : 1.0 
+                 #'scale'    : 1.09950003 
+                 'scale'    : 1.0
+                 #'scale'    : 1.1231175589276459 #mu
+                 #'scale'    : 1.2795330335917352
                 }
 
 plot['Wjets_HT_PUJets'] = {   
                  'color': colors['kAzure']-1,
                  'isSignal' : 0,
                  'isData'   : 0, 
-                 'scale'    : 1.0 
+                 #'scale'    : 1.050420857 
+                 'scale'    : 1.0
+                 #'scale'    : 1.0958905448504972
+                 #'scale'    : 1.1768637821969707
                 }
 
 plot['top'] = {   
@@ -278,18 +269,14 @@ plot['VVV'] = {
 
 
 plot['Fake'] = {   
-                 'color': colors['kAzure']-1,
-                 'isSignal' : 0,
-                 'isData'   : 0, 
-                 'scale'    : 1.0 
-                }
+                'color': colors['kAzure']-1,
+                'isSignal' : 0,
+                'isData'   : 0, 
+                'scale'    : 1.0 
+                #'scale' : 0.713100632928824
+                #'scale' : 0.6454715517898252
+               }
 
-#plot['WWewk'] = {   
-#                 'color': colors['kAzure']-1,
-#                 'isSignal' : 0,
-##                 'isData'   : 0, 
-#                 'scale'    : 1.0 
-#                }
 
 # for wjetbin in wjets_bins:
 #     plot[wjetbin] = {   
@@ -308,7 +295,6 @@ plot['DATA']  = {
                   'isData'   : 1 ,
                   'isBlind'  : 0
               }
-
 
 
 # additional options
