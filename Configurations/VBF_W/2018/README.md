@@ -1,19 +1,19 @@
 
 # How to run the analysis --> CMSSW_11_1_4 IS NEEDED FOR DNN OUTPUT VARIABLE!!
-# To run it on CMSSW_10_6_4 pls comment the dnn variable everywhere
-# Furtheremore (refer to Giorgio for this) it is needed a customization of https://github.com/UniMiBAnalyses/NNEvaluation/blob/master/DNNTensorflow/src/DNNEvaluatorSavedModel.cpp#L74:
+To run it on CMSSW_10_6_4 pls comment the dnn variable everywhere
+Furtheremore (refer to Giorgio for this) it is needed a customization of https://github.com/UniMiBAnalyses/NNEvaluation/blob/master/DNNTensorflow/src/DNNEvaluatorSavedModel.cpp#L74:
 
-# void NNEvaluation::DNNEvaluatorSavedModel::open_session(){
-#    if (session_ready_) return;
-#
-#    // metaGraph_ = tensorflow::loadMetaGraph(graphPath_); // TODO check what happens if file not present
-#    // // create a new session and add the graphDef
-#    // session_ = tensorflow::createSession(metaGraph_, graphPath_);
-#    tensorflow::GraphDef* graphDef = tensorflow::loadGraphDef(graphPath_);
-#    session_ = tensorflow::createSession(graphDef);
-#    session_ready_ = true;
-#    std::cout << "Tensorflow session ready" <<std::endl;
-# }  
+void NNEvaluation::DNNEvaluatorSavedModel::open_session(){
+    if (session_ready_) return;
+
+    // metaGraph_ = tensorflow::loadMetaGraph(graphPath_); // TODO check what happens if file not present
+    // // create a new session and add the graphDef
+    // session_ = tensorflow::createSession(metaGraph_, graphPath_);
+    tensorflow::GraphDef* graphDef = tensorflow::loadGraphDef(graphPath_);
+    session_ = tensorflow::createSession(graphDef);
+    session_ready_ = true;
+    std::cout << "Tensorflow session ready" <<std::endl;
+}  
     
 # Produce the shapes:
 
