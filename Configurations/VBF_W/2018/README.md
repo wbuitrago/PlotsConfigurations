@@ -20,6 +20,8 @@ Furtheremore (refer to Giorgio for this) it is needed a customization of https:/
     
 # Produce the shapes:
 
+### N.B. dont know why but the hadd process (with systematics) is rather slow. The last step ofter requires several hours, if kill the process, the finale root file is not usable. There is some nuisance probabily which has something. Easy way, try add one by one and see how slow is the hadd process!
+
     mkShapesMulti.py --pycfg=configuration.py --doBatch=1 --batchSplit=Samples,Files --batchQueue=tomorrow
 
 # Hadd the root files:
