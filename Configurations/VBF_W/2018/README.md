@@ -3,6 +3,7 @@
 To run it on CMSSW_10_6_4 pls comment the dnn variable everywhere
 Furtheremore (refer to Giorgio for this) it is needed a customization of https://github.com/UniMiBAnalyses/NNEvaluation/blob/master/DNNTensorflow/src/DNNEvaluatorSavedModel.cpp#L74:
 
+{
 void NNEvaluation::DNNEvaluatorSavedModel::open_session(){
     if (session_ready_) return;
 
@@ -14,6 +15,7 @@ void NNEvaluation::DNNEvaluatorSavedModel::open_session(){
     session_ready_ = true;
     std::cout << "Tensorflow session ready" <<std::endl;
 }  
+}
     
 # Produce the shapes:
 
