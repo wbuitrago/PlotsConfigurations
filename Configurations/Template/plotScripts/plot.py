@@ -1,8 +1,21 @@
 # Htautau
 
-plot['H_htt'] = {
-                  'nameHR' : 'H#tau#tau',
-                  'color': 798, 
+import ROOT 
+c1 = ROOT.TColor.GetFreeColorIndex()
+blue = ROOT.TColor(c1, 0.34117647058, 0.72156862745, 1)
+
+c2 = ROOT.TColor.GetFreeColorIndex()
+brown = ROOT.TColor(c2, 0.71372549019, 0.42745098039, 0.05098039215)
+
+c3 = ROOT.TColor.GetFreeColorIndex()
+yellow = ROOT.TColor(c3, 0.98431372549, 0.69411764705, 0.23529411764)
+
+c4 = ROOT.TColor.GetFreeColorIndex()
+red = ROOT.TColor(c4, 0.99607843137,0.40784313725 ,0.27843137254 )
+
+plot['ewk_SSWW'] = {
+                  'nameHR' : 'SSWW',
+                  'color': c1, 
                   'isSignal' : 1,
                   'isData'   : 0,    
                   'scale'    : 1    #
@@ -10,25 +23,25 @@ plot['H_htt'] = {
 
 # HWW 
 
-plot['ZH_hww'] = {
-                  'nameHR' : 'ZH',
-                  'color': 632, # kRed+3 
+plot['ewk_OSWW'] = {
+                  'nameHR' : 'OSWW',
+                  'color': c2, # kRed+3 
                   'isSignal' : 1,
                   'isData'   : 0,    
                   'scale'    : 1    #
                   }
 
-plot['ggZH_hww'] = {
-                  'nameHR' : 'ggZH',
-                  'color': 402, # kRed+4
+plot['ewk_WZ'] = {
+                  'nameHR' : 'WZ',
+                  'color': c3, # kRed+4
                   'isSignal' : 1,
                   'isData'   : 0,    
                   'scale'    : 1    #
                   }
 
-plot['WH_hww'] = {
-                  'nameHR' : 'WH',
-                  'color': 617, # kRed+2 
+plot['ewk_ZZ'] = {
+                  'nameHR' : 'ZZ',
+                  'color': c4, # kRed+2 
                   'isSignal' : 1,
                   'isData'   : 0,    
                   'scale'    : 1    #
