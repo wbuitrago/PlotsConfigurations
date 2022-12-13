@@ -19,8 +19,11 @@ Furtheremore (refer to Giorgio for this) it is needed a customization of https:/
 
 # SM & EFT sample position:
 Private sample are NOT in:
+
     treeBaseDirPrivate = '/eos/user/a/abulla/nanoAOD/postProc/'
+
 but are now in:
+
     treeBaseDirPrivate = 'gwterax2/users/amassiro/EFT_W_EWK/nanoaod/postProc'
 
 A little customization is thus needed is samples.py!
@@ -34,9 +37,12 @@ Anyway, one can re apply the skim modifying the https://github.com/latinos/Latin
                     'selection': '"(Alt$(Lepton_pt[0],0) > 25.) && (Alt$(CleanJet_pt[1], 0) > 30.) && (Alt$(CleanJet_pt[0],0) > 40.) && (mjj >= 400.) && (detajj > 2.) && (Alt$(Lepton_eta[0],-3) > -2.) && (Alt$(Lepton_eta[0],3) < 2.) && Alt$(Lepton_pt[1],0)<=15. && Alt$(Lepton_isLoose[1],1)> 0.5 && (  Alt$(Lepton_isTightElectron_mvaFall17V1Iso_WP90[1], 0) < 0.5 && Alt$(Lepton_isTightMuon_cut_Tight_HWWW[1],0) < 0.5 )"',
         },  
 
-Similarly for the EFT nanoAOD, in samplesEFT.py, samples are no more in 
+Similarly for the EFT nanoAOD, in samplesEFT.py, samples are no more in:
+
     treeBaseDirEFTPrivate = '/eos/user/a/abulla/gridpack/EFT_FullSim/root'
+
 but in 
+
     treeBaseDirEFTPrivate = 'gwterax2/users/amassiro/EFT_W_EWK/gridpack/EFT_FullSim/root'
     
     
