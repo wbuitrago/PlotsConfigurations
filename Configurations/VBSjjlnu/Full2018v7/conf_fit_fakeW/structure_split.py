@@ -2,7 +2,6 @@
 from itertools import product, chain
 #structure = {}
 
-
 wjets_bins = []
 for ir in range(1,22):
     wjets_bins.append("Wjets_res_"+str(ir))
@@ -28,6 +27,12 @@ for wbin in wjets_bins:
                     'removeFromCuts': phase_spaces_boost 
         }
 
+
+# structure['Wjets_HT']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0
+#               }
+
 structure['DY']  = {  
                   'isSignal' : 0,
                   'isData'   : 0
@@ -38,6 +43,10 @@ structure['top']  = {
                   'isData'   : 0
               }
 
+# structure['VV']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0
+#               }
 for VV_s in VV_samples:
     structure[VV_s]  = {  
                   'isSignal' : 0,
@@ -54,6 +63,11 @@ structure['VVV']  = {
                   'isSignal' : 0,
                   'isData'   : 0 
               }
+
+# structure['VBF-V']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0 
+#               }
 
 structure['VBF-V_dipole']  = {  
                   'isSignal' : 0,
@@ -74,6 +88,42 @@ structure['VgS']  = {
                   'isSignal' : 0,
                   'isData'   : 0 
               }
+
+# structure['VBS_WZll']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0 
+#               }
+
+# structure['VBS_ZZ']  = {  
+#                   'isSignal' : 0,
+#                   'isData'   : 0 
+#               }
+
+
+# # structure['VBS']  = { 
+# #                   'isSignal' : 1,
+# #                   'isData'   : 0 
+# #               }
+
+# # structure['VBS_dipoleRecoil']  = { 
+# #                   'isSignal' : 1,
+# #                   'isData'   : 0 
+# #               }
+
+# structure['VBS_osWW']  = {  
+#                   'isSignal' : 1,
+#                   'isData'   : 0 
+#               }
+
+# structure['VBS_ssWW']  = {  
+#                   'isSignal' : 1,
+#                   'isData'   : 0 
+#               }
+
+# structure['VBS_WZjj']  = {  
+#                   'isSignal' : 1,
+#                   'isData'   : 0 
+#               }
 
 structure['ewk_WpWm']  = { 
                   'isSignal' : 1,
@@ -99,8 +149,7 @@ structure['ewk_ZZ']  = {
                   'isSignal' : 1,
                   'isData'   : 0 
               }
-
-
+              
 # data
 
 
@@ -108,3 +157,7 @@ structure['DATA']  = {
                   'isSignal' : 0,
                   'isData'   : 1 
               }
+
+
+
+

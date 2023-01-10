@@ -20,7 +20,7 @@ variables['DNNoutput_res_v1'] = {
     'xaxis': 'DNN resolved',
     'fold': 3 ,
     'cuts':  res_cuts,
-    'divideByBinWidth': True
+    'divideByBinWidth': True, 
     # 'blind': { c:[0.6,1] for c in cuts if "_sig_" in c},
 }
 
@@ -30,7 +30,7 @@ variables['DNNoutput_res_v2'] = {
     'xaxis': 'DNN resolved',
     'fold': 3 ,
     'cuts':  res_cuts,
-    'divideByBinWidth': True
+    'divideByBinWidth': True, 
     # 'blind': { c:[0.6,1] for c in cuts if "_sig_" in c},
 }
 
@@ -41,27 +41,25 @@ variables['DNNoutput_boost'] = {
     'xaxis': 'DNN boosted',
     'fold': 3 ,
     'cuts': boost_cuts,
-    'divideByBinWidth': True
+    'divideByBinWidth': True,
     # 'blind': { c:[0.6,1] for c in cuts if "_sig_" in c} ,
 }
-
 #####################
 #Fit variables
 
-# variables['fit_bins_res'] ={  'name' : 'fit_bin_res',
-#                             'range' : (21,1,22),
-#                             'xaxis' : 'Wjets resolved bin', 
-#                             'fold' : 0,
-#                             'cuts': res_cuts
-# }   
+variables['fit_bins_res'] ={  'name' : 'fit_bin_res',
+                            'range' : (21,1,22),
+                            'xaxis' : 'Wjets resolved bin', 
+                            'fold' : 0,
+                            'cuts': res_cuts
+}   
 
-# variables['fit_bins_boost'] ={  'name' : 'w_lep_pt',
-#                             'range' : ([0,50,100,150,200,300,400,600],),
-#                             'xaxis' : 'W leptonic Pt', 
-#                             'fold' : 3,
-#                             'cuts': boost_cuts
-# }   
-
+variables['fit_bins_boost'] ={  'name' : 'w_lep_pt',
+                            'range' : ([0,50,100,150,200,300,400,600],),
+                            'xaxis' : 'W leptonic Pt', 
+                            'fold' : 3,
+                            'cuts': boost_cuts
+}   
 
 ######################
 
@@ -270,4 +268,5 @@ variables['deltaeta_vjet'] = {   'name': 'deltaeta_vjet',
 
 
 # variables = {k:v for k,v in variables.items() if k in ["events", "DNNoutput_res_v1", "DNNoutput_boost", "fit_bins_res","fit_bins_boost"]}
-# variables = {k:v for k,v in variables.items() if k in ["mjj_vbs"]}
+
+variables = {k:v for k,v in variables.items() if k in ["mjj_vbs"]}

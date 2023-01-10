@@ -1,7 +1,13 @@
 from pprint import pprint
 # # # name of samples here must match keys in samples.py 
 
-mc =["DY", "top", "VV", "VVV",  "VBF-V_dipole", "Vg", "VgS",  "ggWW","VBS_dipoleRecoil"] + wjets_all_bins
+VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VBS_WV_samples = ["ewk_WpZ", "ewk_WmZ","ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
+VBS_ZV_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ"]
+VV_WV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj"]
+VV_ZV_samples = ["VV_WZll", "VV_ZZ"]
+
+mc =["DY", "top", "VV", "VVV",  "VBF-V_dipole", "Vg", "VgS",  "ggWW","VBS_dipoleRecoil"] + wjets_all_bins + VBS_samples + VV_samples
 #"VBF-V","VBS",
 
 phasespaces = ["res_wjetcr_ele","res_wjetcr_mu" ,"boost_wjetcr_ele" ,"boost_wjetcr_mu",
@@ -470,7 +476,7 @@ nuisances['fatjetJMS']  = {
     'mapUp': 'fatjetJMSup',
     'mapDown': 'fatjetJMSdo',
     'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
-    'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "VV", "ggWW"]),
+    'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "VV", "ggWW"] +VV_samples),
     'folderUp' : directory_mc+'_fatjetJMSup',
     'folderDown' : directory_mc+'_fatjetJMSdo',
     'AsLnN'      : '1',
@@ -529,7 +535,6 @@ nuisances['TopPtRew'] = {
 
 ###########################################
 
-"""
 for jtype in ["quark", "gluon"]:
       for  jeta in ["higheta", "loweta"]:
         nuisances['QGLmorphing_{}_{}'.format(jtype, jeta)]  = {
@@ -539,35 +544,98 @@ for jtype in ["quark", "gluon"]:
             'samples': dict((skey, ['1.','1.']) for skey in mc),
         }
 
-"""
 
 # ######################
 # # Theory nuisance
 
 
 import json, os
-#VBS_pdf_factors = json.load(open("/afs/cern.ch/work/d/dvalsecc/private/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.3/pdf_normcorr_VBS.json"))
-nuis_factors = json.load(open("/afs/cern.ch/work/g/gboldrin/public/public/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.5/nuisance_incl_norm_factors_2018.json"))
+# VBS_pdf_factors = json.load(open("/afs/cern.ch/work/d/dvalsecc/private/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.3/pdf_normcorr_VBS.json"))
+# nuis_factors = json.load(open("/afs/cern.ch/work/d/dvalsecc/private/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.5/nuisance_incl_norm_factors_2018.json"))
+nuis_factors = json.load(open("/afs/cern.ch/work/g/gboldrin/public/public/CMSSW_11_1_4/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_Combination/nuisance_incl_norm_factors_2018_split.json"))
 
 for sample in mc :
-    if 'Wjets' in sample: continue
-    if sample == "ggWW": continue
-    if 'VBS' in sample:
-        nuisances['QCD_scale_VBS'] = {
-            'name'  : 'QCDscale_VBS_accept',
+    if sample in ["ggWW","VBS","VBS_dipoleRecoil"] + wjets_all_bins + VBS_samples + VV_samples : continue
+    nuisances['QCD_scale_'+sample] = {
+        'name'  : 'QCDscale_'+sample,
+        'kind'  : 'weight',
+        'type'  : 'shape',
+        'samples'  :  { sample: ["LHEScaleWeight[0]", "LHEScaleWeight[8]"] }
+    }
+
+#Correlate all signal samples
+nuisances['QCD_scale_VBS_WV_accept'] = {
+            'name'  : 'QCDscale_VBS_WV_accept',
             'kind'  : 'weight',
             'type'  : 'shape',
-            # Normalization effect removed from 1l inclusive phase space
-            'samples'  :  { "VBS": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"],
-                            "VBS_dipoleRecoil": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"]  }
+            # 'samples'  :  { "VBS": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"],
+            #                 "VBS_dipoleRecoil": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"], }
+            'samples': { k:["QCDscale_normalized[0]", "QCDscale_normalized[8]"] for k in VBS_WV_samples }
         }
-    else:
-        nuisances['QCD_scale_'+sample] = {
-            'name'  : 'QCDscale_'+sample,
+
+nuisances['QCD_scale_VBS_ZV_accept'] = {
+            'name'  : 'QCDscale_VBS_ZV_accept',
             'kind'  : 'weight',
             'type'  : 'shape',
-            'samples'  :  { sample: ["LHEScaleWeight[0]", "LHEScaleWeight[8]"] }
+            # 'samples'  :  { "VBS": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"],
+            #                 "VBS_dipoleRecoil": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"], }
+            'samples': { k:["QCDscale_normalized[0]", "QCDscale_normalized[8]"] for k in VBS_ZV_samples }
         }
+
+### Adding also normalization effect for ZV component
+# nuisances['QCD_scale_VBS_ZV_norm'] = {
+#             'name'  : 'QCDscale_VBS_ZV',
+#             'kind'  : 'weight',
+#             'type'  : 'lnN',
+#             # 'samples'  :  { "VBS": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"],
+#             #                 "VBS_dipoleRecoil": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"], }
+#             'samples': { k: "1.007/0.986" for k in VBS_ZV_samples }
+#         }
+
+# Adding also the non-normalized 
+nuisances['QCD_scale_VBS_WV_full'] = {
+            'name'  : 'QCDscale_VBS_WV',
+            'kind'  : 'weight',
+            'type'  : 'shape',
+            'samples': { k:["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for k in VBS_WV_samples }
+        }
+
+nuisances['QCD_scale_VBS_ZV_full'] = {
+            'name'  : 'QCDscale_VBS_ZV',
+            'kind'  : 'weight',
+            'type'  : 'shape',
+            'samples': { k:["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for k in VBS_ZV_samples }
+        }
+
+# nuisances['QCD_scale_VV_accept'] = {
+#             'name'  : 'QCDscale_VV_accept',
+#             'kind'  : 'weight',
+#             'type'  : 'shape',
+#             'samples': { k:["QCDscale_normalized[0]", "QCDscale_normalized[8]"] for k in VV_samples }
+#         }
+
+nuisances['QCD_scale_QCD_WV_accept'] = {
+            'name'  : 'QCDscale_QCD_WV_accept',
+            'kind'  : 'weight',
+            'type'  : 'shape',
+            # 'samples': { k:["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for k in VV_WV_samples } --> It was wrong in 4.5.3
+            'samples': { k:["QCDscale_normalized[0]", "QCDscale_normalized[8]"] for k in VV_WV_samples }
+        }
+
+nuisances['QCD_scale_QCD_WV_full'] = {
+            'name'  : 'QCDscale_QCD_WV',
+            'kind'  : 'weight',
+            'type'  : 'shape',
+            'samples': { k:["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for k in VV_WV_samples }
+        }
+
+nuisances['QCD_scale_QCD_ZV'] = {
+            'name'  : 'QCDscale_QCD_ZV', #==> needs to become QCDscale_QCD_ZV
+            'kind'  : 'weight',
+            'type'  : 'shape',
+            'samples': { k:["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for k in VV_ZV_samples }
+        }
+
 
 nuisances['QCD_scale_Wjets'] = {
             'name'  : 'QCDscale_Wjets',
@@ -575,7 +643,6 @@ nuisances['QCD_scale_Wjets'] = {
             'type'  : 'shape',
             'samples'  :  { sample: ["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for sample in wjets_all_bins }
         }
-
 
 # #
 # # PS and UE
@@ -624,6 +691,7 @@ nuisances['QCD_scale_Wjets'] = {
 # # PS and UE
 # # #
 for sample in mc:
+    if sample in VBS_samples + VV_samples + ["VBS","VBS_dipoleRecoil"] : continue
     nuisances['PS_ISR_'+sample]  = {
                     'name'  : 'CMS_PS_ISR_'+sample,
                     'kind'  : 'weight',
@@ -642,16 +710,98 @@ for sample in mc:
                 }
 
 
+
+nuisances['PS_ISR_VBS_WV']  = {
+                    'name'  : 'CMS_PS_ISR_VBS_WV',
+                    'kind'  : 'weight',
+                    'type'  : 'shape',
+                    'samples'  : {
+                        sample : ['PSWeight[2]', 'PSWeight[0]'] for sample in VBS_WV_samples
+                    }
+                }
+nuisances['PS_FSR_VBS_WV']  = {
+                'name'  : 'CMS_PS_FSR_VBS_WV',
+                'kind'  : 'weight',
+                'type'  : 'shape',
+                'samples'  : {
+                    sample :  ['PSWeight[3]', 'PSWeight[1]'] for sample in VBS_WV_samples
+                }
+            }
+
+nuisances['PS_ISR_VBS_ZV']  = {
+                    'name'  : 'CMS_PS_ISR_VBS_ZV',
+                    'kind'  : 'weight',
+                    'type'  : 'shape',
+                    'samples'  : {
+                        sample : ['PSWeight[2]', 'PSWeight[0]'] for sample in VBS_ZV_samples
+                    }
+                }
+nuisances['PS_FSR_VBS_ZV']  = {
+                'name'  : 'CMS_PS_FSR_VBS_ZV',
+                'kind'  : 'weight',
+                'type'  : 'shape',
+                'samples'  : {
+                    sample :  ['PSWeight[3]', 'PSWeight[1]'] for sample in VBS_ZV_samples
+                }
+            }
+
+# When VV is a background all the PS is correlated
+
+nuisances['PS_ISR_QCD_WV']  = {
+                    'name'  : 'CMS_PS_ISR_QCD_WV',
+                    'kind'  : 'weight',
+                    'type'  : 'shape',
+                    'samples'  : {
+                        sample : ['PSWeight[2]', 'PSWeight[0]'] for sample in VV_WV_samples
+                    }
+                }
+nuisances['PS_FSR_QCD_WV']  = {
+                'name'  : 'CMS_PS_FSR_QCD_WV',
+                'kind'  : 'weight',
+                'type'  : 'shape',
+                'samples'  : {
+                    sample :  ['PSWeight[3]', 'PSWeight[1]'] for sample in VV_WV_samples
+                }
+            }
+
+nuisances['PS_ISR_QCD_ZV']  = {
+                    'name'  : 'CMS_PS_ISR_QCD_ZV',
+                    'kind'  : 'weight',
+                    'type'  : 'shape',
+                    'samples'  : {
+                        sample : ['PSWeight[2]', 'PSWeight[0]'] for sample in VV_ZV_samples
+                    }
+                }
+nuisances['PS_FSR_QCD_ZV']  = {
+                'name'  : 'CMS_PS_FSR_QCD_ZV',
+                'kind'  : 'weight',
+                'type'  : 'shape',
+                'samples'  : {
+                    sample :  ['PSWeight[3]', 'PSWeight[1]'] for sample in VV_ZV_samples
+                }
+            }
+
 ##############
+
+# nuisances['PU']  = {
+#                 'name'  : 'CMS_PU_2018',
+#                 'kind'  : 'weight',
+#                 'type'  : 'shape',
+#                 'samples'  : {
+#                     # s : ['(puWeightUp/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2017"][0]),
+#                     #      '(puWeightDown/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2017"][1])] for s in mc },
+#                     s : ["",""] for s in mc }, # only for dataset and plotting 
+#                 'AsLnN'      : '1',
+# }
 
 nuisances['PU']  = {
                 'name'  : 'CMS_PU_2018',
                 'kind'  : 'weight',
                 'type'  : 'shape',
                 'samples'  : {
-                    # s : ['(puWeightUp/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2017"][0]),
-                    #      '(puWeightDown/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2017"][1])] for s in mc },
-                    s : ["",""] for s in mc }, # only for dataset and plotting 
+                    s : ['(puWeightUp/puWeight)',
+                         '(puWeightDown/puWeight)'] for s in mc },
+                    # s : ["",""] for s in mc }, # only for dataset and plotting 
                 'AsLnN'      : '1',
 }
 
@@ -666,20 +816,31 @@ nuisances['PU']  = {
 # }
 
 ######## PDF uncertainty
-nuisances['pdf_weight'] = {
+
+# --> How it was in fit 4.5.3
+# nuisances['pdf_weight'] = {
+#     'name'  : 'pdf_weight_1718',
+#     'kind'  : 'weight_envelope',
+#     'type'  : 'shape',
+#     'samples' :  { s: [' Alt$(LHEPdfWeight['+str(i)+'], 1.)' for i in range(0,103)] for s in mc if s not in ["VBS", "VBS_dipoleRecoil", "top"]+wjets_all_bins+VBS_samples},
+#     'AsLnN':  '1'
+# }
+
+nuisances['pdf_weight'] = { # --> Now save also the normalization one for the signal
     'name'  : 'pdf_weight_1718',
     'kind'  : 'weight_envelope',
     'type'  : 'shape',
-    'samples' :  { s: [' Alt$(LHEPdfWeight['+str(i)+'], 1.)' for i in range(0,103)] for s in mc if s not in ["VBS", "VBS_dipoleRecoil", "top"]+wjets_all_bins},
+    'samples' :  { s: [' Alt$(LHEPdfWeight['+str(i)+'], 1.)' for i in range(0,103)] for s in mc if s not in ["top"]+wjets_all_bins},
     'AsLnN':  '1'
 }
 
-nuisances['pdf_weight_VBS'] = {
+nuisances['pdf_weight_accept'] = {
     'name'  : 'pdf_weight_1718_accept',
     'kind'  : 'weight_envelope',
     'type'  : 'shape',
-    'samples' :  { "VBS": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ],
-                   "VBS_dipoleRecoil": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ]}
+    # 'samples' :  { "VBS": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ],
+    #                "VBS_dipoleRecoil": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ]}
+    'samples': { k : [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ] for k in VBS_samples}
 }
 
 
@@ -778,10 +939,18 @@ nuisances['stat']  = {
 for n in nuisances.values():
     n['skipCMS'] = 1
 
-   
 
-# nuisances = {k:v for k,v in nuisances.items() if 'dipole' == k} #if 'PS' in k or 'QCD' in k
 
-# nuisances = {k:v for k,v in nuisances.items() if 'zlep_residual' in k} #if 'PS' in k or 'QCD' in k
+################################
+## Customizations
 
+# Customization to redo the QCDscales
+#nuisances = {k:v for k,v in nuisances.items() if 'QCD_scale' in k or k == "pdf_weight"} #if 'PS' in k or 'QCD' in k
+
+# Customization for mu fit with QCDscale normalization included
+exclude = ["QCD_scale_VBS_WV_accept","QCD_scale_VBS_ZV_accept", "QCD_scale_QCD_WV_accept", "pdf_weight_accept"]
+nuisances = {k:v for k,v in nuisances.items() if k not in exclude}
+
+
+nuisances = {k:v for k,v in nuisances.items() if k in ['PS_ISR_VBS_WV', 'PS_FSR_VBS_WV']}
 # print ' '.join(nuis['name'] for nname, nuis in nuisances.iteritems() if nname not in ('lumi', 'stat'))

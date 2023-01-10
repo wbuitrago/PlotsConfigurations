@@ -1,20 +1,14 @@
 from pprint import pprint
 # # # name of samples here must match keys in samples.py 
 
-#VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
-#VBS_WV_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj"]
-#VBS_ZV_samples = ["VBS_WZll", "VBS_ZZ"]
+VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
+VBS_WV_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj"]
+VBS_ZV_samples = ["VBS_WZll", "VBS_ZZ"]
 VV_WV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj"]
 VV_ZV_samples = ["VV_WZll", "VV_ZZ"]
 
-VBS_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ", "ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
-VBS_WV_samples = ["ewk_WpZ", "ewk_WmZ","ewk_WpWm", "ewk_WpWp", "ewk_WmWm"]
-VBS_ZV_samples = ["ewk_WpZ", "ewk_WmZ", "ewk_ZZ"]
-
-mc =["DY", "top", "VV", "VVV",  "VBF-V_dipole", "Vg", "VgS",  "ggWW"] + wjets_all_bins + VBS_samples + VV_samples
+mc =["DY", "top", "VV", "VVV",  "VBF-V_dipole", "Vg", "VgS",  "ggWW","VBS_dipoleRecoil"] + wjets_all_bins + VBS_samples + VV_samples
 #"VBF-V","VBS",
-
-print(mc)
 
 phasespaces = ["res_wjetcr_ele","res_wjetcr_mu" ,"boost_wjetcr_ele" ,"boost_wjetcr_mu",
         "res_topcr_ele","res_topcr_mu" ,"boost_topcr_ele" ,"boost_topcr_mu",
@@ -557,7 +551,7 @@ for jtype in ["quark", "gluon"]:
 
 import json, os
 #VBS_pdf_factors = json.load(open("/afs/cern.ch/work/d/dvalsecc/private/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.3/pdf_normcorr_VBS.json"))
-nuis_factors = json.load(open("/afs/cern.ch/work/g/gboldrin/public/public/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.5/nuisance_incl_norm_factors_2018.json"))
+nuis_factors = json.load(open("/afs/cern.ch/work/d/dvalsecc/private/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.5/nuisance_incl_norm_factors_2018.json"))
 
 
 for sample in mc :
@@ -779,9 +773,9 @@ nuisances['PU']  = {
                 'kind'  : 'weight',
                 'type'  : 'shape',
                 'samples'  : {
-                    #s : ['(puWeightUp/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2018"][0]),
-                    #     '(puWeightDown/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2018"][1])] for s in mc },
-                    s : ["",""] for s in mc }, # only for dataset and plotting 
+                    s : ['(puWeightUp/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2017"][0]),
+                         '(puWeightDown/puWeight) * {}'.format(nuis_factors[s]["CMS_PU_2017"][1])] for s in mc },
+                    # s : ["",""] for s in mc }, # only for dataset and plotting 
                 'AsLnN'      : '1',
 }
 

@@ -1,15 +1,7 @@
 from pprint import pprint
 # # # name of samples here must match keys in samples.py 
 
-VBS_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj", "VBS_WZll", "VBS_ZZ"]
-VBS_WV_samples = ["VBS_osWW", "VBS_ssWW", "VBS_WZjj"]
-VBS_ZV_samples = ["VBS_WZll", "VBS_ZZ"]
-VV_WV_samples = ["VV_osWW", "VV_ssWW", "VV_WZjj"]
-VV_ZV_samples = ["VV_WZll", "VV_ZZ"]
-WV_samples = VBS_WV_samples + VV_WV_samples
-ZV_samples = VBS_ZV_samples + VV_ZV_samples
-
-mc =["DY", "top", "VV", "VVV",  "VBF-V_dipole", "Vg", "VgS",  "ggWW","VBS_dipoleRecoil"] + wjets_all_bins + VBS_samples + VV_samples
+mc =["DY", "top", "VV", "VVV",  "VBF-V_dipole", "Vg", "VgS",  "ggWW","VBS_dipoleRecoil"] + wjets_all_bins
 #"VBF-V","VBS",
 
 phasespaces = ["res_wjetcr_ele","res_wjetcr_mu" ,"boost_wjetcr_ele" ,"boost_wjetcr_mu",
@@ -478,7 +470,7 @@ nuisances['fatjetJMS']  = {
     'mapUp': 'fatjetJMSup',
     'mapDown': 'fatjetJMSdo',
     'cuts': phase_spaces_boost, #because we are vetoing fatjets anyway in resolved category
-    'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "VV", "ggWW"] +VV_samples),
+    'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ["Vg","VgS", "VV", "ggWW"]),
     'folderUp' : directory_mc+'_fatjetJMSup',
     'folderDown' : directory_mc+'_fatjetJMSdo',
     'AsLnN'      : '1',
@@ -555,35 +547,25 @@ import json, os
 #VBS_pdf_factors = json.load(open("/afs/cern.ch/work/d/dvalsecc/private/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.3/pdf_normcorr_VBS.json"))
 nuis_factors = json.load(open("/afs/cern.ch/work/d/dvalsecc/private/CMSSW_11_1_4" + "/src/PlotsConfigurations/Configurations/VBSjjlnu/Full2018v7/conf_fit_v4.5/nuisance_incl_norm_factors_2018.json"))
 
-
 for sample in mc :
-    if sample in ["ggWW","VBS","VBS_dipoleRecoil","VV"] + wjets_all_bins + VBS_samples + VV_samples : continue
-    nuisances['QCD_scale_'+sample] = {
-        'name'  : 'QCDscale_'+sample,
-        'kind'  : 'weight',
-        'type'  : 'shape',
-        'samples'  :  { sample: ["LHEScaleWeight[0]", "LHEScaleWeight[8]"] }
-    }
-
-#Correlate all signal samples
-nuisances['QCD_scale_EWQCD_WV'] = {
-            'name'  : 'QCDscale_EWQCD_WV_accept',
+    if 'Wjets' in sample: continue
+    if sample == "ggWW": continue
+    if 'VBS' in sample:
+        nuisances['QCD_scale_VBS'] = {
+            'name'  : 'QCDscale_VBS_accept',
             'kind'  : 'weight',
             'type'  : 'shape',
-            # 'samples'  :  { "VBS": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"],
-            #                 "VBS_dipoleRecoil": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"], }
-            'samples': { k:["QCDscale_normalized[0]", "QCDscale_normalized[8]"] for k in  WV_samples }
+            # Normalization effect removed from 1l inclusive phase space
+            'samples'  :  { "VBS": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"],
+                            "VBS_dipoleRecoil": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"]  }
         }
-
-nuisances['QCD_scale_EWQCD_ZV'] = {
-            'name'  : 'QCDscale_EWQCD_ZV',
+    else:
+        nuisances['QCD_scale_'+sample] = {
+            'name'  : 'QCDscale_'+sample,
             'kind'  : 'weight',
             'type'  : 'shape',
-            # 'samples'  :  { "VBS": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"],
-            #                 "VBS_dipoleRecoil": ["QCDscale_normalized[0]", "QCDscale_normalized[8]"], }
-            'samples': { k:["QCDscale_normalized[0]", "QCDscale_normalized[8]"] for k in  ZV_samples }
+            'samples'  :  { sample: ["LHEScaleWeight[0]", "LHEScaleWeight[8]"] }
         }
-
 
 nuisances['QCD_scale_Wjets'] = {
             'name'  : 'QCDscale_Wjets',
@@ -591,6 +573,7 @@ nuisances['QCD_scale_Wjets'] = {
             'type'  : 'shape',
             'samples'  :  { sample: ["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for sample in wjets_all_bins }
         }
+
 
 # #
 # # PS and UE
@@ -639,7 +622,6 @@ nuisances['QCD_scale_Wjets'] = {
 # # PS and UE
 # # #
 for sample in mc:
-    if sample in VBS_samples + VV_samples + ["VBS","VBS_dipoleRecoil", "VV"] : continue
     nuisances['PS_ISR_'+sample]  = {
                     'name'  : 'CMS_PS_ISR_'+sample,
                     'kind'  : 'weight',
@@ -657,41 +639,6 @@ for sample in mc:
                     }
                 }
 
-# VBS and QCD-VV splitted in WV and ZV
-nuisances['PS_ISR_EWQCD_WV']  = {
-                    'name'  : 'CMS_PS_ISR_EWQCD_WV',
-                    'kind'  : 'weight',
-                    'type'  : 'shape',
-                    'samples'  : {
-                        sample : ['PSWeight[2]', 'PSWeight[0]'] for sample in WV_samples
-                    }
-                }
-nuisances['PS_FSR_EKQCD_WV']  = {
-                'name'  : 'CMS_PS_FSR_EWQCD_WV',
-                'kind'  : 'weight',
-                'type'  : 'shape',
-                'samples'  : {
-                    sample :  ['PSWeight[3]', 'PSWeight[1]'] for sample in WV_samples
-                }
-            }
-
-
-nuisances['PS_ISR_EWQCD_ZV']  = {
-                    'name'  : 'CMS_PS_ISR_EWQCD_ZV',
-                    'kind'  : 'weight',
-                    'type'  : 'shape',
-                    'samples'  : {
-                        sample : ['PSWeight[2]', 'PSWeight[0]'] for sample in ZV_samples
-                    }
-                }
-nuisances['PS_FSR_EKQCD_ZV']  = {
-                'name'  : 'CMS_PS_FSR_EWQCD_ZV',
-                'kind'  : 'weight',
-                'type'  : 'shape',
-                'samples'  : {
-                    sample :  ['PSWeight[3]', 'PSWeight[1]'] for sample in ZV_samples
-                }
-            }
 
 ##############
 
@@ -721,18 +668,16 @@ nuisances['pdf_weight'] = {
     'name'  : 'pdf_weight_1718',
     'kind'  : 'weight_envelope',
     'type'  : 'shape',
-    'samples' :  { s: [' Alt$(LHEPdfWeight['+str(i)+'], 1.)' for i in range(0,103)] for s in mc if s not in ["VBS", "VBS_dipoleRecoil", "top"]+wjets_all_bins+ VBS_samples + VV_WV_samples},
+    'samples' :  { s: [' Alt$(LHEPdfWeight['+str(i)+'], 1.)' for i in range(0,103)] for s in mc if s not in ["VBS", "VBS_dipoleRecoil", "top"]+wjets_all_bins},
     'AsLnN':  '1'
 }
 
-
-nuisances['pdf_weight_accept'] = {
+nuisances['pdf_weight_VBS'] = {
     'name'  : 'pdf_weight_1718_accept',
     'kind'  : 'weight_envelope',
     'type'  : 'shape',
-    # 'samples' :  { "VBS": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ],
-    #                "VBS_dipoleRecoil": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ]}
-    'samples': { k : [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ] for k in VBS_samples+VV_WV_samples}
+    'samples' :  { "VBS": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ],
+                   "VBS_dipoleRecoil": [ 'Alt$(PDFweight_normalized['+str(i)+'], 1.)' for i in range(0,103) ]}
 }
 
 
