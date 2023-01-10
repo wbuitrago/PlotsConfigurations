@@ -38,9 +38,9 @@ mcCommonWeightNoMatch = 'XSWeight*SFweight_mod'
 mcCommonWeight = 'XSWeight*SFweight_mod*PromptGenLepMatch2l'
 
 # ---------------------------------------- Number of leptons
-Nlep='2'
+#Nlep='2'
 #Nlep='3'
-#Nlep='4'
+Nlep='4'
 
 # ---------------------------------------- Lepton WP
 eleWP = 'mvaFall17V1Iso_WP90_tthmva_70'

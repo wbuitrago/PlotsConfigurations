@@ -9,11 +9,10 @@ configurations = os.path.dirname(configurations) # Configurations
 bAlgo = 'DeepB'
 bWP = '0.4184'
 
-# eleWP = 'mvaFall17V1Iso_WP90_tthmva_70'
-# muWP  = 'cut_Tight_HWWW_tthmva_80'
-
-eleWP = 'mvaFall17V1Iso_WP90_SS'
-muWP  = 'cut_Tight_HWWW'
+eleWP = 'mvaFall17V1Iso_WP90_tthmva_70'
+#eleWP = 'mvaFall17V1Iso_WP90_SS'
+muWP  = 'cut_Tight_HWWW_tthmva_80'
+# muWP='cut_Tight_HWWW'
 
 mc = [skey for skey in samples if skey not in ('Fake_lep','DATA')]
 # DNN reader WW
@@ -47,7 +46,7 @@ mc = [skey for skey in samples if skey not in ('Fake_lep','DATA')]
 # }
 # tau veto
 aliases['tauVeto_ww'] = {
-    'expr': '(Sum$(Tau_pt > 18 && abs(Tau_eta)<2.3 && (Tau_idMVAoldDM2017v2>> 1 & 1) && Tau_idDecayMode &&sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4) == 0)'
+    'expr': '(Sum$(Tau_pt > 18 && abs(Tau_eta)<2.3 && (Tau_idMVAoldDM2017v2 > 1) && Tau_idDecayMode &&sqrt( pow(Tau_eta - Lepton_eta[0], 2) + pow(abs(abs(Tau_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Tau_eta - Lepton_eta[1], 2) + pow(abs(abs(Tau_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4) == 0)'
 }
 
 aliases['tauVeto_wz'] = {
@@ -61,19 +60,16 @@ aliases['tauVeto_zz'] = {
 aliases['softmuon_veto']={
     'expr':'(Sum$(abs(Muon_dxy)<0.02 && abs(Muon_dz)<0.1 && Muon_softId && Muon_pt>5 && abs(Muon_eta)<2.4 && sqrt( pow(Muon_eta - Lepton_eta[0], 2) + pow(abs(abs(Muon_phi - Lepton_phi[0])-pi)-pi, 2) ) >= 0.4 && sqrt( pow(Muon_eta - Lepton_eta[1], 2) + pow(abs(abs(Muon_phi - Lepton_phi[1])-pi)-pi, 2) ) >= 0.4)==0)'
 }
-
 # fiducial
-# print('.L %s/2018/ZZSR/fiducial.cc+' % configurations)
+# print('.L %s/2018/WWSR/fiducial.cc+' % configurations)
 # aliases['fid'] = {
-#     'linesToAdd': ['.L %s/2018/ZZSR/fiducial.cc+' % configurations],
+#     'linesToAdd': ['.L %s/2018/WWSR/fiducial.cc+' % configurations],
 #     'class': 'FiducialRegion',
 #     'samples': mc,
 # }
-
 # chargeflip
-print('.L %s/2018/ZZSR/mischarge_sf.cc+' % configurations)
 aliases['chargeflip_w'] = {
-    'linesToAdd': ['.L %s/2018/ZZSR/mischarge_sf.cc+' % configurations],
+    'linesToAdd': ['.L %s/2018/WWSR/mischarge_sf.cc+' % configurations],
     'class': 'misID_sf',
     'samples': mc,
 }
@@ -92,42 +88,42 @@ aliases['gstarHigh'] = {
 }
 # Fake leptons transfer factor
 aliases['fakeW'] = {
-    #'expr': 'fakeW4l_ele_'+eleWP+'_mu_'+muWP,
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4l',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP,
+    #'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l',
+    'samples': ['Fake']
 }
 # And variations - already divided by central values in formulas !
 aliases['fakeWEleUp'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lElUp',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleUp',
+    'samples': ['Fake']
 }
 aliases['fakeWEleDown'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lElDown',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_EleDown',
+    'samples': ['Fake']
 }
 aliases['fakeWMuUp'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lMuUp',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuUp',
+    'samples': ['Fake']
 }
 aliases['fakeWMuDown'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lMuDown',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_MuDown',
+    'samples': ['Fake']
 }
 aliases['fakeWStatEleUp'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lstatElUp',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleUp',
+    'samples': ['Fake']
 }
 aliases['fakeWStatEleDown'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lstatElDown',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statEleDown',
+    'samples': ['Fake']
 }
 aliases['fakeWStatMuUp'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lstatMuUp',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuUp',
+    'samples': ['Fake']
 }
 aliases['fakeWStatMuDown'] = {
-    'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_4lstatMuDown',
-    'samples': ['Fake_lep']
+    'expr': 'fakeW2l_ele_'+eleWP+'_mu_'+muWP+'_statMuDown',
+    'samples': ['Fake']
 }
 # gen-matching to prompt only (GenLepMatch2l matches to *any* gen lepton)
 aliases['PromptGenLepMatch2l'] = {
@@ -143,6 +139,12 @@ aliases['PromptGenLepMatch3l'] = {
 aliases['PromptGenLepMatch4l'] = {
     'expr': 'Alt$(Lepton_promptgenmatched[0]*Lepton_promptgenmatched[1]*Lepton_promptgenmatched[2]*Lepton_promptgenmatched[3], 0)',
     'samples': mc
+}
+
+
+aliases['LepWPCut'] = {
+    'expr': 'LepCut2l__ele_'+eleWP+'__mu_'+muWP,
+    'samples': mc + ['DATA']
 }
 
 # PostProcessing did not create (anti)topGenPt for ST samples with _ext1
@@ -196,11 +198,11 @@ aliases['twoJetOrMore'] = {
 
 
 aliases['bVeto'] = {
-    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) == 0'
+    'expr': 'Sum$(CleanJet_pt > 20. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) == 0'
 }
 
 aliases['bReq'] = {
-    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.1241) >= 1'
+    'expr': 'Sum$(CleanJet_pt > 30. && abs(CleanJet_eta) < 2.5 && Jet_btagDeepB[CleanJet_jetIdx] > 0.4184) >= 1'
 }
 
 aliases['btag0'] = {
@@ -314,45 +316,35 @@ for shift in ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr
         'samples': mc
     }
 
-aliases['LepWPCut'] = {
-    'expr': 'LepCut4l__ele_'+eleWP+'__mu_'+muWP,
-    'samples': mc + ['DATA']
-}
-
-
 #data/MC scale factors
 aliases['SFweight_mod'] = {
-    'expr': ' * '.join(['SFweight4l','LepSF4l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
+    #'expr': ' * '.join(['SFweight2l','LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','XSWeight','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf # usato questo per girare config 12:10 19/12/22
+    'expr': ' * '.join(['SFweight2l','LepSF2l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut']), 
     #'expr': 'LepWPCut',
     'samples': mc
 }
 aliases['mcCommonWeight_os'] = {
-    'expr': 'XSWeight*SFweight4l*PromptGenLepMatch4l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
+    # 'expr': 'XSWeight*SFweight2l*LepSF2l__ele_' + eleWP + '__mu_' + muWP+'*LepWPCut*PromptGenLepMatch2l*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)', # usato questo per girare config 12:10 19/12/22 
+    'expr': 'XSWeight*SFweight_mod*PromptGenLepMatch2l*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',
     'samples':mc
 }
 
-# aliases['mcCommonWeight_os'] = {
-#     'expr': 'SFweight4l*PromptGenLepMatch4l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
-#     'samples':mc
+# # variations
+# aliases['SFweightEleUp'] = {
+#     'expr': 'LepSF2l__ele_'+eleWP+'__Up',
+#     'samples': mc
 # }
-
-
-# variations
-aliases['SFweightEleUp'] = {
-    'expr': 'LepSF4l__ele_'+eleWP+'__Up',
-    'samples': mc
-}
-aliases['SFweightEleDown'] = {
-    'expr': 'LepSF4l__ele_'+eleWP+'__Do',
-    'samples': mc
-}
-aliases['SFweightMuUp'] = {
-    'expr': 'LepSF4l__mu_'+muWP+'__Up',
-    'samples': mc
-}
-aliases['SFweightMuDown'] = {
-    'expr': 'LepSF4l__mu_'+muWP+'__Do',
-    'samples': mc
-}
+# aliases['SFweightEleDown'] = {
+#     'expr': 'LepSF2l__ele_'+eleWP+'__Do',
+#     'samples': mc
+# }
+# aliases['SFweightMuUp'] = {
+#     'expr': 'LepSF2l__mu_'+muWP+'__Up',
+#     'samples': mc
+# }
+# aliases['SFweightMuDown'] = {
+#     'expr': 'LepSF2l__mu_'+muWP+'__Do',
+#     'samples': mc
+# }
 aliases['zlep1'] = {'expr' : '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}
 aliases['zlep2'] = {'expr' : '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}

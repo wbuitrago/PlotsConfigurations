@@ -64,14 +64,15 @@ aliases['softmuon_veto']={
 # fiducial
 
 
-print('.L %s/2018/WZSR/fiducial.cc+' % configurations)
-aliases['fid'] = {
-    'linesToAdd': ['.L %s/2018/WZSR/fiducial.cc+' % configurations],
-    'class': 'FiducialRegion',
-    'samples': mc,
-}
+# print('.L %s/2018/WZSR/fiducial.cc+' % configurations)
+# aliases['fid'] = {
+#     'linesToAdd': ['.L %s/2018/WZSR/fiducial.cc+' % configurations],
+#     'class': 'FiducialRegion',
+#     'samples': mc,
+# }
+
 # chargeflip
-print('.L %s/2018/WZSR/mischarge_sf.cc+' % configurations)
+# print('.L %s/2018/WZSR/mischarge_sf.cc+' % configurations)
 aliases['chargeflip_w'] = {
     'linesToAdd': ['.L %s/2018/WZSR/mischarge_sf.cc+' % configurations],
     'class': 'misID_sf',
@@ -320,15 +321,21 @@ for shift in ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr
     }
 
 aliases['SFweight_mod'] = {
-    'expr': ' * '.join(['SFweight3l','LepSF3l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','XSWeight','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
+    'expr': ' * '.join(['SFweight3l','LepSF3l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
     #'expr': 'LepWPCut',
     'samples': mc
 }
 
 aliases['mcCommonWeight_os'] = {
-    'expr': 'SFweight3l*PromptGenLepMatch3l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
+    'expr': 'XSWeight*SFweight_mod*PromptGenLepMatch3l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
     'samples':mc
 }
+
+
+# aliases['mcCommonWeight_os'] = {
+#     'expr': 'SFweight3l*PromptGenLepMatch3l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
+#     'samples':mc
+# }
 # variations
 aliases['SFweightEleUp'] = {
     'expr': 'LepSF3l__ele_'+eleWP+'__Up',

@@ -35,7 +35,7 @@ MCDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_n
 
 # ---------------------------------------- Basic MC weights
 mcCommonWeightNoMatch = 'XSWeight*SFweight_mod'
-mcCommonWeight = 'XSWeight*SFweight_mod*PromptGenLepMatch2l'
+mcCommonWeight = 'XSWeight*SFweight_mod*PromptGenLepMatch2l*METFilter_MC'
 
 # ---------------------------------------- Number of leptons
 Nlep='2'
@@ -234,7 +234,7 @@ files = nanoGetSampleFiles(MCDir, 'WWTo2L2Nu') + \
         nanoGetSampleFiles(MCDir, 'GluGluToWWToTNTN')
 samples['WW'] = {
     'name': files,
-    'weight': 'mcCommonWeight_os',
+    'weight': 'mcCommonWeight_os*METFilter_MC',
     'FilesPerJob': 17,
 }
 
@@ -242,21 +242,25 @@ samples['WW'] = {
 samples['Top'] = {
     'name': nanoGetSampleFiles(MCDir, 'TTTo2L2Nu') + \
             nanoGetSampleFiles(MCDir, 'ST_tW_top_ext1') + \
-            nanoGetSampleFiles(MCDir, 'ST_tW_antitop_ext1'),
-    'weight': 'mcCommonWeight_os',
+            nanoGetSampleFiles(MCDir, 'ST_tW_antitop_ext1') + \
+            nanoGetSampleFiles(MCDir, 'ST_t-channel_antitop') + \
+            nanoGetSampleFiles(MCDir, 'ST_t-channel_top') + \
+            nanoGetSampleFiles(MCDir, 'ST_s-channel_ext1'),
+    'weight': 'mcCommonWeight_os*METFilter_MC',
     'FilesPerJob': 3,
 }
 
-# ---------------------------------------- DY
+# # ---------------------------------------- DY
 ptllDYW_NLO = '(0.87*(gen_ptll<10)+(0.379119+0.099744*gen_ptll-0.00487351*gen_ptll**2+9.19509e-05*gen_ptll**3-6.0212e-07*gen_ptll**4)*(gen_ptll>=10 && gen_ptll<45)+(9.12137e-01+1.11957e-04*gen_ptll-3.15325e-06*gen_ptll**2-4.29708e-09*gen_ptll**3+3.35791e-11*gen_ptll**4)*(gen_ptll>=45 && gen_ptll<200) + 1*(gen_ptll>200))'
 ptllDYW_LO = '((0.632927+0.0456956*gen_ptll-0.00154485*gen_ptll*gen_ptll+2.64397e-05*gen_ptll*gen_ptll*gen_ptll-2.19374e-07*gen_ptll*gen_ptll*gen_ptll*gen_ptll+6.99751e-10*gen_ptll*gen_ptll*gen_ptll*gen_ptll*gen_ptll)*(gen_ptll>0)*(gen_ptll<100)+(1.41713-0.00165342*gen_ptll)*(gen_ptll>=100)*(gen_ptll<300)+1*(gen_ptll>=300))'
 samples['DY'] = {
-    'name': nanoGetSampleFiles(MCDir, 'DYJetsToLL_M-50_ext2') + \
-            nanoGetSampleFiles(MCDir, 'DYJetsToLL_M-10to50-LO_ext1'),
-    'weight':  'mcCommonWeight_os*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
-                Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
+    'name': nanoGetSampleFiles(MCDir, 'DYJetsToLL_M-50_ext2'),
+            # nanoGetSampleFiles(MCDir, 'DYJetsToLL_M-10to50-LO_ext1'),
+    'weight':  'mcCommonWeight_os*METFilter_MC*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
+                Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )*'+ptllDYW_NLO,
     'FilesPerJob': 3,
-}
+} 
+
 
 # ---------------------------------------- Higgs
 samples['Higgs'] = {
@@ -265,7 +269,7 @@ samples['Higgs'] = {
             nanoGetSampleFiles(MCDir, 'VBFHToWWTo2L2Nu_M125') + \
             nanoGetSampleFiles(MCDir, 'VBFHToTauTau_M125') + \
             nanoGetSampleFiles(MCDir, 'ttHToNonbb_M125'),
-    'weight': 'mcCommonWeight_os',
+    'weight': 'mcCommonWeight_os*METFilter_MC',
     'FilesPerJob': 17,
 }
 
@@ -311,7 +315,7 @@ for Run in DataRun :
 ###########################################
 
 samples['DATA']  = 	{  'name': [ ] ,
-                       'weight' :METFilter_DATA+'*'+LepWPCut,
+                       'weight' :METFilter_DATA+'*'+LepWPCut, # 
                        'weights' : [ ],
                        'isData': ['all'],
                        'FilesPerJob' : 20 ,

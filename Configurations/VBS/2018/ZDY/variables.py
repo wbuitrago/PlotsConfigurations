@@ -30,22 +30,10 @@ variables['nLepton'] =  {
 }
 
 variables['mll_v2']  = {   'name': 'mll',            #   variable name
-                           'range' : (80, 0. ,800),    #   variable range
+                           'range' : (100, 76 ,106),    #   variable range
                            'xaxis' : 'mll [GeV]',  #   x axis name
                            'fold' : 3
                            }
-
-variables['mtw1']  = {   'name': 'mtw1',            #   variable name
-                         'range' : ([10,20,30,40,50,60,70.75,80,85,90,100,110,120],),    #   variable range
-                         'xaxis' : 'mtw1 [GeV]',  #   x axis name
-                         'fold' : 3
-                         }
-    
-variables['mtw2']  = {   'name': 'mtw2',            #   variable name
-                         'range' : ([10,20,30,40,50,60,70.75,80,85,90,100,110,120],),    #   variable range
-                         'xaxis' : 'mtw2 [GeV]',  #   x axis name
-                         'fold' : 3
-                         }
 
 
 variables['mjj']  = {  'name': 'mjj',
@@ -173,11 +161,7 @@ variables['mll']  = {   'name': 'mll',            #   variable name
                         'xaxis' : 'mll [GeV]',  #   x axis name
                         'fold' : 3
                         }
-variables['mll_v2']  = {   'name': 'mll',            #   variable name
-                           'range' : (80, 0. ,800),    #   variable range
-                           'xaxis' : 'mll [GeV]',  #   x axis name
-                           'fold' : 3
-                           }
+
 variables['mjj_v2']  = {  'name': 'mjj',
                           'range': ([500,800,1200,1800,2000],),  #for 500 < mjj < 1000
                           'xaxis': 'mjj [GeV]',
@@ -191,13 +175,13 @@ variables['mjj_v3']  = {  'name': 'mjj',
                           }
 
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
-                        'range' : ([0, 35, 60, 75, 100, 125, 160, 200, 300],),
+                        'range' : ([0,20, 35,50, 60,68, 75,90, 100,110, 125,140, 160,180, 200, 250, 300],), #[0, 35, 60, 75, 100, 125, 160, 200, 300]
                         'xaxis' : 'p_{T} 1st lep',
                         'fold'  : 3
                         }
 
 variables['pt2']  = {   'name': 'Alt$(Lepton_pt[1],-9999.)',
-                        'range' : ([0, 35, 60, 75, 100, 125, 160, 200, 300],),
+                        'range' : ([0,20, 35,50, 60,68, 75,90, 100,110, 125,140, 160,180, 200, 250, 300],),
                         'xaxis' : 'p_{T} 2nd lep',
                         'fold'  : 3
                         }
@@ -276,4 +260,4 @@ variables['mll_mjj']  = {   'name': 'mll:mjj',
                             'fold' : 3
                             }
 
-variables = {k:v for k,v in variables.items() if k in ["events", "mjj", "pt2", "pt1", "mll", "detajj", "mtw1", "mtw2"]}
+variables = {k:v for k,v in variables.items() if k in ["events", "mjj", "pt2", "pt1", "mll","mll_v2", "detajj"]}

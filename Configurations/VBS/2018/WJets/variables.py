@@ -15,6 +15,7 @@ variables['nJet']  = {   'name': 'nJet',
                          'xaxis' : 'njets',
                          'fold' : 3
                          }
+
 variables['nJet_v2']  = {   'name': 'Sum$(CleanJet_pt>30)',
                             'range' : (4,0,4),
                             'xaxis' : 'njets',
@@ -30,22 +31,16 @@ variables['nLepton'] =  {
 }
 
 variables['mll_v2']  = {   'name': 'mll',            #   variable name
-                           'range' : (80, 0. ,800),    #   variable range
+                           'range' : (15, 76 ,106),    #   variable range
                            'xaxis' : 'mll [GeV]',  #   x axis name
                            'fold' : 3
                            }
 
 variables['mtw1']  = {   'name': 'mtw1',            #   variable name
-                         'range' : ([10,20,30,40,50,60,70.75,80,85,90,100,110,120],),    #   variable range
-                         'xaxis' : 'mtw1 [GeV]',  #   x axis name
-                         'fold' : 3
-                         }
-    
-variables['mtw2']  = {   'name': 'mtw2',            #   variable name
-                         'range' : ([10,20,30,40,50,60,70.75,80,85,90,100,110,120],),    #   variable range
-                         'xaxis' : 'mtw2 [GeV]',  #   x axis name
-                         'fold' : 3
-                         }
+                           'range' : ([1, 20, 40, 50, 60, 65, 70, 75, 77, 80, 83, 86, 90, 95, 100, 110, 120],),    #   variable range
+                           'xaxis' : 'mtw1 [GeV]',  #   x axis name
+                           'fold' : 3
+                           }
 
 
 variables['mjj']  = {  'name': 'mjj',
@@ -173,11 +168,7 @@ variables['mll']  = {   'name': 'mll',            #   variable name
                         'xaxis' : 'mll [GeV]',  #   x axis name
                         'fold' : 3
                         }
-variables['mll_v2']  = {   'name': 'mll',            #   variable name
-                           'range' : (80, 0. ,800),    #   variable range
-                           'xaxis' : 'mll [GeV]',  #   x axis name
-                           'fold' : 3
-                           }
+
 variables['mjj_v2']  = {  'name': 'mjj',
                           'range': ([500,800,1200,1800,2000],),  #for 500 < mjj < 1000
                           'xaxis': 'mjj [GeV]',
@@ -276,4 +267,4 @@ variables['mll_mjj']  = {   'name': 'mll:mjj',
                             'fold' : 3
                             }
 
-variables = {k:v for k,v in variables.items() if k in ["events", "mjj", "pt2", "pt1", "mll", "detajj", "mtw1", "mtw2"]}
+variables = {k:v for k,v in variables.items() if k in ["events", "mjj", "pt2", "pt1", "mll","mll_v2", "detajj", "mtw1"]}

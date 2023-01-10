@@ -21,7 +21,9 @@ triple_charge_zz = '((abs(Alt$(Lepton_pdgId[0],-9999))==11 && Alt$(Electron_tigh
 ww = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && mll > 20 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5'  # bveto tauveto zveto zlep
 #wz = 'nLepton>2 && Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)>10 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5'    # mlll bveto tauveto anti_zveto zlep_wz
 #wzb = 'nLepton>2 && Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)>10 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5' # mlll btag tauveto zlep_wz anti_zveto
-wz = 'nLepton>2 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5'    # mlll bveto tauveto anti_zveto zlep_wz
+wz = 'nLepton>2 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5'    
+wz_QCD = 'nLepton>2 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 200 && mjj < 500 && abs(detajj) > 2.5'
+# mlll bveto tauveto anti_zveto zlep_wz
 wzb = 'nLepton>2 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5' # mlll btag tauveto zlep_wz anti_zveto
 loose_wz = 'nLepton>2 && Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)>20 && Alt$(Lepton_pt[3],0.)<10 && MET_pt > 30' # zveto mlll bveto tauveto
 nonprompt = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && mll > 20 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5' # btag tauveto zlep zveto
@@ -72,13 +74,17 @@ osww='Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0'
 
 
 wz_zmass_one_two =  "(( abs(mll - 91) < abs(mllOneThree - 91) ) && ( abs(mll - 91) < abs(mllTwoThree - 91) )  &&  ( Alt$(Lepton_pt[0],0.)>25 )  && ( Alt$(Lepton_pt[1],0.)>10 ) && ( Alt$(Lepton_pt[2],0.)>20 ))"
-wz_zmass_two_three =  "(( abs(mllTwoThree - 91) < abs(mllOneThree - 91) ) && ( abs(mllTwoThree - 91) < abs(mllOneThree - 91) )  &&  ( Alt$(Lepton_pt[1],0.)>25 )  && ( Alt$(Lepton_pt[2],0.)>10 ) && ( Alt$(Lepton_pt[0],0.)>20 ))"
+wz_zmass_two_three =  "(( abs(mllTwoThree - 91) < abs(mllOneThree - 91) ) && ( abs(mllTwoThree - 91) < abs(mll - 91) )  &&  ( Alt$(Lepton_pt[1],0.)>25 )  && ( Alt$(Lepton_pt[2],0.)>10 ) && ( Alt$(Lepton_pt[0],0.)>20 ))"
 wz_zmass_one_three =  "(( abs(mllOneThree - 91) < abs(mll - 91) ) && ( abs(mllOneThree - 91) < abs(mllTwoThree - 91) )  &&  ( Alt$(Lepton_pt[0],0.)>25 ) && ( Alt$(Lepton_pt[2],0.)>10 ) && ( Alt$(Lepton_pt[1],0.)>20 ))"
 
 wz_zmass = '(' +  wz_zmass_one_two + " || " + wz_zmass_two_three + " || " + wz_zmass_one_three + ')'
 
 cuts['WZ_tri']= wz +'&&' + wz_zmass +' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
 cuts['WZ_tri_tauVeto']= wz +' && ' + wz_zmass + ' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz+'&& tauVeto_wz' # mlll
+
+cuts['WZQCD_tri']= wz_QCD +'&&' + wz_zmass +' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
+cuts['WZQCD_tri_tauVeto']= wz_QCD +' && ' + wz_zmass + ' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz+'&& tauVeto_wz' # mlll
+
 cuts['WZb_tri']= wz + ' && ' + wz_zmass + ' && ' + bJetTag+'&&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
 cuts['WZb_tri_tauVeto'] = wz + ' && ' + wz_zmass + ' && ' + bJetTag+'&&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz+'&& tauVeto_wz' # mlll
 cuts['LOOSEWZ_tri']=loose_wz+'&& bVeto &&'+ztag+'&&'+triple_charge_wz # mlll

@@ -34,8 +34,10 @@ MCDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_n
 ################################################
 
 # ---------------------------------------- Basic MC weights
+# mcCommonWeightNoMatch = 'SFweight_mod'
+# mcCommonWeight = 'SFweight_mod*PromptGenLepMatch2l'
 mcCommonWeightNoMatch = 'XSWeight*SFweight_mod'
-mcCommonWeight = 'XSWeight*SFweight_mod*PromptGenLepMatch2l'
+mcCommonWeight = 'XSWeight*SFweight_mod*PromptGenLepMatch2l*METFilter_MC'
 
 # ---------------------------------------- Number of leptons
 Nlep='2'
@@ -119,6 +121,17 @@ samples['WZ_QCD'] = {
             nanoGetSampleFiles(MCDir, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
             nanoGetSampleFiles(MCDir, 'WLLJJToLNu_M-4To50_QCD_3Jet'),
     'weight': mcCommonWeight+'*1.2',
+    'FilesPerJob': 4
+}
+
+# ---------------------------------------- W + Jets
+samples['WJets'] = {
+    'name': nanoGetSampleFiles(MCDir, 'WJetsToLNu-LO_1J') + \
+            nanoGetSampleFiles(MCDir, 'WJetsToLNu-LO_2J') + \
+            nanoGetSampleFiles(MCDir, 'WJetsToLNu-LO_3J') + \
+            nanoGetSampleFiles(MCDir, 'WJetsToLNu-LO_4J') + \
+            nanoGetSampleFiles(MCDir, 'WJetsToLNu-LO'),
+    'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
 
@@ -256,7 +269,8 @@ samples['DY'] = {
     'weight':  'mcCommonWeight_os*( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 &&\
                 Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )',
     'FilesPerJob': 3,
-}
+} 
+
 
 # ---------------------------------------- Higgs
 samples['Higgs'] = {

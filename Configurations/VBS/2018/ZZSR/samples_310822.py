@@ -42,8 +42,8 @@ mcDirectory = MCDir
 ################################################
 ############ BASIC MC WEIGHTS ##################
 ################################################
-mcCommonWeightNoMatch = 'SFweight_mod'
-mcCommonWeight = 'SFweight_mod*PromptGenLepMatch4l'
+mcCommonWeightNoMatch = 'XSWeight*SFweight_mod'
+mcCommonWeight = 'XSWeight*SFweight_mod*PromptGenLepMatch4l'
 
 ################################################
 ############ NUMBER OF LEPTONS #################
