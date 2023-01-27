@@ -220,42 +220,39 @@ aliases['PUJets'] = {
 
 
 # ###########################################################################################
-# #fakes
+basedir_fakes = configurations + "/VBSjjlnu/weights_files/fake_rates/2016"
 
-# basedir_fakes = configurations + "/VBSjjlnu/weights_files/fake_rates/2018"
+ets = ["25", "35", "45"]
+el_pr_file = configurations + "/VBSjjlnu/weights_files/prompt_rates/2016/plot_ElCh_l1_etaVpt_ptel_2D_pr.root"
+mu_pr_file = configurations + "/VBSjjlnu/weights_files/prompt_rates/2016/plot_MuCh_l1_etaVpt_ptmu_2D_pr.root"
 
-# ets = ["25", "35", "45"]
+for et in ets:
+    el_fr_file = basedir_fakes + "/plot_ElCh_JetEt"+et+"_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
+    mu_fr_file = basedir_fakes + "/plot_MuCh_JetEt"+et+"_l1_etaVpt_ptmu_fw_ewk_2D.root"
+    aliases['fakeWeight_'+et] = { 
+        'class': 'newFakeWeightOTFall',
+        'args': (eleWP, muWP, copy.deepcopy(el_fr_file), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file), copy.deepcopy(mu_pr_file), False, False, False),  #doabsEta=False, no stat variations
+        'linesToAdd' : [
+            'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+            '.L {}/VBSjjlnu/macros/newfakeweight_OTFall.cc+'.format(configurations)
+        ],     
+        'samples': ["Fake"]
+    }
 
-# el_pr_file = configurations + "/VBSjjlnu/weights_files/prompt_rates/2018/plot_ElCh_l1_etaVpt_ptel_2D_pr.root"
-# mu_pr_file = configurations + "/VBSjjlnu/weights_files/prompt_rates/2018/plot_MuCh_l1_etaVpt_ptmu_2D_pr.root"
+# stat variations
+el_fr_file35 = basedir_fakes + "/plot_ElCh_JetEt35_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
+mu_fr_file35 = basedir_fakes + "/plot_MuCh_JetEt35_l1_etaVpt_ptmu_fw_ewk_2D.root"
 
-# for et in ets:
-#     el_fr_file = basedir_fakes + "/plot_ElCh_JetEt"+et+"_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
-#     mu_fr_file = basedir_fakes + "/plot_MuCh_JetEt"+et+"_l1_etaVpt_ptmu_fw_ewk_2D.root"
-#     aliases['fakeWeight_'+et] = { 
-#         'class': 'newFakeWeightOTFall',
-#         'args': (eleWP, muWP, copy.deepcopy(el_fr_file), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file), copy.deepcopy(mu_pr_file), False, False, False),  #doabsEta=False, no stat variations
-#         'linesToAdd' : [
-#             'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-#             '.L {}/VBSjjlnu/macros/newfakeweight_OTFall.cc+'.format(configurations)
-#         ],     
-#         'samples': ["Fake"]
-#     }
-
-# # stat variations
-# el_fr_file35 = basedir_fakes + "/plot_ElCh_JetEt35_l1_etaVpt_ptel_aseta_fw_ewk_2D.root" #No absolute value for fakes
-# mu_fr_file35 = basedir_fakes + "/plot_MuCh_JetEt35_l1_etaVpt_ptmu_fw_ewk_2D.root"
-
-# aliases['fakeWeight_35_statUp'] = { 
-#         'class': 'newFakeWeightOTFall',
-#         'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, True, False),   
-#         'samples': ["Fake"]
-#     }
-# aliases['fakeWeight_35_statDo'] = { 
-#         'class': 'newFakeWeightOTFall',
-#         'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, False, True), 
-#         'samples': ["Fake"]
-#     }
+aliases['fakeWeight_35_statUp'] = { 
+        'class': 'newFakeWeightOTFall',
+        'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, True, False),   
+        'samples': ["Fake"]
+    }
+aliases['fakeWeight_35_statDo'] = { 
+        'class': 'newFakeWeightOTFall',
+        'args': (eleWP, muWP, copy.deepcopy(el_fr_file35), copy.deepcopy(el_pr_file), copy.deepcopy(mu_fr_file35), copy.deepcopy(mu_pr_file), False, False, True), 
+        'samples': ["Fake"]
+    }
 
 
 ###################################
