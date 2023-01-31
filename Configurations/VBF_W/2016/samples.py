@@ -87,10 +87,9 @@ Nlep='1'
 ################################################
 ############### Lepton WP ######################
 ################################################
-
+  
 eleWP='mva_90p_Iso2016'
 muWP='cut_Tight80x'
-
 
 LepWPCut_1l =  '(Lepton_isTightElectron_'+eleWP+'[0]>0.5 || Lepton_isTightMuon_'+muWP+'[0]>0.5)'
 LepWPWeight_1l = 'Lepton_tightElectron_'+eleWP+'_IdIsoSF'+'[0]*\
@@ -101,15 +100,15 @@ LepWPWeight = LepWPWeight_1l
 ################################################
 ############ BASIC MC WEIGHTS ##################
 ################################################
-#corrected trigger efficiency
 
-XSWeight      = 'XSWeight'
-SFweight1l =       'puWeight*\
-                   TriggerEffWeight_1l*\
-                   Lepton_RecoSF[0]*\
-                   EMTFbug_veto'
-# SFweight      = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l+'* PrefireWeight * btagSF * PUJetIdSF * Wtagging_SF_nominal'
-SFweight      = SFweight1l+'*'+LepWPWeight_1l+'*'+LepWPCut_1l+'* PrefireWeight * btagSF * PUJetIdSF'
+XSWeight   = 'XSWeight'
+SFweight1l = [ 'puWeight', 'SingleLepton_trigEff_corrected[0]',
+              'Lepton_RecoSF[0]', 'EMTFbug_veto', 
+              LepWPWeight_1l, LepWPCut_1l,
+              'PrefireWeight','PUJetIdSF', 
+              'btagSF', 'BoostedWtagSF_nominal']
+
+SFweight = '*'.join(SFweight1l)
      
 GenLepMatch   = 'Lepton_genmatched[0]'
 
@@ -121,8 +120,8 @@ GenLepMatch   = 'Lepton_genmatched[0]'
 METFilter_MC   = 'METFilter_MC'
 METFilter_DATA = 'METFilter_DATA'
 
-# CommonWeight = XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch
-CommonWeight = XSWeight
+CommonWeight = XSWeight+'*'+SFweight+'*'+METFilter_MC+'*'+GenLepMatch
+# CommonWeight = XSWeight
 
 ################################################
 ############ DATA DECLARATION ##################
@@ -280,9 +279,10 @@ samples['Higgs']  = {   'name'   :  nanoGetSampleFiles(mcPrivateDirectory,'GluGl
                   }
 
 
-########### DY ############
+######### DY ############
 
-# DY_photon_filter = '( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 && Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )'
+# DY_photon_filter = '( !(Sum$(PhotonGen_isPrompt==1 && PhotonGen_pt>15 && abs(PhotonGen_eta)<2.6) > 0 && Sum$(LeptonGen_isPrompt==1 && LeptonGen_pt>15)>=2) )' --> does not work
+DY_photon_filter = '1.'
 
 samples['DY_M-50'] = {    'name'   : nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_HT-70to100')
 #                                 + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50') non presente
@@ -293,8 +293,8 @@ samples['DY_M-50'] = {    'name'   : nanoGetSampleFiles(mcPrivateDirectory,'DYJe
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_HT-800to1200')
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_HT-1200to2500')
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-50_HT-2500toInf'),
-                        'weight': CommonWeight,
-#                       'weight' : XSWeight+'*'+SFweight+'*'+GenLepMatch+'*'+METFilter_MC + '*' + DY_photon_filter ,# missing ewkNLOW
+                        # 'weight': CommonWeight,
+                      'weight' : XSWeight+'*'+SFweight+'*'+GenLepMatch+'*'+METFilter_MC + '*' + DY_photon_filter ,# missing ewkNLOW
                         'FilesPerJob' : 16,
                         'EventsPerJob' : 70000,
                       #  'suppressNegative' :['all'],
@@ -308,8 +308,8 @@ samples['DY_else'] = {    'name'   : nanoGetSampleFiles(mcPrivateDirectory,'DYJe
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-5to50_HT-400to600_ext1')
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-5to50_HT-600toinf_ext1')
                                   + nanoGetSampleFiles(mcPrivateDirectory,'DYJetsToLL_M-10to50'),
-                        'weight': CommonWeight,
-#                       'weight' : XSWeight+'*'+SFweight+'*'+GenLepMatch+'*'+METFilter_MC + '*' + DY_photon_filter ,# missing ewkNLOW
+                        # 'weight': CommonWeight,
+                      'weight' : XSWeight+'*'+SFweight+'*'+GenLepMatch+'*'+METFilter_MC + '*' + DY_photon_filter ,# missing ewkNLOW
                         'FilesPerJob' : 16,
                         'EventsPerJob' : 70000,
                       #  'suppressNegative' :['all'],

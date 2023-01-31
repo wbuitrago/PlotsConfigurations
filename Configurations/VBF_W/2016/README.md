@@ -58,30 +58,30 @@ but in
 
 or
 
-    hadd rootFile/plots_vbf_w_2018.root rootFile/plots_vbf_w_2018_ALL_*.root
-    hadd rootFile/plots_vbf_w_2018.root rootFile/plots_vbf_w_2018_do.root rootFile/prov/plots_vbf_w_2018.root 
+    hadd rootFile/plots_vbf_w_2016.root rootFile/plots_vbf_w_2016_ALL_*.root
+    hadd rootFile/plots_vbf_w_2016.root rootFile/plots_vbf_w_2016_do.root rootFile/prov/plots_vbf_w_2016.root 
 
 
 # Make plots:
-For this section, at the time being (nov. 2022), it is needed CMSSW10_6_4 (for example) recreating the same path ~/CMSSW 10../src/Plotconfig/config/VBF_W/2018/ and here it is needed utils folder. This folder is used somewhere in the nuisances, it is easy to solve this problem, didnt have the time!
+For this section, at the time being (nov. 2022), it is needed CMSSW10_6_4 (for example) recreating the same path ~/CMSSW 10../src/Plotconfig/config/VBF_W/2016/ and here it is needed utils folder. This folder is used somewhere in the nuisances, it is easy to solve this problem, didnt have the time!
 
 
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1 --plotNormalizedDistributions
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1 --plotNormalizedDistributions
 
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --showIntegralLegend=1
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --showIntegralLegend=1  --plotNormalizedDistributionsTHstack
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --showIntegralLegend=1  --plotNormalizedDistributions
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --showIntegralLegend=1  --plotNormalizedDistributionsTHstack
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --showIntegralLegend=1  --plotNormalizedDistributions
 
 # Make DataCards
-    mkDatacards.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root
+    mkDatacards.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root
 
 
 # Make nuis plot
     python DrawNuisancesAll.py \
-     --inputFile ../../../../PlotsConfigurations/Configurations/VBF_W/2018/datacards/topcr/eta1/shapes/histos_topcr.root  \
-     --outputDirPlots ../../../../PlotsConfigurations/Configurations/VBF_W/2018/topcr_nuisance  \
-     --nuisancesFile ../../../../PlotsConfigurations/Configurations/VBF_W/2018/nuisances.py  \
-     --samplesFile   ../../../../PlotsConfigurations/Configurations/VBF_W/2018/samples.py \
+     --inputFile ../../../../PlotsConfigurations/Configurations/VBF_W/2016/datacards/topcr/eta1/shapes/histos_topcr.root  \
+     --outputDirPlots ../../../../PlotsConfigurations/Configurations/VBF_W/2016/topcr_nuisance  \
+     --nuisancesFile ../../../../PlotsConfigurations/Configurations/VBF_W/2016/nuisances.py  \
+     --samplesFile   ../../../../PlotsConfigurations/Configurations/VBF_W/2016/samples.py \
      --cutName topcr
 
 # How to run the analysis 
@@ -143,28 +143,28 @@ but in
 
 or
 
-    hadd rootFile/plots_vbf_w_2018.root rootFile/plots_vbf_w_2018_ALL_*.root
-    hadd rootFile/plots_vbf_w_2018.root rootFile/plots_vbf_w_2018_do.root rootFile/prov/plots_vbf_w_2018.root 
+    hadd rootFile/plots_vbf_w_2016.root rootFile/plots_vbf_w_2016_ALL_*.root
+    hadd rootFile/plots_vbf_w_2016.root rootFile/plots_vbf_w_2016_do.root rootFile/prov/plots_vbf_w_2016.root 
 
 
 # Make plots:
-For this section, at the time being (nov. 2022), it is needed CMSSW10_6_4 (for example) recreating the same path ~/CMSSW 10../src/Plotconfig/config/VBF_W/2018/ and here it is needed utils folder. This folder is used somewhere in the nuisances, it is easy to solve this problem, didnt have the time!
+For this section, at the time being (nov. 2022), it is needed CMSSW10_6_4 (for example) recreating the same path ~/CMSSW 10../src/Plotconfig/config/VBF_W/2016/ and here it is needed utils folder. This folder is used somewhere in the nuisances, it is easy to solve this problem, didnt have the time!
 
 
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1 --plotNormalizedDistributions
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --onlyPlot=cratio --linearOnly --showIntegralLegend=1 --plotNormalizedDistributions
 
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --showIntegralLegend=1
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --showIntegralLegend=1  --plotNormalizedDistributionsTHstack
-    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root --showIntegralLegend=1  --plotNormalizedDistributions
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --showIntegralLegend=1
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --showIntegralLegend=1  --plotNormalizedDistributionsTHstack
+    mkPlot.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root --showIntegralLegend=1  --plotNormalizedDistributions
 
 # Make DataCards
-    mkDatacards.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2018.root
+    mkDatacards.py --pycfg=configuration.py --inputFile rootFile/plots_vbf_w_2016.root
 
 
 # Make nuis plot
     python DrawNuisancesAll.py \
-     --inputFile ../../../../PlotsConfigurations/Configurations/VBF_W/2018/datacards/topcr/eta1/shapes/histos_topcr.root  \
-     --outputDirPlots ../../../../PlotsConfigurations/Configurations/VBF_W/2018/topcr_nuisance  \
-     --nuisancesFile ../../../../PlotsConfigurations/Configurations/VBF_W/2018/nuisances.py  \
-     --samplesFile   ../../../../PlotsConfigurations/Configurations/VBF_W/2018/samples.py \
+     --inputFile ../../../../PlotsConfigurations/Configurations/VBF_W/2016/datacards/topcr/eta1/shapes/histos_topcr.root  \
+     --outputDirPlots ../../../../PlotsConfigurations/Configurations/VBF_W/2016/topcr_nuisance  \
+     --nuisancesFile ../../../../PlotsConfigurations/Configurations/VBF_W/2016/nuisances.py  \
+     --samplesFile   ../../../../PlotsConfigurations/Configurations/VBF_W/2016/samples.py \
      --cutName topcr

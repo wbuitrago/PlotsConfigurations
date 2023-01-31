@@ -22,19 +22,19 @@ cuts['Z'] = '1'
 #levo fake e DY + ort to WH
 #fake
 
-cuts['ele_SR'] = '(abs(Lepton_pdgId[0])==11) \
-                  && bVeto \
-                  && CleanJet_pt[1]>70. \
-                  && detajj >= 4 \
-                  && mtw1 > 50. \
-                 '
+# cuts['ele_SR'] = '(abs(Lepton_pdgId[0])==11) \
+#                   && bVeto \
+#                   && CleanJet_pt[1]>70. \
+#                   && detajj >= 4 \
+#                   && mtw1 > 50. \
+#                  '
 
-cuts['mu_SR'] = '(abs(Lepton_pdgId[0])==13) \
-                  && bVeto \
-                  && CleanJet_pt[1]>70. \
-                  && detajj >= 4 \
-                  && mtw1 > 50. \
-                 '
+# cuts['mu_SR'] = '(abs(Lepton_pdgId[0])==13) \
+#                   && bVeto \
+#                   && CleanJet_pt[1]>70. \
+#                   && detajj >= 4 \
+#                   && mtw1 > 50. \
+#                  '
 
 ##Hard & PU WJets CRs
 cuts['ele_HWJ'] = '(abs(Lepton_pdgId[0])==11) \
@@ -46,21 +46,21 @@ cuts['ele_HWJ'] = '(abs(Lepton_pdgId[0])==11) \
                     '
 
 
-cuts['ele_PUWJ'] = '(abs(Lepton_pdgId[0])==11) \
-                    && detajj >= 5. \
-                    && CleanJet_pt[1]<=50.\
-                    && bVeto \
-                    && PuppiMET_pt>70. \
-                    && mtw1>50. \
-                    '
+# cuts['ele_PUWJ'] = '(abs(Lepton_pdgId[0])==11) \
+#                     && detajj >= 5. \
+#                     && CleanJet_pt[1]<=50.\
+#                     && bVeto \
+#                     && PuppiMET_pt>70. \
+#                     && mtw1>50. \
+#                     '
 
-cuts['mu_HWJ'] = '(abs(Lepton_pdgId[0])==13) \
-                    && CleanJet_pt[1]>70. \
-                    && bVeto \
-                    && mjj <= 750. \
-                    && detajj < 4 \
-                    && mtw1 > 50. \
-                    '
+# cuts['mu_HWJ'] = '(abs(Lepton_pdgId[0])==13) \
+#                     && CleanJet_pt[1]>70. \
+#                     && bVeto \
+#                     && mjj <= 750. \
+#                     && detajj < 4 \
+#                     && mtw1 > 50. \
+#                     '
 
 
 cuts['mu_PUWJ'] = '(abs(Lepton_pdgId[0])==13) \
@@ -84,9 +84,9 @@ cuts['ele_FakeCR']  = '(abs(Lepton_pdgId[0])==11) \
                       && CleanJet_pt[1]<70.  \
                      '
     
-cuts['mu_FakeCR']  = '(abs(Lepton_pdgId[0])==13) \
-                      && detajj < 5. \
-                      && bVeto\
-                      && mtw1<50. \
-                      && CleanJet_pt[1]<70.  \
-                     '
+# cuts['mu_FakeCR']  = '(abs(Lepton_pdgId[0])==13) \
+#                       && detajj < 5. \
+#                       && bVeto\
+#                       && mtw1<50. \
+#                       && CleanJet_pt[1]<70.  \
+#                      '
