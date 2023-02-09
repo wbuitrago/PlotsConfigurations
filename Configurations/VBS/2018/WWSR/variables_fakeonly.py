@@ -20,7 +20,7 @@ variables['fakeWSS']  = {   'name': 'fakeW2l_ele_mvaFall17V1Iso_WP90_SS_tthmva_7
                             'fold' : 3
                             }
 variables['fakeWSS_v2']  = {   'name': 'fakeW2l_ele_mvaFall17V1Iso_WP90_SS_tthmva_70_mu_cut_Tight_HWWW_tthmva_80',
-                               'range' : (50,-0.5,0.5),
+                               'range' : (50,-0.2,0.3),
                             'xaxis' : 'fakeWSS',
                             'fold' : 3
                             }

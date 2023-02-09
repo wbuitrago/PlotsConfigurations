@@ -53,20 +53,11 @@ variables['mjj']  = {  'name': 'mjj',
                        'xaxis': 'mjj [GeV]',
                        'fold': 3
                        }
-variables['mjj_v2']  = {  'name': 'mjj',
-                          'range': ([500,800,1200,1500,1800,2200,3000],),  #for 500 < mjj < 1000
-                          'xaxis': 'mjj [GeV]',
-                          'cuts': ['ssww_tri_tauVeto','ssww_tri_btag_tauVeto'],
-                       'fold': 3,
-                       'blind': { c:[1000,3000] for c in cuts if "ssww_tri_tauVeto" in c}
-                          }
-
 variables['mjj_blinded']  = {  'name': 'mjj',
                        'range': ([500,650,800, 1000,1200, 1500, 1800, 2300, 3000],),  #for 500 < mjj < 1000
                        'xaxis': 'mjj [GeV]',
-                       'cuts': ['ssww_tri_tauVeto','ssww_tri_btag_tauVeto'],
                        'fold': 3,
-                       'blind': { c:[1000,3000] for c in cuts if "ssww_tri_tauVeto" in c}
+                       'blind': { c:[1500,3000] for c in cuts if "_ssww_tri_tauVeto_" in c}
                        }
 
 variables['jetpt1']  = {   'name': 'Alt$(Jet_pt[0],-9999.)',
@@ -182,6 +173,17 @@ variables['mll_v2']  = {   'name': 'mll',            #   variable name
                            'xaxis' : 'mll [GeV]',  #   x axis name
                            'fold' : 3
                            }
+variables['mjj_v2']  = {  'name': 'mjj',
+                          'range': ([500,800,1200,1800,2000],),  #for 500 < mjj < 1000
+                          'xaxis': 'mjj [GeV]',
+                          'fold': 3
+                          }
+
+variables['mjj_v3']  = {  'name': 'mjj',
+                          'range': (15, 500. ,2000),  #for 500 < mjj < 1000
+                          'xaxis': 'mjj [GeV]',
+                          'fold': 3
+                          }
 
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
                         'range' : (6,0.,300),
@@ -269,5 +271,6 @@ variables['mll_mjj']  = {   'name': 'mll:mjj',
                             'fold' : 3
                             }
 
-#variables = {k:v for k,v in variables.items() if k in ["events", "mjj", "pt2", "pt1", "mll", "detajj", "mtw1", "mtw2"]} #["events", "mjj", "pt2", "pt1", "mll", "detajj", "mtw1", "mtw2"]}
-variables = {k:v for k,v in variables.items() if k in ["mjj_blinded","mjj_v2"]}
+#variables = {k:v for k,v in variables.items() if k in ["events", "mjj", "pt2", "pt1", "mll", "detajj", "mtw1", "mtw2"]} 
+variables = {k:v for k,v in variables.items() if k in ["events", "mjj", "mll_mjj"]} 
+#variables = {k:v for k,v in variables.items() if k in ["mjj_blinded"]}

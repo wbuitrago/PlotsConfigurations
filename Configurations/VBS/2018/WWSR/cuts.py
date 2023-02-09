@@ -64,8 +64,26 @@ ww5 = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>19 && Alt$(Lepton_pt[2]
 ww6 = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >30 && mll > 20 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5'  # bveto tauveto zveto zlep
 
 # ------------------ good
-cuts['ssww_tri_tauVeto']=ww+'&& bVeto &&'+zlep+'&&'+zveto+'&&'+ssww+'&&'+triple_charge+'&& tauVeto_ww'
-cuts['ssww_tri_btag_tauVeto']=ww+'&&'+ bJetTag+'&&'+zlep+'&&'+zveto+'&&'+ssww+'&&'+triple_charge+'&& tauVeto_ww'
+cuts['ssww_tri_tauVeto']=ww+'&& bVeto &&'+zlep+'&&'+zveto+'&&'+triple_charge+'&& tauVeto_ww'
+cuts['ssww_tri_btag_tauVeto']=ww+'&&'+ bJetTag+'&&'+zlep+'&&'+zveto+'&&'+triple_charge+'&& tauVeto_ww'
 
-cuts['ssww_tri_btag_tauVeto_jetpt230']=ww6+'&&'+ bJetTag+'&&'+zlep+'&&'+zveto+'&&'+ssww+'&&'+triple_charge+'&& tauVeto_ww'
-cuts['ssww_tri_tauVeto_jetpt230']=ww6+'&& bVeto &&'+zlep+'&&'+zveto+'&&'+ssww+'&&'+triple_charge+'&& tauVeto_ww'
+# cuts['ssww_tri_tauVeto']= {
+#      'expr' : ww+'&& bVeto &&'+zlep+'&&'+zveto+'&&'+triple_charge+'&& tauVeto_ww',
+#      'categories': {
+#          'ee' : '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) == 11*11 )',
+#          'mm' : '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) == 13*13 )',
+#          'em' : '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) == 11*13 )',
+#         }
+#     }
+# cuts['ssww_tri_btag_tauVeto']= {
+#      'expr' : ww+'&&'+ bJetTag+'&&'+zlep+'&&'+zveto+'&&'+triple_charge+'&& tauVeto_ww',
+#      'categories': {
+#          'ee' : '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) == 11*11 )',
+#          'mm' : '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) == 13*13 )',
+#          'em' : '(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) == 11*13 )',
+#         }
+#     }
+
+
+# cuts['ssww_tri_btag_tauVeto_jetpt230']=ww6+'&&'+ bJetTag+'&&'+zlep+'&&'+zveto+'&&'+triple_charge+'&& tauVeto_ww'
+# cuts['ssww_tri_tauVeto_jetpt230']=ww6+'&& bVeto &&'+zlep+'&&'+zveto+'&&'+triple_charge+'&& tauVeto_ww'

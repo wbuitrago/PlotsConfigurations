@@ -2,7 +2,7 @@
 treeName= 'Events'
 
 #date='_Nov252018_ptll'
-date='_2018_31082022'
+date='_2018_31082022_NuisRun'
 
 tag = 'VBS_WW'+date
 
@@ -14,7 +14,7 @@ outputDir = 'rootFile'+date
 aliasesFile = 'aliases_310822.py'
 
 # file with list of variables
-variablesFile = 'variables.py'
+variablesFile = 'variables_NuisRun.py'
 
 # file with list of cuts
 cutsFile = 'cuts.py'
@@ -24,7 +24,7 @@ cutsFile = 'cuts.py'
 samplesFile = 'samples_310822.py'
 
 # file with list of samples
-plotFile = 'plot_postfit.py' #'plot_310822.py'
+plotFile = 'plot_310822.py'
 
 # luminosity to normalize to (in 1/fb)
 lumi = 59.74
@@ -43,4 +43,4 @@ structureFile = 'structure.py'
 
 
 # nuisances file for mkDatacards and for mkShape
-nuisancesFile = 'nuisances.py'
+nuisancesFile = 'nuisances_NuisRun.py'

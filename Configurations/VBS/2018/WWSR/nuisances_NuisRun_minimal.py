@@ -11,11 +11,13 @@ def nanoGetSampleFiles(inputDir, Sample):
     return getSampleFiles(inputDir, Sample, False, 'nanoLatino_')
 
 mc = [skey for skey in samples if skey != 'DATA' and skey != 'Fake_lep']
-
+cutsSS = ['ssww_tri_tauVeto','ssww_tri_btag_tauVeto']
+cutsWZ = ['WZb_tri_tauVeto_incl','WZ_tri_tauVeto_incl']
+cutsZZ = ['ZZ_tri']
 
 ################################ EXPERIMENTAL UNCERTAINTIES  ###########################
-# ####### lumi
-# # Uncorrelated 2018,0.0,0.0,1.5
+####### lumi
+# Uncorrelated 2018,0.0,0.0,1.5
 nuisances['lumi_Uncorrelated'] = {
     'name': 'lumi_13TeV_2018',
     'type': 'lnN',
@@ -124,7 +126,7 @@ nuisances['lumi_Uncorrelated'] = {
 #     }
 # }
 
-# # electron efficiency and energy scale
+# ####### electron efficiency and energy scale
 
 # nuisances['eff_e'] = {
 #     'name': 'CMS_eff_e_2018',
@@ -143,7 +145,8 @@ nuisances['lumi_Uncorrelated'] = {
 #     'folderDown': MCDir+'__ElepTdo_suffix',
 #     'AsLnN': '1'
 # }
-# muon efficiency and energy scale
+
+# ####### muon efficiency and energy scale
 
 # nuisances['eff_m'] = {
 #     'name': 'CMS_eff_m_2018',
@@ -166,20 +169,20 @@ nuisances['lumi_Uncorrelated'] = {
 # }
 
 
-##### Jet energy resolution
+# ##### Jet energy resolution
 # nuisances['JER'] = {
 #                 'name': 'CMS_res_j_2018',
 #                 'kind': 'suffix',
 #                 'type': 'shape',
 #                 'mapUp': 'JERup',
 #                 'mapDown': 'JERdo',
-#                 'samples': dict((skey, ['1','1']) for skey in mc if skey not in ['Vg', 'VgS1', "WZ_EWK", "WZ_QCD", "ZZ"]),
+#                 'samples': dict((skey, ['1.','1.']) for skey in mc if skey not in ['Vg', 'VgS1', "WZ_EWK", "WZ_QCD", "ZZ"]),
 #                 'folderUp' : MCDir+'__JERup_suffix',
 #                 'folderDown' : MCDir+'__JERdo_suffix',
 #                 'AsLnN'      : '1',
 # }
 
-# ##### Jet energy scale
+##### Jet energy scale
 # jes_systs = ['JESAbsolute','JESAbsolute_2018','JESBBEC1','JESBBEC1_2018','JESEC2','JESEC2_2018','JESFlavorQCD','JESHF','JESHF_2018','JESRelativeBal','JESRelativeSample_2018']
 
 # for js in jes_systs:
@@ -260,17 +263,17 @@ nuisances['lumi_Uncorrelated'] = {
 #     'name': 'PS_ISR',
 #     'kind': 'weight',
 #     'type': 'shape',
-#     'samples': dict((skey, ['PSWeight[2]', 'PSWeight[0]']) for skey in mc if skey not in ['Vg', 'VgS1', "WZ_EWK", "WZ_QCD", "ZZ"]), #PSWeights are buggy for some samples, we add them back by hand below
+#     'samples': dict((skey, ['PSWeight[2]', 'PSWeight[0]']) for skey in mc), #PSWeights are buggy for some samples, we add them back by hand below
 # }
 
 # nuisances['PS_FSR']  = {
 #     'name': 'PS_FSR',
 #     'kind': 'weight',
 #     'type': 'shape',
-#     'samples': dict((skey, ['PSWeight[3]', 'PSWeight[1]']) for skey in mc if skey not in ['Vg', 'VgS1', "WZ_EWK", "WZ_QCD", "ZZ"]), #PSWeights are buggy for some samples, we add them back by hand below
+#     'samples': dict((skey, ['PSWeight[3]', 'PSWeight[1]']) for skey in mc), #PSWeights are buggy for some samples, we add them back by hand below
 # }
 
-# ################################ THEORY UNCERTAINTIES  #################################
+################################ THEORY UNCERTAINTIES  #################################
 
 # nuisances['pdf_qqbar'] = {
 #     'name': 'pdf_qqbar',
@@ -290,6 +293,41 @@ nuisances['lumi_Uncorrelated'] = {
 #             'type'  : 'shape',
 #             'samples': { k:["LHEScaleWeight[0]", "LHEScaleWeight[8]"] for k in ['SSWW', 'WLLJJ_WToLNu_EWK'] }
 #         }
+
+# ####### RATEPARAMS
+# nuisances['norm_nonprompt']  = {
+#                'name'  : 'norm_nonprompt',
+#                'samples'  : {
+#                    'Fake_lep' : '1.00',
+#                    },
+#                'type'  : 'rateParam',
+#                'cuts'  : cutsSS
+#               }
+# nuisances['norm_WZb']  = {
+#                'name'  : 'norm_WZb',
+#                'samples'  : {
+#                    'tZq' : '1.00',
+#                    },
+#                'type'  : 'rateParam',
+#                'cuts'  : cutsSS
+#               }
+# nuisances['norm_WZQCD']  = {
+#                'name'  : 'norm_WZQCD',
+#                'samples'  : {
+#                    'WZ_QCD' : '1.00',
+#                    },
+#                'type'  : 'rateParam',
+#                'cuts'  : cutsSS
+#               }
+# nuisances['norm_ZZ']  = {
+#                'name'  : 'norm_ZZ',
+#                'samples'  : {
+#                    'ZZ' : '1.00',
+#                    },
+#                'type'  : 'rateParam',
+#                'cuts'  : cutsSS
+#               }
+
 
 
 # Differnt type of uncentainties: type->ln N: (modify only event yeld) use a lognorm distributions with sigma = uncertainty. For normalization rateParam
