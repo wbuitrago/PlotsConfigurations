@@ -30,7 +30,7 @@ variables['nLepton'] =  {
 }
 
 variables['mll_v2']  = {   'name': 'mll',            #   variable name
-                           'range' : (100, 76 ,106),    #   variable range
+                           'range' : (30, 76 ,106),    #   variable range
                            'xaxis' : 'mll [GeV]',  #   x axis name
                            'fold' : 3
                            }

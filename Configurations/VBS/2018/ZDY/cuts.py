@@ -13,6 +13,11 @@ triple_charge_zz = '((abs(Alt$(Lepton_pdgId[0],-9999))==11 && Alt$(Electron_tigh
 ww = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && mll > 20 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5'  # bveto tauveto zveto zlep
 
 ww_zsel = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && mll > 20 && mjj > 500 && abs(detajj) > 2.5'  # bveto tauveto zveto zlep
+ww_zsel_lep = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)<10'
+ww_zsel_lepv2 = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20'
+ww_zsel_mll = 'mll > 20'  # bveto tauveto zveto zlep
+ww_zsel_jet = 'Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50'  # bveto tauveto zveto zlep
+ww_zsel_VBS = 'mjj > 500 && abs(detajj) > 2.5'  # bveto tauveto zveto zlep
 
 wz = 'nLepton>2 && Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)>20 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5'    # mlll bveto tauveto anti_zveto zlep_wz
 wzb = 'nLepton>2 && Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2],0.)>20 && Alt$(Lepton_pt[3],0.)<10 && Alt$(CleanJet_pt[0],-9999.) >50 && Alt$(CleanJet_pt[1],-9999.) >50 && MET_pt > 30 && mjj > 500 && abs(detajj) > 2.5' # mlll btag tauveto zlep_wz anti_zveto
@@ -26,8 +31,8 @@ loose_dijet = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lept
 bJetTag  = '!(bVeto)'
 zveto ='(abs(Alt$(Lepton_pdgId[0],-9999)) * abs(Alt$(Lepton_pdgId[1],-9999)) != 11*11 || abs(mll - 91.1876) > 15)'
 
-zsel='(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11 && abs(mll - 91.1876) < 15) \
-   || (Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13 && abs(mll - 91.1876) < 15)' 
+zsel='((Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11 && abs(mll - 91.1876) < 15) \
+   || (Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13 && abs(mll - 91.1876) < 15))' 
 zsel_ee='(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11 && abs(mll - 91.1876) < 15)' 
 zsel_mm='(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13 && abs(mll - 91.1876) < 15)'
 
@@ -75,27 +80,98 @@ ww6 = 'Alt$(Lepton_pt[0],0.)>25 && Alt$(Lepton_pt[1],0.)>20 && Alt$(Lepton_pt[2]
 #cuts['ssww_tri_tauVeto']=ww+'&& bVeto &&'+zlep+'&&'+zveto+'&&'+ssww+'&&'+triple_charge+'&& tauVeto_ww'
 #cuts['ssww_tri_btag_tauVeto']=ww+'&&'+ bJetTag+'&&'+zlep+'&&'+zveto+'&&'+ssww+'&&'+triple_charge+'&& tauVeto_ww'
 
-# cuts['ssww_zeta_selections']=   ww_zsel+'&&'+zsel+'&&'+triple_charge
-cuts['ssww_zeta_selections_no3charge'] = ww_zsel+'&&'+zsel
+cuts['ssww_zeta_selections_incl']= ww_zsel+'&&'+zsel+'&&'+triple_charge
+cuts['ssww_zeta_selections'] = {
+        'expr': ww_zsel+'&&'+zsel+'&&'+triple_charge,
+        'categories': {
+            'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+            'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+            }
+        }
+
+
+# cuts['ssww_zeta_selections_no3charge'] = ww_zsel+'&&'+zsel
 #cuts['ssww_zeta_selections_test1']=ww_zsel+'&&'+zsel+'&&'+triple_charge
 #cuts['ssww_zeta_selections_mm']=ww_zsel+'&& bVeto &&'+zlep+'&&'+zsel+'&&'+triple_charge+'&& tauVeto_ww'
 #cuts['ssww_zeta_selections_ee']=ww_zsel+'&& bVeto &&'+zlep+'&&'+zsel_ee+'&&'+triple_charge+'&& tauVeto_ww'
 #cuts['ssww_zeta_selections_mumu']=ww_zsel+'&& bVeto &&'+zlep+'&&'+zsel_mm+'&&'+triple_charge+'&& tauVeto_ww'
-# cuts['ssww_zeta'] = {
-#         'expr': ww_zsel+'&&'+zsel+'&&'+triple_charge,
+
+# # selezioni ptl, ptj, mll, vbs
+# cuts['ssww_zeta1'] = {
+#         'expr': ww_zsel,
+#         'categories': {
+#             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+#             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+#             }
+#         }
+# # selezioni precedenti + selezione della z (mll vicino a 91, sf os)
+# cuts['ssww_zeta1banana'] = {
+#         'expr': ww_zsel,
+#         'categories': {
+#             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+#             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+#             }
+#         }
+# cuts['ssww_zeta2_split_ee'] = ww_zsel+'&&'+zsel_ee
+# cuts['ssww_zeta2_split_mm'] = ww_zsel+'&&'+zsel_mm
+# cuts['ssww_zeta2banana_split_ee'] = ww_zsel+'&&'+zsel+'&&'+zsel_ee
+# cuts['ssww_zeta2banana_split_mm'] = ww_zsel+'&&'+zsel+'&&'+zsel_mm
+
+# selezioni precedenti + triple charge
+
+# # nel caso l'indiziato fosse ww_zsel: frammentazione piu fine
+# # solo selezioni leptoni
+# cuts['ssww_zeta4lep'] = {
+#         'expr': ww_zsel_lep,
+#         'categories': {
+#             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+#             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+#             }
+#         }
+# # leptoni v2
+# cuts['ssww_zeta4lepv2'] = {
+#         'expr': ww_zsel_lepv2,
+#         'categories': {
+#             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+#             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+#             }
+#         }
+# # mll
+# cuts['ssww_zeta4mll'] = {
+#         'expr': ww_zsel_mll,
 #         'categories': {
 #             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
 #             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
 #             }
 #         }
 
-cuts['ssww_zeta_no3charge'] = {
-        'expr': ww_zsel+'&&'+zsel,
-        'categories': {
-            'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
-            'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
-            }
-        }
+# # jet
+# cuts['ssww_zeta4jet'] = {
+#         'expr': ww_zsel_jet,
+#         'categories': {
+#             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+#             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+#             }
+#         }
+
+# # VBS
+# cuts['ssww_zeta4VBS'] = {
+#         'expr': ww_zsel_VBS,
+#         'categories': {
+#             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+#             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+#             }
+#         }
+
+
+
+# cuts['ssww_zeta_no3charge'] = {
+#         'expr': ww_zsel+'&&'+zsel,
+#         'categories': {
+#             'ee': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -11*11)',
+#             'mm': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) == -13*13)',
+#             }
+#         }
 
 
 

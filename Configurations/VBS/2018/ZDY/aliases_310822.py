@@ -323,9 +323,9 @@ aliases['SFweight_mod'] = {
     #'expr': 'LepWPCut',
     'samples': mc
 }
-aliases['mcCommonWeight_os'] = {
-    # 'expr': 'XSWeight*SFweight2l*LepSF2l__ele_' + eleWP + '__mu_' + muWP+'*LepWPCut*PromptGenLepMatch2l*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)', # usato questo per girare config 12:10 19/12/22 
+aliases['mcCommonWeight_os'] = { 
     'expr': 'XSWeight*SFweight_mod*PromptGenLepMatch2l*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',
+#    'expr': 'XSWeight*SFweight2l*PromptGenLepMatch2l*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',
     'samples':mc
 }
 
