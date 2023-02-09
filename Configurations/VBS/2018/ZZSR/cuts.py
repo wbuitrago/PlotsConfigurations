@@ -70,6 +70,6 @@ osww='Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0'
 
 
 cuts['ZZ_tri']=zz+'&&'+zlep_zz+'&&'+ztag_zz+'&&'+triple_charge_zz # ztag_zz
-cuts['ZZ_tri_tauVeto']=zz+'&&'+zlep_zz+'&&'+ztag_zz+'&&'+triple_charge_zz+'&& tauVeto_zz' # ztag_zz
-cuts['LOOSEZZ_tri']=loose_zz+'&&'+ztag_zz_loose+'&&'+triple_charge_zz # ztag_zz
-cuts['LOOSEDIJET_tri']=loose_dijet+'&&'+zveto+'&&'+triple_charge #
+#cuts['ZZ_tri_tauVeto']=zz+'&&'+zlep_zz+'&&'+ztag_zz+'&&'+triple_charge_zz+'&& tauVeto_zz' # ztag_zz
+#cuts['LOOSEZZ_tri']=loose_zz+'&&'+ztag_zz_loose+'&&'+triple_charge_zz # ztag_zz
+#cuts['LOOSEDIJET_tri']=loose_dijet+'&&'+zveto+'&&'+triple_charge #

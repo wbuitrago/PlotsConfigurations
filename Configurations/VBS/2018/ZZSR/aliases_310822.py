@@ -12,10 +12,11 @@ bWP = '0.4184'
 # eleWP = 'mvaFall17V1Iso_WP90_tthmva_70'
 # muWP  = 'cut_Tight_HWWW_tthmva_80'
 
-eleWP = 'mvaFall17V1Iso_WP90_SS'
-muWP  = 'cut_Tight_HWWW'
+eleWP = 'mvaFall17V1Iso_WP90_SS_tthmva_70'
+muWP  = 'cut_Tight_HWWW_tthmva_80'
 
 mc = [skey for skey in samples if skey not in ('Fake_lep','DATA')]
+SSsamples = [skey for skey in samples if skey not in ('WW','Top','DY','Higgs')]
 # DNN reader WW
 # dnn_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/ssww/l2_2018/dnn/'
 # models_path_WW = '/eos/user/j/jixiao/latino/2018_WW/'
@@ -322,37 +323,84 @@ aliases['LepWPCut'] = {
 
 #data/MC scale factors
 aliases['SFweight_mod'] = {
-    'expr': ' * '.join(['SFweight4l','LepSF4l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
+    'expr': ' * '.join(['SFweight3l','LepSF3l__ele_' + eleWP + '__mu_' + muWP, 'LepWPCut','METFilter_MC','btagSF']), #bveto_sf*lep_sf*trig_sf*mu_roc_sf
     #'expr': 'LepWPCut',
     'samples': mc
 }
+
 aliases['mcCommonWeight_os'] = {
-    'expr': 'XSWeight*SFweight4l*PromptGenLepMatch4l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
+    'expr': 'XSWeight*SFweight_mod*PromptGenLepMatch3l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',
     'samples':mc
 }
 
-# aliases['mcCommonWeight_os'] = {
-#     'expr': 'SFweight4l*PromptGenLepMatch4l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
-#     'samples':mc
-# }
+aliases['samesign_requirement'] = {
+    'expr': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0)',
+    'samples':SSsamples
+}
 
 
 # variations
+aliases['zlep1'] = {'expr' : '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}
+aliases['zlep2'] = {'expr' : '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}
+
+
+
+
+########################################################################## 
+############### my own weights for the nuisances #########################
+
 aliases['SFweightEleUp'] = {
-    'expr': 'LepSF4l__ele_'+eleWP+'__Up',
+    'expr': 'LepSF2l__ele_'+eleWP+'__Up',
     'samples': mc
 }
 aliases['SFweightEleDown'] = {
-    'expr': 'LepSF4l__ele_'+eleWP+'__Do',
+    'expr': 'LepSF2l__ele_'+eleWP+'__Do',
     'samples': mc
 }
 aliases['SFweightMuUp'] = {
-    'expr': 'LepSF4l__mu_'+muWP+'__Up',
+    'expr': 'LepSF2l__mu_'+muWP+'__Up',
     'samples': mc
 }
 aliases['SFweightMuDown'] = {
-    'expr': 'LepSF4l__mu_'+muWP+'__Do',
+    'expr': 'LepSF2l__mu_'+muWP+'__Do',
     'samples': mc
 }
-aliases['zlep1'] = {'expr' : '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}
-aliases['zlep2'] = {'expr' : '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}
+
+
+
+# for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2', 'cferr1', 'cferr2']:
+#       for targ in ['bVeto', 'bReq']:
+#           alias = aliases['%sSF%sup' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+#           alias['expr'] = alias['expr'].replace('btagSF_deepcsv_shape', 'btagSF_deepcsv_shape_up_%s' % shift)
+
+#           alias = aliases['%sSF%sdown' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+#           alias['expr'] = alias['expr'].replace('btagSF_deepcsv_shape', 'btagSF_deepcsv_shape_down_%s' % shift)
+
+#       aliases['btagSF%sup' % shift] = {
+#           'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'up'),
+#           'samples': mc
+#       }
+
+#       aliases['btagSF%sdown' % shift] = {
+#           'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'down'),
+#           'samples': mc
+#       }
+
+
+aliases['Jet_PUIDSF'] = {
+  'expr' : 'TMath::Exp(Sum$((Jet_jetId>=2)*TMath::Log(Jet_PUIDSF_loose)))',
+  'samples': mc
+}
+
+aliases['Jet_PUIDSF_up'] = {
+  'expr' : 'TMath::Exp(Sum$((Jet_jetId>=2)*TMath::Log(Jet_PUIDSF_loose_up)))',
+  'samples': mc
+}
+
+aliases['Jet_PUIDSF_down'] = {
+  'expr' : 'TMath::Exp(Sum$((Jet_jetId>=2)*TMath::Log(Jet_PUIDSF_loose_down)))',
+  'samples': mc
+}
+
+
+

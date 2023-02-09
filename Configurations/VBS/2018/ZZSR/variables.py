@@ -282,4 +282,4 @@ variables['mll_mjj']  = {   'name': 'mll:mjj',
                             'fold' : 3
                             }
 
-variables = {k:v for k,v in variables.items() if k in ["events", "mjj"]}
+variables = {k:v for k,v in variables.items() if k in ["events", "mjj"]}#, "mjj"]}
