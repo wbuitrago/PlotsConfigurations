@@ -122,7 +122,7 @@ groupPlot['non-prompt']  = {
     'isSignal':0, 
     #'color': palette["LightBlue"], 
     'color': palette2["DeadViolet"],
-    'samples':['Fake'],
+    'samples':['Fake_lep'],
     'fill': 1001
 }
 
@@ -148,7 +148,7 @@ groupPlot['SSWW']  = {
 
 # keys here must match keys in samples.py
 ##Fake and prompt substraction
-plot['Fake']  = {
+plot['Fake_lep']  = {
     'color':Yellow, 
     'isSignal':0, 
     'isData':0, 

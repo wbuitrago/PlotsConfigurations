@@ -12,10 +12,11 @@ bWP = '0.4184'
 # eleWP = 'mvaFall17V1Iso_WP90_SS'
 # muWP  = 'cut_Tight_HWWW'
 
-eleWP = 'mvaFall17V1Iso_WP90_tthmva_70'
+eleWP = 'mvaFall17V1Iso_WP90_SS_tthmva_70'
 muWP  = 'cut_Tight_HWWW_tthmva_80'
 
-mc = [skey for skey in samples if skey not in ('Fake','DATA')]
+mc = [skey for skey in samples if skey not in ('Fake_lep','DATA')]
+SSsamples = [skey for skey in samples if skey not in ('WW','Top','DY','Higgs')]
 # DNN reader WW
 # dnn_reader_path = os.getenv('CMSSW_BASE') + '/src/PlotsConfigurations/Configurations/ssww/l2_2018/dnn/'
 # models_path_WW = '/eos/user/j/jixiao/latino/2018_WW/'
@@ -95,40 +96,40 @@ aliases['gstarHigh'] = {
 aliases['fakeW'] = {
     #'expr': 'fakeW3l_ele_'+eleWP+'_mu_'+muWP,
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 # And variations - already divided by central values in formulas !
 aliases['fakeWEleUp'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'ElUp',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 aliases['fakeWEleDown'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'ElDown',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 aliases['fakeWMuUp'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'MuUp',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 aliases['fakeWMuDown'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'MuDown',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 aliases['fakeWStatEleUp'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'statElUp',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 aliases['fakeWStatEleDown'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'statElDown',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 aliases['fakeWStatMuUp'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'statMuUp',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 aliases['fakeWStatMuDown'] = {
     'expr': 'fakeW_ele_'+eleWP+'_mu_'+muWP+'_3l'+'statMuDown',
-    'samples': ['Fake']
+    'samples': ['Fake_lep']
 }
 # gen-matching to prompt only (GenLepMatch2l matches to *any* gen lepton)
 aliases['PromptGenLepMatch2l'] = {
@@ -327,9 +328,15 @@ aliases['SFweight_mod'] = {
 }
 
 aliases['mcCommonWeight_os'] = {
-    'expr': 'XSWeight*SFweight_mod*PromptGenLepMatch3l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',#
+    'expr': 'XSWeight*SFweight_mod*PromptGenLepMatch3l*chargeflip_w*(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) < 0)',
     'samples':mc
 }
+
+aliases['samesign_requirement'] = {
+    'expr': '(Alt$(Lepton_pdgId[0],-9999) * Alt$(Lepton_pdgId[1],-9999) > 0)',
+    'samples':SSsamples
+}
+
 
 
 # aliases['mcCommonWeight_os'] = {
@@ -337,21 +344,65 @@ aliases['mcCommonWeight_os'] = {
 #     'samples':mc
 # }
 # variations
+
+
+
+
+########################################################################## 
+############### my own weights for the nuisances #########################
+
 aliases['SFweightEleUp'] = {
-    'expr': 'LepSF3l__ele_'+eleWP+'__Up',
+    'expr': 'LepSF2l__ele_'+eleWP+'__Up',
     'samples': mc
 }
 aliases['SFweightEleDown'] = {
-    'expr': 'LepSF3l__ele_'+eleWP+'__Do',
+    'expr': 'LepSF2l__ele_'+eleWP+'__Do',
     'samples': mc
 }
 aliases['SFweightMuUp'] = {
-    'expr': 'LepSF3l__mu_'+muWP+'__Up',
+    'expr': 'LepSF2l__mu_'+muWP+'__Up',
     'samples': mc
 }
 aliases['SFweightMuDown'] = {
-    'expr': 'LepSF3l__mu_'+muWP+'__Do',
+    'expr': 'LepSF2l__mu_'+muWP+'__Do',
     'samples': mc
 }
-aliases['zlep1'] = {'expr' : '(Alt$(Lepton_eta[0],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}
-aliases['zlep2'] = {'expr' : '(Alt$(Lepton_eta[1],-9999.) - (Alt$(CleanJet_eta[0],-9999.)+Alt$(CleanJet_eta[1],-9999.))/2)/detajj'}
+
+
+
+# for shift in ['jes', 'lf', 'hf', 'lfstats1', 'lfstats2', 'hfstats1', 'hfstats2', 'cferr1', 'cferr2']:
+#       for targ in ['bVeto', 'bReq']:
+#           alias = aliases['%sSF%sup' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+#           alias['expr'] = alias['expr'].replace('btagSF_deepcsv_shape', 'btagSF_deepcsv_shape_up_%s' % shift)
+
+#           alias = aliases['%sSF%sdown' % (targ, shift)] = copy.deepcopy(aliases['%sSF' % targ])
+#           alias['expr'] = alias['expr'].replace('btagSF_deepcsv_shape', 'btagSF_deepcsv_shape_down_%s' % shift)
+
+#       aliases['btagSF%sup' % shift] = {
+#           'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'up'),
+#           'samples': mc
+#       }
+
+#       aliases['btagSF%sdown' % shift] = {
+#           'expr': aliases['btagSF']['expr'].replace('SF', 'SF' + shift + 'down'),
+#           'samples': mc
+#       }
+
+
+aliases['Jet_PUIDSF'] = {
+  'expr' : 'TMath::Exp(Sum$((Jet_jetId>=2)*TMath::Log(Jet_PUIDSF_loose)))',
+  'samples': mc
+}
+
+aliases['Jet_PUIDSF_up'] = {
+  'expr' : 'TMath::Exp(Sum$((Jet_jetId>=2)*TMath::Log(Jet_PUIDSF_loose_up)))',
+  'samples': mc
+}
+
+aliases['Jet_PUIDSF_down'] = {
+  'expr' : 'TMath::Exp(Sum$((Jet_jetId>=2)*TMath::Log(Jet_PUIDSF_loose_down)))',
+  'samples': mc
+}
+
+
+

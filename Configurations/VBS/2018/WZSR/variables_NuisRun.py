@@ -34,26 +34,18 @@ variables['mll']  = {   'name': 'mll',            #   variable name
                         'xaxis' : 'mll [GeV]',  #   x axis name
                         'fold' : 3
                         }
+variables['mll_v2']  = {   'name': 'mll',            #   variable name
+                           'range' : ([0,125,250,500],),    #   variable range
+                           'xaxis' : 'mll [GeV]',  #   x axis name
+                           'fold' : 3
+                           }
+
+
 variables['mjj']  = {  'name': 'mjj',
                        'range': ([500, 800, 1200, 1800, 3000],),  #for 500 < mjj < 1000
                        'xaxis': 'mjj [GeV]',
                        'fold': 3
                        }
-
-variables['mjj_v2']  = {  'name': 'mjj',
-                          'range': ([500,800,1200,1500,1800,2200,3000],),  #for 500 < mjj < 1000
-                          'xaxis': 'mjj [GeV]',
-                          'cuts': ['WZ_tri_tauVeto_incl','WZb_tri_tauVeto_incl','LOOSEWZ_tri_incl'],
-                       'fold': 3,
-                       'blind': { c:[1000,3000] for c in cuts if "WZ_" in c}
-                          }
-
-variables['mjj_v3']  = {  'name': 'mjj',
-                          'range': ([500, 800, 1200, 2500],),  #for 500 < mjj < 1000
-                          'xaxis': 'mjj [GeV]',
-                          'fold': 3
-                          }
-
 variables['mjj_all']  = {  'name': 'mjj',
                            'range': (300,0.,2000),  #for 500 < mjj < 1000
                        'xaxis': 'mjj [GeV]',
@@ -64,6 +56,18 @@ variables['mjj_low']  = {  'name': 'mjj',
                        'xaxis': 'mjj [GeV]',
                        'fold': 3
                        }
+
+variables['mjj_v2']  = {  'name': 'mjj',
+                          'range': ([500,800,1200,1500,1800,2200,3000],),  #for 500 < mjj < 1000
+                          'xaxis': 'mjj [GeV]',
+                          'fold': 3
+                          }
+
+variables['mjj_v3']  = {  'name': 'mjj',
+                          'range': ([500, 800, 1200, 2500],),  #for 500 < mjj < 1000
+                          'xaxis': 'mjj [GeV]',
+                          'fold': 3
+                          }
 
 
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
@@ -143,6 +147,14 @@ variables['csvv2ivf_2']  = {
     'xaxis' : 'csvv2ivf 2nd jet ',
     'fold'  : 3
 }
+variables['mll_mjj']  = {   'name': 'mll:mjj',
+                            #variables['weightbtag_2D_A']  = {   'name': '(std_vector_jet_pt[0]):(std_vector_jet_eta[0])',
+                            #'range' : ([-5.0, -2.5, -2.0, -1.0, 0, 1.0, 2.0, 2.5, 5.0,       7.5,  8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 15.0],[20,30,50,70,100]),
+                            #'range' : ([-5.0, 5.0, 10.0],[20, 30, 50, 100, 200]),
+                            'range' : ([20,100,180,400,600],[500,800,1100,1500,2000]),
+                            'xaxis' : 'mll:mjj [GeV]',
+                            'fold' : 3
+                            }# variables
 
 #variables = {}
 
@@ -173,21 +185,6 @@ variables['nLepton'] =  {
     'fold': 3
 }
 
-variables['mll_v2']  = {   'name': 'mll',            #   variable name
-                           'range' : ([0,125,250,500],),    #   variable range
-                           'xaxis' : 'mll [GeV]',  #   x axis name
-                           'fold' : 3
-                           }
-variables['mll_v3']  = {   'name': 'mll',            #   variable name
-                           'range' : (50, 0. ,500),    #   variable range
-                           'xaxis' : 'mll [GeV]',  #   x axis name
-                           'fold' : 3
-                           }
-variables['mll_v4']  = {   'name': 'mll',            #   variable name
-                           'range' : (100, 0. ,500),    #   variable range
-                           'xaxis' : 'mll [GeV]',  #   x axis name
-                           'fold' : 3
-                           }
 
 
 variables['pt1']  = {   'name': 'Alt$(Lepton_pt[0],-9999.)',
@@ -273,13 +270,18 @@ variables['mll_mjj']  = {   'name': 'mll:mjj',
                             #'range' : ([-5.0, 5.0, 10.0],[20, 30, 50, 100, 200]),
                             'range' : ([20,100,180,400,600],[500,800,1100,1500,2000]),
                             'xaxis' : 'mll:mjj [GeV]',
-                            'fold' : 3,
-                            # do weighted plot too
-                            'doWeight' : 1,
-                            'binX'     : 4,
-                            'binY'     : 4
+                            'fold' : 3
                             }
 
+variables['mll2_mjj3']  = {   'name': 'mll:mjj',
+                            #variables['weightbtag_2D_A']  = {   'name': '(std_vector_jet_pt[0]):(std_vector_jet_eta[0])',
+                            #'range' : ([-5.0, -2.5, -2.0, -1.0, 0, 1.0, 2.0, 2.5, 5.0,       7.5,  8.0, 9.0, 10.0, 11.0, 12.0, 12.5, 15.0],[20,30,50,70,100]),
+                            #'range' : ([-5.0, 5.0, 10.0],[20, 30, 50, 100, 200]),
+                            'range' : ([0,125,250,500],[500, 800, 1200, 2500]),
+                            'xaxis' : 'mll:mjj [GeV]',
+                            'fold' : 3,
+                           }
 
-variables = {k:v for k,v in variables.items() if k in ["events","mjj", "met", "mjj_low", "mll", "detajj", "pt1", "pt2", "jetpt1", "jetpt2", "mll_v2", "mll_v3", "mll_v4","mll_mjj","mjj_v2"]} #, "mjj", "mjj_all", "met", "mjj_low", "mll", "detajj", "pt1", "pt2", "jetpt1", "jetpt2", "mll_v2", "mll_v3", "mll_v4"]}
-#variables = {k:v for k,v in variables.items() if k in ["events","mjj","mll_mjj","mjj_v2"]}
+
+# variables = {k:v for k,v in variables.items() if k in ["events","mjj", "mjj_all", "met", "mjj_low", "mll", "detajj", "pt1", "pt2", "jetpt1", "jetpt2", "mll_v2", "mll_v3", "mll_v4"]}
+variables = {k:v for k,v in variables.items() if k in ["mll2_mjj3","mjj_v2"]} # "events","mjj","mll_mjj"

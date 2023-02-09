@@ -88,7 +88,7 @@ cuts['WZ_tri_tauVeto_incl']= wz +' && ' + wz_zmass + ' && bVeto &&'+zlep_wz+'&&'
 #cuts['WZb_tri_incl']= wz + ' && ' + wz_zmass + ' && ' + bJetTag+'&&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
 cuts['WZb_tri_tauVeto_incl'] = wz + ' && ' + wz_zmass + ' && ' + bJetTag+'&&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz+'&& tauVeto_wz' # mlll
 
-cuts['LOOSEWZ_tri_incl']=loose_wz+'&& bVeto &&'+ztag+'&&'+triple_charge_wz # mlll
+#cuts['LOOSEWZ_tri_incl']=loose_wz+'&& bVeto &&'+ztag+'&&'+triple_charge_wz # mlll
 
 # cuts['WZ_tri']= {
 #      'expr': wz +'&&' + wz_zmass +' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz,

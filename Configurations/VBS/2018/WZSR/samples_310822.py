@@ -2,8 +2,9 @@ import os
 import inspect
 
 configurations = os.path.realpath(inspect.getfile(inspect.currentframe())) # this file
-configurations = os.path.dirname(configurations) # ggH2016
-configurations = os.path.dirname(configurations) # Differential
+configurations = os.path.dirname(configurations) # WWSS
+configurations = os.path.dirname(configurations) # 2018
+configurations = os.path.dirname(configurations) # VBS
 configurations = os.path.dirname(configurations) # Configurations
 
 from LatinoAnalysis.Tools.commonTools import getSampleFiles, getBaseWnAOD, addSampleWeight
@@ -25,14 +26,11 @@ except NameError:
     import collections
     samples = collections.OrderedDict()
 
+mcProduction = 'Autumn18_102X_nAODv7_Full2018v7'
+mcSteps = 'MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
+treeBaseDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano'
+MCDir = os.path.join(treeBaseDir,  mcProduction , mcSteps)
 
-skim=''
-
-#directory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Fall2017_nAOD_v1_Full2017v2/MCl1loose2017v2__MCCorr2017__btagPerEvent__l2loose'
-#chargeFlipDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv4_GTv16_Full2018v4/MCl1loose2018__MCCorr2018__l2loose__l2tightOR2018v4/'
-#PromptSubtr = directory + '__fakeWMC/'
-#MCDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv4_GTv16_Full2018v4/MCl1loose2018__MCCorr2018__l2loose__l2tightOR2018v4/'
-MCDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv7_Full2018v7/MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
 chargeFlipDir = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv7_Full2018v7/MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
 directory = '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/Autumn18_102X_nAODv7_Full2018v7/MCl1loose2018v7__MCCorr2018v7__l2loose__l2tightOR2018v7'
 PromptSubtr = directory + '__fakeWMC/'
@@ -57,7 +55,7 @@ Nlep='3'
 ############### Lepton WP ######################
 ################################################
 
-eleWP = 'mvaFall17V1Iso_WP90_tthmva_70'
+eleWP = 'mvaFall17V1Iso_WP90_SS_tthmva_70'
 muWP  = 'cut_Tight_HWWW_tthmva_80'
 
 # eleWP = 'mvaFall17V1Iso_WP90_SS'
@@ -149,15 +147,22 @@ samples['WpWp_QCD'] = {
 }
 
 ### WZ QCD
-files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
-        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_1Jet') + \
-        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_3Jet') + \
-        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_0Jet') + \
-        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
-        nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
+# files = nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_0Jet') + \
+#         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_1Jet') + \
+#         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-50_QCD_3Jet') + \
+#         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_0Jet') + \
+#         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_2Jet') + \
+#         nanoGetSampleFiles(mcDirectory, 'WLLJJToLNu_M-4To50_QCD_3Jet')
+# samples['WZ_QCD'] = {
+#     'name': files,
+#     'weight': mcCommonWeight+'*1.2', #xs rescaled by 1.2 to make up for the missing samples: (M-50,2J) and (M-4To50,1J)
+#     'FilesPerJob': 4
+# }
+
+files = nanoGetSampleFiles(mcDirectory, 'WZTo3LNu')
 samples['WZ_QCD'] = {
     'name': files,
-    'weight': mcCommonWeight+'*1.2',
+    'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
 
@@ -212,6 +217,7 @@ addSampleWeight(samples,'ZZ','ggZZ4t',        "1.68")
 #     'FilesPerJob': 4
 # }
 
+### tvx
 files = nanoGetSampleFiles(mcDirectory, 'TTZToLLNuNu_M-10') + \
         nanoGetSampleFiles(mcDirectory, 'TTWJetsToLNu')
 samples['TTV'] = {
@@ -225,6 +231,7 @@ samples['tZq'] = {
     'weight': mcCommonWeight,
     'FilesPerJob': 4
 }
+
 ### Vg
 # need: 
 # LLAJJ_EWK_MLL-50_MJJ-120_TuneCP5_13TeV-madgraph-pythia8
@@ -325,7 +332,7 @@ samples['VVV'] = {
 ################## FAKE ###################
 ###########################################
 
-samples['Fake']={'name': [ ] ,
+samples['Fake_lep']={'name': [ ] ,
                        'weight' :METFilter_DATA+'*fakeW',
                        #'weight': 'METFilter_DATA*fakeW',
                        'weights' : [ ] ,
@@ -340,8 +347,8 @@ for Run in DataRun :
   for DataSet in DataSets :
     FileTarget = getSampleFiles(FakeDir,DataSet+'_'+Run[1],True,'nanoLatino_')
     for iFile in FileTarget:
-      samples['Fake']['name'].append(iFile)
-      samples['Fake']['weights'].append(DataTrig[DataSet])
+      samples['Fake_lep']['name'].append(iFile)
+      samples['Fake_lep']['weights'].append(DataTrig[DataSet])
 
 ###########################################
 ################## DATA ###################
