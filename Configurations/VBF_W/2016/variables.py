@@ -27,6 +27,47 @@ variables['pt1']  = {   'name': 'Lepton_pt[0]',
                             }
                         }
 
+variables['pt1Zb1']  = {   'name': 'Lepton_pt[0]',     
+                        'range' : (30,35,50),   
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold' : 0,
+                            'blind': {
+                              'ele_SR' : 'full',
+                              'mu_SR' : 'full'
+                            }
+                        }
+
+variables['pt1Zb2']  = {   'name': 'Lepton_pt[0]',     
+                        'range' : (20,35,50),   
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold' : 0,
+                            'blind': {
+                              'ele_SR' : 'full',
+                              'mu_SR' : 'full'
+                            }
+                        }
+
+
+variables['pt1Zb3']  = {   'name': 'Lepton_pt[0]',     
+                        'range' : (10,35,50),   
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold' : 0,
+                            'blind': {
+                              'ele_SR' : 'full',
+                              'mu_SR' : 'full'
+                            }
+                        }
+
+variables['pt1Zb4']  = {   'name': 'Lepton_pt[0]',     
+                        'range' : (5,35,50),   
+                        'xaxis' : 'p_{T} 1st lep',
+                        'fold' : 0,
+                            'blind': {
+                              'ele_SR' : 'full',
+                              'mu_SR' : 'full'
+                            }
+                        }
+
 variables['eta1']  = {  'name': 'Lepton_eta[0]',     
                         'range' : (24,-2.4,2.4),   
                         'xaxis' : '#eta 1st lep',

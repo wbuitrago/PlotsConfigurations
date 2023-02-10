@@ -199,10 +199,16 @@ aliases['bReqSF'] = {
     'samples': mc
 }
 
+# --> 2018 uses this
 aliases['btagSF'] = {
-    'expr': 'bVeto*bVetoSF + bReqTight *bReqSF',
+    'expr': 'bVetoSF',
     'samples': mc
 }
+
+# aliases['btagSF'] = {
+#     'expr': 'bVeto*bVetoSF + bReqTight *bReqSF',
+#     'samples': mc
+# }
 
 systs = ['jes','lf','hf','lfstats1','lfstats2','hfstats1','hfstats2','cferr1','cferr2']
 
