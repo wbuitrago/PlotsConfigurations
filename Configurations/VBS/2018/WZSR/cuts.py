@@ -82,13 +82,13 @@ wz_zmass = '(' +  wz_zmass_one_two + " || " + wz_zmass_two_three + " || " + wz_z
 #cuts['WZ_tri_incl']= wz +'&&' + wz_zmass +' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
 cuts['WZ_tri_tauVeto_incl']= wz +' && ' + wz_zmass + ' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz+'&& tauVeto_wz' # mlll
 
-#cuts['WZQCD_tri_incl']= wz_QCD +'&&' + wz_zmass +' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
+cuts['WZQCD_tri_incl']= wz_QCD +'&&' + wz_zmass +' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
 #cuts['WZQCD_tri_tauVeto_incl']= wz_QCD +' && ' + wz_zmass + ' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz+'&& tauVeto_wz' # mlll
 
 #cuts['WZb_tri_incl']= wz + ' && ' + wz_zmass + ' && ' + bJetTag+'&&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz # mlll
 cuts['WZb_tri_tauVeto_incl'] = wz + ' && ' + wz_zmass + ' && ' + bJetTag+'&&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz+'&& tauVeto_wz' # mlll
 
-cuts['LOOSEWZ_tri_incl']=loose_wz+'&& bVeto &&'+ztag+'&&'+triple_charge_wz # mlll
+#cuts['LOOSEWZ_tri_incl']=loose_wz+'&& bVeto &&'+ztag+'&&'+triple_charge_wz # mlll
 
 # cuts['WZ_tri']= {
 #      'expr': wz +'&&' + wz_zmass +' && bVeto &&'+zlep_wz+'&&'+ztag+'&&'+triple_charge_wz,
