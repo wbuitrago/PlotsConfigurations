@@ -501,6 +501,16 @@ variables['QGL2'] = {   'name': 'Jet_qgl[1]',
                          }
 }
 
+variables['QGL1'] = {   'name': 'Jet_qgl[0]',     
+                        'range' : (10,0,1),   
+                        'xaxis' : 'QGL1',
+                        'fold' : 3,
+                        'blind': {
+                           'ele_SR' : 'full',
+                           'mu_SR' : 'full'
+                         }
+}
+
 variables['DeepBj1'] = {   'name': 'Jet_btagDeepB[CleanJet_jetIdx[0]]',     
                         'range' : (10,0,1),   
                         'xaxis' : 'BJet1',

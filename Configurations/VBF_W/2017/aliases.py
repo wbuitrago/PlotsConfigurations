@@ -223,16 +223,16 @@ aliases['bReqSF'] = {
     'samples': mc
 }
 
-# --> 2018 uses this
-aliases['btagSF'] = {
-    'expr': 'bVetoSF',
-    'samples': mc
-}
-
+# # --> 2018 uses this
 # aliases['btagSF'] = {
-#     'expr': 'bVeto*bVetoSF + bReqTight *bReqSF',
+#     'expr': 'bVetoSF',
 #     'samples': mc
 # }
+
+aliases['btagSF'] = {
+    'expr': 'bVeto*bVetoSF + bReqTight*bReqSF',
+    'samples': mc
+}
 
 
 aliases['nJetsBtag']= {

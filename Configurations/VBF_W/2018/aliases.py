@@ -181,7 +181,7 @@ aliases['bReqSF'] = {
 }
 
 aliases['btagSF'] = {
-    'expr': 'bVetoSF',
+    'expr': 'bVeto*bVetoSF + bReqTight *bReqSF',
     'samples': mc
 }
 
@@ -628,19 +628,19 @@ aliases['WJets_reweight'] = {
         ] 
 } 
 
-## DNN
-models_path = conf_folder + 'utils/NN'
-model_best = '64_64_64/SR/ALL/'
+# ## DNN
+# models_path = conf_folder + 'utils/NN'
+# model_best = '64_64_64/SR/ALL/'
 
-aliases['DNNoutputSR_ALL'] = {
-  'class': 'MVAReaderDNN',
-  'args': ( models_path + '/' + model_best, models_path + '/' + model_best + 'cumulative_signal_2018.root', False, 1),
-  'linesToAdd':[
-      'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
-      'gSystem->Load("libDNNEvaluator.so")',
-      '.L {}utils/NN/ALLmva_reader_DNN.cc+'.format(conf_folder)
-  ]
-}
+# aliases['DNNoutputSR_ALL'] = {
+#   'class': 'MVAReaderDNN',
+#   'args': ( models_path + '/' + model_best, models_path + '/' + model_best + 'cumulative_signal_2018.root', False, 1),
+#   'linesToAdd':[
+#       'gSystem->Load("libLatinoAnalysisMultiDraw.so")',
+#       'gSystem->Load("libDNNEvaluator.so")',
+#       '.L {}utils/NN/ALLmva_reader_DNN.cc+'.format(conf_folder)
+#   ]
+# }
 
 
 
