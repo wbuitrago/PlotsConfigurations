@@ -4,7 +4,7 @@ treeName= 'Events'
 
 date='_2023'
 
-tag = 'WWVBS_ZZBKG_'+date
+tag = 'WWVBS_ZZBKG_ALL_ZZs'+date
 
 
 # used by mkShape to define output directory for root files
@@ -14,17 +14,17 @@ outputDir = 'rootFile'+date
 aliasesFile = 'aliases.py'
 
 # file with list of variables
-variablesFile = 'variables.py'
+variablesFile = 'variables_v2.py'
 
 # file with list of cuts
 cutsFile = 'cuts.py'
 #cutsFile = 'cuts_forPlots.py'
 
 # file with list of samples
-samplesFile = 'samples_ZZ_.py'
+samplesFile = 'samples_ZZ_V1.py'
 
 # file with list of samples
-plotFile = 'plot_ZZ_.py'
+plotFile = 'plot_ZZ_V1.py'
 
 # luminosity to normalize to (in 1/fb)
 lumi = 59.74
