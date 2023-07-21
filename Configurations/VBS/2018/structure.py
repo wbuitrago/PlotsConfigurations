@@ -6,12 +6,34 @@
 #
 
 ## Reducible Bkg
-structure['Vg']  = {
-                  'isSignal' : 0,
-                  'isData'   : 0
-                  }
 
-structure['ZZ']  = {
+
+structure['ggZZ4L']  = { 
+    'isSignal':0, 
+    'isData':0, 
+} 
+
+structure['ZZ4L_VBS_EWK']  = {
+    'isSignal':0, 
+    'isData':0, 
+}
+
+structure['qqZZjj4L_VBS_QCD']  = { 
+    'isSignal':0, 
+    'isData':0, 
+}
+
+structure['NLOZZTo4L01J']  = { 
+    'isSignal':0, 
+    'isData':0, 
+}
+
+structure['ZZ4L_POWHEGNLO']  = { 
+    'isSignal':0, 
+    'isData':0, 
+}
+
+structure['Vg']  = {
                   'isSignal' : 0,
                   'isData'   : 0
                   }
